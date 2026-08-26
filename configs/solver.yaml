@@ -1,0 +1,5 @@
+solver:
+  interface: gurobi_direct
+  version: 13.0.2
+  threads: 1
+  fallback: false
