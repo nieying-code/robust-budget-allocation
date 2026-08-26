@@ -10,7 +10,7 @@ The project will compare three nested model families:
 - **M1 — Quantity + Reliability:** adds paid reliability choices that change scenario-contingent fulfillment.
 - **M2 — Quantity + Reliability + Flexibility:** adds a separately budgeted resource whose use is decided after uncertainty is revealed.
 
-The exact algorithmic baseline is **A0, Standard Column-and-Constraint Generation (C&CG)**. The proposed **A1, Memory-Guided Multistage C&CG**, may use memory and candidate search to find violated scenarios early, but only a complete exact oracle may certify an upper bound or convergence.
+The exact algorithmic baseline is **A0, Standard Column-and-Constraint Generation (C&CG)**. The proposed **A1, Memory-Guided Three-Phase C&CG**, uses memory inspection, candidate search, and full exact certification; only the complete exact oracle may certify an upper bound or convergence. “Three-Phase” describes the search procedure, while the scientific model remains two-stage.
 
 No empirical performance or superiority claim has been established in this repository.
 
@@ -49,6 +49,6 @@ Tests marked `gurobi` require the locked local environment and a valid Gurobi li
 
 ## Project status
 
-The current milestone is N0: research design and repository/environment setup. Formal M1/M2/A1 implementation and formal experiments are prohibited until the open scientific decisions are confirmed and the model is frozen.
+The N0 scientific structure is closed and submitted for external review in Draft PR #1. The model is two-stage, single-period, non-perishable, and finite-scenario; M2 uses a paid binary emergency-procurement option under one fixed lifecycle budget. N1 and all implementation or experiments remain prohibited until the user approves and merges PR #1.
 
-The design package is maintained outside this Git repository at `01_new_project_design` under the project root. Legacy materials remain read-only in `00_legacy_freeze`.
+The canonical working copies are maintained in `01_new_project_design` under the project root. Byte-identical frozen copies and their SHA-256 manifest are in [`docs/`](docs/). Legacy materials remain read-only in `00_legacy_freeze`.
