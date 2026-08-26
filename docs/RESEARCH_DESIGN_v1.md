@@ -13,6 +13,7 @@
 ## 2. 冻结的科学结构
 
 - 两阶段、单期、非易腐、无供应恢复。
+- 数学符号与未来代码接口保留通用资源集合 i∈I；首版研究、E2–E6 正式科学实例及论文核心主张固定 |I|=1。多物资只作为未来扩展。
 - 不确定集为有限场景集 Ω；三模型使用同一实例、Ω、需求与履约数据。
 - 所有真实现金支出来自同一个固定总预算 B，不设灾前/灾后分预算或外部应急资金。
 - 预算采用 ≤B，允许未使用预算；unused budget 只是会计结果，不是 Flexibility。
@@ -86,6 +87,8 @@ M0/M1 是机制消融，不与 M2 竞争“谁更好”：M0 → 加 Reliability
 
 E3–E5 的主要管理分析围绕 M2，研究风险、预算和机制参数改变时的 Q/R/F 配置及样本外表现。
 
+E2–E6 的正式科学证据全部限定为单物资 |I|=1；不得把通用索引或未来多物资代码能力解释为本项目的正式规模主张。
+
 ## 8. 算法
 
 A0 是每轮使用完整 exact oracle 的 Standard C&CG。A1 是 Memory-Guided Three-Phase C&CG：Phase I memory inspection，Phase II candidate search，Phase III full exact certification。只有 Phase III 完整 oracle 可以更新正式全局 UB 和认证最终收敛。
@@ -102,6 +105,13 @@ A1 scoring、memory 来源/更新/淘汰/跨实例边界和 candidate rule 在�
 
 N0 七文件及其 repo 冻结副本进入单一 Draft PR #1。PR 未经用户复审并合并前，不进入 N1，不迁移旧代码，不实现模型/算法，不运行 pilot 或正式实验。
 
+- 进入 N4 前冻结 E1 正确性验收标准：目标一致性绝对/相对容差、C&CG gap/violation 标准、solver optimality 接受规则、A0 初始场景与 canonical tie-break。
+- 进入 N5 前冻结 A1 scoring、candidate、memory 生命周期、状态机和 Phase III 触发规则。
+- 进入 N6 前登记 pilot 专用参数、pilot seeds、运行时限和最大迭代，只验证 execution readiness。
+- N7 冻结 E2–E6 正式科学参数、正式运行/失败统计与统计推断；不得重新定义 N4/N5 已冻结且使用的正确性标准。
+
+参数用途严格分离：N2–N5 development/test fixtures 只用于代码与正确性；N6 pilot configuration 只用于计算规模、稳定性和执行能力；N7 formal scientific parameters 才供 N8 正式实验。前两类不得因结果表现自动升级为正式参数。
+
 ## 11. N0 最终一致性复审
 
 | 检查项 | 结论 |
@@ -117,5 +127,7 @@ N0 七文件及其 repo 冻结副本进入单一 Draft PR #1。PR 未经用户�
 | 三模型公平使用 Ω | PASS：同一数据对象与场景 hash |
 | A0/A1 对齐 T-COST | PASS：共同 c(x)、Q_ω、MP 与 exact oracle |
 | E2–E6 回答预算管理问题 | PASS：机制、风险、预算、OOS 与计算性能完整覆盖 |
+| 单物资正式范围 | PASS：E2–E6 与论文主张均固定为单物资 |
+| 参数用途分离 | PASS：development/test、pilot、formal 三类具有不同冻结门槛且不得自动升级 |
 
 未发现 N0 数学或经济 blocker。

@@ -5,6 +5,7 @@
 ## 1. 共同协议
 
 - 三模型使用同一实例、有限 Ω、需求、所有 Reliability 等级履约数据和应急价格数据。
+- E2–E6 正式科学实例固定 |I|=1；多物资不进入正式规模矩阵或论文核心主张。
 - 唯一主目标为 T-COST；服务水平、CVaR、缺货量、未使用资源 h 和 unused budget 只作评价指标。
 - development、pilot、formal training、validation、OOS test seeds 分离且集合不相交。
 - 每个 run 绑定 code commit/tree、config、instance/scenario、environment 和 seed hash；formal 不覆盖，失败写终态。
@@ -14,11 +15,15 @@
 
 N4 用手算微型实例和可完整枚举小实例验证 Extensive Form=A0；N5 补齐 Extensive Form=A0=A1。覆盖单/多场景、基础/高 Reliability、y_F=0/1、Option 不值得购买、预算紧/松、应急额度或剩余预算绑定、缺货、h>0、并列最坏场景和两个嵌套退化。
 
+进入 N4 前必须冻结：目标一致性绝对/相对容差、C&CG gap/violation 接受标准、solver optimality 接受规则、A0 初始场景规则和 canonical tie-break。进入 N5 前再冻结 A1 scoring、candidate、memory 生命周期、状态机及 Phase III 触发规则。N7 不得重定义这些已用于 E1 的标准。
+
 比较 objective、Stage 1 解（允许多解规则）、场景 recourse、预算、最坏场景与 LB/UB。E1 完成后冻结为 correctness evidence；N8 只把它作为回归门槛，不重新包装为效果实验。
 
 ## 3. E2 — M0/M1/M2 机制消融
 
 逻辑为 M0 → +Reliability → M1 → +F-OPTION → M2。M0/M1 是消融模型，不与 M2 比赛优劣。
+
+E2 及其后续正式科学分析均使用单物资 |I|=1；通用资源索引只服务数学/接口一致性。
 
 - M0→M1：识别供应商级离散 Reliability 的增量作用。
 - M1→M2：识别灾前付费购买未来应急采购权的增量作用。
@@ -41,13 +46,17 @@ N4 用手算微型实例和可完整枚举小实例验证 Extensive Form=A0；N5
 
 ## 7. E6 — A0 vs A1 性能
 
-使用同一模型（以 M2 为主）、实例、Ω、初始场景规则、T-COST、容差、硬件、Threads 和完整 oracle。报告 objective consistency、total/MP/oracle/pool time、exact oracle calls、scenario evaluations、iterations、pool size、scalability 和 termination。
+使用同一模型（以 M2 为主）、单物资实例、Ω、初始场景规则、T-COST、已在 N4/N5 冻结的正确性标准、硬件、Threads 和完整 oracle。scalability 只沿供应商数、Reliability 等级数、场景数及算法工作量变化，不包含资源数 |I|。报告 objective consistency、total/MP/oracle/pool time、exact oracle calls、scenario evaluations、iterations、pool size、scalability 和 termination。
 
 主比较只要求 A0 vs full A1。memory-only/candidate-only 是可选次要消融，须在 N7 判定确有识别必要且计算可控才加入。A1 结果允许更慢；不得据此发明 A2/A3/A4。
 
-## 8. Pilot 与正式门槛
+## 8. 参数用途、Pilot 与正式门槛
 
-N6 pilot 只验证已冻结模型/算法的运行、容量、时限、字段和失败处理，不证明效应，不选择 A1 scoring。N7 冻结参数值、生成器、规模矩阵、seeds、指标、统计、容差、停止规则和正式授权。N8 先通过 E1 回归门槛，再执行 E2–E6。
+- N2–N5 development/test fixtures：只用于代码、手算实例、E1 正确性与失败路径测试。
+- N6 pilot configuration：进入 N6 前登记 pilot 专用参数、pilot seeds、运行时限和最大迭代，只验证计算规模、稳定性、字段和 execution readiness，不证明效应、不选择 A1 scoring。
+- N7 formal scientific parameters：冻结 E2–E6 的单物资正式参数、场景生成、预算/风险矩阵、formal/validation/OOS seeds、正式运行规则、失败统计和统计推断，供 N8 使用。
+
+Development 与 pilot 参数不得因结果表现自动升级为 formal。N7 不得重新定义 N4/N5 已冻结并使用的正确性容差、solver 接受规则、初始场景、tie-break、A1 状态机或 Phase III 触发规则。N8 先通过 E1 回归门槛，再执行 E2–E6。
 
 ## 9. 管理问题覆盖
 

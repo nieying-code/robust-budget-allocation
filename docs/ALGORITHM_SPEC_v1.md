@@ -84,4 +84,16 @@ A0 是精确 baseline。
 
 记录 objective、LB/UB/gap、termination、total/MP/oracle/pool time、exact oracle calls、scenario evaluations、iterations、pool size、phase hits、scenario IDs、环境/config/instance/code hash。
 
-N4 完成 EF=A0；N5 补齐 EF=A0=A1、小型手工最坏场景、无漏认证、失败传播和确定性重放。A1 冻结后不因速度不足创建 A2/A3/A4；允许 overhead 和负加速。
+### N4 入口门槛
+
+进入 N4 前冻结 E1 正确性验收标准：EF/A0 目标一致性的绝对与相对容差、C&CG global gap 与 scenario violation 接受标准、solver optimality/非最优状态接受规则、A0 初始场景规则及 canonical worst-scenario tie-break。N4 使用这些标准完成 EF=A0，不得在得到结果后修改。
+
+### N5 入口门槛
+
+进入 N5 前冻结 A1 scoring、candidate generation/evaluation budget、memory 生命周期、完整状态机、Phase III 触发规则和 tie-break。N5 以 N4 已冻结的正确性标准补齐 EF=A0=A1、小型手工最坏场景、无漏认证、失败传播和确定性重放。
+
+### N6/N7 边界
+
+进入 N6 前登记 pilot 专用参数、pilot seeds、运行时限和最大迭代，仅验证 execution readiness。N7 冻结 E2–E6 正式科学参数、运行规则、失败统计和统计推断，但不得重新定义 N4/N5 已冻结并使用的正确性标准或 A1 状态机。
+
+N2–N5 development/test fixtures、N6 pilot configuration、N7 formal scientific parameters 三类严格分离；前两类不得因结果表现自动升级。A1 冻结后不因速度不足创建 A2/A3/A4；允许 overhead 和负加速。

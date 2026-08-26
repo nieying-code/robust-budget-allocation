@@ -35,7 +35,7 @@
 
 | 资产 | 旧来源 | 适配要求 |
 |---|---|---|
-| 数据类 | `src/model_data.py` | 新建 `BudgetAllocationData`；删除旧易腐/救灾默认字段 |
+| 数据类 | `src/model_data.py` | 新建 `BudgetAllocationData`；删除旧易腐/救灾默认字段；接口可支持一般 I，但首版正式科学实例固定为单物资 |
 | recourse/evaluation | `src/recourse_model.py`, `src/evaluation.py` | 保留固定 first-stage→场景 LP 接口；重写 Q/R/F 会计 |
 | extensive form | `src/extensive_model.py` | builder 注入新变量和约束；不 import 旧 inventory builder |
 | exact oracle | 同上 | 保留完整认证原则；新场景与补救函数 |
@@ -65,6 +65,8 @@
 ## 6. 迁移流程
 
 只有 Draft PR #1 经用户批准并合并后才可启动 N1。N1 建立 provenance manifest，逐模块复制—净化—review—单测；每次只迁移一类通用能力。先 I/O、环境、hash、统计，后数据接口、recourse/extensive/A0，最后 runner/OOS。A1 只在 A0 正确性冻结且其 scoring/memory 规范在 N5 前冻结后新写。
+
+迁移测试使用 N2–N5 development/test fixtures；不得把 legacy 参数、迁移 fixtures 或后续 N6 pilot configuration 自动升级为 N7 formal scientific parameters。
 
 ## 7. 当前审计结论
 

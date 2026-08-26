@@ -10,6 +10,8 @@
 
 首版为单期、非易腐、两阶段、无供应恢复。
 
+数学规范和代码接口保留一般有限集合 I；但本项目首版研究、E2–E6 正式科学实例和论文核心主张固定 |I|=1。多物资实例不进入正式规模矩阵，只作为未来扩展。
+
 ## 2. 参数
 
 - B：唯一固定全周期现金预算。
@@ -122,6 +124,10 @@ C_Q、C_R、K_F、E、B、s_i u_iω 和 θ 均为货币；q、g、served、u、h
 
 必须测试：价格分量不重叠；p^F>0；场景预算正确；penalty 不进预算；两条平衡闭合；y_F=0 时 g=0；两个嵌套退化；Reliability 成本/履约单调；三模型场景 hash 相同。
 
-## 12. N0 后推迟项
+## 12. N0 后参数用途与冻结门槛
 
-Reliability 等级数、a/π 数值、ρ 改善幅度、K_F、F_bar、需求与风险参数范围、预算网格、场景生成参数和 seeds 在 pilot/正式实验协议冻结前依据文献、数据或预注册标准化方案确定，不改变上述结构。
+- N2–N5 development/test fixtures：为单元测试、手算实例、EF=A0=A1 和异常路径测试设置的非科学参数；不得用于论文效应，也不得因表现理想自动升级。
+- N6 pilot configuration：进入 N6 前登记的 pilot 专用参数、pilot seeds、运行时限和最大迭代，只验证计算规模、稳定性与 execution readiness；不得自动升级为 formal。
+- N7 formal scientific parameters：Reliability 等级数、a/π、ρ 改善、K_F、F_bar、需求/风险范围、预算网格、有限 Ω、formal/validation/OOS seeds 及正式运行规则。冻结后供 N8 E2–E6 使用。
+
+进入 N4 前另行冻结 E1 的目标一致性绝对/相对容差、C&CG gap/violation 标准、solver optimality 接受规则、A0 初始场景与 canonical tie-break。N7 不得重新定义 N4/N5 已冻结并用于正确性验证的标准。
