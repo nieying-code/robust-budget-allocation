@@ -19,8 +19,8 @@
 
 | legacy_path | legacy source SHA-256 | classification | reused logic | removed legacy assumptions | new module path | new tests |
 |---|---|---|---|---|---|---|
-| `src/phase6_environment.py`; `src/environment_check.py` | `e9c595c370d33eed49005c5daa45c1c1ddcad120f6a27f592029be96d83536cf`; `c22880c85a820667819d20bba5851f166b8e4afec0205e90cbaba526b77eb86f` | DIRECT REUSE | 版本、接口、线程和许可证 fail-fast 检查；真实微型求解 | Phase 6 schema/hash、旧路径和实验语义 | `src/robust_budget_allocation/runtime/environment.py`; compatibility facade `src/robust_budget_allocation/environment.py` | `tests/test_runtime_environment.py`; `tests/test_environment_constants.py`; `tests/test_environment_gurobi.py` |
-| `src/model_common.py` | `d478574b80b8c88318d7539642f1cb212135636c917bef1e11d1fc507d851b29` | ADAPT | `gurobi_direct` 选择、Threads 校验、终止状态规范化 | `ProcurementData`、inventory builder、库龄/处置/损耗及旧容差 | `src/robust_budget_allocation/runtime/solver.py` | `tests/test_solver_runtime.py` |
+| `src/phase6_environment.py`; `src/environment_check.py` | `e9c595c370d33eed49005c5daa45c1c1ddcad120f6a27f592029be96d83536cf`; `c22880c85a820667819d20bba5851f166b8e4afec0205e90cbaba526b77eb86f` | DIRECT REUSE | 版本、接口、线程和许可证 fail-fast 检查；真实微型求解；成功后进程级一次性缓存 | Phase 6 schema/hash、旧路径和实验语义 | `src/robust_budget_allocation/runtime/environment.py`; compatibility facade `src/robust_budget_allocation/environment.py` | `tests/test_runtime_environment.py`; `tests/test_environment_constants.py`; `tests/test_environment_gurobi.py`; `tests/test_solver_runtime.py` |
+| `src/model_common.py` | `d478574b80b8c88318d7539642f1cb212135636c917bef1e11d1fc507d851b29` | ADAPT | `gurobi_direct` 选择、Threads 校验、严格的 solver/termination 联合状态规范化 | `ProcurementData`、inventory builder、库龄/处置/损耗及旧容差；不再把 local optimum 认证为 exact optimal | `src/robust_budget_allocation/runtime/solver.py` | `tests/test_solver_runtime.py` |
 | `src/phase6_io.py` | `440de17364fc27b3d9ba663ff01fd7c121fbfb868c98900e123ece7b8a39fb09` | DIRECT REUSE | 同目录临时文件、replace、LF JSON/CSV、异常清理 | Phase 6 路径、结果 schema、旧 artifact 命名 | `src/robust_budget_allocation/io/atomic.py` | `tests/test_atomic_hashing.py` |
 | `src/phase6_io.py`; `src/reproducibility.py` | `440de17364fc27b3d9ba663ff01fd7c121fbfb868c98900e123ece7b8a39fb09`; `19eed48331ce568ee5ba4a078981d454d06e4813d9ae109417a3fd6aadd006f3` | DIRECT REUSE | SHA-256、canonical JSON、LF 文本哈希 | 旧 fingerprint、approval、scenario identity 和输出 namespace | `src/robust_budget_allocation/io/hashing.py` | `tests/test_atomic_hashing.py` |
 | `src/phase6_locking.py` | `f78c7ae077db7f5b291ccb6ca3a07faf4a0e32bf3f127fa8911f8f2434b836b7` | DIRECT REUSE | 有界等待的跨进程独占锁 | registry/projection 语义和 Phase 6 锁名 | `src/robust_budget_allocation/io/locking.py` | `tests/test_locking.py` |
@@ -42,4 +42,6 @@
 
 ## 4. 审计与完整性
 
-新项目迁移文件的 SHA-256 由 `docs/N1_MIGRATION_HASHES.sha256` 记录。该清单在最终测试和审计后生成；N0 的 `docs/N0_DESIGN_HASHES.sha256` 保持不变。
+新项目迁移文件的 SHA-256 由 `docs/N1_MIGRATION_HASHES.sha256` 记录。冻结路径集合由测试显式声明，并验证集合完全相等、无缺项、无重复、仅使用安全相对路径、每项是普通文件且 hash 匹配。清单不递归包含自身。
+
+承载该清单的 Git commit SHA 和 tree SHA 是清单之外的不可变外部锚点，由 Draft PR head 和 Git 对象数据库记录并在复审报告中核验；它们不能写入被自身内容决定的清单。N0 的 `docs/N0_DESIGN_HASHES.sha256` 保持不变。

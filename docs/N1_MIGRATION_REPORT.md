@@ -33,11 +33,16 @@ N1 只迁移并净化了与旧科学模型无关的通用工程能力。N0 冻�
 
 任何版本、接口、Threads 或 license 不匹配均 fail fast；没有其他 solver fallback。
 
+`ensure_preflight_once()` 在进程内仅缓存成功结果：第一次 `solve_model()` 前执行完整版本/interface/Threads/license 微型求解，失败不会缓存；后续 solver 构造不重复微型求解。求解计时从 solver 构造完成后开始，因此后续 A0/A1 timing 不会包含重复 license preflight。
+
+Exact 状态认证要求 solver status 为 `ok`，且 termination 只能是 `optimal` 或 `globallyOptimal`。`locallyOptimal` 单独报告为 `locally_optimal`；solver `error` 优先报告 `solver_error`，即使 termination 声称 optimal；非可接受 status 与 exact termination 的组合报告 `invalid_solver_status`；`maxIterations` 与 `maxTimeLimit` 分别报告 `iteration_limit` 与 `time_limit`。
+
 ## 5. 测试与 CI
 
-- solver-free local：`36 passed, 2 deselected`
-- licensed local：`2 passed, 36 deselected`，使用真实 Gurobi license
-- 覆盖环境成功/失败、solver mismatch、Threads mismatch、atomic/interrupted write、hash/canonical JSON、Git clean/dirty/untracked、commit/tree manifest、locking conflict/stale file、CVaR、paired bootstrap 固定 RNG/edge cases、Holm、status lifecycle。
+- solver-free local：`46 passed, 2 deselected`
+- licensed local：`2 passed, 46 deselected`，使用真实 Gurobi license
+- 覆盖环境成功/失败、solver mismatch、Threads mismatch、严格 solver/termination 联合映射、连续求解只执行一次 preflight、atomic/interrupted write、hash/canonical JSON、Git clean/dirty/untracked、commit/tree manifest、locking conflict/stale file、CVaR、paired bootstrap 固定 RNG/edge cases、Holm、status lifecycle。
+- N1 hash 清单测试强制冻结路径集合完全相等，拒绝缺项、重复、绝对路径和 `..`，并检查普通文件存在性与逐项 SHA-256。Git commit/tree 作为清单外部锚点。
 - CI `solver-free` 可在无 Gurobi license 的 hosted runner 执行；`gurobi-required` 仅在仓库变量显式启用并匹配 `[self-hosted, windows, gurobi-13]` runner 时执行真实 licensed tests。
 
 ## 6. 科学泄漏审计

@@ -11,6 +11,7 @@ from dataclasses import asdict, dataclass
 from importlib import metadata
 import platform
 import sys
+from threading import Lock
 
 
 @dataclass(frozen=True)
@@ -62,6 +63,10 @@ class EnvironmentReport:
 
 class EnvironmentPreflightError(RuntimeError):
     """The runtime does not match the locked, licensed environment."""
+
+
+_PREFLIGHT_LOCK = Lock()
+_PREFLIGHT_REPORT: EnvironmentReport | None = None
 
 
 def _dotted(parts: tuple[int, ...]) -> str:
@@ -174,3 +179,20 @@ def run_preflight() -> EnvironmentReport:
         platform=facts.platform,
         status="PASS",
     )
+
+
+def ensure_preflight_once() -> EnvironmentReport:
+    """Run the licensed preflight at most once after a successful process start."""
+
+    global _PREFLIGHT_REPORT
+    if _PREFLIGHT_REPORT is None:
+        with _PREFLIGHT_LOCK:
+            if _PREFLIGHT_REPORT is None:
+                _PREFLIGHT_REPORT = run_preflight()
+    return _PREFLIGHT_REPORT
+
+
+def _reset_preflight_cache_for_tests() -> None:
+    global _PREFLIGHT_REPORT
+    with _PREFLIGHT_LOCK:
+        _PREFLIGHT_REPORT = None

@@ -7,6 +7,7 @@ from .runtime.environment import (  # noqa: F401
     LOCKED_RUNTIME,
     RuntimeRequirements,
     detect_environment_facts,
+    ensure_preflight_once,
     run_preflight,
     validate_environment_facts,
 )

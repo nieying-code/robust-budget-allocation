@@ -8,7 +8,11 @@ from typing import Any
 
 from pyomo.opt import SolverStatus, TerminationCondition
 
-from .environment import LOCKED_RUNTIME, run_preflight
+from .environment import LOCKED_RUNTIME, ensure_preflight_once
+
+
+ACCEPTABLE_EXACT_SOLVER_STATUSES = frozenset({SolverStatus.ok})
+KNOWN_SOLVER_STATUSES = frozenset(SolverStatus)
 
 
 @dataclass(frozen=True)
@@ -48,31 +52,35 @@ def validate_solver_configuration(config: SolverConfiguration) -> None:
 
 
 def normalize_termination(solver_status: Any, termination: Any) -> str:
+    if solver_status == SolverStatus.error:
+        return "solver_error"
     if termination in {
         TerminationCondition.optimal,
         TerminationCondition.globallyOptimal,
-        TerminationCondition.locallyOptimal,
     }:
+        if solver_status not in ACCEPTABLE_EXACT_SOLVER_STATUSES:
+            return "invalid_solver_status"
         return "optimal"
+    if termination == TerminationCondition.locallyOptimal:
+        return "locally_optimal"
     if termination == TerminationCondition.infeasible:
         return "infeasible"
     if termination == TerminationCondition.unbounded:
         return "unbounded"
     if termination == TerminationCondition.infeasibleOrUnbounded:
         return "infeasible_or_unbounded"
-    if termination in {
-        TerminationCondition.maxTimeLimit,
-        TerminationCondition.maxIterations,
-    }:
+    if termination == TerminationCondition.maxTimeLimit:
         return "time_limit"
-    if solver_status == SolverStatus.error:
-        return "solver_error"
+    if termination == TerminationCondition.maxIterations:
+        return "iteration_limit"
+    if solver_status not in KNOWN_SOLVER_STATUSES:
+        return "invalid_solver_status"
     return "unknown"
 
 
 def create_solver(config: SolverConfiguration = SolverConfiguration()) -> Any:
     validate_solver_configuration(config)
-    run_preflight()
+    ensure_preflight_once()
     from pyomo.environ import SolverFactory
 
     solver = SolverFactory(config.interface)
