@@ -1,0 +1,544 @@
+{
+  "classification": "development/correctness_evidence",
+  "description": "Hand-calculable single-resource M0 fixtures. No formal parameters, seeds, or legacy data.",
+  "cases": [
+    {
+      "id": "low_demand_full_service",
+      "data": {
+        "schema_version": 1,
+        "resource_id": "single_resource",
+        "suppliers": [
+          "supplier"
+        ],
+        "scenarios": [
+          "scenario"
+        ],
+        "budget": 20,
+        "unit_cost": {
+          "supplier": 2
+        },
+        "procurement_limit": {
+          "supplier": 10
+        },
+        "demand": {
+          "scenario": 3
+        },
+        "base_fulfillment": {
+          "scenario": {
+            "supplier": 1
+          }
+        },
+        "shortage_penalty": 10
+      },
+      "expected": {
+        "q": {
+          "supplier": 3
+        },
+        "C_Q": 6,
+        "worst_loss": 0,
+        "x": {
+          "scenario": 3
+        },
+        "u": {
+          "scenario": 0
+        },
+        "h": {
+          "scenario": 0
+        },
+        "objective": 6,
+        "unused_budget": 14
+      }
+    },
+    {
+      "id": "budget_shortage",
+      "data": {
+        "schema_version": 1,
+        "resource_id": "single_resource",
+        "suppliers": [
+          "supplier"
+        ],
+        "scenarios": [
+          "scenario"
+        ],
+        "budget": 4,
+        "unit_cost": {
+          "supplier": 2
+        },
+        "procurement_limit": {
+          "supplier": 10
+        },
+        "demand": {
+          "scenario": 5
+        },
+        "base_fulfillment": {
+          "scenario": {
+            "supplier": 1
+          }
+        },
+        "shortage_penalty": 10
+      },
+      "expected": {
+        "q": {
+          "supplier": 2
+        },
+        "C_Q": 4,
+        "worst_loss": 30,
+        "x": {
+          "scenario": 2
+        },
+        "u": {
+          "scenario": 3
+        },
+        "h": {
+          "scenario": 0
+        },
+        "objective": 34,
+        "unused_budget": 0
+      }
+    },
+    {
+      "id": "reduced_fulfillment",
+      "data": {
+        "schema_version": 1,
+        "resource_id": "single_resource",
+        "suppliers": [
+          "supplier"
+        ],
+        "scenarios": [
+          "scenario"
+        ],
+        "budget": 4,
+        "unit_cost": {
+          "supplier": 2
+        },
+        "procurement_limit": {
+          "supplier": 10
+        },
+        "demand": {
+          "scenario": 5
+        },
+        "base_fulfillment": {
+          "scenario": {
+            "supplier": 0.5
+          }
+        },
+        "shortage_penalty": 10
+      },
+      "expected": {
+        "q": {
+          "supplier": 2
+        },
+        "C_Q": 4,
+        "worst_loss": 40,
+        "x": {
+          "scenario": 1
+        },
+        "u": {
+          "scenario": 4
+        },
+        "h": {
+          "scenario": 0
+        },
+        "objective": 44,
+        "unused_budget": 0
+      }
+    },
+    {
+      "id": "supplier_price_fulfillment",
+      "data": {
+        "schema_version": 1,
+        "resource_id": "single_resource",
+        "suppliers": [
+          "cheap_unreliable",
+          "reliable"
+        ],
+        "scenarios": [
+          "scenario"
+        ],
+        "budget": 10,
+        "unit_cost": {
+          "cheap_unreliable": 1,
+          "reliable": 2
+        },
+        "procurement_limit": {
+          "cheap_unreliable": 10,
+          "reliable": 10
+        },
+        "demand": {
+          "scenario": 4
+        },
+        "base_fulfillment": {
+          "scenario": {
+            "cheap_unreliable": 0.25,
+            "reliable": 1
+          }
+        },
+        "shortage_penalty": 10
+      },
+      "expected": {
+        "q": {
+          "cheap_unreliable": 0,
+          "reliable": 4
+        },
+        "C_Q": 8,
+        "worst_loss": 0,
+        "x": {
+          "scenario": 4
+        },
+        "u": {
+          "scenario": 0
+        },
+        "h": {
+          "scenario": 0
+        },
+        "objective": 8,
+        "unused_budget": 2
+      }
+    },
+    {
+      "id": "procurement_cap",
+      "data": {
+        "schema_version": 1,
+        "resource_id": "single_resource",
+        "suppliers": [
+          "supplier"
+        ],
+        "scenarios": [
+          "scenario"
+        ],
+        "budget": 10,
+        "unit_cost": {
+          "supplier": 1
+        },
+        "procurement_limit": {
+          "supplier": 2
+        },
+        "demand": {
+          "scenario": 5
+        },
+        "base_fulfillment": {
+          "scenario": {
+            "supplier": 1
+          }
+        },
+        "shortage_penalty": 10
+      },
+      "expected": {
+        "q": {
+          "supplier": 2
+        },
+        "C_Q": 2,
+        "worst_loss": 30,
+        "x": {
+          "scenario": 2
+        },
+        "u": {
+          "scenario": 3
+        },
+        "h": {
+          "scenario": 0
+        },
+        "objective": 32,
+        "unused_budget": 8
+      }
+    },
+    {
+      "id": "purchase_not_economical",
+      "data": {
+        "schema_version": 1,
+        "resource_id": "single_resource",
+        "suppliers": [
+          "supplier"
+        ],
+        "scenarios": [
+          "scenario"
+        ],
+        "budget": 100,
+        "unit_cost": {
+          "supplier": 12
+        },
+        "procurement_limit": {
+          "supplier": 10
+        },
+        "demand": {
+          "scenario": 5
+        },
+        "base_fulfillment": {
+          "scenario": {
+            "supplier": 1
+          }
+        },
+        "shortage_penalty": 10
+      },
+      "expected": {
+        "q": {
+          "supplier": 0
+        },
+        "C_Q": 0,
+        "worst_loss": 50,
+        "x": {
+          "scenario": 0
+        },
+        "u": {
+          "scenario": 5
+        },
+        "h": {
+          "scenario": 0
+        },
+        "objective": 50,
+        "unused_budget": 100
+      }
+    },
+    {
+      "id": "unused_resource",
+      "data": {
+        "schema_version": 1,
+        "resource_id": "single_resource",
+        "suppliers": [
+          "supplier"
+        ],
+        "scenarios": [
+          "low",
+          "high"
+        ],
+        "budget": 10,
+        "unit_cost": {
+          "supplier": 1
+        },
+        "procurement_limit": {
+          "supplier": 10
+        },
+        "demand": {
+          "low": 2,
+          "high": 6
+        },
+        "base_fulfillment": {
+          "low": {
+            "supplier": 1
+          },
+          "high": {
+            "supplier": 1
+          }
+        },
+        "shortage_penalty": 10
+      },
+      "expected": {
+        "q": {
+          "supplier": 6
+        },
+        "C_Q": 6,
+        "worst_loss": 0,
+        "x": {
+          "low": 2,
+          "high": 6
+        },
+        "u": {
+          "low": 0,
+          "high": 0
+        },
+        "h": {
+          "low": 4,
+          "high": 0
+        },
+        "objective": 6,
+        "unused_budget": 4
+      }
+    },
+    {
+      "id": "nonworst_allocation_slack",
+      "data": {
+        "schema_version": 1,
+        "resource_id": "single_resource",
+        "suppliers": [
+          "supplier"
+        ],
+        "scenarios": [
+          "full",
+          "impaired"
+        ],
+        "budget": 8,
+        "unit_cost": {
+          "supplier": 1
+        },
+        "procurement_limit": {
+          "supplier": 10
+        },
+        "demand": {
+          "full": 6,
+          "impaired": 6
+        },
+        "base_fulfillment": {
+          "full": {
+            "supplier": 1
+          },
+          "impaired": {
+            "supplier": 0.5
+          }
+        },
+        "shortage_penalty": 10
+      },
+      "expected": {
+        "q": {
+          "supplier": 8
+        },
+        "C_Q": 8,
+        "worst_loss": 20,
+        "x": {
+          "full": 6,
+          "impaired": 4
+        },
+        "u": {
+          "full": 0,
+          "impaired": 2
+        },
+        "h": {
+          "full": 2,
+          "impaired": 0
+        },
+        "objective": 28,
+        "unused_budget": 0
+      }
+    },
+    {
+      "id": "zero_budget",
+      "data": {
+        "schema_version": 1,
+        "resource_id": "single_resource",
+        "suppliers": [
+          "supplier"
+        ],
+        "scenarios": [
+          "scenario"
+        ],
+        "budget": 0,
+        "unit_cost": {
+          "supplier": 1
+        },
+        "procurement_limit": {
+          "supplier": 10
+        },
+        "demand": {
+          "scenario": 3
+        },
+        "base_fulfillment": {
+          "scenario": {
+            "supplier": 1
+          }
+        },
+        "shortage_penalty": 10
+      },
+      "expected": {
+        "q": {
+          "supplier": 0
+        },
+        "C_Q": 0,
+        "worst_loss": 30,
+        "x": {
+          "scenario": 0
+        },
+        "u": {
+          "scenario": 3
+        },
+        "h": {
+          "scenario": 0
+        },
+        "objective": 30,
+        "unused_budget": 0
+      }
+    },
+    {
+      "id": "zero_penalty_boundary",
+      "data": {
+        "schema_version": 1,
+        "resource_id": "single_resource",
+        "suppliers": [
+          "supplier"
+        ],
+        "scenarios": [
+          "scenario"
+        ],
+        "budget": 10,
+        "unit_cost": {
+          "supplier": 1
+        },
+        "procurement_limit": {
+          "supplier": 10
+        },
+        "demand": {
+          "scenario": 3
+        },
+        "base_fulfillment": {
+          "scenario": {
+            "supplier": 1
+          }
+        },
+        "shortage_penalty": 0
+      },
+      "expected": {
+        "q": {
+          "supplier": 0
+        },
+        "C_Q": 0,
+        "worst_loss": 0,
+        "x": {
+          "scenario": 0
+        },
+        "u": {
+          "scenario": 3
+        },
+        "h": {
+          "scenario": 0
+        },
+        "objective": 0,
+        "unused_budget": 10
+      }
+    },
+    {
+      "id": "zero_price_boundary",
+      "data": {
+        "schema_version": 1,
+        "resource_id": "single_resource",
+        "suppliers": [
+          "supplier"
+        ],
+        "scenarios": [
+          "scenario"
+        ],
+        "budget": 0,
+        "unit_cost": {
+          "supplier": 0
+        },
+        "procurement_limit": {
+          "supplier": 2
+        },
+        "demand": {
+          "scenario": 3
+        },
+        "base_fulfillment": {
+          "scenario": {
+            "supplier": 1
+          }
+        },
+        "shortage_penalty": 10
+      },
+      "expected": {
+        "q": {
+          "supplier": 2
+        },
+        "C_Q": 0,
+        "worst_loss": 10,
+        "x": {
+          "scenario": 2
+        },
+        "u": {
+          "scenario": 1
+        },
+        "h": {
+          "scenario": 0
+        },
+        "objective": 10,
+        "unused_budget": 0
+      }
+    }
+  ]
+}
