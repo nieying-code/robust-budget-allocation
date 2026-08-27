@@ -104,6 +104,32 @@ def test_saved_replay_rejects_forged_shortcuts(fault):
     with pytest.raises(ValueError): verify_a1(OptionData.from_dict(CASES[case_id]["data"]), result)
 
 
+@pytest.mark.parametrize("historical_ub", [True, False], ids=["memory_hit_with_ub", "candidate_hit_without_ub"])
+@pytest.mark.parametrize("field", ["signed_gap", "gap_tolerance"])
+def test_replay_rejects_forged_hit_gap_metadata(historical_ub, field):
+    case_id = "history_after_buffered_candidate_miss" if historical_ub else "three_round_cross_failures"
+    saved = next(r for r in EVIDENCE["cases"] if r["id"] == case_id)
+    result = deepcopy(saved["A1"])
+    hit = result["trace"][1 if historical_ub else 0]
+    assert (hit["UB"] is not None) == historical_ub
+    assert hit["phase_i" if historical_ub else "phase_ii"]["hit"]
+    hit[field] = 999.0
+    with pytest.raises(ValueError):
+        verify_a1(OptionData.from_dict(CASES[case_id]["data"]), result)
+
+
+@pytest.mark.parametrize("historical_ub", [True, False], ids=["memory_hit_with_ub", "candidate_hit_without_ub"])
+@pytest.mark.parametrize("field", ["gap", "signed_gap", "gap_tolerance"])
+def test_replay_rejects_missing_hit_gap_metadata(historical_ub, field):
+    case_id = "history_after_buffered_candidate_miss" if historical_ub else "three_round_cross_failures"
+    saved = next(r for r in EVIDENCE["cases"] if r["id"] == case_id)
+    result = deepcopy(saved["A1"])
+    hit = result["trace"][1 if historical_ub else 0]
+    hit.pop(field, None)
+    with pytest.raises(ValueError, match="missing gap fields"):
+        verify_a1(OptionData.from_dict(CASES[case_id]["data"]), result)
+
+
 def test_n5_exact_file_hash_inventory():
     entries = [line.split("  ") for line in (ROOT / "docs/N5_A1_HASHES.sha256").read_text(encoding="utf-8").splitlines()]
     assert all(len(e) == 2 for e in entries)

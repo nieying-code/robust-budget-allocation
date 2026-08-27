@@ -93,10 +93,16 @@ def verify_a1(data, a1):
             loss = next(e["loss"] for e in phase["evaluations"] if e["scenario"] == selected)
             equal(row["violation"], max(0.0, loss-eta), "selected violation")
             equal(row["violation_tolerance"], tolerance(loss, eta), "selected tolerance")
+            gap_fields = ("gap", "signed_gap", "gap_tolerance")
+            if any(key not in row for key in gap_fields):
+                raise ValueError("missing gap fields")
             if ub is None:
-                if row["gap"] is not None: raise ValueError("fabricated gap without full UB")
+                if any(row[key] is not None for key in gap_fields):
+                    raise ValueError("fabricated gap without full UB")
             else:
                 equal(row["gap"], max(0.0, ub-lb), "historical gap")
+                equal(row["signed_gap"], ub-lb, "historical signed gap")
+                equal(row["gap_tolerance"], tolerance(ub, lb), "historical gap tolerance")
         else:
             if row["phase_iii_called"] is not True or row["phase_iii"] is None: raise ValueError("misses cannot skip exact certification")
             oracle = row["phase_iii"]

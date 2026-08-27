@@ -150,6 +150,7 @@ def test_candidate_hit_is_not_ub_and_empty_pool_requires_certification():
     assert not first["phase_i"]["hit"] and first["phase_ii"]["hit"]
     assert first["phase_iii"] is None
     assert first["UB"] is first["candidate_UB"] is first["gap"] is None
+    assert first["signed_gap"] is first["gap_tolerance"] is None
     assert first["certified"] is False
     assert result["phase_ii_hits"] == 2
     assert result["trace"][-1]["phase_ii"]["pool"] == []

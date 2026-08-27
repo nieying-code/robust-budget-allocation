@@ -61,7 +61,8 @@ def solve_a1(data, *, max_iterations=None, audit_inputs=()):
                    memory_before=memory.snapshot(), phase_i=None, phase_ii=None, phase_iii=None,
                    phase_iii_called=False, candidate_UB=None, UB=ub, LB=lb,
                    incumbent_iteration=incumbent["iteration"] if incumbent else None,
-                   gap=None, violation=None, convergence=False, certified=False,
+                   gap=None, signed_gap=None, gap_tolerance=None,
+                   violation=None, convergence=False, certified=False,
                    added_scenario=None, scenario_source=None, status=outcome["status"])
         trace.append(row)
         if outcome["status"] != "optimal":
