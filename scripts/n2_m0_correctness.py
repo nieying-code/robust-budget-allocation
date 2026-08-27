@@ -39,7 +39,11 @@ def main() -> int:
         raise FileExistsError("development evidence already exists; choose a new output path")
     fixture = ROOT / "tests" / "fixtures" / "n2_m0_hand_cases.json"
     inputs = (Path(__file__).resolve(), fixture)
-    gate = dict(required_tracked_paths=inputs, scientific_roots=("src", "tests", "scripts", "configs"))
+    # Editable-install metadata is generated under src/*.egg-info, outside the
+    # actual scientific package. Package code and all test/config/script inputs
+    # remain subject to the N1 untracked-input gate, including ignored files.
+    gate = dict(required_tracked_paths=inputs,
+                scientific_roots=("src/robust_budget_allocation", "tests", "scripts", "configs"))
     source = validate_source_state(ROOT, **gate)
     cases = json.loads(fixture.read_text(encoding="utf-8"))
     if cases["classification"] != DEVELOPMENT_SCOPE:

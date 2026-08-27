@@ -91,6 +91,9 @@ Every solve result includes input data/config hashes, ordered scenario identity,
 N1 environment report, real solver version/status, Git commit/tree, current source
 file hashes and dirty-source indicators. Unit-test worktree runs are honestly marked;
 the persisted hand-case evidence is generated only from a clean committed source.
+The evidence command scopes the N1 untracked-input gate to the actual package,
+tests, scripts and configs; editable-install `src/*.egg-info` metadata is not a
+scientific input. This leaves the frozen N1 validator unchanged.
 
 The evidence JSON and final test totals are recorded after the implementation commit.
 Its code commit/tree is the external execution anchor; the later evidence/report commit
