@@ -95,8 +95,30 @@ The evidence command scopes the N1 untracked-input gate to the actual package,
 tests, scripts and configs; editable-install `src/*.egg-info` metadata is not a
 scientific input. This leaves the frozen N1 validator unchanged.
 
-The evidence JSON and final test totals are recorded after the implementation commit.
-Its code commit/tree is the external execution anchor; the later evidence/report commit
-adds documentation only and is not recursively embedded in its own evidence.
+Persisted evidence: `docs/evidence/N2_M0_CORRECTNESS.json`, eleven real Gurobi cases,
+all PASS and equal to the hand-derived values in the table above.
 
-N3 remains prohibited until Draft PR #3 is externally approved and merged.
+- Execution code commit: `2229791b5f6f08fe5d2b2db9f77245c6dc76f787`
+- Execution code tree: `6043ca52a7d8930182e9ac629b86ba9479f657f4`
+- Evidence file SHA-256: `7c6c23bf6ba30847c2cf5df0e214011b1c9c1fdbb3a0a5bda4654638831d2f4e`
+- Environment: CPython 3.12.10, Pyomo 6.10.1, gurobipy/Optimizer 13.0.2,
+  gurobi_direct, Threads=1, actual license available, preflight PASS.
+- Local solver-free: 133 passed, 22 deselected.
+- Local licensed: 22 passed, 133 deselected; all use the real locked runtime.
+- Total: 155 tests, including the unchanged N0/N1 suites and twelve independent
+  saved-evidence checks in `tests/test_n2_evidence.py`.
+
+The code commit/tree is the external execution anchor. The later evidence/report
+commit adds evidence, documentation and evidence-verification tests, not model code;
+it is not recursively embedded in its own evidence. Each saved case's source input
+hashes are rechecked against the current code, script, dependencies and fixture.
+
+The existing frozen CI workflow automatically collects the new tests. Its hosted
+solver-free job includes equation/schema and saved-evidence verification without a
+license. The licensed job remains explicitly gated by licensed-runner availability;
+local licensed success is reported separately, not fabricated as hosted success.
+
+No unresolved numerical/modeling problem or N0 specification conflict was found.
+Objective, cash budget, shortage and unused-resource balances close in all cases.
+There is no technical N3 blocker; N3 remains prohibited until Draft PR #3 is
+externally approved and merged. No N3 work has started.
