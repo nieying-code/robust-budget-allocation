@@ -1,0 +1,2985 @@
+{
+  "case_count": 11,
+  "cases": [
+    {
+      "checks": {
+        "C_Q": true,
+        "h": true,
+        "objective": true,
+        "q": true,
+        "u": true,
+        "unused_budget": true,
+        "worst_loss": true,
+        "x": true
+      },
+      "expected": {
+        "C_Q": 6,
+        "h": {
+          "scenario": 0
+        },
+        "objective": 6,
+        "q": {
+          "supplier": 3
+        },
+        "u": {
+          "scenario": 0
+        },
+        "unused_budget": 14,
+        "worst_loss": 0,
+        "x": {
+          "scenario": 3
+        }
+      },
+      "id": "low_demand_full_service",
+      "result": {
+        "C_Q": 6.0,
+        "audit": {
+          "allocation_reporting": "maximal-service representative at unchanged q; raw LP retained",
+          "classification": "development/correctness_evidence",
+          "data": {
+            "base_fulfillment": {
+              "scenario": {
+                "supplier": 1.0
+              }
+            },
+            "budget": 20.0,
+            "demand": {
+              "scenario": 3.0
+            },
+            "procurement_limit": {
+              "supplier": 10.0
+            },
+            "resource_id": "single_resource",
+            "scenarios": [
+              "scenario"
+            ],
+            "schema_version": 1,
+            "shortage_penalty": 10.0,
+            "suppliers": [
+              "supplier"
+            ],
+            "unit_cost": {
+              "supplier": 2.0
+            }
+          },
+          "data_sha256": "166ee35ff8edebbf2bfc63d63c6f2ad6da45e66c6c0209c3c9c2792a62aee1bd",
+          "environment": {
+            "gurobi_optimizer": "13.0.2",
+            "gurobipy": "13.0.2",
+            "license_available": true,
+            "platform": "Windows-11-10.0.26200-SP0",
+            "pyomo": "6.10.1",
+            "python": "3.12.10",
+            "python_implementation": "CPython",
+            "solver_available": true,
+            "solver_interface": "gurobi_direct",
+            "status": "PASS",
+            "threads": 1
+          },
+          "numerical_checks": {
+            "absolute_tolerance": 1e-07,
+            "relative_tolerance": 1e-09,
+            "scope": "N2 development only; not N4 E1"
+          },
+          "scenario_sha256": "bcae7b79f1ccc15b82ad86f70071e047637c877cf4d52056b9bb91717fcde5f6",
+          "solver_config": {
+            "feasibility_tolerance": null,
+            "interface": "gurobi_direct",
+            "optimality_tolerance": null,
+            "threads": 1,
+            "time_limit_seconds": null
+          },
+          "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
+          "solver_outcome": {
+            "message": null,
+            "runtime_seconds": 0.005096199980471283,
+            "solver": "gurobi_direct",
+            "status": "optimal",
+            "termination_condition": "optimal"
+          },
+          "source": {
+            "git": {
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+              "tracked_dirty": false,
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+              "untracked_paths": []
+            },
+            "inputs": [
+              {
+                "path": "pyproject.toml",
+                "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+              },
+              {
+                "path": "requirements.txt",
+                "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+              },
+              {
+                "path": "scripts/n2_m0_correctness.py",
+                "sha256": "f489c0d5bf4a016defef9f1f6a7bde22927d461a5daa95c98d9fb0951c90df2d"
+              },
+              {
+                "path": "src/robust_budget_allocation/__init__.py",
+                "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/__init__.py",
+                "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/model_data.py",
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+              },
+              {
+                "path": "src/robust_budget_allocation/environment.py",
+                "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/__init__.py",
+                "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/atomic.py",
+                "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/hashing.py",
+                "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/locking.py",
+                "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/__init__.py",
+                "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/m0.py",
+                "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+                "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+                "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+                "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/__init__.py",
+                "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/environment.py",
+                "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/solver.py",
+                "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/status.py",
+                "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/__init__.py",
+                "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+                "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/cvar.py",
+                "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+                "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+              },
+              {
+                "path": "tests/fixtures/n2_m0_hand_cases.json",
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
+              }
+            ],
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
+            "packages": {
+              "Pyomo": "6.10.1",
+              "filelock": "3.32.0",
+              "gurobipy": "13.0.2",
+              "numpy": "2.5.1"
+            },
+            "platform": "Windows-11-10.0.26200-SP0",
+            "python": {
+              "executable": "D:\\新建文件夹\\项目：robust-budget-allocation\\repo\\robust-budget-allocation\\.venv\\Scripts\\python.exe",
+              "implementation": "CPython",
+              "version": "3.12.10"
+            },
+            "schema_version": 1
+          },
+          "worst_label_rule": "first maximizer in declared scenario order; reporting only"
+        },
+        "classification": "development/correctness_evidence",
+        "delivered": {
+          "scenario": 3.0
+        },
+        "diagnostics": [],
+        "h": {
+          "scenario": 0.0
+        },
+        "objective": 6.0,
+        "q": {
+          "supplier": 3.0
+        },
+        "raw_solution": {
+          "h": {
+            "scenario": 0.0
+          },
+          "objective": 6.0,
+          "q": {
+            "supplier": 3.0
+          },
+          "theta": 0.0,
+          "u": {
+            "scenario": 0.0
+          },
+          "x": {
+            "scenario": 3.0
+          }
+        },
+        "result_sha256": "52fdb59792568de00bf653259a1a845c860cc63d26702f02da2c4439660da033",
+        "runtime_seconds": 0.005096199980471283,
+        "status": "optimal",
+        "termination_condition": "optimal",
+        "u": {
+          "scenario": 0.0
+        },
+        "unused_budget": 14.0,
+        "worst_loss": 0.0,
+        "worst_scenario": "scenario",
+        "x": {
+          "scenario": 3.0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "C_Q": true,
+        "h": true,
+        "objective": true,
+        "q": true,
+        "u": true,
+        "unused_budget": true,
+        "worst_loss": true,
+        "x": true
+      },
+      "expected": {
+        "C_Q": 4,
+        "h": {
+          "scenario": 0
+        },
+        "objective": 34,
+        "q": {
+          "supplier": 2
+        },
+        "u": {
+          "scenario": 3
+        },
+        "unused_budget": 0,
+        "worst_loss": 30,
+        "x": {
+          "scenario": 2
+        }
+      },
+      "id": "budget_shortage",
+      "result": {
+        "C_Q": 4.0,
+        "audit": {
+          "allocation_reporting": "maximal-service representative at unchanged q; raw LP retained",
+          "classification": "development/correctness_evidence",
+          "data": {
+            "base_fulfillment": {
+              "scenario": {
+                "supplier": 1.0
+              }
+            },
+            "budget": 4.0,
+            "demand": {
+              "scenario": 5.0
+            },
+            "procurement_limit": {
+              "supplier": 10.0
+            },
+            "resource_id": "single_resource",
+            "scenarios": [
+              "scenario"
+            ],
+            "schema_version": 1,
+            "shortage_penalty": 10.0,
+            "suppliers": [
+              "supplier"
+            ],
+            "unit_cost": {
+              "supplier": 2.0
+            }
+          },
+          "data_sha256": "506ae085c1801d50d1fd563675a47589e6d1fb2e7dd27986ebc8f5e5ceabc45c",
+          "environment": {
+            "gurobi_optimizer": "13.0.2",
+            "gurobipy": "13.0.2",
+            "license_available": true,
+            "platform": "Windows-11-10.0.26200-SP0",
+            "pyomo": "6.10.1",
+            "python": "3.12.10",
+            "python_implementation": "CPython",
+            "solver_available": true,
+            "solver_interface": "gurobi_direct",
+            "status": "PASS",
+            "threads": 1
+          },
+          "numerical_checks": {
+            "absolute_tolerance": 1e-07,
+            "relative_tolerance": 1e-09,
+            "scope": "N2 development only; not N4 E1"
+          },
+          "scenario_sha256": "363706f1e68930cbd3c19f73d6ae31ca6e041763c4b786f77470e49a8658365d",
+          "solver_config": {
+            "feasibility_tolerance": null,
+            "interface": "gurobi_direct",
+            "optimality_tolerance": null,
+            "threads": 1,
+            "time_limit_seconds": null
+          },
+          "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
+          "solver_outcome": {
+            "message": null,
+            "runtime_seconds": 0.004786700010299683,
+            "solver": "gurobi_direct",
+            "status": "optimal",
+            "termination_condition": "optimal"
+          },
+          "source": {
+            "git": {
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+              "tracked_dirty": false,
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+              "untracked_paths": []
+            },
+            "inputs": [
+              {
+                "path": "pyproject.toml",
+                "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+              },
+              {
+                "path": "requirements.txt",
+                "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+              },
+              {
+                "path": "scripts/n2_m0_correctness.py",
+                "sha256": "f489c0d5bf4a016defef9f1f6a7bde22927d461a5daa95c98d9fb0951c90df2d"
+              },
+              {
+                "path": "src/robust_budget_allocation/__init__.py",
+                "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/__init__.py",
+                "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/model_data.py",
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+              },
+              {
+                "path": "src/robust_budget_allocation/environment.py",
+                "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/__init__.py",
+                "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/atomic.py",
+                "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/hashing.py",
+                "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/locking.py",
+                "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/__init__.py",
+                "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/m0.py",
+                "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+                "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+                "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+                "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/__init__.py",
+                "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/environment.py",
+                "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/solver.py",
+                "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/status.py",
+                "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/__init__.py",
+                "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+                "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/cvar.py",
+                "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+                "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+              },
+              {
+                "path": "tests/fixtures/n2_m0_hand_cases.json",
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
+              }
+            ],
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
+            "packages": {
+              "Pyomo": "6.10.1",
+              "filelock": "3.32.0",
+              "gurobipy": "13.0.2",
+              "numpy": "2.5.1"
+            },
+            "platform": "Windows-11-10.0.26200-SP0",
+            "python": {
+              "executable": "D:\\新建文件夹\\项目：robust-budget-allocation\\repo\\robust-budget-allocation\\.venv\\Scripts\\python.exe",
+              "implementation": "CPython",
+              "version": "3.12.10"
+            },
+            "schema_version": 1
+          },
+          "worst_label_rule": "first maximizer in declared scenario order; reporting only"
+        },
+        "classification": "development/correctness_evidence",
+        "delivered": {
+          "scenario": 2.0
+        },
+        "diagnostics": [],
+        "h": {
+          "scenario": 0.0
+        },
+        "objective": 34.0,
+        "q": {
+          "supplier": 2.0
+        },
+        "raw_solution": {
+          "h": {
+            "scenario": 0.0
+          },
+          "objective": 34.0,
+          "q": {
+            "supplier": 2.0
+          },
+          "theta": 30.0,
+          "u": {
+            "scenario": 3.0
+          },
+          "x": {
+            "scenario": 2.0
+          }
+        },
+        "result_sha256": "915d32d5d057ddd9ca6c4fb41f22cd035272b299d0b5a184caac0d0cb4e249e3",
+        "runtime_seconds": 0.004786700010299683,
+        "status": "optimal",
+        "termination_condition": "optimal",
+        "u": {
+          "scenario": 3.0
+        },
+        "unused_budget": 0.0,
+        "worst_loss": 30.0,
+        "worst_scenario": "scenario",
+        "x": {
+          "scenario": 2.0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "C_Q": true,
+        "h": true,
+        "objective": true,
+        "q": true,
+        "u": true,
+        "unused_budget": true,
+        "worst_loss": true,
+        "x": true
+      },
+      "expected": {
+        "C_Q": 4,
+        "h": {
+          "scenario": 0
+        },
+        "objective": 44,
+        "q": {
+          "supplier": 2
+        },
+        "u": {
+          "scenario": 4
+        },
+        "unused_budget": 0,
+        "worst_loss": 40,
+        "x": {
+          "scenario": 1
+        }
+      },
+      "id": "reduced_fulfillment",
+      "result": {
+        "C_Q": 4.0,
+        "audit": {
+          "allocation_reporting": "maximal-service representative at unchanged q; raw LP retained",
+          "classification": "development/correctness_evidence",
+          "data": {
+            "base_fulfillment": {
+              "scenario": {
+                "supplier": 0.5
+              }
+            },
+            "budget": 4.0,
+            "demand": {
+              "scenario": 5.0
+            },
+            "procurement_limit": {
+              "supplier": 10.0
+            },
+            "resource_id": "single_resource",
+            "scenarios": [
+              "scenario"
+            ],
+            "schema_version": 1,
+            "shortage_penalty": 10.0,
+            "suppliers": [
+              "supplier"
+            ],
+            "unit_cost": {
+              "supplier": 2.0
+            }
+          },
+          "data_sha256": "e99a4868d487fdeecc1ef37ee97f820e6032faccb8a6a9560fa0c04ff96e1587",
+          "environment": {
+            "gurobi_optimizer": "13.0.2",
+            "gurobipy": "13.0.2",
+            "license_available": true,
+            "platform": "Windows-11-10.0.26200-SP0",
+            "pyomo": "6.10.1",
+            "python": "3.12.10",
+            "python_implementation": "CPython",
+            "solver_available": true,
+            "solver_interface": "gurobi_direct",
+            "status": "PASS",
+            "threads": 1
+          },
+          "numerical_checks": {
+            "absolute_tolerance": 1e-07,
+            "relative_tolerance": 1e-09,
+            "scope": "N2 development only; not N4 E1"
+          },
+          "scenario_sha256": "2a204bf35499466ad580fd6e50b9a97597193003860fdb4f20c809f902d4b575",
+          "solver_config": {
+            "feasibility_tolerance": null,
+            "interface": "gurobi_direct",
+            "optimality_tolerance": null,
+            "threads": 1,
+            "time_limit_seconds": null
+          },
+          "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
+          "solver_outcome": {
+            "message": null,
+            "runtime_seconds": 0.006006799987517297,
+            "solver": "gurobi_direct",
+            "status": "optimal",
+            "termination_condition": "optimal"
+          },
+          "source": {
+            "git": {
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+              "tracked_dirty": false,
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+              "untracked_paths": []
+            },
+            "inputs": [
+              {
+                "path": "pyproject.toml",
+                "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+              },
+              {
+                "path": "requirements.txt",
+                "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+              },
+              {
+                "path": "scripts/n2_m0_correctness.py",
+                "sha256": "f489c0d5bf4a016defef9f1f6a7bde22927d461a5daa95c98d9fb0951c90df2d"
+              },
+              {
+                "path": "src/robust_budget_allocation/__init__.py",
+                "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/__init__.py",
+                "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/model_data.py",
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+              },
+              {
+                "path": "src/robust_budget_allocation/environment.py",
+                "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/__init__.py",
+                "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/atomic.py",
+                "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/hashing.py",
+                "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/locking.py",
+                "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/__init__.py",
+                "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/m0.py",
+                "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+                "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+                "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+                "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/__init__.py",
+                "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/environment.py",
+                "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/solver.py",
+                "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/status.py",
+                "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/__init__.py",
+                "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+                "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/cvar.py",
+                "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+                "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+              },
+              {
+                "path": "tests/fixtures/n2_m0_hand_cases.json",
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
+              }
+            ],
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
+            "packages": {
+              "Pyomo": "6.10.1",
+              "filelock": "3.32.0",
+              "gurobipy": "13.0.2",
+              "numpy": "2.5.1"
+            },
+            "platform": "Windows-11-10.0.26200-SP0",
+            "python": {
+              "executable": "D:\\新建文件夹\\项目：robust-budget-allocation\\repo\\robust-budget-allocation\\.venv\\Scripts\\python.exe",
+              "implementation": "CPython",
+              "version": "3.12.10"
+            },
+            "schema_version": 1
+          },
+          "worst_label_rule": "first maximizer in declared scenario order; reporting only"
+        },
+        "classification": "development/correctness_evidence",
+        "delivered": {
+          "scenario": 1.0
+        },
+        "diagnostics": [],
+        "h": {
+          "scenario": 0.0
+        },
+        "objective": 44.0,
+        "q": {
+          "supplier": 2.0
+        },
+        "raw_solution": {
+          "h": {
+            "scenario": 0.0
+          },
+          "objective": 44.0,
+          "q": {
+            "supplier": 2.0
+          },
+          "theta": 40.0,
+          "u": {
+            "scenario": 4.0
+          },
+          "x": {
+            "scenario": 1.0
+          }
+        },
+        "result_sha256": "ffb268a0968350a374348d50293691c64490f94906e707279a80360e31ea3f88",
+        "runtime_seconds": 0.006006799987517297,
+        "status": "optimal",
+        "termination_condition": "optimal",
+        "u": {
+          "scenario": 4.0
+        },
+        "unused_budget": 0.0,
+        "worst_loss": 40.0,
+        "worst_scenario": "scenario",
+        "x": {
+          "scenario": 1.0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "C_Q": true,
+        "h": true,
+        "objective": true,
+        "q": true,
+        "u": true,
+        "unused_budget": true,
+        "worst_loss": true,
+        "x": true
+      },
+      "expected": {
+        "C_Q": 8,
+        "h": {
+          "scenario": 0
+        },
+        "objective": 8,
+        "q": {
+          "cheap_unreliable": 0,
+          "reliable": 4
+        },
+        "u": {
+          "scenario": 0
+        },
+        "unused_budget": 2,
+        "worst_loss": 0,
+        "x": {
+          "scenario": 4
+        }
+      },
+      "id": "supplier_price_fulfillment",
+      "result": {
+        "C_Q": 8.0,
+        "audit": {
+          "allocation_reporting": "maximal-service representative at unchanged q; raw LP retained",
+          "classification": "development/correctness_evidence",
+          "data": {
+            "base_fulfillment": {
+              "scenario": {
+                "cheap_unreliable": 0.25,
+                "reliable": 1.0
+              }
+            },
+            "budget": 10.0,
+            "demand": {
+              "scenario": 4.0
+            },
+            "procurement_limit": {
+              "cheap_unreliable": 10.0,
+              "reliable": 10.0
+            },
+            "resource_id": "single_resource",
+            "scenarios": [
+              "scenario"
+            ],
+            "schema_version": 1,
+            "shortage_penalty": 10.0,
+            "suppliers": [
+              "cheap_unreliable",
+              "reliable"
+            ],
+            "unit_cost": {
+              "cheap_unreliable": 1.0,
+              "reliable": 2.0
+            }
+          },
+          "data_sha256": "1620eea752fbb254f8bec02b375d4f4e01b5c473121d88330eae777c6d7e5714",
+          "environment": {
+            "gurobi_optimizer": "13.0.2",
+            "gurobipy": "13.0.2",
+            "license_available": true,
+            "platform": "Windows-11-10.0.26200-SP0",
+            "pyomo": "6.10.1",
+            "python": "3.12.10",
+            "python_implementation": "CPython",
+            "solver_available": true,
+            "solver_interface": "gurobi_direct",
+            "status": "PASS",
+            "threads": 1
+          },
+          "numerical_checks": {
+            "absolute_tolerance": 1e-07,
+            "relative_tolerance": 1e-09,
+            "scope": "N2 development only; not N4 E1"
+          },
+          "scenario_sha256": "faf7cfcaae3edad5c4b17d1fe32eefe72fe1e73989c981d21a7da886f64f2b73",
+          "solver_config": {
+            "feasibility_tolerance": null,
+            "interface": "gurobi_direct",
+            "optimality_tolerance": null,
+            "threads": 1,
+            "time_limit_seconds": null
+          },
+          "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
+          "solver_outcome": {
+            "message": null,
+            "runtime_seconds": 0.005568800028413534,
+            "solver": "gurobi_direct",
+            "status": "optimal",
+            "termination_condition": "optimal"
+          },
+          "source": {
+            "git": {
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+              "tracked_dirty": false,
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+              "untracked_paths": []
+            },
+            "inputs": [
+              {
+                "path": "pyproject.toml",
+                "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+              },
+              {
+                "path": "requirements.txt",
+                "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+              },
+              {
+                "path": "scripts/n2_m0_correctness.py",
+                "sha256": "f489c0d5bf4a016defef9f1f6a7bde22927d461a5daa95c98d9fb0951c90df2d"
+              },
+              {
+                "path": "src/robust_budget_allocation/__init__.py",
+                "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/__init__.py",
+                "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/model_data.py",
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+              },
+              {
+                "path": "src/robust_budget_allocation/environment.py",
+                "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/__init__.py",
+                "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/atomic.py",
+                "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/hashing.py",
+                "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/locking.py",
+                "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/__init__.py",
+                "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/m0.py",
+                "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+                "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+                "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+                "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/__init__.py",
+                "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/environment.py",
+                "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/solver.py",
+                "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/status.py",
+                "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/__init__.py",
+                "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+                "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/cvar.py",
+                "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+                "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+              },
+              {
+                "path": "tests/fixtures/n2_m0_hand_cases.json",
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
+              }
+            ],
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
+            "packages": {
+              "Pyomo": "6.10.1",
+              "filelock": "3.32.0",
+              "gurobipy": "13.0.2",
+              "numpy": "2.5.1"
+            },
+            "platform": "Windows-11-10.0.26200-SP0",
+            "python": {
+              "executable": "D:\\新建文件夹\\项目：robust-budget-allocation\\repo\\robust-budget-allocation\\.venv\\Scripts\\python.exe",
+              "implementation": "CPython",
+              "version": "3.12.10"
+            },
+            "schema_version": 1
+          },
+          "worst_label_rule": "first maximizer in declared scenario order; reporting only"
+        },
+        "classification": "development/correctness_evidence",
+        "delivered": {
+          "scenario": 4.0
+        },
+        "diagnostics": [],
+        "h": {
+          "scenario": 0.0
+        },
+        "objective": 8.0,
+        "q": {
+          "cheap_unreliable": 0.0,
+          "reliable": 4.0
+        },
+        "raw_solution": {
+          "h": {
+            "scenario": 0.0
+          },
+          "objective": 8.0,
+          "q": {
+            "cheap_unreliable": 0.0,
+            "reliable": 4.0
+          },
+          "theta": 0.0,
+          "u": {
+            "scenario": 0.0
+          },
+          "x": {
+            "scenario": 4.0
+          }
+        },
+        "result_sha256": "6f386cfca7c5da490bade4817439b814c51369626369253f5e9270643df63b58",
+        "runtime_seconds": 0.005568800028413534,
+        "status": "optimal",
+        "termination_condition": "optimal",
+        "u": {
+          "scenario": 0.0
+        },
+        "unused_budget": 2.0,
+        "worst_loss": 0.0,
+        "worst_scenario": "scenario",
+        "x": {
+          "scenario": 4.0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "C_Q": true,
+        "h": true,
+        "objective": true,
+        "q": true,
+        "u": true,
+        "unused_budget": true,
+        "worst_loss": true,
+        "x": true
+      },
+      "expected": {
+        "C_Q": 2,
+        "h": {
+          "scenario": 0
+        },
+        "objective": 32,
+        "q": {
+          "supplier": 2
+        },
+        "u": {
+          "scenario": 3
+        },
+        "unused_budget": 8,
+        "worst_loss": 30,
+        "x": {
+          "scenario": 2
+        }
+      },
+      "id": "procurement_cap",
+      "result": {
+        "C_Q": 2.0,
+        "audit": {
+          "allocation_reporting": "maximal-service representative at unchanged q; raw LP retained",
+          "classification": "development/correctness_evidence",
+          "data": {
+            "base_fulfillment": {
+              "scenario": {
+                "supplier": 1.0
+              }
+            },
+            "budget": 10.0,
+            "demand": {
+              "scenario": 5.0
+            },
+            "procurement_limit": {
+              "supplier": 2.0
+            },
+            "resource_id": "single_resource",
+            "scenarios": [
+              "scenario"
+            ],
+            "schema_version": 1,
+            "shortage_penalty": 10.0,
+            "suppliers": [
+              "supplier"
+            ],
+            "unit_cost": {
+              "supplier": 1.0
+            }
+          },
+          "data_sha256": "d78090204b5c863a15ba4692731c8794be64daa59421dfd11fa22a9599f2529e",
+          "environment": {
+            "gurobi_optimizer": "13.0.2",
+            "gurobipy": "13.0.2",
+            "license_available": true,
+            "platform": "Windows-11-10.0.26200-SP0",
+            "pyomo": "6.10.1",
+            "python": "3.12.10",
+            "python_implementation": "CPython",
+            "solver_available": true,
+            "solver_interface": "gurobi_direct",
+            "status": "PASS",
+            "threads": 1
+          },
+          "numerical_checks": {
+            "absolute_tolerance": 1e-07,
+            "relative_tolerance": 1e-09,
+            "scope": "N2 development only; not N4 E1"
+          },
+          "scenario_sha256": "363706f1e68930cbd3c19f73d6ae31ca6e041763c4b786f77470e49a8658365d",
+          "solver_config": {
+            "feasibility_tolerance": null,
+            "interface": "gurobi_direct",
+            "optimality_tolerance": null,
+            "threads": 1,
+            "time_limit_seconds": null
+          },
+          "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
+          "solver_outcome": {
+            "message": null,
+            "runtime_seconds": 0.003718000021763146,
+            "solver": "gurobi_direct",
+            "status": "optimal",
+            "termination_condition": "optimal"
+          },
+          "source": {
+            "git": {
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+              "tracked_dirty": false,
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+              "untracked_paths": []
+            },
+            "inputs": [
+              {
+                "path": "pyproject.toml",
+                "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+              },
+              {
+                "path": "requirements.txt",
+                "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+              },
+              {
+                "path": "scripts/n2_m0_correctness.py",
+                "sha256": "f489c0d5bf4a016defef9f1f6a7bde22927d461a5daa95c98d9fb0951c90df2d"
+              },
+              {
+                "path": "src/robust_budget_allocation/__init__.py",
+                "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/__init__.py",
+                "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/model_data.py",
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+              },
+              {
+                "path": "src/robust_budget_allocation/environment.py",
+                "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/__init__.py",
+                "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/atomic.py",
+                "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/hashing.py",
+                "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/locking.py",
+                "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/__init__.py",
+                "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/m0.py",
+                "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+                "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+                "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+                "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/__init__.py",
+                "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/environment.py",
+                "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/solver.py",
+                "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/status.py",
+                "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/__init__.py",
+                "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+                "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/cvar.py",
+                "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+                "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+              },
+              {
+                "path": "tests/fixtures/n2_m0_hand_cases.json",
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
+              }
+            ],
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
+            "packages": {
+              "Pyomo": "6.10.1",
+              "filelock": "3.32.0",
+              "gurobipy": "13.0.2",
+              "numpy": "2.5.1"
+            },
+            "platform": "Windows-11-10.0.26200-SP0",
+            "python": {
+              "executable": "D:\\新建文件夹\\项目：robust-budget-allocation\\repo\\robust-budget-allocation\\.venv\\Scripts\\python.exe",
+              "implementation": "CPython",
+              "version": "3.12.10"
+            },
+            "schema_version": 1
+          },
+          "worst_label_rule": "first maximizer in declared scenario order; reporting only"
+        },
+        "classification": "development/correctness_evidence",
+        "delivered": {
+          "scenario": 2.0
+        },
+        "diagnostics": [],
+        "h": {
+          "scenario": 0.0
+        },
+        "objective": 32.0,
+        "q": {
+          "supplier": 2.0
+        },
+        "raw_solution": {
+          "h": {
+            "scenario": 0.0
+          },
+          "objective": 32.0,
+          "q": {
+            "supplier": 2.0
+          },
+          "theta": 30.0,
+          "u": {
+            "scenario": 3.0
+          },
+          "x": {
+            "scenario": 2.0
+          }
+        },
+        "result_sha256": "5577729a51bf57718c0d94db181a8f504730fa6d3dfe794e942b658ff8713f81",
+        "runtime_seconds": 0.003718000021763146,
+        "status": "optimal",
+        "termination_condition": "optimal",
+        "u": {
+          "scenario": 3.0
+        },
+        "unused_budget": 8.0,
+        "worst_loss": 30.0,
+        "worst_scenario": "scenario",
+        "x": {
+          "scenario": 2.0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "C_Q": true,
+        "h": true,
+        "objective": true,
+        "q": true,
+        "u": true,
+        "unused_budget": true,
+        "worst_loss": true,
+        "x": true
+      },
+      "expected": {
+        "C_Q": 0,
+        "h": {
+          "scenario": 0
+        },
+        "objective": 50,
+        "q": {
+          "supplier": 0
+        },
+        "u": {
+          "scenario": 5
+        },
+        "unused_budget": 100,
+        "worst_loss": 50,
+        "x": {
+          "scenario": 0
+        }
+      },
+      "id": "purchase_not_economical",
+      "result": {
+        "C_Q": 0.0,
+        "audit": {
+          "allocation_reporting": "maximal-service representative at unchanged q; raw LP retained",
+          "classification": "development/correctness_evidence",
+          "data": {
+            "base_fulfillment": {
+              "scenario": {
+                "supplier": 1.0
+              }
+            },
+            "budget": 100.0,
+            "demand": {
+              "scenario": 5.0
+            },
+            "procurement_limit": {
+              "supplier": 10.0
+            },
+            "resource_id": "single_resource",
+            "scenarios": [
+              "scenario"
+            ],
+            "schema_version": 1,
+            "shortage_penalty": 10.0,
+            "suppliers": [
+              "supplier"
+            ],
+            "unit_cost": {
+              "supplier": 12.0
+            }
+          },
+          "data_sha256": "af25d17c905ce3be8592dfbc96ce7b406d2646599d764edd1b26db714aec623a",
+          "environment": {
+            "gurobi_optimizer": "13.0.2",
+            "gurobipy": "13.0.2",
+            "license_available": true,
+            "platform": "Windows-11-10.0.26200-SP0",
+            "pyomo": "6.10.1",
+            "python": "3.12.10",
+            "python_implementation": "CPython",
+            "solver_available": true,
+            "solver_interface": "gurobi_direct",
+            "status": "PASS",
+            "threads": 1
+          },
+          "numerical_checks": {
+            "absolute_tolerance": 1e-07,
+            "relative_tolerance": 1e-09,
+            "scope": "N2 development only; not N4 E1"
+          },
+          "scenario_sha256": "363706f1e68930cbd3c19f73d6ae31ca6e041763c4b786f77470e49a8658365d",
+          "solver_config": {
+            "feasibility_tolerance": null,
+            "interface": "gurobi_direct",
+            "optimality_tolerance": null,
+            "threads": 1,
+            "time_limit_seconds": null
+          },
+          "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
+          "solver_outcome": {
+            "message": null,
+            "runtime_seconds": 0.003404200018849224,
+            "solver": "gurobi_direct",
+            "status": "optimal",
+            "termination_condition": "optimal"
+          },
+          "source": {
+            "git": {
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+              "tracked_dirty": false,
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+              "untracked_paths": []
+            },
+            "inputs": [
+              {
+                "path": "pyproject.toml",
+                "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+              },
+              {
+                "path": "requirements.txt",
+                "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+              },
+              {
+                "path": "scripts/n2_m0_correctness.py",
+                "sha256": "f489c0d5bf4a016defef9f1f6a7bde22927d461a5daa95c98d9fb0951c90df2d"
+              },
+              {
+                "path": "src/robust_budget_allocation/__init__.py",
+                "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/__init__.py",
+                "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/model_data.py",
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+              },
+              {
+                "path": "src/robust_budget_allocation/environment.py",
+                "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/__init__.py",
+                "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/atomic.py",
+                "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/hashing.py",
+                "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/locking.py",
+                "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/__init__.py",
+                "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/m0.py",
+                "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+                "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+                "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+                "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/__init__.py",
+                "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/environment.py",
+                "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/solver.py",
+                "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/status.py",
+                "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/__init__.py",
+                "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+                "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/cvar.py",
+                "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+                "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+              },
+              {
+                "path": "tests/fixtures/n2_m0_hand_cases.json",
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
+              }
+            ],
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
+            "packages": {
+              "Pyomo": "6.10.1",
+              "filelock": "3.32.0",
+              "gurobipy": "13.0.2",
+              "numpy": "2.5.1"
+            },
+            "platform": "Windows-11-10.0.26200-SP0",
+            "python": {
+              "executable": "D:\\新建文件夹\\项目：robust-budget-allocation\\repo\\robust-budget-allocation\\.venv\\Scripts\\python.exe",
+              "implementation": "CPython",
+              "version": "3.12.10"
+            },
+            "schema_version": 1
+          },
+          "worst_label_rule": "first maximizer in declared scenario order; reporting only"
+        },
+        "classification": "development/correctness_evidence",
+        "delivered": {
+          "scenario": 0.0
+        },
+        "diagnostics": [],
+        "h": {
+          "scenario": 0.0
+        },
+        "objective": 50.0,
+        "q": {
+          "supplier": 0.0
+        },
+        "raw_solution": {
+          "h": {
+            "scenario": 0.0
+          },
+          "objective": 50.0,
+          "q": {
+            "supplier": 0.0
+          },
+          "theta": 50.0,
+          "u": {
+            "scenario": 5.0
+          },
+          "x": {
+            "scenario": 0.0
+          }
+        },
+        "result_sha256": "0d866aa314c47029e81f402740fc74fdbe4d4231a0c365bc92621b7e4be0a0e4",
+        "runtime_seconds": 0.003404200018849224,
+        "status": "optimal",
+        "termination_condition": "optimal",
+        "u": {
+          "scenario": 5.0
+        },
+        "unused_budget": 100.0,
+        "worst_loss": 50.0,
+        "worst_scenario": "scenario",
+        "x": {
+          "scenario": 0.0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "C_Q": true,
+        "h": true,
+        "objective": true,
+        "q": true,
+        "u": true,
+        "unused_budget": true,
+        "worst_loss": true,
+        "x": true
+      },
+      "expected": {
+        "C_Q": 6,
+        "h": {
+          "high": 0,
+          "low": 4
+        },
+        "objective": 6,
+        "q": {
+          "supplier": 6
+        },
+        "u": {
+          "high": 0,
+          "low": 0
+        },
+        "unused_budget": 4,
+        "worst_loss": 0,
+        "x": {
+          "high": 6,
+          "low": 2
+        }
+      },
+      "id": "unused_resource",
+      "result": {
+        "C_Q": 6.0,
+        "audit": {
+          "allocation_reporting": "maximal-service representative at unchanged q; raw LP retained",
+          "classification": "development/correctness_evidence",
+          "data": {
+            "base_fulfillment": {
+              "high": {
+                "supplier": 1.0
+              },
+              "low": {
+                "supplier": 1.0
+              }
+            },
+            "budget": 10.0,
+            "demand": {
+              "high": 6.0,
+              "low": 2.0
+            },
+            "procurement_limit": {
+              "supplier": 10.0
+            },
+            "resource_id": "single_resource",
+            "scenarios": [
+              "low",
+              "high"
+            ],
+            "schema_version": 1,
+            "shortage_penalty": 10.0,
+            "suppliers": [
+              "supplier"
+            ],
+            "unit_cost": {
+              "supplier": 1.0
+            }
+          },
+          "data_sha256": "4aed027c7927f51a79492d76d4f1cbe4bc9e46d125a97041f664b5c2438c3daf",
+          "environment": {
+            "gurobi_optimizer": "13.0.2",
+            "gurobipy": "13.0.2",
+            "license_available": true,
+            "platform": "Windows-11-10.0.26200-SP0",
+            "pyomo": "6.10.1",
+            "python": "3.12.10",
+            "python_implementation": "CPython",
+            "solver_available": true,
+            "solver_interface": "gurobi_direct",
+            "status": "PASS",
+            "threads": 1
+          },
+          "numerical_checks": {
+            "absolute_tolerance": 1e-07,
+            "relative_tolerance": 1e-09,
+            "scope": "N2 development only; not N4 E1"
+          },
+          "scenario_sha256": "a3f6fb81ece214f5e083f39146860acf7bc77cc7379eb029012c01e1466adbed",
+          "solver_config": {
+            "feasibility_tolerance": null,
+            "interface": "gurobi_direct",
+            "optimality_tolerance": null,
+            "threads": 1,
+            "time_limit_seconds": null
+          },
+          "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
+          "solver_outcome": {
+            "message": null,
+            "runtime_seconds": 0.003825699968729168,
+            "solver": "gurobi_direct",
+            "status": "optimal",
+            "termination_condition": "optimal"
+          },
+          "source": {
+            "git": {
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+              "tracked_dirty": false,
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+              "untracked_paths": []
+            },
+            "inputs": [
+              {
+                "path": "pyproject.toml",
+                "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+              },
+              {
+                "path": "requirements.txt",
+                "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+              },
+              {
+                "path": "scripts/n2_m0_correctness.py",
+                "sha256": "f489c0d5bf4a016defef9f1f6a7bde22927d461a5daa95c98d9fb0951c90df2d"
+              },
+              {
+                "path": "src/robust_budget_allocation/__init__.py",
+                "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/__init__.py",
+                "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/model_data.py",
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+              },
+              {
+                "path": "src/robust_budget_allocation/environment.py",
+                "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/__init__.py",
+                "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/atomic.py",
+                "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/hashing.py",
+                "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/locking.py",
+                "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/__init__.py",
+                "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/m0.py",
+                "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+                "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+                "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+                "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/__init__.py",
+                "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/environment.py",
+                "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/solver.py",
+                "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/status.py",
+                "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/__init__.py",
+                "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+                "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/cvar.py",
+                "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+                "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+              },
+              {
+                "path": "tests/fixtures/n2_m0_hand_cases.json",
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
+              }
+            ],
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
+            "packages": {
+              "Pyomo": "6.10.1",
+              "filelock": "3.32.0",
+              "gurobipy": "13.0.2",
+              "numpy": "2.5.1"
+            },
+            "platform": "Windows-11-10.0.26200-SP0",
+            "python": {
+              "executable": "D:\\新建文件夹\\项目：robust-budget-allocation\\repo\\robust-budget-allocation\\.venv\\Scripts\\python.exe",
+              "implementation": "CPython",
+              "version": "3.12.10"
+            },
+            "schema_version": 1
+          },
+          "worst_label_rule": "first maximizer in declared scenario order; reporting only"
+        },
+        "classification": "development/correctness_evidence",
+        "delivered": {
+          "high": 6.0,
+          "low": 6.0
+        },
+        "diagnostics": [],
+        "h": {
+          "high": 0.0,
+          "low": 4.0
+        },
+        "objective": 6.0,
+        "q": {
+          "supplier": 6.0
+        },
+        "raw_solution": {
+          "h": {
+            "high": 0.0,
+            "low": 4.0
+          },
+          "objective": 6.0,
+          "q": {
+            "supplier": 6.0
+          },
+          "theta": 0.0,
+          "u": {
+            "high": 0.0,
+            "low": 0.0
+          },
+          "x": {
+            "high": 6.0,
+            "low": 2.0
+          }
+        },
+        "result_sha256": "000f155c906a08d6a5c95d17e03bcad0d121ac3d93deadb6c5a5eeb399fe5503",
+        "runtime_seconds": 0.003825699968729168,
+        "status": "optimal",
+        "termination_condition": "optimal",
+        "u": {
+          "high": 0.0,
+          "low": 0.0
+        },
+        "unused_budget": 4.0,
+        "worst_loss": 0.0,
+        "worst_scenario": "low",
+        "x": {
+          "high": 6.0,
+          "low": 2.0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "C_Q": true,
+        "h": true,
+        "objective": true,
+        "q": true,
+        "u": true,
+        "unused_budget": true,
+        "worst_loss": true,
+        "x": true
+      },
+      "expected": {
+        "C_Q": 8,
+        "h": {
+          "full": 2,
+          "impaired": 0
+        },
+        "objective": 28,
+        "q": {
+          "supplier": 8
+        },
+        "u": {
+          "full": 0,
+          "impaired": 2
+        },
+        "unused_budget": 0,
+        "worst_loss": 20,
+        "x": {
+          "full": 6,
+          "impaired": 4
+        }
+      },
+      "id": "nonworst_allocation_slack",
+      "result": {
+        "C_Q": 8.0,
+        "audit": {
+          "allocation_reporting": "maximal-service representative at unchanged q; raw LP retained",
+          "classification": "development/correctness_evidence",
+          "data": {
+            "base_fulfillment": {
+              "full": {
+                "supplier": 1.0
+              },
+              "impaired": {
+                "supplier": 0.5
+              }
+            },
+            "budget": 8.0,
+            "demand": {
+              "full": 6.0,
+              "impaired": 6.0
+            },
+            "procurement_limit": {
+              "supplier": 10.0
+            },
+            "resource_id": "single_resource",
+            "scenarios": [
+              "full",
+              "impaired"
+            ],
+            "schema_version": 1,
+            "shortage_penalty": 10.0,
+            "suppliers": [
+              "supplier"
+            ],
+            "unit_cost": {
+              "supplier": 1.0
+            }
+          },
+          "data_sha256": "62cddcdd0f0cf1d49e75fe958bcddb9be58bfd4a659c534776d4e0aa1c2b7814",
+          "environment": {
+            "gurobi_optimizer": "13.0.2",
+            "gurobipy": "13.0.2",
+            "license_available": true,
+            "platform": "Windows-11-10.0.26200-SP0",
+            "pyomo": "6.10.1",
+            "python": "3.12.10",
+            "python_implementation": "CPython",
+            "solver_available": true,
+            "solver_interface": "gurobi_direct",
+            "status": "PASS",
+            "threads": 1
+          },
+          "numerical_checks": {
+            "absolute_tolerance": 1e-07,
+            "relative_tolerance": 1e-09,
+            "scope": "N2 development only; not N4 E1"
+          },
+          "scenario_sha256": "568a21d725d5873e1e04afe1b0201451c23b8156e967903033dcb49dce9a9574",
+          "solver_config": {
+            "feasibility_tolerance": null,
+            "interface": "gurobi_direct",
+            "optimality_tolerance": null,
+            "threads": 1,
+            "time_limit_seconds": null
+          },
+          "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
+          "solver_outcome": {
+            "message": null,
+            "runtime_seconds": 0.005701899994164705,
+            "solver": "gurobi_direct",
+            "status": "optimal",
+            "termination_condition": "optimal"
+          },
+          "source": {
+            "git": {
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+              "tracked_dirty": false,
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+              "untracked_paths": []
+            },
+            "inputs": [
+              {
+                "path": "pyproject.toml",
+                "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+              },
+              {
+                "path": "requirements.txt",
+                "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+              },
+              {
+                "path": "scripts/n2_m0_correctness.py",
+                "sha256": "f489c0d5bf4a016defef9f1f6a7bde22927d461a5daa95c98d9fb0951c90df2d"
+              },
+              {
+                "path": "src/robust_budget_allocation/__init__.py",
+                "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/__init__.py",
+                "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/model_data.py",
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+              },
+              {
+                "path": "src/robust_budget_allocation/environment.py",
+                "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/__init__.py",
+                "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/atomic.py",
+                "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/hashing.py",
+                "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/locking.py",
+                "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/__init__.py",
+                "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/m0.py",
+                "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+                "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+                "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+                "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/__init__.py",
+                "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/environment.py",
+                "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/solver.py",
+                "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/status.py",
+                "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/__init__.py",
+                "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+                "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/cvar.py",
+                "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+                "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+              },
+              {
+                "path": "tests/fixtures/n2_m0_hand_cases.json",
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
+              }
+            ],
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
+            "packages": {
+              "Pyomo": "6.10.1",
+              "filelock": "3.32.0",
+              "gurobipy": "13.0.2",
+              "numpy": "2.5.1"
+            },
+            "platform": "Windows-11-10.0.26200-SP0",
+            "python": {
+              "executable": "D:\\新建文件夹\\项目：robust-budget-allocation\\repo\\robust-budget-allocation\\.venv\\Scripts\\python.exe",
+              "implementation": "CPython",
+              "version": "3.12.10"
+            },
+            "schema_version": 1
+          },
+          "worst_label_rule": "first maximizer in declared scenario order; reporting only"
+        },
+        "classification": "development/correctness_evidence",
+        "delivered": {
+          "full": 8.0,
+          "impaired": 4.0
+        },
+        "diagnostics": [],
+        "h": {
+          "full": 2.0,
+          "impaired": 0.0
+        },
+        "objective": 28.0,
+        "q": {
+          "supplier": 8.0
+        },
+        "raw_solution": {
+          "h": {
+            "full": 2.0,
+            "impaired": 0.0
+          },
+          "objective": 28.0,
+          "q": {
+            "supplier": 8.0
+          },
+          "theta": 20.0,
+          "u": {
+            "full": 0.0,
+            "impaired": 2.0
+          },
+          "x": {
+            "full": 6.0,
+            "impaired": 4.0
+          }
+        },
+        "result_sha256": "c87d860b84d89ea5630dfd52774d5fe55a6021da3f1a3eea085c15863879cbb2",
+        "runtime_seconds": 0.005701899994164705,
+        "status": "optimal",
+        "termination_condition": "optimal",
+        "u": {
+          "full": 0.0,
+          "impaired": 2.0
+        },
+        "unused_budget": 0.0,
+        "worst_loss": 20.0,
+        "worst_scenario": "impaired",
+        "x": {
+          "full": 6.0,
+          "impaired": 4.0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "C_Q": true,
+        "h": true,
+        "objective": true,
+        "q": true,
+        "u": true,
+        "unused_budget": true,
+        "worst_loss": true,
+        "x": true
+      },
+      "expected": {
+        "C_Q": 0,
+        "h": {
+          "scenario": 0
+        },
+        "objective": 30,
+        "q": {
+          "supplier": 0
+        },
+        "u": {
+          "scenario": 3
+        },
+        "unused_budget": 0,
+        "worst_loss": 30,
+        "x": {
+          "scenario": 0
+        }
+      },
+      "id": "zero_budget",
+      "result": {
+        "C_Q": 0.0,
+        "audit": {
+          "allocation_reporting": "maximal-service representative at unchanged q; raw LP retained",
+          "classification": "development/correctness_evidence",
+          "data": {
+            "base_fulfillment": {
+              "scenario": {
+                "supplier": 1.0
+              }
+            },
+            "budget": 0.0,
+            "demand": {
+              "scenario": 3.0
+            },
+            "procurement_limit": {
+              "supplier": 10.0
+            },
+            "resource_id": "single_resource",
+            "scenarios": [
+              "scenario"
+            ],
+            "schema_version": 1,
+            "shortage_penalty": 10.0,
+            "suppliers": [
+              "supplier"
+            ],
+            "unit_cost": {
+              "supplier": 1.0
+            }
+          },
+          "data_sha256": "062b486fb187533cabd0048cc215a85e046056093d7a5548e15ba0bfac693e96",
+          "environment": {
+            "gurobi_optimizer": "13.0.2",
+            "gurobipy": "13.0.2",
+            "license_available": true,
+            "platform": "Windows-11-10.0.26200-SP0",
+            "pyomo": "6.10.1",
+            "python": "3.12.10",
+            "python_implementation": "CPython",
+            "solver_available": true,
+            "solver_interface": "gurobi_direct",
+            "status": "PASS",
+            "threads": 1
+          },
+          "numerical_checks": {
+            "absolute_tolerance": 1e-07,
+            "relative_tolerance": 1e-09,
+            "scope": "N2 development only; not N4 E1"
+          },
+          "scenario_sha256": "bcae7b79f1ccc15b82ad86f70071e047637c877cf4d52056b9bb91717fcde5f6",
+          "solver_config": {
+            "feasibility_tolerance": null,
+            "interface": "gurobi_direct",
+            "optimality_tolerance": null,
+            "threads": 1,
+            "time_limit_seconds": null
+          },
+          "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
+          "solver_outcome": {
+            "message": null,
+            "runtime_seconds": 0.004895699967164546,
+            "solver": "gurobi_direct",
+            "status": "optimal",
+            "termination_condition": "optimal"
+          },
+          "source": {
+            "git": {
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+              "tracked_dirty": false,
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+              "untracked_paths": []
+            },
+            "inputs": [
+              {
+                "path": "pyproject.toml",
+                "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+              },
+              {
+                "path": "requirements.txt",
+                "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+              },
+              {
+                "path": "scripts/n2_m0_correctness.py",
+                "sha256": "f489c0d5bf4a016defef9f1f6a7bde22927d461a5daa95c98d9fb0951c90df2d"
+              },
+              {
+                "path": "src/robust_budget_allocation/__init__.py",
+                "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/__init__.py",
+                "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/model_data.py",
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+              },
+              {
+                "path": "src/robust_budget_allocation/environment.py",
+                "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/__init__.py",
+                "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/atomic.py",
+                "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/hashing.py",
+                "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/locking.py",
+                "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/__init__.py",
+                "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/m0.py",
+                "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+                "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+                "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+                "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/__init__.py",
+                "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/environment.py",
+                "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/solver.py",
+                "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/status.py",
+                "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/__init__.py",
+                "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+                "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/cvar.py",
+                "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+                "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+              },
+              {
+                "path": "tests/fixtures/n2_m0_hand_cases.json",
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
+              }
+            ],
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
+            "packages": {
+              "Pyomo": "6.10.1",
+              "filelock": "3.32.0",
+              "gurobipy": "13.0.2",
+              "numpy": "2.5.1"
+            },
+            "platform": "Windows-11-10.0.26200-SP0",
+            "python": {
+              "executable": "D:\\新建文件夹\\项目：robust-budget-allocation\\repo\\robust-budget-allocation\\.venv\\Scripts\\python.exe",
+              "implementation": "CPython",
+              "version": "3.12.10"
+            },
+            "schema_version": 1
+          },
+          "worst_label_rule": "first maximizer in declared scenario order; reporting only"
+        },
+        "classification": "development/correctness_evidence",
+        "delivered": {
+          "scenario": 0.0
+        },
+        "diagnostics": [],
+        "h": {
+          "scenario": 0.0
+        },
+        "objective": 30.0,
+        "q": {
+          "supplier": 0.0
+        },
+        "raw_solution": {
+          "h": {
+            "scenario": 0.0
+          },
+          "objective": 30.0,
+          "q": {
+            "supplier": 0.0
+          },
+          "theta": 30.0,
+          "u": {
+            "scenario": 3.0
+          },
+          "x": {
+            "scenario": 0.0
+          }
+        },
+        "result_sha256": "686c615286db544a11601935a93bc485af827ebac14eece5a69cdd32613fd924",
+        "runtime_seconds": 0.004895699967164546,
+        "status": "optimal",
+        "termination_condition": "optimal",
+        "u": {
+          "scenario": 3.0
+        },
+        "unused_budget": 0.0,
+        "worst_loss": 30.0,
+        "worst_scenario": "scenario",
+        "x": {
+          "scenario": 0.0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "C_Q": true,
+        "h": true,
+        "objective": true,
+        "q": true,
+        "u": true,
+        "unused_budget": true,
+        "worst_loss": true,
+        "x": true
+      },
+      "expected": {
+        "C_Q": 0,
+        "h": {
+          "scenario": 0
+        },
+        "objective": 0,
+        "q": {
+          "supplier": 0
+        },
+        "u": {
+          "scenario": 0
+        },
+        "unused_budget": 10,
+        "worst_loss": 0,
+        "x": {
+          "scenario": 0
+        }
+      },
+      "id": "zero_demand_positive_penalty",
+      "result": {
+        "C_Q": 0.0,
+        "audit": {
+          "allocation_reporting": "maximal-service representative at unchanged q; raw LP retained",
+          "classification": "development/correctness_evidence",
+          "data": {
+            "base_fulfillment": {
+              "scenario": {
+                "supplier": 1.0
+              }
+            },
+            "budget": 10.0,
+            "demand": {
+              "scenario": 0.0
+            },
+            "procurement_limit": {
+              "supplier": 10.0
+            },
+            "resource_id": "single_resource",
+            "scenarios": [
+              "scenario"
+            ],
+            "schema_version": 1,
+            "shortage_penalty": 10.0,
+            "suppliers": [
+              "supplier"
+            ],
+            "unit_cost": {
+              "supplier": 1.0
+            }
+          },
+          "data_sha256": "2896947186de0f468932595f81cb97c5445b39472a26a4927f5a019a192ad5d7",
+          "environment": {
+            "gurobi_optimizer": "13.0.2",
+            "gurobipy": "13.0.2",
+            "license_available": true,
+            "platform": "Windows-11-10.0.26200-SP0",
+            "pyomo": "6.10.1",
+            "python": "3.12.10",
+            "python_implementation": "CPython",
+            "solver_available": true,
+            "solver_interface": "gurobi_direct",
+            "status": "PASS",
+            "threads": 1
+          },
+          "numerical_checks": {
+            "absolute_tolerance": 1e-07,
+            "relative_tolerance": 1e-09,
+            "scope": "N2 development only; not N4 E1"
+          },
+          "scenario_sha256": "82991d77126d5fc6dca8583a0752b07697b8f051fc7731653690e5e07cccd35f",
+          "solver_config": {
+            "feasibility_tolerance": null,
+            "interface": "gurobi_direct",
+            "optimality_tolerance": null,
+            "threads": 1,
+            "time_limit_seconds": null
+          },
+          "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
+          "solver_outcome": {
+            "message": null,
+            "runtime_seconds": 0.003204900014679879,
+            "solver": "gurobi_direct",
+            "status": "optimal",
+            "termination_condition": "optimal"
+          },
+          "source": {
+            "git": {
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+              "tracked_dirty": false,
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+              "untracked_paths": []
+            },
+            "inputs": [
+              {
+                "path": "pyproject.toml",
+                "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+              },
+              {
+                "path": "requirements.txt",
+                "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+              },
+              {
+                "path": "scripts/n2_m0_correctness.py",
+                "sha256": "f489c0d5bf4a016defef9f1f6a7bde22927d461a5daa95c98d9fb0951c90df2d"
+              },
+              {
+                "path": "src/robust_budget_allocation/__init__.py",
+                "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/__init__.py",
+                "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/model_data.py",
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+              },
+              {
+                "path": "src/robust_budget_allocation/environment.py",
+                "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/__init__.py",
+                "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/atomic.py",
+                "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/hashing.py",
+                "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/locking.py",
+                "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/__init__.py",
+                "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/m0.py",
+                "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+                "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+                "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+                "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/__init__.py",
+                "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/environment.py",
+                "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/solver.py",
+                "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/status.py",
+                "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/__init__.py",
+                "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+                "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/cvar.py",
+                "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+                "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+              },
+              {
+                "path": "tests/fixtures/n2_m0_hand_cases.json",
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
+              }
+            ],
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
+            "packages": {
+              "Pyomo": "6.10.1",
+              "filelock": "3.32.0",
+              "gurobipy": "13.0.2",
+              "numpy": "2.5.1"
+            },
+            "platform": "Windows-11-10.0.26200-SP0",
+            "python": {
+              "executable": "D:\\新建文件夹\\项目：robust-budget-allocation\\repo\\robust-budget-allocation\\.venv\\Scripts\\python.exe",
+              "implementation": "CPython",
+              "version": "3.12.10"
+            },
+            "schema_version": 1
+          },
+          "worst_label_rule": "first maximizer in declared scenario order; reporting only"
+        },
+        "classification": "development/correctness_evidence",
+        "delivered": {
+          "scenario": 0.0
+        },
+        "diagnostics": [],
+        "h": {
+          "scenario": 0.0
+        },
+        "objective": 0.0,
+        "q": {
+          "supplier": 0.0
+        },
+        "raw_solution": {
+          "h": {
+            "scenario": 0.0
+          },
+          "objective": 0.0,
+          "q": {
+            "supplier": 0.0
+          },
+          "theta": 0.0,
+          "u": {
+            "scenario": 0.0
+          },
+          "x": {
+            "scenario": 0.0
+          }
+        },
+        "result_sha256": "3dbd6e043bb590fa7b52b399a7ce0e70fd97b9b2a9aa7681dab251ab56f8d086",
+        "runtime_seconds": 0.003204900014679879,
+        "status": "optimal",
+        "termination_condition": "optimal",
+        "u": {
+          "scenario": 0.0
+        },
+        "unused_budget": 10.0,
+        "worst_loss": 0.0,
+        "worst_scenario": "scenario",
+        "x": {
+          "scenario": 0.0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "C_Q": true,
+        "h": true,
+        "objective": true,
+        "q": true,
+        "u": true,
+        "unused_budget": true,
+        "worst_loss": true,
+        "x": true
+      },
+      "expected": {
+        "C_Q": 0,
+        "h": {
+          "scenario": 0
+        },
+        "objective": 10,
+        "q": {
+          "supplier": 2
+        },
+        "u": {
+          "scenario": 1
+        },
+        "unused_budget": 0,
+        "worst_loss": 10,
+        "x": {
+          "scenario": 2
+        }
+      },
+      "id": "zero_price_boundary",
+      "result": {
+        "C_Q": 0.0,
+        "audit": {
+          "allocation_reporting": "maximal-service representative at unchanged q; raw LP retained",
+          "classification": "development/correctness_evidence",
+          "data": {
+            "base_fulfillment": {
+              "scenario": {
+                "supplier": 1.0
+              }
+            },
+            "budget": 0.0,
+            "demand": {
+              "scenario": 3.0
+            },
+            "procurement_limit": {
+              "supplier": 2.0
+            },
+            "resource_id": "single_resource",
+            "scenarios": [
+              "scenario"
+            ],
+            "schema_version": 1,
+            "shortage_penalty": 10.0,
+            "suppliers": [
+              "supplier"
+            ],
+            "unit_cost": {
+              "supplier": 0.0
+            }
+          },
+          "data_sha256": "10641c00546a0a4ff4759230563b90b18cf438ccd68b27a7ff54355fc7b8660f",
+          "environment": {
+            "gurobi_optimizer": "13.0.2",
+            "gurobipy": "13.0.2",
+            "license_available": true,
+            "platform": "Windows-11-10.0.26200-SP0",
+            "pyomo": "6.10.1",
+            "python": "3.12.10",
+            "python_implementation": "CPython",
+            "solver_available": true,
+            "solver_interface": "gurobi_direct",
+            "status": "PASS",
+            "threads": 1
+          },
+          "numerical_checks": {
+            "absolute_tolerance": 1e-07,
+            "relative_tolerance": 1e-09,
+            "scope": "N2 development only; not N4 E1"
+          },
+          "scenario_sha256": "bcae7b79f1ccc15b82ad86f70071e047637c877cf4d52056b9bb91717fcde5f6",
+          "solver_config": {
+            "feasibility_tolerance": null,
+            "interface": "gurobi_direct",
+            "optimality_tolerance": null,
+            "threads": 1,
+            "time_limit_seconds": null
+          },
+          "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
+          "solver_outcome": {
+            "message": null,
+            "runtime_seconds": 0.003233299998100847,
+            "solver": "gurobi_direct",
+            "status": "optimal",
+            "termination_condition": "optimal"
+          },
+          "source": {
+            "git": {
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+              "tracked_dirty": false,
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+              "untracked_paths": []
+            },
+            "inputs": [
+              {
+                "path": "pyproject.toml",
+                "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+              },
+              {
+                "path": "requirements.txt",
+                "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+              },
+              {
+                "path": "scripts/n2_m0_correctness.py",
+                "sha256": "f489c0d5bf4a016defef9f1f6a7bde22927d461a5daa95c98d9fb0951c90df2d"
+              },
+              {
+                "path": "src/robust_budget_allocation/__init__.py",
+                "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/__init__.py",
+                "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+              },
+              {
+                "path": "src/robust_budget_allocation/data/model_data.py",
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+              },
+              {
+                "path": "src/robust_budget_allocation/environment.py",
+                "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/__init__.py",
+                "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/atomic.py",
+                "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/hashing.py",
+                "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+              },
+              {
+                "path": "src/robust_budget_allocation/io/locking.py",
+                "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/__init__.py",
+                "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+              },
+              {
+                "path": "src/robust_budget_allocation/models/m0.py",
+                "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+                "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+                "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+              },
+              {
+                "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+                "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/__init__.py",
+                "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/environment.py",
+                "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/solver.py",
+                "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+              },
+              {
+                "path": "src/robust_budget_allocation/runtime/status.py",
+                "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/__init__.py",
+                "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+                "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/cvar.py",
+                "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+              },
+              {
+                "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+                "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+              },
+              {
+                "path": "tests/fixtures/n2_m0_hand_cases.json",
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
+              }
+            ],
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
+            "packages": {
+              "Pyomo": "6.10.1",
+              "filelock": "3.32.0",
+              "gurobipy": "13.0.2",
+              "numpy": "2.5.1"
+            },
+            "platform": "Windows-11-10.0.26200-SP0",
+            "python": {
+              "executable": "D:\\新建文件夹\\项目：robust-budget-allocation\\repo\\robust-budget-allocation\\.venv\\Scripts\\python.exe",
+              "implementation": "CPython",
+              "version": "3.12.10"
+            },
+            "schema_version": 1
+          },
+          "worst_label_rule": "first maximizer in declared scenario order; reporting only"
+        },
+        "classification": "development/correctness_evidence",
+        "delivered": {
+          "scenario": 2.0
+        },
+        "diagnostics": [],
+        "h": {
+          "scenario": 0.0
+        },
+        "objective": 10.0,
+        "q": {
+          "supplier": 2.0
+        },
+        "raw_solution": {
+          "h": {
+            "scenario": 0.0
+          },
+          "objective": 10.0,
+          "q": {
+            "supplier": 2.0
+          },
+          "theta": 10.0,
+          "u": {
+            "scenario": 1.0
+          },
+          "x": {
+            "scenario": 2.0
+          }
+        },
+        "result_sha256": "3f63d7226444abc2394fdc9ade77560be90c4e676666b8859aeea654c627a140",
+        "runtime_seconds": 0.003233299998100847,
+        "status": "optimal",
+        "termination_condition": "optimal",
+        "u": {
+          "scenario": 1.0
+        },
+        "unused_budget": 0.0,
+        "worst_loss": 10.0,
+        "worst_scenario": "scenario",
+        "x": {
+          "scenario": 2.0
+        }
+      },
+      "status": "PASS"
+    }
+  ],
+  "classification": "development/correctness_evidence",
+  "evidence_sha256": "d762efdafa703451fd739c385390a58b05156934f8251b69f227c322f2d2d9c9",
+  "fixture_path": "tests/fixtures/n2_m0_hand_cases.json",
+  "fixture_sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002",
+  "schema_version": 1,
+  "source_gate": {
+    "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
+    "tracked_dirty": false,
+    "tracked_input_paths": [
+      "scripts/n2_m0_correctness.py",
+      "tests/fixtures/n2_m0_hand_cases.json"
+    ],
+    "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
+    "untracked_paths": [],
+    "untracked_scientific_paths": []
+  },
+  "status": "PASS"
+}
