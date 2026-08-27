@@ -1,0 +1,1239 @@
+{
+  "classification": "development/correctness_evidence",
+  "cases": [
+    {
+      "id": "reliability_no_value",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "w"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "supplier": 1
+            },
+            "procurement_limit": {
+              "supplier": 10
+            },
+            "demand": {
+              "w": 4
+            },
+            "base_fulfillment": {
+              "w": {
+                "supplier": 1
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            }
+          },
+          "fulfillment": {
+            "w": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 2,
+        "option_cap": 20,
+        "emergency_price": {
+          "w": 2
+        }
+      }
+    },
+    {
+      "id": "reliability_value",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "w"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "supplier": 1
+            },
+            "procurement_limit": {
+              "supplier": 10
+            },
+            "demand": {
+              "w": 4
+            },
+            "base_fulfillment": {
+              "w": {
+                "supplier": 0.5
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            }
+          },
+          "fulfillment": {
+            "w": {
+              "supplier": {
+                "0": 0.5,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 2,
+        "option_cap": 20,
+        "emergency_price": {
+          "w": 2
+        }
+      }
+    },
+    {
+      "id": "reliability_too_expensive",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "w"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "supplier": 1
+            },
+            "procurement_limit": {
+              "supplier": 10
+            },
+            "demand": {
+              "w": 4
+            },
+            "base_fulfillment": {
+              "w": {
+                "supplier": 0.5
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 20
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 2
+            }
+          },
+          "fulfillment": {
+            "w": {
+              "supplier": {
+                "0": 0.5,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 2,
+        "option_cap": 20,
+        "emergency_price": {
+          "w": 2
+        }
+      }
+    },
+    {
+      "id": "option_no_value",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "w"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "supplier": 1
+            },
+            "procurement_limit": {
+              "supplier": 10
+            },
+            "demand": {
+              "w": 4
+            },
+            "base_fulfillment": {
+              "w": {
+                "supplier": 1
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            }
+          },
+          "fulfillment": {
+            "w": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 2,
+        "option_cap": 20,
+        "emergency_price": {
+          "w": 2
+        }
+      }
+    },
+    {
+      "id": "option_value",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "w"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "supplier": 4
+            },
+            "procurement_limit": {
+              "supplier": 10
+            },
+            "demand": {
+              "w": 4
+            },
+            "base_fulfillment": {
+              "w": {
+                "supplier": 1
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            }
+          },
+          "fulfillment": {
+            "w": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 1,
+        "option_cap": 10,
+        "emergency_price": {
+          "w": 1
+        }
+      }
+    },
+    {
+      "id": "option_unexercised_scenario",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "low",
+              "high"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "supplier": 4
+            },
+            "procurement_limit": {
+              "supplier": 0
+            },
+            "demand": {
+              "low": 0,
+              "high": 4
+            },
+            "base_fulfillment": {
+              "low": {
+                "supplier": 1
+              },
+              "high": {
+                "supplier": 1
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            }
+          },
+          "fulfillment": {
+            "low": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            },
+            "high": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 1,
+        "option_cap": 10,
+        "emergency_price": {
+          "low": 100,
+          "high": 1
+        }
+      }
+    },
+    {
+      "id": "option_cap_binding",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "w"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "supplier": 1
+            },
+            "procurement_limit": {
+              "supplier": 0
+            },
+            "demand": {
+              "w": 5
+            },
+            "base_fulfillment": {
+              "w": {
+                "supplier": 1
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            }
+          },
+          "fulfillment": {
+            "w": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 1,
+        "option_cap": 3,
+        "emergency_price": {
+          "w": 1
+        }
+      }
+    },
+    {
+      "id": "remaining_budget_binding",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "w"
+            ],
+            "budget": 4,
+            "unit_cost": {
+              "supplier": 1
+            },
+            "procurement_limit": {
+              "supplier": 0
+            },
+            "demand": {
+              "w": 5
+            },
+            "base_fulfillment": {
+              "w": {
+                "supplier": 1
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            }
+          },
+          "fulfillment": {
+            "w": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 1,
+        "option_cap": 100,
+        "emergency_price": {
+          "w": 1
+        }
+      }
+    },
+    {
+      "id": "expensive_emergency_no_exercise",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "expensive",
+              "cheap"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "supplier": 1
+            },
+            "procurement_limit": {
+              "supplier": 0
+            },
+            "demand": {
+              "expensive": 3,
+              "cheap": 5
+            },
+            "base_fulfillment": {
+              "expensive": {
+                "supplier": 1
+              },
+              "cheap": {
+                "supplier": 1
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            }
+          },
+          "fulfillment": {
+            "expensive": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            },
+            "cheap": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 1,
+        "option_cap": 20,
+        "emergency_price": {
+          "expensive": 20,
+          "cheap": 1
+        }
+      }
+    },
+    {
+      "id": "unused_resource",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "low",
+              "high"
+            ],
+            "budget": 10,
+            "unit_cost": {
+              "supplier": 1
+            },
+            "procurement_limit": {
+              "supplier": 10
+            },
+            "demand": {
+              "low": 2,
+              "high": 6
+            },
+            "base_fulfillment": {
+              "low": {
+                "supplier": 1
+              },
+              "high": {
+                "supplier": 1
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            }
+          },
+          "fulfillment": {
+            "low": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            },
+            "high": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 20,
+        "option_cap": 20,
+        "emergency_price": {
+          "low": 2,
+          "high": 2
+        }
+      }
+    },
+    {
+      "id": "joint_reliability_option_accounting",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "w"
+            ],
+            "budget": 10,
+            "unit_cost": {
+              "supplier": 1
+            },
+            "procurement_limit": {
+              "supplier": 2
+            },
+            "demand": {
+              "w": 4
+            },
+            "base_fulfillment": {
+              "w": {
+                "supplier": 0.5
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.5
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            }
+          },
+          "fulfillment": {
+            "w": {
+              "supplier": {
+                "0": 0.5,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 1,
+        "option_cap": 10,
+        "emergency_price": {
+          "w": 2
+        }
+      }
+    },
+    {
+      "id": "arbitrary_four_levels",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "w"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "supplier": 1
+            },
+            "procurement_limit": {
+              "supplier": 10
+            },
+            "demand": {
+              "w": 3
+            },
+            "base_fulfillment": {
+              "w": {
+                "supplier": 0.25
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "silver",
+              "gold",
+              "platinum"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "silver": 0.5,
+              "gold": 1,
+              "platinum": 2
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "silver": 0.1,
+              "gold": 0.2,
+              "platinum": 0.3
+            }
+          },
+          "fulfillment": {
+            "w": {
+              "supplier": {
+                "0": 0.25,
+                "silver": 0.5,
+                "gold": 0.75,
+                "platinum": 1
+              }
+            }
+          }
+        },
+        "option_fee": 2,
+        "option_cap": 20,
+        "emergency_price": {
+          "w": 2
+        }
+      }
+    },
+    {
+      "id": "heterogeneous_supplier_levels",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier",
+              "second"
+            ],
+            "scenarios": [
+              "w"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "supplier": 1,
+              "second": 3
+            },
+            "procurement_limit": {
+              "supplier": 10,
+              "second": 10
+            },
+            "demand": {
+              "w": 4
+            },
+            "base_fulfillment": {
+              "w": {
+                "supplier": 1,
+                "second": 1
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ],
+            "second": [
+              "0"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 1
+            },
+            "second": {
+              "0": 0
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            },
+            "second": {
+              "0": 0
+            }
+          },
+          "fulfillment": {
+            "w": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              },
+              "second": {
+                "0": 1
+              }
+            }
+          }
+        },
+        "option_fee": 2,
+        "option_cap": 20,
+        "emergency_price": {
+          "w": 2
+        }
+      }
+    },
+    {
+      "id": "three_round_cross_failures",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "first",
+              "second"
+            ],
+            "scenarios": [
+              "c_second_fails",
+              "a_initial",
+              "b_first_fails"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "first": 1,
+              "second": 1
+            },
+            "procurement_limit": {
+              "first": 10,
+              "second": 10
+            },
+            "demand": {
+              "a_initial": 2,
+              "b_first_fails": 4,
+              "c_second_fails": 4
+            },
+            "base_fulfillment": {
+              "a_initial": {
+                "first": 1,
+                "second": 1
+              },
+              "b_first_fails": {
+                "first": 0,
+                "second": 1
+              },
+              "c_second_fails": {
+                "first": 1,
+                "second": 0
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "first": [
+              "0"
+            ],
+            "second": [
+              "0"
+            ]
+          },
+          "fixed_premium": {
+            "first": {
+              "0": 0
+            },
+            "second": {
+              "0": 0
+            }
+          },
+          "unit_premium": {
+            "first": {
+              "0": 0
+            },
+            "second": {
+              "0": 0
+            }
+          },
+          "fulfillment": {
+            "c_second_fails": {
+              "first": {
+                "0": 1
+              },
+              "second": {
+                "0": 0
+              }
+            },
+            "a_initial": {
+              "first": {
+                "0": 1
+              },
+              "second": {
+                "0": 1
+              }
+            },
+            "b_first_fails": {
+              "first": {
+                "0": 0
+              },
+              "second": {
+                "0": 1
+              }
+            }
+          }
+        },
+        "option_fee": 100,
+        "option_cap": 100,
+        "emergency_price": {
+          "a_initial": 1,
+          "b_first_fails": 1,
+          "c_second_fails": 1
+        }
+      },
+      "expected_objective": 8,
+      "expected_iterations": 3
+    },
+    {
+      "id": "equal_worst_canonical_id",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "supplier"
+            ],
+            "scenarios": [
+              "zeta",
+              "alpha"
+            ],
+            "budget": 20,
+            "unit_cost": {
+              "supplier": 1
+            },
+            "procurement_limit": {
+              "supplier": 0
+            },
+            "demand": {
+              "zeta": 5,
+              "alpha": 5
+            },
+            "base_fulfillment": {
+              "zeta": {
+                "supplier": 1
+              },
+              "alpha": {
+                "supplier": 1
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "supplier": [
+              "0",
+              "1"
+            ]
+          },
+          "fixed_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "unit_premium": {
+            "supplier": {
+              "0": 0,
+              "1": 0.25
+            }
+          },
+          "fulfillment": {
+            "zeta": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            },
+            "alpha": {
+              "supplier": {
+                "0": 1,
+                "1": 1
+              }
+            }
+          }
+        },
+        "option_fee": 1,
+        "option_cap": 3,
+        "emergency_price": {
+          "zeta": 20,
+          "alpha": 20
+        }
+      },
+      "expected_objective": 50,
+      "expected_worst": "alpha"
+    },
+    {
+      "id": "history_after_buffered_candidate_miss",
+      "data": {
+        "schema_version": 1,
+        "reliability": {
+          "schema_version": 1,
+          "base": {
+            "schema_version": 1,
+            "resource_id": "single_resource",
+            "suppliers": [
+              "first",
+              "second"
+            ],
+            "scenarios": [
+              "d_second_needed",
+              "b_buffered",
+              "c_first_needed",
+              "a_initial"
+            ],
+            "budget": 50,
+            "unit_cost": {
+              "first": 0.6,
+              "second": 0.6
+            },
+            "procurement_limit": {
+              "first": 30,
+              "second": 30
+            },
+            "demand": {
+              "a_initial": 10,
+              "b_buffered": 20,
+              "c_first_needed": 12,
+              "d_second_needed": 11
+            },
+            "base_fulfillment": {
+              "a_initial": {
+                "first": 0,
+                "second": 0
+              },
+              "b_buffered": {
+                "first": 0,
+                "second": 0
+              },
+              "c_first_needed": {
+                "first": 1,
+                "second": 0
+              },
+              "d_second_needed": {
+                "first": 0,
+                "second": 1
+              }
+            },
+            "shortage_penalty": 10
+          },
+          "levels": {
+            "first": [
+              "0"
+            ],
+            "second": [
+              "0"
+            ]
+          },
+          "fixed_premium": {
+            "first": {
+              "0": 0
+            },
+            "second": {
+              "0": 0
+            }
+          },
+          "unit_premium": {
+            "first": {
+              "0": 0
+            },
+            "second": {
+              "0": 0
+            }
+          },
+          "fulfillment": {
+            "d_second_needed": {
+              "first": {
+                "0": 0
+              },
+              "second": {
+                "0": 1
+              }
+            },
+            "b_buffered": {
+              "first": {
+                "0": 0
+              },
+              "second": {
+                "0": 0
+              }
+            },
+            "c_first_needed": {
+              "first": {
+                "0": 1
+              },
+              "second": {
+                "0": 0
+              }
+            },
+            "a_initial": {
+              "first": {
+                "0": 0
+              },
+              "second": {
+                "0": 0
+              }
+            }
+          }
+        },
+        "option_fee": 1,
+        "option_cap": 100,
+        "emergency_price": {
+          "a_initial": 1,
+          "b_buffered": 0.1,
+          "c_first_needed": 10,
+          "d_second_needed": 10
+        }
+      },
+      "expected_objective": 23.6,
+      "expected_memory_hits": 1,
+      "expected_phase_iii_calls": 2
+    }
+  ]
+}
