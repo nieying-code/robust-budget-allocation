@@ -121,9 +121,60 @@ scenario ordering/hash, solver configuration/status and the frozen protocol hash
 Execution code commit/tree is the external anchor; later artifact commits do not
 recursively identify themselves as their generating code.
 
-The N4 implementation and regression tests pass locally. Clean execution anchors,
-saved evidence comparisons, final test counts and CI references are completed in
-the subsequent evidence commit. No N0/N3 specification conflict is identified.
+Clean-source execution completed with all 15 comparisons PASS:
+
+| Development case | EF objective | A0 objective | A0 iterations / complete oracle calls |
+|---|---:|---:|---:|
+| reliability_no_value | 4 | 4 | 1 / 1 |
+| reliability_value | 6 | 6 | 1 / 1 |
+| reliability_too_expensive | 8 | 8 | 1 / 1 |
+| option_no_value | 4 | 4 | 1 / 1 |
+| option_value | 5 | 5 | 1 / 1 |
+| option_unexercised_scenario | 5 | 5 | 1 / 1 |
+| option_cap_binding | 24 | 24 | 1 / 1 |
+| remaining_budget_binding | 24 | 24 | 1 / 1 |
+| expensive_emergency_no_exercise | 31 | 31 | 2 / 2 |
+| unused_resource | 6 | 6 | 1 / 1 |
+| joint_reliability_option_accounting | 8 | 8 | 1 / 1 |
+| arbitrary_four_levels | 5.8 | 5.8 | 1 / 1 |
+| heterogeneous_supplier_levels | 4 | 4 | 1 / 1 |
+| three_round_cross_failures | 8 | 8 | 3 / 3 |
+| equal_worst_canonical_id | 50 | 50 | 1 / 1 |
+
+Maximum absolute objective difference: 0. Maximum relative difference: 0.
+Maximum final violation: 0. Maximum final global gap: 0. Every accepted master,
+EF and recourse solver outcome is ok/optimal with finite matching lower bound.
+All final incumbent scenarios are feasible. A0 totals 18 iterations/full-oracle
+calls and 29 individual scenario solves; each iteration has exactly |Omega|
+evaluations. These are diagnostics, not speed/performance claims.
+
+- Execution commit: `7da19f3f3eb53c3810f03370026add16342e7071`
+- Execution tree: `0414be523d6a2157e2165c50e921d33682fa36a5`
+- Evidence SHA-256: `5f29bd079a15669f6a08d9924503cc0b5adc5c1c1657f1c31a19809295c21596`
+- Fixture SHA-256: `dce2c8a40ddc35486880b3915e3bfc667d40e1077e4711badc5095cbd780cc92`
+- Environment: Python 3.12.10, Pyomo 6.10.1, gurobipy/Gurobi 13.0.2,
+  gurobi_direct, Threads=1. Real licensed preflight PASS. An integration test
+  verifies one real micro-solve across EF and multi-round A0.
+- Test inventory: 463 tests, comprising 391 solver-free and 72 licensed tests.
+  All original 380 N0–N3 tests are retained unchanged. The 83 new tests cover
+  equations, status failures, bounds, repeat handling, exact scenarios, traces,
+  preflight caching, saved evidence and hashes.
+- Local solver-free: 391 passed, 72 deselected. Local licensed: 72 passed,
+  391 deselected. Both use the final source and saved-evidence content.
+- The unchanged CI workflow automatically discovers the new tests. Hosted
+  solver-free checks and their exact tested SHA are available on Draft PR #5.
+  Licensed CI remains explicitly gated by runner availability; a skipped remote
+  job must not be described as successful. Local real-license validation is separate.
+
+`tests/test_n4_evidence.py` validates every saved pair and original raw recourse,
+source/config/protocol/data hashes and accounting without a solver. Deliberate
+subset/duplicate/decision-binding/worst-ID/raw-cash/local-status/gap/incumbent
+corruption is rejected. `docs/N4_CORRECTNESS_HASHES.sha256` covers the exact 13
+N4 content files, excluding itself to avoid recursion. The artifact commit/tree
+externally anchors the list; N0–N3 inventories are not rewritten.
+
+No N0/N3 specification conflict is identified. No tolerance was changed in response
+to results, no previous model was refactored, and no historical evidence was altered.
 
 N5 remains gated on external review, approval and merge of Draft PR #5, plus
 pre-N5 freezing of A1 scoring/candidate/memory/state-machine/Phase III rules.
