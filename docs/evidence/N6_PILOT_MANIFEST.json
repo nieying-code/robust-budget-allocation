@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "N6_BLOCKED",
+  "classification": "PILOT ONLY — NOT FORMAL SCIENTIFIC PARAMETERS",
+  "protocol_sha256": "ba60833a951ea4ad69ba123ea421329a1387a0cf581645f8bc7040d0c3414b0d",
+  "config_sha256": "974c5b9e13d278cff2ead221d1c838aff4db2c3c3b97314b2595ecb00d6db0d2",
+  "execution_commit": "2ae53f0f608d4457eda1150540f5eb3b618048f3",
+  "execution_tree": "fe4ebee47c12a1aea1540e00619ec448c4854176",
+  "archive_path": "docs/evidence/N6_PILOT_EVIDENCE.json.gz",
+  "archive_sha256": "ba8b56a1c586365cc802463897b7ba2a4d55c6de378751df636ae47990f3aecd",
+  "archive_bytes": 26024,
+  "expected_configs": 16,
+  "expected_runs": 80,
+  "attempted_runs": 3,
+  "unattempted_runs": 77,
+  "successes": 2,
+  "failures": 1,
+  "completed_pairs": 0,
+  "runs": [
+    {
+      "run_id": "n6pilot01-00-m0",
+      "status": "success/certified",
+      "output_sha256": "3e5592a72829652c2a287483a39df0e74acd46bbfe42e1ce6666d4ce0b3e307e",
+      "raw_file_manifest_sha256": "580ed5c72b4e5aa6f0ba0cde46c103d5077e4bcb7605619ac57dfe07d8adc1c4"
+    },
+    {
+      "run_id": "n6pilot01-00-m1",
+      "status": "success/certified",
+      "output_sha256": "d0e863cbfb6d16e0a0e740faddd10d25c44e1199f09a41bc5f430bf357b257c5",
+      "raw_file_manifest_sha256": "edaed0dd4064c7b00d815c38ad956ee506b3add26e24e781ca9d89ee69b0a3f3"
+    },
+    {
+      "run_id": "n6pilot01-00-ef",
+      "status": "incomplete",
+      "output_sha256": "1766e7dee7b04af3781a693740873d46e941f7e5a331c988fab964cb642d85ee",
+      "raw_file_manifest_sha256": "0b3fc14cd80fd845f0be2be1e2b647ef4344bfcb143f8fea9538b30bfaf3e4eb"
+    }
+  ],
+  "external_anchor": "Execution commit/tree above; final artifact commit/tree are Git external anchors; no self-recursive hash."
+}
