@@ -36,7 +36,7 @@ def source_inputs():
 
 def source_gate():
     return validate_source_state(ROOT, required_tracked_paths=source_inputs(),
-                                 scientific_roots=("src", "tests", "scripts", "configs"))
+                                 scientific_roots=("src/robust_budget_allocation", "tests", "scripts", "configs"))
 
 
 def peak_rss():

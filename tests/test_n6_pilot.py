@@ -218,6 +218,18 @@ def test_peak_memory_is_positive_or_explicitly_unavailable():
     assert peak is None or peak > 0
 
 
+def test_source_gate_scopes_executable_package_not_packaging_metadata(monkeypatch):
+    from robust_budget_allocation.pilot import execution
+    captured = {}
+    def gate(root, **kwargs):
+        captured.update(kwargs)
+        return {"tracked_dirty": False}
+    monkeypatch.setattr(execution, "validate_source_state", gate)
+    execution.source_gate()
+    assert captured["scientific_roots"] == ("src/robust_budget_allocation", "tests", "scripts", "configs")
+    assert all("egg-info" not in str(p) for p in captured["required_tracked_paths"])
+
+
 @pytest.mark.gurobi
 @pytest.mark.parametrize("method", ["M0", "M1"])
 def test_ablation_adapter_existing_development_fixture(method):
