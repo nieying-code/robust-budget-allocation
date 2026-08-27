@@ -68,6 +68,8 @@ class BudgetAllocationData:
             raise ValueError("resource_id must identify exactly one resource")
         _number(self.budget, "budget")
         _number(self.shortage_penalty, "shortage_penalty")
+        if self.shortage_penalty <= 0:
+            raise ValueError("shortage_penalty must be strictly positive (s > 0)")
         for name in ("unit_cost", "procurement_limit"):
             values = getattr(self, name)
             _keys(values, self.suppliers, name)

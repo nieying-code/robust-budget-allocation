@@ -24,6 +24,9 @@ def test_development_evidence_integrity_and_case_completeness():
     assert EVIDENCE["status"] == "PASS"
     assert EVIDENCE["case_count"] == len(EXPECTED) == len(EVIDENCE["cases"]) == 11
     assert {row["id"] for row in EVIDENCE["cases"]} == set(EXPECTED)
+    assert all(case["data"]["shortage_penalty"] > 0 for case in FIXTURE["cases"])
+    assert all(row["result"]["audit"]["data"]["shortage_penalty"] > 0
+               for row in EVIDENCE["cases"])
     assert checked_digest(EVIDENCE, "evidence_sha256")
     assert sha256_file(ROOT / EVIDENCE["fixture_path"]) == EVIDENCE["fixture_sha256"]
     assert EVIDENCE["source_gate"]["tracked_dirty"] is False

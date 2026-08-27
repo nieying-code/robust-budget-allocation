@@ -78,9 +78,26 @@ def test_scenario_order_is_explicit_and_identity_sensitive(m0_data):
     assert data.scenario_sha256 != replace(data, scenarios=("a", "b")).scenario_sha256
 
 
-def test_zero_boundary_and_unknown_fields(m0_data):
-    replace(m0_data, budget=0, shortage_penalty=0).validate()
+def test_zero_budget_and_unknown_fields(m0_data):
+    replace(m0_data, budget=0).validate()
     payload = m0_data.to_dict()
     payload["extra_scientific_field"] = 1
     with pytest.raises(ValueError, match="keys"):
         BudgetAllocationData.from_dict(payload)
+
+
+@pytest.mark.parametrize("zero", [0, -0.0])
+@pytest.mark.parametrize("entry_point", ["constructor", "from_dict"])
+def test_zero_shortage_penalty_is_rejected(m0_data, zero, entry_point):
+    with pytest.raises(ValueError, match="shortage_penalty must be strictly positive"):
+        if entry_point == "constructor":
+            replace(m0_data, shortage_penalty=zero)
+        else:
+            payload = m0_data.to_dict()
+            payload["shortage_penalty"] = zero
+            BudgetAllocationData.from_dict(payload)
+
+
+@pytest.mark.parametrize("positive", [1e-12, 0.5, 10])
+def test_positive_penalty_has_no_artificial_lower_cutoff(m0_data, positive):
+    replace(m0_data, shortage_penalty=positive).validate()

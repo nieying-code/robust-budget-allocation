@@ -8,10 +8,12 @@ decision, F-OPTION, inventory age, perishability, restoration, or residual value
 N0 and N1 frozen files remain unchanged. No M1/M2, generic extensive-form framework,
 exact oracle, A0/A1, convergence engine, pilot, or formal experiment is implemented.
 
-The M0 data boundary accepts nonnegative shortage penalty as explicitly requested
-for N2; `s=0` is a degenerate development test, not a change to N0's positive-penalty
-scientific parameter convention. All main hand cases have positive shortage penalty.
-No mathematical conflict with the frozen design was found.
+The production schema requires finite, strictly positive shortage penalty (`s > 0`),
+as frozen in N0. Zero penalty (including negative zero) is a schema rejection test,
+never a solvable correctness instance. Development-only labeling does not relax
+this scientific domain. The external review correctly identified the previous
+zero-penalty acceptance as a specification conflict; this revision corrects it
+without changing the frozen N0 design or the M0 equations.
 
 ## Mathematical specification to code
 
@@ -77,7 +79,7 @@ pilot configuration or formal scientific results are used.
 | unused_resource | 6 | 6 | 0 | 6 | 4 | Low-demand scenario h=4 |
 | nonworst_allocation_slack | 8 | 8 | 20 | 28 | 0 | Full-delivery scenario h=2; impaired scenario u=2 |
 | zero_budget | 0 | 0 | 30 | 30 | 0 | No spending possible |
-| zero_penalty_boundary | 0 | 0 | 0 | 0 | 10 | Degenerate development boundary only |
+| zero_demand_positive_penalty | 0 | 0 | 0 | 0 | 10 | d=0, s=10; no purchase or shortage |
 | zero_price_boundary | 2 | 0 | 10 | 10 | 0 | Free procurement still respects U=2 |
 
 For one supplier, positive marginal loss reduction exceeds purchase cost until demand,
@@ -95,17 +97,17 @@ The evidence command scopes the N1 untracked-input gate to the actual package,
 tests, scripts and configs; editable-install `src/*.egg-info` metadata is not a
 scientific input. This leaves the frozen N1 validator unchanged.
 
-Persisted evidence: `docs/evidence/N2_M0_CORRECTNESS.json`, eleven real Gurobi cases,
-all PASS and equal to the hand-derived values in the table above.
+Persisted evidence is being regenerated from the corrected committed code. The
+previous `31cd350` evidence is superseded and must not be treated as conforming to
+the frozen penalty domain. No N3 work is authorized by this intermediate revision.
 
 - Execution code commit: `2229791b5f6f08fe5d2b2db9f77245c6dc76f787`
 - Execution code tree: `6043ca52a7d8930182e9ac629b86ba9479f657f4`
 - Evidence file SHA-256: `7c6c23bf6ba30847c2cf5df0e214011b1c9c1fdbb3a0a5bda4654638831d2f4e`
 - Environment: CPython 3.12.10, Pyomo 6.10.1, gurobipy/Optimizer 13.0.2,
   gurobi_direct, Threads=1, actual license available, preflight PASS.
-- Local solver-free: 133 passed, 22 deselected.
-- Local licensed: 22 passed, 133 deselected; all use the real locked runtime.
-- Total: 155 tests, including the unchanged N0/N1 suites and twelve independent
+- Local test counts below will be refreshed after evidence regeneration.
+- Previous total: 155 tests, including the unchanged N0/N1 suites and twelve independent
   saved-evidence checks in `tests/test_n2_evidence.py`.
 
 The code commit/tree is the external execution anchor. The later evidence/report
@@ -118,7 +120,6 @@ solver-free job includes equation/schema and saved-evidence verification without
 license. The licensed job remains explicitly gated by licensed-runner availability;
 local licensed success is reported separately, not fabricated as hosted success.
 
-No unresolved numerical/modeling problem or N0 specification conflict was found.
-Objective, cash budget, shortage and unused-resource balances close in all cases.
-There is no technical N3 blocker; N3 remains prohibited until Draft PR #3 is
-externally approved and merged. No N3 work has started.
+The penalty-domain fix remains under validation until refreshed evidence and tests
+are complete. N3 remains prohibited until Draft PR #3 is externally approved and
+merged. No N3 work has started.
