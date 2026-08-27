@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "classification": "PILOT ONLY — NOT FORMAL SCIENTIFIC PARAMETERS",
+  "seeds": [
+    61001,
+    61002
+  ],
+  "timeout_seconds": 120,
+  "startup_timeout_seconds": 60,
+  "postprocess_timeout_seconds": 60,
+  "retry_policy": "no automatic retries",
+  "configs": [
+    {
+      "id": "low-s61001-b45-n12",
+      "risk": "low",
+      "seed": 61001,
+      "budget": 45,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "low-s61001-b90-n12",
+      "risk": "low",
+      "seed": 61001,
+      "budget": 90,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "low-s61001-b150-n12",
+      "risk": "low",
+      "seed": 61001,
+      "budget": 150,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "low-s61002-b45-n12",
+      "risk": "low",
+      "seed": 61002,
+      "budget": 45,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "low-s61002-b90-n12",
+      "risk": "low",
+      "seed": 61002,
+      "budget": 90,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "low-s61002-b150-n12",
+      "risk": "low",
+      "seed": 61002,
+      "budget": 150,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "high-s61001-b45-n12",
+      "risk": "high",
+      "seed": 61001,
+      "budget": 45,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "high-s61001-b90-n12",
+      "risk": "high",
+      "seed": 61001,
+      "budget": 90,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "high-s61001-b150-n12",
+      "risk": "high",
+      "seed": 61001,
+      "budget": 150,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "high-s61002-b45-n12",
+      "risk": "high",
+      "seed": 61002,
+      "budget": 45,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "high-s61002-b90-n12",
+      "risk": "high",
+      "seed": 61002,
+      "budget": 90,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "high-s61002-b150-n12",
+      "risk": "high",
+      "seed": 61002,
+      "budget": 150,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "high-s61001-b90-premium2",
+      "risk": "high",
+      "seed": 61001,
+      "budget": 90,
+      "scenarios": 12,
+      "premium_multiplier": 2,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "high-s61001-b90-fee2",
+      "risk": "high",
+      "seed": 61001,
+      "budget": 90,
+      "scenarios": 12,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 2
+    },
+    {
+      "id": "high-s61001-b90-n24",
+      "risk": "high",
+      "seed": 61001,
+      "budget": 90,
+      "scenarios": 24,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    },
+    {
+      "id": "high-s61002-b90-n24",
+      "risk": "high",
+      "seed": 61002,
+      "budget": 90,
+      "scenarios": 24,
+      "premium_multiplier": 1,
+      "option_fee_multiplier": 1
+    }
+  ]
+}
