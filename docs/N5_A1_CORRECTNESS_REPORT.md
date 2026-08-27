@@ -157,19 +157,19 @@ A1 diagnostics total 21 iterations, 1 Phase I hit, 3 Phase II hits, 17 Phase III
 calls, 17 complete exact-oracle calls and 38 scenario evaluations (all phases).
 These counts are not an algorithm performance conclusion or a reason to retune.
 
-- Execution code commit: `df3b36601aafd103cb501242edbf6857e41f505c`
-- Execution code tree: `503458bf22c12ee9ecdb5ee215d5866f293927b5`
+- Execution code commit: `f3e85a1dfd1bc19e8a709b39829908564a0019d1`
+- Execution code tree: `b73d74cf9ebf636cbe4c427e3bd2f3cec4e7c09b`
 - Evidence: `docs/evidence/N5_EF_A0_A1_CORRECTNESS.json`
-- Evidence SHA-256: `979b59fb6ec39bd440e2ec315bda73591473039366841bed12362a0eee0d01e4`
+- Evidence SHA-256: `9a2f74b12c89659210ad93ae91e53ff8749d6fe45d03a93bf542e935634e7df3`
 - Fixture SHA-256: `a18ed3cbe7fa1c273a3df5614c1f58db77496e90ecfc4139ddddbd114f3816bc`
 - Real environment/preflight: PASS; exact locked versions and Threads=1 as above.
-- Test inventory: 543 tests, 445 solver-free and 98 licensed. The original 463
-  N0–N4 tests are unchanged. N5 adds 52 implementation/state tests and 28 saved
+- Test inventory: 553 tests, 455 solver-free and 98 licensed. The original 463
+  N0–N4 tests are unchanged. N5 adds 52 implementation/state tests and 38 saved
   evidence/hash/replay tests. Positive saved evidence uses real solves; negative
   fault-injection tests are separately labeled and never counted as successful
   scientific solves.
-- Local solver-free: 445 passed, 98 deselected. Local licensed: 98 passed,
-  445 deselected. All saved three-way correctness records are real licensed runs.
+- Review refresh: local solver-free 455 passed (98 deselected); local licensed
+  98 passed (455 deselected). All saved three-way records are real licensed runs.
 - Existing CI automatically discovers the new tests without changing its frozen
   workflow. Exact tested SHA and hosted solver-free checks are on Draft PR #6;
   remote licensed CI remains explicitly gated and may be skipped. Local licensed
@@ -185,6 +185,30 @@ fixture collection. Historical source files and inventories are unchanged.
 `docs/N5_A1_HASHES.sha256` covers the exact 11 N5 content files, excluding itself.
 Protocol/code commits and the final artifact commit/tree are external anchors,
 not recursively self-hashed artifact commits. N0–N4 hashes remain intact.
+
+## PR #6 external-review correction: hit-phase gap replay
+
+The external review identified an audit-only omission: Phase I/II hit replay
+checked the clamped historical gap but not its signed value or tolerance. Four
+new negative tests reproduced acceptance of forged signed_gap/gap_tolerance
+before the fix. They now reject both historical-UB memory-hit tampering and
+non-null fabrication on a candidate hit before any full UB exists.
+
+The verifier now requires all three fields (gap, signed_gap, gap_tolerance).
+Without a historical UB all must be explicitly null; with a UB all three are
+recomputed under the unchanged N4 tolerance. Six additional negative tests
+reject omission of any field in either branch. The trace producer initializes
+the two previously omitted fields to null. This is a serialization change only;
+no solver, bound update, scenario selection, memory/candidate rule, protocol or
+convergence decision is changed.
+
+The 16 cases and all 21 iterations were regenerated from the new clean code
+commit and compared to the previous evidence: after normalizing explicit nulls,
+source audit and runtime metadata, all scientific values and trace decisions
+are identical. Old evidence remains recoverable in Git at `fe3b64ca8ed66a34d943166e21545bae9f5574af`.
+Maximum objective difference/gap/violation remain zero and diagnostics remain
+1/3 phase hits and 17 complete oracle calls. This fixes replay completeness,
+not an error in the previously reviewed A1 solutions.
 
 No specification conflict or scientific N6 blocker is currently identified.
 N6 still requires external review, approval and merge of Draft PR #6, and its own
