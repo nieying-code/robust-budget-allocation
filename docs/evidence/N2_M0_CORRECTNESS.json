@@ -92,16 +92,16 @@
           "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
           "solver_outcome": {
             "message": null,
-            "runtime_seconds": 0.004547199991066009,
+            "runtime_seconds": 0.005096199980471283,
             "solver": "gurobi_direct",
             "status": "optimal",
             "termination_condition": "optimal"
           },
           "source": {
             "git": {
-              "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
               "tracked_dirty": false,
-              "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
               "untracked_paths": []
             },
             "inputs": [
@@ -127,7 +127,7 @@
               },
               {
                 "path": "src/robust_budget_allocation/data/model_data.py",
-                "sha256": "be920eb241ab95a7565923f45be362a2fbc5cb0c49ae7848155bd6c85a19b80c"
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
               },
               {
                 "path": "src/robust_budget_allocation/environment.py",
@@ -203,10 +203,10 @@
               },
               {
                 "path": "tests/fixtures/n2_m0_hand_cases.json",
-                "sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23"
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
               }
             ],
-            "manifest_sha256": "408b01560cf92a204c8304e9c07b4c2ead3c6a01d55e74e5a8d53ac0848642b4",
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
             "packages": {
               "Pyomo": "6.10.1",
               "filelock": "3.32.0",
@@ -251,8 +251,8 @@
             "scenario": 3.0
           }
         },
-        "result_sha256": "29f29509a0e11e432eaea0048f81a6a4a871bec2b2b8af10d52b8942e01534d5",
-        "runtime_seconds": 0.004547199991066009,
+        "result_sha256": "52fdb59792568de00bf653259a1a845c860cc63d26702f02da2c4439660da033",
+        "runtime_seconds": 0.005096199980471283,
         "status": "optimal",
         "termination_condition": "optimal",
         "u": {
@@ -358,16 +358,16 @@
           "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
           "solver_outcome": {
             "message": null,
-            "runtime_seconds": 0.004334600002039224,
+            "runtime_seconds": 0.004786700010299683,
             "solver": "gurobi_direct",
             "status": "optimal",
             "termination_condition": "optimal"
           },
           "source": {
             "git": {
-              "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
               "tracked_dirty": false,
-              "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
               "untracked_paths": []
             },
             "inputs": [
@@ -393,7 +393,7 @@
               },
               {
                 "path": "src/robust_budget_allocation/data/model_data.py",
-                "sha256": "be920eb241ab95a7565923f45be362a2fbc5cb0c49ae7848155bd6c85a19b80c"
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
               },
               {
                 "path": "src/robust_budget_allocation/environment.py",
@@ -469,10 +469,10 @@
               },
               {
                 "path": "tests/fixtures/n2_m0_hand_cases.json",
-                "sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23"
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
               }
             ],
-            "manifest_sha256": "408b01560cf92a204c8304e9c07b4c2ead3c6a01d55e74e5a8d53ac0848642b4",
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
             "packages": {
               "Pyomo": "6.10.1",
               "filelock": "3.32.0",
@@ -517,8 +517,8 @@
             "scenario": 2.0
           }
         },
-        "result_sha256": "6ea5da896e808c85942cae28976d78a46b6cc0f049b93437bb07ee454deb77d1",
-        "runtime_seconds": 0.004334600002039224,
+        "result_sha256": "915d32d5d057ddd9ca6c4fb41f22cd035272b299d0b5a184caac0d0cb4e249e3",
+        "runtime_seconds": 0.004786700010299683,
         "status": "optimal",
         "termination_condition": "optimal",
         "u": {
@@ -624,16 +624,16 @@
           "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
           "solver_outcome": {
             "message": null,
-            "runtime_seconds": 0.0031872999970801175,
+            "runtime_seconds": 0.006006799987517297,
             "solver": "gurobi_direct",
             "status": "optimal",
             "termination_condition": "optimal"
           },
           "source": {
             "git": {
-              "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
               "tracked_dirty": false,
-              "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
               "untracked_paths": []
             },
             "inputs": [
@@ -659,7 +659,7 @@
               },
               {
                 "path": "src/robust_budget_allocation/data/model_data.py",
-                "sha256": "be920eb241ab95a7565923f45be362a2fbc5cb0c49ae7848155bd6c85a19b80c"
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
               },
               {
                 "path": "src/robust_budget_allocation/environment.py",
@@ -735,10 +735,10 @@
               },
               {
                 "path": "tests/fixtures/n2_m0_hand_cases.json",
-                "sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23"
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
               }
             ],
-            "manifest_sha256": "408b01560cf92a204c8304e9c07b4c2ead3c6a01d55e74e5a8d53ac0848642b4",
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
             "packages": {
               "Pyomo": "6.10.1",
               "filelock": "3.32.0",
@@ -783,8 +783,8 @@
             "scenario": 1.0
           }
         },
-        "result_sha256": "e3e629e2510470039dd2d88cac65007b6edee117398c6891291f2029f6fd81e0",
-        "runtime_seconds": 0.0031872999970801175,
+        "result_sha256": "ffb268a0968350a374348d50293691c64490f94906e707279a80360e31ea3f88",
+        "runtime_seconds": 0.006006799987517297,
         "status": "optimal",
         "termination_condition": "optimal",
         "u": {
@@ -895,16 +895,16 @@
           "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
           "solver_outcome": {
             "message": null,
-            "runtime_seconds": 0.004785800003446639,
+            "runtime_seconds": 0.005568800028413534,
             "solver": "gurobi_direct",
             "status": "optimal",
             "termination_condition": "optimal"
           },
           "source": {
             "git": {
-              "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
               "tracked_dirty": false,
-              "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
               "untracked_paths": []
             },
             "inputs": [
@@ -930,7 +930,7 @@
               },
               {
                 "path": "src/robust_budget_allocation/data/model_data.py",
-                "sha256": "be920eb241ab95a7565923f45be362a2fbc5cb0c49ae7848155bd6c85a19b80c"
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
               },
               {
                 "path": "src/robust_budget_allocation/environment.py",
@@ -1006,10 +1006,10 @@
               },
               {
                 "path": "tests/fixtures/n2_m0_hand_cases.json",
-                "sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23"
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
               }
             ],
-            "manifest_sha256": "408b01560cf92a204c8304e9c07b4c2ead3c6a01d55e74e5a8d53ac0848642b4",
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
             "packages": {
               "Pyomo": "6.10.1",
               "filelock": "3.32.0",
@@ -1056,8 +1056,8 @@
             "scenario": 4.0
           }
         },
-        "result_sha256": "68046c5cb59dd3ec64da847bfdeca548782bcf93065d512ae850ccf26b289a38",
-        "runtime_seconds": 0.004785800003446639,
+        "result_sha256": "6f386cfca7c5da490bade4817439b814c51369626369253f5e9270643df63b58",
+        "runtime_seconds": 0.005568800028413534,
         "status": "optimal",
         "termination_condition": "optimal",
         "u": {
@@ -1163,16 +1163,16 @@
           "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
           "solver_outcome": {
             "message": null,
-            "runtime_seconds": 0.00474110001232475,
+            "runtime_seconds": 0.003718000021763146,
             "solver": "gurobi_direct",
             "status": "optimal",
             "termination_condition": "optimal"
           },
           "source": {
             "git": {
-              "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
               "tracked_dirty": false,
-              "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
               "untracked_paths": []
             },
             "inputs": [
@@ -1198,7 +1198,7 @@
               },
               {
                 "path": "src/robust_budget_allocation/data/model_data.py",
-                "sha256": "be920eb241ab95a7565923f45be362a2fbc5cb0c49ae7848155bd6c85a19b80c"
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
               },
               {
                 "path": "src/robust_budget_allocation/environment.py",
@@ -1274,10 +1274,10 @@
               },
               {
                 "path": "tests/fixtures/n2_m0_hand_cases.json",
-                "sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23"
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
               }
             ],
-            "manifest_sha256": "408b01560cf92a204c8304e9c07b4c2ead3c6a01d55e74e5a8d53ac0848642b4",
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
             "packages": {
               "Pyomo": "6.10.1",
               "filelock": "3.32.0",
@@ -1322,8 +1322,8 @@
             "scenario": 2.0
           }
         },
-        "result_sha256": "a898e3b4d3ad8bda75b9e30e9bc0ea40b9368ca1c12b796c69454671204c4d3b",
-        "runtime_seconds": 0.00474110001232475,
+        "result_sha256": "5577729a51bf57718c0d94db181a8f504730fa6d3dfe794e942b658ff8713f81",
+        "runtime_seconds": 0.003718000021763146,
         "status": "optimal",
         "termination_condition": "optimal",
         "u": {
@@ -1429,16 +1429,16 @@
           "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
           "solver_outcome": {
             "message": null,
-            "runtime_seconds": 0.0034536999883130193,
+            "runtime_seconds": 0.003404200018849224,
             "solver": "gurobi_direct",
             "status": "optimal",
             "termination_condition": "optimal"
           },
           "source": {
             "git": {
-              "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
               "tracked_dirty": false,
-              "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
               "untracked_paths": []
             },
             "inputs": [
@@ -1464,7 +1464,7 @@
               },
               {
                 "path": "src/robust_budget_allocation/data/model_data.py",
-                "sha256": "be920eb241ab95a7565923f45be362a2fbc5cb0c49ae7848155bd6c85a19b80c"
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
               },
               {
                 "path": "src/robust_budget_allocation/environment.py",
@@ -1540,10 +1540,10 @@
               },
               {
                 "path": "tests/fixtures/n2_m0_hand_cases.json",
-                "sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23"
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
               }
             ],
-            "manifest_sha256": "408b01560cf92a204c8304e9c07b4c2ead3c6a01d55e74e5a8d53ac0848642b4",
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
             "packages": {
               "Pyomo": "6.10.1",
               "filelock": "3.32.0",
@@ -1588,8 +1588,8 @@
             "scenario": 0.0
           }
         },
-        "result_sha256": "27ab5bd7e9e75a5e1b2da8b085cddf9302c23eee00c3402ee1cf0e6b90431790",
-        "runtime_seconds": 0.0034536999883130193,
+        "result_sha256": "0d866aa314c47029e81f402740fc74fdbe4d4231a0c365bc92621b7e4be0a0e4",
+        "runtime_seconds": 0.003404200018849224,
         "status": "optimal",
         "termination_condition": "optimal",
         "u": {
@@ -1703,16 +1703,16 @@
           "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
           "solver_outcome": {
             "message": null,
-            "runtime_seconds": 0.003460100037045777,
+            "runtime_seconds": 0.003825699968729168,
             "solver": "gurobi_direct",
             "status": "optimal",
             "termination_condition": "optimal"
           },
           "source": {
             "git": {
-              "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
               "tracked_dirty": false,
-              "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
               "untracked_paths": []
             },
             "inputs": [
@@ -1738,7 +1738,7 @@
               },
               {
                 "path": "src/robust_budget_allocation/data/model_data.py",
-                "sha256": "be920eb241ab95a7565923f45be362a2fbc5cb0c49ae7848155bd6c85a19b80c"
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
               },
               {
                 "path": "src/robust_budget_allocation/environment.py",
@@ -1814,10 +1814,10 @@
               },
               {
                 "path": "tests/fixtures/n2_m0_hand_cases.json",
-                "sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23"
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
               }
             ],
-            "manifest_sha256": "408b01560cf92a204c8304e9c07b4c2ead3c6a01d55e74e5a8d53ac0848642b4",
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
             "packages": {
               "Pyomo": "6.10.1",
               "filelock": "3.32.0",
@@ -1867,8 +1867,8 @@
             "low": 2.0
           }
         },
-        "result_sha256": "c7cb68612d057a85c40665179d5d4d4209066567a2afa19b2483a1b1b5ebb236",
-        "runtime_seconds": 0.003460100037045777,
+        "result_sha256": "000f155c906a08d6a5c95d17e03bcad0d121ac3d93deadb6c5a5eeb399fe5503",
+        "runtime_seconds": 0.003825699968729168,
         "status": "optimal",
         "termination_condition": "optimal",
         "u": {
@@ -1984,16 +1984,16 @@
           "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
           "solver_outcome": {
             "message": null,
-            "runtime_seconds": 0.004243800009135157,
+            "runtime_seconds": 0.005701899994164705,
             "solver": "gurobi_direct",
             "status": "optimal",
             "termination_condition": "optimal"
           },
           "source": {
             "git": {
-              "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
               "tracked_dirty": false,
-              "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
               "untracked_paths": []
             },
             "inputs": [
@@ -2019,7 +2019,7 @@
               },
               {
                 "path": "src/robust_budget_allocation/data/model_data.py",
-                "sha256": "be920eb241ab95a7565923f45be362a2fbc5cb0c49ae7848155bd6c85a19b80c"
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
               },
               {
                 "path": "src/robust_budget_allocation/environment.py",
@@ -2095,10 +2095,10 @@
               },
               {
                 "path": "tests/fixtures/n2_m0_hand_cases.json",
-                "sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23"
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
               }
             ],
-            "manifest_sha256": "408b01560cf92a204c8304e9c07b4c2ead3c6a01d55e74e5a8d53ac0848642b4",
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
             "packages": {
               "Pyomo": "6.10.1",
               "filelock": "3.32.0",
@@ -2148,8 +2148,8 @@
             "impaired": 4.0
           }
         },
-        "result_sha256": "d6ba0bf7f9e86ced31a0d0261f4be42c77500fd64cf36c5df3fe7ee72377e129",
-        "runtime_seconds": 0.004243800009135157,
+        "result_sha256": "c87d860b84d89ea5630dfd52774d5fe55a6021da3f1a3eea085c15863879cbb2",
+        "runtime_seconds": 0.005701899994164705,
         "status": "optimal",
         "termination_condition": "optimal",
         "u": {
@@ -2257,16 +2257,16 @@
           "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
           "solver_outcome": {
             "message": null,
-            "runtime_seconds": 0.003361399983987212,
+            "runtime_seconds": 0.004895699967164546,
             "solver": "gurobi_direct",
             "status": "optimal",
             "termination_condition": "optimal"
           },
           "source": {
             "git": {
-              "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
               "tracked_dirty": false,
-              "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
               "untracked_paths": []
             },
             "inputs": [
@@ -2292,7 +2292,7 @@
               },
               {
                 "path": "src/robust_budget_allocation/data/model_data.py",
-                "sha256": "be920eb241ab95a7565923f45be362a2fbc5cb0c49ae7848155bd6c85a19b80c"
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
               },
               {
                 "path": "src/robust_budget_allocation/environment.py",
@@ -2368,10 +2368,10 @@
               },
               {
                 "path": "tests/fixtures/n2_m0_hand_cases.json",
-                "sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23"
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
               }
             ],
-            "manifest_sha256": "408b01560cf92a204c8304e9c07b4c2ead3c6a01d55e74e5a8d53ac0848642b4",
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
             "packages": {
               "Pyomo": "6.10.1",
               "filelock": "3.32.0",
@@ -2416,8 +2416,8 @@
             "scenario": 0.0
           }
         },
-        "result_sha256": "1afdc3039c3d15391d7b8043fb39e95f98130bc8f62db40ff82f4032c344ab51",
-        "runtime_seconds": 0.003361399983987212,
+        "result_sha256": "686c615286db544a11601935a93bc485af827ebac14eece5a69cdd32613fd924",
+        "runtime_seconds": 0.004895699967164546,
         "status": "optimal",
         "termination_condition": "optimal",
         "u": {
@@ -2453,7 +2453,7 @@
           "supplier": 0
         },
         "u": {
-          "scenario": 3
+          "scenario": 0
         },
         "unused_budget": 10,
         "worst_loss": 0,
@@ -2461,7 +2461,7 @@
           "scenario": 0
         }
       },
-      "id": "zero_penalty_boundary",
+      "id": "zero_demand_positive_penalty",
       "result": {
         "C_Q": 0.0,
         "audit": {
@@ -2475,7 +2475,7 @@
             },
             "budget": 10.0,
             "demand": {
-              "scenario": 3.0
+              "scenario": 0.0
             },
             "procurement_limit": {
               "supplier": 10.0
@@ -2485,7 +2485,7 @@
               "scenario"
             ],
             "schema_version": 1,
-            "shortage_penalty": 0.0,
+            "shortage_penalty": 10.0,
             "suppliers": [
               "supplier"
             ],
@@ -2493,7 +2493,7 @@
               "supplier": 1.0
             }
           },
-          "data_sha256": "c21f818968c20928440b7f846553116cc070edee91363c151c6c2b452c9eb053",
+          "data_sha256": "2896947186de0f468932595f81cb97c5445b39472a26a4927f5a019a192ad5d7",
           "environment": {
             "gurobi_optimizer": "13.0.2",
             "gurobipy": "13.0.2",
@@ -2512,7 +2512,7 @@
             "relative_tolerance": 1e-09,
             "scope": "N2 development only; not N4 E1"
           },
-          "scenario_sha256": "bcae7b79f1ccc15b82ad86f70071e047637c877cf4d52056b9bb91717fcde5f6",
+          "scenario_sha256": "82991d77126d5fc6dca8583a0752b07697b8f051fc7731653690e5e07cccd35f",
           "solver_config": {
             "feasibility_tolerance": null,
             "interface": "gurobi_direct",
@@ -2523,16 +2523,16 @@
           "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
           "solver_outcome": {
             "message": null,
-            "runtime_seconds": 0.004561399982776493,
+            "runtime_seconds": 0.003204900014679879,
             "solver": "gurobi_direct",
             "status": "optimal",
             "termination_condition": "optimal"
           },
           "source": {
             "git": {
-              "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
               "tracked_dirty": false,
-              "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
               "untracked_paths": []
             },
             "inputs": [
@@ -2558,7 +2558,7 @@
               },
               {
                 "path": "src/robust_budget_allocation/data/model_data.py",
-                "sha256": "be920eb241ab95a7565923f45be362a2fbc5cb0c49ae7848155bd6c85a19b80c"
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
               },
               {
                 "path": "src/robust_budget_allocation/environment.py",
@@ -2634,10 +2634,10 @@
               },
               {
                 "path": "tests/fixtures/n2_m0_hand_cases.json",
-                "sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23"
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
               }
             ],
-            "manifest_sha256": "408b01560cf92a204c8304e9c07b4c2ead3c6a01d55e74e5a8d53ac0848642b4",
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
             "packages": {
               "Pyomo": "6.10.1",
               "filelock": "3.32.0",
@@ -2676,18 +2676,18 @@
           },
           "theta": 0.0,
           "u": {
-            "scenario": 3.0
+            "scenario": 0.0
           },
           "x": {
             "scenario": 0.0
           }
         },
-        "result_sha256": "7c0e599ae1199e465aeba0a524039fe7dd459461c9fd8f466cff5574809bdb03",
-        "runtime_seconds": 0.004561399982776493,
+        "result_sha256": "3dbd6e043bb590fa7b52b399a7ce0e70fd97b9b2a9aa7681dab251ab56f8d086",
+        "runtime_seconds": 0.003204900014679879,
         "status": "optimal",
         "termination_condition": "optimal",
         "u": {
-          "scenario": 3.0
+          "scenario": 0.0
         },
         "unused_budget": 10.0,
         "worst_loss": 0.0,
@@ -2789,16 +2789,16 @@
           "solver_config_sha256": "471f39939c9c114439143508fd68d5bb0f4fa5016c89aeef6a2e4241d29ea825",
           "solver_outcome": {
             "message": null,
-            "runtime_seconds": 0.0038526999996975064,
+            "runtime_seconds": 0.003233299998100847,
             "solver": "gurobi_direct",
             "status": "optimal",
             "termination_condition": "optimal"
           },
           "source": {
             "git": {
-              "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+              "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
               "tracked_dirty": false,
-              "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+              "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
               "untracked_paths": []
             },
             "inputs": [
@@ -2824,7 +2824,7 @@
               },
               {
                 "path": "src/robust_budget_allocation/data/model_data.py",
-                "sha256": "be920eb241ab95a7565923f45be362a2fbc5cb0c49ae7848155bd6c85a19b80c"
+                "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
               },
               {
                 "path": "src/robust_budget_allocation/environment.py",
@@ -2900,10 +2900,10 @@
               },
               {
                 "path": "tests/fixtures/n2_m0_hand_cases.json",
-                "sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23"
+                "sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002"
               }
             ],
-            "manifest_sha256": "408b01560cf92a204c8304e9c07b4c2ead3c6a01d55e74e5a8d53ac0848642b4",
+            "manifest_sha256": "07e40c22e35511cb554d60045dfc8efe1c3cc84bd1e41632564451e39147f292",
             "packages": {
               "Pyomo": "6.10.1",
               "filelock": "3.32.0",
@@ -2948,8 +2948,8 @@
             "scenario": 2.0
           }
         },
-        "result_sha256": "97e0a0162e8dc212281888c6be07959fef6fb9de5a70b8774db70e02c9665b91",
-        "runtime_seconds": 0.0038526999996975064,
+        "result_sha256": "3f63d7226444abc2394fdc9ade77560be90c4e676666b8859aeea654c627a140",
+        "runtime_seconds": 0.003233299998100847,
         "status": "optimal",
         "termination_condition": "optimal",
         "u": {
@@ -2966,18 +2966,18 @@
     }
   ],
   "classification": "development/correctness_evidence",
-  "evidence_sha256": "7d85339aeb5db94ada9d667b95e749e47a5085d87acdc07c49b61ef44ca8a036",
+  "evidence_sha256": "d762efdafa703451fd739c385390a58b05156934f8251b69f227c322f2d2d9c9",
   "fixture_path": "tests/fixtures/n2_m0_hand_cases.json",
-  "fixture_sha256": "866ce0e75e72c9f8b574e8c6608b2c78a08cf60536453168047823925a15ce23",
+  "fixture_sha256": "45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002",
   "schema_version": 1,
   "source_gate": {
-    "commit_sha": "2229791b5f6f08fe5d2b2db9f77245c6dc76f787",
+    "commit_sha": "c31064b8403def4d572c5ca7380b7fb26b712366",
     "tracked_dirty": false,
     "tracked_input_paths": [
       "scripts/n2_m0_correctness.py",
       "tests/fixtures/n2_m0_hand_cases.json"
     ],
-    "tree_sha": "6043ca52a7d8930182e9ac629b86ba9479f657f4",
+    "tree_sha": "91e94cf39380903eb436691451a7e2f8a10ca159",
     "untracked_paths": [],
     "untracked_scientific_paths": []
   },

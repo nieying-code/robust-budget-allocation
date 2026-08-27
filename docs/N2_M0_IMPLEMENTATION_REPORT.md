@@ -97,17 +97,21 @@ The evidence command scopes the N1 untracked-input gate to the actual package,
 tests, scripts and configs; editable-install `src/*.egg-info` metadata is not a
 scientific input. This leaves the frozen N1 validator unchanged.
 
-Persisted evidence is being regenerated from the corrected committed code. The
-previous `31cd350` evidence is superseded and must not be treated as conforming to
-the frozen penalty domain. No N3 work is authorized by this intermediate revision.
+Persisted evidence: `docs/evidence/N2_M0_CORRECTNESS.json`, regenerated from the
+corrected clean committed code. All eleven real Gurobi cases PASS, have strictly
+positive shortage penalty, and match the hand-derived values above. The previous
+`31cd350` evidence is superseded, retained only in Git history, and must not be
+treated as conforming to the frozen penalty domain.
 
-- Execution code commit: `2229791b5f6f08fe5d2b2db9f77245c6dc76f787`
-- Execution code tree: `6043ca52a7d8930182e9ac629b86ba9479f657f4`
-- Evidence file SHA-256: `7c6c23bf6ba30847c2cf5df0e214011b1c9c1fdbb3a0a5bda4654638831d2f4e`
+- Execution code commit: `c31064b8403def4d572c5ca7380b7fb26b712366`
+- Execution code tree: `91e94cf39380903eb436691451a7e2f8a10ca159`
+- Evidence file SHA-256: `6e3c5f8a8c8375c716e75611a2f52d49b20cd97304d52a1c2c0bd967ca8ca5bd`
+- Fixture file SHA-256: `45bb0ba28251293ea78fe744a7104fb4611961910d3755c21a79168ae883f002`
 - Environment: CPython 3.12.10, Pyomo 6.10.1, gurobipy/Optimizer 13.0.2,
   gurobi_direct, Threads=1, actual license available, preflight PASS.
-- Local test counts below will be refreshed after evidence regeneration.
-- Previous total: 155 tests, including the unchanged N0/N1 suites and twelve independent
+- Local solver-free: 140 passed, 22 deselected.
+- Local licensed: 22 passed, 140 deselected; all use the real locked runtime.
+- Total: 162 tests, including the unchanged N0/N1 suites and twelve independent
   saved-evidence checks in `tests/test_n2_evidence.py`.
 
 The code commit/tree is the external execution anchor. The later evidence/report
@@ -120,6 +124,11 @@ solver-free job includes equation/schema and saved-evidence verification without
 license. The licensed job remains explicitly gated by licensed-runner availability;
 local licensed success is reported separately, not fabricated as hosted success.
 
-The penalty-domain fix remains under validation until refreshed evidence and tests
-are complete. N3 remains prohibited until Draft PR #3 is externally approved and
-merged. No N3 work has started.
+The identified N0 penalty-domain conflict is corrected: construction and JSON
+deserialization reject zero/negative-zero penalty; positive values have no artificial
+lower cutoff. Zero budget, demand, price and fulfillment remain valid where N0
+permits them. No M0 equation or N0/N1 frozen file was changed.
+
+The refreshed evidence and local regression tests pass. No unresolved N2 blocker is
+known; targeted external review is still required. N3 remains prohibited until
+Draft PR #3 is externally approved and merged. No N3 work has started.
