@@ -127,9 +127,64 @@ environment, code/source, full data/config, scenario order/hash, N4/N5 protocol
 hashes, solver outcomes and status. Output is atomic and cannot silently overwrite
 existing evidence. All records are development/correctness_evidence.
 
-Clean execution anchors, aggregated correctness results, final tests and CI are
-recorded in the following artifact commit. Protocol/code commits are external
-anchors, not recursively self-hashed artifact commits. N0–N4 hashes remain intact.
+Clean-source execution completed with all 16 three-way cases PASS:
+
+| Case | EF = A0 = A1 objective | A1 iterations | Memory hits | Candidate hits | Phase III calls |
+|---|---:|---:|---:|---:|---:|
+| reliability_no_value | 4 | 1 | 0 | 0 | 1 |
+| reliability_value | 6 | 1 | 0 | 0 | 1 |
+| reliability_too_expensive | 8 | 1 | 0 | 0 | 1 |
+| option_no_value | 4 | 1 | 0 | 0 | 1 |
+| option_value | 5 | 1 | 0 | 0 | 1 |
+| option_unexercised_scenario | 5 | 1 | 0 | 0 | 1 |
+| option_cap_binding | 24 | 1 | 0 | 0 | 1 |
+| remaining_budget_binding | 24 | 1 | 0 | 0 | 1 |
+| expensive_emergency_no_exercise | 31 | 2 | 0 | 1 | 1 |
+| unused_resource | 6 | 1 | 0 | 0 | 1 |
+| joint_reliability_option_accounting | 8 | 1 | 0 | 0 | 1 |
+| arbitrary_four_levels | 5.8 | 1 | 0 | 0 | 1 |
+| heterogeneous_supplier_levels | 4 | 1 | 0 | 0 | 1 |
+| three_round_cross_failures | 8 | 3 | 0 | 2 | 1 |
+| equal_worst_canonical_id | 50 | 1 | 0 | 0 | 1 |
+| history_after_buffered_candidate_miss | 23.6 | 3 | 1 | 0 | 2 |
+
+Maximum three-way absolute objective difference: 0. Maximum relative difference: 0.
+Maximum final A1 gap and full-oracle violation: 0. All 16 returned incumbents have
+valid full-Omega feasibility proofs bound to their producing Phase III. No partial
+evaluation generated a candidate/global UB or convergence certificate.
+
+A1 diagnostics total 21 iterations, 1 Phase I hit, 3 Phase II hits, 17 Phase III
+calls, 17 complete exact-oracle calls and 38 scenario evaluations (all phases).
+These counts are not an algorithm performance conclusion or a reason to retune.
+
+- Execution code commit: `df3b36601aafd103cb501242edbf6857e41f505c`
+- Execution code tree: `503458bf22c12ee9ecdb5ee215d5866f293927b5`
+- Evidence: `docs/evidence/N5_EF_A0_A1_CORRECTNESS.json`
+- Evidence SHA-256: `979b59fb6ec39bd440e2ec315bda73591473039366841bed12362a0eee0d01e4`
+- Fixture SHA-256: `a18ed3cbe7fa1c273a3df5614c1f58db77496e90ecfc4139ddddbd114f3816bc`
+- Real environment/preflight: PASS; exact locked versions and Threads=1 as above.
+- Test inventory: 543 tests, 445 solver-free and 98 licensed. The original 463
+  N0–N4 tests are unchanged. N5 adds 52 implementation/state tests and 28 saved
+  evidence/hash/replay tests. Positive saved evidence uses real solves; negative
+  fault-injection tests are separately labeled and never counted as successful
+  scientific solves.
+- Local solver-free: 445 passed, 98 deselected. Local licensed: 98 passed,
+  445 deselected. All saved three-way correctness records are real licensed runs.
+- Existing CI automatically discovers the new tests without changing its frozen
+  workflow. Exact tested SHA and hosted solver-free checks are on Draft PR #6;
+  remote licensed CI remains explicitly gated and may be skipped. Local licensed
+  verification is separate from hosted CI success.
+
+`tests/test_n5_evidence.py` replays every saved score, rank, memory transition,
+first-hit choice, partial-phase UB restriction, full certificate and incumbent.
+It rejects forged partial UB, skipped certification, future memory, scores/ranking,
+truncated Omega proofs, incorrect incumbent binding and altered call counts.
+All 15 N4 input cases are checked byte-equivalently as parsed JSON within the new
+fixture collection. Historical source files and inventories are unchanged.
+
+`docs/N5_A1_HASHES.sha256` covers the exact 11 N5 content files, excluding itself.
+Protocol/code commits and the final artifact commit/tree are external anchors,
+not recursively self-hashed artifact commits. N0–N4 hashes remain intact.
 
 No specification conflict or scientific N6 blocker is currently identified.
 N6 still requires external review, approval and merge of Draft PR #6, and its own
