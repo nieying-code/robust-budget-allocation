@@ -67,6 +67,8 @@ copies are validated by the production schema, including for development inputs.
   results, independent accounting validation and N1 runtime/audit integration.
 - `tests/test_n3_schema.py`, `tests/test_n3_models.py`: schema, structure, failure,
   mechanism, repeated-solve and degeneration tests.
+- `tests/test_n3_evidence.py`: independent saved-result accounting, source/hash
+  verification, nesting, and comparison against original N2 scenario results.
 - `tests/fixtures/n3_mechanisms.json`: thirteen hand-verifiable development cases.
 - `scripts/n3_mechanism_correctness.py`: one-shot clean-source evidence generation.
 
@@ -148,9 +150,27 @@ source file SHA, full data/config SHA, environment, solver version and actual st
 The code execution commit/tree is the external anchor; the later evidence/report
 commit does not recursively hash itself. No formal experiment outputs are created.
 
-Implementation tests currently pass: 270 total, including 49 real licensed tests.
-Final execution hashes, saved-evidence verification totals and CI status will be
-recorded after the clean execution commit and evidence generation.
+Persisted execution: 71 optimal solve records; 13 mechanism cases, 13 paired
+degeneration cases and 11 M0 regression cases all PASS.
+
+- Execution code commit: `ec624e38b4ebf06d20f605671017e7baa19b883c`
+- Execution code tree: `bc34a776b74dbcf050e49cf791b0a29c9dc05e26`
+- Evidence file SHA-256: `17b61f8db6663d54b706101c4109b522f303046f2b6925553cbf2da412057e48`
+- Fixture file SHA-256: `9db4fb519c72dc155260c1c5c5b64fd4e1b619adc821dab5c82733ebcd312b8c`
+- Environment: CPython 3.12.10, Pyomo 6.10.1, gurobipy/Optimizer 13.0.2,
+  gurobi_direct, Threads=1; real license available; preflight PASS.
+- Test inventory: 380 tests, including 331 solver-free and 49 real licensed tests;
+  110 saved N3 evidence/inventory checks are included in the solver-free group.
+- Local solver-free: 331 passed, 49 deselected. Local licensed: 49 passed,
+  331 deselected. See Draft PR #4 checks for the exact CI-tested SHA.
+  Hosted licensed CI remains explicitly gated and must not be
+  reported as passed when it is skipped; local real-license evidence is separate.
+
+`docs/N3_M1_M2_HASHES.sha256` covers the exact twelve N3 new/modified content files
+(including the inventory test and this report). The list excludes itself to avoid
+recursive hashing; Git commit/tree externally anchor both the list and all content.
+The test rejects missing/duplicate/absolute/traversal paths and missing/non-file or
+hash-mismatching entries. Neither N0 nor N1 hash inventories are rewritten.
 
 No N0 specification conflict or scientific-model blocker has been identified.
 N4 entry still requires external review, approval and merge of Draft PR #4 and
