@@ -2,8 +2,8 @@
 
 Status before the conditionally authorized retry: engineering validation PASSED
 (550 solver-free, 100 real licensed tests; three Windows stress bursts passed).
-Full pilot resume and N7 remain NOT AUTHORIZED. This report will append
-the one diagnostic outcome without changing the frozen protocol/config.
+The ONE authorized EF diagnostic subsequently PASSED; outcome is appended below.
+Full pilot resume, another diagnostic and N7 remain NOT AUTHORIZED.
 
 ## Scope and implementation
 
@@ -70,3 +70,46 @@ Even if it passes, this proves only that this single repaired supervised EF
 attempt completed; it neither proves the original race's exact root cause nor
 finishes N6 scientific diagnosis. No A0/A1, capacity, sensitivity, or paper claim
 can be derived. Stop for external review on the same Draft PR #7.
+
+## Single diagnostic outcome — execution stopped after this attempt
+
+The conditional prerequisites were met and committed before launch:
+execution commit 01cd346d60c2bb0fcf6731f2c9806e17b47e3d57,
+tree a5f6a96a005bf4076873c59aefcf5709cbf7ad0a; source gate was clean.
+The recorded source-input hashes exactly match the pre-diagnostic validation.
+Protocol/config/seed/budget/scenarios/solver/tolerances equal the failed parent.
+
+- New run n6diagnostic01-ef-retry: success/certified; worker exit 0.
+- End-to-end supervisor wall: 3.180571799981408 seconds.
+- Frozen EF call runtime: 0.35578520002309233 seconds; NOT comparative evidence.
+- Preflight: 0.1804565999773331 seconds, outside algorithm timing.
+- Heartbeat read conflicts: 0; final stage complete; cleanup success=true,
+  attempted=false because the worker exited normally. No exception was observed.
+- Objective=LB=UB=495.7182976095696; gap=signed_gap=exact_violation=0;
+  gap_tolerance=5.957182976095696e-7. Solver-free certificate/accounting replay PASS.
+- Compact archive docs/evidence/N6_EF_DIAGNOSTIC_RETRY.json.gz: 23,595 bytes,
+  SHA256 7478809a666e27cbeac9aa6917d5d0e032a925d62f8c1f8c4ff777d737da53bf.
+- Parent remains incomplete/certified=false. Read-only comparison of ALL THREE
+  old run directories against the reviewed archive found them unchanged.
+- Old/new source proofs are separately authenticated; this EF is explicitly
+  rejected as a scientific group member. Completed configurations/pairs remain 0.
+
+Only one diagnostic attempt occurred. The one-use authorization is consumed;
+the remaining 77 pilot runs were not started. No A0/A1 comparison or N8 capacity
+projection exists. Scientific informativeness remains NOT ASSESSABLE. A single
+conflict-free success does not establish the precise original race root cause.
+N6 remains paused for external review; do not interpret diagnostic PASS as N6
+READY or authorization to restart. N0–N5 and the frozen N6 protocol/config remain
+unchanged. Post-run work is limited to solver-free artifact replay, docs, hashes,
+and the existing Draft PR #7. CI outcomes are attached to its final artifact SHA.
+
+Final artifact verification: 12 new saved-diagnostic tests passed, including
+re-sealed scope/lineage forgeries and old/new source replay without local Git
+history. The complete solver-free regression passed: 562 passed, 100 deselected
+(52.37 seconds), including the Windows synthetic stress checks again. The first
+post-artifact test command accidentally used the nonexistent marker `licensed`
+instead of `gurobi`; that unit-test invocation was interrupted, its process tree
+was checked absent, and it is not counted as a passing suite. It launched no
+additional pilot run. The correct `not gurobi` run above supplies final regression
+evidence. Pre-diagnostic real licensed validation remains 100/100 on the identical
+execution source; no new scientific execution was requested after the diagnostic.

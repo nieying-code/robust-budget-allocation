@@ -2,6 +2,12 @@
 
 PILOT ONLY — NOT FORMAL SCIENTIFIC PARAMETERS
 
+Subsequent authorized harness-only update: the single new-source EF diagnostic
+n6diagnostic01-ef-retry PASSED. See N6_HARNESS_REPAIR_REPORT.md and the separate
+diagnostic manifest. It cannot be pooled with old M0/M1 and adds no paired or
+cross-configuration scientific evidence. All MODEL/ALGORITHM conclusions below
+remain NOT ASSESSABLE. Further pilot work and N7 remain unauthorized.
+
 Final stage state: **N6_BLOCKED**, due to supervised execution I/O, NOT a finding
 that the frozen scientific design is wrong. Diagnosis of scientific risk remains
 **NOT ASSESSABLE**. Do not interpret machine summary boolean flags on an empty
@@ -47,9 +53,9 @@ A concurrent Windows heartbeat read/atomic-replace conflict is plausible;
 missing traceback/filename means the precise cause is not yet proven.
 See N6_PILOT_REPORT.md for immutable anchors and failure details.
 
-The full failed run is retained. No retry, configuration addition or model/
-algorithm fix was attempted after this failure. Keep PR #7 Draft; pause N7.
-External review should first decide the focused execution-layer diagnosis/fix
-and explicit retry/resume authorization, preserving parent/run lineage.
-Only after trustworthy execution can scientific informativeness be judged.
-
+The full failed run is retained. No model/algorithm fix or configuration addition
+was attempted. The later, explicitly authorized harness repair and one EF retry
+are separately documented, preserving parent/run lineage and the old failure.
+Keep PR #7 Draft; pause N7. External review must decide whether to authorize any
+new same-source full batch. Only trustworthy and sufficient coverage can support
+scientific informativeness judgments.

@@ -1,6 +1,12 @@
 # N6 pilot / execution readiness report
 
-**N6_BLOCKED — supervisor I/O failure; no automatic retry or continuation.**
+**N6_BLOCKED — full pilot remains paused; authorized single EF diagnostic PASS.**
+
+Subsequent external-review authorization permitted only a harness repair and ONE
+EF diagnostic. It passed at clean execution commit
+01cd346d60c2bb0fcf6731f2c9806e17b47e3d57; see N6_HARNESS_REPAIR_REPORT.md.
+The original batch/history below remains unchanged. Do not combine its M0/M1
+with the new-source diagnostic EF. No full pilot resume or N7 is authorized.
 
 PILOT ONLY — NOT FORMAL SCIENTIFIC PARAMETERS
 
@@ -24,8 +30,8 @@ pilot results. No frozen N0–N5 file was changed. Prior to actual pilot creatio
 a source-root mistake was diagnosed and corrected; its zero-run history is
 preserved in docs/evidence/N6_PRELAUNCH_DIAGNOSTIC.md. A Windows venv-launcher
 process-tree cleanup issue was also fixed during synthetic pre-pilot tests.
-Neither repair used scientific results. NO repair/retry was performed after the
-actual pilot failure below.
+Neither pre-pilot repair used scientific results. At the initial blocked review,
+NO repair/retry had been performed after the actual pilot failure below.
 
 ## Planned versus executed
 
@@ -41,7 +47,7 @@ B=45, low disruption risk, seed=61001, one resource, three suppliers, 12 scenari
 
 Three attempted runs: two accepted, one failed/incomplete. No complete
 configuration, no A0/A1 run and no paired comparison. Remaining 77 planned runs
-were NOT attempted. No seeds replaced, retries launched, IDs overwritten or
+were NOT attempted. No seeds replaced, retries launched within that batch, IDs overwritten or
 failed files deleted. Full raw artifacts remain under outputs/pilot/n6pilot01/
 (ignored by Git); compact archive contains all seven files per attempted run,
 including manifests, input data, stdout/stderr, raw engine proof and terminal
@@ -143,10 +149,10 @@ defensible. The registered illustrative 100/1000-pair formulas are implemented
 but their numeric projection remains empty. M0/M1 single-run times cannot
 substitute for A0/A1 or OOS costs.
 
-After an externally approved harness repair and successful bounded diagnostic,
-apply the registered median/observed-slow formulas and 2x planning contingency
-at measured scenario sizes only. Until then no recommendation to freeze N7
-scales, seeds or repetitions is supported.
+A successful bounded diagnostic alone cannot support projection. Only after
+separate full-batch authorization and actual same-source paired observations
+may the registered median/observed-slow formulas and 2x planning contingency be
+applied at measured scenario sizes. No N7 scale/seed/repetition freeze is supported.
 
 ## Gate
 

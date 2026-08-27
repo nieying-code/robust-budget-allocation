@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "purpose": "harness_diagnostic_only; not a scientific configuration",
+  "archive_path": "docs/evidence/N6_EF_DIAGNOSTIC_RETRY.json.gz",
+  "archive_sha256": "7478809a666e27cbeac9aa6917d5d0e032a925d62f8c1f8c4ff777d737da53bf",
+  "archive_bytes": 23595,
+  "execution_commit": "01cd346d60c2bb0fcf6731f2c9806e17b47e3d57",
+  "execution_tree": "a5f6a96a005bf4076873c59aefcf5709cbf7ad0a",
+  "summary": {
+    "diagnostic_status": "PASS",
+    "run_id": "n6diagnostic01-ef-retry",
+    "parent_run_id": "n6pilot01-00-ef",
+    "run_status": "success/certified",
+    "parent_status": "incomplete",
+    "scientific_group": false,
+    "paired_runs": 0,
+    "n6_stage_complete": false,
+    "n7_authorized": false
+  },
+  "retry_reason": "supervisor heartbeat I/O diagnostic after approved harness repair",
+  "original_batch_unattempted_runs": 77,
+  "further_retry_authorized": false,
+  "full_pilot_resume_authorized": false,
+  "external_anchor_note": "Final artifact Git commit/tree are external anchors, not recursive hashes."
+}
