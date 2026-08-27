@@ -4,6 +4,7 @@ import gzip
 import hashlib
 import json
 import math
+import subprocess
 from pathlib import Path
 from functools import lru_cache
 
@@ -16,15 +17,13 @@ from .storage import check_seal, verify_inventory, safe_id, safe_relative, FAILU
 
 
 @lru_cache(maxsize=None)
-def current_hash(path):
-    path = ROOT / safe_relative(path)
-    if path.is_symlink() or not path.is_file():
-        raise ValueError("nonregular source input")
-    return sha256_file(path)
+def anchored_inputs(commit, tree):
+    """Authenticate immutable historical source, never silently substitute current files."""
+    from .source_archive import authenticate_inputs
+    return authenticate_inputs(commit, tree)
 
 
 def verify_source(source):
-    from .execution import source_inputs
     check_seal(source, "manifest_sha256")
     git = source["git"]
     if git["tracked_dirty"] or any(len(git[k]) != 40 or any(c not in "0123456789abcdef" for c in git[k])
@@ -32,11 +31,11 @@ def verify_source(source):
         raise ValueError("dirty/invalid source anchor")
     entries = source["inputs"]
     paths = [safe_relative(e["path"]) for e in entries]
-    expected = {p.relative_to(ROOT).as_posix() for p in source_inputs()}
-    if len(paths) != len(set(paths)) or set(paths) != expected:
+    expected = anchored_inputs(git["commit_sha"], git["tree_sha"])
+    if len(paths) != len(set(paths)) or set(paths) != set(expected):
         raise ValueError("source inventory mismatch")
     for entry in entries:
-        if current_hash(entry["path"]) != entry["sha256"]:
+        if expected[entry["path"]] != entry["sha256"]:
             raise ValueError("source hash mismatch")
 
 
@@ -57,6 +56,9 @@ def replay_run(bundle):
     for key in ("run_id", "parent_run_id", "retry_reason", "method", "source", "binding"):
         if record[key] != request[key]:
             raise ValueError("request/record binding: " + key)
+    for key in ("parent_batch_id", "lineage", "purpose"):
+        if record.get(key) != request.get(key):
+            raise ValueError("retry request/record binding: " + key)
     if record["classification"] != SCOPE or record["method"] not in METHODS:
         raise ValueError("scope/method")
     if record["config_id"] != request["config"]["id"]:
@@ -83,6 +85,10 @@ def replay_run(bundle):
         raise ValueError("worker status mismatch")
     if heartbeat["stage"] != "complete" or record["watchdog"]["exit_code"] != 0:
         raise ValueError("incomplete worker cannot certify")
+    if record.get("purpose") == "harness_diagnostic_only":
+        watch = record["watchdog"]
+        if watch["status"] is not None or not watch["cleanup"]["success"] or watch["cleanup"]["exit_code"] != 0:
+            raise ValueError("diagnostic process cleanup not successful")
     if result["solver_config"] != settings() or result["max_iterations"] != len(data.base.scenarios)+1:
         raise ValueError("worker execution config")
     for environment in (result["environment"], record["environment"]):
@@ -122,6 +128,8 @@ def replay_run(bundle):
 
 def replay_group(runs):
     decoded = [replay_run(run) for run in runs]
+    if any(d["record"].get("purpose", "pilot") != "pilot" for d in decoded):
+        raise ValueError("diagnostic retry cannot be pooled into scientific configuration")
     if len(decoded) != 5 or {d["record"]["method"] for d in decoded} != set(METHODS):
         raise ValueError("paired group inventory")
     if any(d["replay"] != "PASS" for d in decoded):

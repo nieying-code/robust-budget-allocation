@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import signal
 import sys
 from time import perf_counter, sleep
 import tracemalloc
@@ -20,7 +21,8 @@ from robust_budget_allocation.reproducibility.manifests import build_source_mani
 from robust_budget_allocation.runtime.environment import ensure_preflight_once
 from .configuration import ROOT, PROTOCOL, CONFIG_PATH, SCOPE, generate, binding, registration
 from .measurement import solve_ablation, verify_engine, metrics, mechanism
-from .storage import reserve, seal, file_manifest, normalize_failure, safe_id
+from .storage import reserve, seal, file_manifest, normalize_failure, safe_id, retry_lineage
+from .heartbeat import HeartbeatWatch, GROUPS, exception_context
 
 
 def utc():
@@ -31,6 +33,7 @@ def source_inputs():
     return sorted([*ROOT.glob("src/robust_budget_allocation/**/*.py"),
                    ROOT / "scripts/n6_pilot.py", ROOT / PROTOCOL, ROOT / CONFIG_PATH,
                    ROOT / "docs/N4_CORRECTNESS_PROTOCOL.md", ROOT / "docs/N5_A1_PROTOCOL.md",
+                   ROOT / "docs/N6_HARNESS_REPAIR_AUTHORIZATION.md",
                    ROOT / "pyproject.toml", ROOT / "requirements.txt"])
 
 
@@ -67,13 +70,21 @@ def peak_rss():
 
 
 def worker(folder):
+    if any((folder / name).exists() for name in ("result.json", "record.json", "manifest.json")):
+        raise FileExistsError("worker cannot overwrite an existing run")
     request = json.loads((folder / "request.json").read_text(encoding="utf-8"))
+    if request.get("purpose") != "harness_diagnostic_only":
+        raise PermissionError("full pilot worker execution is not authorized")
     started, engine = utc(), None
     timing, environment = {}, None
+    phase_starts = {}
 
     def event(stage):
+        group = GROUPS[stage]
+        phase_starts.setdefault(group, perf_counter())
         atomic_write_json(folder / "heartbeat.json", dict(run_id=request["run_id"],
-                           pid=os.getpid(), stage=stage, utc=utc()))
+                           pid=os.getpid(), stage=stage, utc=utc(),
+                           phase_started_monotonic=phase_starts[group]))
 
     try:
         event("preflight")
@@ -135,64 +146,113 @@ def worker(folder):
     atomic_write_json(folder / "result.json", seal(payload, "result_sha256"))
     event("complete")
     atomic_write_json(folder / "heartbeat.json", dict(run_id=request["run_id"], pid=os.getpid(),
-        stage="complete", utc=utc(), result_serialization_seconds=perf_counter()-start))
+        stage="complete", utc=utc(), phase_started_monotonic=phase_starts["postprocess"],
+        result_serialization_seconds=perf_counter()-start))
     return 0 if payload["status"] == "success/certified" else 1
 
 
 def terminate_worker(process):
     """Terminate the owned worker tree, including Windows venv launcher children."""
+    report = dict(attempted=False, pid=process.pid, strategy=None, command_returncode=None,
+                  stdout=None, stderr=None, exit_code=process.poll(), success=True)
     if process.poll() is not None:
-        return
+        return report
+    report["attempted"] = True
     if os.name == "nt":
+        report["strategy"] = "taskkill /T /F (owned PID)"
         completed = subprocess.run(["taskkill", "/PID", str(process.pid), "/T", "/F"],
                                    capture_output=True, timeout=10)
+        report.update(command_returncode=completed.returncode,
+                      stdout=completed.stdout.decode(errors="replace"),
+                      stderr=completed.stderr.decode(errors="replace"))
         if completed.returncode and process.poll() is None:
             raise RuntimeError("could not terminate owned worker process tree")
     else:
-        process.terminate()
+        if getattr(process, "_n6_process_group", False):
+            report["strategy"] = "SIGTERM isolated owned process group"
+            os.killpg(process.pid, signal.SIGTERM)
+        else:
+            report["strategy"] = "terminate owned worker"
+            process.terminate()
     try:
         process.wait(timeout=5)
     except subprocess.TimeoutExpired:
         process.kill()
         process.wait(timeout=5)
+    report["exit_code"] = process.returncode
+    return report
 
 
 def supervise(command, folder, limits):
     """No scientific fallback/retry: retain stdout/stderr and terminate on deadline."""
-    start = stage_start = perf_counter()
-    stage = None
-    with (folder / "stdout.txt").open("wb") as stdout, (folder / "stderr.txt").open("wb") as stderr:
-        process = subprocess.Popen(command, stdout=stdout, stderr=stderr, cwd=ROOT,
-                                   env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    start = perf_counter()
+    watch, process = HeartbeatWatch(limits, start), None
+    outcome = dict(status=None, diagnostic=None, exception=None)
+    heartbeat = folder / "heartbeat.json"
+    try:
+        with (folder / "stdout.txt").open("xb") as stdout, (folder / "stderr.txt").open("xb") as stderr:
+            process = subprocess.Popen(command, stdout=stdout, stderr=stderr, cwd=ROOT,
+                                       env={**os.environ, "PYTHONIOENCODING": "utf-8"},
+                                       start_new_session=os.name != "nt")
+            process._n6_process_group = os.name != "nt"
+            while True:
+                now = perf_counter()
+                if watch.expired(now):
+                    outcome.update(status="incomplete" if watch.consecutive else "time_limit",
+                                   diagnostic="absolute watchdog deadline: "+watch.stage)
+                    break
+                value = watch.read(heartbeat, now)
+                now = perf_counter()
+                if watch.conflict_exhausted(now):
+                    outcome.update(status="incomplete", diagnostic="bounded heartbeat read conflict exhausted",
+                                   exception=watch.latest_error)
+                    break
+                if watch.expired(now):
+                    outcome.update(status="time_limit", diagnostic="absolute watchdog deadline: "+watch.stage)
+                    break
+                if value is not None and process.poll() is not None:
+                    if process.returncode != 0 or value["stage"] != "complete":
+                        outcome.update(status="incomplete", diagnostic="worker exited without complete supervised outcome")
+                    break
+                sleep(watch.delay(now))
+    except BaseException as exc:
+        outcome.update(status="interrupted" if isinstance(exc, KeyboardInterrupt) else "incomplete",
+                       diagnostic=repr(exc), exception=exception_context(exc, stage=watch.stage,
+                       heartbeat=watch.last, elapsed=perf_counter()-start, path=heartbeat))
+    finally:
         try:
-            while process.poll() is None:
-                heartbeat = folder / "heartbeat.json"
-                current = json.loads(heartbeat.read_text(encoding="utf-8"))["stage"] if heartbeat.exists() else "startup"
-                # Construction/preflight share one startup deadline; algorithm and postprocess separate.
-                group = "algorithm" if current == "algorithm" else (
-                    "postprocess" if current in ("verification", "complete") else "startup")
-                if group != stage:
-                    stage, stage_start = group, perf_counter()
-                timeout = limits[stage]
-                if perf_counter()-stage_start > timeout:
-                    terminate_worker(process)
-                    return dict(status="time_limit", diagnostic="external watchdog: "+stage,
-                                exit_code=process.returncode, wall_seconds=perf_counter()-start)
-                sleep(.05)
-            return dict(status=None, exit_code=process.returncode, wall_seconds=perf_counter()-start)
-        except BaseException:
-            terminate_worker(process)
-            raise
+            cleanup = terminate_worker(process) if process is not None else dict(
+                attempted=False, success=True, exit_code=None, strategy="worker not launched")
+        except BaseException as exc:
+            cleanup = dict(attempted=True, success=False, exit_code=process.poll() if process else None,
+                exception=exception_context(exc, stage=watch.stage, heartbeat=watch.last,
+                                            elapsed=perf_counter()-start))
+            outcome.update(status="incomplete", diagnostic="worker-tree cleanup failed")
+        if outcome["exception"] is None and watch.consecutive:
+            outcome["exception"] = getattr(watch, "latest_error", None)
+        outcome.update(exit_code=process.poll() if process else None,
+                       wall_seconds=perf_counter()-start, cleanup=cleanup, **watch.evidence())
+    return outcome
 
 
-def run_one(output_root, run_id, config, method, *, parent_run_id=None, retry_reason=None):
+def run_one(output_root, run_id, config, method, *, parent_run_id=None, retry_reason=None,
+            parent_batch_id=None, purpose="pilot"):
     reg = registration()
     if method not in ("M0", "M1", "EF", "A0", "A1"):
         raise ValueError("unknown method")
     source_gate()
     data = generate(config)
-    with reserve(output_root, run_id, parent_run_id=parent_run_id, retry_reason=retry_reason) as folder:
+    lineage = None
+    if parent_batch_id is not None:
+        lineage, saved_parent = retry_lineage(output_root, parent_batch_id, parent_run_id)
+        parent_request = json.loads(saved_parent["files"]["request.json"])
+        if (parent_request["binding"] != binding(config, data) or parent_request["method"] != method
+                or parent_request["solver_config"] != settings()):
+            raise ValueError("diagnostic retry changes original scientific input/settings")
+    with reserve(output_root, run_id, parent_run_id=parent_run_id, retry_reason=retry_reason,
+                 parent_batch_id=parent_batch_id) as folder:
         request = dict(run_id=run_id, parent_run_id=parent_run_id, retry_reason=retry_reason,
+                       parent_batch_id=parent_batch_id, lineage=lineage, purpose=purpose,
                        method=method, config=config, binding=binding(config, data),
                        source=build_source_manifest(ROOT, input_paths=source_inputs()),
                        started_utc=utc(), solver_config=settings())
@@ -205,6 +265,7 @@ def run_one(output_root, run_id, config, method, *, parent_run_id=None, retry_re
                               dict(startup=reg["startup_timeout_seconds"],
                                    algorithm=reg["timeout_seconds"],
                                    postprocess=reg["postprocess_timeout_seconds"]))
+            interrupted = watch["status"] == "interrupted"
         except KeyboardInterrupt:
             interrupted = True
             watch = dict(status="interrupted", exit_code=None, wall_seconds=None,
@@ -226,6 +287,7 @@ def run_one(output_root, run_id, config, method, *, parent_run_id=None, retry_re
             status = "incomplete"
         record = dict(schema_version=1, classification=SCOPE, run_id=run_id,
             parent_run_id=parent_run_id, retry_reason=retry_reason, method=method,
+            parent_batch_id=parent_batch_id, lineage=lineage, purpose=purpose,
             config_id=config["id"], source=request["source"], binding=request["binding"],
             started_utc=request["started_utc"], finished_utc=utc(), status=status,
             certified=status == "success/certified", watchdog=watch,

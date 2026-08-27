@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "purpose": "pre-diagnostic test conditions, not scientific evidence",
+  "solver_free_passed": 550,
+  "licensed_passed": 100,
+  "windows_stress": [
+    {
+      "repetition": 0,
+      "writes": 229,
+      "reads": 4987,
+      "conflicts": 0,
+      "recovered": 0,
+      "exit_code": 0,
+      "lock_released": true,
+      "elapsed": 10.283915299980436
+    },
+    {
+      "repetition": 1,
+      "writes": 233,
+      "reads": 4904,
+      "conflicts": 0,
+      "recovered": 0,
+      "exit_code": 0,
+      "lock_released": true,
+      "elapsed": 10.217061600007582
+    },
+    {
+      "repetition": 2,
+      "writes": 224,
+      "reads": 4934,
+      "conflicts": 0,
+      "recovered": 0,
+      "exit_code": 0,
+      "lock_released": true,
+      "elapsed": 10.25674430001527
+    }
+  ],
+  "suites": {
+    "solver-free": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "550",
+      "time": "56.059",
+      "timestamp": "2026-08-27T22:12:57.124220+08:00",
+      "hostname": "lalalt",
+      "xml_sha256": "29b69f1591718459323ad6c07fa9d1e8667eb692dd6fddc9f06b7b548608f5da",
+      "xml_local_path": "outputs/harness-validation/solver-free.xml"
+    },
+    "licensed": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "100",
+      "time": "48.182",
+      "timestamp": "2026-08-27T22:13:07.489141+08:00",
+      "hostname": "lalalt",
+      "xml_sha256": "6249047bf93f09ddfd0fa2181f5a9fb27605ab67c8f400786e9f3a542846a5f8",
+      "xml_local_path": "outputs/harness-validation/licensed.xml"
+    }
+  },
+  "source_input_hashes": [
+    {
+      "path": "configs/pilot/n6_candidates.json",
+      "sha256": "974c5b9e13d278cff2ead221d1c838aff4db2c3c3b97314b2595ecb00d6db0d2"
+    },
+    {
+      "path": "docs/N4_CORRECTNESS_PROTOCOL.md",
+      "sha256": "f3c4d4ee2d352b4b5666cfb505a6fd5d61f0d2cdff7a15ab6c6a1f0a2ec0a72f"
+    },
+    {
+      "path": "docs/N5_A1_PROTOCOL.md",
+      "sha256": "c674f64297e6ad47fca0feeb593cd31202f370a6c567d5620d7f26ccab360a12"
+    },
+    {
+      "path": "docs/N6_HARNESS_REPAIR_AUTHORIZATION.md",
+      "sha256": "021ab67a0ca4ff267a6d7d0e98f8b0ca20f18bd4e1171e486f43b3f3fec461bc"
+    },
+    {
+      "path": "docs/N6_PILOT_PROTOCOL.md",
+      "sha256": "ba60833a951ea4ad69ba123ea421329a1387a0cf581645f8bc7040d0c3414b0d"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "1419108e2e249785f4448b2958e02ad2b6bb6f63d14827e1277481eca7ea7945"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "12d5173e03c796f130be64f226263c77ea780673786dfb7bfa0dba29c72d386a"
+    },
+    {
+      "path": "scripts/n6_pilot.py",
+      "sha256": "4afc5ea4b0e2459e068a0df0bb97a214783dee8e1996868ccebe9045e1a31d66"
+    },
+    {
+      "path": "src/robust_budget_allocation/__init__.py",
+      "sha256": "8a566dbd2e9ce98857c0d98638b60536293a269f090ad4997654708a2180c866"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/__init__.py",
+      "sha256": "52e7479f86c298188861be146ee30c4741e24576d34b9814b258312e9b14ea5c"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/a1_candidates.py",
+      "sha256": "98f6d63e297179061754c486758c43490a2d68ec51fe69d0d73781c60eaeb675"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/a1_memory.py",
+      "sha256": "fcc8f62759c9a8ec245759281490341ebfafc56183557cd2995d923042f54d67"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/a1_verification.py",
+      "sha256": "e6bde7b5afb2385090add2ecd9e43c43112a08129f9bbcb9a4c2ff22b97b7c59"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/common.py",
+      "sha256": "6ae5d4ea067166fb5db9cc96260b074a1930a346777e9b7c7571feb1da7447f9"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/exact_oracle.py",
+      "sha256": "fd460de43c6f1c8aa1f50e3954847dd633b167d9018520fc51b87f6f4351f5c4"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/extensive_form.py",
+      "sha256": "c07b5758b9afedcdfddee08f4cb225260f7e9d43e3a9215997616c0d6ab21a75"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/memory_guided_ccg.py",
+      "sha256": "7415212a90d885366d2ccff9bdbe4a2398cf1ab79ce127a18e8dba9e9cb18d9e"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/standard_ccg.py",
+      "sha256": "0271ed14cb8ccd5913576e3184ac5178a9d5989a5899ef504ddc0b3c1bd470b5"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/verification.py",
+      "sha256": "90f4b3b6b4482386f70481e028c78fd4992a37726c8f70d268675ec1f8e7a07a"
+    },
+    {
+      "path": "src/robust_budget_allocation/data/__init__.py",
+      "sha256": "fb9a5eec109f6be3ce562a4868c3d7f2f9fcb9619824bfece83204894c98cc72"
+    },
+    {
+      "path": "src/robust_budget_allocation/data/mechanism_data.py",
+      "sha256": "b955e19a931c3861430993b952151f8d18c6ba38969b2e698a43023fc69b9afe"
+    },
+    {
+      "path": "src/robust_budget_allocation/data/model_data.py",
+      "sha256": "0d3dce6001bd221e08332e8d3e5e8392c6d8095a3ab1176826737a36873b1588"
+    },
+    {
+      "path": "src/robust_budget_allocation/environment.py",
+      "sha256": "0c82cce46fec30175b64b11c3e3b77c88a049f1b39f9d370f3c8564fec3b25cc"
+    },
+    {
+      "path": "src/robust_budget_allocation/io/__init__.py",
+      "sha256": "1954b5bf3c95d54f96bb378b22d9ae618a3ada2543b4729c8f14b1bdf283ff90"
+    },
+    {
+      "path": "src/robust_budget_allocation/io/atomic.py",
+      "sha256": "69cdf53906d19360d001d65448e535430510ccb3a6b1d73d80d2452e6d2e971f"
+    },
+    {
+      "path": "src/robust_budget_allocation/io/hashing.py",
+      "sha256": "4e1682b89a6f4a727e46d33c7bdecbf2082c9bd82ab31efd70cf53cbf7a6fca1"
+    },
+    {
+      "path": "src/robust_budget_allocation/io/locking.py",
+      "sha256": "62e1748bc21cc93035de93468edf82f304a6a7b7f64ca158aeb9b97e616d8e18"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/__init__.py",
+      "sha256": "39f952e588c447616b582fd9aa34407fb0bb608a886282e928fde5508522bfb4"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/m0.py",
+      "sha256": "ea65ffd4fcc56a94c2113a8bd45e8ec077d3cb51a9cec2cdd53461f02ce98f1f"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/m1.py",
+      "sha256": "a55a38a28e0771bf4ff07387e846dd957b048878dd4a54b2caf8c12003045de6"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/m2.py",
+      "sha256": "3209c3d2d42b5ba4b9cae4fb66e90f915cd7b860988e2cfb73aaf1ce19ea1f22"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/mechanism_support.py",
+      "sha256": "6ec5b5ac34933b167003ed2e21cd9dba16237fb0a8e8480ff290e2ed65bacd89"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/__init__.py",
+      "sha256": "794229fecb7c6186f5f57951bc93c6c2b70abdf384b2a186e4a061d8eb34a542"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/configuration.py",
+      "sha256": "8db3f4cf06b3d4c8258e968ca5d555fb1f1da872f7b96df8ecea0073614b6f7f"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/diagnostic.py",
+      "sha256": "a6046c0d953bbbb04ee3cc9f2fc0c8701fbd7ad60cb98ae384010fd641f1c83d"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/execution.py",
+      "sha256": "e1df1c7984e81acc9ebc4fe3da8e3a217a65a7069528b7fcd47c2c2fcf71d57a"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/heartbeat.py",
+      "sha256": "441f25af095d101ed12ee512fe3ef3ba5dfa623c10fdc12402c19b0371c67c4a"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/measurement.py",
+      "sha256": "237421c91c76aa377fb3fb060ad2e23691250d9f7e02dc23ded5cc54a7322bd2"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/replay.py",
+      "sha256": "af1241d013b826dc75482f98d2e12c8789e407ce9c41e08b93cc09c8d54b0cd5"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/source_archive.py",
+      "sha256": "247e9d7bc23ed056c5b0ae1c91fd6f0f14d6c8c41f72e3069b59390168021d86"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/storage.py",
+      "sha256": "829dc62bb1617970c9739327595ec5a4f1f2fcdf70941340c8011561104e89f4"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/summary.py",
+      "sha256": "32b60cc107339bced7e55c10d079c6c04b5d0f2ff3f4acd17695888307941970"
+    },
+    {
+      "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+      "sha256": "55528ebbe24d7461683116a72f2275a85f7c236fd6b6bfe3e0a261c1277fc4b7"
+    },
+    {
+      "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+      "sha256": "bff1709c0e56c1fc8ca5e4e017f933d53f8265c762c4c3ad4bfdc77334124e39"
+    },
+    {
+      "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+      "sha256": "a26787af5548feb40ae4a81b78d5e05abe73341d9f416d79e9eb005e553beec3"
+    },
+    {
+      "path": "src/robust_budget_allocation/runtime/__init__.py",
+      "sha256": "00062bac2ec8a554f6420457d9a02fdb8d2bf98e572097a9d9415756e8c88bf5"
+    },
+    {
+      "path": "src/robust_budget_allocation/runtime/environment.py",
+      "sha256": "4430fba14fe51e72358ce5228f1321362bdc583d76e495116c09ed70ff312631"
+    },
+    {
+      "path": "src/robust_budget_allocation/runtime/solver.py",
+      "sha256": "fdc1c218bc6f5789acc6b5fa039fb334086c33499f281085eadbf290562cfde8"
+    },
+    {
+      "path": "src/robust_budget_allocation/runtime/status.py",
+      "sha256": "9a66390dafafcce1dd95f169ceca29683b5935b3d8c17182dcbba1ccfc4a432b"
+    },
+    {
+      "path": "src/robust_budget_allocation/statistics/__init__.py",
+      "sha256": "24a4a9514debbc6229f9a36297121dd1300405843251c406c7974c0759dd57e7"
+    },
+    {
+      "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+      "sha256": "e4108816adcc1464a42c2a3eca87051fccbaaefaa7acbb1896369ed4a0260ec9"
+    },
+    {
+      "path": "src/robust_budget_allocation/statistics/cvar.py",
+      "sha256": "0c2727d3c8d44ca981c6c0a34fc4145fbd77ede85bb3d0aa2f70dd17eb60c752"
+    },
+    {
+      "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+      "sha256": "ee2683c50a40dc724a2781947cd8491855613bd42040c4f9617b32fe56988b30"
+    }
+  ],
+  "note": "Tests precede clean implementation commit; content hashes bind tested source. No diagnostic run had started."
+}

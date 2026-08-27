@@ -20,8 +20,12 @@ N6_PATHS = frozenset({
     "docs/evidence/N6_PRELAUNCH_DIAGNOSTIC.md", "docs/evidence/N6_PILOT_EVIDENCE.json.gz",
     "docs/evidence/N6_PILOT_MANIFEST.json", "scripts/n6_pilot.py",
     "tests/test_n6_pilot.py", "tests/test_n6_evidence.py",
+    "tests/test_n6_harness_repair.py", "docs/N6_HARNESS_REPAIR_AUTHORIZATION.md",
+    "docs/N6_HARNESS_REPAIR_REPORT.md", "docs/evidence/N6_SOURCE_OBJECTS.json.gz",
+    "docs/evidence/N6_HARNESS_VALIDATION.json",
     *["src/robust_budget_allocation/pilot/"+name+".py" for name in (
-        "__init__", "configuration", "execution", "measurement", "replay", "storage", "summary")]
+        "__init__", "configuration", "execution", "measurement", "replay", "storage", "summary",
+        "heartbeat", "diagnostic", "source_archive")]
 })
 
 
@@ -102,4 +106,3 @@ def test_n6_hash_inventory_complete_and_regular():
         assert target.is_file() and not target.is_symlink()
         assert sha256_file(target) == digest
     assert "docs/N6_PILOT_HASHES.sha256" not in N6_PATHS
-

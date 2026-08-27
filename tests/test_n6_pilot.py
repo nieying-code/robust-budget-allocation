@@ -199,6 +199,7 @@ def test_atomic_interruption_preserves_original(tmp_path, monkeypatch):
 
 
 def test_watchdog_timeout_preserves_logs(tmp_path):
+    atomic_write_json(tmp_path / "heartbeat.json", {"stage": "startup"})
     outcome = supervise([sys.executable, "-c", "import time; print('started', flush=True); time.sleep(10)"],
                         tmp_path, dict(startup=.2, algorithm=.2, postprocess=.2))
     assert outcome["status"] == "time_limit"
@@ -214,16 +215,21 @@ def test_worker_crash_exit_is_not_success(tmp_path):
 
 
 def test_supervisor_heartbeat_permission_error_fails_closed(tmp_path, monkeypatch):
-    original = Path.read_text
+    from robust_budget_allocation.pilot import heartbeat
+    original = heartbeat.read_text_shared
     atomic_write_json(tmp_path / "heartbeat.json", {"stage": "algorithm"})
     def denied(path, *args, **kwargs):
         if path == tmp_path / "heartbeat.json":
             raise PermissionError(13, "injected heartbeat sharing conflict")
         return original(path, *args, **kwargs)
-    monkeypatch.setattr(Path, "read_text", denied)
-    with pytest.raises(PermissionError):
-        supervise([sys.executable, "-c", "import time; time.sleep(10)"], tmp_path,
-                  dict(startup=5, algorithm=5, postprocess=5))
+    monkeypatch.setattr(heartbeat, "read_text_shared", denied)
+    result = supervise([sys.executable, "-c", "import time; time.sleep(10)"], tmp_path,
+                       dict(startup=5, algorithm=5, postprocess=5))
+    assert result["status"] == "incomplete"
+    assert result["total_read_conflicts"] == 8
+    assert result["exception"]["exception_type"] == "PermissionError"
+    assert result["exception"]["traceback"] and result["cleanup"]["success"]
+    assert result["exit_code"] is not None
     assert (tmp_path / "stdout.txt").is_file()
     assert not (tmp_path / "record.json").exists()
 

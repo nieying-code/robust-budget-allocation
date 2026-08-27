@@ -13,12 +13,9 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from robust_budget_allocation.io.atomic import atomic_write_json
 from robust_budget_allocation.io.hashing import sha256_file
-from robust_budget_allocation.io.locking import exclusive_file_lock
-from robust_budget_allocation.pilot.configuration import (
-    CONFIG_SHA, PROTOCOL_SHA, SCOPE, registration, execution_order)
-from robust_budget_allocation.pilot.execution import worker, run_one, source_gate
-from robust_budget_allocation.pilot.storage import safe_id, read_run, seal
-from robust_budget_allocation.pilot.replay import replay_bundle, replay_group, load_bundle
+from robust_budget_allocation.pilot.execution import worker
+from robust_budget_allocation.pilot.replay import replay_bundle, load_bundle
+from robust_budget_allocation.pilot.diagnostic import diagnostic_retry, replay_diagnostic
 from robust_budget_allocation.pilot.summary import summarize
 
 
@@ -45,71 +42,39 @@ def archive(path, payload):
 
 
 def execute(batch):
-    safe_id(batch)
-    reg = registration()
-    before = source_gate()
-    root = ROOT / "outputs/pilot" / batch
-    with exclusive_file_lock(ROOT / "outputs/pilot/.locks" / (batch+".lock"), timeout_seconds=0):
-        root.mkdir(parents=True, exist_ok=False)
-        runs, pair_checks, failure = [], {}, None
-        for index, config in enumerate(reg["configs"]):
-            group = []
-            for method in execution_order(index):
-                run_id = f"{batch}-{index:02d}-{method.lower()}"
-                folder = run_one(root, run_id, config, method)
-                saved = read_run(folder)
-                runs.append(saved)
-                group.append(saved)
-                record = json.loads(saved["files"]["record.json"])
-                print(json.dumps(dict(run_id=run_id, config_id=config["id"], method=method,
-                                      status=record["status"], metrics=record["metrics"])), flush=True)
-                if record["status"] != "success/certified":
-                    failure = dict(run_id=run_id, status=record["status"])
-                    break
-            if failure is not None:
-                break
-            try:
-                pair_checks[config["id"]] = replay_group(group)
-            except Exception as exc:
-                failure = dict(config_id=config["id"], status="verification_failure", diagnostic=repr(exc))
-                break  # correctness STOP, never repair/retry frozen code here
-        after = source_gate()
-        if any(before[k] != after[k] for k in ("commit_sha", "tree_sha")):
-            failure = dict(status="verification_failure", diagnostic="execution source changed")
-        bundle = seal(dict(schema_version=1, classification=SCOPE, protocol_sha256=PROTOCOL_SHA,
-            config_sha256=CONFIG_SHA, source_gate=before, batch_id=batch, runs=runs,
-            status="PASS" if failure is None and len(runs) == 80 else "FAIL",
-            failure=failure, pair_checks=pair_checks), "evidence_sha256")
-        destination = root / "compact_evidence.json.gz"
-        archive(destination, bundle)
-        summary = summarize(bundle)
-        atomic_write_json(root / "summary.json", summary)
-        if failure is None:
-            print(json.dumps(replay_bundle(bundle)), flush=True)
-        print(json.dumps(dict(state=summary["state"], evidence=str(destination),
-                              sha256=sha256_file(destination), failure=failure)), flush=True)
-        return 0 if failure is None else 1
+    raise PermissionError("N6_FULL_PILOT_RESUME_NOT_AUTHORIZED; use only the authorized diagnostic-retry")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("run", "worker", "replay", "summarize"))
+    parser.add_argument("action", choices=("run", "worker", "replay", "summarize", "diagnostic-retry"))
     parser.add_argument("--batch")
     parser.add_argument("--folder", type=Path)
     parser.add_argument("--evidence", type=Path)
     args = parser.parse_args()
     if args.action == "run":
         return execute(args.batch)
+    if args.action == "diagnostic-retry":
+        if any((args.batch, args.folder, args.evidence)):
+            raise ValueError("diagnostic scope is fixed; no batch/config overrides")
+        folder, evidence = diagnostic_retry()
+        archive(folder / "compact_retry.json.gz", evidence)
+        result = replay_diagnostic(evidence)
+        atomic_write_json(folder / "diagnostic_summary.json", result)
+        print(json.dumps(result, indent=2))
+        return 0 if result["diagnostic_status"] == "PASS" else 1
     if args.action == "worker":
         if args.folder is None or not args.folder.resolve().is_relative_to((ROOT / "outputs/pilot").resolve()):
             raise ValueError("worker must operate under outputs/pilot")
         return worker(args.folder)
     bundle = load_bundle(args.evidence)
-    result = replay_bundle(bundle) if args.action == "replay" else summarize(bundle)
+    if bundle.get("kind") == "single_diagnostic_retry":
+        result = replay_diagnostic(bundle)
+    else:
+        result = replay_bundle(bundle) if args.action == "replay" else summarize(bundle)
     print(json.dumps(result, indent=2, ensure_ascii=False))
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

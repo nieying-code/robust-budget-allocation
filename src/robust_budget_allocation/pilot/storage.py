@@ -56,15 +56,24 @@ def check_seal(payload, key="sha256"):
 
 
 @contextmanager
-def reserve(root, run_id, *, parent_run_id=None, retry_reason=None):
+def reserve(root, run_id, *, parent_run_id=None, retry_reason=None, parent_batch_id=None):
     safe_id(run_id)
     if (parent_run_id is None) != (retry_reason is None):
         raise ValueError("retry requires parent and reason")
+    if parent_batch_id is not None and parent_run_id is None:
+        raise ValueError("parent batch requires parent run")
     if parent_run_id is not None:
         safe_id(parent_run_id)
         if parent_run_id == run_id or not isinstance(retry_reason, str) or not retry_reason.strip():
             raise ValueError("invalid retry")
-        parent = root / parent_run_id / "record.json"
+        parent_root = root
+        if parent_batch_id is not None:
+            safe_id(parent_batch_id)
+            parent_root = root.parent / parent_batch_id
+            if parent_root.is_symlink() or not parent_root.resolve().is_relative_to(root.parent.resolve()):
+                raise ValueError("parent batch outside pilot root")
+            read_run(parent_root / parent_run_id)  # cross-batch parent must have a complete inventory
+        parent = parent_root / parent_run_id / "record.json"
         if not parent.is_file():
             raise ValueError("missing parent run")
         original = json.loads(parent.read_text(encoding="utf-8"))
@@ -75,6 +84,25 @@ def reserve(root, run_id, *, parent_run_id=None, retry_reason=None):
         target = root / run_id
         target.mkdir(parents=True, exist_ok=False)
         yield target
+
+
+def retry_lineage(root, parent_batch_id, parent_run_id):
+    safe_id(parent_batch_id)
+    safe_id(parent_run_id)
+    folder = root.parent / parent_batch_id / parent_run_id
+    if folder.is_symlink() or not folder.resolve().is_relative_to(root.parent.resolve()):
+        raise ValueError("parent path outside pilot root")
+    saved = read_run(folder)
+    record = json.loads(saved["files"]["record.json"])
+    check_seal(record, "output_sha256")
+    if record["run_id"] != parent_run_id or record["certified"] or record["status"] not in FAILURE_STATES:
+        raise ValueError("retry parent is not an identified failed run")
+    return dict(parent_batch_id=parent_batch_id, parent_run_id=parent_run_id,
+        parent_relative_path=parent_batch_id+"/"+parent_run_id,
+        parent_output_sha256=record["output_sha256"],
+        parent_manifest_sha256=saved["manifest"]["sha256"],
+        parent_commit_sha=record["source"]["git"]["commit_sha"],
+        parent_tree_sha=record["source"]["git"]["tree_sha"]), saved
 
 
 def file_manifest(folder):
@@ -128,4 +156,3 @@ def inspect_run(folder):
         return record["status"]
     except (ValueError, OSError, KeyError):
         return "incomplete"
-
