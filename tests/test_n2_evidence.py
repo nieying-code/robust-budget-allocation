@@ -13,6 +13,33 @@ ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = json.loads((ROOT / "docs/evidence/N2_M0_CORRECTNESS.json").read_text(encoding="utf-8"))
 FIXTURE = json.loads((ROOT / EVIDENCE["fixture_path"]).read_text(encoding="utf-8"))
 EXPECTED = {case["id"]: case for case in FIXTURE["cases"]}
+# Frozen N2 inventory, not the expanding N3+ package. Every original SHA check
+# below remains in force; new modules do not retroactively alter N2 evidence.
+N2_SOURCE_PATHS = frozenset({
+    "pyproject.toml", "requirements.txt", "scripts/n2_m0_correctness.py",
+    "tests/fixtures/n2_m0_hand_cases.json",
+    "src/robust_budget_allocation/__init__.py",
+    "src/robust_budget_allocation/data/__init__.py",
+    "src/robust_budget_allocation/data/model_data.py",
+    "src/robust_budget_allocation/environment.py",
+    "src/robust_budget_allocation/io/__init__.py",
+    "src/robust_budget_allocation/io/atomic.py",
+    "src/robust_budget_allocation/io/hashing.py",
+    "src/robust_budget_allocation/io/locking.py",
+    "src/robust_budget_allocation/models/__init__.py",
+    "src/robust_budget_allocation/models/m0.py",
+    "src/robust_budget_allocation/reproducibility/__init__.py",
+    "src/robust_budget_allocation/reproducibility/git_state.py",
+    "src/robust_budget_allocation/reproducibility/manifests.py",
+    "src/robust_budget_allocation/runtime/__init__.py",
+    "src/robust_budget_allocation/runtime/environment.py",
+    "src/robust_budget_allocation/runtime/solver.py",
+    "src/robust_budget_allocation/runtime/status.py",
+    "src/robust_budget_allocation/statistics/__init__.py",
+    "src/robust_budget_allocation/statistics/bootstrap.py",
+    "src/robust_budget_allocation/statistics/cvar.py",
+    "src/robust_budget_allocation/statistics/multiple_testing.py",
+})
 
 
 def checked_digest(payload, field):
@@ -68,12 +95,8 @@ def test_saved_case_matches_source_inputs_hand_values_and_physical_balances(row)
     for key in ("commit_sha", "tree_sha"):
         assert source["git"][key] == EVIDENCE["source_gate"][key]
     assert source["git"]["tracked_dirty"] is False
-    expected_paths = {p.relative_to(ROOT).as_posix()
-                      for p in (ROOT / "src/robust_budget_allocation").rglob("*.py")}
-    expected_paths.update({"pyproject.toml", "requirements.txt", "scripts/n2_m0_correctness.py",
-                           "tests/fixtures/n2_m0_hand_cases.json"})
     listed_paths = [entry["path"] for entry in source["inputs"]]
     assert len(listed_paths) == len(set(listed_paths))
-    assert set(listed_paths) == expected_paths
+    assert set(listed_paths) == N2_SOURCE_PATHS
     for entry in source["inputs"]:
         assert sha256_file(ROOT / entry["path"]) == entry["sha256"]
