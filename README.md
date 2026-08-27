@@ -49,6 +49,6 @@ Tests marked `gurobi` require the locked local environment and a valid Gurobi li
 
 ## Project status
 
-The N0 scientific structure is closed and submitted for external review in Draft PR #1. The model is two-stage, single-period, non-perishable, and finite-scenario; M2 uses a paid binary emergency-procurement option under one fixed lifecycle budget. The mathematical interface may retain a general resource index, but the first formal scientific scope and E2–E6 are single-resource (`|I|=1`). N1 and all implementation or experiments remain prohibited until the user approves and merges PR #1.
+The N0 scientific structure is closed and merged. The model is two-stage, single-period, non-perishable, and finite-scenario; M2 uses a paid binary emergency-procurement option under one fixed lifecycle budget. The mathematical interface may retain a general resource index, but the first formal scientific scope and E2–E6 are single-resource (`|I|=1`). N1 migrates only audited generic engineering utilities. No model, A1, pilot, or formal experiment implementation is part of N1; N2 remains prohibited until Draft PR #2 is approved and merged.
 
 The canonical working copies are maintained in `01_new_project_design` under the project root. Byte-identical frozen copies and their SHA-256 manifest are in [`docs/`](docs/). Legacy materials remain read-only in `00_legacy_freeze`.
