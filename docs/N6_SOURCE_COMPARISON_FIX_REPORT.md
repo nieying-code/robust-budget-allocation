@@ -61,10 +61,38 @@ Any future restart requires external review, renewed authorization and gates
 bound to its then-current clean source. Old gates cannot validate this repair.
 
 New validation artifacts use outputs/harness-validation/n6-source-comparison-fix-v1,
-not outputs/harness-validation/n6pilot02. They will be sealed separately with
+not outputs/harness-validation/n6pilot02. They are sealed separately with
 tested commit/tree, source manifest, XML hashes and explicit tests-only scope.
 The old N6_RESTART_STOP archive, historical pilot/diagnostic archives, old gates,
 N6 protocol/config, N0–N5 scientific files and N1 manifest API remain unchanged.
 
 N6 remains BLOCKED pending targeted external review. No pilot was relaunched;
 no N7/formal work, merge, force push or modification of the frozen design occurred.
+
+## Completed repair validation
+
+- Tested clean repair commit: 5bef2fc11630defac829835d0bc4775be0d1b92c.
+- Tested tree: ba9e6fd8757d01e244565c94e9f50e09681b6418.
+- Complete solver-free regression: 601 passed, 100 deselected, 187.61 seconds.
+  This includes 35 restart serialization cases and actual Windows heartbeat
+  stress tests. Three existing JUnit record_property-format warnings occurred,
+  with zero failed/error/skipped tests on this Windows run.
+- No licensed suite or environment preflight was rerun in this repair validation;
+  old licensed/gate results are NOT presented as validation of the repaired entry.
+- No scientific run, worker or production batch was launched. The simulated
+  80-record temporary test sequence is not scientific evidence.
+- Compact tests-only archive: docs/evidence/N6_SOURCE_COMPARISON_VALIDATION.json.gz.
+- Archive SHA256: 9ad565de0957458c4cdfd7cdc63ba8098978d96104c34c498d9763a9e74204c9.
+- The archive contains full raw JUnit XML, new source manifest, authenticated
+  Git commit/tree/blob proof and preserved historical hashes. New artifact tests
+  independently verify those objects and exact counts; final Git artifact anchors
+  are external and differ from the tested repair commit.
+- Old gates.json SHA256 remains
+  4f4cf078bc7cc279cabf7aeec2e6007874a677e4bd1ed9800af9209179243112;
+  original stop archive SHA256 remains
+  9e95f182c1cd6d06fe6c5427bd2a16fb98c0e4e9668a3862036efa780f2d4f5a.
+
+Repair-source Push and PR checks passed. Final artifact checks are attached to
+the final head on Draft PR #8; hosted licensed jobs remain explicitly gated.
+Passing tests/CI do not change N6_BLOCKED or authorize pilot relaunch. This repair
+is submitted for targeted external review only.
