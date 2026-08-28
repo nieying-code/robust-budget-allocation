@@ -195,5 +195,14 @@ inventory; the hash list excludes itself and delivery commit/tree are external
 anchors. Post-delivery tests add independent accounting and true shallow CLI
 positive/forged-proof cases; no licensed/scientific rerun is needed.
 
+Final local delivery regression on commit9855ce8cf337a479dfa02336b6b6a58f815cc140:
+**730 passed, 100 licensed deselected**, 383.11s; only the same3 existing JUnit
+format warnings. Includes genuine depth-one90-run CLI replay without execution
+history/license and four rejection cases (missing object, tampered object,
+incomplete source inventory, forged diagnostic gate). Independent1080-row
+accounting and25/25 delivery hashes PASS. The later report-only QA commit does
+not change execution code, scientific inputs or raw evidence. PR CI remains the
+current delivery-commit regression record, not scientific Gate M approval.
+
 STOP for independent scientific review. PR #9 remains Draft/OPEN; no merge,
 Layer 2, automatic parameter repair, final algorithm change or formal N7/N8.
