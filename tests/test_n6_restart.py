@@ -79,7 +79,8 @@ def chain(tmp_path, monkeypatch):
     suites = {}
     for name in ("solver-free", "windows-only", "licensed", "windows-stress"):
         xml = gates / (name+".xml")
-        atomic_write_text(xml, '<testsuite tests="1" failures="0" errors="0" skipped="0"/>')
+        atomic_write_text(xml, '<testsuite tests="1" failures="0" errors="0" skipped="0">'
+                              '<testcase name="synthetic_serialization_check"/></testsuite>')
         suites[name] = dict(tests=1, failures=0, errors=0, skipped=0, returncode=0,
                            xml_sha256=sha256_file(xml))
     gate = seal(dict(status="PASS", batch_id=r.BATCH, source=source, environment=environment,
@@ -133,6 +134,10 @@ def chain(tmp_path, monkeypatch):
                 incumbent=dict(first_stage=decision), trace=[],
                 audit=dict(source=source, data=data.to_dict(), data_sha256=data.data_sha256,
                            config=settings(), config_sha256=canonical_json_sha256(settings()),
+                           classification="SIMULATED SERIALIZATION FIXTURE ONLY",
+                           scenario_order=list(data.base.scenarios), scenario_sha256=data.scenario_sha256,
+                           protocol_path="SIMULATED", protocol_sha256="SIMULATED",
+                           a1_protocol_path="SIMULATED", a1_protocol_sha256="SIMULATED",
                            environment=environment)), "result_sha256")
             status = "incomplete" if index == self.fail_at else "success/certified"
             result = seal(dict(run_id=run_id, status=status, engine=engine,

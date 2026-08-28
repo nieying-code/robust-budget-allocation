@@ -11,6 +11,7 @@ SUPERSEDED = {
     "src/robust_budget_allocation/pilot/replay.py",
     "src/robust_budget_allocation/pilot/restart.py",
     "tests/test_n6_evidence.py",
+    "tests/test_n6_restart.py",
 }
 ADDED = {
     "src/robust_budget_allocation/reproducibility/test_evidence.py",

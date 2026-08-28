@@ -5,6 +5,7 @@ import gzip
 import hashlib
 import importlib.util
 import json
+import xml.etree.ElementTree as ET
 
 import pytest
 
@@ -21,8 +22,14 @@ def reseal(value, key="sha256"):
 
 
 def junit_fixture(tests=2, skipped=0, failures=0, errors=0, returncode=0):
+    cases = []
+    for index in range(max(0, tests)):
+        status = ("failure" if index < failures else "error" if index < failures+errors
+                  else "skipped" if index < failures+errors+skipped else None)
+        outcome = f"<{status}/>" if status else ""
+        cases.append(f'<testcase name="engineering_{index}">{outcome}</testcase>')
     raw = (f'<testsuites><testsuite tests="{tests}" skipped="{skipped}" '
-           f'failures="{failures}" errors="{errors}"/></testsuites>').encode()
+           f'failures="{failures}" errors="{errors}">{"".join(cases)}</testsuite></testsuites>').encode()
     row = dict(tests=tests, skipped=skipped, failures=failures, errors=errors,
                returncode=returncode, xml_sha256=hashlib.sha256(raw).hexdigest())
     return {"engineering": row}, {"engineering": raw}
@@ -65,6 +72,55 @@ def test_no_suites_cannot_pass():
         verify_junit_suites({}, {})
 
 
+@pytest.mark.parametrize("fault", ["remove_cases", "failure", "error", "skipped", "unnamed",
+    "orphan_outcome", "hidden_case", "multiple_outcomes", "suite_counts", "wrapper_counts"])
+def test_actual_testcases_must_match_all_summaries(fault):
+    suites, xml = junit_fixture()
+    root = ET.fromstring(xml["engineering"])
+    suite = root.find("testsuite")
+    case = suite.find("testcase")
+    if fault == "remove_cases":
+        for child in list(suite):
+            suite.remove(child)
+    elif fault in ("failure", "error", "skipped"):
+        ET.SubElement(case, fault)
+    elif fault == "unnamed":
+        case.attrib.pop("name")
+    elif fault == "orphan_outcome":
+        ET.SubElement(suite, "failure")
+    elif fault == "hidden_case":
+        ET.SubElement(ET.SubElement(suite, "properties"), "testcase", name="hidden")
+    elif fault == "multiple_outcomes":
+        ET.SubElement(case, "failure")
+        ET.SubElement(case, "skipped")
+    elif fault == "suite_counts":
+        suite.set("tests", "3")
+    else:
+        root.set("tests", "3")
+    xml["engineering"] = ET.tostring(root)
+    suites["engineering"]["xml_sha256"] = hashlib.sha256(xml["engineering"]).hexdigest()
+    with pytest.raises(ValueError, match="invalid gate XML"):
+        verify_junit_suites(suites, xml)
+
+
+def test_nested_suites_count_cases_once_and_validate_parent_totals():
+    suites, xml = junit_fixture()
+    root = ET.fromstring(xml["engineering"])
+    child = root.find("testsuite")
+    root.remove(child)
+    parent = ET.SubElement(root, "testsuite", tests="2", failures="0", errors="0", skipped="0")
+    parent.append(child)
+    xml["engineering"] = ET.tostring(root)
+    suites["engineering"]["xml_sha256"] = hashlib.sha256(xml["engineering"]).hexdigest()
+    assert verify_junit_suites(suites, xml)
+
+
+def test_actual_skips_require_explicit_policy_and_some_executed_tests():
+    assert verify_junit_suites(*junit_fixture(skipped=1), allow_skips=True)
+    with pytest.raises(ValueError):
+        verify_junit_suites(*junit_fixture(tests=1, skipped=1), allow_skips=True)
+
+
 @pytest.fixture(scope="module")
 def historical():
     return load_bundle(ROOT / "docs/evidence/N6_PILOT02_EVIDENCE.json.gz")
@@ -99,6 +155,29 @@ def test_production_replay_rejects_resealed_test_evidence(historical, fault):
         changed["gate_xml_files"].pop(name)
     changed["gates"] = reseal(changed["gates"])
     with pytest.raises(ValueError):
+        replay_restart(reseal(changed, "evidence_sha256"))
+
+
+@pytest.mark.parametrize("fault", ["remove_cases", "failure", "error", "skipped"])
+def test_production_replay_rejects_actual_case_forgery_after_all_reseals(historical, fault):
+    changed = with_original_xml(historical)
+    name = "solver-free"
+    root = ET.fromstring(changed["gate_xml_files"][name])
+    if fault == "remove_cases":
+        for parent in root.iter():
+            for child in list(parent):
+                if child.tag == "testcase":
+                    parent.remove(child)
+    else:
+        ET.SubElement(next(root.iter("testcase")), fault)
+    # Deliberately keep all declared/saved success counters unchanged.
+    raw = ET.tostring(root, encoding="unicode")
+    changed["gate_xml_files"][name] = raw
+    changed["gates"]["suites"][name]["xml_sha256"] = hashlib.sha256(raw.encode()).hexdigest()
+    changed["gates"] = reseal(changed["gates"])
+    changed["roundtrip"]["gate_sha256"] = changed["gates"]["sha256"]
+    changed["roundtrip"] = reseal(changed["roundtrip"])
+    with pytest.raises(ValueError, match="invalid gate XML"):
         replay_restart(reseal(changed, "evidence_sha256"))
 
 
@@ -137,6 +216,60 @@ def test_engine_canonical_tuple_list_equivalence(historical):
     source = result["engine"]["audit"]["source"]
     source["git"]["untracked_paths"] = tuple(source["git"]["untracked_paths"])
     replace_result(saved, result)
+    assert replay_run(saved)["replay"] == "PASS"
+
+
+@pytest.mark.parametrize("method", ["EF", "A0", "A1"])
+@pytest.mark.parametrize("fault", ["seal", "audit", "both", "audit_none", "audit_empty",
+    "source", "environment", "data", "data_sha256", "config", "config_sha256",
+    "classification", "scenario_order", "scenario_sha256", "protocol_path", "protocol_sha256"])
+def test_required_method_audit_cannot_be_deleted_in_run_or_batch(historical, method, fault):
+    changed = deepcopy(historical)
+    saved = next(r for r in changed["runs"] if json.loads(r["files"]["record.json"])["method"] == method)
+    result = json.loads(saved["files"]["result.json"])
+    engine = result["engine"]
+    original_git = deepcopy(engine["audit"]["source"]["git"])
+    engine["audit"]["source"]["packages"]["Pyomo"] = "forged"
+    engine["audit"]["source"] = reseal(engine["audit"]["source"], "manifest_sha256")
+    assert engine["audit"]["source"]["git"] == original_git
+    if fault in ("seal", "both"):
+        engine.pop("result_sha256")
+    if fault in ("audit", "both"):
+        engine.pop("audit")
+    elif fault == "audit_none":
+        engine["audit"] = None
+    elif fault == "audit_empty":
+        engine["audit"] = {}
+    elif fault != "seal":
+        engine["audit"].pop(fault)
+    if "result_sha256" in engine:
+        result["engine"] = reseal(engine, "result_sha256")
+    replace_result(saved, result)  # Recompute outer result and complete file inventory.
+    with pytest.raises(ValueError, match="required engine audit fields"):
+        replay_run(saved)
+    with pytest.raises(ValueError, match="required engine audit fields"):
+        replay_restart(reseal(changed, "evidence_sha256"))
+
+
+@pytest.mark.parametrize("field", ["a1_protocol_path", "a1_protocol_sha256"])
+def test_a1_protocol_audit_fields_mandatory(historical, field):
+    changed = deepcopy(historical)
+    saved = next(r for r in changed["runs"] if json.loads(r["files"]["record.json"])["method"] == "A1")
+    result = json.loads(saved["files"]["result.json"])
+    result["engine"]["audit"].pop(field)
+    result["engine"] = reseal(result["engine"], "result_sha256")
+    replace_result(saved, result)
+    with pytest.raises(ValueError, match="required engine audit fields"):
+        replay_run(saved)
+    with pytest.raises(ValueError, match="required engine audit fields"):
+        replay_restart(reseal(changed, "evidence_sha256"))
+
+
+@pytest.mark.parametrize("method", ["M0", "M1"])
+def test_original_ablation_format_stays_valid(historical, method):
+    saved = next(r for r in historical["runs"] if json.loads(r["files"]["record.json"])["method"] == method)
+    engine = json.loads(saved["files"]["result.json"])["engine"]
+    assert "audit" not in engine and "result_sha256" not in engine
     assert replay_run(saved)["replay"] == "PASS"
 
 

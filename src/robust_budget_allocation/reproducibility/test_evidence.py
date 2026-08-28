@@ -4,6 +4,51 @@ import hashlib
 import xml.etree.ElementTree as ET
 
 
+def _case_counts(root):
+    """Count actual cases once, validating each container's declarations.
+
+    Support flat or nested JUnit suites without double-counting parent totals.
+    Reject orphan/hidden cases and outcomes, rather than treating them as passes.
+    """
+    keys = ("tests", "failures", "errors", "skipped")
+    outcomes = {"failure": "failures", "error": "errors", "skipped": "skipped"}
+    seen_cases, seen_outcomes = set(), set()
+
+    def visit(node):
+        if node.tag not in ("testsuite", "testsuites"):
+            raise ValueError("unsupported JUnit container")
+        counts = dict.fromkeys(keys, 0)
+        for child in node:
+            if child.tag in ("testsuite", "testsuites"):
+                nested = visit(child)
+                for key in keys:
+                    counts[key] += nested[key]
+            elif child.tag == "testcase":
+                if node.tag != "testsuite" or not child.get("name", "").strip():
+                    raise ValueError("invalid/unnamed JUnit testcase")
+                seen_cases.add(child)
+                counts["tests"] += 1
+                states = [state for state in child if state.tag in outcomes]
+                if len(states) > 1:
+                    raise ValueError("contradictory testcase outcomes")
+                for state in states:
+                    seen_outcomes.add(state)
+                    counts[outcomes[state.tag]] += 1
+        for key in keys:
+            # Suite counters are required; optional wrapper totals must agree too.
+            if node.tag == "testsuite" or key in node.attrib:
+                if int(node.attrib[key]) != counts[key]:
+                    raise ValueError("JUnit testcase/count mismatch")
+        return counts
+
+    counts = visit(root)
+    if seen_cases != set(root.iter("testcase")):
+        raise ValueError("orphan JUnit testcase")
+    if seen_outcomes != {node for node in root.iter() if node.tag in outcomes}:
+        raise ValueError("orphan JUnit outcome")
+    return counts
+
+
 def verify_junit_suites(suites, xml_files, *, allow_skips=False):
     """Recompute hashes/counts; callers retain their required suite inventory.
 
@@ -21,15 +66,8 @@ def verify_junit_suites(suites, xml_files, *, allow_skips=False):
             raise ValueError("gate XML hash")
         try:
             root = ET.fromstring(raw)
-            rows = list(root.iter("testsuite"))
-            counts = {key: 0 for key in keys}
-            for row in rows:
-                for key in keys:
-                    value = int(row.attrib.get(key, "0"))
-                    if value < 0:
-                        raise ValueError("negative JUnit count")
-                    counts[key] += value
-        except (ET.ParseError, ValueError) as exc:
+            counts = _case_counts(root)
+        except (ET.ParseError, ValueError, KeyError) as exc:
             raise ValueError("invalid gate XML") from exc
         if any(type(saved[key]) is not int or counts[key] != saved[key] for key in keys):
             raise ValueError("gate XML counts")

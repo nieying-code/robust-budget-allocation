@@ -11,7 +11,7 @@
     },
     "src/robust_budget_allocation/pilot/replay.py": {
       "n6_sha256": "b80c6501666f0aec00042ce92d2d98449e3a26e88f3310affa60128342cd3f62",
-      "current_sha256": "01b4be26ac474a998a2cd9e85a5632e3d7cdc9b7af3112d7ae5e3c3e18671169"
+      "current_sha256": "90c992c643978227df21c7f3dc2b527f5e48385453d520c456bea0711dbaa9fd"
     },
     "src/robust_budget_allocation/pilot/restart.py": {
       "n6_sha256": "e030c165daa05362e80c6c7a3f5329c0523906107857e0521be5228ed2b3f19e",
@@ -20,13 +20,17 @@
     "tests/test_n6_evidence.py": {
       "n6_sha256": "284d57476f00c1e2e2041006ba3cc1d642e11a7edd681340e165a45d07400158",
       "current_sha256": "c35cf5bdb2a981f5662fa82eceece4b0b8c9380ec889333f4a13d46d74ca3290"
+    },
+    "tests/test_n6_restart.py": {
+      "n6_sha256": "689f08b014b0b5c7496a13d616b88ac78db6578c7be88917a94875b62c4f1582",
+      "current_sha256": "57270a2b37e4a367cbc1c49d8527011cd1bdf370eb5a7dd057a7559005480b87"
     }
   },
   "added_files": {
-    "src/robust_budget_allocation/reproducibility/test_evidence.py": "9c3f8166558bef649b84d7ce9e6c76a243dfbc9349928ac8445d28d2e3d4661a",
-    "tests/test_transition_audit_hardening.py": "d98b2a686d8142a78dead02d0c75baf3d92a914ead3691234c97501955758356",
+    "src/robust_budget_allocation/reproducibility/test_evidence.py": "9e7851a88f2a64b6a22bff12bcf6290050edfee7553346828d12e42cf4eb62bf",
+    "tests/test_transition_audit_hardening.py": "d4ff198d84a38e2587516b7efcec5b6f55a840cdde3e4ae83359529c9a250c99",
     "tests/test_transition_production_entry.py": "cb51d50b26c7ef00706870433790a7b3a3b52d737890b9a98b31aefac06d55be",
-    "tests/test_transition_manifest.py": "7f862c050f11f7eb6f4e93d8fa604e65293d05221658a00f0f46717beccb9ab9",
-    "docs/TRANSITION_ENGINEERING_REPORT.md": "a95005f622caeae553d301f0110a429eb224c6c370dcf67d42d6ad4da8ccdec2"
+    "tests/test_transition_manifest.py": "9b0cb8fda200d66830bcb9abb28753071cffd394d0e9334ba512dd1cca506955",
+    "docs/TRANSITION_ENGINEERING_REPORT.md": "859d15b26a52fefc010426929fb5b038ccbc667fd44aa21c0105909056431189"
   }
 }
