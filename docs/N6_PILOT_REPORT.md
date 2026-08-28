@@ -1,9 +1,12 @@
 # N6 pilot / execution readiness report — fresh n6pilot02
 
-Current delivery review: **N6_REVIEW_CHANGES_REQUESTED** pending the authorized
-read-only shallow-replay repair (N6_READONLY_REPLAY_REPAIR.md). The 80-run scientific
-assessment remains unchanged, with explicit narrower Option and Memory coverage
-warnings. This is a submission for external review, NOT
+Current delivery assessment: **N6_READY_FOR_PR_REVIEW** after the authorized
+read-only shallow-replay repair (N6_READONLY_REPLAY_REPAIR.md). Real depth=1 CLI
+replay passes 80/80 without the execution commit in local Git or test injection;
+six missing/forged-proof CLI cases fail closed. Repair regression: 622 solver-free
+passed, 100 licensed deselected. No pilot, licensed suite or prelaunch rerun.
+The 80-run scientific assessment and evidence remain unchanged, with explicit
+narrower Option and Memory coverage warnings. This is a submission for external review, NOT
 scientific approval, permission to merge, N7 entry or formal experiment authority.
 PILOT ONLY — NOT FORMAL SCIENTIFIC PARAMETERS.
 

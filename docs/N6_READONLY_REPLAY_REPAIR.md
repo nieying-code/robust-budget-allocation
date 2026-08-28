@@ -69,7 +69,32 @@ This test-setup failure is retained in
 outputs/harness-validation/n6-readonly-replay-fix-v1/targeted.xml. The fixture now
 explicitly disables clone-local newline conversion; production loading is unchanged.
 
-Repair committed before true clone validation. Actual targeted/full solver-free
-results and final PR checks will be recorded after execution; none is prelaunch
-revalidation or a new pilot result. No change to the existing scientific diagnosis:
-Q/R and Candidate response are observed; Option and Memory benefit remain unproven.
+Validated clean repair/test commit: 1a4bb52a5ba05c7b88c60800a07094e0cc4e6293.
+Tree: ac0df24a16f63600c6c72c37983714d7776a24f4. The production audit repair was
+committed in a98984552f7b5ba89b96b9166edf7cadff8dfc9a; the next commit changed
+only clone setup, documentation and delivery hashes. No scientific execution
+anchor changes; final report/hash commits are external delivery anchors only.
+
+Actual validation on the committed repair:
+
+- Targeted: 20 passed (7 real shallow CLI cases plus 13 existing evidence cases).
+- Full solver-free: 622 passed, 100 licensed deselected, 3 existing JUnit warnings.
+- Independent retained clone: outputs/harness-validation/n6-readonly-replay-fix-v2/standalone-depth1.
+  Shallow=true, reachable commits=1, Git cat-file cannot find the execution commit;
+  the normal CLI nevertheless returns PASS, 80 successes, 0 failures, 16 pairs,
+  max_pair_difference=0. Its working tree remains clean; no outputs were created.
+- Every negative clone fails without PASS, including resealed object/tree/inventory
+  forgeries. No monkeypatch, source-store injection or fetch in these CLI tests.
+- Current 45-entry N6 delivery hash inventory excludes itself. Original pilot,
+  prelaunch, manifest, summary and historical evidence files have no Git diff.
+
+Raw JUnit is retained separately as targeted.xml and solver-free.xml under
+outputs/harness-validation/n6-readonly-replay-fix-v2. The first failed setup log
+is not overwritten. Final delivery-head CI remains attached to the same Draft
+PR #8, separate from these local test records. Hosted licensed jobs remain gated.
+No pilot, licensed suite, prelaunch, parameter tuning, merge or N7 work occurred.
+
+The delivery gap is repaired and submitted for external review. No change to the
+scientific diagnosis: Q/R and Candidate response are observed; Option and Memory
+benefit remain unproven, and their linked coverage limitation is still explicit.
+N6_READY_FOR_PR_REVIEW is not final scientific approval or N7 authorization.
