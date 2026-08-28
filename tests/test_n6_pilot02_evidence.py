@@ -25,18 +25,6 @@ COMMIT = "ec6bbfc55e333483efa41f866c0e8f26d13cd18f"
 TREE = "1856c203917fa3cc234f5aee83e2a4403abe472d"
 
 
-@pytest.fixture(autouse=True)
-def source_object_store(monkeypatch):
-    # New proof is independent; do not overwrite old historical source archives.
-    # This supplies raw Git objects for shallow CI, not trusted hashes/validation.
-    original = source_archive.archive_objects()
-    objects = {**original, **PROOF["git_objects"]["objects"]}
-    monkeypatch.setattr(source_archive, "archive_objects", lambda: objects)
-    anchored_inputs.cache_clear()
-    yield
-    anchored_inputs.cache_clear()
-
-
 def test_complete_fresh_batch_disk_replay():
     assert restart.replay_restart(BUNDLE) == MANIFEST["replay"] == dict(
         status="PASS", runs=80, pairs=16, successes=80, failures=0, max_pair_difference=0.0)
@@ -87,6 +75,7 @@ def test_actual_prelaunch_files_xml_and_roundtrip_proof(tmp_path, monkeypatch):
 
 
 def test_new_source_is_authenticated_without_local_git_history(monkeypatch):
+    anchored_inputs.cache_clear()
     monkeypatch.setattr(source_archive.subprocess, "run", lambda *a, **k: SimpleNamespace(returncode=1))
     assert PROOF["git_objects"]["commits"] == [COMMIT]
     verify_source(BUNDLE["source"])  # Native object IDs, commit/tree, full input inventory.

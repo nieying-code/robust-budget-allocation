@@ -1,7 +1,9 @@
 # N6 pilot / execution readiness report — fresh n6pilot02
 
-Current assessment: **N6_READY_FOR_PR_REVIEW**, with explicit narrower Option
-and Memory coverage warnings. This is a submission for external review, NOT
+Current delivery review: **N6_REVIEW_CHANGES_REQUESTED** pending the authorized
+read-only shallow-replay repair (N6_READONLY_REPLAY_REPAIR.md). The 80-run scientific
+assessment remains unchanged, with explicit narrower Option and Memory coverage
+warnings. This is a submission for external review, NOT
 scientific approval, permission to merge, N7 entry or formal experiment authority.
 PILOT ONLY — NOT FORMAL SCIENTIFIC PARAMETERS.
 
@@ -35,8 +37,10 @@ report is retained verbatim below; its state/permissions refer to that earlier t
 Only necessary gates/run/worker entry was restored and committed first.
 Diagnostic-retry stays disabled. The execution commit was clean throughout all
 gates and all 80 runs; source is checked before every run, at worker startup,
-after reading each result and at final replay. No execution code changed after
-launch. Later report/test/artifact commits are NOT execution anchors.
+after reading each result and at final replay. No code changed while the batch
+was executing. The later separately authorized read-only replay delivery repair
+does not rerun or change its science. Later repair/report/test/artifact commits
+are NOT execution anchors.
 
 | Ordered gate on execution commit | Actual result |
 | --- | --- |
