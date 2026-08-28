@@ -42,16 +42,20 @@ def archive(path, payload):
 
 
 def execute(batch):
-    raise PermissionError("N6_FULL_PILOT_RESUME_NOT_AUTHORIZED; use only the authorized diagnostic-retry")
+    from robust_budget_allocation.pilot.restart import execute as restart_execute
+    return restart_execute(batch, archive)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("run", "worker", "replay", "summarize", "diagnostic-retry"))
+    parser.add_argument("action", choices=("run", "worker", "replay", "summarize", "diagnostic-retry", "restart-gates"))
     parser.add_argument("--batch")
     parser.add_argument("--folder", type=Path)
     parser.add_argument("--evidence", type=Path)
     args = parser.parse_args()
+    if args.action == "restart-gates":
+        from robust_budget_allocation.pilot.restart import gates
+        return gates()
     if args.action == "run":
         return execute(args.batch)
     if args.action == "diagnostic-retry":
@@ -71,7 +75,11 @@ def main():
     if bundle.get("kind") == "single_diagnostic_retry":
         result = replay_diagnostic(bundle)
     else:
-        result = replay_bundle(bundle) if args.action == "replay" else summarize(bundle)
+        if bundle.get("batch_id") == "n6pilot02" and args.action == "replay":
+            from robust_budget_allocation.pilot.restart import replay_restart
+            result = replay_restart(bundle)
+        else:
+            result = replay_bundle(bundle) if args.action == "replay" else summarize(bundle)
     print(json.dumps(result, indent=2, ensure_ascii=False))
     return 0
 

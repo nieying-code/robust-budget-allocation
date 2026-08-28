@@ -48,6 +48,8 @@ def selected(entries):
     names = {p for p in entries if p.startswith("src/robust_budget_allocation/") and p.endswith(".py")} | FIXED
     if AUTHORIZATION in entries:
         names.add(AUTHORIZATION)
+    if "docs/N6_FRESH_RESTART_AUTHORIZATION.md" in entries:
+        names.add("docs/N6_FRESH_RESTART_AUTHORIZATION.md")
     return names
 
 
@@ -110,4 +112,3 @@ def build_archive(commits):
             capture("blob", oid)
     return dict(schema_version=1, commits=list(commits), objects=objects,
                 purpose="read-only authenticated source provenance; not a runnable source migration")
-

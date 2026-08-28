@@ -34,6 +34,7 @@ def source_inputs():
                    ROOT / "scripts/n6_pilot.py", ROOT / PROTOCOL, ROOT / CONFIG_PATH,
                    ROOT / "docs/N4_CORRECTNESS_PROTOCOL.md", ROOT / "docs/N5_A1_PROTOCOL.md",
                    ROOT / "docs/N6_HARNESS_REPAIR_AUTHORIZATION.md",
+                   ROOT / "docs/N6_FRESH_RESTART_AUTHORIZATION.md",
                    ROOT / "pyproject.toml", ROOT / "requirements.txt"])
 
 
@@ -74,7 +75,8 @@ def worker(folder):
         raise FileExistsError("worker cannot overwrite an existing run")
     request = json.loads((folder / "request.json").read_text(encoding="utf-8"))
     if request.get("purpose") != "harness_diagnostic_only":
-        raise PermissionError("full pilot worker execution is not authorized")
+        from .restart import validate_worker
+        validate_worker(folder, request)
     started, engine = utc(), None
     timing, environment = {}, None
     phase_starts = {}

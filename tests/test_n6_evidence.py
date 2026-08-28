@@ -25,9 +25,10 @@ N6_PATHS = frozenset({
     "docs/evidence/N6_HARNESS_VALIDATION.json",
     "docs/evidence/N6_EF_DIAGNOSTIC_RETRY.json.gz",
     "docs/evidence/N6_DIAGNOSTIC_MANIFEST.json", "tests/test_n6_diagnostic_evidence.py",
+    "docs/N6_FRESH_RESTART_AUTHORIZATION.md", "tests/test_n6_restart.py",
     *["src/robust_budget_allocation/pilot/"+name+".py" for name in (
         "__init__", "configuration", "execution", "measurement", "replay", "storage", "summary",
-        "heartbeat", "diagnostic", "source_archive")]
+        "heartbeat", "diagnostic", "source_archive", "restart")]
 })
 
 

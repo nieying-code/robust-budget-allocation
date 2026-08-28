@@ -85,7 +85,7 @@ def replay_run(bundle):
         raise ValueError("worker status mismatch")
     if heartbeat["stage"] != "complete" or record["watchdog"]["exit_code"] != 0:
         raise ValueError("incomplete worker cannot certify")
-    if record.get("purpose") == "harness_diagnostic_only":
+    if record.get("purpose") == "harness_diagnostic_only" or record["run_id"].startswith("n6pilot02-"):
         watch = record["watchdog"]
         if watch["status"] is not None or not watch["cleanup"]["success"] or watch["cleanup"]["exit_code"] != 0:
             raise ValueError("diagnostic process cleanup not successful")
