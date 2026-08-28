@@ -31,6 +31,7 @@ N6_PATHS = frozenset({
     "docs/N6_SOURCE_COMPARISON_FIX_REPORT.md",
     "docs/evidence/N6_SOURCE_COMPARISON_VALIDATION.json.gz",
     "tests/test_n6_source_comparison_validation.py",
+    "docs/N6_PRELAUNCH_REVALIDATION_v2.md",
     *["src/robust_budget_allocation/pilot/"+name+".py" for name in (
         "__init__", "configuration", "execution", "measurement", "replay", "storage", "summary",
         "heartbeat", "diagnostic", "source_archive", "restart")]

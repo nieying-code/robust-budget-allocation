@@ -1,6 +1,7 @@
 """One fresh registered N6 batch; no resume, retries, or historical result reuse."""
 
 import json
+from copy import deepcopy
 import os
 from pathlib import Path
 import subprocess
@@ -19,7 +20,7 @@ from .replay import replay_run, replay_group, replay_bundle, verify_source, veri
 from .storage import read_run, seal, check_seal
 
 BATCH = "n6pilot02"
-GATES = ROOT / "outputs/harness-validation/n6pilot02"
+GATES = ROOT / "outputs/harness-validation/n6pilot02-prelaunch-v2"
 GATE_FILE = GATES / "gates.json"
 
 
@@ -48,13 +49,74 @@ def validate_gates(gate):
     verify_environment(gate["environment"])
     if gate["protocol_sha256"] != PROTOCOL_SHA or gate["config_sha256"] != CONFIG_SHA:
         raise ValueError("restart gate registration mismatch")
-    if set(gate["suites"]) != {"solver-free", "licensed", "windows-stress"}:
+    if set(gate["suites"]) != {"solver-free", "windows-only", "licensed", "windows-stress"}:
         raise ValueError("missing gate suite")
     for name, row in gate["suites"].items():
         if row["returncode"] != 0 or row["failures"] or row["errors"] or row["skipped"] or row["tests"] <= 0:
             raise ValueError("failed/skipped gate suite")
         if sha256_file(GATES / (name+".xml")) != row["xml_sha256"]:
             raise ValueError("gate XML hash")
+
+
+def gate_roundtrip():
+    """Read actual persisted gates using the production validator; no solver."""
+    report_path = GATES / "roundtrip.json"
+    if report_path.exists():
+        raise FileExistsError("roundtrip evidence already exists")
+    report = dict(status="FAIL", stage="real gate JSON roundtrip", started_utc=utc())
+    try:
+        gate = json.loads(GATE_FILE.read_text(encoding="utf-8"))
+        validate_gates(gate)
+        live = manifest()
+        report.update(source=gate["source"], gate_sha256=gate["sha256"],
+                      gate_file_sha256=sha256_file(GATE_FILE),
+                      canonical_source_equal=same_content(gate["source"], live),
+                      raw_python_source_equal=gate["source"] == live,
+                      saved_untracked_type=type(gate["source"]["git"]["untracked_paths"]).__name__,
+                      live_untracked_type=type(live["git"]["untracked_paths"]).__name__)
+        # Material content forgery is persisted/reloaded and must be rejected even
+        # after recalculating BOTH seals. This is not an edit to live source files.
+        forged = deepcopy(gate)
+        forged["source"]["packages"]["Pyomo"] = "FORGED-SOURCE-CONTENT"
+        forged["source"].pop("manifest_sha256")
+        forged["source"] = seal(forged["source"], "manifest_sha256")
+        forged.pop("sha256")
+        negative = GATES / "negative-source.json"
+        if negative.exists():
+            raise FileExistsError("negative source evidence already exists")
+        atomic_write_json(negative, seal(forged))
+        try:
+            validate_gates(json.loads(negative.read_text(encoding="utf-8")))
+        except ValueError as exc:
+            if str(exc) != "restart gate/source mismatch":
+                raise
+            report.update(changed_source_rejected=True, rejection=str(exc),
+                          negative_file_sha256=sha256_file(negative))
+        else:
+            raise ValueError("material source change was accepted")
+        if not report["canonical_source_equal"]:
+            raise ValueError("JSON roundtrip changed canonical contents")
+        report["status"] = "PASS"
+    except BaseException as exc:
+        report["exception"] = exception_context(exc, stage="real gate roundtrip", heartbeat=None, elapsed=0)
+    report["finished_utc"] = utc()
+    atomic_write_json(report_path, seal(report))
+    return report
+
+
+def validate_prelaunch():
+    """Both gate suites AND completed real roundtrip are required before launch."""
+    gate = json.loads(GATE_FILE.read_text(encoding="utf-8"))
+    validate_gates(gate)
+    report = json.loads((GATES / "roundtrip.json").read_text(encoding="utf-8"))
+    check_seal(report)
+    if report["status"] != "PASS" or not report["canonical_source_equal"] or not report["changed_source_rejected"]:
+        raise ValueError("real gate roundtrip has not passed")
+    if not same_content(report["source"], gate["source"]) or report["gate_sha256"] != gate["sha256"]:
+        raise ValueError("roundtrip/source binding")
+    if report["gate_file_sha256"] != sha256_file(GATE_FILE):
+        raise ValueError("roundtrip gate-file binding")
+    return gate, report
 
 
 def gates():
@@ -69,8 +131,9 @@ def gates():
                    status="FAIL", suites={}, environment=None)
     commands = {
         "solver-free": ["-m", "not gurobi"],
+        "windows-only": ["tests/test_n6_harness_repair.py", "-k", "windows"],
         "licensed": ["-m", "gurobi"],
-        "windows-stress": ["tests/test_n6_harness_repair.py", "-k", "windows"],
+        "windows-stress": ["tests/test_n6_harness_repair.py", "-k", "high_frequency_atomic_heartbeat"],
     }
     try:
         for name, selection in commands.items():
@@ -93,8 +156,11 @@ def gates():
         payload["exception"] = exception_context(exc, stage="gates", heartbeat=None, elapsed=0)
     payload["finished_utc"] = utc()
     atomic_write_json(GATE_FILE, seal(payload))
-    print(json.dumps(payload, ensure_ascii=False), flush=True)
-    return 0 if payload["status"] == "PASS" else 1
+    roundtrip = gate_roundtrip() if payload["status"] == "PASS" else None
+    passed = payload["status"] == "PASS" and roundtrip["status"] == "PASS"
+    print(json.dumps(dict(gates_status=payload["status"], roundtrip=roundtrip,
+                         prelaunch_status="PASS" if passed else "FAIL"), ensure_ascii=False), flush=True)
+    return 0 if passed else 1
 
 
 def validate_worker(folder, request):
@@ -111,8 +177,7 @@ def validate_worker(folder, request):
     check_seal(claim)
     if not same_content(request["source"], claim["source"]):
         raise ValueError("worker outside unique batch source")
-    gate = json.loads(GATE_FILE.read_text(encoding="utf-8"))
-    validate_gates(gate)
+    gate, _ = validate_prelaunch()
     if claim["gates_sha256"] != sha256_file(GATE_FILE):
         raise ValueError("batch gate binding")
 
@@ -122,8 +187,7 @@ def execute(batch, archive):
         raise PermissionError("N6_FULL_PILOT_RESUME_NOT_AUTHORIZED except fresh n6pilot02")
     before = source_gate()
     reg = registration()
-    gate = json.loads(GATE_FILE.read_text(encoding="utf-8"))
-    validate_gates(gate)
+    gate, roundtrip = validate_prelaunch()
     source = manifest()
     root = ROOT / "outputs/pilot" / BATCH
     with exclusive_file_lock(ROOT / "outputs/pilot/.locks/n6pilot02.lock", timeout_seconds=0):
@@ -165,7 +229,7 @@ def execute(batch, archive):
                 break
         bare = dict(schema_version=1, classification=SCOPE, protocol_sha256=PROTOCOL_SHA,
                     config_sha256=CONFIG_SHA, source_gate=before, source=source,
-                    batch_start=claim, gates=gate, batch_id=BATCH, runs=runs,
+                    batch_start=claim, gates=gate, roundtrip=roundtrip, batch_id=BATCH, runs=runs,
                     status="PASS" if failure is None and len(runs) == 80 else "FAIL",
                     failure=failure, pair_checks=checks)
         try:
@@ -210,9 +274,17 @@ def replay_restart(bundle):
     if gate["batch_id"] != BATCH or gate["protocol_sha256"] != PROTOCOL_SHA or gate["config_sha256"] != CONFIG_SHA:
         raise ValueError("restart gate registration")
     verify_environment(gate["environment"])
-    if set(gate["suites"]) != {"solver-free", "licensed", "windows-stress"}:
+    if set(gate["suites"]) != {"solver-free", "windows-only", "licensed", "windows-stress"}:
         raise ValueError("restart gate suites missing")
     for suite in gate["suites"].values():
         if suite["returncode"] or suite["failures"] or suite["errors"] or suite["skipped"] or suite["tests"] <= 0:
             raise ValueError("restart gate suite not passed")
+    report = bundle["roundtrip"]
+    check_seal(report)
+    if report["status"] != "PASS" or not report["canonical_source_equal"] or not report["changed_source_rejected"]:
+        raise ValueError("restart roundtrip not passed")
+    if not same_content(report["source"], bundle["source"]) or report["gate_sha256"] != gate["sha256"]:
+        raise ValueError("restart roundtrip source binding")
+    if report["gate_file_sha256"] != bundle["batch_start"]["gates_sha256"]:
+        raise ValueError("restart roundtrip file binding")
     return result

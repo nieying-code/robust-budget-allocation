@@ -77,7 +77,7 @@ def chain(tmp_path, monkeypatch):
         threads=1, solver_available=True, license_available=True, status="PASS",
         platform="SIMULATED TEST ENVIRONMENT; NOT A LICENSE CHECK")
     suites = {}
-    for name in ("solver-free", "licensed", "windows-stress"):
+    for name in ("solver-free", "windows-only", "licensed", "windows-stress"):
         xml = gates / (name+".xml")
         atomic_write_text(xml, '<testsuite tests="1" failures="0" errors="0" skipped="0"/>')
         suites[name] = dict(tests=1, failures=0, errors=0, skipped=0, returncode=0,
@@ -89,6 +89,8 @@ def chain(tmp_path, monkeypatch):
     saved_gate = json.loads(r.GATE_FILE.read_text(encoding="utf-8"))
     assert saved_gate["source"] != source
     r.validate_gates(saved_gate)  # REAL source comparison + seals + Git-object + XML checks
+    assert r.gate_roundtrip()["status"] == "PASS"
+    r.validate_prelaunch()
 
     # Only the scientific solve/optimality proof is simulated, explicitly labelled.
     def simulated_proof(data, engine):
@@ -263,8 +265,20 @@ def test_canonical_comparison_rejects_nonfinite_and_preserves_array_order():
             r.same_content({"x": value}, {"x": value})
 
 
-@pytest.mark.parametrize("action", ["run", "worker", "restart-gates", "diagnostic-retry"])
-def test_cli_interlock_blocks_all_execution_actions(action):
-    result = subprocess.run([sys.executable, str(ROOT / "scripts/n6_pilot.py"), action],
+def test_cli_diagnostic_retry_remains_disabled():
+    result = subprocess.run([sys.executable, str(ROOT / "scripts/n6_pilot.py"), "diagnostic-retry"],
                             capture_output=True, text=True)
-    assert result.returncode != 0 and "N6_PILOT_RELAUNCH_NOT_AUTHORIZED" in result.stderr
+    assert result.returncode != 0 and "N6_DIAGNOSTIC_RETRY_NOT_AUTHORIZED" in result.stderr
+
+
+def test_real_roundtrip_proof_required_and_immutable(chain):
+    gate, report = r.validate_prelaunch()
+    assert report["saved_untracked_type"] == "list" and report["live_untracked_type"] == "tuple"
+    assert report["raw_python_source_equal"] is False and report["canonical_source_equal"] is True
+    assert report["changed_source_rejected"] is True
+    with pytest.raises(FileExistsError):
+        r.gate_roundtrip()
+    report["status"] = "FAIL"
+    atomic_write_json(r.GATES / "roundtrip.json", reseal(report, "sha256"))
+    with pytest.raises(ValueError, match="has not passed"):
+        r.validate_prelaunch()

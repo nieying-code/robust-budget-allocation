@@ -42,7 +42,8 @@ def archive(path, payload):
 
 
 def execute(batch):
-    raise PermissionError("N6_PILOT_RELAUNCH_NOT_AUTHORIZED; N6_FULL_PILOT_RESUME_NOT_AUTHORIZED")
+    from robust_budget_allocation.pilot.restart import execute as restart_execute
+    return restart_execute(batch, archive)
 
 
 def main():
@@ -52,8 +53,8 @@ def main():
     parser.add_argument("--folder", type=Path)
     parser.add_argument("--evidence", type=Path)
     args = parser.parse_args()
-    if args.action in ("run", "worker", "restart-gates", "diagnostic-retry"):
-        raise PermissionError("N6_PILOT_RELAUNCH_NOT_AUTHORIZED; N6_FULL_PILOT_RESUME_NOT_AUTHORIZED")
+    if args.action == "diagnostic-retry":
+        raise PermissionError("N6_DIAGNOSTIC_RETRY_NOT_AUTHORIZED")
     if args.action == "restart-gates":
         from robust_budget_allocation.pilot.restart import gates
         return gates()
