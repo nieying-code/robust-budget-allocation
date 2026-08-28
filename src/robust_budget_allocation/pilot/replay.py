@@ -10,7 +10,7 @@ from functools import lru_cache
 
 from robust_budget_allocation.algorithms.a1_verification import verify_three
 from robust_budget_allocation.algorithms.common import equal, upper, settings
-from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_file
+from robust_budget_allocation.io.hashing import canonical_json_sha256, canonical_json_bytes, sha256_file
 from .configuration import ROOT, SCOPE, METHODS, PROTOCOL_SHA, CONFIG_SHA, registration, generate, binding
 from .measurement import verify_engine, mechanism, metrics
 from .storage import check_seal, verify_inventory, safe_id, safe_relative, FAILURE_STATES
@@ -45,6 +45,24 @@ def verify_environment(environment):
         threads=1, solver_available=True, license_available=True, status="PASS")
     if any(environment.get(k) != v for k, v in expected.items()):
         raise ValueError("locked environment mismatch")
+
+
+def require_engine_audit(engine, method):
+    """EF/A0/A1 audit is mandatory by verified method, never by optional seal."""
+    fields = {"classification", "source", "environment", "data", "data_sha256",
+              "config", "config_sha256", "scenario_order", "scenario_sha256",
+              "protocol_path", "protocol_sha256"}
+    if method == "A1":
+        fields |= {"a1_protocol_path", "a1_protocol_sha256"}
+    audit = engine.get("audit")
+    if "result_sha256" not in engine or not isinstance(audit, dict) or not fields <= audit.keys():
+        raise ValueError("required engine audit fields missing: " + method)
+    mappings = {"source", "environment", "data", "config"}
+    if (any(not isinstance(audit[key], dict) for key in mappings)
+            or not isinstance(audit["scenario_order"], (list, tuple))
+            or any(not isinstance(audit[key], str) or not audit[key]
+                   for key in fields - mappings - {"scenario_order"})):
+        raise ValueError("invalid required engine audit fields: " + method)
 
 
 def replay_run(bundle):
@@ -98,10 +116,15 @@ def replay_run(bundle):
     engine = result["engine"]
     if engine["method"] != record["method"]:
         raise ValueError("engine method")
-    if "result_sha256" in engine:
+    requires_audit = record["method"] in ("EF", "A0", "A1")
+    if requires_audit:
+        require_engine_audit(engine, record["method"])
+    if requires_audit or "result_sha256" in engine:
         check_seal(engine, "result_sha256")
         audit = engine["audit"]
         check_seal(audit["source"], "manifest_sha256")
+        if canonical_json_bytes(audit["source"]) != canonical_json_bytes(record["source"]):
+            raise ValueError("engine complete source binding")
         if any(audit["source"]["git"][k] != record["source"]["git"][k]
                for k in ("commit_sha", "tree_sha")) or audit["source"]["git"]["tracked_dirty"]:
             raise ValueError("engine execution anchor")

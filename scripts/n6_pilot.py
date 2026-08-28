@@ -11,7 +11,7 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from robust_budget_allocation.io.atomic import atomic_write_json
+from robust_budget_allocation.io.atomic import atomic_write_json, _replace_with_retry
 from robust_budget_allocation.io.hashing import sha256_file
 from robust_budget_allocation.pilot.execution import worker
 from robust_budget_allocation.pilot.replay import replay_bundle, load_bundle
@@ -35,7 +35,7 @@ def archive(path, payload):
         # Caller holds the batch lease; destination existence is checked again.
         if path.exists():
             raise FileExistsError(path)
-        os.replace(temporary, path)
+        _replace_with_retry(temporary, path)
     finally:
         if temporary.exists():
             temporary.unlink()

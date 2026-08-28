@@ -116,8 +116,16 @@ def test_n6_hash_inventory_complete_and_regular():
     pairs = [line.split("  ", 1) for line in lines if line]
     paths = [safe_relative(path) for digest, path in pairs]
     assert len(paths) == len(set(paths)) and set(paths) == N6_PATHS
+    # N6's frozen list remains historical. Explicit transition supersessions
+    # bind the original digest and the independently committed current digest.
+    transition = json.loads((ROOT / "docs/TRANSITION_ENGINEERING_MANIFEST.json").read_text(encoding="utf-8"))
+    superseded = transition["superseded_engineering_files"]
     for digest, path in pairs:
         target = ROOT / path
         assert target.is_file() and not target.is_symlink()
-        assert sha256_file(target) == digest
+        if path in superseded:
+            assert superseded[path]["n6_sha256"] == digest
+            assert sha256_file(target) == superseded[path]["current_sha256"]
+        else:
+            assert sha256_file(target) == digest
     assert "docs/N6_PILOT_HASHES.sha256" not in N6_PATHS
