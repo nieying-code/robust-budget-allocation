@@ -48,15 +48,15 @@ def test_gate_source_and_all_raw_xml_are_authenticated():
         "solver-free": 572, "licensed": 100, "windows-stress": 4}
 
 
-def test_observed_tuple_list_defect_reproduces_without_launch(monkeypatch):
+def test_historical_tuple_list_failure_is_preserved_without_relaunch():
     gate = PROOF["gates"]
     in_memory = deepcopy(gate["source"])
     in_memory["git"]["untracked_paths"] = tuple(in_memory["git"]["untracked_paths"])
     assert in_memory != gate["source"]
     assert canonical_json_sha256(in_memory) == canonical_json_sha256(gate["source"])
-    monkeypatch.setattr(restart, "manifest", lambda: in_memory)
-    with pytest.raises(ValueError, match="restart gate/source mismatch"):
-        restart.validate_gates(gate)  # read-only validator; never execute()/worker()
+    # Preserve the old failure, but do not claim old gates validate repaired code.
+    assert PROOF["exception"]["message"] == "restart gate/source mismatch"
+    assert restart.same_content(in_memory, gate["source"])
 
 
 def test_intended_source_proof_in_shallow_checkout(monkeypatch):
