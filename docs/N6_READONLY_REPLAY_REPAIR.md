@@ -46,6 +46,8 @@ files must equal the committed delivery; no working-file overlay is allowed.
 No monkeypatch, validator substitution, source-store injection, history fetch
 or solve simulation is used. GRB_LICENSE_FILE names a nonexistent file; readonly
 replay must succeed without a license. No outputs directory may be created.
+Clone-local core.autocrlf=false preserves committed bytes for the frozen file
+hashes; no global Git setting is changed and no files are overlaid or rewritten.
 
 Command inside the depth=1 clone:
 
@@ -59,6 +61,13 @@ are recalculated, so stored digest presence alone cannot pass. Every negative
 CLI must exit nonzero without printing PASS. Original evidence is never touched.
 
 ## Validation status
+
+First validation at repair commit a98984552f7b5ba89b96b9166edf7cadff8dfc9a:
+13 existing artifact tests passed; 7 shallow tests stopped in setup before CLI
+because the host's automatic CRLF checkout differed from committed LF bytes.
+This test-setup failure is retained in
+outputs/harness-validation/n6-readonly-replay-fix-v1/targeted.xml. The fixture now
+explicitly disables clone-local newline conversion; production loading is unchanged.
 
 Repair committed before true clone validation. Actual targeted/full solver-free
 results and final PR checks will be recorded after execution; none is prelaunch

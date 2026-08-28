@@ -32,7 +32,8 @@ def assert_shallow_without_execution(folder):
 @pytest.fixture
 def shallow(tmp_path):
     folder = tmp_path / "depth-one"
-    result = subprocess.run(["git", "clone", "--depth=1", "--no-local", "--single-branch",
+    result = subprocess.run(["git", "clone", "-c", "core.autocrlf=false",
+                             "--depth=1", "--no-local", "--single-branch",
                              ROOT.as_uri(), str(folder)], capture_output=True,
                             text=True, encoding="utf-8", errors="replace", timeout=60)
     assert result.returncode == 0, result.stderr
