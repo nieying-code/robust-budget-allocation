@@ -1,0 +1,1878 @@
+{
+  "algorithm_severe_risk": false,
+  "classification": "PILOT ONLY — NOT FORMAL SCIENTIFIC PARAMETERS",
+  "completed_pairs": 16,
+  "failed_runs": 0,
+  "memory_caveat": "Python call peak excludes native solver; RSS is process lifetime, not call-only",
+  "model_severe_risk": false,
+  "narrow_coverage_warnings": [
+    "Option never selected in this coverage; B/C/E unresolved, not proof of structural worthlessness",
+    "No Memory hit in pilot; B/D/E coverage/mechanism risk, no redesign authorized"
+  ],
+  "observations": [
+    {
+      "A0": {
+        "LB": 495.7182976095696,
+        "UB": 495.7182976095696,
+        "active_size": 3,
+        "algorithm_seconds": 0.6112449999782257,
+        "complete_oracle_calls": 3,
+        "exact_oracle_calls": 3,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.5404151000548154,
+        "gap": 0.0,
+        "gap_tolerance": 5.957182976095696e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.04045510001014918,
+        "objective": 495.7182976095696,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.030374799913261086,
+        "scenario_evaluations": 36,
+        "scenarios_added": 2,
+        "signed_gap": 0.0
+      },
+      "A1": {
+        "LB": 495.7182976095696,
+        "UB": 495.7182976095696,
+        "active_size": 3,
+        "algorithm_seconds": 0.2656483000027947,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.16549919999670237,
+        "gap": 0.0,
+        "gap_tolerance": 5.957182976095696e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.03734209999674931,
+        "objective": 495.7182976095696,
+        "partial_evaluation_solver_seconds": 0.027742000005673617,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 2,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.03506500000366941,
+        "scenario_evaluations": 15,
+        "scenarios_added": 2,
+        "signed_gap": 0.0
+      },
+      "C_Q": 45.0,
+      "C_R": 0.0,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 45,
+        "id": "low-s61001-b45-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "low",
+        "scenarios": 12,
+        "seed": 61001
+      },
+      "config_id": "low-s61001-b45-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 0.0,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 495.7182976095696,
+        "A1": 495.7182976095696,
+        "EF": 495.7182976095696,
+        "M0": 495.7182976095696,
+        "M1": 495.7182976095696
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 0,
+      "q": {
+        "j0": 27.25304910377755,
+        "j1": 0.0,
+        "j2": 13.145889552757371
+      },
+      "quantity": 40.39893865653492,
+      "reliability_choice": {
+        "j0": "0",
+        "j1": "0",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        0.0
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 277.398656722963,
+        "UB": 277.398656722963,
+        "active_size": 3,
+        "algorithm_seconds": 0.6010894000064582,
+        "complete_oracle_calls": 3,
+        "exact_oracle_calls": 3,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.5351902000256814,
+        "gap": 0.0,
+        "gap_tolerance": 3.77398656722963e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.03650129999732599,
+        "objective": 277.398656722963,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.02939789998345077,
+        "scenario_evaluations": 36,
+        "scenarios_added": 2,
+        "signed_gap": 0.0
+      },
+      "A1": {
+        "LB": 277.398656722963,
+        "UB": 277.398656722963,
+        "active_size": 3,
+        "algorithm_seconds": 0.2936242000432685,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.1854581999941729,
+        "gap": 0.0,
+        "gap_tolerance": 3.77398656722963e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.040064800006803125,
+        "objective": 277.398656722963,
+        "partial_evaluation_solver_seconds": 0.03371089993743226,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 2,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.034390300104860216,
+        "scenario_evaluations": 15,
+        "scenarios_added": 2,
+        "signed_gap": 0.0
+      },
+      "C_Q": 77.2,
+      "C_R": 12.799999999999999,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 90,
+        "id": "low-s61001-b90-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "low",
+        "scenarios": 12,
+        "seed": 61001
+      },
+      "config_id": "low-s61001-b90-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 38.44811558325915,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 277.398656722963,
+        "A1": 277.398656722963,
+        "EF": 277.398656722963,
+        "M0": 315.84677230622214,
+        "M1": 277.398656722963
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 1,
+      "q": {
+        "j0": 60.0,
+        "j1": 0.0,
+        "j2": 12.740740740740742
+      },
+      "quantity": 72.74074074074075,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "0",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        7.360834188518517
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 132.30414417751945,
+        "UB": 132.30414417751956,
+        "active_size": 4,
+        "algorithm_seconds": 0.850357300019823,
+        "complete_oracle_calls": 4,
+        "exact_oracle_calls": 4,
+        "exact_violation": 1.1368683772161603e-13,
+        "full_oracle_seconds": 0.7508807000122033,
+        "gap": 1.1368683772161603e-13,
+        "gap_tolerance": 2.3230414417751956e-07,
+        "iterations": 4,
+        "master_solve_seconds": 0.06036920001497492,
+        "objective": 132.30414417751956,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.03910739999264479,
+        "scenario_evaluations": 48,
+        "scenarios_added": 3,
+        "signed_gap": 1.1368683772161603e-13
+      },
+      "A1": {
+        "LB": 132.30414417751945,
+        "UB": 132.30414417751956,
+        "active_size": 4,
+        "algorithm_seconds": 0.3189872999791987,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 1.1368683772161603e-13,
+        "full_oracle_seconds": 0.17741870001191273,
+        "gap": 1.1368683772161603e-13,
+        "gap_tolerance": 2.3230414417751956e-07,
+        "iterations": 4,
+        "master_solve_seconds": 0.057347699941601604,
+        "objective": 132.30414417751956,
+        "partial_evaluation_solver_seconds": 0.03887250000843778,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 3,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.045348400017246604,
+        "scenario_evaluations": 16,
+        "scenarios_added": 3,
+        "signed_gap": 1.1368683772161603e-13
+      },
+      "C_Q": 113.17439371707914,
+      "C_R": 19.1297504604403,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 150,
+        "id": "low-s61001-b150-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "low",
+        "scenarios": 12,
+        "seed": 61001
+      },
+      "config_id": "low-s61001-b150-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 3.8007938702823196,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 132.30414417751956,
+        "A1": 132.30414417751956,
+        "EF": 132.30414417751945,
+        "M0": 136.10493804780177,
+        "M1": 132.30414417751945
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 2,
+      "q": {
+        "j0": 60.0,
+        "j1": 17.407956638364997,
+        "j2": 24.55943969108104
+      },
+      "quantity": 101.96739632944603,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "1",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        17.695855822480553,
+        17.695855822480553
+      ],
+      "unused_resource_range": [
+        0.0,
+        34.09236295543351
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 493.24389864,
+        "UB": 493.24389864000005,
+        "active_size": 2,
+        "algorithm_seconds": 0.3975344999926165,
+        "complete_oracle_calls": 2,
+        "exact_oracle_calls": 2,
+        "exact_violation": 5.684341886080802e-14,
+        "full_oracle_seconds": 0.3564925999962725,
+        "gap": 5.684341886080802e-14,
+        "gap_tolerance": 5.932438986400001e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.02205250004772097,
+        "objective": 493.24389864000005,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.01898939994862303,
+        "scenario_evaluations": 24,
+        "scenarios_added": 1,
+        "signed_gap": 5.684341886080802e-14
+      },
+      "A1": {
+        "LB": 493.24389864,
+        "UB": 493.24389864000005,
+        "active_size": 2,
+        "algorithm_seconds": 0.2543739000102505,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 5.684341886080802e-14,
+        "full_oracle_seconds": 0.18263860000297427,
+        "gap": 5.684341886080802e-14,
+        "gap_tolerance": 5.932438986400001e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.02577569999266416,
+        "objective": 493.24389864000005,
+        "partial_evaluation_solver_seconds": 0.022024500009138137,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 1,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.02393510000547394,
+        "scenario_evaluations": 14,
+        "scenarios_added": 1,
+        "signed_gap": 5.684341886080802e-14
+      },
+      "C_Q": 45.0,
+      "C_R": 0.0,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 45,
+        "id": "low-s61002-b45-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "low",
+        "scenarios": 12,
+        "seed": 61002
+      },
+      "config_id": "low-s61002-b45-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 0.0,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 493.24389864000005,
+        "A1": 493.24389864000005,
+        "EF": 493.24389864000005,
+        "M0": 493.24389864000005,
+        "M1": 493.24389864000005
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 0,
+      "q": {
+        "j0": 45.0,
+        "j1": 0.0,
+        "j2": 0.0
+      },
+      "quantity": 45.0,
+      "reliability_choice": {
+        "j0": "0",
+        "j1": "0",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        0.0
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 256.313844749821,
+        "UB": 256.313844749821,
+        "active_size": 3,
+        "algorithm_seconds": 0.6087074999813922,
+        "complete_oracle_calls": 3,
+        "exact_oracle_calls": 3,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.5418363999924622,
+        "gap": 0.0,
+        "gap_tolerance": 3.56313844749821e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.03979589993832633,
+        "objective": 256.313844749821,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.0270752000506036,
+        "scenario_evaluations": 36,
+        "scenarios_added": 2,
+        "signed_gap": 0.0
+      },
+      "A1": {
+        "LB": 256.313844749821,
+        "UB": 256.313844749821,
+        "active_size": 3,
+        "algorithm_seconds": 0.28711909998673946,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.18201719998614863,
+        "gap": 0.0,
+        "gap_tolerance": 3.56313844749821e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.03870959993219003,
+        "objective": 256.313844749821,
+        "partial_evaluation_solver_seconds": 0.033142799977213144,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 2,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.033249500091187656,
+        "scenario_evaluations": 15,
+        "scenarios_added": 2,
+        "signed_gap": 0.0
+      },
+      "C_Q": 90.0,
+      "C_R": 0.0,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 90,
+        "id": "low-s61002-b90-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "low",
+        "scenarios": 12,
+        "seed": 61002
+      },
+      "config_id": "low-s61002-b90-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 0.0,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 256.313844749821,
+        "A1": 256.313844749821,
+        "EF": 256.313844749821,
+        "M0": 256.313844749821,
+        "M1": 256.313844749821
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 0,
+      "q": {
+        "j0": 60.0,
+        "j1": 8.6186685595575,
+        "j2": 14.880393449265831
+      },
+      "quantity": 83.49906200882333,
+      "reliability_choice": {
+        "j0": "0",
+        "j1": "0",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        5.596965036358682
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 121.84756724980855,
+        "UB": 121.84756724980855,
+        "active_size": 3,
+        "algorithm_seconds": 0.5973630999797024,
+        "complete_oracle_calls": 3,
+        "exact_oracle_calls": 3,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.5314225000329316,
+        "gap": 0.0,
+        "gap_tolerance": 2.2184756724980855e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.037409700045827776,
+        "objective": 121.84756724980855,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.02853089990094304,
+        "scenario_evaluations": 36,
+        "scenarios_added": 2,
+        "signed_gap": 0.0
+      },
+      "A1": {
+        "LB": 121.84756724980855,
+        "UB": 121.84756724980855,
+        "active_size": 3,
+        "algorithm_seconds": 0.2838814999558963,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.18206119997194037,
+        "gap": 0.0,
+        "gap_tolerance": 2.2184756724980855e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.03783840005053207,
+        "objective": 121.84756724980855,
+        "partial_evaluation_solver_seconds": 0.027970099938102067,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 2,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.03601179999532178,
+        "scenario_evaluations": 15,
+        "scenarios_added": 2,
+        "signed_gap": 0.0
+      },
+      "C_Q": 121.84756724980855,
+      "C_R": 0.0,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 150,
+        "id": "low-s61002-b150-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "low",
+        "scenarios": 12,
+        "seed": 61002
+      },
+      "config_id": "low-s61002-b150-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 0.0,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 121.84756724980855,
+        "A1": 121.84756724980855,
+        "EF": 121.84756724980855,
+        "M0": 121.84756724980855,
+        "M1": 121.84756724980855
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 0,
+      "q": {
+        "j0": 60.0,
+        "j1": 8.45483593594135,
+        "j2": 38.61074512850074
+      },
+      "quantity": 107.06558106444209,
+      "reliability_choice": {
+        "j0": "0",
+        "j1": "0",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        28.15243275019145,
+        28.15243275019145
+      ],
+      "unused_resource_range": [
+        0.0,
+        26.429473391425844
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 513.744347821017,
+        "UB": 513.744347821017,
+        "active_size": 3,
+        "algorithm_seconds": 0.6117848000139929,
+        "complete_oracle_calls": 3,
+        "exact_oracle_calls": 3,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.5473318999866024,
+        "gap": 0.0,
+        "gap_tolerance": 6.137443478210169e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.03490329999476671,
+        "objective": 513.744347821017,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.029549600032623857,
+        "scenario_evaluations": 36,
+        "scenarios_added": 2,
+        "signed_gap": 0.0
+      },
+      "A1": {
+        "LB": 513.744347821017,
+        "UB": 513.744347821017,
+        "active_size": 3,
+        "algorithm_seconds": 0.2858873000368476,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.18159679998643696,
+        "gap": 0.0,
+        "gap_tolerance": 6.137443478210169e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.038966899970546365,
+        "objective": 513.744347821017,
+        "partial_evaluation_solver_seconds": 0.026845799933653325,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 2,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.03847780014621094,
+        "scenario_evaluations": 15,
+        "scenarios_added": 2,
+        "signed_gap": 0.0
+      },
+      "C_Q": 36.440677966101696,
+      "C_R": 8.559322033898304,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 45,
+        "id": "high-s61001-b45-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "high",
+        "scenarios": 12,
+        "seed": 61001
+      },
+      "config_id": "high-s61001-b45-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 91.54572920973771,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 513.744347821017,
+        "A1": 513.744347821017,
+        "EF": 513.744347821017,
+        "M0": 605.2900770307547,
+        "M1": 513.744347821017
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 1,
+      "q": {
+        "j0": 36.440677966101696,
+        "j1": 0.0,
+        "j2": 0.0
+      },
+      "quantity": 36.440677966101696,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "0",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        0.0
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 328.1333787223357,
+        "UB": 328.1333787223357,
+        "active_size": 2,
+        "algorithm_seconds": 0.401903800026048,
+        "complete_oracle_calls": 2,
+        "exact_oracle_calls": 2,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.35903709998819977,
+        "gap": 0.0,
+        "gap_tolerance": 4.281333787223357e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.024246300046797842,
+        "objective": 328.1333787223357,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.018620399991050363,
+        "scenario_evaluations": 24,
+        "scenarios_added": 1,
+        "signed_gap": 0.0
+      },
+      "A1": {
+        "LB": 328.1333787223357,
+        "UB": 328.1333787223357,
+        "active_size": 2,
+        "algorithm_seconds": 0.24817999999504536,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.17686820001108572,
+        "gap": 0.0,
+        "gap_tolerance": 4.281333787223357e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.02677399996900931,
+        "objective": 328.1333787223357,
+        "partial_evaluation_solver_seconds": 0.020186399982776493,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 1,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.024351400032173842,
+        "scenario_evaluations": 14,
+        "scenarios_added": 1,
+        "signed_gap": 0.0
+      },
+      "C_Q": 72.33941605839418,
+      "C_R": 17.660583941605843,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 90,
+        "id": "high-s61001-b90-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "high",
+        "scenarios": 12,
+        "seed": 61001
+      },
+      "config_id": "high-s61001-b90-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 222.74588893230293,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 328.1333787223357,
+        "A1": 328.1333787223357,
+        "EF": 328.1333787223357,
+        "M0": 550.8792676546386,
+        "M1": 328.1333787223357
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 2,
+      "q": {
+        "j0": 60.0,
+        "j1": 10.72992700729929,
+        "j2": 0.0
+      },
+      "quantity": 70.7299270072993,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "1",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        6.612804491751838
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 144.98841344788283,
+        "UB": 144.98841344788286,
+        "active_size": 3,
+        "algorithm_seconds": 0.6017732999753207,
+        "complete_oracle_calls": 3,
+        "exact_oracle_calls": 3,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.5333043999853544,
+        "gap": 2.842170943040401e-14,
+        "gap_tolerance": 2.4498841344788284e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.03871590009657666,
+        "objective": 144.98841344788286,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.029752999893389642,
+        "scenario_evaluations": 36,
+        "scenarios_added": 2,
+        "signed_gap": 2.842170943040401e-14
+      },
+      "A1": {
+        "LB": 144.98841344788283,
+        "UB": 144.98841344788286,
+        "active_size": 3,
+        "algorithm_seconds": 0.28727359999902546,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.18155330000445247,
+        "gap": 2.842170943040401e-14,
+        "gap_tolerance": 2.4498841344788284e-07,
+        "iterations": 3,
+        "master_solve_seconds": 0.037497300014365464,
+        "objective": 144.98841344788286,
+        "partial_evaluation_solver_seconds": 0.030892100010532886,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 2,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.03733089996967465,
+        "scenario_evaluations": 15,
+        "scenarios_added": 2,
+        "signed_gap": 2.842170943040401e-14
+      },
+      "C_Q": 119.08866678756927,
+      "C_R": 25.89974666031359,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 150,
+        "id": "high-s61001-b150-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "high",
+        "scenarios": 12,
+        "seed": 61001
+      },
+      "config_id": "high-s61001-b150-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 387.37813823211707,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 144.98841344788286,
+        "A1": 144.98841344788286,
+        "EF": 144.98841344788286,
+        "M0": 532.3665516799999,
+        "M1": 144.98841344788286
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 2,
+      "q": {
+        "j0": 60.0,
+        "j1": 48.180666637789045,
+        "j2": 2.726592706749532
+      },
+      "quantity": 110.90725934453857,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "1",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        5.011586552117137,
+        5.011586552117137
+      ],
+      "unused_resource_range": [
+        0.0,
+        44.59695219919214
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 547.3453367207676,
+        "UB": 547.3453367207676,
+        "active_size": 2,
+        "algorithm_seconds": 0.4143576000351459,
+        "complete_oracle_calls": 2,
+        "exact_oracle_calls": 2,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.3629511999897659,
+        "gap": 0.0,
+        "gap_tolerance": 6.473453367207676e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.03005870006745681,
+        "objective": 547.3453367207676,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.021347699977923185,
+        "scenario_evaluations": 24,
+        "scenarios_added": 1,
+        "signed_gap": 0.0
+      },
+      "A1": {
+        "LB": 547.3453367207676,
+        "UB": 547.3453367207676,
+        "active_size": 2,
+        "algorithm_seconds": 0.26639299996895716,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.19069169997237623,
+        "gap": 0.0,
+        "gap_tolerance": 6.473453367207676e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.02742459997534752,
+        "objective": 547.3453367207676,
+        "partial_evaluation_solver_seconds": 0.020800600002985448,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 1,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.027476100018247962,
+        "scenario_evaluations": 14,
+        "scenarios_added": 1,
+        "signed_gap": 0.0
+      },
+      "C_Q": 36.44884476773414,
+      "C_R": 8.55115523226587,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 45,
+        "id": "high-s61002-b45-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "high",
+        "scenarios": 12,
+        "seed": 61002
+      },
+      "config_id": "high-s61002-b45-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 20.20938780527638,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 547.3453367207676,
+        "A1": 547.3453367207676,
+        "EF": 547.3453367207676,
+        "M0": 567.554724526044,
+        "M1": 547.3453367207676
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 1,
+      "q": {
+        "j0": 36.395306845921496,
+        "j1": 0.0,
+        "j2": 0.03965771986121767
+      },
+      "quantity": 36.434964565782714,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "0",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        0.0
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 357.2811367301612,
+        "UB": 357.2811367301613,
+        "active_size": 2,
+        "algorithm_seconds": 0.39811550005106255,
+        "complete_oracle_calls": 2,
+        "exact_oracle_calls": 2,
+        "exact_violation": 5.684341886080802e-14,
+        "full_oracle_seconds": 0.3556199000449851,
+        "gap": 5.684341886080802e-14,
+        "gap_tolerance": 4.572811367301613e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.021773100015707314,
+        "objective": 357.2811367301613,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.020722499990370125,
+        "scenario_evaluations": 24,
+        "scenarios_added": 1,
+        "signed_gap": 5.684341886080802e-14
+      },
+      "A1": {
+        "LB": 357.2811367301612,
+        "UB": 357.2811367301613,
+        "active_size": 2,
+        "algorithm_seconds": 0.2605942999944091,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 5.684341886080802e-14,
+        "full_oracle_seconds": 0.18571089999750257,
+        "gap": 5.684341886080802e-14,
+        "gap_tolerance": 4.572811367301613e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.02571909996913746,
+        "objective": 357.2811367301613,
+        "partial_evaluation_solver_seconds": 0.025211699947249144,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 1,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.023952600080519915,
+        "scenario_evaluations": 14,
+        "scenarios_added": 1,
+        "signed_gap": 5.684341886080802e-14
+      },
+      "C_Q": 81.6880186126121,
+      "C_R": 8.311981387387906,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 90,
+        "id": "high-s61002-b90-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "high",
+        "scenarios": 12,
+        "seed": 61002
+      },
+      "config_id": "high-s61002-b90-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 45.845259489238174,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 357.2811367301613,
+        "A1": 357.2811367301613,
+        "EF": 357.2811367301613,
+        "M0": 403.12639621939945,
+        "M1": 357.2811367301613
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 1,
+      "q": {
+        "j0": 35.06656326326614,
+        "j1": 0.0,
+        "j2": 34.534411369885895
+      },
+      "quantity": 69.60097463315203,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "0",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        0.0
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 143.02037422149857,
+        "UB": 143.02037422149857,
+        "active_size": 2,
+        "algorithm_seconds": 0.4111888000043109,
+        "complete_oracle_calls": 2,
+        "exact_oracle_calls": 2,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.36521549994358793,
+        "gap": 0.0,
+        "gap_tolerance": 2.430203742214986e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.027325800037942827,
+        "objective": 143.02037422149857,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.01864750002278015,
+        "scenario_evaluations": 24,
+        "scenarios_added": 1,
+        "signed_gap": 0.0
+      },
+      "A1": {
+        "LB": 143.02037422149857,
+        "UB": 143.02037422149857,
+        "active_size": 2,
+        "algorithm_seconds": 0.2495908999699168,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.17788769997423515,
+        "gap": 0.0,
+        "gap_tolerance": 2.430203742214986e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.02641089993994683,
+        "objective": 143.02037422149857,
+        "partial_evaluation_solver_seconds": 0.02205380005761981,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 1,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.023238499998115003,
+        "scenario_evaluations": 14,
+        "scenarios_added": 1,
+        "signed_gap": 0.0
+      },
+      "C_Q": 121.52974386573473,
+      "C_R": 21.49063035576384,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 150,
+        "id": "high-s61002-b150-n12",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "high",
+        "scenarios": 12,
+        "seed": 61002
+      },
+      "config_id": "high-s61002-b150-n12",
+      "delta_option": 0.0,
+      "delta_reliability": 153.77777819241447,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 143.02037422149857,
+        "A1": 143.02037422149857,
+        "EF": 143.02037422149857,
+        "M0": 296.79815241391304,
+        "M1": 143.02037422149857
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 2,
+      "q": {
+        "j0": 60.0,
+        "j1": 28.139228889835653,
+        "j2": 21.607133809202757
+      },
+      "quantity": 109.74636269903841,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "1",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        6.979625778501429,
+        6.979625778501429
+      ],
+      "unused_resource_range": [
+        0.0,
+        21.120107208802906
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 383.7205219199999,
+        "UB": 383.72052191999995,
+        "active_size": 2,
+        "algorithm_seconds": 0.3960757000022568,
+        "complete_oracle_calls": 2,
+        "exact_oracle_calls": 2,
+        "exact_violation": 5.684341886080802e-14,
+        "full_oracle_seconds": 0.3509377000737004,
+        "gap": 5.684341886080802e-14,
+        "gap_tolerance": 4.8372052192e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.02699340000981465,
+        "objective": 383.72052191999995,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.018144599918741733,
+        "scenario_evaluations": 24,
+        "scenarios_added": 1,
+        "signed_gap": 5.684341886080802e-14
+      },
+      "A1": {
+        "LB": 383.7205219199999,
+        "UB": 383.72052191999995,
+        "active_size": 2,
+        "algorithm_seconds": 0.2501909999991767,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 5.684341886080802e-14,
+        "full_oracle_seconds": 0.17942920001223683,
+        "gap": 5.684341886080802e-14,
+        "gap_tolerance": 4.8372052192e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.024088500067591667,
+        "objective": 383.72052191999995,
+        "partial_evaluation_solver_seconds": 0.019187700003385544,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 1,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.027485599915962666,
+        "scenario_evaluations": 14,
+        "scenarios_added": 1,
+        "signed_gap": 5.684341886080802e-14
+      },
+      "C_Q": 64.4,
+      "C_R": 25.599999999999998,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 90,
+        "id": "high-s61001-b90-premium2",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 2,
+        "risk": "high",
+        "scenarios": 12,
+        "seed": 61001
+      },
+      "config_id": "high-s61001-b90-premium2",
+      "delta_option": 0.0,
+      "delta_reliability": 167.15874573463867,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 383.72052191999995,
+        "A1": 383.72052191999995,
+        "EF": 383.72052191999995,
+        "M0": 550.8792676546386,
+        "M1": 383.72052191999995
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 1,
+      "q": {
+        "j0": 60.0,
+        "j1": 3.8260869565217446,
+        "j2": 0.0
+      },
+      "quantity": 63.82608695652174,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "0",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        0.0
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 328.1333787223357,
+        "UB": 328.1333787223357,
+        "active_size": 2,
+        "algorithm_seconds": 0.40356720000272617,
+        "complete_oracle_calls": 2,
+        "exact_oracle_calls": 2,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.35834029997931793,
+        "gap": 0.0,
+        "gap_tolerance": 4.281333787223357e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.025454299931880087,
+        "objective": 328.1333787223357,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.019772600091528147,
+        "scenario_evaluations": 24,
+        "scenarios_added": 1,
+        "signed_gap": 0.0
+      },
+      "A1": {
+        "LB": 328.1333787223357,
+        "UB": 328.1333787223357,
+        "active_size": 2,
+        "algorithm_seconds": 0.2502366999979131,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.17877249995945022,
+        "gap": 0.0,
+        "gap_tolerance": 4.281333787223357e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.025174400012474507,
+        "objective": 328.1333787223357,
+        "partial_evaluation_solver_seconds": 0.0202047000057064,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 1,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.02608510002028197,
+        "scenario_evaluations": 14,
+        "scenarios_added": 1,
+        "signed_gap": 0.0
+      },
+      "C_Q": 72.33941605839416,
+      "C_R": 17.66058394160584,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 90,
+        "id": "high-s61001-b90-fee2",
+        "option_fee_multiplier": 2,
+        "premium_multiplier": 1,
+        "risk": "high",
+        "scenarios": 12,
+        "seed": 61001
+      },
+      "config_id": "high-s61001-b90-fee2",
+      "delta_option": 0.0,
+      "delta_reliability": 222.74588893230293,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 328.1333787223357,
+        "A1": 328.1333787223357,
+        "EF": 328.1333787223357,
+        "M0": 550.8792676546386,
+        "M1": 328.1333787223357
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 2,
+      "q": {
+        "j0": 60.0,
+        "j1": 10.729927007299272,
+        "j2": 0.0
+      },
+      "quantity": 70.72992700729927,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "1",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        6.612804491751824
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 400.2573761177685,
+        "UB": 400.25737611776856,
+        "active_size": 4,
+        "algorithm_seconds": 1.6038438000250608,
+        "complete_oracle_calls": 4,
+        "exact_oracle_calls": 4,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 1.4849874000647105,
+        "gap": 5.684341886080802e-14,
+        "gap_tolerance": 5.002573761177686e-07,
+        "iterations": 4,
+        "master_solve_seconds": 0.06247519998578355,
+        "objective": 400.25737611776856,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.0563811999745667,
+        "scenario_evaluations": 96,
+        "scenarios_added": 3,
+        "signed_gap": 5.684341886080802e-14
+      },
+      "A1": {
+        "LB": 400.2573761177685,
+        "UB": 400.25737611776856,
+        "active_size": 4,
+        "algorithm_seconds": 0.5055027999915183,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.35672079998767003,
+        "gap": 5.684341886080802e-14,
+        "gap_tolerance": 5.002573761177686e-07,
+        "iterations": 4,
+        "master_solve_seconds": 0.05851849995087832,
+        "objective": 400.25737611776856,
+        "partial_evaluation_solver_seconds": 0.03892940003424883,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 3,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.051334100018721074,
+        "scenario_evaluations": 28,
+        "scenarios_added": 3,
+        "signed_gap": 5.684341886080802e-14
+      },
+      "C_Q": 79.67618717570551,
+      "C_R": 10.323812824294485,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 90,
+        "id": "high-s61001-b90-n24",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "high",
+        "scenarios": 24,
+        "seed": 61001
+      },
+      "config_id": "high-s61001-b90-n24",
+      "delta_option": 0.0,
+      "delta_reliability": 150.62189153687,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 400.25737611776856,
+        "A1": 400.25737611776856,
+        "EF": 400.2573761177686,
+        "M0": 550.8792676546386,
+        "M1": 400.2573761177686
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 1,
+      "q": {
+        "j0": 46.24340457941381,
+        "j1": 19.059204160862585,
+        "j2": 8.52940578614794
+      },
+      "quantity": 73.83201452642433,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "0",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        6.9469752072532955
+      ],
+      "y_F": 0
+    },
+    {
+      "A0": {
+        "LB": 441.50906305985393,
+        "UB": 441.50906305985393,
+        "active_size": 2,
+        "algorithm_seconds": 0.7833013000199571,
+        "complete_oracle_calls": 2,
+        "exact_oracle_calls": 2,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.7301269000163302,
+        "gap": 0.0,
+        "gap_tolerance": 5.41509063059854e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.026287199987564236,
+        "objective": 441.50906305985393,
+        "partial_evaluation_solver_seconds": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "residual_seconds": 0.026887200016062707,
+        "scenario_evaluations": 48,
+        "scenarios_added": 1,
+        "signed_gap": 0.0
+      },
+      "A1": {
+        "LB": 441.50906305985393,
+        "UB": 441.50906305985393,
+        "active_size": 2,
+        "algorithm_seconds": 0.43558950000442564,
+        "complete_oracle_calls": 1,
+        "exact_oracle_calls": 1,
+        "exact_violation": 0.0,
+        "full_oracle_seconds": 0.3589934000046924,
+        "gap": 0.0,
+        "gap_tolerance": 5.41509063059854e-07,
+        "iterations": 2,
+        "master_solve_seconds": 0.025543799914885312,
+        "objective": 441.50906305985393,
+        "partial_evaluation_solver_seconds": 0.018706000002566725,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 1,
+        "phase_iii_calls": 1,
+        "residual_seconds": 0.03234630008228123,
+        "scenario_evaluations": 26,
+        "scenarios_added": 1,
+        "signed_gap": 0.0
+      },
+      "C_Q": 72.33941605839416,
+      "C_R": 17.66058394160584,
+      "E_range": [
+        0.0,
+        0.0
+      ],
+      "config": {
+        "budget": 90,
+        "id": "high-s61002-b90-n24",
+        "option_fee_multiplier": 1,
+        "premium_multiplier": 1,
+        "risk": "high",
+        "scenarios": 24,
+        "seed": 61002
+      },
+      "config_id": "high-s61002-b90-n24",
+      "delta_option": 0.0,
+      "delta_reliability": 191.6532597739507,
+      "exercise_scenarios": 0,
+      "objectives": {
+        "A0": 441.50906305985393,
+        "A1": 441.50906305985393,
+        "EF": 441.50906305985393,
+        "M0": 633.1623228338046,
+        "M1": 441.50906305985393
+      },
+      "option_fee": 0.0,
+      "paid_suppliers": 2,
+      "q": {
+        "j0": 60.0,
+        "j1": 10.729927007299272,
+        "j2": 0.0
+      },
+      "quantity": 70.72992700729927,
+      "reliability_choice": {
+        "j0": "1",
+        "j1": "1",
+        "j2": "0"
+      },
+      "unused_cash_range": [
+        0.0,
+        0.0
+      ],
+      "unused_resource_range": [
+        0.0,
+        0.0
+      ],
+      "y_F": 0
+    }
+  ],
+  "per_method": {
+    "A0": {
+      "algorithm_seconds": {
+        "max": 1.6038438000250608,
+        "median": 0.5992262499930803,
+        "min": 0.3960757000022568
+      },
+      "bytes": {
+        "max": 208867,
+        "median": 117081.0,
+        "min": 104514
+      },
+      "count": 16,
+      "process_peak_rss_bytes": {
+        "max": 71647232,
+        "median": 68919296.0,
+        "min": 67739648
+      },
+      "python_peak_bytes": {
+        "max": 1362907,
+        "median": 1270765.0,
+        "min": 1270129
+      },
+      "supervisor_wall_seconds": {
+        "max": 7.047180199995637,
+        "median": 6.003266449959483,
+        "min": 5.822924700041767
+      },
+      "totals": {
+        "complete_oracle_calls": 42,
+        "exact_oracle_calls": 42,
+        "iterations": 42,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "scenario_evaluations": 576,
+        "scenarios_added": 26
+      },
+      "workload": {
+        "active_size": {
+          "max": 4,
+          "median": 2.5,
+          "min": 2
+        },
+        "exact_oracle_calls": {
+          "max": 4,
+          "median": 2.5,
+          "min": 2
+        },
+        "iterations": {
+          "max": 4,
+          "median": 2.5,
+          "min": 2
+        },
+        "scenario_evaluations": {
+          "max": 96,
+          "median": 36.0,
+          "min": 24
+        }
+      }
+    },
+    "A1": {
+      "algorithm_seconds": {
+        "max": 0.5055027999915183,
+        "median": 0.2751372499624267,
+        "min": 0.24817999999504536
+      },
+      "bytes": {
+        "max": 175097,
+        "median": 112847.0,
+        "min": 105161
+      },
+      "count": 16,
+      "process_peak_rss_bytes": {
+        "max": 69771264,
+        "median": 68118528.0,
+        "min": 67051520
+      },
+      "python_peak_bytes": {
+        "max": 1272224,
+        "median": 1271734.0,
+        "min": 1271494
+      },
+      "supervisor_wall_seconds": {
+        "max": 5.997043400013354,
+        "median": 5.736322699987795,
+        "min": 5.571749499998987
+      },
+      "totals": {
+        "complete_oracle_calls": 16,
+        "exact_oracle_calls": 16,
+        "iterations": 42,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 26,
+        "phase_iii_calls": 16,
+        "scenario_evaluations": 258,
+        "scenarios_added": 26
+      },
+      "workload": {
+        "active_size": {
+          "max": 4,
+          "median": 2.5,
+          "min": 2
+        },
+        "exact_oracle_calls": {
+          "max": 1,
+          "median": 1.0,
+          "min": 1
+        },
+        "iterations": {
+          "max": 4,
+          "median": 2.5,
+          "min": 2
+        },
+        "scenario_evaluations": {
+          "max": 28,
+          "median": 15.0,
+          "min": 14
+        }
+      }
+    },
+    "EF": {
+      "algorithm_seconds": {
+        "max": 0.4393500000005588,
+        "median": 0.21772314998088405,
+        "min": 0.20326670003123581
+      },
+      "bytes": {
+        "max": 115079,
+        "median": 80733.0,
+        "min": 79933
+      },
+      "count": 16,
+      "process_peak_rss_bytes": {
+        "max": 69836800,
+        "median": 67932160.0,
+        "min": 67063808
+      },
+      "python_peak_bytes": {
+        "max": 1270975,
+        "median": 1270677.0,
+        "min": 1270207
+      },
+      "supervisor_wall_seconds": {
+        "max": 5.98955970001407,
+        "median": 5.658675000013318,
+        "min": 5.525885799957905
+      },
+      "totals": {
+        "complete_oracle_calls": 0,
+        "exact_oracle_calls": 0,
+        "iterations": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "scenario_evaluations": 0,
+        "scenarios_added": 0
+      },
+      "workload": {
+        "active_size": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        },
+        "exact_oracle_calls": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        },
+        "iterations": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        },
+        "scenario_evaluations": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        }
+      }
+    },
+    "M0": {
+      "algorithm_seconds": {
+        "max": 0.02685849997214973,
+        "median": 0.019459250004729256,
+        "min": 0.018084799987263978
+      },
+      "bytes": {
+        "max": 72903,
+        "median": 52321.0,
+        "min": 51893
+      },
+      "count": 16,
+      "process_peak_rss_bytes": {
+        "max": 64634880,
+        "median": 64339968.0,
+        "min": 64077824
+      },
+      "python_peak_bytes": {
+        "max": 239778,
+        "median": 162483.5,
+        "min": 162163
+      },
+      "supervisor_wall_seconds": {
+        "max": 5.378801200015005,
+        "median": 5.221352499967907,
+        "min": 5.157253400015179
+      },
+      "totals": {
+        "complete_oracle_calls": 0,
+        "exact_oracle_calls": 0,
+        "iterations": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "scenario_evaluations": 0,
+        "scenarios_added": 0
+      },
+      "workload": {
+        "active_size": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        },
+        "exact_oracle_calls": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        },
+        "iterations": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        },
+        "scenario_evaluations": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        }
+      }
+    },
+    "M1": {
+      "algorithm_seconds": {
+        "max": 0.03464299999177456,
+        "median": 0.02567189998808317,
+        "min": 0.022962699993513525
+      },
+      "bytes": {
+        "max": 72872,
+        "median": 52232.0,
+        "min": 51926
+      },
+      "count": 16,
+      "process_peak_rss_bytes": {
+        "max": 68022272,
+        "median": 66826240.0,
+        "min": 65814528
+      },
+      "python_peak_bytes": {
+        "max": 309408,
+        "median": 235647.5,
+        "min": 235141
+      },
+      "supervisor_wall_seconds": {
+        "max": 5.4037306000245735,
+        "median": 5.251731000025757,
+        "min": 5.067681500047911
+      },
+      "totals": {
+        "complete_oracle_calls": 0,
+        "exact_oracle_calls": 0,
+        "iterations": 0,
+        "phase_i_hits": 0,
+        "phase_ii_hits": 0,
+        "phase_iii_calls": 0,
+        "scenario_evaluations": 0,
+        "scenarios_added": 0
+      },
+      "workload": {
+        "active_size": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        },
+        "exact_oracle_calls": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        },
+        "iterations": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        },
+        "scenario_evaluations": {
+          "max": 0,
+          "median": 0.0,
+          "min": 0
+        }
+      }
+    }
+  },
+  "projection": {
+    "1000_pairs": {
+      "algorithm_hours_median": 0.24418581943286377,
+      "algorithm_hours_observed_slow": 0.5859296111157164,
+      "contingency_hours_2x_slow": 7.246790888893884,
+      "contingency_storage_bytes_2x": 767928000,
+      "end_to_end_hours_median": 3.2499621250058732,
+      "end_to_end_hours_observed_slow": 3.623395444446942,
+      "raw_storage_bytes_median": 229928000.0,
+      "raw_storage_bytes_observed_max": 383964000
+    },
+    "100_pairs": {
+      "algorithm_hours_median": 0.024418581943286374,
+      "algorithm_hours_observed_slow": 0.05859296111157164,
+      "contingency_hours_2x_slow": 0.7246790888893884,
+      "contingency_storage_bytes_2x": 76792800,
+      "end_to_end_hours_median": 0.3249962125005873,
+      "end_to_end_hours_observed_slow": 0.3623395444446942,
+      "raw_storage_bytes_median": 22992800.0,
+      "raw_storage_bytes_observed_max": 38396400
+    }
+  },
+  "projection_scope": "illustrative measured-size A0/A1 pairs, not an N7 matrix or OOS estimate",
+  "sha256": "70817c29f14a72455b98da1c5d51c50a86ec744829a6b4c88e5073c91a723d11",
+  "state": "N6_READY_FOR_PR_REVIEW",
+  "successful_runs": 80
+}
