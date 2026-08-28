@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "classification": "N7-PRE DIAGNOSTIC ONLY — NOT FORMAL SCIENTIFIC PARAMETERS",
+  "namespace": "robust-budget-allocation/N7-pre/diagnostic/v1/",
+  "rule": "for index 1..6: unsigned integer from first 8 hexadecimal characters of SHA256(UTF8(namespace+decimal index))",
+  "seeds": [
+    4289336819,
+    2954552515,
+    414623883,
+    2596770366,
+    799209694,
+    304170811
+  ],
+  "excluded_existing_pilot": [
+    61001,
+    61002
+  ],
+  "reserved_formal_or_oos_seeds_found": [],
+  "future_exclusion": "All six diagnostic seeds are prohibited in future formal/training/validation/OOS seed registries; no seventh diagnostic seed or replacement."
+}
