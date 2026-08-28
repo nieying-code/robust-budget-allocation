@@ -12,6 +12,7 @@ from robust_budget_allocation.io.atomic import atomic_write_json
 from robust_budget_allocation.io.hashing import sha256_file, canonical_json_bytes
 from robust_budget_allocation.io.locking import exclusive_file_lock
 from robust_budget_allocation.reproducibility.manifests import build_source_manifest
+from robust_budget_allocation.reproducibility.test_evidence import verify_junit_suites
 from robust_budget_allocation.runtime.environment import ensure_preflight_once
 from .configuration import ROOT, registration, execution_order, PROTOCOL_SHA, CONFIG_SHA, SCOPE
 from .execution import source_gate, source_inputs, run_one, utc
@@ -56,6 +57,8 @@ def validate_gates(gate):
             raise ValueError("failed/skipped gate suite")
         if sha256_file(GATES / (name+".xml")) != row["xml_sha256"]:
             raise ValueError("gate XML hash")
+    verify_junit_suites(gate["suites"], {
+        name: (GATES / (name+".xml")).read_bytes() for name in gate["suites"]})
 
 
 def gate_roundtrip():
@@ -230,6 +233,8 @@ def execute(batch, archive):
         bare = dict(schema_version=1, classification=SCOPE, protocol_sha256=PROTOCOL_SHA,
                     config_sha256=CONFIG_SHA, source_gate=before, source=source,
                     batch_start=claim, gates=gate, roundtrip=roundtrip, batch_id=BATCH, runs=runs,
+                    gate_xml_files={name: (GATES / (name+".xml")).read_bytes().decode("utf-8")
+                                    for name in gate["suites"]},
                     status="PASS" if failure is None and len(runs) == 80 else "FAIL",
                     failure=failure, pair_checks=checks)
         try:
@@ -244,6 +249,26 @@ def execute(batch, archive):
         archive(root / "compact_evidence.json.gz", evidence)
         print(json.dumps(dict(status=evidence["status"], runs=len(runs), failure=evidence["failure"])), flush=True)
         return 0 if evidence["status"] == "PASS" else 1
+
+
+def replay_gate_xml(bundle):
+    """Read raw XML, including the separately delivered immutable N6 proof.
+
+    Historical fallback is bound to the *complete* archived gate/source; it is
+    not a substitute for missing evidence from any new execution.
+    """
+    if "gate_xml_files" in bundle:
+        return bundle["gate_xml_files"]
+    from .replay import load_bundle
+    proof = load_bundle(ROOT / "docs/evidence/N6_PILOT02_PRELAUNCH.json.gz")
+    check_seal(proof, "evidence_sha256")
+    raw = proof["gate_files"]
+    archived_gate = json.loads(raw["gates.json"])
+    check_seal(archived_gate)
+    if (not same_content(proof["source"], bundle["source"])
+            or not same_content(archived_gate, bundle["gates"])):
+        raise ValueError("archived gate/source binding")
+    return {name: raw[name+".xml"] for name in bundle["gates"]["suites"]}
 
 
 def replay_restart(bundle):
@@ -279,6 +304,7 @@ def replay_restart(bundle):
     for suite in gate["suites"].values():
         if suite["returncode"] or suite["failures"] or suite["errors"] or suite["skipped"] or suite["tests"] <= 0:
             raise ValueError("restart gate suite not passed")
+    verify_junit_suites(gate["suites"], replay_gate_xml(bundle))
     report = bundle["roundtrip"]
     check_seal(report)
     if report["status"] != "PASS" or not report["canonical_source_equal"] or not report["changed_source_rejected"]:

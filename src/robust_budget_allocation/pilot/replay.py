@@ -10,7 +10,7 @@ from functools import lru_cache
 
 from robust_budget_allocation.algorithms.a1_verification import verify_three
 from robust_budget_allocation.algorithms.common import equal, upper, settings
-from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_file
+from robust_budget_allocation.io.hashing import canonical_json_sha256, canonical_json_bytes, sha256_file
 from .configuration import ROOT, SCOPE, METHODS, PROTOCOL_SHA, CONFIG_SHA, registration, generate, binding
 from .measurement import verify_engine, mechanism, metrics
 from .storage import check_seal, verify_inventory, safe_id, safe_relative, FAILURE_STATES
@@ -102,6 +102,8 @@ def replay_run(bundle):
         check_seal(engine, "result_sha256")
         audit = engine["audit"]
         check_seal(audit["source"], "manifest_sha256")
+        if canonical_json_bytes(audit["source"]) != canonical_json_bytes(record["source"]):
+            raise ValueError("engine complete source binding")
         if any(audit["source"]["git"][k] != record["source"]["git"][k]
                for k in ("commit_sha", "tree_sha")) or audit["source"]["git"]["tracked_dirty"]:
             raise ValueError("engine execution anchor")

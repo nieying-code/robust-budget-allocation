@@ -1,0 +1,32 @@
+{
+  "classification": "TRANSITION ENGINEERING ONLY",
+  "base_commit": "17994d9467cb265e032b5aee1b5dc843b9ae3f7c",
+  "base_tree": "905d7b6d733f1a38a491bfa8662720de98058911",
+  "scientific_runs": 0,
+  "external_anchor": "Git commit/tree; this manifest excludes itself",
+  "superseded_engineering_files": {
+    "scripts/n6_pilot.py": {
+      "n6_sha256": "0a9e0f9ac56054f51165a91fb49419f0c2074838ac2f018b6001fef1f52b86d8",
+      "current_sha256": "0325938fe3df61b64445269f69c8410b5732a23a03d5dbebe61307a686bd0dc7"
+    },
+    "src/robust_budget_allocation/pilot/replay.py": {
+      "n6_sha256": "b80c6501666f0aec00042ce92d2d98449e3a26e88f3310affa60128342cd3f62",
+      "current_sha256": "01b4be26ac474a998a2cd9e85a5632e3d7cdc9b7af3112d7ae5e3c3e18671169"
+    },
+    "src/robust_budget_allocation/pilot/restart.py": {
+      "n6_sha256": "e030c165daa05362e80c6c7a3f5329c0523906107857e0521be5228ed2b3f19e",
+      "current_sha256": "186e8f1d32565fd7f152199e75036398e87c19c7b47bc49de170a859033f049d"
+    },
+    "tests/test_n6_evidence.py": {
+      "n6_sha256": "284d57476f00c1e2e2041006ba3cc1d642e11a7edd681340e165a45d07400158",
+      "current_sha256": "c35cf5bdb2a981f5662fa82eceece4b0b8c9380ec889333f4a13d46d74ca3290"
+    }
+  },
+  "added_files": {
+    "src/robust_budget_allocation/reproducibility/test_evidence.py": "9c3f8166558bef649b84d7ce9e6c76a243dfbc9349928ac8445d28d2e3d4661a",
+    "tests/test_transition_audit_hardening.py": "d98b2a686d8142a78dead02d0c75baf3d92a914ead3691234c97501955758356",
+    "tests/test_transition_production_entry.py": "cb51d50b26c7ef00706870433790a7b3a3b52d737890b9a98b31aefac06d55be",
+    "tests/test_transition_manifest.py": "7f862c050f11f7eb6f4e93d8fa604e65293d05221658a00f0f46717beccb9ab9",
+    "docs/TRANSITION_ENGINEERING_REPORT.md": "a95005f622caeae553d301f0110a429eb224c6c370dcf67d42d6ad4da8ccdec2"
+  }
+}
