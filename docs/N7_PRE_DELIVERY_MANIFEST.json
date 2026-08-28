@@ -1,6 +1,6 @@
 {
   "classification": "N7-PRE DIAGNOSTIC ONLY — NOT FORMAL SCIENTIFIC PARAMETERS",
-  "delivery_state": "PRELAUNCH_ENGINEERING_STOP_NO_SCIENTIFIC_OBSERVATIONS",
+  "delivery_state": "BOUNDED_REPAIR_CONDITIONAL_RELAUNCH_NO_SCIENTIFIC_OBSERVATIONS_YET",
   "files": [
     "configs/n7_pre/matrix.json",
     "configs/n7_pre/seeds.json",
@@ -8,6 +8,7 @@
     "docs/N7_PRE_MECHANISM_PROTOCOL.md",
     "docs/N7_PRE_MECHANISM_REPORT.md",
     "docs/N7_PRE_MEMORY_DIAGNOSIS.md",
+    "docs/N7_PRE_SOURCE_REPAIR.md",
     "docs/evidence/N7_PRE_ENTRY_FAILURE.json",
     "docs/evidence/N7_PRE_ENTRY_SOURCE.json.gz",
     "scripts/n7_pre.py",
@@ -18,7 +19,8 @@
     "src/robust_budget_allocation/mechanism_confirmation/execution.py",
     "src/robust_budget_allocation/mechanism_confirmation/replay.py",
     "tests/test_n7_pre.py",
-    "tests/test_n7_pre_entry_evidence.py"
+    "tests/test_n7_pre_entry_evidence.py",
+    "tests/test_n7_pre_production_entry.py"
   ],
   "hash_list": "docs/N7_PRE_HASHES.sha256",
   "hash_policy": "Exact paths, no duplicates/absolute/traversal/symlinks; SHA256 for every listed ordinary file. Hash list excludes itself. Delivery Git commit/tree are external anchors.",

@@ -33,7 +33,7 @@ def inputs():
 
 
 def source():
-    validate_source_state(ROOT, required_tracked_paths=inputs(), scientific_roots=("src", "tests", "scripts", "configs"))
+    validate_source_state(ROOT, required_tracked_paths=inputs(), scientific_roots=("src/robust_budget_allocation", "tests", "scripts", "configs"))
     return json.loads(canonical_json_bytes(build_source_manifest(ROOT, input_paths=inputs())))
 
 
