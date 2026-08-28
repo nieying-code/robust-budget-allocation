@@ -1,32 +1,61 @@
-# N7-pre Memory diagnosis — no observations
+# N7-pre Memory diagnosis — no eligible reuse opportunities
 
 N7-PRE DIAGNOSTIC ONLY — NOT FORMAL SCIENTIFIC PARAMETERS
 
+**N7_PRE_MEMORY_NOT_IDENTIFIED**
+
 ## OBSERVED
 
-Prelaunch source validation stopped before test subprocesses or scientific
-workers. Completed A1 runs: 0. No Memory trace exists for this study.
-Memory opportunities, Phase I/II hits, Phase III/full exact calls and scenario
-evaluations are **NOT OBSERVED**, not measured zero counts.
+Layer 1 completed18 A1 runs (90 total methods), all certified and replayed.
+The Option Gate failed with0/18 effective configurations; Layer 2 was not run.
 
-The original A1, Candidate score, Memory eligibility/lifecycle, exact oracle and
-correctness tolerances are unchanged. No final algorithm variant was created.
+| A1 diagnostic | Count |
+| --- | ---: |
+| Iterations / master states | 60 |
+| Master y_F=1 states | 0 |
+| Relevant Option-active trajectories | 0 |
+| First population at iteration1 | 18 runs |
+| Later nonterminal iterations after population | 25 |
+| Eligible stored nonactive IDs in Phase I rankings | 0 |
+| MEMORY_OPPORTUNITIES, all runs / relevant runs | 0 / 0 |
+| Phase I hits | 0 |
+| Phase II hits | 42 |
+| Phase III / full / complete exact calls | 18 / 18 / 18 |
+| Scenario evaluations | 276 |
+| Scenarios added | 42 |
+
+The evidence records every ranking/planned/evaluation list, memory_before/after,
+stored IDs and per-row eligibility, not only aggregate counters. Each completed
+run is reconstructed by frozen N5 verification, including gap/signed_gap/
+gap_tolerance and the Phase I/II prohibition on formal UB updates.
 
 ## INFERRED
 
-No inference about Memory effectiveness is possible. The entry failure concerns
-packaging metadata under the new adapter's broad scientific-source root; it gives
-no information about reuse opportunities in Option-active trajectories.
+A stored scenario alone is not an opportunity. The frozen eligibility excludes
+already-active scenarios. In these trajectories the nonterminal candidate hits
+populate Memory with scenarios then added to the active set. There are later
+iterations, but no eligible stored nonactive entry. The full oracle populates a
+broader memory only at terminal certification, leaving no later use opportunity.
+Thus25 later nonterminal iterations must not be mislabeled25 opportunities.
 
-## NOT ESTABLISHED
+All y_F states are0, so the frozen candidate score equals no-emergency recourse
+loss in these states. Candidate hits and lower observed oracle workload therefore
+do not establish an incremental Memory contribution or performance for
+Option-active trajectories.
 
-Neither `N7_PRE_MEMORY_REMOVED`, `N7_PRE_MEMORY_NOT_IDENTIFIED` nor
-`N7_PRE_MEMORY_REVIEW_REQUIRED` is an observed diagnostic outcome yet. The
-registered rules require actual completed A1 evidence. In particular, zero runs
-must not be disguised as measured zero opportunities.
+## NOT ESTABLISHED / structure decision
 
-No A1_final correctness evidence exists or is claimed. Old N5/N6 evidence is
-preserved but is not reused as N7-pre mechanism-confirmation evidence.
+No evidence identifies Memory's effectiveness or ineffectiveness after a true
+eligible opportunity. Zero hits do not authorize deletion under the registered
+Case B rule. Memory, Candidate, exact oracle, convergence and correctness
+tolerances all remain unchanged. A1_final was not created; no new
+EF≈A0≈A1_final validation is claimed or required.
 
-See N7_PRE_MECHANISM_REPORT.md and N7_PRE_ENTRY_FAILURE.json. STOP for independent
-review; retain Draft PR #9, no merge or N7 formal experiment.
+This is not a runtime-superiority, causal, threshold or statistical claim. Do not
+add seeds/scenarios or tune parameters to create Memory hits. The failed Option
+Gate stops science; submit both the model warning and this non-identification to
+independent review. Keep PR #9 Draft, no merge or formal N7/N8.
+
+Full observations are in N7_PRE_DIAGNOSTIC_EVIDENCE.json.gz and the derived
+N7_PRE_DIAGNOSTIC_SUMMARY.json. Read-only production/shallow replay preserves the
+execution anchor172b63716fa023d8fbb83193b2e4a06dba543eaf and all original traces.

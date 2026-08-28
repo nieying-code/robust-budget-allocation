@@ -1,6 +1,6 @@
 {
   "classification": "N7-PRE DIAGNOSTIC ONLY — NOT FORMAL SCIENTIFIC PARAMETERS",
-  "delivery_state": "BOUNDED_REPAIR_CONDITIONAL_RELAUNCH_NO_SCIENTIFIC_OBSERVATIONS_YET",
+  "delivery_state": "LAYER1_COMPLETE_OPTION_GATE_FAILED_LAYER2_NOT_RUN",
   "files": [
     "configs/n7_pre/matrix.json",
     "configs/n7_pre/seeds.json",
@@ -11,6 +11,11 @@
     "docs/N7_PRE_SOURCE_REPAIR.md",
     "docs/evidence/N7_PRE_ENTRY_FAILURE.json",
     "docs/evidence/N7_PRE_ENTRY_SOURCE.json.gz",
+    "docs/evidence/N7_PRE_DIAGNOSTIC_EVIDENCE.json.gz",
+    "docs/evidence/N7_PRE_DIAGNOSTIC_SUMMARY.json",
+    "docs/evidence/N7_PRE_EXECUTION_MANIFEST.json",
+    "docs/evidence/N7_PRE_REPAIR_VALIDATION.json.gz",
+    "docs/evidence/N7_PRE_REPLAY.json",
     "scripts/n7_pre.py",
     "src/robust_budget_allocation/mechanism_confirmation/__init__.py",
     "src/robust_budget_allocation/mechanism_confirmation/audit.py",
@@ -20,12 +25,19 @@
     "src/robust_budget_allocation/mechanism_confirmation/replay.py",
     "tests/test_n7_pre.py",
     "tests/test_n7_pre_entry_evidence.py",
-    "tests/test_n7_pre_production_entry.py"
+    "tests/test_n7_pre_production_entry.py",
+    "tests/test_n7_pre_diagnostic_evidence.py"
   ],
   "hash_list": "docs/N7_PRE_HASHES.sha256",
   "hash_policy": "Exact paths, no duplicates/absolute/traversal/symlinks; SHA256 for every listed ordinary file. Hash list excludes itself. Delivery Git commit/tree are external anchors.",
   "execution_attempt_commit": "21e217a974e82027364494b2a2342562786ed526",
   "execution_attempt_tree": "f577262b7838976878c28dffe7e6a244a03dabba",
   "n6_base": "17994d9467cb265e032b5aee1b5dc843b9ae3f7c",
-  "scientific_runs": 0
+  "execution_commit": "172b63716fa023d8fbb83193b2e4a06dba543eaf",
+  "execution_tree": "fda896563268e97ed2e3e7492dd790a8d3852adf",
+  "scientific_runs": 90,
+  "completed_configs": 18,
+  "option_gate": "N7_PRE_OPTION_GATE_FAILED",
+  "memory_status": "N7_PRE_MEMORY_NOT_IDENTIFIED",
+  "layer2_executed": false
 }

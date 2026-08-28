@@ -54,6 +54,12 @@ def test_complete_delivery_inventory_and_hashes():
         'docs/N7_PRE_DELIVERY_MANIFEST.json', 'docs/evidence/N7_PRE_ENTRY_FAILURE.json',
         'docs/evidence/N7_PRE_ENTRY_SOURCE.json.gz',
         'tests/test_n7_pre_production_entry.py', 'docs/N7_PRE_SOURCE_REPAIR.md',
+        'tests/test_n7_pre_diagnostic_evidence.py',
+        'docs/evidence/N7_PRE_DIAGNOSTIC_EVIDENCE.json.gz',
+        'docs/evidence/N7_PRE_REPAIR_VALIDATION.json.gz',
+        'docs/evidence/N7_PRE_DIAGNOSTIC_SUMMARY.json',
+        'docs/evidence/N7_PRE_EXECUTION_MANIFEST.json',
+        'docs/evidence/N7_PRE_REPLAY.json',
     } | {'src/robust_budget_allocation/mechanism_confirmation/'+n+'.py' for n in
          ('__init__','audit','configuration','diagnosis','execution','replay')}
     manifest=json.loads((ROOT/'docs/N7_PRE_DELIVERY_MANIFEST.json').read_text(encoding='utf-8'))

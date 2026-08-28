@@ -28,5 +28,12 @@ matrix, seeds, models, algorithms, thresholds or N0–N6 evidence are changed.
 The prior failure JSON and source object archive remain immutable historical
 evidence of zero runs at that attempt. They are not overwritten or reinterpreted.
 Current scientific state will be reported separately after the authorized gates.
-Until then there are no new Option/Memory observations. PR #9 remains Draft;
-no automatic merge or formal N7/N8 execution.
+Repair and complete prelaunch gates subsequently passed on commit
+172b63716fa023d8fbb83193b2e4a06dba543eaf (tree
+fda896563268e97ed2e3e7492dd790a8d3852adf): 721 solver-free and100 real
+licensed tests, real preflight and persisted production validator PASS.
+Conditional Layer 1 execution then completed18 configs/90 certified runs.
+Gate M FAILED (all three cells0/6), so Layer 2 was not started. No further
+production change followed the one-line boundary repair. Memory NOT IDENTIFIED;
+see the final mechanism and Memory reports. PR #9 remains Draft, no merge or
+formal N7/N8 execution.

@@ -1,0 +1,27 @@
+{
+  "classification": "N7-PRE DIAGNOSTIC ONLY — NOT FORMAL SCIENTIFIC PARAMETERS",
+  "evidence_file_sha256": "1a4e38b21c0e9b89d2c4d58e3a61fdd3f1c53ac416a43c0abbeef86915ce2ade",
+  "result": {
+    "completed_configs": 18,
+    "gate": {
+      "cell_counts": {
+        "150": 0,
+        "45": 0,
+        "90": 0
+      },
+      "denominator": 6,
+      "status": "N7_PRE_OPTION_GATE_FAILED"
+    },
+    "max_objective_difference": 2.2737367544323206e-13,
+    "memory_decision": "N7_PRE_MEMORY_NOT_IDENTIFIED",
+    "runs": 90,
+    "status": "PASS"
+  },
+  "sha256": "41f7b242dd0148690a511123dd39eac5957b51a91c0382675bf0680cd3faff79",
+  "source": {
+    "commit_sha": "172b63716fa023d8fbb83193b2e4a06dba543eaf",
+    "tracked_dirty": false,
+    "tree_sha": "fda896563268e97ed2e3e7492dd790a8d3852adf",
+    "untracked_paths": []
+  }
+}
