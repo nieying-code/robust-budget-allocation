@@ -1,0 +1,29 @@
+{
+  "classification": "N7-PRE DIAGNOSTIC ONLY — NOT FORMAL SCIENTIFIC PARAMETERS",
+  "delivery_state": "PRELAUNCH_ENGINEERING_STOP_NO_SCIENTIFIC_OBSERVATIONS",
+  "files": [
+    "configs/n7_pre/matrix.json",
+    "configs/n7_pre/seeds.json",
+    "docs/N7_PRE_DELIVERY_MANIFEST.json",
+    "docs/N7_PRE_MECHANISM_PROTOCOL.md",
+    "docs/N7_PRE_MECHANISM_REPORT.md",
+    "docs/N7_PRE_MEMORY_DIAGNOSIS.md",
+    "docs/evidence/N7_PRE_ENTRY_FAILURE.json",
+    "docs/evidence/N7_PRE_ENTRY_SOURCE.json.gz",
+    "scripts/n7_pre.py",
+    "src/robust_budget_allocation/mechanism_confirmation/__init__.py",
+    "src/robust_budget_allocation/mechanism_confirmation/audit.py",
+    "src/robust_budget_allocation/mechanism_confirmation/configuration.py",
+    "src/robust_budget_allocation/mechanism_confirmation/diagnosis.py",
+    "src/robust_budget_allocation/mechanism_confirmation/execution.py",
+    "src/robust_budget_allocation/mechanism_confirmation/replay.py",
+    "tests/test_n7_pre.py",
+    "tests/test_n7_pre_entry_evidence.py"
+  ],
+  "hash_list": "docs/N7_PRE_HASHES.sha256",
+  "hash_policy": "Exact paths, no duplicates/absolute/traversal/symlinks; SHA256 for every listed ordinary file. Hash list excludes itself. Delivery Git commit/tree are external anchors.",
+  "execution_attempt_commit": "21e217a974e82027364494b2a2342562786ed526",
+  "execution_attempt_tree": "f577262b7838976878c28dffe7e6a244a03dabba",
+  "n6_base": "17994d9467cb265e032b5aee1b5dc843b9ae3f7c",
+  "scientific_runs": 0
+}

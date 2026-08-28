@@ -1,0 +1,82 @@
+{
+  "classification": "N7-PRE DIAGNOSTIC ONLY — NOT FORMAL SCIENTIFIC PARAMETERS",
+  "kind": "PRELAUNCH_ENTRY_FAILURE_NOT_A_SCIENTIFIC_RESULT",
+  "execution_commit": "21e217a974e82027364494b2a2342562786ed526",
+  "execution_tree": "f577262b7838976878c28dffe7e6a244a03dabba",
+  "registration_commit": "4df5d90c8a3bd5a131cd47f8f7baba55e90773ac",
+  "command": ".venv\\Scripts\\python.exe scripts/n7_pre.py gates",
+  "returncode": 1,
+  "exception_type": "RuntimeError",
+  "exception_message": "execution found untracked scientific inputs: src/robust_budget_allocation.egg-info/PKG-INFO, src/robust_budget_allocation.egg-info/SOURCES.txt, src/robust_budget_allocation.egg-info/dependency_links.txt, src/robust_budget_allocation.egg-info/requires.txt, src/robust_budget_allocation.egg-info/top_level.txt",
+  "stage": "gates -> source -> validate_source_state; before GATES.mkdir and before test subprocesses",
+  "trace_frames": [
+    [
+      "scripts/n7_pre.py",
+      29
+    ],
+    [
+      "scripts/n7_pre.py",
+      20
+    ],
+    [
+      "src/robust_budget_allocation/mechanism_confirmation/execution.py",
+      36
+    ],
+    [
+      "src/robust_budget_allocation/mechanism_confirmation/audit.py",
+      36
+    ],
+    [
+      "src/robust_budget_allocation/reproducibility/git_state.py",
+      104
+    ]
+  ],
+  "capture_origin": "Exception/frames transcribed from original tool stdout/stderr. Subsequent filesystem/package observations are read-only; command was not repeated. Original stderr was not separately persisted by the entrypoint.",
+  "scientific_runs": 0,
+  "completed_configs": 0,
+  "layer1": "NOT_STARTED",
+  "layer2": "NOT_STARTED",
+  "option_gate": "NOT_EVALUATED_NO_OBSERVATIONS",
+  "memory_diagnosis": "NOT_EVALUATED_NO_OBSERVATIONS",
+  "prelaunch_suites": "NOT_STARTED",
+  "licensed": "NOT_RUN",
+  "preflight": "NOT_RUN",
+  "retry_performed": false,
+  "packaging_files_deleted": false,
+  "captured_utc": "2026-08-28T08:11:20.197009+00:00",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "Pyomo": "6.10.1",
+    "gurobipy": "13.0.2"
+  },
+  "files": [
+    {
+      "path": "src/robust_budget_allocation.egg-info/dependency_links.txt",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "src/robust_budget_allocation.egg-info/PKG-INFO",
+      "bytes": 384,
+      "sha256": "95bfebf04169a2a6fdd1ef2cb4089cf02731c0b48ef0a15b5ea27c9ab9ec41f4"
+    },
+    {
+      "path": "src/robust_budget_allocation.egg-info/requires.txt",
+      "bytes": 82,
+      "sha256": "a4162c9ced21a1daf333a3331c90c3168cde1717f4da57951fadcf00f73888d2"
+    },
+    {
+      "path": "src/robust_budget_allocation.egg-info/SOURCES.txt",
+      "bytes": 1455,
+      "sha256": "5acfd1ca6d263801d2b3cfba323ad22a38e542d6fc7af80f557f913e5636f516"
+    },
+    {
+      "path": "src/robust_budget_allocation.egg-info/top_level.txt",
+      "bytes": 25,
+      "sha256": "ca0eb9302d2c22989e62491a63d45125f20117522352882b17758a183f249157"
+    }
+  ],
+  "gates_directory_exists": false,
+  "batch_directory_exists": false
+}
