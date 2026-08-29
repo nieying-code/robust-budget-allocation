@@ -11,24 +11,18 @@ from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_fi
 from robust_budget_allocation.reproducibility.git_state import validate_source_state
 from robust_budget_allocation.runtime.environment import ensure_preflight_once
 from .qfr_extensive_form import solve_qfr_extensive_form
-from .qfr_protocol import PROTOCOL_SHA256, protocol_identity
+from .qfr_protocol import (
+    PROTOCOL_SHA256,
+    R3_REQUIRED_SOURCE_PATHS,
+    protocol_identity,
+    r2_model_identity,
+    solver_configuration_identity,
+)
 from .qfr_standard_ccg import solve_qfr_standard_ccg
 from .qfr_verification import seal_evidence, validate_r3_evidence, verify_ef_a0_pair
 
 
-SOURCE_PATHS = (
-    "docs/R3_CORRECTNESS_PROTOCOL_v2.md",
-    "tests/fixtures/r3_correctness_v2.json",
-    "src/robust_budget_allocation/algorithms/qfr_protocol.py",
-    "src/robust_budget_allocation/algorithms/qfr_state.py",
-    "src/robust_budget_allocation/algorithms/qfr_builders.py",
-    "src/robust_budget_allocation/algorithms/qfr_exact_oracle.py",
-    "src/robust_budget_allocation/algorithms/qfr_extensive_form.py",
-    "src/robust_budget_allocation/algorithms/qfr_standard_ccg.py",
-    "src/robust_budget_allocation/algorithms/qfr_verification.py",
-    "src/robust_budget_allocation/algorithms/qfr_correctness_suite.py",
-    "scripts/r3_ef_a0_correctness.py",
-)
+SOURCE_PATHS = R3_REQUIRED_SOURCE_PATHS
 
 
 def load_fixture(path: Path) -> dict[str, Any]:
@@ -121,10 +115,11 @@ def run_r3_correctness_suite(repo_root: Path, fixture_path: Path) -> dict[str, A
     ]
     evidence = seal_evidence(
         {
-            "schema_version": 1,
+            "schema_version": 2,
             "phase": "R3",
             "scope": "CORRECTNESS_FIXTURE_ONLY_NOT_FORMAL_SCIENTIFIC_PARAMETERS",
             "protocol": protocol_identity(root),
+            "r2_model_base": r2_model_identity(),
             "source": {"git": source_git, "files": source_files},
             "fixture": {
                 "path": fixture.relative_to(root).as_posix(),
@@ -133,6 +128,7 @@ def run_r3_correctness_suite(repo_root: Path, fixture_path: Path) -> dict[str, A
                 "config_sha256": canonical_json_sha256(payload),
             },
             "environment": environment,
+            "solver_configuration": solver_configuration_identity(),
             "cases": cases,
             "summary": summary,
             "scientific_runs": 0,

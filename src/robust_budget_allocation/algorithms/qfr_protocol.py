@@ -20,6 +20,32 @@ PROTOCOL_RELATIVE_PATH = Path("docs/R3_CORRECTNESS_PROTOCOL_v2.md")
 PROTOCOL_SHA256 = "cd0e02603cd307876b3270e2c694127541394211d7034325dabdee2f28b7bf0b"
 PROTOCOL_FREEZE_COMMIT = "c29a67c1369f44c4afb424c0ba2a8b0d43a0b923"
 PROTOCOL_FREEZE_TREE = "ba4c8d3855b6f027509a5bbd85af88d7bb48f9b5"
+R2_MODEL_BASE_COMMIT = "d5484adff21040bdaa0aaa3e727c9d341b342e47"
+R2_MODEL_BASE_TREE = "30d3e0ed261b794de8420bd9bd1c0d9873ee4e29"
+
+R3_REQUIRED_SOURCE_PATHS = (
+    "docs/R3_CORRECTNESS_PROTOCOL_v2.md",
+    "tests/fixtures/r3_correctness_v2.json",
+    "src/robust_budget_allocation/data/qfr_data.py",
+    "src/robust_budget_allocation/models/qfr_common.py",
+    "src/robust_budget_allocation/models/qfr_m0.py",
+    "src/robust_budget_allocation/models/qfr_m1.py",
+    "src/robust_budget_allocation/models/qfr_m2.py",
+    "src/robust_budget_allocation/models/qfr_support.py",
+    "src/robust_budget_allocation/algorithms/qfr_protocol.py",
+    "src/robust_budget_allocation/algorithms/qfr_state.py",
+    "src/robust_budget_allocation/algorithms/qfr_builders.py",
+    "src/robust_budget_allocation/algorithms/qfr_exact_oracle.py",
+    "src/robust_budget_allocation/algorithms/qfr_accounting.py",
+    "src/robust_budget_allocation/algorithms/qfr_extensive_form.py",
+    "src/robust_budget_allocation/algorithms/qfr_standard_ccg.py",
+    "src/robust_budget_allocation/algorithms/qfr_verification.py",
+    "src/robust_budget_allocation/algorithms/qfr_correctness_suite.py",
+    "src/robust_budget_allocation/io/hashing.py",
+    "src/robust_budget_allocation/reproducibility/git_state.py",
+    "src/robust_budget_allocation/runtime/environment.py",
+    "scripts/r3_ef_a0_correctness.py",
+)
 
 ABSOLUTE_TOLERANCE = 1e-7
 RELATIVE_TOLERANCE = 1e-9
@@ -122,6 +148,34 @@ def protocol_identity(repo_root: Path) -> dict[str, str]:
         "freeze_commit": PROTOCOL_FREEZE_COMMIT,
         "freeze_tree": PROTOCOL_FREEZE_TREE,
         "authority": "EXPLICITLY_RE_REGISTERED_FOR_R3_V2_CORRECTNESS",
+    }
+
+
+def solver_configuration_identity() -> dict[str, Any]:
+    """Return the complete frozen solver policy embedded in R3 evidence."""
+
+    payload: dict[str, Any] = {
+        "solver_interface": "gurobi_direct",
+        "threads": 1,
+        "no_fallback": True,
+        "options": dict(SOLVER_OPTIONS),
+        "accepted_solver_status": ["ok"],
+        "accepted_terminations": ["globallyOptimal", "optimal"],
+    }
+    payload["configuration_sha256"] = canonical_json_sha256(payload)
+    return payload
+
+
+def r2_model_identity() -> dict[str, Any]:
+    return {
+        "merge_commit": R2_MODEL_BASE_COMMIT,
+        "merge_tree": R2_MODEL_BASE_TREE,
+        "scientific_source_paths": [
+            path
+            for path in R3_REQUIRED_SOURCE_PATHS
+            if path.startswith("src/robust_budget_allocation/data/qfr_")
+            or path.startswith("src/robust_budget_allocation/models/qfr_")
+        ],
     }
 
 

@@ -16,7 +16,17 @@ from robust_budget_allocation.io.hashing import (
     sha256_file,
 )
 from .qfr_extensive_form import validate_extensive_form_result
-from .qfr_protocol import PROTOCOL_SHA256, protocol_identity, require_close, tolerance
+from .qfr_protocol import (
+    PROTOCOL_SHA256,
+    R2_MODEL_BASE_COMMIT,
+    R2_MODEL_BASE_TREE,
+    R3_REQUIRED_SOURCE_PATHS,
+    protocol_identity,
+    r2_model_identity,
+    require_close,
+    solver_configuration_identity,
+    tolerance,
+)
 from .qfr_standard_ccg import validate_standard_ccg_result
 from .qfr_state import QFRFirstStage, validate_first_stage
 
@@ -157,9 +167,11 @@ def validate_r3_evidence(
         "phase",
         "scope",
         "protocol",
+        "r2_model_base",
         "source",
         "fixture",
         "environment",
+        "solver_configuration",
         "cases",
         "summary",
         "scientific_runs",
@@ -174,12 +186,16 @@ def validate_r3_evidence(
     seal = bare.pop("evidence_sha256")
     if seal != canonical_json_sha256(bare):
         raise ValueError("R3 evidence seal mismatch")
-    if evidence["schema_version"] != 1 or evidence["phase"] != "R3":
+    if evidence["schema_version"] != 2 or evidence["phase"] != "R3":
         raise ValueError("not R3 evidence")
     if evidence["scope"] != "CORRECTNESS_FIXTURE_ONLY_NOT_FORMAL_SCIENTIFIC_PARAMETERS":
         raise ValueError("R3 fixture scope marker mismatch")
     if evidence["protocol"] != protocol_identity(repo_root) or evidence["protocol"]["sha256"] != PROTOCOL_SHA256:
         raise ValueError("R3 protocol identity mismatch")
+    if evidence["r2_model_base"] != r2_model_identity():
+        raise ValueError("R3 evidence is not bound to the reviewed R2 model base")
+    if _anchored_tree(repo_root, R2_MODEL_BASE_COMMIT) != R2_MODEL_BASE_TREE:
+        raise ValueError("reviewed R2 commit/tree identity mismatch")
     source = evidence["source"]
     if set(source) != {"git", "files"}:
         raise ValueError("R3 source identity fields mismatch")
@@ -193,7 +209,13 @@ def validate_r3_evidence(
         "untracked_scientific_paths",
     }:
         raise ValueError("R3 Git identity fields mismatch")
-    if git["tracked_dirty"] is not False or git["untracked_scientific_paths"] not in ([], ()): 
+    expected_paths = list(R3_REQUIRED_SOURCE_PATHS)
+    if (
+        git["tracked_dirty"] is not False
+        or git["untracked_paths"] != []
+        or git["untracked_scientific_paths"] != []
+        or git["tracked_input_paths"] != expected_paths
+    ):
         raise ValueError("R3 execution source was not clean")
     commit_sha = git["commit_sha"]
     tree_sha = git["tree_sha"]
@@ -202,11 +224,61 @@ def validate_r3_evidence(
     anchored_tree = _anchored_tree(repo_root, commit_sha)
     if anchored_tree != tree_sha:
         raise ValueError("R3 execution commit/tree binding mismatch")
-    for row in source["files"]:
+    try:
+        subprocess.run(
+            ["git", "-C", str(repo_root.resolve()), "merge-base", "--is-ancestor", R2_MODEL_BASE_COMMIT, commit_sha],
+            check=True,
+            capture_output=True,
+        )
+    except subprocess.CalledProcessError as exc:
+        raise ValueError("R3 execution commit is not descended from the reviewed R2 merge") from exc
+    files = source["files"]
+    if not isinstance(files, list) or [row.get("path") for row in files if isinstance(row, Mapping)] != expected_paths:
+        raise ValueError("R3 source inventory is incomplete, duplicated, or out of order")
+    for row in files:
         if set(row) != {"path", "sha256"}:
             raise ValueError("R3 source file inventory fields mismatch")
         if sha256_bytes(_anchored_file(repo_root, commit_sha, row["path"])) != row["sha256"]:
             raise ValueError("R3 source file hash mismatch")
+        if row["path"] in evidence["r2_model_base"]["scientific_source_paths"] and (
+            _anchored_file(repo_root, commit_sha, row["path"])
+            != _anchored_file(repo_root, R2_MODEL_BASE_COMMIT, row["path"])
+        ):
+            raise ValueError("R3 execution changed reviewed R2 scientific model source")
+    environment = evidence["environment"]
+    expected_environment_fields = {
+        "python",
+        "python_implementation",
+        "pyomo",
+        "gurobipy",
+        "gurobi_optimizer",
+        "solver_interface",
+        "threads",
+        "solver_available",
+        "license_available",
+        "platform",
+        "status",
+    }
+    if set(environment) != expected_environment_fields:
+        raise ValueError("R3 environment fields are incomplete or unexpected")
+    locked_environment = {
+        "python": "3.12.10",
+        "python_implementation": "CPython",
+        "pyomo": "6.10.1",
+        "gurobipy": "13.0.2",
+        "gurobi_optimizer": "13.0.2",
+        "solver_interface": "gurobi_direct",
+        "threads": 1,
+        "solver_available": True,
+        "license_available": True,
+        "status": "PASS",
+    }
+    if any(environment[key] != value for key, value in locked_environment.items()):
+        raise ValueError("R3 environment does not match the locked licensed baseline")
+    if not isinstance(environment["platform"], str) or not environment["platform"]:
+        raise ValueError("R3 environment platform is missing")
+    if evidence["solver_configuration"] != solver_configuration_identity():
+        raise ValueError("R3 frozen solver configuration or no-fallback policy mismatch")
     fixture = evidence["fixture"]
     if set(fixture) != {"path", "sha256", "payload", "config_sha256"}:
         raise ValueError("R3 fixture fields mismatch")
@@ -227,6 +299,9 @@ def validate_r3_evidence(
     seen: set[tuple[str, str]] = set()
     max_difference = 0.0
     max_violation = 0.0
+    total_iterations = 0
+    total_oracles = 0
+    total_evaluations = 0
     for row in evidence["cases"]:
         required_case = {
             "case_id",
@@ -249,11 +324,35 @@ def validate_r3_evidence(
         validate_pair_certificate(data, row["ef"], row["a0"], row["certificate"])
         max_difference = max(max_difference, float(row["certificate"]["objective_difference"]))
         max_violation = max(max_violation, float(row["certificate"]["maximum_feasibility_violation"]))
+        total_iterations += int(row["a0"]["iterations"])
+        total_oracles += int(row["a0"]["exact_oracle_calls"])
+        total_evaluations += int(row["a0"]["scenario_evaluations"])
     expected_pairs = {(case, kind) for case in fixture_cases for kind in ("M0", "M1", "M2")}
     if seen != expected_pairs:
         raise ValueError("R3 case matrix is incomplete")
     summary = evidence["summary"]
-    if summary["status"] != "PASS" or summary["case_count"] != len(seen):
+    expected_summary_fields = {
+        "status",
+        "case_count",
+        "accepted_case_count",
+        "failures",
+        "maximum_objective_difference",
+        "maximum_feasibility_violation",
+        "total_a0_iterations",
+        "total_exact_oracle_calls",
+        "total_scenario_evaluations",
+    }
+    if set(summary) != expected_summary_fields:
+        raise ValueError("R3 evidence summary fields are incomplete or unexpected")
+    if (
+        summary["status"] != "PASS"
+        or summary["case_count"] != len(seen)
+        or summary["accepted_case_count"] != len(seen)
+        or summary["failures"] != []
+        or summary["total_a0_iterations"] != total_iterations
+        or summary["total_exact_oracle_calls"] != total_oracles
+        or summary["total_scenario_evaluations"] != total_evaluations
+    ):
         raise ValueError("R3 evidence summary status/count mismatch")
     require_close(float(summary["maximum_objective_difference"]), max_difference, "summary maximum objective difference")
     require_close(float(summary["maximum_feasibility_violation"]), max_violation, "summary maximum feasibility violation")

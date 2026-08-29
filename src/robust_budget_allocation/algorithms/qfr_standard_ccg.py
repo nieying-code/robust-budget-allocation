@@ -11,6 +11,7 @@ import pyomo.environ as pyo
 from robust_budget_allocation.data.qfr_data import QFRData
 from robust_budget_allocation.io.hashing import canonical_json_sha256
 from robust_budget_allocation.models.qfr_support import validate_qfr_solution
+from .qfr_accounting import validate_accounting_payload
 from .qfr_builders import build_qfr_restricted_master
 from .qfr_exact_oracle import exact_oracle, validate_oracle
 from .qfr_protocol import (
@@ -291,10 +292,25 @@ def validate_standard_ccg_result(data: QFRData, result: Mapping[str, Any]) -> No
         validate_first_stage(data, decision)
         if decision.model_kind != result["model_kind"] or row["first_stage_sha256"] != decision.sha256 or master["first_stage_sha256"] != decision.sha256:
             raise ValueError("A0 first-stage identity mismatch")
-        accounting = master["accounting"]
-        if accounting["data_sha256"] != restricted.data_sha256 or accounting["scenario_sha256"] != restricted.scenario_sha256:
-            raise ValueError("restricted-master loaded accounting identity mismatch")
         theta = float(master["theta"])
+        validate_accounting_payload(
+            data,
+            restricted,
+            decision,
+            master["accounting"],
+            expected_objective=float(master["objective"]),
+            expected_theta=theta,
+        )
+        require_close(
+            float(master["solver"]["objective"]),
+            float(master["objective"]),
+            "solver/restricted-master objective",
+        )
+        require_close(
+            float(master["solver"]["lower_bound"]),
+            float(master["lower_bound"]),
+            "solver/restricted-master lower bound",
+        )
         require_close(float(master["objective"]), first_stage_cost(data, decision) + theta, "restricted-master objective")
         validate_oracle(data, decision, row["oracle"])
         final_lb = float(master["lower_bound"])

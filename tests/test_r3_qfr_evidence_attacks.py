@@ -9,7 +9,8 @@ from robust_budget_allocation.io.hashing import canonical_json_sha256
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EVIDENCE_PATH = ROOT / "docs/evidence/R3_CORRECTNESS_FIRST_RUN_v2.json"
+EVIDENCE_PATH = ROOT / "docs/evidence/R3_CORRECTNESS_RESULTS_v2.json"
+FIRST_RUN_PATH = ROOT / "docs/evidence/R3_CORRECTNESS_FIRST_RUN_v2.json"
 
 
 def load_evidence():
@@ -37,10 +38,12 @@ def reseal_ef_case(case):
     reseal(case["certificate"], "certificate_sha256")
 
 
-def test_first_run_evidence_replays_from_anchored_execution_commit():
-    result = validate_r3_evidence(ROOT, load_evidence())
-    assert result["status"] == "PASS"
-    assert result["case_count"] == 3
+def test_original_first_run_evidence_is_preserved_byte_for_byte_and_sealed():
+    evidence = json.loads(FIRST_RUN_PATH.read_text(encoding="utf-8"))
+    seal = evidence.pop("evidence_sha256")
+    assert seal == "fa366744d314201194002bdcd5c89c5abbe4da597af0a533bffff50e13a27d87"
+    assert seal == canonical_json_sha256(evidence)
+    assert evidence["source"]["git"]["commit_sha"] == "819f673b25db17245b9e11ec7e34de3d62f2bf81"
 
 
 @pytest.mark.parametrize(
@@ -60,6 +63,13 @@ def test_first_run_evidence_replays_from_anchored_execution_commit():
         "false_convergence",
         "wrong_solver_status",
         "missing_required_audit_field",
+        "environment_policy",
+        "empty_source_inventory",
+        "summary_rewrite",
+        "ef_accounting",
+        "master_accounting",
+        "master_solver_bound_chain",
+        "solver_configuration",
     ],
 )
 def test_resealed_integrity_attacks_fail_closed(attack):
@@ -103,8 +113,36 @@ def test_resealed_integrity_attacks_fail_closed(attack):
     elif attack == "wrong_solver_status":
         case["a0"]["trace"][0]["master"]["solver"]["solver_status"] = "warning"
         reseal_a0_case(case)
-    else:
+    elif attack == "missing_required_audit_field":
         evidence.pop("environment")
+    elif attack == "environment_policy":
+        evidence["environment"]["python"] = "0.0.0"
+        evidence["environment"]["threads"] = 999
+    elif attack == "empty_source_inventory":
+        evidence["source"]["files"] = []
+        evidence["source"]["git"]["tracked_input_paths"] = []
+    elif attack == "summary_rewrite":
+        evidence["summary"].update(
+            accepted_case_count=0,
+            failures=[{"type": "forged"}],
+            total_a0_iterations=999,
+        )
+    elif attack == "ef_accounting":
+        case["ef"]["accounting"]["objective"] += 12345
+        case["ef"]["accounting"]["theta"] = -999
+        reseal_ef_case(case)
+    elif attack == "master_accounting":
+        accounting = case["a0"]["trace"][0]["master"]["accounting"]
+        accounting["objective"] += 12345
+        accounting["theta"] = -999
+        reseal_a0_case(case)
+    elif attack == "master_solver_bound_chain":
+        solver = case["a0"]["trace"][0]["master"]["solver"]
+        solver["objective"] = 0
+        solver["lower_bound"] = 0
+        reseal_a0_case(case)
+    else:
+        evidence["solver_configuration"]["threads"] = 999
     reseal_top(evidence)
     with pytest.raises(ValueError):
         validate_r3_evidence(ROOT, evidence)

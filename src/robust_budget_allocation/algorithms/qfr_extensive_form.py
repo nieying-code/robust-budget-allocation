@@ -10,6 +10,7 @@ import pyomo.environ as pyo
 from robust_budget_allocation.data.qfr_data import QFRData
 from robust_budget_allocation.io.hashing import canonical_json_sha256
 from robust_budget_allocation.models.qfr_support import validate_qfr_solution
+from .qfr_accounting import validate_accounting_payload
 from .qfr_builders import build_qfr_extensive_form
 from .qfr_exact_oracle import exact_oracle, validate_oracle
 from .qfr_protocol import accepted_outcome, require_close, solve_exact
@@ -112,12 +113,14 @@ def validate_extensive_form_result(data: QFRData, result: Mapping[str, Any]) -> 
     if decision.model_kind != result["model_kind"] or decision.sha256 != result["first_stage_sha256"]:
         raise ValueError("EF first-stage identity mismatch")
     accounting = result["accounting"]
-    if (
-        accounting["model_kind"] != result["model_kind"]
-        or accounting["data_sha256"] != data.data_sha256
-        or accounting["scenario_sha256"] != data.scenario_sha256
-    ):
-        raise ValueError("EF loaded-solution accounting identity mismatch")
+    validate_accounting_payload(
+        data,
+        data,
+        decision,
+        accounting,
+        expected_objective=float(result["objective"]),
+        expected_theta=float(accounting["theta"]),
+    )
     validate_oracle(data, decision, result["oracle"])
     objective = first_stage_cost(data, decision) + float(result["oracle"]["worst_loss"])
     require_close(float(result["objective"]), objective, "EF certified objective")
