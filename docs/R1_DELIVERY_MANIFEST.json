@@ -19,9 +19,9 @@
   "inventory_anchor_note": "The base commit/tree externally authenticate file bytes. This manifest classifies every tracked base path; sub-asset exceptions are explained in the Markdown audit.",
   "tracked_base_file_count": 157,
   "classification_counts": {
-    "DIRECT_REUSE": 41,
-    "REUSE_WITH_MODIFICATION": 28,
-    "HISTORICAL_ONLY": 84,
+    "DIRECT_REUSE": 39,
+    "REUSE_WITH_MODIFICATION": 29,
+    "HISTORICAL_ONLY": 85,
     "REWRITE_REQUIRED": 4
   },
   "asset_inventory": [
@@ -182,8 +182,8 @@
     },
     {
       "path": "docs/N6_PRELAUNCH_REVALIDATION_v2.md",
-      "classification": "DIRECT_REUSE",
-      "target_stage": "R2"
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
     },
     {
       "path": "docs/N6_READONLY_REPLAY_REPAIR.md",
@@ -212,7 +212,7 @@
     },
     {
       "path": "docs/PROJECT_ROADMAP_v2.md",
-      "classification": "DIRECT_REUSE",
+      "classification": "REUSE_WITH_MODIFICATION",
       "target_stage": "R2"
     },
     {
@@ -817,16 +817,16 @@
     "representative recourse/tie policy",
     "formal scenario/calibration/statistical values",
     "active documentation hash migration",
-    "roadmap milestone synchronization"
+    "roadmap milestone synchronization (hard governance gate before R2 implementation)"
   ],
   "delivery_files": [
     {
       "path": "docs/LEGACY_REUSE_AUDIT_v2.md",
-      "sha256": "6f8c0c1e5677f573c2379aee5e0500e2b1533b43b29bcd54ea69777601c33b15"
+      "sha256": "0e471d0dd4d68cbad15e128831eec9bd91328f1faadac44ada187ee08f7144d6"
     },
     {
       "path": "docs/IMPLEMENTATION_IMPACT_MAP_v2.md",
-      "sha256": "80cc1d1ae3daf2fa12f630d9b7b1164f9ec1c282d7a75a5309514f6775cb4209"
+      "sha256": "d73479bcc9f35ffa3e9b59306f94b5742eb650148b14c5f185c4353c9c136246"
     }
   ],
   "validation": {
@@ -840,5 +840,6 @@
     "licensed_solver_runs": 0,
     "scientific_runs": 0
   },
-  "self_hash_policy": "This manifest does not recursively hash itself. The separate R1_AUDIT_HASHES.sha256 hashes all delivery files. Git commit/tree are the external immutable anchors."
+  "delivery_files_scope": "The delivery_files field lists the two principal audit documents. This manifest and R1_AUDIT_HASHES.sha256 are additionally anchored by the Git commit/tree.",
+  "self_hash_policy": "This manifest does not recursively hash itself. The separate R1_AUDIT_HASHES.sha256 hashes all other delivery files. Git commit/tree are the external immutable anchors."
 }

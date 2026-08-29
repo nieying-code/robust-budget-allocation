@@ -71,11 +71,13 @@ By contrast, the engineering leaves under `io/`, `runtime/`, most of `reproducib
 | `pilot/measurement.py`, `summary.py` | Timing/counter collection and descriptive aggregation patterns | Old `y_F`, paid-supplier, Option, scalar quantity, and fixed projection assumptions must be replaced. |
 | Correctness and pilot scripts | No-overwrite CLI orchestration and source-gate pattern | New scripts must target new modules and authorities; old scripts stay unchanged for historical replay. |
 | `pyproject.toml`, package `__init__` files, `README.md`, `STATUS.md`, `experiments/README.md` | Packaging/project entry structure | Public descriptions and exports are old-route/stale. Update only under separately governed provenance because historical hash manifests currently bind some files. |
+| `docs/PROJECT_ROADMAP_v2.md` | R0 roadmap structure and governance principles | Its milestone meanings conflict with the latest authorized R1 audit/R2–R6 sequence. Synchronize it under explicit governance before any R2 implementation starts. |
 
 ### 5.3 HISTORICAL_ONLY
 
 - All v1 research/model/algorithm/experiment/roadmap/open-decision documents and v1/N0 hashes.
 - N1–N6 reports, protocols, authorizations, frozen hashes, compact evidence, object archives, and scientific summaries.
+- Specifically, `docs/N6_PRELAUNCH_REVALIDATION_v2.md` is an old-route execution authorization bound to `n6pilot02`, the old protocol/config, 16 configurations, 80 runs, old seeds/budgets, and old M0/M1/M2/EF order. Its `v2` filename does not make it a Q-F-R asset.
 - Old development fixtures and their correctness evidence for N2–N5.
 - `configs/pilot/n6_candidates.json` and all old budgets, seeds, scenario counts, distributions, premiums, option parameters, and risk settings.
 - Old Memory-Guided Three-Phase C&CG mechanism and its N5/N6 numerical results. Its code remains executable for historical replay, but is not an A1_new definition.
@@ -106,7 +108,7 @@ These components should be left intact under their historical paths. New v2 modu
 4. **Scenario identity and generation:** the schema minimum is ordered items plus `d_iω` and `δ_iω`; distributions, correlation treatment, sizes, and seeds remain later decisions.
 5. **Formal statistical/calibration values:** budget grids, scale thresholds, repetitions, OOS sizes, alpha, and bootstrap counts are not inherited from defaults or N6.
 6. **Documentation/hash migration:** root README and STATUS are stale but are bound by historical manifests. A later governance step must update active entry points without silently invalidating history.
-7. **Roadmap numbering:** merged `PROJECT_ROADMAP_v2.md` describes R1–R8 differently from the latest explicit R1 audit/R2–R6 instructions. This audit follows the latest instruction for target stages and records that the roadmap needs an authorized synchronization before implementation; it does not edit R0.
+7. **Roadmap numbering:** merged `PROJECT_ROADMAP_v2.md` describes R1–R8 differently from the latest explicit R1 audit/R2–R6 instructions. The latest explicit sequence is the operational authority for this impact map. The roadmap is therefore `REUSE_WITH_MODIFICATION`, and authorized synchronization is a hard governance gate before R2 implementation. R1 does not edit the frozen R0 file.
 
 ## 6. Model-layer impact and multi-item audit
 

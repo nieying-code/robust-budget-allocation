@@ -4,7 +4,7 @@ Status: **R1 planning output only**. Nothing in this document authorizes impleme
 
 ## 1. Stage interpretation
 
-This map follows the latest authorized transition sequence: R2 implements new M0/M1/M2, R3 implements EF/A0 and new correctness evidence, R4 decides and implements A1_new, R5 is pilot/readiness, R6 freezes formal design, and R7–R8 cover subsequently authorized formal work. The merged R0 roadmap has older milestone wording; synchronizing it is a governance action, not an R1 edit.
+This map follows the latest authorized transition sequence: R2 implements new M0/M1/M2, R3 implements EF/A0 and new correctness evidence, R4 decides and implements A1_new, R5 is pilot/readiness, R6 freezes formal design, and R7–R8 cover subsequently authorized formal work. This latest explicit sequence is the operational authority for the map. The merged R0 roadmap has older milestone meanings and is therefore `REUSE_WITH_MODIFICATION`; an authorized roadmap synchronization is a hard governance gate before R2 implementation, not an R1 edit.
 
 ## 2. Asset impact map
 
@@ -43,12 +43,15 @@ This map follows the latest authorized transition sequence: R2 implements new M0
 | `configs/solver.yaml`, requirements | Locked environment | Same | DIRECT_REUSE | Keep no fallback/Threads=1 | Solver drift | Version mismatch must fail fast | R2 |
 | `configs/pilot/n6_candidates.json` | Old pilot values | None | HISTORICAL_ONLY | Never promote to v2 formal parameters | Results-driven inheritance | Accidental config discovery | R5 |
 | v1 documents, N2–N6 reports/evidence | Old-route record | Historical provenance | HISTORICAL_ONLY | Keep immutable and outside v2 active path | Misrepresenting old evidence as new | Existing replay still depends on files | R2 |
-| R0 v2 documents | Current scientific authority | Same | DIRECT_REUSE | Read-only scientific baseline | Unauthorized reinterpretation | Hash/source authority must be recorded | R2 |
+| R0 v2 scientific design documents, excluding the roadmap | Current scientific authority | Same | DIRECT_REUSE | Read-only scientific baseline | Unauthorized reinterpretation | Hash/source authority must be recorded | R2 |
+| `docs/PROJECT_ROADMAP_v2.md` | R0 milestone plan | Current authorized R1 audit/R2–R6 sequence | REUSE_WITH_MODIFICATION | Synchronize through an authorized governance change before R2 starts | Conflicting stage authority could start the wrong work | Preserve R0 provenance while establishing a single active roadmap | R2 |
 | Root README/STATUS/package docstrings | Old active-route description | V2 navigation | REUSE_WITH_MODIFICATION | Update later with explicit hash/provenance plan | Readers may follow old science | Historical manifests bind some content | R2 |
 | Final A1_new mechanism | Not present/frozen | Improved C&CG | UNCLEAR / NEEDS_DECISION | Dedicated R4 design decision and fresh validation | Premature novelty claim | New verifier/evidence required | R4 |
 | Formal configs/seeds/scales/OOS counts | Not frozen | Formal experiment authority | UNCLEAR / NEEDS_DECISION | Freeze only after pilot | Tuning after results | Capacity/runtime limits | R6 |
 
 ## 3. R2 minimum implementation boundary
+
+R2 implementation is blocked until the active roadmap is synchronized with the latest authorized sequence. The following boundary applies after that governance gate is closed.
 
 ### R2 should create
 
