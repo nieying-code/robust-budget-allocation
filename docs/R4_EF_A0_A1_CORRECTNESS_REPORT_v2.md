@@ -67,18 +67,23 @@ The lower counts are recorded only as correctness-stage workload observations. T
 
 ## 5. Evidence and replay
 
-Evidence: `docs/evidence/R4_A1_INITIAL_MEMORY_TRAJECTORY_v2.json`.
+The original first Memory trajectory remains unchanged at `docs/evidence/R4_A1_INITIAL_MEMORY_TRAJECTORY_v2.json`, sealed SHA-256 `4a9f14e1a5c4b98bf2611e3b68a0385d90a1d906603d321f4aaa5a84fe739123`. It is retained as preregistered decision provenance and is not overwritten.
 
-Sealed evidence SHA-256: `4a9f14e1a5c4b98bf2611e3b68a0385d90a1d906603d321f4aaa5a84fe739123`.
+After independent-review fixes, final correctness evidence was rerun from clean execution commit `14f99cccd46871f46ea10e36b15412cadb70bddf`, tree `a34df46f367dbe6b8c6e28d0d593e139ec0aecf1`:
+
+- path: `docs/evidence/R4_EF_A0_A1_CORRECTNESS_FINAL_v2.json`;
+- sealed SHA-256: `5f70d41ca9e52dc54301474ad657cc20af31a85421394ed4a1c979597a9aea07`.
+
+The repair closes `outer model_kind = EF = A0 = A1 = certificate`, binds certificates to all three result seals, checks Full Exact Certification theta against the same master theta, records and verifies certification iteration/decision ownership, and permits formal UB/incumbent/convergence fields only on iterations that actually ran Full Exact Certification. Candidate/Memory-hit iterations store those non-applicable fields as null.
 
 Replay validates the execution commit/tree and source inventory, unchanged fixture, locked solver environment/policy, every EF/A0/A1 result, restricted-master accounting and LB, partial exact evaluations, legal additions, formal UB ownership, complete final Ω certification, convergence, counters, summary, and the conditional Memory decision.
 
 Final tests:
 
-- focused solver-free R4: `9 passed, 3 deselected`;
+- focused solver-free R4 and review-negative tests: `19 passed, 3 deselected`;
 - focused licensed R4 correctness: `3 passed, 7 deselected`;
-- full solver-free regression: `840 passed, 105 deselected`;
-- full licensed regression: `105 passed, 840 deselected`;
+- full solver-free regression: `850 passed, 105 deselected`;
+- full licensed regression: `105 passed, 850 deselected`;
 - final evidence replay: PASS;
 - `git diff --check`: PASS.
 
@@ -91,5 +96,6 @@ Final tests:
 - Runtime is metadata only.
 - Memory value was not identified because opportunities were zero; this is nonblocking under the preregistered rule.
 - R5 is not authorized or started.
+- Scientific/model/algorithm outputs and workload counters are unchanged by the review repair.
 
 Final delivery commit/tree and Draft PR remain external anchors to avoid self-referential delivery hashes.

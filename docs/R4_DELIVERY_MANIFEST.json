@@ -13,9 +13,16 @@
     "sha256": "5b493b3844210bb63180575ffc2dde5d74a883f75c93a9e8374b58f61b5306a6"
   },
   "execution": {
-    "commit": "4ff6c15c75a07787a8e2fa6cf4be5ce67687350a",
-    "tree": "01224ef1cf2377ba6a832ed8fe4fb81d16027c50",
-    "evidence_sha256": "4a9f14e1a5c4b98bf2611e3b68a0385d90a1d906603d321f4aaa5a84fe739123"
+    "initial_memory_trajectory": {
+      "commit": "4ff6c15c75a07787a8e2fa6cf4be5ce67687350a",
+      "tree": "01224ef1cf2377ba6a832ed8fe4fb81d16027c50",
+      "evidence_sha256": "4a9f14e1a5c4b98bf2611e3b68a0385d90a1d906603d321f4aaa5a84fe739123"
+    },
+    "final_correctness": {
+      "commit": "14f99cccd46871f46ea10e36b15412cadb70bddf",
+      "tree": "a34df46f367dbe6b8c6e28d0d593e139ec0aecf1",
+      "evidence_sha256": "5f70d41ca9e52dc54301474ad657cc20af31a85421394ed4a1c979597a9aea07"
+    }
   },
   "a1_structure": {
     "final": "MEMORY_CANDIDATE_FULL_EXACT",
@@ -49,6 +56,7 @@
       "docs/R4_DELIVERY_MANIFEST.json",
       "docs/R4_CORRECTNESS_HASHES.sha256",
       "docs/evidence/R4_A1_INITIAL_MEMORY_TRAJECTORY_v2.json",
+      "docs/evidence/R4_EF_A0_A1_CORRECTNESS_FINAL_v2.json",
       "scripts/r4_ef_a0_a1_correctness.py",
       "src/robust_budget_allocation/algorithms/qfr_a1_candidates.py",
       "src/robust_budget_allocation/algorithms/qfr_a1_memory.py",
@@ -56,14 +64,15 @@
       "src/robust_budget_allocation/algorithms/qfr_a1_verification.py",
       "src/robust_budget_allocation/algorithms/qfr_improved_ccg.py",
       "tests/test_r4_delivery.py",
+      "tests/test_r4_correctness_negative.py",
       "tests/test_r4_qfr_a1.py"
     ]
   },
   "tests": {
-    "focused_solver_free": "9 passed, 3 deselected",
+    "focused_solver_free": "19 passed, 3 deselected",
     "focused_licensed": "3 passed, 7 deselected",
-    "full_solver_free": "840 passed, 105 deselected",
-    "full_licensed": "105 passed, 840 deselected",
+    "full_solver_free": "850 passed, 105 deselected",
+    "full_licensed": "105 passed, 850 deselected",
     "evidence_replay": "PASS",
     "git_diff_check": "PASS"
   },
