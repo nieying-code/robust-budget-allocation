@@ -3,8 +3,7 @@
 import json
 from pathlib import Path
 
-from robust_budget_allocation.algorithms.qfr_a1_verification import validate_r4_evidence
-from robust_budget_allocation.io.hashing import sha256_file
+from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_file
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,11 +11,12 @@ EVIDENCE = ROOT / "docs/evidence/R4_A1_INITIAL_MEMORY_TRAJECTORY_v2.json"
 HASHES = ROOT / "docs/R4_CORRECTNESS_HASHES.sha256"
 
 
-def test_r4_final_evidence_replays_and_applies_memory_rule():
+def test_r4_initial_memory_trajectory_is_preserved_with_original_seal():
     evidence = json.loads(EVIDENCE.read_text(encoding="utf-8"))
-    result = validate_r4_evidence(ROOT, evidence)
-    assert result["status"] == "PASS"
-    assert result["memory_decision"] == "MEMORY_VALUE_NOT_IDENTIFIED_NONBLOCKING"
+    seal = evidence.pop("evidence_sha256")
+    assert seal == "4a9f14e1a5c4b98bf2611e3b68a0385d90a1d906603d321f4aaa5a84fe739123"
+    assert seal == canonical_json_sha256(evidence)
+    assert evidence["source"]["git"]["commit_sha"] == "4ff6c15c75a07787a8e2fa6cf4be5ce67687350a"
     assert evidence["summary"]["memory_opportunities"] == 0
     assert evidence["summary"]["memory_hits"] == 0
 

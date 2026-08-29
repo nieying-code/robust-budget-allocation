@@ -127,15 +127,16 @@ def solve_qfr_improved_ccg(
             "memory": None,
             "candidate": None,
             "full_exact_certification": None,
+            "full_exact_certification_iteration": None,
             "candidate_UB": None,
-            "UB": incumbent_ub,
-            "incumbent_iteration": None if incumbent is None else incumbent["iteration"],
+            "UB": None,
+            "incumbent_iteration": None,
             "signed_gap": None,
             "gap": None,
             "gap_tolerance": None,
             "violation": None,
             "violation_tolerance": None,
-            "convergence": False,
+            "convergence": None,
             "added_scenario": None,
             "added_scenario_identity": None,
             "scenario_source": None,
@@ -202,6 +203,7 @@ def solve_qfr_improved_ccg(
             counters["full_exact_certification_calls"] += 1
             oracle = exact_oracle(data, decision, theta)
             row["full_exact_certification"] = oracle
+            row["full_exact_certification_iteration"] = iteration
             counters["scenario_evaluations"] += int(oracle["evaluations"])
             if oracle["status"] != "complete":
                 status, diagnostic = "oracle_failure", "Full exact certification was incomplete"

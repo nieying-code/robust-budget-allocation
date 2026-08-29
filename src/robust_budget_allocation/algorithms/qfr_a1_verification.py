@@ -218,9 +218,20 @@ def validate_improved_ccg_result(data: QFRData, result: Mapping[str, Any]) -> No
             raise ValueError("A1 Candidate ran after a Memory hit")
 
         converged = False
+        certification_performed = False
         if selected is None:
             oracle = row["full_exact_certification"]
+            certification_performed = True
+            if row["full_exact_certification_iteration"] != iteration:
+                raise ValueError("A1 Full Exact Certification iteration binding mismatch")
             validate_oracle(data, decision, oracle)
+            if oracle["first_stage_sha256"] != decision.sha256:
+                raise ValueError("A1 certification is detached from its master decision")
+            require_close(
+                float(oracle["theta"]),
+                theta,
+                "A1 certification/master theta",
+            )
             counters["full_exact_certification_calls"] += 1
             counters["complete_full_exact_certification_calls"] += 1
             counters["scenario_evaluations"] += int(oracle["evaluations"])
@@ -253,7 +264,17 @@ def validate_improved_ccg_result(data: QFRData, result: Mapping[str, Any]) -> No
             if not converged:
                 selected, source = str(oracle["worst_scenario"]), "EXACT"
         else:
-            if row["full_exact_certification"] is not None or row["candidate_UB"] is not None:
+            if (
+                row["full_exact_certification"] is not None
+                or row["full_exact_certification_iteration"] is not None
+                or row["candidate_UB"] is not None
+                or row["UB"] is not None
+                or row["incumbent_iteration"] is not None
+                or row["signed_gap"] is not None
+                or row["gap"] is not None
+                or row["gap_tolerance"] is not None
+                or row["convergence"] is not None
+            ):
                 raise ValueError("A1 heuristic hit generated a formal UB/certification")
             phase = row["memory"] if source == "MEMORY" else row["candidate"]
             loss = next(
@@ -265,7 +286,12 @@ def validate_improved_ccg_result(data: QFRData, result: Mapping[str, Any]) -> No
             require_close(float(row["violation_tolerance"]), tolerance(loss, theta), "A1 partial violation tolerance")
             if row["UB"] is not None and incumbent_ub is None:
                 raise ValueError("A1 fabricated UB before full certification")
-        if row["convergence"] is not converged or converged != (iteration == len(trace)):
+        if certification_performed:
+            if row["convergence"] is not converged:
+                raise ValueError("A1 Full Exact convergence decision mismatch")
+        elif row["convergence"] is not None:
+            raise ValueError("A1 non-certification iteration has a convergence claim")
+        if converged != (iteration == len(trace)):
             raise ValueError("A1 convergence was not owned by final full exact certification")
         if not converged:
             if (
@@ -321,6 +347,9 @@ def verify_ef_a0_a1(
 
     pair = verify_ef_a0_pair(data, ef, a0)
     validate_improved_ccg_result(data, a1)
+    model_kind = str(ef["model_kind"])
+    if a0["model_kind"] != model_kind or a1["model_kind"] != model_kind:
+        raise ValueError("EF/A0/A1 model-kind identity chain mismatch")
     values = [float(ef["objective"]), float(a0["objective"]), float(a1["objective"])]
     require_close(values[0], values[2], "EF/A1 objective")
     require_close(values[1], values[2], "A0/A1 objective")
@@ -333,7 +362,12 @@ def verify_ef_a0_a1(
     )
     result = {
         "status": "PASS",
-        "model_kind": a1["model_kind"],
+        "model_kind": model_kind,
+        "data_sha256": data.data_sha256,
+        "scenario_sha256": data.scenario_sha256,
+        "ef_result_sha256": ef["result_sha256"],
+        "a0_result_sha256": a0["result_sha256"],
+        "a1_result_sha256": a1["result_sha256"],
         "objectives": {"EF": values[0], "A0": values[1], "A1": values[2]},
         "maximum_objective_difference": max(values) - min(values),
         "maximum_feasibility_violation": maximum_violation,
@@ -350,6 +384,28 @@ def verify_ef_a0_a1(
     }
     result["certificate_sha256"] = canonical_json_sha256(result)
     return result
+
+
+def validate_three_certificate(
+    data: QFRData,
+    ef: Mapping[str, Any],
+    a0: Mapping[str, Any],
+    a1: Mapping[str, Any],
+    certificate: Mapping[str, Any],
+    *,
+    expected_model_kind: str,
+) -> None:
+    if not (
+        expected_model_kind
+        == ef["model_kind"]
+        == a0["model_kind"]
+        == a1["model_kind"]
+        == certificate.get("model_kind")
+    ):
+        raise ValueError("outer/EF/A0/A1/certificate model-kind chain mismatch")
+    expected = verify_ef_a0_a1(data, ef, a0, a1)
+    if certificate != expected:
+        raise ValueError("EF/A0/A1 certificate result binding mismatch")
 
 
 def validate_r4_evidence(repo_root: Path, evidence: Mapping[str, Any]) -> dict[str, Any]:
@@ -483,9 +539,15 @@ def validate_r4_evidence(repo_root: Path, evidence: Mapping[str, Any]) -> dict[s
             is not evidence["memory_phase_enabled"]
         ):
             raise ValueError("R4 case identity or structure mismatch")
+        validate_three_certificate(
+            data,
+            row["ef"],
+            row["a0"],
+            row["a1"],
+            row["certificate"],
+            expected_model_kind=row["model_kind"],
+        )
         expected = verify_ef_a0_a1(data, row["ef"], row["a0"], row["a1"])
-        if row["certificate"] != expected:
-            raise ValueError("R4 EF/A0/A1 certificate does not replay")
         certificates.append(expected)
     if seen != expected_pairs:
         raise ValueError("R4 M0/M1/M2 matrix is incomplete")
