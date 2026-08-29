@@ -1,0 +1,844 @@
+{
+  "schema_version": 1,
+  "document_type": "R1_DELIVERY_MANIFEST",
+  "scope": "audit_only_no_scientific_implementation",
+  "audit_base": {
+    "commit": "77b4fa1ac97f3f7405c719b6cd004f38c2b9e3ab",
+    "tree": "60b12aa9e3e8d01d0499a5218f0fa30102e8e331",
+    "pr11_head": "a4777d2a223099a8bf01584500d7289bdcb1a1d0",
+    "pr11_status": "MERGED",
+    "pr9_status": "CLOSED_NOT_MERGED"
+  },
+  "classification_legend": {
+    "DIRECT_REUSE": "A",
+    "REUSE_WITH_MODIFICATION": "B",
+    "HISTORICAL_ONLY": "C",
+    "REWRITE_REQUIRED": "D",
+    "UNCLEAR_NEEDS_DECISION": "E"
+  },
+  "inventory_anchor_note": "The base commit/tree externally authenticate file bytes. This manifest classifies every tracked base path; sub-asset exceptions are explained in the Markdown audit.",
+  "tracked_base_file_count": 157,
+  "classification_counts": {
+    "DIRECT_REUSE": 41,
+    "REUSE_WITH_MODIFICATION": 28,
+    "HISTORICAL_ONLY": 84,
+    "REWRITE_REQUIRED": 4
+  },
+  "asset_inventory": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": ".gitignore",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "README.md",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R2"
+    },
+    {
+      "path": "configs/pilot/n6_candidates.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "configs/solver.yaml",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "docs/ALGORITHM_DIRECTION_v2.md",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "docs/ALGORITHM_SPEC_v1.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/EXPERIMENT_PLAN_v1.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/LEGACY_MIGRATION_MANIFEST_v1.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/LEGACY_REUSE_PLAN_v1.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/MODEL_SPEC_v1.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/MODEL_SPEC_v2.md",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "docs/N0_DESIGN_HASHES.sha256",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N1_MIGRATION_HASHES.sha256",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N1_MIGRATION_REPORT.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N2_M0_IMPLEMENTATION_REPORT.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N3_M1_M2_HASHES.sha256",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N3_M1_M2_IMPLEMENTATION_REPORT.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N4_CORRECTNESS_HASHES.sha256",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N4_CORRECTNESS_PROTOCOL.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N4_EF_A0_CORRECTNESS_REPORT.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N5_A1_CORRECTNESS_REPORT.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N5_A1_HASHES.sha256",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N5_A1_PROTOCOL.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N6_FRESH_RESTART_AUTHORIZATION.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N6_FRESH_RESTART_REPORT.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N6_HARNESS_REPAIR_AUTHORIZATION.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N6_HARNESS_REPAIR_REPORT.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N6_PILOT_HASHES.sha256",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N6_PILOT_PROTOCOL.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N6_PILOT_REPORT.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N6_PRELAUNCH_REVALIDATION_v2.md",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "docs/N6_READONLY_REPLAY_REPAIR.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N6_SCIENTIFIC_DIAGNOSIS.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/N6_SOURCE_COMPARISON_FIX_REPORT.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/OPEN_DECISIONS_v1.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/PROJECT_ROADMAP_v1.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/PROJECT_ROADMAP_v2.md",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "docs/REDESIGN_TRACEABILITY_v2.md",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "docs/RESEARCH_DESIGN_v1.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/RESEARCH_DESIGN_v2.md",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "docs/STATUS.md",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R2"
+    },
+    {
+      "path": "docs/TRANSITION_ENGINEERING_MANIFEST.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/TRANSITION_ENGINEERING_REPORT.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N2_M0_CORRECTNESS.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N3_M1_M2_CORRECTNESS.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N4_EF_A0_CORRECTNESS.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N5_EF_A0_A1_CORRECTNESS.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_DIAGNOSTIC_MANIFEST.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_EF_DIAGNOSTIC_RETRY.json.gz",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_HARNESS_VALIDATION.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_PILOT02_EVIDENCE.json.gz",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_PILOT02_MANIFEST.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_PILOT02_PRELAUNCH.json.gz",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_PILOT02_SUMMARY.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_PILOT_EVIDENCE.json.gz",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_PILOT_MANIFEST.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_PRELAUNCH_DIAGNOSTIC.md",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_RESTART_STOP.json.gz",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_SOURCE_COMPARISON_VALIDATION.json.gz",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "docs/evidence/N6_SOURCE_OBJECTS.json.gz",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "experiments/README.md",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R2"
+    },
+    {
+      "path": "pyproject.toml",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R2"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "requirements.txt",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "scripts/environment_preflight.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "scripts/n2_m0_correctness.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "scripts/n3_mechanism_correctness.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "scripts/n4_ef_a0_correctness.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "scripts/n5_a1_correctness.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "scripts/n6_pilot.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "src/robust_budget_allocation/__init__.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/__init__.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R3"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/a1_candidates.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/a1_memory.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/a1_verification.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R4"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/common.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R3"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/exact_oracle.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R3"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/extensive_form.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R3"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/memory_guided_ccg.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/standard_ccg.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R3"
+    },
+    {
+      "path": "src/robust_budget_allocation/algorithms/verification.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R3"
+    },
+    {
+      "path": "src/robust_budget_allocation/data/__init__.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/data/mechanism_data.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/data/model_data.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/environment.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/io/__init__.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/io/atomic.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/io/hashing.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/io/locking.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/__init__.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/m0.py",
+      "classification": "REWRITE_REQUIRED",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/m1.py",
+      "classification": "REWRITE_REQUIRED",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/m2.py",
+      "classification": "REWRITE_REQUIRED",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/mechanism_support.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/__init__.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R5"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/configuration.py",
+      "classification": "REWRITE_REQUIRED",
+      "target_stage": "R5"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/diagnostic.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/execution.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R5"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/heartbeat.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R5"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/measurement.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R5"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/replay.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R5"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/restart.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R5"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/source_archive.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R5"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/storage.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R5"
+    },
+    {
+      "path": "src/robust_budget_allocation/pilot/summary.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": "R5"
+    },
+    {
+      "path": "src/robust_budget_allocation/reproducibility/__init__.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/reproducibility/git_state.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/reproducibility/manifests.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/reproducibility/test_evidence.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/runtime/__init__.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/runtime/environment.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/runtime/solver.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/runtime/status.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/statistics/__init__.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/statistics/bootstrap.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/statistics/cvar.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "src/robust_budget_allocation/statistics/multiple_testing.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "tests/conftest.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": null
+    },
+    {
+      "path": "tests/fixtures/n2_m0_hand_cases.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/fixtures/n3_mechanisms.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/fixtures/n4_correctness.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/fixtures/n5_correctness.json",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_atomic_hashing.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "tests/test_environment_constants.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "tests/test_environment_gurobi.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "tests/test_git_reproducibility.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "tests/test_locking.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "tests/test_m0_data.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_m0_model.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_manifests.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "tests/test_n0_design_hashes.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n1_migration_hashes.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n2_evidence.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n3_evidence.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n3_models.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n3_schema.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n4_correctness.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n4_evidence.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n5_a1.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n5_evidence.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n6_diagnostic_evidence.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n6_evidence.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n6_harness_repair.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n6_pilot.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n6_pilot02_evidence.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n6_restart.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n6_restart_stop.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n6_shallow_cli_replay.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_n6_source_comparison_validation.py",
+      "classification": "HISTORICAL_ONLY",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_runtime_environment.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "tests/test_runtime_status.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "tests/test_solver_runtime.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "tests/test_statistics_helpers.py",
+      "classification": "DIRECT_REUSE",
+      "target_stage": "R2"
+    },
+    {
+      "path": "tests/test_transition_audit_hardening.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_transition_manifest.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": null
+    },
+    {
+      "path": "tests/test_transition_production_entry.py",
+      "classification": "REUSE_WITH_MODIFICATION",
+      "target_stage": null
+    }
+  ],
+  "unresolved_decisions": [
+    "A1_new mechanism",
+    "multi-item recourse formulation and certificate",
+    "representative recourse/tie policy",
+    "formal scenario/calibration/statistical values",
+    "active documentation hash migration",
+    "roadmap milestone synchronization"
+  ],
+  "delivery_files": [
+    {
+      "path": "docs/LEGACY_REUSE_AUDIT_v2.md",
+      "sha256": "6f8c0c1e5677f573c2379aee5e0500e2b1533b43b29bcd54ea69777601c33b15"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_IMPACT_MAP_v2.md",
+      "sha256": "80cc1d1ae3daf2fa12f630d9b7b1164f9ec1c282d7a75a5309514f6775cb4209"
+    }
+  ],
+  "validation": {
+    "solver_free": {
+      "command": ".venv/Scripts/python.exe -m pytest -m \"not gurobi\"",
+      "passed": 730,
+      "deselected": 100,
+      "warnings": 3,
+      "junit_sha256": "2d3750877ef95d6787c0715c7f447dd6673552ef76f0e9d5eecf15d74494ca71"
+    },
+    "licensed_solver_runs": 0,
+    "scientific_runs": 0
+  },
+  "self_hash_policy": "This manifest does not recursively hash itself. The separate R1_AUDIT_HASHES.sha256 hashes all delivery files. Git commit/tree are the external immutable anchors."
+}
