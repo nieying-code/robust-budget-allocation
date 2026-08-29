@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "document_type": "R2_MODEL_IMPLEMENTATION_DELIVERY_MANIFEST",
+  "scope": "qfr_v2_model_schema_structure_validation_only",
+  "base": {
+    "commit": "0a5c7de34d7ade0fea13554494ee7ce0178c0aab",
+    "tree": "57fd6cc2a4c528855845288e809347a5a7e1419b"
+  },
+  "implementation_anchor_note": "Final commit/tree and Draft PR are external Git/GitHub anchors to avoid self-referential hashes.",
+  "r1_classification_counts_unchanged": {
+    "DIRECT_REUSE": 39,
+    "REUSE_WITH_MODIFICATION": 29,
+    "HISTORICAL_ONLY": 85,
+    "REWRITE_REQUIRED": 4
+  },
+  "changed_paths": [
+    {
+      "path": "src/robust_budget_allocation/data/qfr_data.py",
+      "scope_mapping": "REUSE_WITH_MODIFICATION_PATTERN_NEW_V2_PATH"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/qfr_common.py",
+      "scope_mapping": "REWRITE_REQUIRED_SCIENTIFIC_CORE_NEW_V2_PATH"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/qfr_m0.py",
+      "scope_mapping": "REWRITE_REQUIRED_SCIENTIFIC_CORE_NEW_V2_PATH"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/qfr_m1.py",
+      "scope_mapping": "REWRITE_REQUIRED_SCIENTIFIC_CORE_NEW_V2_PATH"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/qfr_m2.py",
+      "scope_mapping": "REWRITE_REQUIRED_SCIENTIFIC_CORE_NEW_V2_PATH"
+    },
+    {
+      "path": "src/robust_budget_allocation/models/qfr_support.py",
+      "scope_mapping": "REUSE_WITH_MODIFICATION_PATTERN_NEW_V2_PATH"
+    },
+    {
+      "path": "tests/fixtures/r2_qfr_test_fixture.json",
+      "scope_mapping": "NEW_R2_TEST_FIXTURE_ONLY"
+    },
+    {
+      "path": "tests/test_r2_qfr_data.py",
+      "scope_mapping": "NEW_R2_MODEL_LEVEL_TEST"
+    },
+    {
+      "path": "tests/test_r2_qfr_models.py",
+      "scope_mapping": "NEW_R2_MODEL_LEVEL_TEST"
+    },
+    {
+      "path": "docs/R2_MODEL_IMPLEMENTATION_REPORT.md",
+      "scope_mapping": "NEW_R2_DELIVERY"
+    },
+    {
+      "path": "docs/R2_DELIVERY_MANIFEST.json",
+      "scope_mapping": "NEW_R2_DELIVERY"
+    },
+    {
+      "path": "docs/R2_MODEL_HASHES.sha256",
+      "scope_mapping": "NEW_R2_DELIVERY"
+    }
+  ],
+  "tests": {
+    "focused_solver_free": "64 passed, 2 deselected",
+    "focused_licensed": "2 passed, 19 deselected",
+    "full_solver_free": "794 passed, 102 deselected",
+    "full_licensed": "102 passed, 794 deselected"
+  },
+  "execution_counts": {
+    "scientific_runs": 0,
+    "pilot_runs": 0,
+    "formal_experiments": 0
+  },
+  "deferred": [
+    "R3_EF_exact_oracle_A0_correctness_protocol_and_evidence",
+    "R4_A1_new_design_and_correctness",
+    "R5_pilot_and_mechanism_diagnosis",
+    "R6_formal_experiment_design_freeze",
+    "R7_R8_formal_execution_and_results"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "fixture_scope": "TEST_FIXTURE_ONLY_NOT_FORMAL_SCIENTIFIC_PARAMETERS",
+  "data": {
+    "schema_version": 2,
+    "model_family": "heterogeneous_material_qfr",
+    "items": [
+      "ordinary",
+      "preservation_sensitive",
+      "perishable"
+    ],
+    "scenarios": [
+      "moderate",
+      "severe"
+    ],
+    "reliability_levels": [0, 1, 2],
+    "budget": 120.0,
+    "tau": 2.0,
+    "q_unit_cost": {
+      "ordinary": 2.0,
+      "preservation_sensitive": 3.0,
+      "perishable": 2.5
+    },
+    "storage_cost": {
+      "ordinary": 0.2,
+      "preservation_sensitive": 1.5,
+      "perishable": 0.5
+    },
+    "retention": {
+      "ordinary": 0.95,
+      "preservation_sensitive": 0.9,
+      "perishable": 0.6
+    },
+    "flexible_capacity": {
+      "ordinary": 12.0,
+      "preservation_sensitive": 10.0,
+      "perishable": 14.0
+    },
+    "reservation_cost": {
+      "ordinary": 0.8,
+      "preservation_sensitive": 1.1,
+      "perishable": 0.9
+    },
+    "reliability_cost": {
+      "ordinary": {"0": 0.0, "1": 0.3, "2": 0.7},
+      "preservation_sensitive": {"0": 0.0, "1": 0.4, "2": 0.9},
+      "perishable": {"0": 0.0, "1": 0.25, "2": 0.65}
+    },
+    "reliability_mitigation": {
+      "ordinary": {"0": 0.0, "1": 0.35, "2": 0.7},
+      "preservation_sensitive": {"0": 0.0, "1": 0.4, "2": 0.75},
+      "perishable": {"0": 0.0, "1": 0.3, "2": 0.65}
+    },
+    "exercise_cost": {
+      "ordinary": 2.4,
+      "preservation_sensitive": 3.2,
+      "perishable": 2.8
+    },
+    "shortage_cost": {
+      "ordinary": 20.0,
+      "preservation_sensitive": 25.0,
+      "perishable": 30.0
+    },
+    "demand": {
+      "moderate": {
+        "ordinary": 8.0,
+        "preservation_sensitive": 6.0,
+        "perishable": 7.0
+      },
+      "severe": {
+        "ordinary": 11.0,
+        "preservation_sensitive": 9.0,
+        "perishable": 12.0
+      }
+    },
+    "disruption": {
+      "moderate": {
+        "ordinary": 0.0,
+        "preservation_sensitive": 0.2,
+        "perishable": 0.4
+      },
+      "severe": {
+        "ordinary": 0.5,
+        "preservation_sensitive": 0.7,
+        "perishable": 1.0
+      }
+    }
+  }
+}
