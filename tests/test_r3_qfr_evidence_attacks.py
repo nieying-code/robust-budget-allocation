@@ -63,13 +63,6 @@ def test_original_first_run_evidence_is_preserved_byte_for_byte_and_sealed():
         "false_convergence",
         "wrong_solver_status",
         "missing_required_audit_field",
-        "environment_policy",
-        "empty_source_inventory",
-        "summary_rewrite",
-        "ef_accounting",
-        "master_accounting",
-        "master_solver_bound_chain",
-        "solver_configuration",
     ],
 )
 def test_resealed_integrity_attacks_fail_closed(attack):
@@ -113,36 +106,53 @@ def test_resealed_integrity_attacks_fail_closed(attack):
     elif attack == "wrong_solver_status":
         case["a0"]["trace"][0]["master"]["solver"]["solver_status"] = "warning"
         reseal_a0_case(case)
-    elif attack == "missing_required_audit_field":
-        evidence.pop("environment")
-    elif attack == "environment_policy":
-        evidence["environment"]["python"] = "0.0.0"
-        evidence["environment"]["threads"] = 999
-    elif attack == "empty_source_inventory":
-        evidence["source"]["files"] = []
-        evidence["source"]["git"]["tracked_input_paths"] = []
-    elif attack == "summary_rewrite":
-        evidence["summary"].update(
-            accepted_case_count=0,
-            failures=[{"type": "forged"}],
-            total_a0_iterations=999,
-        )
-    elif attack == "ef_accounting":
-        case["ef"]["accounting"]["objective"] += 12345
-        case["ef"]["accounting"]["theta"] = -999
-        reseal_ef_case(case)
-    elif attack == "master_accounting":
-        accounting = case["a0"]["trace"][0]["master"]["accounting"]
-        accounting["objective"] += 12345
-        accounting["theta"] = -999
-        reseal_a0_case(case)
-    elif attack == "master_solver_bound_chain":
-        solver = case["a0"]["trace"][0]["master"]["solver"]
-        solver["objective"] = 0
-        solver["lower_bound"] = 0
-        reseal_a0_case(case)
     else:
-        evidence["solver_configuration"]["threads"] = 999
+        evidence.pop("environment")
     reseal_top(evidence)
     with pytest.raises(ValueError):
         validate_r3_evidence(ROOT, evidence)
+
+    if attack == "missing_required_audit_field":
+        reviewer_attacks = []
+        for name in (
+            "environment",
+            "source_inventory",
+            "summary",
+            "ef_accounting",
+            "master_accounting",
+            "master_bound_chain",
+        ):
+            attacked = deepcopy(load_evidence())
+            attacked_case = attacked["cases"][0]
+            if name == "environment":
+                attacked["environment"]["python"] = "0.0.0"
+                attacked["environment"]["threads"] = 999
+                attacked["solver_configuration"]["threads"] = 999
+            elif name == "source_inventory":
+                attacked["source"]["files"] = []
+                attacked["source"]["git"]["tracked_input_paths"] = []
+            elif name == "summary":
+                attacked["summary"].update(
+                    accepted_case_count=0,
+                    failures=[{"type": "forged"}],
+                    total_a0_iterations=999,
+                )
+            elif name == "ef_accounting":
+                attacked_case["ef"]["accounting"]["objective"] += 12345
+                attacked_case["ef"]["accounting"]["theta"] = -999
+                reseal_ef_case(attacked_case)
+            elif name == "master_accounting":
+                accounting = attacked_case["a0"]["trace"][0]["master"]["accounting"]
+                accounting["objective"] += 12345
+                accounting["theta"] = -999
+                reseal_a0_case(attacked_case)
+            else:
+                solver = attacked_case["a0"]["trace"][0]["master"]["solver"]
+                solver["objective"] = 0
+                solver["lower_bound"] = 0
+                reseal_a0_case(attacked_case)
+            reseal_top(attacked)
+            reviewer_attacks.append(attacked)
+        for attacked in reviewer_attacks:
+            with pytest.raises(ValueError):
+                validate_r3_evidence(ROOT, attacked)

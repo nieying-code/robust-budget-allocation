@@ -16,7 +16,7 @@ The user explicitly re-registered the authorized generic N4 numerical and determ
 
 This provenance does not inherit the old Q-R-F model, F-OPTION, old Reliability semantics, data, fixtures, scenarios, parameters, results or conclusions. Old N4/N5/N6 code and evidence remain historical and unchanged.
 
-The first executable implementation anchor was commit `819f673b25db17245b9e11ec7e34de3d62f2bf81`, tree `14764cd84d64ae60694806d4d67783e6f293e3ca`. Historical replay hardening and negative tests were committed at `ee35252620c8c680695fcbe77e2fd461d0a20da9`, tree `e9ba89f758b89117d3753a86490479b3a1f5c269`. Shallow-checkout replay portability was repaired at commit `70704725a1f8c594e5125d83f3d7481e9e19cde4`, tree `c8e981f296a2305948e6191145ce59497f076df6`; the final correctness rerun is bound to this latter source. Final delivery commit/tree and Draft PR are external anchors to avoid self-referential hashes.
+The first executable implementation anchor was commit `819f673b25db17245b9e11ec7e34de3d62f2bf81`, tree `14764cd84d64ae60694806d4d67783e6f293e3ca`. Historical replay hardening and negative tests were committed at `ee35252620c8c680695fcbe77e2fd461d0a20da9`, tree `e9ba89f758b89117d3753a86490479b3a1f5c269`. Shallow-checkout replay portability was repaired at commit `70704725a1f8c594e5125d83f3d7481e9e19cde4`, tree `c8e981f296a2305948e6191145ce59497f076df6`. Independent-review B1 fail-closed validation was implemented at `0c49cb0ac211eca1a27bf37826a855b78fce5229`; tuple/list normalization for the existing `validate_source_state` contract was completed at clean execution commit `d83475e6dc9afdb69f30c8214cdddefe081af1e1`, tree `d49bd70011b314e2b422b5d2a6073a8f0efe5c59`. The final correctness rerun is bound to that clean source. Final delivery commit/tree and Draft PR are external anchors to avoid self-referential hashes.
 
 R1 classification totals remain unchanged: 39 `DIRECT_REUSE`, 29 `REUSE_WITH_MODIFICATION`, 85 `HISTORICAL_ONLY`, and 4 `REWRITE_REQUIRED`.
 
@@ -81,7 +81,11 @@ While constructing adversarial tests, self-review found that replay should compa
 
 The first Draft-PR CI run then exposed a portability defect: GitHub Actions uses a shallow checkout in which the earlier execution commit is not initially present. Replay correctly failed rather than weakening verification. The validator now fetches only the exact recorded commit from the configured `origin` when that object is missing, then performs the same commit-to-tree-to-blob/hash validation. Fetch or identity failure remains fail-closed. No model, algorithm, protocol, fixture or numerical result changed; all correctness cases were rerun again from the repaired clean source.
 
-Final evidence is `docs/evidence/R3_CORRECTNESS_RESULTS_v2.json`, sealed evidence SHA-256 `12e453f6bfafa1ac9aacad633dcd723614912c4def29e306e39c38b286cf3bab`. Both first-run and final evidence replay PASS from their recorded execution commit/tree.
+Independent review then demonstrated that schema-v1 replay trusted resealed environment, source inventory, summary, EF/master accounting and master-bound fields. The original first-run artifact remains immutable with its original seal; it is retained as provenance, not treated as the final fail-closed certificate. The repaired schema-v2 validator now consumes the existing `validate_source_state` output, binds the reviewed R2 model source, validates the locked licensed environment and solver policy, independently closes EF/master accounting and the solver-objective/bound to master/LB/trace chain, and recomputes the complete summary.
+
+The first post-review licensed execution completed all solves but was rejected before evidence write because the new validator incorrectly required JSON lists from the in-process `validate_source_state` result, which correctly returns tuples. This engineering gate failure was retained in the task provenance; it was not a scientific or numerical failure. After normalizing the existing return representation without adding a second source-state framework, the three preregistered cases were rerun from clean commit `d83475e...`.
+
+Final evidence is `docs/evidence/R3_CORRECTNESS_RESULTS_v2.json`, sealed evidence SHA-256 `c1ab922d13641ea69df061bf2fe8467a40cd49e9f753f76eb87b36141f174621`. Final schema-v2 replay PASSes from its recorded execution commit/tree. The original schema-v1 first-run seal and execution anchor remain preserved unchanged.
 
 ## 8. Integrity and regression tests
 
@@ -96,15 +100,20 @@ Negative tests reseal tampered objects and confirm rejection of:
 - missing exact-oracle evidence;
 - false convergence;
 - wrong solver status;
-- missing mandatory audit fields.
+- missing mandatory audit fields;
+- altered locked environment/Threads and frozen solver configuration;
+- empty source inventory and tracked-input inventory;
+- falsified accepted count, failures and iteration summary;
+- altered EF and restricted-master accounting objective/theta;
+- detached master solver objective/lower bound.
 
 Final test results:
 
-- focused R3 solver-free structure/replay/attack tests: `28 passed`;
+- focused R3 solver-free structure/replay/attack/delivery tests: `30 passed`;
 - full solver-free regression: `831 passed, 102 deselected`;
-- full licensed regression: `102 passed, 829 deselected`;
+- full licensed regression: `102 passed, 831 deselected`;
 - preregistered R3 licensed correctness suite: `3 passed comparisons`;
-- first-run replay: PASS;
+- original first-run evidence: immutable schema-v1 seal verified and preserved;
 - final rerun replay: PASS.
 
 Environment: CPython 3.12.10, Pyomo 6.10.1, gurobipy/Gurobi 13.0.2, `gurobi_direct`, Threads=1, solver/license available, no fallback.

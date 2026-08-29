@@ -20,9 +20,9 @@
       "evidence_sha256": "fa366744d314201194002bdcd5c89c5abbe4da597af0a533bffff50e13a27d87"
     },
     "final_rerun": {
-      "commit": "70704725a1f8c594e5125d83f3d7481e9e19cde4",
-      "tree": "c8e981f296a2305948e6191145ce59497f076df6",
-      "evidence_sha256": "12e453f6bfafa1ac9aacad633dcd723614912c4def29e306e39c38b286cf3bab"
+      "commit": "d83475e6dc9afdb69f30c8214cdddefe081af1e1",
+      "tree": "d49bd70011b314e2b422b5d2a6073a8f0efe5c59",
+      "evidence_sha256": "c1ab922d13641ea69df061bf2fe8467a40cd49e9f753f76eb87b36141f174621"
     }
   },
   "implementation_anchor_note": "Final delivery commit/tree and Draft PR are external Git/GitHub anchors to avoid self-referential hashes.",
@@ -36,6 +36,7 @@
     "DIRECT_REUSE_MODIFIED": [],
     "REUSE_WITH_MODIFICATION_NEW_V2_PATHS": [
       "src/robust_budget_allocation/algorithms/qfr_builders.py",
+      "src/robust_budget_allocation/algorithms/qfr_accounting.py",
       "src/robust_budget_allocation/algorithms/qfr_correctness_suite.py",
       "src/robust_budget_allocation/algorithms/qfr_exact_oracle.py",
       "src/robust_budget_allocation/algorithms/qfr_extensive_form.py",
@@ -69,15 +70,15 @@
     "total_a0_iterations": 6,
     "complete_exact_oracle_calls": 6,
     "finite_scenario_evaluations": 18,
-    "first_run_replay": "PASS",
+    "first_run_evidence": "PRESERVED_SCHEMA_V1_SEAL_VERIFIED",
     "final_rerun_replay": "PASS"
   },
   "tests": {
-    "focused_r3_solver_free": "28 passed",
+    "focused_r3_solver_free": "30 passed",
     "full_solver_free": "831 passed, 102 deselected",
-    "full_licensed": "102 passed, 829 deselected",
+    "full_licensed": "102 passed, 831 deselected",
     "preregistered_licensed_correctness": "3 accepted comparisons",
-    "resealed_negative_attack_classes": 14
+    "resealed_negative_attack_mutations": 20
   },
   "environment": {
     "python": "3.12.10",
