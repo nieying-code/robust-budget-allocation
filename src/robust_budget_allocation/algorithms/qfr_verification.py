@@ -3,12 +3,18 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import json
 import math
 from pathlib import Path
+import subprocess
 from typing import Any, Mapping
 
 from robust_budget_allocation.data.qfr_data import QFRData
-from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_file
+from robust_budget_allocation.io.hashing import (
+    canonical_json_sha256,
+    sha256_bytes,
+    sha256_file,
+)
 from .qfr_extensive_form import validate_extensive_form_result
 from .qfr_protocol import PROTOCOL_SHA256, protocol_identity, require_close, tolerance
 from .qfr_standard_ccg import validate_standard_ccg_result
@@ -95,6 +101,25 @@ def seal_evidence(payload: Mapping[str, Any]) -> dict[str, Any]:
     return result
 
 
+def _git_output(repo_root: Path, *arguments: str, text: bool = False) -> bytes | str:
+    completed = subprocess.run(
+        ["git", "-C", str(repo_root.resolve()), *arguments],
+        check=True,
+        capture_output=True,
+        text=text,
+    )
+    return completed.stdout
+
+
+def _anchored_file(repo_root: Path, commit_sha: str, relative_path: str) -> bytes:
+    if not relative_path or relative_path.startswith(("/", "\\")) or ".." in Path(relative_path).parts:
+        raise ValueError("R3 anchored source path is unsafe")
+    try:
+        return _git_output(repo_root, "show", f"{commit_sha}:{relative_path}")
+    except subprocess.CalledProcessError as exc:
+        raise ValueError(f"R3 anchored source path is missing: {relative_path}") from exc
+
+
 def validate_r3_evidence(
     repo_root: Path,
     evidence: Mapping[str, Any],
@@ -142,20 +167,37 @@ def validate_r3_evidence(
         raise ValueError("R3 Git identity fields mismatch")
     if git["tracked_dirty"] is not False or git["untracked_scientific_paths"] not in ([], ()): 
         raise ValueError("R3 execution source was not clean")
+    commit_sha = git["commit_sha"]
+    tree_sha = git["tree_sha"]
+    if not isinstance(commit_sha, str) or not isinstance(tree_sha, str):
+        raise ValueError("R3 Git commit/tree identity is invalid")
+    try:
+        anchored_tree = str(
+            _git_output(repo_root, "rev-parse", f"{commit_sha}^{{tree}}", text=True)
+        ).strip()
+    except subprocess.CalledProcessError as exc:
+        raise ValueError("R3 execution commit is unavailable") from exc
+    if anchored_tree != tree_sha:
+        raise ValueError("R3 execution commit/tree binding mismatch")
     for row in source["files"]:
         if set(row) != {"path", "sha256"}:
             raise ValueError("R3 source file inventory fields mismatch")
-        path = repo_root / row["path"]
-        if not path.is_file() or sha256_file(path) != row["sha256"]:
+        if sha256_bytes(_anchored_file(repo_root, commit_sha, row["path"])) != row["sha256"]:
             raise ValueError("R3 source file hash mismatch")
     fixture = evidence["fixture"]
     if set(fixture) != {"path", "sha256", "payload", "config_sha256"}:
         raise ValueError("R3 fixture fields mismatch")
-    fixture_path = repo_root / fixture["path"]
-    if not fixture_path.is_file() or sha256_file(fixture_path) != fixture["sha256"]:
+    anchored_fixture = _anchored_file(repo_root, commit_sha, fixture["path"])
+    if sha256_bytes(anchored_fixture) != fixture["sha256"]:
         raise ValueError("R3 fixture file hash mismatch")
     if fixture["config_sha256"] != canonical_json_sha256(fixture["payload"]):
         raise ValueError("R3 fixture config identity mismatch")
+    try:
+        anchored_payload = json.loads(anchored_fixture.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError("R3 anchored fixture is not canonical UTF-8 JSON") from exc
+    if fixture["payload"] != anchored_payload:
+        raise ValueError("R3 embedded fixture payload differs from anchored execution input")
     fixture_cases = {row["case_id"]: row for row in fixture["payload"]["cases"]}
     if len(evidence["cases"]) != len(fixture_cases) * 3:
         raise ValueError("R3 evidence does not cover every fixture and M0/M1/M2")
