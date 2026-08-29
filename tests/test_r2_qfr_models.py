@@ -1,3 +1,4 @@
+from copy import deepcopy
 import json
 from pathlib import Path
 
@@ -71,6 +72,8 @@ def test_m0_m1_m2_have_only_frozen_stage_variables(qfr_data):
     assert tuple(m2.R) == (0, 1, 2)
     assert all(m2.z[item, level].is_binary() for item in qfr_data.items for level in m2.R)
     for model in (m0, m1, m2):
+        assert model._qfr_data_sha256 == qfr_data.data_sha256
+        assert model._qfr_scenario_sha256 == qfr_data.scenario_sha256
         for constraint in model.component_data_objects(pyo.Constraint):
             assert generate_standard_repn(constraint.body).is_linear()
         assert generate_standard_repn(model.total_cost.expr).is_linear()
@@ -177,6 +180,10 @@ def test_independent_accounting_accepts_common_all_shortage_feasible_point(qfr_d
     model = builder(qfr_data)
     load_all_shortage_solution(qfr_data, model)
     accounting = validate_qfr_solution(qfr_data, model)
+    assert accounting.data_sha256 == qfr_data.data_sha256
+    assert accounting.scenario_sha256 == qfr_data.scenario_sha256
+    assert accounting.to_dict()["data_sha256"] == qfr_data.data_sha256
+    assert accounting.to_dict()["scenario_sha256"] == qfr_data.scenario_sha256
     assert accounting.C_F == pytest.approx(0)
     assert accounting.C_R == pytest.approx(0)
     assert all(value == pytest.approx(qfr_data.budget) for value in accounting.unused_cash.values())
@@ -198,6 +205,43 @@ def test_independent_accounting_rejects_invalid_loaded_values(qfr_data, violatio
     else:
         model.z["ordinary", 0].set_value(0.5, skip_validation=True)
     with pytest.raises(ValueError):
+        validate_qfr_solution(qfr_data, model)
+
+
+@pytest.mark.parametrize("mutation", ["disruption", "static_cost", "retention"])
+def test_validation_rejects_same_indices_with_different_scientific_data(qfr_data, mutation):
+    model = build_qfr_m2(qfr_data)
+    load_all_shortage_solution(qfr_data, model)
+    changed = deepcopy(PAYLOAD["data"])
+    if mutation == "disruption":
+        changed["disruption"]["moderate"]["ordinary"] = 0.1
+    elif mutation == "static_cost":
+        changed["q_unit_cost"]["ordinary"] += 0.25
+    else:
+        changed["retention"]["ordinary"] = 0.9
+    other = QFRData.from_dict(changed)
+    assert other.items == qfr_data.items and other.scenarios == qfr_data.scenarios
+    with pytest.raises(ValueError, match="identity"):
+        validate_qfr_solution(other, model)
+
+
+@pytest.mark.parametrize(
+    ("attribute", "replacement"),
+    [
+        ("_qfr_data_sha256", None),
+        ("_qfr_data_sha256", "0" * 64),
+        ("_qfr_scenario_sha256", None),
+        ("_qfr_scenario_sha256", "f" * 64),
+    ],
+)
+def test_validation_rejects_missing_or_changed_model_identity(qfr_data, attribute, replacement):
+    model = build_qfr_m2(qfr_data)
+    load_all_shortage_solution(qfr_data, model)
+    if replacement is None:
+        delattr(model, attribute)
+    else:
+        setattr(model, attribute, replacement)
+    with pytest.raises(ValueError, match="identity"):
         validate_qfr_solution(qfr_data, model)
 
 

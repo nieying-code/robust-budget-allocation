@@ -20,6 +20,8 @@ R2_VALIDATION_TOLERANCE = 1e-7
 class QFRAccounting:
     model_kind: str
     reliability_levels: tuple[int, ...]
+    data_sha256: str
+    scenario_sha256: str
     objective: float
     theta: float
     C_Q: float
@@ -42,6 +44,8 @@ class QFRAccounting:
         return {
             "model_kind": self.model_kind,
             "reliability_levels": list(self.reliability_levels),
+            "data_sha256": self.data_sha256,
+            "scenario_sha256": self.scenario_sha256,
             "objective": self.objective,
             "theta": self.theta,
             "C_Q": self.C_Q,
@@ -94,6 +98,15 @@ def validate_qfr_solution(
     kind = getattr(model, "_qfr_kind", None)
     if kind not in MODEL_KINDS:
         raise ValueError("model is not a Q-F-R v2 M0/M1/M2 model")
+    model_data_sha256 = getattr(model, "_qfr_data_sha256", None)
+    model_scenario_sha256 = getattr(model, "_qfr_scenario_sha256", None)
+    if not isinstance(model_data_sha256, str) or model_data_sha256 != data.data_sha256:
+        raise ValueError("model Q-F-R full-data identity is missing or does not match QFRData")
+    if (
+        not isinstance(model_scenario_sha256, str)
+        or model_scenario_sha256 != data.scenario_sha256
+    ):
+        raise ValueError("model Q-F-R scenario identity is missing or does not match QFRData")
     levels = tuple(getattr(model, "_qfr_levels", ()))
     if tuple(model.I) != data.items or tuple(model.Omega) != data.scenarios:
         raise ValueError("model item/scenario indices do not match QFRData")
@@ -249,6 +262,8 @@ def validate_qfr_solution(
     return QFRAccounting(
         model_kind=kind,
         reliability_levels=levels,
+        data_sha256=model_data_sha256,
+        scenario_sha256=model_scenario_sha256,
         objective=objective,
         theta=theta,
         C_Q=C_Q,

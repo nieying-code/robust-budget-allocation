@@ -11,6 +11,8 @@ The implementation authority is the merged R0 scientific design together with th
 
 R1 classifications remain exactly 39 `DIRECT_REUSE`, 29 `REUSE_WITH_MODIFICATION`, 85 `HISTORICAL_ONLY`, and 4 `REWRITE_REQUIRED`.
 
+Independent review of the first R2 head identified blocker B1: a model did not retain the full scientific-data identity used at construction, so validation against a same-index but different `QFRData` could be misattributed. The repair remains in the same Draft PR and is described in Sections 3 and 5.
+
 ## 2. Implemented v2 path
 
 The migration is additive. Old `model_data.py`, `mechanism_data.py`, `models/m0.py`, `models/m1.py`, `models/m2.py`, old algorithms, fixtures, scripts, and evidence remain unchanged under their historical paths.
@@ -30,6 +32,8 @@ No `DIRECT_REUSE` production file was modified. Generic hashing and locked runti
 ## 3. Scientific model implementation
 
 The schema supports nonempty ordered item and scenario sets with exact key coverage. It validates finite values and the frozen domains for `B`, `τ`, `c_i^Q`, `h_i`, `a_i`, `bar F_i`, `c_i^F`, `c_ir^R`, `η_ir`, `p_i^F`, `s_i`, `d_iω`, and `δ_iω`. Reliability levels are exactly `(0,1,2)`; both reliability mitigation and premium have strict frozen ordering.
+
+Every model records the complete construction identities as `_qfr_data_sha256` and `_qfr_scenario_sha256`. Before reading any loaded decision value, `validate_qfr_solution` rejects a missing or unequal full-data or scenario hash. `QFRAccounting` carries and serializes both accepted hashes, preserving the binding from complete realization and static parameters through validation output.
 
 All models are finite-scenario two-stage formulations. Q/F/z are scenario-independent first-stage variables; x/u are scenario-indexed second-stage variables. There is one representative flexible channel per item and no supplier index.
 
@@ -67,12 +71,14 @@ Environment preflight:
 
 Test results:
 
-- Focused R2 solver-free: `64 passed, 2 deselected`
-- Focused R2 licensed: `2 passed, 19 deselected`
-- Full solver-free regression: `794 passed, 102 deselected`
-- Full licensed regression: `102 passed, 794 deselected`
+- Focused R2 solver-free: `71 passed, 2 deselected`
+- Focused R2 licensed: `2 passed, 26 deselected`
+- Full solver-free regression: `801 passed, 102 deselected`
+- Full licensed regression: `102 passed, 801 deselected`
 
 The first focused solver-free run exposed one incorrect test expectation about Pyomo eliminating fixed-zero variables from a standard representation. The test was corrected to validate zero F/R spending directly; no scientific equation changed.
+
+The B1 repair adds seven negative cases. With identical ordered items/scenarios and an all-shortage feasible point (`F=x=0`), validation rejects changed disruption, changed static Q cost, and changed retention. It also rejects each construction hash when missing or altered. Positive tests require both hashes in the model and in serialized `QFRAccounting`.
 
 ## 6. Scope audits
 
@@ -80,6 +86,7 @@ The first focused solver-free run exposed one incorrect test expectation about P
 - Scientific symbols: no old F-OPTION or old Q-protecting Reliability appears in the active v2 implementation.
 - Single-item assumptions: the v2 schema, variables, constraints, recourse, and accounting are item-indexed and tested on three items.
 - Budget: independent recomputation separates cash expenditure from shortage loss for every model/scenario.
+- Data identity: full static/scenario hashes are bound at construction and checked fail-closed before loaded values are read.
 - Nesting: both frozen degeneration relations have solver-free structural and licensed behavioral tests.
 - No scope creep: EF, exact oracle, A0, A1_new, pilot, OOS, formal design, and experiments were not implemented or executed.
 

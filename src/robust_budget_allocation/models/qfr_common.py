@@ -53,6 +53,8 @@ def build_qfr_model(
     model._qfr_kind = kind
     model._qfr_levels = levels
     model._qfr_f_disabled = bool(disable_f)
+    model._qfr_data_sha256 = data.data_sha256
+    model._qfr_scenario_sha256 = data.scenario_sha256
     model.I = pyo.Set(initialize=data.items, ordered=True)
     model.Omega = pyo.Set(initialize=data.scenarios, ordered=True)
     model.Q = pyo.Var(model.I, domain=pyo.NonNegativeReals)

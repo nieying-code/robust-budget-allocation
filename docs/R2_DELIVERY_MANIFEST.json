@@ -7,6 +7,15 @@
     "tree": "57fd6cc2a4c528855845288e809347a5a7e1419b"
   },
   "implementation_anchor_note": "Final commit/tree and Draft PR are external Git/GitHub anchors to avoid self-referential hashes.",
+  "independent_review_repairs": [
+    {
+      "id": "B1",
+      "status": "FIXED_PENDING_INDEPENDENT_REREVIEW",
+      "issue": "loaded-solution validation was not bound to the complete QFRData identity",
+      "repair": "bind full-data and scenario SHA256 at model construction; reject missing or unequal identities before reading solution values; emit both identities in QFRAccounting",
+      "negative_test_cases": 7
+    }
+  ],
   "r1_classification_counts_unchanged": {
     "DIRECT_REUSE": 39,
     "REUSE_WITH_MODIFICATION": 29,
@@ -64,10 +73,10 @@
     }
   ],
   "tests": {
-    "focused_solver_free": "64 passed, 2 deselected",
-    "focused_licensed": "2 passed, 19 deselected",
-    "full_solver_free": "794 passed, 102 deselected",
-    "full_licensed": "102 passed, 794 deselected"
+    "focused_solver_free": "71 passed, 2 deselected",
+    "focused_licensed": "2 passed, 26 deselected",
+    "full_solver_free": "801 passed, 102 deselected",
+    "full_licensed": "102 passed, 801 deselected"
   },
   "execution_counts": {
     "scientific_runs": 0,
