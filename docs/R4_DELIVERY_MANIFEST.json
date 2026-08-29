@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "document_type": "R4_EF_A0_A1_CORRECTNESS_DELIVERY_MANIFEST",
+  "scope": "qfr_v2_improved_exact_ccg_correctness_only",
+  "base": {
+    "commit": "1cbce8b828e5b0494f9bef4b147358a379b91b18",
+    "tree": "90aead8ecfe381fdb9e0012f85eaa6fa8bbb7c9d"
+  },
+  "protocol": {
+    "path": "docs/R4_A1_PROTOCOL_v2.md",
+    "freeze_commit": "e314237f4ae1bb1bd4a0495af7bfaa10d0092e3a",
+    "freeze_tree": "8608d24339cbabc797a4b17d6115e35a9a0c3cb4",
+    "sha256": "5b493b3844210bb63180575ffc2dde5d74a883f75c93a9e8374b58f61b5306a6"
+  },
+  "execution": {
+    "commit": "4ff6c15c75a07787a8e2fa6cf4be5ce67687350a",
+    "tree": "01224ef1cf2377ba6a832ed8fe4fb81d16027c50",
+    "evidence_sha256": "4a9f14e1a5c4b98bf2611e3b68a0385d90a1d906603d321f4aaa5a84fe739123"
+  },
+  "a1_structure": {
+    "final": "MEMORY_CANDIDATE_FULL_EXACT",
+    "memory_decision": "MEMORY_VALUE_NOT_IDENTIFIED_NONBLOCKING",
+    "candidate_ranking": "CANONICAL_SCENARIO_ID_ONLY",
+    "formal_ub_source": "FULL_EXACT_FINITE_SCENARIO_CERTIFICATION_ONLY"
+  },
+  "correctness": {
+    "models": ["M0", "M1", "M2"],
+    "accepted_comparisons": 3,
+    "maximum_objective_difference": 1.1368683772161603e-13,
+    "maximum_feasibility_violation": 0.0,
+    "a0_iterations": 6,
+    "a0_full_exact_calls": 6,
+    "a0_scenario_evaluations": 18,
+    "a1_iterations": 9,
+    "memory_opportunities": 0,
+    "memory_hits": 0,
+    "candidate_hits": 6,
+    "a1_full_exact_certification_calls": 3,
+    "a1_scenario_evaluations": 15,
+    "replay": "PASS"
+  },
+  "scope_changes": {
+    "r2_model_files_modified": [],
+    "r3_ef_a0_files_modified": [],
+    "historical_a1_files_modified": [],
+    "new_r4_paths": [
+      "docs/R4_A1_PROTOCOL_v2.md",
+      "docs/R4_EF_A0_A1_CORRECTNESS_REPORT_v2.md",
+      "docs/R4_DELIVERY_MANIFEST.json",
+      "docs/R4_CORRECTNESS_HASHES.sha256",
+      "docs/evidence/R4_A1_INITIAL_MEMORY_TRAJECTORY_v2.json",
+      "scripts/r4_ef_a0_a1_correctness.py",
+      "src/robust_budget_allocation/algorithms/qfr_a1_candidates.py",
+      "src/robust_budget_allocation/algorithms/qfr_a1_memory.py",
+      "src/robust_budget_allocation/algorithms/qfr_a1_suite.py",
+      "src/robust_budget_allocation/algorithms/qfr_a1_verification.py",
+      "src/robust_budget_allocation/algorithms/qfr_improved_ccg.py",
+      "tests/test_r4_delivery.py",
+      "tests/test_r4_qfr_a1.py"
+    ]
+  },
+  "tests": {
+    "focused_solver_free": "9 passed, 3 deselected",
+    "focused_licensed": "3 passed, 7 deselected",
+    "full_solver_free": "840 passed, 105 deselected",
+    "full_licensed": "105 passed, 840 deselected",
+    "evidence_replay": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "execution_counts": {
+    "scientific_runs": 0,
+    "pilot_runs": 0,
+    "formal_experiments": 0,
+    "oos_runs": 0
+  },
+  "deferred": [
+    "R5_pilot_and_mechanism_diagnosis",
+    "R6_formal_experiment_design_freeze",
+    "R7_R8_formal_execution_and_results"
+  ]
+}
