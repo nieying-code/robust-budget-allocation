@@ -16,7 +16,7 @@ The user explicitly re-registered the authorized generic N4 numerical and determ
 
 This provenance does not inherit the old Q-R-F model, F-OPTION, old Reliability semantics, data, fixtures, scenarios, parameters, results or conclusions. Old N4/N5/N6 code and evidence remain historical and unchanged.
 
-The first executable implementation anchor was commit `819f673b25db17245b9e11ec7e34de3d62f2bf81`, tree `14764cd84d64ae60694806d4d67783e6f293e3ca`. Historical replay hardening and negative tests were committed at `ee35252620c8c680695fcbe77e2fd461d0a20da9`, tree `e9ba89f758b89117d3753a86490479b3a1f5c269`; the final correctness rerun is bound to this latter source. Final delivery commit/tree and Draft PR are external anchors to avoid self-referential hashes.
+The first executable implementation anchor was commit `819f673b25db17245b9e11ec7e34de3d62f2bf81`, tree `14764cd84d64ae60694806d4d67783e6f293e3ca`. Historical replay hardening and negative tests were committed at `ee35252620c8c680695fcbe77e2fd461d0a20da9`, tree `e9ba89f758b89117d3753a86490479b3a1f5c269`. Shallow-checkout replay portability was repaired at commit `70704725a1f8c594e5125d83f3d7481e9e19cde4`, tree `c8e981f296a2305948e6191145ce59497f076df6`; the final correctness rerun is bound to this latter source. Final delivery commit/tree and Draft PR are external anchors to avoid self-referential hashes.
 
 R1 classification totals remain unchanged: 39 `DIRECT_REUSE`, 29 `REUSE_WITH_MODIFICATION`, 85 `HISTORICAL_ONLY`, and 4 `REWRITE_REQUIRED`.
 
@@ -79,7 +79,9 @@ The first actual licensed comparison on execution commit `819f673...` passed all
 
 While constructing adversarial tests, self-review found that replay should compare embedded fixture payloads directly with their execution-commit content and should resolve source hashes from the recorded commit rather than the mutable working tree. This ordinary R3 replay defect did not alter equations, protocol, fixture or numerical results. The original evidence was preserved. After the fail-closed historical replay repair, every affected case was rerun from clean commit `ee352526...`.
 
-Final evidence is `docs/evidence/R3_CORRECTNESS_RESULTS_v2.json`, sealed evidence SHA-256 `27cf2e0f922caf57e019b43299f7875b3783471b2bee505830702dca78e4b13d`. Both first-run and final evidence replay PASS from their recorded execution commit/tree.
+The first Draft-PR CI run then exposed a portability defect: GitHub Actions uses a shallow checkout in which the earlier execution commit is not initially present. Replay correctly failed rather than weakening verification. The validator now fetches only the exact recorded commit from the configured `origin` when that object is missing, then performs the same commit-to-tree-to-blob/hash validation. Fetch or identity failure remains fail-closed. No model, algorithm, protocol, fixture or numerical result changed; all correctness cases were rerun again from the repaired clean source.
+
+Final evidence is `docs/evidence/R3_CORRECTNESS_RESULTS_v2.json`, sealed evidence SHA-256 `12e453f6bfafa1ac9aacad633dcd723614912c4def29e306e39c38b286cf3bab`. Both first-run and final evidence replay PASS from their recorded execution commit/tree.
 
 ## 8. Integrity and regression tests
 
@@ -99,7 +101,7 @@ Negative tests reseal tampered objects and confirm rejection of:
 Final test results:
 
 - focused R3 solver-free structure/replay/attack tests: `28 passed`;
-- full solver-free regression: `829 passed, 102 deselected`;
+- full solver-free regression: `831 passed, 102 deselected`;
 - full licensed regression: `102 passed, 829 deselected`;
 - preregistered R3 licensed correctness suite: `3 passed comparisons`;
 - first-run replay: PASS;

@@ -20,9 +20,9 @@
       "evidence_sha256": "fa366744d314201194002bdcd5c89c5abbe4da597af0a533bffff50e13a27d87"
     },
     "final_rerun": {
-      "commit": "ee35252620c8c680695fcbe77e2fd461d0a20da9",
-      "tree": "e9ba89f758b89117d3753a86490479b3a1f5c269",
-      "evidence_sha256": "27cf2e0f922caf57e019b43299f7875b3783471b2bee505830702dca78e4b13d"
+      "commit": "70704725a1f8c594e5125d83f3d7481e9e19cde4",
+      "tree": "c8e981f296a2305948e6191145ce59497f076df6",
+      "evidence_sha256": "12e453f6bfafa1ac9aacad633dcd723614912c4def29e306e39c38b286cf3bab"
     }
   },
   "implementation_anchor_note": "Final delivery commit/tree and Draft PR are external Git/GitHub anchors to avoid self-referential hashes.",
@@ -74,7 +74,7 @@
   },
   "tests": {
     "focused_r3_solver_free": "28 passed",
-    "full_solver_free": "829 passed, 102 deselected",
+    "full_solver_free": "831 passed, 102 deselected",
     "full_licensed": "102 passed, 829 deselected",
     "preregistered_licensed_correctness": "3 accepted comparisons",
     "resealed_negative_attack_classes": 14
