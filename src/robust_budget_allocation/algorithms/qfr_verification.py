@@ -212,9 +212,9 @@ def validate_r3_evidence(
     expected_paths = list(R3_REQUIRED_SOURCE_PATHS)
     if (
         git["tracked_dirty"] is not False
-        or git["untracked_paths"] != []
-        or git["untracked_scientific_paths"] != []
-        or git["tracked_input_paths"] != expected_paths
+        or list(git["untracked_paths"]) != []
+        or list(git["untracked_scientific_paths"]) != []
+        or list(git["tracked_input_paths"]) != expected_paths
     ):
         raise ValueError("R3 execution source was not clean")
     commit_sha = git["commit_sha"]
