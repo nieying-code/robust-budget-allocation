@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "document_type": "R3_EF_A0_CORRECTNESS_DELIVERY_MANIFEST",
+  "scope": "qfr_v2_finite_scenario_ef_a0_correctness_only",
+  "base": {
+    "commit": "d5484adff21040bdaa0aaa3e727c9d341b342e47",
+    "tree": "30d3e0ed261b794de8420bd9bd1c0d9873ee4e29"
+  },
+  "protocol": {
+    "path": "docs/R3_CORRECTNESS_PROTOCOL_v2.md",
+    "freeze_commit": "c29a67c1369f44c4afb424c0ba2a8b0d43a0b923",
+    "freeze_tree": "ba4c8d3855b6f027509a5bbd85af88d7bb48f9b5",
+    "sha256": "cd0e02603cd307876b3270e2c694127541394211d7034325dabdee2f28b7bf0b",
+    "authority": "EXPLICITLY_RE_REGISTERED_FOR_R3_V2_CORRECTNESS"
+  },
+  "execution_anchors": {
+    "first_run": {
+      "commit": "819f673b25db17245b9e11ec7e34de3d62f2bf81",
+      "tree": "14764cd84d64ae60694806d4d67783e6f293e3ca",
+      "evidence_sha256": "fa366744d314201194002bdcd5c89c5abbe4da597af0a533bffff50e13a27d87"
+    },
+    "final_rerun": {
+      "commit": "d83475e6dc9afdb69f30c8214cdddefe081af1e1",
+      "tree": "d49bd70011b314e2b422b5d2a6073a8f0efe5c59",
+      "evidence_sha256": "c1ab922d13641ea69df061bf2fe8467a40cd49e9f753f76eb87b36141f174621"
+    }
+  },
+  "implementation_anchor_note": "Final delivery commit/tree and Draft PR are external Git/GitHub anchors to avoid self-referential hashes.",
+  "r1_classification_counts_unchanged": {
+    "DIRECT_REUSE": 39,
+    "REUSE_WITH_MODIFICATION": 29,
+    "HISTORICAL_ONLY": 85,
+    "REWRITE_REQUIRED": 4
+  },
+  "scope_mapping": {
+    "DIRECT_REUSE_MODIFIED": [],
+    "REUSE_WITH_MODIFICATION_NEW_V2_PATHS": [
+      "src/robust_budget_allocation/algorithms/qfr_builders.py",
+      "src/robust_budget_allocation/algorithms/qfr_accounting.py",
+      "src/robust_budget_allocation/algorithms/qfr_correctness_suite.py",
+      "src/robust_budget_allocation/algorithms/qfr_exact_oracle.py",
+      "src/robust_budget_allocation/algorithms/qfr_extensive_form.py",
+      "src/robust_budget_allocation/algorithms/qfr_protocol.py",
+      "src/robust_budget_allocation/algorithms/qfr_standard_ccg.py",
+      "src/robust_budget_allocation/algorithms/qfr_state.py",
+      "src/robust_budget_allocation/algorithms/qfr_verification.py"
+    ],
+    "HISTORICAL_ONLY_MODIFIED": [],
+    "REWRITE_REQUIRED_MODEL_FILES_MODIFIED": [],
+    "NEW_R3_TEST_SCRIPT_DELIVERY_PATHS": [
+      "scripts/r3_ef_a0_correctness.py",
+      "tests/fixtures/r3_correctness_v2.json",
+      "tests/test_r3_qfr_correctness_unit.py",
+      "tests/test_r3_qfr_evidence_attacks.py",
+      "tests/test_r3_delivery.py",
+      "docs/R3_CORRECTNESS_PROTOCOL_v2.md",
+      "docs/R3_EF_A0_CORRECTNESS_REPORT_v2.md",
+      "docs/R3_DELIVERY_MANIFEST.json",
+      "docs/R3_CORRECTNESS_HASHES.sha256",
+      "docs/evidence/R3_CORRECTNESS_FIRST_RUN_v2.json",
+      "docs/evidence/R3_CORRECTNESS_RESULTS_v2.json"
+    ]
+  },
+  "correctness": {
+    "models": ["M0", "M1", "M2"],
+    "fixture_sha256": "322a43f29019beee9dcb91fa003b2c842260f38b8d15735119abc730808eb11d",
+    "accepted_comparisons": 3,
+    "maximum_objective_difference": 1.1368683772161603e-13,
+    "maximum_feasibility_violation": 0.0,
+    "total_a0_iterations": 6,
+    "complete_exact_oracle_calls": 6,
+    "finite_scenario_evaluations": 18,
+    "first_run_evidence": "PRESERVED_SCHEMA_V1_SEAL_VERIFIED",
+    "final_rerun_replay": "PASS"
+  },
+  "tests": {
+    "focused_r3_solver_free": "30 passed",
+    "full_solver_free": "831 passed, 102 deselected",
+    "full_licensed": "102 passed, 831 deselected",
+    "preregistered_licensed_correctness": "3 accepted comparisons",
+    "resealed_negative_attack_mutations": 20
+  },
+  "environment": {
+    "python": "3.12.10",
+    "pyomo": "6.10.1",
+    "gurobipy": "13.0.2",
+    "gurobi_optimizer": "13.0.2",
+    "solver_interface": "gurobi_direct",
+    "threads": 1,
+    "no_fallback": true
+  },
+  "execution_counts": {
+    "scientific_runs": 0,
+    "pilot_runs": 0,
+    "formal_experiments": 0,
+    "a1_new_implemented": false
+  },
+  "deferred": [
+    "R4_A1_new_design_implementation_and_correctness",
+    "R5_pilot_and_mechanism_diagnosis",
+    "R6_formal_experiment_design_freeze",
+    "R7_R8_formal_execution_and_results"
+  ]
+}
