@@ -120,6 +120,34 @@ def _anchored_file(repo_root: Path, commit_sha: str, relative_path: str) -> byte
         raise ValueError(f"R3 anchored source path is missing: {relative_path}") from exc
 
 
+def _anchored_tree(repo_root: Path, commit_sha: str) -> str:
+    """Resolve an evidence commit, fetching that exact object in shallow CI if needed."""
+
+    revision = f"{commit_sha}^{{tree}}"
+    try:
+        return str(_git_output(repo_root, "rev-parse", revision, text=True)).strip()
+    except subprocess.CalledProcessError:
+        try:
+            subprocess.run(
+                [
+                    "git",
+                    "-C",
+                    str(repo_root.resolve()),
+                    "fetch",
+                    "--no-tags",
+                    "--depth=1",
+                    "origin",
+                    commit_sha,
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            return str(_git_output(repo_root, "rev-parse", revision, text=True)).strip()
+        except subprocess.CalledProcessError as exc:
+            raise ValueError("R3 execution commit is unavailable") from exc
+
+
 def validate_r3_evidence(
     repo_root: Path,
     evidence: Mapping[str, Any],
@@ -171,12 +199,7 @@ def validate_r3_evidence(
     tree_sha = git["tree_sha"]
     if not isinstance(commit_sha, str) or not isinstance(tree_sha, str):
         raise ValueError("R3 Git commit/tree identity is invalid")
-    try:
-        anchored_tree = str(
-            _git_output(repo_root, "rev-parse", f"{commit_sha}^{{tree}}", text=True)
-        ).strip()
-    except subprocess.CalledProcessError as exc:
-        raise ValueError("R3 execution commit is unavailable") from exc
+    anchored_tree = _anchored_tree(repo_root, commit_sha)
     if anchored_tree != tree_sha:
         raise ValueError("R3 execution commit/tree binding mismatch")
     for row in source["files"]:
