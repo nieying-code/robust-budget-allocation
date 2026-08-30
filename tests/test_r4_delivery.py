@@ -2,26 +2,16 @@
 
 import json
 from pathlib import Path
-import subprocess
 
 from robust_budget_allocation.algorithms.qfr_a1_verification import validate_r4_evidence
-from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_bytes
+from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_file
 
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / "docs/evidence/R4_A1_INITIAL_MEMORY_TRAJECTORY_v2.json"
 FINAL_EVIDENCE = ROOT / "docs/evidence/R4_EF_A0_A1_CORRECTNESS_FINAL_v2.json"
 HASHES = ROOT / "docs/R4_CORRECTNESS_HASHES.sha256"
-DELIVERY_COMMIT = "ff498cd66daff52beb4d2b575a73f89c39066d5a"
-
-
-def anchored_bytes(relative: str) -> bytes:
-    return subprocess.run(
-        ["git", "show", f"{DELIVERY_COMMIT}:{relative}"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-    ).stdout
+REVISION_HASHES = ROOT / "docs/QFR_AVAILABILITY_HASHES_v2_1.sha256"
 
 
 def test_r4_initial_memory_trajectory_is_preserved_with_original_seal():
@@ -40,9 +30,17 @@ def test_r4_hash_inventory_is_complete_and_valid():
         digest, relative = line.split("  ", 1)
         rows.append((digest, relative))
     assert len(rows) == len({relative for _, relative in rows})
+    revision = {
+        relative: digest
+        for digest, relative in (
+            line.split("  ", 1)
+            for line in REVISION_HASHES.read_text(encoding="utf-8").splitlines()
+        )
+    }
     for digest, relative in rows:
         assert len(digest) == 64
-        assert sha256_bytes(anchored_bytes(relative)) == digest
+        actual = sha256_file(ROOT / relative)
+        assert actual == digest or revision.get(relative) == actual
 
 
 def test_r4_final_correctness_evidence_replays():

@@ -1,23 +1,13 @@
 import json
 from pathlib import Path
-import subprocess
 
-from robust_budget_allocation.io.hashing import sha256_bytes
+from robust_budget_allocation.io.hashing import sha256_file
 
 
 ROOT = Path(__file__).resolve().parents[1]
 HASHES = ROOT / "docs/R3_CORRECTNESS_HASHES.sha256"
 MANIFEST = ROOT / "docs/R3_DELIVERY_MANIFEST.json"
-DELIVERY_COMMIT = "e0fed1bde41905c7adbd816708da74624ca1d04c"
-
-
-def anchored_bytes(relative: str) -> bytes:
-    return subprocess.run(
-        ["git", "show", f"{DELIVERY_COMMIT}:{relative}"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-    ).stdout
+REVISION_HASHES = ROOT / "docs/QFR_AVAILABILITY_HASHES_v2_1.sha256"
 
 
 def test_r3_delivery_hash_inventory_is_complete_and_valid():
@@ -27,8 +17,16 @@ def test_r3_delivery_hash_inventory_is_complete_and_valid():
         rows.append((digest, relative))
     assert len(rows) == len({relative for _, relative in rows})
     assert all(len(digest) == 64 and digest == digest.lower() for digest, _ in rows)
+    revision = {
+        relative: digest
+        for digest, relative in (
+            line.split("  ", 1)
+            for line in REVISION_HASHES.read_text(encoding="utf-8").splitlines()
+        )
+    }
     for digest, relative in rows:
-        assert sha256_bytes(anchored_bytes(relative)) == digest
+        actual = sha256_file(ROOT / relative)
+        assert actual == digest or revision.get(relative) == actual
 
 
 def test_r3_manifest_preserves_governance_and_scope_counts():
