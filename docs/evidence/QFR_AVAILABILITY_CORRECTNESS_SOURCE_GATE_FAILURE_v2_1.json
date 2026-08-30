@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "event": "LICENSED_CORRECTNESS_EXECUTION_REJECTED_BEFORE_EVIDENCE_WRITE",
+  "classification": "SOURCE_STATE_RETURN_TYPE_INTERPRETATION_ERROR",
+  "execution_commit": "279240921d76998c4a496e9f0d3c12c03f8b0760",
+  "execution_tree": "95471ce250f862b78b181a62f9e35603e4080632",
+  "scientific_solves_completed_before_rejection": true,
+  "evidence_written": false,
+  "error": "ValueError: revision source inventory mismatch",
+  "root_cause": "validate_source_state returned tracked_input_paths as an ordered tuple; the revision wrapper compared it directly with a list despite identical ordered path content.",
+  "scientific_fixture_values_changed": false,
+  "model_changed_in_response": false,
+  "algorithm_changed_in_response": false,
+  "tolerance_or_solver_policy_changed": false,
+  "new_source_gate_added": false,
+  "pilot_runs": 0,
+  "formal_experiments": 0,
+  "resolution": "Consume the existing ordered tracked_input_paths semantics by normalizing only its container type, commit, then rerun the complete matrix from clean source."
+}

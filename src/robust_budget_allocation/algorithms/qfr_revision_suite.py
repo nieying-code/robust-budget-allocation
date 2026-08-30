@@ -233,7 +233,7 @@ def validate_revision_evidence(repo_root: Path, evidence: Mapping[str, Any]) -> 
     if _anchored_tree(repo_root, commit) != git["tree_sha"]:
         raise ValueError("revision execution commit/tree mismatch")
     paths = [row["path"] for row in source["files"]]
-    if paths != list(SOURCE_PATHS) or git["tracked_input_paths"] != paths:
+    if paths != list(SOURCE_PATHS) or tuple(git["tracked_input_paths"]) != SOURCE_PATHS:
         raise ValueError("revision source inventory mismatch")
     for row in source["files"]:
         if set(row) != {"path", "sha256"} or sha256_bytes(

@@ -1,6 +1,7 @@
 from copy import deepcopy
 import json
 from pathlib import Path
+from types import MappingProxyType
 
 import pytest
 
@@ -39,6 +40,13 @@ def test_revision_fixture_is_small_correctness_only_and_complete():
 
 def test_revision_protocol_identity_matches_frozen_file():
     assert sha256_file(ROOT / PROTOCOL_PATH) == PROTOCOL_SHA256
+
+
+def test_existing_source_state_ordered_tuple_semantics_are_registered():
+    from robust_budget_allocation.algorithms.qfr_revision_suite import SOURCE_PATHS
+
+    existing_result = MappingProxyType({"tracked_input_paths": tuple(SOURCE_PATHS)})
+    assert tuple(existing_result["tracked_input_paths"]) == SOURCE_PATHS
 
 
 def test_revision_fixture_rejects_pre_revision_schema(tmp_path):
