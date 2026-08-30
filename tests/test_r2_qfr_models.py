@@ -87,7 +87,12 @@ def test_heterogeneous_q_cost_and_effective_inventory_are_item_indexed(qfr_data)
             qfr_data.q_unit_cost[item] + qfr_data.storage_cost[item] * qfr_data.tau
         )
         model.Q[item].set_value(2)
-        assert pyo.value(model.effective_Q[item]) == pytest.approx(2 * qfr_data.retention[item])
+        for scenario in qfr_data.scenarios:
+            assert pyo.value(model.effective_Q[item, scenario]) == pytest.approx(
+                2
+                * qfr_data.retention[item]
+                * qfr_data.q_availability[scenario][item]
+            )
 
 
 def test_m2_f_r_fulfillment_capacity_and_one_level_structure(qfr_data):

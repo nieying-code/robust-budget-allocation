@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "document_type": "QFR_AVAILABILITY_MODEL_REVISION_CORRECTNESS_DELIVERY",
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "base": {
+    "commit": "85edaffded8e8853d6357a8b92a540e36f7ec233",
+    "tree": "9f755fb2e1d7271ba34edffb3720184feb40b4da"
+  },
+  "specification_freeze": {
+    "commit": "b5a44908d992ab2b1267ff0067eb78a1ff439c73",
+    "tree": "e129d20c4d43e72f38bdd60a349ac5ad90481329",
+    "protocol_path": "docs/QFR_AVAILABILITY_CORRECTNESS_PROTOCOL_v2_1.md",
+    "protocol_sha256": "2ff46393109fab00710e6dfebcf5a3ef17ad3376bcdf4528a3db068ebe05f800"
+  },
+  "correctness_execution": {
+    "commit": "be10c47d5b26a96bd767b07f96396c10ad752e1e",
+    "tree": "0c66bc237dadbe736e526181933cde6280dff59e",
+    "evidence_path": "docs/evidence/QFR_AVAILABILITY_CORRECTNESS_FIRST_RUN_v2_1.json",
+    "evidence_sha256": "be50da5981c1fec4de240a3c48e8fd2a69b7fb3a69cf7f89d91d435e27dc3ca6",
+    "replay": "PASS"
+  },
+  "scientific_revision": {
+    "q_service": "a_i * rho_Q_iomega * Q_i",
+    "q_availability_domain": "0 <= rho_Q_iomega <= 1",
+    "general_eta_domain": "0 <= eta_i0 < eta_i1 < eta_i2 < 1",
+    "general_schema_indexing": "item_and_scenario_specific",
+    "pilot_indexing": "same_scenario_value_repeated_for_all_three_items",
+    "reliability_levels": [0.2, 0.5, 0.8],
+    "nesting": ["M1|F=0=M0", "M2|levels={0}=M1"],
+    "fixed_budget_and_objective_changed": false
+  },
+  "pilot_configuration": {
+    "path": "configs/qfr_pilot_baseline_v2_1.json",
+    "reference_budget": 306313.545054945,
+    "budget_ratios": [0.9, 1.0, 1.1],
+    "scenario_count": 5,
+    "constructed_and_validated": true,
+    "executed": false
+  },
+  "correctness": {
+    "models": ["M0", "M1", "M2"],
+    "objectives": {
+      "M0": {"EF": 643.9097744360902, "A0": 643.9097744360903, "A1": 643.9097744360903},
+      "M1": {"EF": 632.0057744360902, "A0": 632.0057744360903, "A1": 632.0057744360902},
+      "M2": {"EF": 544.13, "A0": 544.13, "A1": 544.13}
+    },
+    "maximum_objective_difference": 1.1368683772161603e-13,
+    "maximum_feasibility_violation": 0.0,
+    "a0_iterations": 6,
+    "a0_full_exact_calls": 6,
+    "a0_scenario_evaluations": 18,
+    "a1_iterations": 9,
+    "memory_opportunities": 0,
+    "memory_hits": 0,
+    "candidate_hits": 6,
+    "a1_full_exact_certification_calls": 3,
+    "a1_scenario_evaluations": 15
+  },
+  "retained_engineering_failures": [
+    "docs/evidence/QFR_AVAILABILITY_CORRECTNESS_ENGINEERING_FAILURE_v2_1.json",
+    "docs/evidence/QFR_AVAILABILITY_CORRECTNESS_SOURCE_GATE_FAILURE_v2_1.json"
+  ],
+  "tests": {
+    "focused_solver_free": "31 passed, 1 deselected",
+    "full_solver_free": "881 passed, 106 deselected",
+    "focused_licensed_nesting": "1 passed, 23 deselected",
+    "full_licensed": "106 passed, 881 deselected",
+    "evidence_replay": "PASS",
+    "historical_r3_r4_replay": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "execution_counts": {
+    "scientific_runs": 0,
+    "pilot_runs": 0,
+    "formal_experiments": 0,
+    "oos_runs": 0
+  },
+  "deferred": [
+    "independent_review",
+    "user_manual_merge",
+    "separate_explicit_pilot_authorization"
+  ]
+}

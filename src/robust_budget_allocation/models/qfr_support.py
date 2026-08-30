@@ -33,7 +33,7 @@ class QFRAccounting:
     z: dict[str, dict[int, int]]
     x: dict[str, dict[str, float]]
     u: dict[str, dict[str, float]]
-    effective_q: dict[str, float]
+    effective_q: dict[str, Any]
     fulfillable_f: dict[str, dict[str, float]]
     exercise_cost: dict[str, float]
     shortage_loss: dict[str, float]
@@ -63,7 +63,10 @@ class QFRAccounting:
             },
             "x": {item: dict(values) for item, values in self.x.items()},
             "u": {item: dict(values) for item, values in self.u.items()},
-            "effective_q": dict(self.effective_q),
+            "effective_q": {
+                item: dict(value) if isinstance(value, dict) else value
+                for item, value in self.effective_q.items()
+            },
             "fulfillable_f": {
                 item: dict(values) for item, values in self.fulfillable_f.items()
             },
@@ -188,13 +191,34 @@ def validate_qfr_solution(
                 x[item][scenario] = x_value
                 fulfillable_f[item][scenario] = fulfillment
 
-    effective_q = {
-        item: data.retention[item] * q[item] for item in data.items
+    retained_q = {item: data.retention[item] * q[item] for item in data.items}
+    available_q = {
+        item: {
+            scenario: retained_q[item] * data.q_availability[scenario][item]
+            for scenario in data.scenarios
+        }
+        for item in data.items
     }
+    effective_q: dict[str, Any] = (
+        retained_q if data.schema_version == 2 else available_q
+    )
     for item in data.items:
+        equal(
+            _value(model.retained_Q[item], f"model.retained_Q[{item}]"),
+            retained_q[item],
+            f"retained Q for {item}",
+        )
         for scenario in data.scenarios:
+            equal(
+                _value(
+                    model.effective_Q[item, scenario],
+                    f"model.effective_Q[{item},{scenario}]",
+                ),
+                available_q[item][scenario],
+                f"scenario-effective Q for {item},{scenario}",
+            )
             lower(
-                effective_q[item] + x[item][scenario] + u[item][scenario],
+                available_q[item][scenario] + x[item][scenario] + u[item][scenario],
                 data.demand[scenario][item],
                 f"demand coverage for {item},{scenario}",
             )

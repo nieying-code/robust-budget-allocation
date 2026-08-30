@@ -128,7 +128,9 @@ class QFRData:
     exercise_cost: Mapping[str, float]
     shortage_cost: Mapping[str, float]
     demand: Mapping[str, Mapping[str, float]]
+    q_availability: Mapping[str, Mapping[str, float]]
     disruption: Mapping[str, Mapping[str, float]]
+    schema_version: int = 3
 
     def __post_init__(self) -> None:
         items = _ordered_ids(self.items, "items")
@@ -153,9 +155,11 @@ class QFRData:
             name: _level_values(getattr(self, name), items, name)
             for name in ("reliability_cost", "reliability_mitigation")
         }
+        if type(self.schema_version) is not int or self.schema_version not in (2, 3):
+            raise ValueError("unsupported Q-F-R data schema_version")
         raw_scenarios = {
             name: _scenario_item_values(getattr(self, name), scenarios, items, name)
-            for name in ("demand", "disruption")
+            for name in ("demand", "q_availability", "disruption")
         }
 
         item_values: dict[str, dict[str, float]] = {name: {} for name in raw_item}
@@ -206,9 +210,15 @@ class QFRData:
                 raise ValueError(
                     f"reliability_cost[{item}] must satisfy c_R[0]=0<c_R[1]<c_R[2]"
                 )
-            if not (mitigation[0] == 0 and 0 < mitigation[1] < mitigation[2] < 1):
+            valid_mitigation = (
+                mitigation[0] == 0 < mitigation[1] < mitigation[2] < 1
+                if self.schema_version == 2
+                else 0 <= mitigation[0] < mitigation[1] < mitigation[2] < 1
+            )
+            if not valid_mitigation:
                 raise ValueError(
-                    f"reliability_mitigation[{item}] must satisfy eta[0]=0<eta[1]<eta[2]<1"
+                    f"reliability_mitigation[{item}] has invalid ordering for "
+                    f"schema_version {self.schema_version}"
                 )
             level_values["reliability_cost"][item] = reliability_cost
             level_values["reliability_mitigation"][item] = mitigation
@@ -234,11 +244,21 @@ class QFRData:
                 )
                 for item in items
             }
+            scenario_values["q_availability"][scenario] = {
+                item: _bounded(
+                    raw_scenarios["q_availability"][scenario][item],
+                    f"q_availability[{scenario}][{item}]",
+                    lower=0,
+                    upper=1,
+                )
+                for item in items
+            }
 
         object.__setattr__(self, "items", items)
         object.__setattr__(self, "scenarios", scenarios)
         object.__setattr__(self, "budget", budget)
         object.__setattr__(self, "tau", tau)
+        object.__setattr__(self, "schema_version", self.schema_version)
         for name, values in item_values.items():
             object.__setattr__(self, name, _freeze_item(values))
         for name, values in level_values.items():
@@ -264,12 +284,14 @@ class QFRData:
             "exercise_cost": self.exercise_cost,
             "shortage_cost": self.shortage_cost,
             "demand": self.demand,
+            "q_availability": self.q_availability,
             "disruption": self.disruption,
+            "schema_version": self.schema_version,
         })
 
     def to_dict(self) -> dict[str, Any]:
-        return {
-            "schema_version": 2,
+        payload = {
+            "schema_version": self.schema_version,
             "model_family": "heterogeneous_material_qfr",
             "items": list(self.items),
             "scenarios": list(self.scenarios),
@@ -300,13 +322,18 @@ class QFRData:
                     scenario: dict(getattr(self, name)[scenario])
                     for scenario in self.scenarios
                 }
-                for name in ("demand", "disruption")
+                for name in (
+                    ("demand", "disruption")
+                    if self.schema_version == 2
+                    else ("demand", "q_availability", "disruption")
+                )
             },
         }
+        return payload
 
     @classmethod
     def from_dict(cls, payload: Mapping[str, Any]) -> QFRData:
-        expected = {
+        common = {
             "schema_version",
             "model_family",
             "items",
@@ -326,18 +353,26 @@ class QFRData:
             "demand",
             "disruption",
         }
-        _exact_keys(payload, tuple(expected), "Q-F-R data schema")
-        if type(payload["schema_version"]) is not int or payload["schema_version"] != 2:
+        if type(payload.get("schema_version")) is not int or payload["schema_version"] not in (2, 3):
             raise ValueError("unsupported Q-F-R data schema_version")
+        expected = common | ({"q_availability"} if payload["schema_version"] == 3 else set())
+        _exact_keys(payload, tuple(expected), "Q-F-R data schema")
         if payload["model_family"] != "heterogeneous_material_qfr":
             raise ValueError("model_family must identify the heterogeneous-material Q-F-R schema")
         if payload["reliability_levels"] != list(RELIABILITY_LEVELS):
             raise ValueError("reliability_levels must be exactly [0, 1, 2]")
-        return cls(**{
+        values = {
             key: payload[key]
             for key in expected
             if key not in {"schema_version", "model_family", "reliability_levels"}
-        })
+        }
+        if payload["schema_version"] == 2:
+            values["q_availability"] = {
+                scenario: {item: 1.0 for item in payload["items"]}
+                for scenario in payload["scenarios"]
+            }
+        values["schema_version"] = payload["schema_version"]
+        return cls(**values)
 
     @property
     def data_sha256(self) -> str:
@@ -345,16 +380,22 @@ class QFRData:
 
     @property
     def scenario_sha256(self) -> str:
-        return canonical_json_sha256({
-            "schema_version": 2,
+        payload = {
+            "schema_version": self.schema_version,
             "model_family": "heterogeneous_material_qfr",
             "ordered_items": list(self.items),
             "ordered_scenarios": [
                 {
                     "id": scenario,
                     "demand": dict(self.demand[scenario]),
+                    **(
+                        {"q_availability": dict(self.q_availability[scenario])}
+                        if self.schema_version == 3
+                        else {}
+                    ),
                     "disruption": dict(self.disruption[scenario]),
                 }
                 for scenario in self.scenarios
             ],
-        })
+        }
+        return canonical_json_sha256(payload)

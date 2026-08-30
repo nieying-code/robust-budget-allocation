@@ -1,0 +1,51 @@
+{
+  "fixture_scope": "CORRECTNESS_FIXTURE_ONLY_NOT_PILOT_OR_FORMAL_PARAMETERS",
+  "protocol_sha256": "2ff46393109fab00710e6dfebcf5a3ef17ad3376bcdf4528a3db068ebe05f800",
+  "cases": [
+    {
+      "case_id": "revised_heterogeneous_three_item_exactness",
+      "purpose": "Revised M0/M1/M2 EF/A0/A1 correctness with independent retention and scenario Q availability",
+      "data": {
+        "schema_version": 3,
+        "model_family": "heterogeneous_material_qfr",
+        "items": ["ordinary", "preservation_sensitive", "perishable"],
+        "scenarios": ["a_normal", "b_medium", "c_severe"],
+        "reliability_levels": [0, 1, 2],
+        "budget": 70.0,
+        "tau": 2.0,
+        "q_unit_cost": {"ordinary": 2.0, "preservation_sensitive": 3.0, "perishable": 2.5},
+        "storage_cost": {"ordinary": 0.2, "preservation_sensitive": 1.5, "perishable": 0.5},
+        "retention": {"ordinary": 0.95, "preservation_sensitive": 0.9, "perishable": 0.6},
+        "flexible_capacity": {"ordinary": 14.0, "preservation_sensitive": 12.0, "perishable": 16.0},
+        "reservation_cost": {"ordinary": 0.8, "preservation_sensitive": 1.1, "perishable": 0.9},
+        "reliability_cost": {
+          "ordinary": {"0": 0.0, "1": 0.3, "2": 0.7},
+          "preservation_sensitive": {"0": 0.0, "1": 0.4, "2": 0.9},
+          "perishable": {"0": 0.0, "1": 0.25, "2": 0.65}
+        },
+        "reliability_mitigation": {
+          "ordinary": {"0": 0.2, "1": 0.5, "2": 0.8},
+          "preservation_sensitive": {"0": 0.2, "1": 0.5, "2": 0.8},
+          "perishable": {"0": 0.2, "1": 0.5, "2": 0.8}
+        },
+        "exercise_cost": {"ordinary": 2.4, "preservation_sensitive": 3.2, "perishable": 2.8},
+        "shortage_cost": {"ordinary": 20.0, "preservation_sensitive": 25.0, "perishable": 30.0},
+        "demand": {
+          "a_normal": {"ordinary": 4.0, "preservation_sensitive": 4.0, "perishable": 4.0},
+          "b_medium": {"ordinary": 8.0, "preservation_sensitive": 7.0, "perishable": 9.0},
+          "c_severe": {"ordinary": 12.0, "preservation_sensitive": 10.0, "perishable": 14.0}
+        },
+        "q_availability": {
+          "a_normal": {"ordinary": 1.0, "preservation_sensitive": 1.0, "perishable": 1.0},
+          "b_medium": {"ordinary": 0.85, "preservation_sensitive": 0.85, "perishable": 0.85},
+          "c_severe": {"ordinary": 0.7, "preservation_sensitive": 0.7, "perishable": 0.7}
+        },
+        "disruption": {
+          "a_normal": {"ordinary": 0.0, "preservation_sensitive": 0.0, "perishable": 0.0},
+          "b_medium": {"ordinary": 0.5, "preservation_sensitive": 0.5, "perishable": 0.5},
+          "c_severe": {"ordinary": 1.0, "preservation_sensitive": 1.0, "perishable": 1.0}
+        }
+      }
+    }
+  ]
+}
