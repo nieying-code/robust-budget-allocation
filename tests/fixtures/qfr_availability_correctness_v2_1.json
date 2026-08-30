@@ -1,6 +1,6 @@
 {
   "fixture_scope": "CORRECTNESS_FIXTURE_ONLY_NOT_PILOT_OR_FORMAL_PARAMETERS",
-  "protocol_sha256": "2ff46393109fab00710e6dfebc5a3ef17ad3376bcdf4528a3db068ebe05f800",
+  "protocol_sha256": "2ff46393109fab00710e6dfebcf5a3ef17ad3376bcdf4528a3db068ebe05f800",
   "cases": [
     {
       "case_id": "revised_heterogeneous_three_item_exactness",

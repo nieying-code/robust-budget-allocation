@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "event": "FIRST_LICENSED_CORRECTNESS_EXECUTION_REJECTED_BEFORE_EVIDENCE_WRITE",
+  "classification": "PROTOCOL_IMPLEMENTATION_IDENTITY_TRANSCRIPTION_ERROR",
+  "execution_commit": "79263ebc1885c62e1efb28e7e81322f2af94689e",
+  "execution_tree": "3d2ef2c2f57beef75b567309a8539a716733b21f",
+  "scientific_solves_completed_before_rejection": true,
+  "evidence_written": false,
+  "error": "ValueError: revision protocol identity mismatch",
+  "actual_protocol_sha256": "2ff46393109fab00710e6dfebcf5a3ef17ad3376bcdf4528a3db068ebe05f800",
+  "mistyped_registered_sha256": "2ff46393109fab00710e6dfebc5a3ef17ad3376bcdf4528a3db068ebe05f800",
+  "scientific_fixture_values_changed": false,
+  "model_changed_in_response": false,
+  "algorithm_changed_in_response": false,
+  "tolerance_or_solver_policy_changed": false,
+  "pilot_runs": 0,
+  "formal_experiments": 0,
+  "resolution": "Correct only the copied protocol hash in the runner and fixture metadata, commit, then rerun the complete M0/M1/M2 correctness matrix from a clean source commit."
+}

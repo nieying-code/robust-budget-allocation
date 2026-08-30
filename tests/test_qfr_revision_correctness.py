@@ -5,11 +5,13 @@ from pathlib import Path
 import pytest
 
 from robust_budget_allocation.algorithms.qfr_revision_suite import (
+    PROTOCOL_PATH,
+    PROTOCOL_SHA256,
     load_revision_fixture,
     validate_revision_evidence,
 )
 from robust_budget_allocation.data.qfr_data import QFRData
-from robust_budget_allocation.io.hashing import canonical_json_sha256
+from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_file
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +35,10 @@ def test_revision_fixture_is_small_correctness_only_and_complete():
         for scenario in data.scenarios
         for item in data.items
     )
+
+
+def test_revision_protocol_identity_matches_frozen_file():
+    assert sha256_file(ROOT / PROTOCOL_PATH) == PROTOCOL_SHA256
 
 
 def test_revision_fixture_rejects_pre_revision_schema(tmp_path):
