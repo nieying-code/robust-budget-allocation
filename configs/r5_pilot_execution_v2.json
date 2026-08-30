@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "scope": "R5_PILOT_MECHANISM_DIAGNOSIS_NOT_FORMAL_EXPERIMENT",
+  "protocol_path": "docs/R5_PILOT_PROTOCOL_v2.md",
+  "baseline_path": "configs/qfr_pilot_baseline_v2_1.json",
+  "wfp_workbook": {
+    "file_name": "Data Syria Case WFP.xlsx",
+    "sha256": "f3e604eb3000d20e0e7eb64c7f847b6e34b83b85a417031a77805b8ea614c55b",
+    "sheet_names": [
+      "Nodes - Types",
+      "Edges - Cost",
+      "Food - Nutritional value",
+      "Food - Cost",
+      "Food - InternationalPrice",
+      "Nutrient - Requirements"
+    ],
+    "demand_nodes": [
+      ["Ar Raqqa D", 10000],
+      ["Daraa D", 10000],
+      ["Dayr_Az_Zor D", 25000],
+      ["Hassakeh D", 10000],
+      ["Idleb D", 5000],
+      ["Jubb_al_Jarrah D", 2000],
+      ["Qamishli", 5000]
+    ],
+    "demand_total": 67000,
+    "nutrition_rows": {
+      "Sugar": [400, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "Rice": [360, 7, 0.5, 7, 1.2, 0, 0.2, 0.08, 2.6, 11, 0]
+    },
+    "international_price": {
+      "Sugar": 1100,
+      "Rice": 800
+    },
+    "cost_jurisdictions": [
+      "Aleppo",
+      "As_Suweida",
+      "Damascus",
+      "Daraa",
+      "Dayr_Az_Zor",
+      "Hama",
+      "Hassakeh",
+      "Homs"
+    ]
+  },
+  "models": ["M0", "M1", "M2"],
+  "algorithms": ["EF", "A0", "A1"],
+  "budget_ratios": [0.9, 1.0, 1.1],
+  "memory_phase_enabled": true
+}

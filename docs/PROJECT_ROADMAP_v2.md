@@ -1,6 +1,6 @@
 # PROJECT ROADMAP v2 — Active Q-F-R roadmap
 
-状态：R0–R4 已完成、通过独立复审并人工合并。当前经用户明确授权进行 Q-F-R availability/model revision 及修订后 correctness regression；pilot 尚未启动或授权。
+状态：R0–R4 与 Q-F-R availability/model revision 已完成、通过独立复审并人工合并。R5 Pilot & Mechanism Diagnosis 已完成执行并等待独立复审；尚未授权 R6、OOS 或正式实验。
 
 ## 1. 当前状态与设计权威
 
@@ -29,8 +29,8 @@ v1 和 N0–N7-pre 属于 old-route historical design/evidence。它们必须保
 | R2 | New M0/M1/M2 Implementation | `COMPLETED / INDEPENDENT REVIEW PASSED / MERGED` | 已实现修订前 Q-F-R v2 模型、programmatic nesting 与 model-level validation/tests。 |
 | R3 | EF + Standard C&CG Correctness | `COMPLETED / INDEPENDENT REVIEW PASSED / MERGED` | 已对修订前模型建立 EF、A0 与 `EF ≈ A0` correctness evidence。 |
 | R4 | Improved C&CG + Correctness | `COMPLETED / INDEPENDENT REVIEW PASSED / MERGED` | 已实现并验证修订前模型的 A1，建立 `EF ≈ A0 ≈ A1` evidence；PR #15 已人工合并。 |
-| Q-F-R availability/model revision | Scientific/model revision + EF/A0/A1 correctness regression | `IN_PROGRESS / PILOT_NOT_STARTED` | 增加 scenario-specific Q availability、正的 base F fulfillment，最小适配 EF/A0/A1，并重新建立 M0/M1/M2 correctness。原 R3/R4 evidence 仅对应修订前模型。 |
-| R5 | Pilot & Mechanism Diagnosis | `NOT_STARTED / NOT_AUTHORIZED` | 只有当前 revision 完成实现、correctness、独立复审和人工合并后，才可由用户另行授权 pilot。 |
+| Q-F-R availability/model revision | Scientific/model revision + EF/A0/A1 correctness regression | `COMPLETED / INDEPENDENT REVIEW PASSED / MERGED` | 已增加 scenario-specific Q availability，完成 EF/A0/A1 最小适配并重新建立 M0/M1/M2 correctness；PR #16 已人工合并。原 R3/R4 evidence 仅对应修订前模型。 |
+| R5 | Pilot & Mechanism Diagnosis | `PILOT_COMPLETED / INDEPENDENT_REVIEW_PENDING` | 已执行冻结的 3 models × 3 budgets Pilot、EF/A0/A1 correctness 与机制诊断；不得调参、运行 OOS、冻结正式设计或进入 R6。 |
 | R6 | Formal Experiment Design Freeze | `NOT_STARTED / NOT_AUTHORIZED` | 仅在 pilot 后冻结正式 budgets、seeds、scenario counts、scale definitions、sensitivities、repetitions、OOS sizes 与统计方案。 |
 | R7 | Formal Experiments | `NOT_STARTED / NOT_AUTHORIZED` | 按冻结设计执行正式实验，保存完整 source/config/status/raw evidence 与失败结果。 |
 | R8 | Results & Paper Evidence | `NOT_STARTED / NOT_AUTHORIZED` | 汇总 scientific、correctness 与 algorithm 三条证据链，形成可审计结果和论文证据；novelty wording 仍须专门治理。 |
@@ -96,4 +96,4 @@ Independent OOS evaluation 使用独立的 `Ω_test`：固定训练得到的 fir
 - 科学参数或算法结构变更必须显式说明原因并重新验证；旧证据只覆盖其原 source、定义和阶段。
 - 若发现模型矛盾、正确性错误、evidence-integrity 问题或未冻结的科学选择，必须停止相关执行并请求治理决定，不以工程测试通过代替科学正确性。
 
-当前 roadmap 更新只同步已完成的 R2–R4 和已授权的 availability/model revision。它不把修订前 correctness evidence 解释为修订后证明，也不授权 pilot 或 R5。
+当前 roadmap 更新同步已完成的 availability/model revision 与已明确授权的 R5 Pilot。它不把修订前 correctness evidence 解释为修订后证明，也不授权 R6、OOS 或正式实验。
