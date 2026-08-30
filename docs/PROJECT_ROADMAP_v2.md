@@ -1,6 +1,6 @@
 # PROJECT ROADMAP v2 — Active Q-F-R roadmap
 
-状态：R0–R4 与 Q-F-R availability/model revision 已完成、通过独立复审并人工合并。R5 Pilot & Mechanism Diagnosis 已由用户明确授权并正在执行；尚未授权 R6、OOS 或正式实验。
+状态：R0–R4 与 Q-F-R availability/model revision 已完成、通过独立复审并人工合并。R5 Pilot & Mechanism Diagnosis 已完成执行并等待独立复审；尚未授权 R6、OOS 或正式实验。
 
 ## 1. 当前状态与设计权威
 
@@ -30,7 +30,7 @@ v1 和 N0–N7-pre 属于 old-route historical design/evidence。它们必须保
 | R3 | EF + Standard C&CG Correctness | `COMPLETED / INDEPENDENT REVIEW PASSED / MERGED` | 已对修订前模型建立 EF、A0 与 `EF ≈ A0` correctness evidence。 |
 | R4 | Improved C&CG + Correctness | `COMPLETED / INDEPENDENT REVIEW PASSED / MERGED` | 已实现并验证修订前模型的 A1，建立 `EF ≈ A0 ≈ A1` evidence；PR #15 已人工合并。 |
 | Q-F-R availability/model revision | Scientific/model revision + EF/A0/A1 correctness regression | `COMPLETED / INDEPENDENT REVIEW PASSED / MERGED` | 已增加 scenario-specific Q availability，完成 EF/A0/A1 最小适配并重新建立 M0/M1/M2 correctness；PR #16 已人工合并。原 R3/R4 evidence 仅对应修订前模型。 |
-| R5 | Pilot & Mechanism Diagnosis | `IN_PROGRESS / EXPLICITLY_AUTHORIZED` | 仅执行冻结的 3 models × 3 budgets Pilot、EF/A0/A1 correctness 与机制诊断；不得调参、运行 OOS、冻结正式设计或进入 R6。 |
+| R5 | Pilot & Mechanism Diagnosis | `PILOT_COMPLETED / INDEPENDENT_REVIEW_PENDING` | 已执行冻结的 3 models × 3 budgets Pilot、EF/A0/A1 correctness 与机制诊断；不得调参、运行 OOS、冻结正式设计或进入 R6。 |
 | R6 | Formal Experiment Design Freeze | `NOT_STARTED / NOT_AUTHORIZED` | 仅在 pilot 后冻结正式 budgets、seeds、scenario counts、scale definitions、sensitivities、repetitions、OOS sizes 与统计方案。 |
 | R7 | Formal Experiments | `NOT_STARTED / NOT_AUTHORIZED` | 按冻结设计执行正式实验，保存完整 source/config/status/raw evidence 与失败结果。 |
 | R8 | Results & Paper Evidence | `NOT_STARTED / NOT_AUTHORIZED` | 汇总 scientific、correctness 与 algorithm 三条证据链，形成可审计结果和论文证据；novelty wording 仍须专门治理。 |

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "document_type": "R5_QFR_PILOT_MECHANISM_DIAGNOSIS_DELIVERY",
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "base": {
+    "commit": "5017b16f4f8b354adc2d18dd03c88cadc09fa556",
+    "tree": "2d3a79999cd6ebfd2e96129e484b3831dd4f3d76"
+  },
+  "protocol_and_execution_source": {
+    "commit": "5899d2fb98dafb619489efb796ae4186b3b27706",
+    "tree": "4c877bb07e34c6b6cf4ddab77dcffbcffdc1d9bd",
+    "protocol_path": "docs/R5_PILOT_PROTOCOL_v2.md",
+    "protocol_sha256": "5c20518a6dcb586838bf0a4b4980154059f82b7c1732df324d5ae3df43ae617b"
+  },
+  "wfp_workbook": {
+    "execution_path": "D:\\新建文件夹\\项目：robust-budget-allocation\\Data Syria Case WFP.xlsx",
+    "sha256": "f3e604eb3000d20e0e7eb64c7f847b6e34b83b85a417031a77805b8ea614c55b",
+    "sheet_count": 6,
+    "demand_node_count": 7,
+    "demand_total": 67000,
+    "sugar_and_rice_audit": "PASS"
+  },
+  "pilot_matrix": {
+    "models": ["M0", "M1", "M2"],
+    "budget_ratios": [0.9, 1.0, 1.1],
+    "case_count": 9,
+    "algorithms": ["EF", "A0", "A1"],
+    "completed": true
+  },
+  "evidence": {
+    "path": "docs/evidence/R5_QFR_PILOT_RESULTS_v2.json",
+    "file_sha256": "3d2dd6d95fd48fe3d1771a690c6e27a3d64fae8e499464e31d2e1922f11e4c90",
+    "evidence_sha256": "16357967f32b30fd852e1f3a5924e78542c9cda924bfd52974c929d61efacf9e",
+    "replay": "PASS"
+  },
+  "correctness": {
+    "maximum_objective_difference": 1.1641532182693481e-10,
+    "maximum_feasibility_violation": 5.820766091346741e-11,
+    "all_nine_cases_passed": true
+  },
+  "mechanism": {
+    "f_active_case_count": 6,
+    "r_upgrade_case_count": 3,
+    "worst_scenario_all_cases": "omega_4",
+    "a0_iterations": 24,
+    "a0_full_exact_calls": 24,
+    "a0_scenario_evaluations": 120,
+    "a1_iterations": 42,
+    "memory_opportunities": 0,
+    "memory_hits": 0,
+    "candidate_hits": 33,
+    "a1_full_exact_certification_calls": 9,
+    "a1_scenario_evaluations": 81
+  },
+  "tests": {
+    "focused_solver_free": "15 passed",
+    "full_solver_free": "888 passed, 106 deselected",
+    "full_licensed": "106 passed, 888 deselected",
+    "evidence_replay": "PASS",
+    "git_diff_check": "PASS",
+    "ci": "REMOTE_SOLVER_FREE_REQUIRED_AFTER_PUSH"
+  },
+  "execution_counts": {
+    "pilot_batches": 1,
+    "pilot_cases": 9,
+    "formal_experiment_runs": 0,
+    "oos_runs": 0,
+    "a1_changes": 0
+  },
+  "open_decisions": [
+    "OPEN_DECISION_R5_01: researcher decision on Vaccine service/calibration interpretation before R6"
+  ],
+  "deferred": [
+    "independent_review",
+    "user_manual_merge",
+    "R6_explicit_authorization"
+  ]
+}

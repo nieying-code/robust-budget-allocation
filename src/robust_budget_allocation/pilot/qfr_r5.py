@@ -270,11 +270,31 @@ def run_r5_pilot(repo_root: Path, workbook_path: Path) -> dict[str, Any]:
 
 def validate_r5_evidence(repo_root: Path, workbook_path: Path, evidence: Mapping[str, Any]) -> dict[str, Any]:
     root = repo_root.resolve()
+    required = {
+        "schema_version",
+        "phase",
+        "scope",
+        "protocol",
+        "source",
+        "configuration",
+        "environment",
+        "solver_configuration",
+        "cases",
+        "summary",
+        "execution_counts",
+        "evidence_sha256",
+    }
+    if set(evidence) != required:
+        raise ValueError("R5 evidence fields mismatch")
     bare = dict(evidence)
     seal = bare.pop("evidence_sha256", None)
     if seal != canonical_json_sha256(bare):
         raise ValueError("R5 evidence seal mismatch")
-    if evidence.get("schema_version") != 1 or evidence.get("phase") != "R5_PILOT_MECHANISM_DIAGNOSIS":
+    if (
+        evidence["schema_version"] != 1
+        or evidence["phase"] != "R5_PILOT_MECHANISM_DIAGNOSIS"
+        or evidence["scope"] != "R5_PILOT_MECHANISM_DIAGNOSIS_NOT_FORMAL_EXPERIMENT"
+    ):
         raise ValueError("not R5 Q-F-R Pilot evidence")
     if evidence["protocol"] != {"path": PROTOCOL_PATH, "sha256": PROTOCOL_SHA256} or sha256_file(root / PROTOCOL_PATH) != PROTOCOL_SHA256:
         raise ValueError("R5 protocol identity mismatch")
@@ -301,6 +321,20 @@ def validate_r5_evidence(repo_root: Path, workbook_path: Path, evidence: Mapping
         raise ValueError("R5 WFP workbook audit mismatch")
     if evidence["solver_configuration"] != solver_configuration_identity():
         raise ValueError("R5 solver configuration mismatch")
+    locked_environment = {
+        "python": "3.12.10",
+        "python_implementation": "CPython",
+        "pyomo": "6.10.1",
+        "gurobipy": "13.0.2",
+        "gurobi_optimizer": "13.0.2",
+        "solver_interface": "gurobi_direct",
+        "threads": 1,
+        "solver_available": True,
+        "license_available": True,
+        "status": "PASS",
+    }
+    if any(evidence["environment"].get(key) != value for key, value in locked_environment.items()):
+        raise ValueError("R5 licensed environment mismatch")
     expected = [(float(ratio), model) for ratio in config["budget_ratios"] for model in config["models"]]
     if len(evidence["cases"]) != len(expected):
         raise ValueError("R5 Pilot matrix is incomplete")
