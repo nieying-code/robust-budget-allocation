@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "scope": "FROZEN_PILOT_BASELINE_CONFIGURATION_NOT_PILOT_EXECUTION",
+  "items": ["Sugar", "Measles Vaccine", "Rice"],
+  "tau_months": 6,
+  "nominal_demand": {
+    "Sugar": 67000,
+    "Measles Vaccine": 9380,
+    "Rice": 67000
+  },
+  "q_unit_cost": {
+    "Sugar": 0.55,
+    "Measles Vaccine": 0.39,
+    "Rice": 3.6
+  },
+  "retention": {
+    "Sugar": 1.0,
+    "Measles Vaccine": 1.0,
+    "Rice": 0.91
+  },
+  "storage_horizon_cost": {
+    "Sugar": 0.0,
+    "Measles Vaccine": 0.08,
+    "Rice": 0.0
+  },
+  "reservation_cost_ratio": 0.2,
+  "exercise_cost_ratio": 0.85,
+  "shortage_cost_ratio": 4.0,
+  "reliability_mitigation": [0.2, 0.5, 0.8],
+  "reliability_cost_ratios": [0.0, 0.1, 0.25],
+  "scenarios": [
+    {"id": "omega_1", "demand_multiplier": 0.8, "q_availability": 1.0, "disruption": 0.0},
+    {"id": "omega_2", "demand_multiplier": 1.0, "q_availability": 1.0, "disruption": 0.0},
+    {"id": "omega_3", "demand_multiplier": 1.0, "q_availability": 0.85, "disruption": 0.5},
+    {"id": "omega_4", "demand_multiplier": 1.2, "q_availability": 0.85, "disruption": 0.5},
+    {"id": "omega_5", "demand_multiplier": 1.0, "q_availability": 0.7, "disruption": 1.0}
+  ],
+  "budget_ratios": [0.9, 1.0, 1.1],
+  "expected_b_ref": 306313.545054945
+}

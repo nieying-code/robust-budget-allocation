@@ -131,8 +131,18 @@ def validate_accounting_payload(
             fulfillable_raw[item], scenarios, f"fulfillable F[{item}]"
         )
         x[item], u[item] = {}, {}
-        effective = accounting_data.retention[item] * q[item]
-        require_close(_finite(effective_raw[item], f"effective Q[{item}]"), effective, f"effective Q[{item}]")
+        retained = accounting_data.retention[item] * q[item]
+        if accounting_data.schema_version == 2:
+            require_close(
+                _finite(effective_raw[item], f"effective Q[{item}]"),
+                retained,
+                f"effective Q[{item}]",
+            )
+            available_raw = None
+        else:
+            available_raw = _same_keys(
+                effective_raw[item], scenarios, f"effective Q[{item}]"
+            )
         for scenario in accounting_data.scenarios:
             x_value = _finite(item_x[scenario], f"x[{item},{scenario}]")
             u_value = _finite(item_u[scenario], f"u[{item},{scenario}]")
@@ -154,8 +164,18 @@ def validate_accounting_payload(
             )
             if x_value > fulfillment + tolerance(x_value, fulfillment):
                 raise ValueError(f"flexible fulfillment violated for {item},{scenario}")
-            if effective + x_value + u_value < accounting_data.demand[scenario][item] - tolerance(
-                effective + x_value + u_value, accounting_data.demand[scenario][item]
+            available = retained * accounting_data.q_availability[scenario][item]
+            if available_raw is not None:
+                require_close(
+                    _finite(
+                        available_raw[scenario],
+                        f"effective Q[{item},{scenario}]",
+                    ),
+                    available,
+                    f"effective Q[{item},{scenario}]",
+                )
+            if available + x_value + u_value < accounting_data.demand[scenario][item] - tolerance(
+                available + x_value + u_value, accounting_data.demand[scenario][item]
             ):
                 raise ValueError(f"demand coverage violated for {item},{scenario}")
             x[item][scenario], u[item][scenario] = x_value, u_value

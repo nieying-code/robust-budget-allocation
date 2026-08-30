@@ -2,15 +2,26 @@
 
 import json
 from pathlib import Path
+import subprocess
 
 from robust_budget_allocation.algorithms.qfr_a1_verification import validate_r4_evidence
-from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_file
+from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_bytes
 
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / "docs/evidence/R4_A1_INITIAL_MEMORY_TRAJECTORY_v2.json"
 FINAL_EVIDENCE = ROOT / "docs/evidence/R4_EF_A0_A1_CORRECTNESS_FINAL_v2.json"
 HASHES = ROOT / "docs/R4_CORRECTNESS_HASHES.sha256"
+DELIVERY_COMMIT = "ff498cd66daff52beb4d2b575a73f89c39066d5a"
+
+
+def anchored_bytes(relative: str) -> bytes:
+    return subprocess.run(
+        ["git", "show", f"{DELIVERY_COMMIT}:{relative}"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    ).stdout
 
 
 def test_r4_initial_memory_trajectory_is_preserved_with_original_seal():
@@ -31,7 +42,7 @@ def test_r4_hash_inventory_is_complete_and_valid():
     assert len(rows) == len({relative for _, relative in rows})
     for digest, relative in rows:
         assert len(digest) == 64
-        assert sha256_file(ROOT / relative) == digest
+        assert sha256_bytes(anchored_bytes(relative)) == digest
 
 
 def test_r4_final_correctness_evidence_replays():

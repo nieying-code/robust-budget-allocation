@@ -65,8 +65,15 @@ def build_qfr_model(
         (data.q_unit_cost[item] + data.storage_cost[item] * data.tau) * model.Q[item]
         for item in model.I
     ))
-    model.effective_Q = pyo.Expression(
+    model.retained_Q = pyo.Expression(
         model.I, rule=lambda m, item: data.retention[item] * m.Q[item]
+    )
+    model.effective_Q = pyo.Expression(
+        model.I,
+        model.Omega,
+        rule=lambda m, item, scenario: (
+            m.retained_Q[item] * data.q_availability[scenario][item]
+        ),
     )
 
     if kind == "M0":
@@ -87,7 +94,8 @@ def build_qfr_model(
             model.I,
             model.Omega,
             rule=lambda m, item, scenario: (
-                m.effective_Q[item] + m.u[item, scenario] >= data.demand[scenario][item]
+                m.effective_Q[item, scenario] + m.u[item, scenario]
+                >= data.demand[scenario][item]
             ),
         )
     else:
@@ -168,7 +176,7 @@ def build_qfr_model(
             model.I,
             model.Omega,
             rule=lambda m, item, scenario: (
-                m.effective_Q[item] + m.x[item, scenario] + m.u[item, scenario]
+                m.effective_Q[item, scenario] + m.x[item, scenario] + m.u[item, scenario]
                 >= data.demand[scenario][item]
             ),
         )

@@ -92,7 +92,7 @@ def static_data_payload(data: QFRData) -> dict[str, Any]:
     return {
         key: value
         for key, value in payload.items()
-        if key not in {"scenarios", "demand", "disruption"}
+        if key not in {"scenarios", "demand", "q_availability", "disruption"}
     }
 
 
@@ -103,16 +103,20 @@ def static_data_sha256(data: QFRData) -> str:
 def scenario_identity(data: QFRData, scenario: str) -> str:
     if scenario not in data.scenarios:
         raise ValueError(f"unknown scenario: {scenario!r}")
-    return canonical_json_sha256(
-        {
-            "schema_version": 2,
+    payload = {
+            "schema_version": data.schema_version,
             "model_family": "heterogeneous_material_qfr",
             "static_data_sha256": static_data_sha256(data),
             "ordered_items": list(data.items),
             "demand": dict(data.demand[scenario]),
+            **(
+                {"q_availability": dict(data.q_availability[scenario])}
+                if data.schema_version == 3
+                else {}
+            ),
             "disruption": dict(data.disruption[scenario]),
         }
-    )
+    return canonical_json_sha256(payload)
 
 
 def scenario_identities(data: QFRData) -> dict[str, str]:
@@ -130,6 +134,10 @@ def subset_data(data: QFRData, scenarios: tuple[str, ...] | list[str]) -> QFRDat
     payload = data.to_dict()
     payload["scenarios"] = list(selected)
     payload["demand"] = {value: dict(data.demand[value]) for value in selected}
+    if data.schema_version == 3:
+        payload["q_availability"] = {
+            value: dict(data.q_availability[value]) for value in selected
+        }
     payload["disruption"] = {value: dict(data.disruption[value]) for value in selected}
     result = QFRData.from_dict(payload)
     if static_data_sha256(result) != static_data_sha256(data):

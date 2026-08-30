@@ -39,6 +39,14 @@ def _fulfillable(
     )
 
 
+def _available_q(data: QFRData, decision: QFRFirstStage, item: str, scenario: str) -> float:
+    return (
+        data.retention[item]
+        * data.q_availability[scenario][item]
+        * decision.q[item]
+    )
+
+
 def build_exact_recourse(
     data: QFRData,
     decision: QFRFirstStage,
@@ -62,7 +70,7 @@ def build_exact_recourse(
         model.demand_balance = pyo.Constraint(
             model.I,
             rule=lambda m, item: (
-                data.retention[item] * decision.q[item] + m.u[item]
+                _available_q(data, decision, item, scenario) + m.u[item]
                 >= data.demand[scenario][item]
             ),
         )
@@ -82,7 +90,7 @@ def build_exact_recourse(
         model.demand_balance = pyo.Constraint(
             model.I,
             rule=lambda m, item: (
-                data.retention[item] * decision.q[item] + m.x[item] + m.u[item]
+                _available_q(data, decision, item, scenario) + m.x[item] + m.u[item]
                 >= data.demand[scenario][item]
             ),
         )
@@ -133,7 +141,7 @@ def solve_exact_recourse(
     violations: list[float] = [0.0]
     for item in data.items:
         violations.extend((-exercise[item], -shortage[item]))
-        coverage = data.retention[item] * decision.q[item] + exercise[item] + shortage[item]
+        coverage = _available_q(data, decision, item, scenario) + exercise[item] + shortage[item]
         violations.append(data.demand[scenario][item] - coverage)
         if decision.model_kind != "M0":
             violations.append(exercise[item] - _fulfillable(data, decision, item, scenario))
@@ -196,7 +204,7 @@ def validate_recourse_result(
         if not math.isfinite(exercise[item]) or not math.isfinite(shortage[item]):
             raise ValueError("exact-recourse values must be finite")
         violations.extend((-exercise[item], -shortage[item]))
-        coverage = data.retention[item] * decision.q[item] + exercise[item] + shortage[item]
+        coverage = _available_q(data, decision, item, scenario) + exercise[item] + shortage[item]
         violations.append(data.demand[scenario][item] - coverage)
         if decision.model_kind == "M0":
             require_close(exercise[item], 0, f"M0 exercise[{item}]")
