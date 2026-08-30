@@ -22,6 +22,7 @@
   "scientific_revision": {
     "q_service": "a_i * rho_Q_iomega * Q_i",
     "q_availability_domain": "0 <= rho_Q_iomega <= 1",
+    "general_eta_domain": "0 <= eta_i0 < eta_i1 < eta_i2 < 1",
     "general_schema_indexing": "item_and_scenario_specific",
     "pilot_indexing": "same_scenario_value_repeated_for_all_three_items",
     "reliability_levels": [0.2, 0.5, 0.8],
@@ -60,10 +61,10 @@
     "docs/evidence/QFR_AVAILABILITY_CORRECTNESS_SOURCE_GATE_FAILURE_v2_1.json"
   ],
   "tests": {
-    "focused_solver_free": "27 passed, 1 deselected",
-    "full_solver_free": "877 passed, 106 deselected",
-    "focused_licensed_nesting": "1 passed, 19 deselected",
-    "full_licensed": "106 passed, 877 deselected",
+    "focused_solver_free": "31 passed, 1 deselected",
+    "full_solver_free": "881 passed, 106 deselected",
+    "focused_licensed_nesting": "1 passed, 23 deselected",
+    "full_licensed": "106 passed, 881 deselected",
     "evidence_replay": "PASS",
     "historical_r3_r4_replay": "PASS",
     "git_diff_check": "PASS"

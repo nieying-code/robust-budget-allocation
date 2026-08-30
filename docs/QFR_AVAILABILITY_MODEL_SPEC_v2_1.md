@@ -37,9 +37,9 @@ Q procurement/storage cost remains `sum_i (c_Q[i]+h_i*tau)Q_i`. Q availability c
 
 For every item the ordered levels remain `{0,1,2}`, with:
 
-`0 < eta[i,0] < eta[i,1] < eta[i,2] < 1`.
+`0 <= eta[i,0] < eta[i,1] < eta[i,2] < 1`.
 
-The frozen pilot baseline uses `(0.20,0.50,0.80)` for every item. Reliability premiums retain:
+The zero boundary is valid in the general model: under full disruption, base F may then be completely unavailable. This does not remove level 0 or change the fulfillment equation. The frozen pilot baseline remains `(0.20,0.50,0.80)` for every item. Reliability premiums retain:
 
 `c_R[i,0]=0 < c_R[i,1] < c_R[i,2]`.
 

@@ -33,11 +33,11 @@ Flexible fulfillment remains
 
 `rho_F[i,omega,r] = 1 - (1-eta[i,r]) * delta[i,omega]`,
 
-but the base level now has positive inherent fulfillment:
+and the general ordered domain is:
 
-`eta[0]=0.20 < eta[1]=0.50 < eta[2]=0.80 < 1`.
+`0 <= eta[0] < eta[1] < eta[2] < 1`.
 
-Level 0 has zero reliability premium and represents F without paid reliability enhancement. Thus M1 remains Q+F, and restricting M2 to level 0 yields M1. R raises F fulfillment above this base; it does not determine whether F exists and never protects Q.
+The `eta[0]=0` boundary allows base F to be completely unavailable under full disruption; it does not remove level 0 or change the reliability formula. The frozen pilot baseline remains `eta[0]=0.20 < eta[1]=0.50 < eta[2]=0.80`. Level 0 has zero reliability premium and represents F without paid reliability enhancement. Thus M1 remains Q+F, and restricting M2 to level 0 yields M1. R raises F fulfillment above this base; it does not determine whether F exists and never protects Q.
 
 ## 4. Frozen pilot-baseline inputs (configuration only)
 

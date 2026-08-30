@@ -98,12 +98,27 @@ def test_q_availability_requires_complete_item_scenario_coverage():
         QFRData.from_dict(payload)
 
 
-def test_revision_requires_positive_ordered_base_fulfillment():
-    for level, bad in (("0", 0.0), ("1", 0.2), ("2", 1.0)):
-        payload = revised_payload()
-        payload["reliability_mitigation"]["ordinary"][level] = bad
-        with pytest.raises(ValueError, match="reliability_mitigation"):
-            QFRData.from_dict(payload)
+def test_revision_allows_zero_base_fulfillment():
+    payload = revised_payload()
+    payload["reliability_mitigation"]["ordinary"]["0"] = 0.0
+    data = QFRData.from_dict(payload)
+    assert data.reliability_mitigation["ordinary"][0] == 0.0
+
+
+@pytest.mark.parametrize(
+    "updates",
+    [
+        {"0": -0.01},
+        {"1": 0.2},
+        {"2": 0.5},
+        {"2": 1.0},
+    ],
+)
+def test_revision_rejects_out_of_domain_or_non_strict_fulfillment(updates):
+    payload = revised_payload()
+    payload["reliability_mitigation"]["ordinary"].update(updates)
+    with pytest.raises(ValueError, match="reliability_mitigation"):
+        QFRData.from_dict(payload)
 
 
 def test_retention_and_q_availability_act_as_independent_factors():

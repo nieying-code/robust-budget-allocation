@@ -213,7 +213,7 @@ class QFRData:
             valid_mitigation = (
                 mitigation[0] == 0 < mitigation[1] < mitigation[2] < 1
                 if self.schema_version == 2
-                else 0 < mitigation[0] < mitigation[1] < mitigation[2] < 1
+                else 0 <= mitigation[0] < mitigation[1] < mitigation[2] < 1
             )
             if not valid_mitigation:
                 raise ValueError(

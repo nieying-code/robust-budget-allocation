@@ -14,8 +14,8 @@ Final correctness execution used clean commit `be10c47d5b26a96bd767b07f96396c10a
 
 - Added complete item/scenario `q_availability` with production domain `[0,1]` and inclusion in canonical data/scenario identity.
 - Demand service now uses `retention[i] * q_availability[omega][i] * Q[i]` in M0/M1/M2, independent accounting, and exact recourse.
-- Revised schema version 3 requires `0 < eta[0] < eta[1] < eta[2] < 1`; schema version 2 is retained explicitly for historical replay with unit Q availability and its original hashes.
-- M1 uses positive base fulfillment at level 0 with zero reliability premium; M2 restricted to level 0 remains structurally and numerically identical to M1.
+- Revised schema version 3 permits the general boundary `0 <= eta[0] < eta[1] < eta[2] < 1`; schema version 2 is retained explicitly for historical replay with unit Q availability and its original hashes. The frozen pilot and correctness fixture remain `(0.20,0.50,0.80)`.
+- M1 uses level 0 with zero reliability premium; M2 restricted to level 0 remains structurally and numerically identical to M1. Allowing `eta[0]=0` changes only the accepted general-data boundary and leaves the fulfillment equation unchanged.
 - EF, A0, and A1 algorithm/state-machine files were not mathematically redesigned. They consume the revised shared data, model, scenario identity, accounting, and exact recourse paths.
 - A frozen pilot configuration constructor computes `h_vaccine=0.08/6`, `B_ref=306313.545054945`, the five registered joint scenarios, costs, and `Fbar_i=max_omega d[i,omega]`. It was constructed and validated only; it was not solved as a pilot.
 
@@ -54,10 +54,10 @@ Both failure records are preserved. Only the copied identity/container interpret
 
 ## 5. Validation summary
 
-- focused revised solver-free and delivery tests: `27 passed, 1 deselected`;
-- full solver-free regression: `877 passed, 106 deselected`;
-- focused revised nesting licensed test: `1 passed, 19 deselected`;
-- full licensed regression: `106 passed, 877 deselected`;
+- focused revised solver-free and delivery tests: `31 passed, 1 deselected`;
+- full solver-free regression: `881 passed, 106 deselected`;
+- focused revised nesting licensed test: `1 passed, 23 deselected`;
+- full licensed regression: `106 passed, 881 deselected`;
 - revised evidence replay: PASS;
 - historical R3/R4 evidence replay: PASS;
 - `git diff --check`: PASS.
