@@ -9,6 +9,7 @@ import pytest
 from robust_budget_allocation.algorithms.qfr_exact_oracle import build_exact_recourse
 from robust_budget_allocation.algorithms.qfr_protocol import (
     scenario_identity,
+    solve_exact,
     static_data_sha256,
     subset_data,
 )
@@ -161,6 +162,24 @@ def test_revised_programmatic_nesting_is_structural():
             assert pyo.value(m1.rho[item, scenario, 0]) == pytest.approx(
                 pyo.value(m2_base.rho[item, scenario, 0])
             )
+
+
+@pytest.mark.gurobi
+def test_revised_programmatic_nesting_optimal_values():
+    data = revised_data()
+    models = (
+        build_qfr_m0(data),
+        build_qfr_m1(data, disable_f=True),
+        build_qfr_m1(data),
+        build_qfr_m2(data, reliability_levels=(0,)),
+    )
+    outcomes = [solve_exact(model) for model in models]
+    assert all(outcome.status == "optimal" for outcome in outcomes)
+    accounting = [validate_qfr_solution(data, model) for model in models]
+    assert accounting[0].objective == pytest.approx(accounting[1].objective, abs=1e-7, rel=1e-9)
+    assert accounting[2].objective == pytest.approx(accounting[3].objective, abs=1e-7, rel=1e-9)
+    assert accounting[1].C_F == pytest.approx(0.0)
+    assert accounting[1].C_R == pytest.approx(0.0)
 
 
 @pytest.mark.parametrize("builder", [build_qfr_m0, build_qfr_m1, build_qfr_m2])
