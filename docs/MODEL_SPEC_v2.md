@@ -1,6 +1,6 @@
 # MODEL SPEC v2 — Heterogeneous-material Q-F-R
 
-状态：R0 冻结数学设计稿，待独立复审；无实现、无求解结果。v1 数学规范保留为历史，不是本规范的隐含补充。
+状态：R0 冻结数学设计稿；Q availability 修订见 `QFR_AVAILABILITY_MODEL_SPEC_v2_1.md`。本文件中的可用 Q 表达已作一致性勘误，不改变已实现模型。v1 数学规范保留为历史，不是本规范的隐含补充。
 
 ## 1. 时间、集合与符号
 
@@ -29,6 +29,7 @@ Q-F-R 是提前实体化、延迟实体化及其保障的机制链，不是三�
 | c_ir^R | 单位预留能力可靠性 premium / 货币每能力单位 | c_i0^R=0<c_i1^R<c_i2^R |
 | η_ir | 中断损失缓解比例 / 无量纲 | η_i0=0<η_i1<η_i2<1 |
 | d_iω | 灾后需求 / 物资单位 | ≥0 |
+| $\rho^Q_{i\omega}$ | 场景下预置库存可用率 / 无量纲 | $0\le\rho^Q_{i\omega}\le1$ |
 | δ_iω | 基础柔性能力损失比例 / 无量纲 | 0≤δ_iω≤1 |
 | p_i^F | 单位实际柔性采购/生产支出 / 货币每物资单位 | >0，基线不随 ω 变化 |
 | s_i | 单位缺货经济/社会损失 / 货币每物资单位 | >0 |
@@ -60,7 +61,7 @@ $
 C_Q(Q)&=\sum_i(c_i^Q+h_i\tau)Q_i,\\
 C_F(F)&=\sum_{i,r}c_i^F F_{ir},\\
 C_R(F)&=\sum_{i,r}c_{ir}^R F_{ir},\\
-C^{pre}&=C_Q+C_F+C_R,\qquad Q_i^{eff}=a_iQ_i.
+C^{pre}&=C_Q+C_F+C_R,\qquad Q_{i\omega}^{available}=a_i\rho^Q_{i\omega}Q_i.
 \end{aligned}
 $
 
@@ -71,7 +72,7 @@ Reliability 只有随能力计收的 premium，没有固定 Reliability fee。�
 ## 5. 场景揭示与柔性能力兑现
 
 $
-\mathcal U=\{(d_\omega,\delta_\omega):\omega\in\Omega\},\qquad
+\mathcal U=\{(d_\omega,\rho^Q_\omega,\delta_\omega):\omega\in\Omega\},\qquad
 \rho_{i\omega}^r=1-(1-\eta_{ir})\delta_{i\omega}.
 $
 
@@ -98,7 +99,7 @@ Baseline does not explicitly model demand–supply-disruption correlation, so th
 
 $
 u_{i\omega}\ge0,\qquad
-a_iQ_i+x_{i\omega}+u_{i\omega}\ge d_{i\omega}
+a_i\rho^Q_{i\omega}Q_i+x_{i\omega}+u_{i\omega}\ge d_{i\omega}
 \quad\forall i,\omega.
 $
 
@@ -156,7 +157,7 @@ $\mathcal Y$ 包含第 3 节第一阶段约束和必要条件 C^pre≤B；后者
 
 ### M0 — Q
 
-只决定 Q≥0，F 关闭，R 不存在，x_iω=0。保留灾后缺货 u≥0、a_iQ_i+u_iω≥d_iω，预算 C_Q≤B，目标 min C_Q+θ，θ≥Σ_i s_i u_iω。
+只决定 Q≥0，F 关闭，R 不存在，x_iω=0。保留灾后缺货 u≥0、$a_i\rho^Q_{i\omega}Q_i+u_{i\omega}\ge d_{i\omega}$，预算 C_Q≤B，目标 min C_Q+θ，θ≥Σ_i s_i u_iω。
 
 ### M1 — Q+F
 

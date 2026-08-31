@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "document_type": "R6_B_FORMAL_EXPERIMENT_MATRIX_FREEZE_DELIVERY",
+  "status": "R6_B_READY_FOR_INDEPENDENT_REVIEW",
+  "base": {
+    "commit": "f74b99f374d6b7be0dcb735b36c68b509bbee4bb",
+    "tree": "c7edc453ef020e70e2723defb573824e88c1c91c",
+    "formal_ready_data_sha256": "3eaf0357d9d586198a8887c59b8e67ebeeb2ab8d7224923db854dca717f236f5"
+  },
+  "design_freeze_source": {
+    "commit": "7b85f51130398021d95fe825e473601ac1c8389b",
+    "tree": "b952b72eca289eb7e00ba65f821235e4ea30816d"
+  },
+  "authoritative_specification": {
+    "config_path": "configs/r6_formal_experiment_matrix_v1.json",
+    "config_identity_sha256": "ccf90d26d8947e2b0607d38c9812f69c485b5f1532fc5b9e9e8cd0b2abb7e0a2",
+    "expanded_path": "configs/r6_formal_experiment_matrix_expanded_v1.json",
+    "matrix_identity_sha256": "cbedbec9643400af69b0d4369cfd0f1e0a0ccf4e9b61d26c5fc48717948f6b49",
+    "human_spec_path": "docs/R6_FORMAL_EXPERIMENT_MATRIX_v1.md"
+  },
+  "matrix_counts": {
+    "E1_main_cases": 9,
+    "E2_families": 6,
+    "E2_cells": 18,
+    "E3_I1_cells": 9,
+    "E3_I2_cells": 9,
+    "E4_A_loho_folds": 15,
+    "E4_B_seeds": 10,
+    "E4_B_realizations_per_seed": 2000,
+    "E5_algorithm_cases": 27,
+    "E5_timing_repetitions": 3
+  },
+  "E4_B": {
+    "seeds": [61001, 61002, 61003, 61004, 61005, 61006, 61007, 61008, 61009, 61010],
+    "sampling": "WITH_REPLACEMENT_FROM_ALL_51_SCENARIOS_USING_FROZEN_PROBABILITIES",
+    "shared_demand_perturbation": "TRUNCATED_NORMAL_REJECTION_MEAN_0_SD_0.1_BOUNDS_-0.95_3.0",
+    "shared_samples_across_models": ["M0", "M1", "M2"],
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 62001,
+    "provenance": "R6_B_RESEARCH_DESIGN_NOT_EMPIRICAL_HURRICANE_DGP"
+  },
+  "E5": {
+    "algorithms": ["A0", "A1_no_memory", "A1_full"],
+    "memory_ablation": "ONLY_MEMORY_PHASE_DISABLED_VIA_memory_phase_enabled_FALSE",
+    "ef_role": "CORRECTNESS_REFERENCE_ONLY"
+  },
+  "tests": {
+    "targeted_r6_b": "12 passed",
+    "focused_solver_free_regression": "53 passed, 4 deselected",
+    "full_solver_free_regression": "910 passed, 1 skipped, 106 deselected",
+    "deterministic_regeneration": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "execution_counts": {
+    "formal_m0_runs": 0,
+    "formal_m1_runs": 0,
+    "formal_m2_runs": 0,
+    "formal_ef_runs": 0,
+    "formal_a0_runs": 0,
+    "formal_a1_runs": 0,
+    "sensitivity_runs": 0,
+    "oos_policy_evaluation_runs": 0,
+    "timing_runs": 0
+  },
+  "stage_gates": {
+    "r6_b_design_frozen": true,
+    "independent_review_pending": true,
+    "r7_started": false,
+    "merge_authorized": false
+  },
+  "pr_description_metadata_corrected": true,
+  "model_spec_q_availability_consistency_corrected": true,
+  "open_scientific_decisions": []
+}

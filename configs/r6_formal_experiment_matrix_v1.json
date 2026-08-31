@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "scope": "R6_B_FORMAL_EXPERIMENT_MATRIX_FREEZE_NO_SCIENTIFIC_SOLVES",
+  "formal_ready_data_path": "configs/r6_formal_ready_data_v1.json",
+  "formal_ready_data_sha256": "3eaf0357d9d586198a8887c59b8e67ebeeb2ab8d7224923db854dca717f236f5",
+  "scientific_runs": 0,
+  "r7_started": false,
+  "baseline": {
+    "items": ["Water", "Seasonal Influenza Vaccine", "Crackers"],
+    "models": ["M0", "M1", "M2"],
+    "budget_ratios": [0.9, 1.0, 1.1],
+    "q_survivability_cat1_to_cat5": [0.9, 0.85, 0.8, 0.75, 0.7],
+    "f_disruption_cat1_to_cat5": [0.1, 0.3, 0.6, 1.0, 1.0],
+    "eta": [0.0, 0.5, 0.8],
+    "reliability_premium_ratios": [0.0, 0.1, 0.25],
+    "phi": 0.2,
+    "psi": 0.85,
+    "shortage_beta": 4.0,
+    "shortage_priority": {
+      "Water": 1.5,
+      "Seasonal Influenza Vaccine": 2.5,
+      "Crackers": 1.0
+    },
+    "vaccine_six_month_cold_chain_cost": 0.5,
+    "crackers_retention": 0.9,
+    "combined_hurricane_category_rule": "MAX_CONSTITUENT_CATEGORY",
+    "no_hurricane": {"q_availability": 1.0, "disruption": 0.0}
+  },
+  "E1": {
+    "models": ["M0", "M1", "M2"],
+    "budget_ratios": [0.9, 1.0, 1.1],
+    "outputs": {
+      "economic": ["robust_objective", "C_Q", "C_F", "C_R", "worst_case_exercise_cost", "first_stage_expenditure", "budget_utilization"],
+      "allocation": ["Q_i", "F_ir", "selected_R_level", "commodity_Q_F_quantities", "Q_F_quantity_share", "Q_F_R_budget_share"],
+      "service": ["total_shortage", "commodity_shortage", "worst_case_shortage", "demand_satisfaction_rate", "shortage_rate"],
+      "certification": ["active_worst_scenario", "hurricane_identity", "hurricane_composition", "worst_category", "robust_objective", "formal_UB", "gap", "convergence", "certificate_status"]
+    }
+  },
+  "E2": {
+    "model": "M2",
+    "budget_ratio": 1.0,
+    "design": "OFAT",
+    "families": {
+      "S1_vaccine_cold_chain": {"field": "vaccine_six_month_cold_chain_cost", "levels": [0.25, 0.5, 1.0]},
+      "S2_crackers_retention": {"field": "crackers_retention", "levels": [0.8, 0.9, 1.0]},
+      "S3_f_price_split": {"field": "phi_psi", "levels": [[0.1, 0.95], [0.2, 0.85], [0.3, 0.75]], "sum": 1.05},
+      "S4_reliability_premium": {"field": "gamma_R", "levels": [0.5, 1.0, 1.5]},
+      "S5_reliability_effectiveness": {"field": "eta", "levels": [[0.0, 0.4, 0.7], [0.0, 0.5, 0.8], [0.0, 0.6, 0.9]]},
+      "S6_shortage_severity": {"field": "beta", "levels": [2.0, 4.0, 6.0], "priority_order_fixed": true}
+    }
+  },
+  "E3": {
+    "model": "M2",
+    "budget_ratio": 1.0,
+    "interactions": {
+      "I1_cold_chain_x_f_split": {
+        "vaccine_six_month_cold_chain_cost": [0.25, 0.5, 1.0],
+        "phi_psi": [[0.1, 0.95], [0.2, 0.85], [0.3, 0.75]]
+      },
+      "I2_f_disruption_x_r_premium": {
+        "gamma_delta": [0.5, 1.0, 1.5],
+        "gamma_R": [0.5, 1.0, 1.5],
+        "delta_rule": "min(1,gamma_delta*baseline_delta)",
+        "q_survivability_unchanged": true,
+        "no_hurricane_disruption": 0.0
+      }
+    }
+  },
+  "E4": {
+    "policy_models": ["M0", "M1", "M2"],
+    "first_stage_fixed_during_evaluation": true,
+    "metrics": ["realized_total_cost", "mean_realized_total_cost", "P50_cost", "P90_cost", "P95_cost", "maximum_cost", "mean_total_shortage", "probability_total_shortage_positive", "Water_shortage", "Vaccine_shortage", "Crackers_shortage", "commodity_shortage_probability", "realized_F_fulfillment", "budget_feasibility", "budget_violation", "severe_tail_performance"],
+    "historical": {
+      "name": "E4-A",
+      "design": "15_FOLD_LEAVE_ONE_HURRICANE_OUT",
+      "hurricanes": ["h01", "h02", "h03", "h04", "h05", "h06", "h07", "h08", "h09", "h10", "h11", "h12", "h13", "h14", "h15"],
+      "training_probability": "SOURCE_PROBABILITY_RENORMALIZED_AFTER_REMOVING_ALL_SCENARIOS_CONTAINING_HELD_OUT_HURRICANE",
+      "test_probability": "SOURCE_PROBABILITY_CONDITIONALLY_RENORMALIZED_WITHIN_ALL_SCENARIOS_CONTAINING_HELD_OUT_HURRICANE",
+      "no_hurricane_retained_in_training": true,
+      "no_hurricane_is_fold": false
+    },
+    "synthetic": {
+      "name": "E4-B",
+      "rng": "numpy.Generator(PCG64)",
+      "seeds": [61001, 61002, 61003, 61004, 61005, 61006, 61007, 61008, 61009, 61010],
+      "realizations_per_seed": 2000,
+      "base_sampling": "WITH_REPLACEMENT_CATEGORICAL_OVER_ALL_51_SCENARIOS_USING_FROZEN_PROBABILITIES",
+      "demand_perturbation": {
+        "distribution": "NORMAL",
+        "mean": 0.0,
+        "standard_deviation": 0.1,
+        "lower": -0.95,
+        "upper": 3.0,
+        "method": "REJECTION_SAMPLING_NO_CLIPPING_OR_WINSORIZATION",
+        "multiplier": "g=1+z",
+        "shared_across_commodities": true
+      },
+      "supply_state": "INHERIT_BASE_SCENARIO_CATEGORY_Q_AVAILABILITY_AND_DISRUPTION_WITHOUT_NOISE",
+      "no_hurricane_demand_forced_zero": true,
+      "random_call_order": ["categorical_base_scenario", "truncated_normal_z", "shared_demand_multiplier", "inherit_supply_state", "save_identity"],
+      "same_samples_for_models": ["M0", "M1", "M2"],
+      "provenance_class": "R6_B_RESEARCH_DESIGN_SYNTHETIC_OOS_RULE_NOT_EMPIRICAL_DGP"
+    },
+    "statistics": {
+      "paired_contrasts": ["M1-M0", "M2-M1"],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 62001,
+      "confidence_level": 0.95,
+      "historical_replication_unit": "15_LOHO_FOLDS",
+      "synthetic_replication_unit": "10_INDEPENDENT_SEEDS_NOT_20000_REALIZATIONS"
+    }
+  },
+  "E5": {
+    "case_source": "E1_9_MAIN_CASES",
+    "algorithms": ["A0", "A1_no_memory", "A1_full"],
+    "ef_role": "CORRECTNESS_REFERENCE_CERTIFICATE_ANCHOR_NOT_PRIMARY_PERFORMANCE_COMPETITOR",
+    "memory_ablation": {
+      "A1_no_memory": {"memory_phase_enabled": false},
+      "A1_full": {"memory_phase_enabled": true},
+      "only_difference": "memory_phase_enabled"
+    },
+    "timing_repetitions": 3,
+    "runtime_summary": "MEDIAN_WITH_MIN_MAX_OR_IQR_AUXILIARY",
+    "metrics": ["wall_clock_runtime", "iteration_count", "master_solves", "scenario_evaluations", "candidate_opportunities", "candidate_hits", "memory_opportunities", "memory_hits", "full_exact_certification_calls", "final_objective", "formal_UB", "gap", "convergence", "certificate_status"]
+  },
+  "statistical_rules": {
+    "E1": "DETERMINISTIC_NO_PSEUDO_REPLICATION_SIGNIFICANCE_TEST",
+    "E2_E3": "EFFECT_CURVES_ALLOCATION_TRANSITIONS_BOUNDARY_INTERPRETATION_RELATIVE_CHANGES_NO_MASS_P_VALUES",
+    "E4_A": "FOLD_LEVEL_RESULTS_AND_AGGREGATE_MEAN_MEDIAN_DISTRIBUTION_RANGE_WITHOUT_INDEPENDENCE_CLAIM",
+    "E4_B": "MEAN_SD_SEED_LEVEL_PAIRED_DIFFERENCES_AND_PAIRED_BOOTSTRAP_95_PERCENT_CI"
+  },
+  "solver_policy": {
+    "interface": "gurobi_direct",
+    "threads": 1,
+    "fallback": false,
+    "numerical_policy": "R3_FROZEN_CORRECTNESS_NUMERICAL_POLICY"
+  }
+}
