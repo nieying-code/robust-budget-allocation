@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "scope": "R6_A_SOURCE_INVENTORY_NO_SCIENTIFIC_SOLVES",
+  "extraction_date": "2026-08-31",
+  "local_sources": [
+    {
+      "file": "Pre-positioning of emergency supplies for disaster response.pdf",
+      "role": "PRIMARY_GULF_COAST_SOURCE",
+      "sha256": "77cc3f65561458d05912ea8cce7e7eab2ca8d225dd07fb6a3a462df814d0fef9"
+    },
+    {
+      "file": "Scenario‑robust pre‑disaster planning for multiple relief.pdf",
+      "role": "RAWLS_RECONSTRUCTION_CROSS_CHECK",
+      "sha256": "d46bb71acc45838ff5106bb652fd6732bdfc1f42a5f8c1c18614f576e7e84579"
+    },
+    {
+      "file": "A distributionally robust optimization approach for pre positioning in humanitarian relief Joint Physical and Production Capacity Reserve strategy.pdf",
+      "role": "CATEGORY_SURVIVABILITY_CALIBRATION",
+      "sha256": "393d5dc7a8b26518eba684c99095ad0ebd30cded84a255f7f85b71db7df9970a"
+    },
+    {
+      "file": "Supplier selection and pre-positioning strategy in humanitarian relief.pdf",
+      "role": "AUXILIARY_CROSS_CHECK_ONLY",
+      "sha256": "701d961b2667b52166e4f3edf5310af4bc65ffceffd758024f0321f8e53c485a"
+    },
+    {
+      "file": "Optimizing emergency supply pre-positioning for disaster relief A two-stage distributionally robust approach.pdf",
+      "role": "METHODOLOGICAL_AUXILIARY_NOT_GULF_COAST_PROVENANCE",
+      "sha256": "26f23aa9c9392d3836f4995b3dad334df1272d4beb8c748acc1dd600d6a64383"
+    },
+    {
+      "file": "data for demand.xlsx",
+      "role": "HU_DONG_AUXILIARY_WORKBOOK_CROSS_CHECK_ONLY",
+      "sha256": "9fecca118316d235f128649e09aef4365d22196ae902443374f7b3808a3e7e38",
+      "verified_region": "scenario!A1:AA41",
+      "nonempty_scenario_rows": 40,
+      "demand_columns": 25,
+      "probability_sum": 1.0
+    }
+  ],
+  "web_sources": [
+    {
+      "id": "CDC_PRICE_2025_2026",
+      "title": "CDC Vaccine Price List, 2025-2026 Adult Influenza Vaccine Price List",
+      "url": "https://archive.cdc.gov/www_cdc_gov/vaccines/programs/vfc/awardees/vaccine-management/price-list/2025/2025-09-26.html",
+      "selected_field": "Fluarix TIV, NDC 58160-0912-52, CDC cost/dose USD 13.916, contract 75D30125D20401"
+    },
+    {
+      "id": "CDC_SHELTER_INFLUENZA",
+      "title": "CDC Guidance for Emergency Shelters for the 2009-2010 Flu Season",
+      "url": "https://archive.cdc.gov/www_cdc_gov/h1n1flu/guidance/emergencyshelters.htm",
+      "selected_field": "displaced persons, shared living space, crowding, and influenza transmission rationale"
+    },
+    {
+      "id": "CDC_VACCINE_STORAGE",
+      "title": "Storage and Handling of Immunobiologics",
+      "url": "https://www.cdc.gov/vaccines/hcp/imz-best-practices/storage-handling-immunobiologics.html",
+      "selected_field": "refrigerated vaccines require 2-8 C storage"
+    },
+    {
+      "id": "DLA_MRE_ENERGY",
+      "title": "Defense Logistics Agency Meal, Ready-to-Eat",
+      "url": "https://www.dla.mil/Troop-Support/Subsistence/Operational-rations/mre/",
+      "selected_field": "one MRE averages 1250 kilocalories"
+    },
+    {
+      "id": "CT_CRACKERS_NUTRITION",
+      "title": "Connecticut Department of Education Acceptable Foods List - Crackers",
+      "url": "https://portal.ct.gov/-/media/sde/nutrition/hfc/fblist/acceptable_foods_list_02_crackers.pdf",
+      "selected_field": "MJM Savory Bites Whole Grain Wheat Crackers, 22 g, 90 kcal"
+    }
+  ],
+  "formal_scientific_runs": 0
+}

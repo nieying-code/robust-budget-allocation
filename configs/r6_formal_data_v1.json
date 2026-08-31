@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "scope": "R6_A_FORMAL_DATA_PREPARATION_NO_SCIENTIFIC_SOLVES",
+  "active_commodities": ["Water", "Seasonal Influenza Vaccine", "Crackers"],
+  "tau_months": 6,
+  "rawls_units": {
+    "water": "1000 gallons",
+    "mre": "1000 meals",
+    "medical": "single abstract medical units"
+  },
+  "demand_normalization": {
+    "water_multiplier": 1000,
+    "vaccine_multiplier_numerator": 140,
+    "vaccine_multiplier_denominator": 13.916,
+    "crackers_multiplier": 14000
+  },
+  "commodity_parameters": {
+    "Water": {
+      "service_unit": "1 gallon",
+      "q_unit_cost": 0.6477,
+      "storage_horizon_cost": 0.0,
+      "retention": 1.0,
+      "priority": 1.5
+    },
+    "Seasonal Influenza Vaccine": {
+      "service_unit": "1 dose",
+      "q_unit_cost": 13.916,
+      "storage_horizon_cost": 0.5,
+      "retention": 1.0,
+      "priority": 2.5
+    },
+    "Crackers": {
+      "service_unit": "22 g standardized serving",
+      "q_unit_cost": 0.09372,
+      "storage_horizon_cost": 0.0,
+      "retention": 0.9,
+      "priority": 1.0
+    }
+  },
+  "shortage_beta": 4.0,
+  "flexibility": {
+    "baseline_phi": 0.2,
+    "baseline_psi": 0.85,
+    "split_sensitivity": [[0.1, 0.95], [0.2, 0.85], [0.3, 0.75]]
+  },
+  "reliability": {
+    "eta": [0.0, 0.5, 0.8],
+    "cost_ratios": [0.0, 0.1, 0.25]
+  },
+  "category_mapping": {
+    "0": {"q_availability": 1.0, "disruption": 0.0},
+    "1": {"q_availability": 0.8, "disruption": 0.1},
+    "2": {"q_availability": 0.6, "disruption": 0.3},
+    "3": {"q_availability": 0.4, "disruption": 0.6},
+    "4": {"q_availability": 0.2, "disruption": 1.0},
+    "5": {"q_availability": 0.0, "disruption": 1.0}
+  },
+  "hurricanes": [
+    {"id": "h01", "category": 3, "water": 350, "mre": 525, "medical": 500},
+    {"id": "h02", "category": 5, "water": 560, "mre": 927, "medical": 883},
+    {"id": "h03", "category": 2, "water": 861, "mre": 181, "medical": 402},
+    {"id": "h04", "category": 2, "water": 9000, "mre": 1692, "medical": 3760},
+    {"id": "h05", "category": 4, "water": 7500, "mre": 1771, "medical": 1687},
+    {"id": "h06", "category": 3, "water": 1000, "mre": 1838, "medical": 1751},
+    {"id": "h07", "category": 2, "water": 600, "mre": 324, "medical": 720},
+    {"id": "h08", "category": 1, "water": 1500, "mre": 162, "medical": 360},
+    {"id": "h09", "category": 5, "water": 1040, "mre": 13300, "medical": 95000},
+    {"id": "h10", "category": 2, "water": 2250, "mre": 1125, "medical": 18750},
+    {"id": "h11", "category": 3, "water": 5000, "mre": 1750, "medical": 12500},
+    {"id": "h12", "category": 3, "water": 18000, "mre": 630, "medical": 4500},
+    {"id": "h13", "category": 3, "water": 2818, "mre": 80, "medical": 571},
+    {"id": "h14", "category": 4, "water": 2239, "mre": 1477, "medical": 10551},
+    {"id": "h15", "category": 4, "water": 4400, "mre": 3921, "medical": 28007}
+  ],
+  "scenarios": [
+    {"id": "omega_01", "hurricanes": ["h01"], "probability": 0.02308},
+    {"id": "omega_02", "hurricanes": ["h05"], "probability": 0.05},
+    {"id": "omega_03", "hurricanes": ["h10"], "probability": 0.16167},
+    {"id": "omega_04", "hurricanes": ["h03"], "probability": 0.05363},
+    {"id": "omega_05", "hurricanes": ["h02"], "probability": 0.00925},
+    {"id": "omega_06", "hurricanes": ["h12"], "probability": 0.03083},
+    {"id": "omega_07", "hurricanes": ["h13"], "probability": 0.1338},
+    {"id": "omega_08", "hurricanes": ["h04"], "probability": 0.05363},
+    {"id": "omega_09", "hurricanes": ["h11"], "probability": 0.02295},
+    {"id": "omega_10", "hurricanes": ["h14"], "probability": 0.02295},
+    {"id": "omega_11", "hurricanes": ["h15"], "probability": 0.02295},
+    {"id": "omega_12", "hurricanes": ["h07"], "probability": 0.05363},
+    {"id": "omega_13", "hurricanes": ["h09"], "probability": 0.05},
+    {"id": "omega_14", "hurricanes": ["h08"], "probability": 0.0308},
+    {"id": "omega_15", "hurricanes": ["h06"], "probability": 0.03083},
+    {"id": "omega_16", "hurricanes": ["h01", "h02"], "probability": 0.0046},
+    {"id": "omega_17", "hurricanes": ["h01", "h04"], "probability": 0.0057},
+    {"id": "omega_18", "hurricanes": ["h01", "h07"], "probability": 0.0057},
+    {"id": "omega_19", "hurricanes": ["h10", "h02"], "probability": 0.006},
+    {"id": "omega_20", "hurricanes": ["h10", "h13"], "probability": 0.0261},
+    {"id": "omega_21", "hurricanes": ["h10", "h09"], "probability": 0.0125},
+    {"id": "omega_22", "hurricanes": ["h10", "h08"], "probability": 0.0094},
+    {"id": "omega_23", "hurricanes": ["h02", "h05"], "probability": 0.005},
+    {"id": "omega_24", "hurricanes": ["h02", "h06"], "probability": 0.0047},
+    {"id": "omega_25", "hurricanes": ["h12", "h01"], "probability": 0.0052},
+    {"id": "omega_26", "hurricanes": ["h12", "h03"], "probability": 0.0061},
+    {"id": "omega_27", "hurricanes": ["h12", "h02"], "probability": 0.0047},
+    {"id": "omega_28", "hurricanes": ["h12", "h04"], "probability": 0.0061},
+    {"id": "omega_29", "hurricanes": ["h12", "h14"], "probability": 0.0052},
+    {"id": "omega_30", "hurricanes": ["h13", "h02"], "probability": 0.0057},
+    {"id": "omega_31", "hurricanes": ["h13", "h08"], "probability": 0.0086},
+    {"id": "omega_32", "hurricanes": ["h04", "h02"], "probability": 0.005},
+    {"id": "omega_33", "hurricanes": ["h11", "h05"], "probability": 0.0056},
+    {"id": "omega_34", "hurricanes": ["h11", "h12"], "probability": 0.0052},
+    {"id": "omega_35", "hurricanes": ["h11", "h13"], "probability": 0.0075},
+    {"id": "omega_36", "hurricanes": ["h11", "h07"], "probability": 0.0057},
+    {"id": "omega_37", "hurricanes": ["h14", "h03"], "probability": 0.0057},
+    {"id": "omega_38", "hurricanes": ["h14", "h06"], "probability": 0.0052},
+    {"id": "omega_39", "hurricanes": ["h15", "h05"], "probability": 0.0056},
+    {"id": "omega_40", "hurricanes": ["h15", "h07"], "probability": 0.0057},
+    {"id": "omega_41", "hurricanes": ["h15", "h13"], "probability": 0.0075},
+    {"id": "omega_42", "hurricanes": ["h15", "h14"], "probability": 0.005},
+    {"id": "omega_43", "hurricanes": ["h09", "h01"], "probability": 0.0056},
+    {"id": "omega_44", "hurricanes": ["h09", "h14"], "probability": 0.0056},
+    {"id": "omega_45", "hurricanes": ["h08", "h05"], "probability": 0.006},
+    {"id": "omega_46", "hurricanes": ["h08", "h03"], "probability": 0.0061},
+    {"id": "omega_47", "hurricanes": ["h08", "h07"], "probability": 0.0061},
+    {"id": "omega_48", "hurricanes": ["h06", "h05"], "probability": 0.006},
+    {"id": "omega_49", "hurricanes": ["h06", "h03"], "probability": 0.0061},
+    {"id": "omega_50", "hurricanes": ["h06", "h07"], "probability": 0.0061},
+    {"id": "omega_51", "hurricanes": [], "probability": 0.0174}
+  ]
+}
