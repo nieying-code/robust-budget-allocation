@@ -40,10 +40,10 @@
   ],
   "web_sources": [
     {
-      "id": "CDC_PRICE_2025_2026",
-      "title": "CDC Vaccine Price List, 2025-2026 Adult Influenza Vaccine Price List",
-      "url": "https://archive.cdc.gov/www_cdc_gov/vaccines/programs/vfc/awardees/vaccine-management/price-list/2025/2025-09-26.html",
-      "selected_field": "Fluarix TIV, NDC 58160-0912-52, CDC cost/dose USD 13.916, contract 75D30125D20401"
+      "id": "CDC_PRICE_2026_2027",
+      "title": "CDC 2026-2027 Adult Influenza Vaccine Price List",
+      "url": "https://www.cdc.gov/vaccines-for-children/media/pdfs/2026/07/Adult-Influenza-Vaccine-Price-List-08-03-26.pdf",
+      "selected_field": "Fluarix TIV, age 6 months and older, NDC 58160-0725-52, 10-pack single-dose syringe, CDC cost/dose USD 13.916, contract end 2027-02-28, GSK contract 75D30126D20714"
     },
     {
       "id": "CDC_SHELTER_INFLUENZA",
