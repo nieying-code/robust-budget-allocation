@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "document_type": "R6_A_FORMAL_DATA_PREPARATION_DELIVERY",
+  "status": "R6_DATA_STAGE_READY_FOR_REVIEW",
+  "base": {
+    "commit": "a79fca07cb63f900f5a81ecc0b7a0d86c8d71e3c",
+    "tree": "15f8d9a5891858802127fb837a306f35a723a9f6",
+    "contains_r5_merge": true
+  },
+  "clean_execution_source": {
+    "commit": "6444b773936be290e061fe53f209539e41383639",
+    "tree": "58eda6dffe95f17d0fc4c239b39e354d06102562"
+  },
+  "active_commodities": [
+    "Water",
+    "Seasonal Influenza Vaccine",
+    "Crackers"
+  ],
+  "scenario_reconstruction": {
+    "hurricanes": 15,
+    "scenarios": 51,
+    "single": 15,
+    "combined": 35,
+    "no_hurricane": 1,
+    "probability_sum": 1.0,
+    "rawls_yang_cross_check": "PASS"
+  },
+  "formal_ready_data": {
+    "path": "configs/r6_formal_ready_data_v1.json",
+    "data_sha256": "9ab55aa9ae7484318c88db632c3b0808b945a3d8ab4adeb0572680b248274cf2",
+    "vaccine_multiplier": 10.0603621730382,
+    "crackers_multiplier": 14000.0,
+    "reference_budget": 7975014.2749022,
+    "scale_guard_flags": []
+  },
+  "flexible_capacity": {
+    "Water": 27000000.0,
+    "Seasonal Influenza Vaccine": 1144366.1971831,
+    "Crackers": 206878000.0,
+    "rule": "maximum_transformed_demand_over_51_source_scenarios"
+  },
+  "tests": {
+    "focused": "9 passed",
+    "full_solver_free": "896 passed, 1 skipped, 106 deselected",
+    "deterministic_regeneration": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "execution_counts": {
+    "formal_m0_runs": 0,
+    "formal_m1_runs": 0,
+    "formal_m2_runs": 0,
+    "formal_ef_runs": 0,
+    "formal_a0_runs": 0,
+    "formal_a1_runs": 0,
+    "sensitivity_runs": 0,
+    "oos_runs": 0
+  },
+  "stage_gates": {
+    "r6_b_started": false,
+    "r7_started": false,
+    "merge_authorized": false
+  },
+  "open_scientific_blocks": []
+}
