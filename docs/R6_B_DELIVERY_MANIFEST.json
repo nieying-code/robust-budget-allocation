@@ -47,6 +47,7 @@
   "tests": {
     "targeted_r6_b": "12 passed",
     "focused_solver_free_regression": "53 passed, 4 deselected",
+    "full_solver_free_regression": "910 passed, 1 skipped, 106 deselected",
     "deterministic_regeneration": "PASS",
     "git_diff_check": "PASS"
   },
