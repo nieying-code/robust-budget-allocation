@@ -29,6 +29,15 @@ def test_r6_delivery_manifest_stops_before_scientific_execution():
         "r7_started": False,
         "merge_authorized": False,
     }
+    assert manifest["q_survivability_revision"] == {
+        "category_1_to_5": [0.9, 0.85, 0.8, 0.75, 0.7],
+        "classification": "RESEARCH_DESIGN_CALIBRATION",
+        "rule": "Cat1=0.90; subtract 0.05 per category; Cat5=0.70",
+        "anchor": "R5 Pilot severe-state Q availability",
+        "empirical_hurricane_damage_estimate": False,
+        "formal_scientific_runs_before_revision": 0,
+        "formal_optimization_result_driven": False,
+    }
     assert manifest["open_scientific_blocks"] == []
 
 

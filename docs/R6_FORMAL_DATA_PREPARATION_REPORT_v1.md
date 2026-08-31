@@ -18,7 +18,7 @@ Rawls and Turnquist (2010) is the primary Gulf Coast source. Tables 2-4 provide 
 
 The source structure is exactly 15 single-hurricane scenarios, 35 two-hurricane scenarios, and one no-hurricane scenario. The probabilities sum to 1.0. Combined demands are sums of the source event demands; the registered combined category is the maximum constituent category. The no-hurricane row has zero demand, `rho_Q=1`, and `delta_F=0`.
 
-The JPPR paper supplies literature-calibrated category case settings, not observed damage rates. Hu and Dong and its Mendeley workbook are auxiliary only: the workbook has one effective region `scenario!A1:AA41`, 40 non-empty scenario rows, 25 demand columns, and probability sum 1. It is not an 81-scenario Rawls source and contributes no active Formal calculation. The separate Yunnan/tent paper is methodological auxiliary material and is not Gulf Coast provenance.
+The JPPR paper's Q-survivability values were audited as numerical case settings rather than historical hurricane-damage estimates and are not mechanically inherited by this different research question. Active `rho_Q` is instead a predeclared `RESEARCH_DESIGN_CALIBRATION`: Cat1 is 0.90, each category step reduces availability by 0.05, and Cat5 is 0.70, anchored at the R5 Pilot severe-state Q availability. This revision occurs before R6-B and while Formal scientific runs remain zero; it is not result-driven. JPPR's F-disruption case setting remains unchanged and is not described as an observed damage rate. Hu and Dong and its Mendeley workbook are auxiliary only: the workbook has one effective region `scenario!A1:AA41`, 40 non-empty scenario rows, 25 demand columns, and probability sum 1. It is not an 81-scenario Rawls source and contributes no active Formal calculation. The separate Yunnan/tent paper is methodological auxiliary material and is not Gulf Coast provenance.
 
 Detailed source identities and SHA-256 values are in `docs/evidence/R6_SOURCE_INVENTORY_v1.json`; field-level classifications are in `docs/evidence/R6_FORMAL_DATA_PROVENANCE_v1.csv`.
 
@@ -56,11 +56,11 @@ Reliability remains `eta=(0,0.50,0.80)` with premium ratios `(0,0.10,0.25)`. It 
 
 | Category | rho_Q | delta_F |
 | ---: | ---: | ---: |
-| 1 | 0.80 | 0.10 |
-| 2 | 0.60 | 0.30 |
-| 3 | 0.40 | 0.60 |
-| 4 | 0.20 | 1.00 |
-| 5 | 0.00 | 1.00 |
+| 1 | 0.90 | 0.10 |
+| 2 | 0.85 | 0.30 |
+| 3 | 0.80 | 0.60 |
+| 4 | 0.75 | 1.00 |
+| 5 | 0.70 | 1.00 |
 
 ## 5. Capacity and reference budget
 

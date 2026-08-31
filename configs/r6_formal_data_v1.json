@@ -49,11 +49,11 @@
   },
   "category_mapping": {
     "0": {"q_availability": 1.0, "disruption": 0.0},
-    "1": {"q_availability": 0.8, "disruption": 0.1},
-    "2": {"q_availability": 0.6, "disruption": 0.3},
-    "3": {"q_availability": 0.4, "disruption": 0.6},
-    "4": {"q_availability": 0.2, "disruption": 1.0},
-    "5": {"q_availability": 0.0, "disruption": 1.0}
+    "1": {"q_availability": 0.9, "disruption": 0.1},
+    "2": {"q_availability": 0.85, "disruption": 0.3},
+    "3": {"q_availability": 0.8, "disruption": 0.6},
+    "4": {"q_availability": 0.75, "disruption": 1.0},
+    "5": {"q_availability": 0.7, "disruption": 1.0}
   },
   "hurricanes": [
     {"id": "h01", "category": 3, "water": 350, "mre": 525, "medical": 500},
