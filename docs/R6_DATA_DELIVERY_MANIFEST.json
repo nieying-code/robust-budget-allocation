@@ -11,6 +11,15 @@
     "commit": "6444b773936be290e061fe53f209539e41383639",
     "tree": "58eda6dffe95f17d0fc4c239b39e354d06102562"
   },
+  "provenance_correction_source": {
+    "commit": "53752847e4874b42808f303d3b1ca17146a59452",
+    "tree": "12bf683fcbabeedb4e25f40ba530b24b87a613f7",
+    "change": "CDC 2026-2027 Fluarix TIV provenance; numerical data unchanged",
+    "cdc_cost_per_dose": 13.916,
+    "ndc": "58160-0725-52",
+    "contract": "75D30126D20714",
+    "contract_end": "2027-02-28"
+  },
   "active_commodities": [
     "Water",
     "Seasonal Influenza Vaccine",
@@ -40,8 +49,8 @@
     "rule": "maximum_transformed_demand_over_51_source_scenarios"
   },
   "tests": {
-    "focused": "9 passed",
-    "full_solver_free": "896 passed, 1 skipped, 106 deselected",
+    "focused": "10 passed",
+    "full_solver_free": "897 passed, 1 skipped, 106 deselected",
     "deterministic_regeneration": "PASS",
     "git_diff_check": "PASS"
   },
