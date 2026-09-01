@@ -21,7 +21,7 @@ from robust_budget_allocation.algorithms.qfr_standard_ccg import solve_qfr_stand
 from robust_budget_allocation.data.qfr_data import QFRData
 from robust_budget_allocation.io.atomic import atomic_write_json, atomic_write_text
 from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_file
-from robust_budget_allocation.reproducibility.git_state import inspect_git_state, validate_source_state
+from robust_budget_allocation.reproducibility.git_state import inspect_git_state, require_tracked_files
 from robust_budget_allocation.runtime.environment import ensure_preflight_once
 
 
@@ -235,11 +235,10 @@ def solver_free_preflight(repo_root: Path, *, execution_gate: bool = False) -> d
         output_root = root / execution["output_root"]
         if output_root.exists():
             raise FileExistsError(f"Formal output root already exists: {output_root}")
-        source = validate_source_state(
-            root,
-            required_tracked_paths=[root / path for path in SOURCE_PATHS],
-            scientific_roots=("src", "configs", "scripts", "tests"),
-        )
+        tracked_inputs = require_tracked_files(root, [root / path for path in SOURCE_PATHS])
+        source = state.to_dict()
+        source["tracked_input_paths"] = tracked_inputs
+        source["untracked_scientific_paths"] = ()
     return {
         "status": "PASS",
         "formal_ready_data_path": authority["paths"]["formal_ready_data"],
