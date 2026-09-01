@@ -20,7 +20,7 @@ from robust_budget_allocation.algorithms.qfr_protocol import solver_configuratio
 from robust_budget_allocation.algorithms.qfr_standard_ccg import solve_qfr_standard_ccg
 from robust_budget_allocation.data.qfr_data import QFRData
 from robust_budget_allocation.io.atomic import atomic_write_json, atomic_write_text
-from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_file
+from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_bytes, sha256_file
 from robust_budget_allocation.reproducibility.git_state import inspect_git_state, require_tracked_files
 from robust_budget_allocation.runtime.environment import ensure_preflight_once
 
@@ -518,6 +518,14 @@ def _load_and_validate_raw(path: Path, ready: Mapping[str, Any], expected_case: 
     seal = bare.pop("case_result_sha256", None)
     if seal != canonical_json_sha256(bare) or result.get("case") != expected_case:
         raise ValueError(f"raw E1 case seal/identity mismatch: {path.name}")
+    if (
+        result.get("scope") != "R7_E1_FORMAL_CASE"
+        or result.get("certification_chain") != ["EF", "A0", "A1_full"]
+        or result.get("formal_scientific_runs") != 1
+        or result.get("timing_repetitions") != 0
+        or result.get("formal_data_sha256") != EXPECTED_DATA_SHA256
+    ):
+        raise ValueError(f"raw E1 execution scope mismatch: {path.name}")
     data = build_case_data(ready, float(expected_case["budget_ratio"]))
     validate_three_certificate(data, result["ef"], result["a0"], result["a1"], result["certificate"], expected_model_kind=str(expected_case["model_kind"]))
     expected_diagnostics = _case_diagnostics(ready, data, expected_case, result["ef"], result["a0"], result["a1"], result["certificate"])
@@ -596,7 +604,32 @@ def replay_delivery(repo_root: Path) -> dict[str, Any]:
         raise ValueError("R7-E1 manifest seal mismatch")
     if manifest["case_count"] != 9 or manifest["certificate_pass_count"] != 9 or manifest["formal_scientific_runs"] != 9:
         raise ValueError("R7-E1 manifest completeness mismatch")
+    if manifest.get("e2_e5_runs") != 0 or manifest.get("invalid_or_incomplete_runs") != 0:
+        raise ValueError("R7-E1 manifest contamination or invalid-run mismatch")
+    source = manifest["source"]
+    git = source["git"]
+    commit = str(git["commit_sha"])
+    if _git(root, "show", "-s", "--format=%T", commit) != git["tree_sha"]:
+        raise ValueError("R7-E1 anchored execution tree mismatch")
+    if tuple(git["tracked_input_paths"]) != SOURCE_PATHS or git["tracked_dirty"] is not False or git["untracked_paths"]:
+        raise ValueError("R7-E1 anchored execution source-state mismatch")
+    if [row["path"] for row in source["files"]] != list(SOURCE_PATHS):
+        raise ValueError("R7-E1 anchored source-file inventory mismatch")
+    for row in source["files"]:
+        anchored = subprocess.run(
+            ["git", "-C", str(root), "show", f"{commit}:{row['path']}"],
+            check=True, capture_output=True,
+        ).stdout
+        if sha256_bytes(anchored) != row["sha256"]:
+            raise ValueError(f"R7-E1 anchored source hash mismatch: {row['path']}")
     inventory_lines = (output / "HASHES.sha256").read_text(encoding="utf-8").splitlines()
+    expected_inventory = sorted([
+        *(f"raw/{name}" for name in expected_names),
+        "summary.json", "manifest.json", "RUN_STATE.json", "REPORT.md",
+    ])
+    observed_inventory = sorted(line.split("  ", 1)[1] for line in inventory_lines)
+    if observed_inventory != expected_inventory:
+        raise ValueError("R7-E1 hash inventory path set mismatch")
     for line in inventory_lines:
         digest, relative = line.split("  ", 1)
         if sha256_file(output / relative) != digest:

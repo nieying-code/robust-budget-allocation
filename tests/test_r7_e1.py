@@ -13,6 +13,7 @@ from robust_budget_allocation.formal.e1 import (
     build_case_data,
     initialize_output_root,
     load_authorities,
+    replay_delivery,
     solver_free_preflight,
 )
 
@@ -85,3 +86,13 @@ def test_execution_policy_has_no_e5_ablation_or_timing_repetitions():
     assert execution["a1_memory_phase_enabled"] is True
     assert execution["timing_protocol"] == "NO_TIMING_REPETITIONS_E1"
     assert "A1_no_memory" not in str(execution)
+
+
+def test_committed_r7_e1_delivery_replays():
+    assert replay_delivery(ROOT) == {
+        "status": "PASS",
+        "case_count": 9,
+        "certificate_pass_count": 9,
+        "manifest_sha256": "177485800b5bbc50fe15e0e1d13a6188a5c6d617ba889207815ba7d5c79a6780",
+        "summary_sha256": "0f57260985ed97d677860f99fc71fae8c9c39838d13db2ddefa5a62dc259bfd6",
+    }

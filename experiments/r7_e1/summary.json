@@ -1,0 +1,2275 @@
+{
+  "case_count": 9,
+  "e2_e5_runs": 0,
+  "formal_scientific_runs": 9,
+  "invalid_or_incomplete_runs": 0,
+  "rows": [
+    {
+      "C_F": 0.0,
+      "C_Q": 7177512.847411981,
+      "C_R": 0.0,
+      "F_active": false,
+      "Q_F_mix_commodities": [],
+      "active_worst_scenario": {
+        "category": 5,
+        "delta": {
+          "Crackers": 1.0,
+          "Seasonal Influenza Vaccine": 1.0,
+          "Water": 1.0
+        },
+        "hurricanes": [
+          "h10",
+          "h09"
+        ],
+        "rhoQ": {
+          "Crackers": 0.7,
+          "Seasonal Influenza Vaccine": 0.7,
+          "Water": 0.7
+        },
+        "scenario_id": "omega_21"
+      },
+      "allocation": {
+        "Crackers": {
+          "F_ir": {},
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {},
+          "aggregate_F_i": 0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {},
+          "selected_R_level": null
+        },
+        "Seasonal Influenza Vaccine": {
+          "F_ir": {},
+          "F_quantity_share": 0.0,
+          "Q_i": 497885.1864187001,
+          "Q_quantity_share": 1.0,
+          "R_decision": {},
+          "aggregate_F_i": 0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 7177512.847411981,
+            "C_R": 0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 1.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {},
+          "selected_R_level": null
+        },
+        "Water": {
+          "F_ir": {},
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {},
+          "aggregate_F_i": 0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {},
+          "selected_R_level": null
+        }
+      },
+      "budget": 7177512.847411981,
+      "budget_ratio": 0.9,
+      "case_id": "B0.90_M0",
+      "certificate_status": "PASS",
+      "experiment_identity": "967ba42ec0b7b44067c3275eb1cef8f4a1469741efa99ad8ab9de4f06844ed9b",
+      "final_gap": 0.0,
+      "formal_UB": 206420135.06799376,
+      "model_kind": "M0",
+      "objective": 206420135.06799376,
+      "paid_R_active": false,
+      "probability_weighted_total_shortage": 33805352.26569506,
+      "selected_R_levels": {
+        "Crackers": null,
+        "Seasonal Influenza Vaccine": null,
+        "Water": null
+      },
+      "worst_case_shortage": 210870361.65723327
+    },
+    {
+      "C_F": 0.0,
+      "C_Q": 7177512.847411981,
+      "C_R": 0.0,
+      "F_active": false,
+      "Q_F_mix_commodities": [],
+      "active_worst_scenario": {
+        "category": 5,
+        "delta": {
+          "Crackers": 1.0,
+          "Seasonal Influenza Vaccine": 1.0,
+          "Water": 1.0
+        },
+        "hurricanes": [
+          "h10",
+          "h09"
+        ],
+        "rhoQ": {
+          "Crackers": 0.7,
+          "Seasonal Influenza Vaccine": 0.7,
+          "Water": 0.7
+        },
+        "scenario_id": "omega_21"
+      },
+      "allocation": {
+        "Crackers": {
+          "F_ir": {
+            "0": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 1
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0
+          },
+          "selected_R_level": 0
+        },
+        "Seasonal Influenza Vaccine": {
+          "F_ir": {
+            "0": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 497885.1864187001,
+          "Q_quantity_share": 1.0,
+          "R_decision": {
+            "0": 1
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 7177512.847411981,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 1.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0
+          },
+          "selected_R_level": 0
+        },
+        "Water": {
+          "F_ir": {
+            "0": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 1
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0
+          },
+          "selected_R_level": 0
+        }
+      },
+      "budget": 7177512.847411981,
+      "budget_ratio": 0.9,
+      "case_id": "B0.90_M1",
+      "certificate_status": "PASS",
+      "experiment_identity": "24a0f200c779d8b323eaf7cbefe992e471e17e9964a242dd0d2781c9b6996d85",
+      "final_gap": 0.0,
+      "formal_UB": 206420135.06799376,
+      "model_kind": "M1",
+      "objective": 206420135.0679938,
+      "paid_R_active": false,
+      "probability_weighted_total_shortage": 33805352.26569506,
+      "selected_R_levels": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 0,
+        "Water": 0
+      },
+      "worst_case_shortage": 210870361.65723327
+    },
+    {
+      "C_F": 1270356.2561791115,
+      "C_Q": 0.0,
+      "C_R": 1587945.3202238895,
+      "F_active": true,
+      "Q_F_mix_commodities": [],
+      "active_worst_scenario": {
+        "category": 5,
+        "delta": {
+          "Crackers": 1.0,
+          "Seasonal Influenza Vaccine": 1.0,
+          "Water": 1.0
+        },
+        "hurricanes": [
+          "h10",
+          "h09"
+        ],
+        "rhoQ": {
+          "Crackers": 0.7,
+          "Seasonal Influenza Vaccine": 0.7,
+          "Water": 0.7
+        },
+        "scenario_id": "omega_21"
+      },
+      "allocation": {
+        "Crackers": {
+          "F_ir": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 1,
+            "1": 0,
+            "2": 0
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "selected_R_level": 0
+        },
+        "Seasonal Influenza Vaccine": {
+          "F_ir": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 456437.286640957
+          },
+          "F_quantity_share": 1.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 0,
+            "1": 0,
+            "2": 1
+          },
+          "aggregate_F_i": 456437.286640957,
+          "budget_components": {
+            "C_F": 1270356.2561791115,
+            "C_Q": 0.0,
+            "C_R": 1587945.3202238895
+          },
+          "budget_shares": {
+            "F": 0.17699115044247787,
+            "Q": 0.0,
+            "R": 0.22123893805309733
+          },
+          "reservation_allocation": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 456437.286640957
+          },
+          "selected_R_level": 2
+        },
+        "Water": {
+          "F_ir": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 1,
+            "1": 0,
+            "2": 0
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "selected_R_level": 0
+        }
+      },
+      "budget": 7177512.847411981,
+      "budget_ratio": 0.9,
+      "case_id": "B0.90_M2",
+      "certificate_status": "PASS",
+      "experiment_identity": "c952ffe67d115820e0669449560ddb534e1208cdc7b3d24ad174198e366bfe51",
+      "final_gap": 0.0,
+      "formal_UB": 204105876.60024768,
+      "model_kind": "M2",
+      "objective": 204105876.6002477,
+      "paid_R_active": true,
+      "probability_weighted_total_shortage": 33804167.94034456,
+      "selected_R_levels": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 2,
+        "Water": 0
+      },
+      "worst_case_shortage": 210853731.4584136
+    },
+    {
+      "C_F": 0.0,
+      "C_Q": 7975014.274902201,
+      "C_R": 0.0,
+      "F_active": false,
+      "Q_F_mix_commodities": [],
+      "active_worst_scenario": {
+        "category": 5,
+        "delta": {
+          "Crackers": 1.0,
+          "Seasonal Influenza Vaccine": 1.0,
+          "Water": 1.0
+        },
+        "hurricanes": [
+          "h10",
+          "h09"
+        ],
+        "rhoQ": {
+          "Crackers": 0.7,
+          "Seasonal Influenza Vaccine": 0.7,
+          "Water": 0.7
+        },
+        "scenario_id": "omega_21"
+      },
+      "allocation": {
+        "Crackers": {
+          "F_ir": {},
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {},
+          "aggregate_F_i": 0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {},
+          "selected_R_level": null
+        },
+        "Seasonal Influenza Vaccine": {
+          "F_ir": {},
+          "F_quantity_share": 0.0,
+          "Q_i": 553205.7626874446,
+          "Q_quantity_share": 1.0,
+          "R_decision": {},
+          "aggregate_F_i": 0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 7975014.274902201,
+            "C_R": 0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 1.0000000000000002,
+            "R": 0.0
+          },
+          "reservation_allocation": {},
+          "selected_R_level": null
+        },
+        "Water": {
+          "F_ir": {},
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {},
+          "aggregate_F_i": 0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {},
+          "selected_R_level": null
+        }
+      },
+      "budget": 7975014.2749022,
+      "budget_ratio": 1.0,
+      "case_id": "B1.00_M0",
+      "certificate_status": "PASS",
+      "experiment_identity": "231581a3e80736d4444ff2ca443488986ef0fd47ac7c427ecc3c5c6ba507a02a",
+      "final_gap": 0.0,
+      "formal_UB": 201828748.51999304,
+      "model_kind": "M0",
+      "objective": 201828748.51999304,
+      "paid_R_active": false,
+      "probability_weighted_total_shortage": 33802425.80939109,
+      "selected_R_levels": {
+        "Crackers": null,
+        "Seasonal Influenza Vaccine": null,
+        "Water": null
+      },
+      "worst_case_shortage": 210831637.25384516
+    },
+    {
+      "C_F": 0.0,
+      "C_Q": 7975014.274902201,
+      "C_R": 0.0,
+      "F_active": false,
+      "Q_F_mix_commodities": [],
+      "active_worst_scenario": {
+        "category": 5,
+        "delta": {
+          "Crackers": 1.0,
+          "Seasonal Influenza Vaccine": 1.0,
+          "Water": 1.0
+        },
+        "hurricanes": [
+          "h10",
+          "h09"
+        ],
+        "rhoQ": {
+          "Crackers": 0.7,
+          "Seasonal Influenza Vaccine": 0.7,
+          "Water": 0.7
+        },
+        "scenario_id": "omega_21"
+      },
+      "allocation": {
+        "Crackers": {
+          "F_ir": {
+            "0": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 1
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0
+          },
+          "selected_R_level": 0
+        },
+        "Seasonal Influenza Vaccine": {
+          "F_ir": {
+            "0": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 553205.7626874446,
+          "Q_quantity_share": 1.0,
+          "R_decision": {
+            "0": 1
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 7975014.274902201,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 1.0000000000000002,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0
+          },
+          "selected_R_level": 0
+        },
+        "Water": {
+          "F_ir": {
+            "0": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 1
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0
+          },
+          "selected_R_level": 0
+        }
+      },
+      "budget": 7975014.2749022,
+      "budget_ratio": 1.0,
+      "case_id": "B1.00_M1",
+      "certificate_status": "PASS",
+      "experiment_identity": "1964c0751e660442f0c280d7e9012ba9b97b5cc9fff0ab2f26579a705e7a2559",
+      "final_gap": 0.0,
+      "formal_UB": 201828748.51999304,
+      "model_kind": "M1",
+      "objective": 201828748.51999307,
+      "paid_R_active": false,
+      "probability_weighted_total_shortage": 33802425.80939109,
+      "selected_R_levels": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 0,
+        "Water": 0
+      },
+      "worst_case_shortage": 210831637.25384516
+    },
+    {
+      "C_F": 1411506.9513101238,
+      "C_Q": 0.0,
+      "C_R": 1764383.6891376548,
+      "F_active": true,
+      "Q_F_mix_commodities": [],
+      "active_worst_scenario": {
+        "category": 5,
+        "delta": {
+          "Crackers": 1.0,
+          "Seasonal Influenza Vaccine": 1.0,
+          "Water": 1.0
+        },
+        "hurricanes": [
+          "h10",
+          "h09"
+        ],
+        "rhoQ": {
+          "Crackers": 0.7,
+          "Seasonal Influenza Vaccine": 0.7,
+          "Water": 0.7
+        },
+        "scenario_id": "omega_21"
+      },
+      "allocation": {
+        "Crackers": {
+          "F_ir": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 1,
+            "1": 0,
+            "2": 0
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "selected_R_level": 0
+        },
+        "Seasonal Influenza Vaccine": {
+          "F_ir": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 507152.54071217444
+          },
+          "F_quantity_share": 1.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 0,
+            "1": 0,
+            "2": 1
+          },
+          "aggregate_F_i": 507152.54071217444,
+          "budget_components": {
+            "C_F": 1411506.9513101238,
+            "C_Q": 0.0,
+            "C_R": 1764383.6891376548
+          },
+          "budget_shares": {
+            "F": 0.17699115044247785,
+            "Q": 0.0,
+            "R": 0.22123893805309733
+          },
+          "reservation_allocation": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 507152.54071217444
+          },
+          "selected_R_level": 2
+        },
+        "Water": {
+          "F_ir": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 0,
+            "1": 1,
+            "2": 0
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "selected_R_level": 1
+        }
+      },
+      "budget": 7975014.2749022,
+      "budget_ratio": 1.0,
+      "case_id": "B1.00_M2",
+      "certificate_status": "PASS",
+      "experiment_identity": "01816a394dbf86e3f1d1b026475ecbfdd69dde514c32241dc1f0f5405f2ae59a",
+      "final_gap": 2.9802322387695312e-08,
+      "formal_UB": 199257350.22249743,
+      "model_kind": "M2",
+      "objective": 199257350.2224974,
+      "paid_R_active": true,
+      "probability_weighted_total_shortage": 33801063.98088774,
+      "selected_R_levels": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 2,
+        "Water": 1
+      },
+      "worst_case_shortage": 210813159.2551566
+    },
+    {
+      "C_F": 0.0,
+      "C_Q": 8772515.702392422,
+      "C_R": 0.0,
+      "F_active": false,
+      "Q_F_mix_commodities": [],
+      "active_worst_scenario": {
+        "category": 5,
+        "delta": {
+          "Crackers": 1.0,
+          "Seasonal Influenza Vaccine": 1.0,
+          "Water": 1.0
+        },
+        "hurricanes": [
+          "h10",
+          "h09"
+        ],
+        "rhoQ": {
+          "Crackers": 0.7,
+          "Seasonal Influenza Vaccine": 0.7,
+          "Water": 0.7
+        },
+        "scenario_id": "omega_21"
+      },
+      "allocation": {
+        "Crackers": {
+          "F_ir": {},
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {},
+          "aggregate_F_i": 0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {},
+          "selected_R_level": null
+        },
+        "Seasonal Influenza Vaccine": {
+          "F_ir": {},
+          "F_quantity_share": 0.0,
+          "Q_i": 608526.3389561891,
+          "Q_quantity_share": 1.0,
+          "R_decision": {},
+          "aggregate_F_i": 0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 8772515.702392422,
+            "C_R": 0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 1.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {},
+          "selected_R_level": null
+        },
+        "Water": {
+          "F_ir": {},
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {},
+          "aggregate_F_i": 0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {},
+          "selected_R_level": null
+        }
+      },
+      "budget": 8772515.702392422,
+      "budget_ratio": 1.1,
+      "case_id": "B1.10_M0",
+      "certificate_status": "PASS",
+      "experiment_identity": "994b07c0ea6d99dca1d2bdee8d8105202e7fabfcf584741d1fdecc57e080247d",
+      "final_gap": 0.0,
+      "formal_UB": 197237361.97199234,
+      "model_kind": "M0",
+      "objective": 197237361.97199234,
+      "paid_R_active": false,
+      "probability_weighted_total_shortage": 33799571.82086138,
+      "selected_R_levels": {
+        "Crackers": null,
+        "Seasonal Influenza Vaccine": null,
+        "Water": null
+      },
+      "worst_case_shortage": 210792912.850457
+    },
+    {
+      "C_F": 0.0,
+      "C_Q": 8772515.702392422,
+      "C_R": 0.0,
+      "F_active": false,
+      "Q_F_mix_commodities": [],
+      "active_worst_scenario": {
+        "category": 5,
+        "delta": {
+          "Crackers": 1.0,
+          "Seasonal Influenza Vaccine": 1.0,
+          "Water": 1.0
+        },
+        "hurricanes": [
+          "h10",
+          "h09"
+        ],
+        "rhoQ": {
+          "Crackers": 0.7,
+          "Seasonal Influenza Vaccine": 0.7,
+          "Water": 0.7
+        },
+        "scenario_id": "omega_21"
+      },
+      "allocation": {
+        "Crackers": {
+          "F_ir": {
+            "0": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 1
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0
+          },
+          "selected_R_level": 0
+        },
+        "Seasonal Influenza Vaccine": {
+          "F_ir": {
+            "0": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 608526.3389561891,
+          "Q_quantity_share": 1.0,
+          "R_decision": {
+            "0": 1
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 8772515.702392422,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 1.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0
+          },
+          "selected_R_level": 0
+        },
+        "Water": {
+          "F_ir": {
+            "0": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 1
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0
+          },
+          "selected_R_level": 0
+        }
+      },
+      "budget": 8772515.702392422,
+      "budget_ratio": 1.1,
+      "case_id": "B1.10_M1",
+      "certificate_status": "PASS",
+      "experiment_identity": "6c4d56c46e67725bf4fbc15d7f77eee649fd1fe8119eb880527a86e211ebe368",
+      "final_gap": 0.0,
+      "formal_UB": 197237361.97199234,
+      "model_kind": "M1",
+      "objective": 197237361.97199234,
+      "paid_R_active": false,
+      "probability_weighted_total_shortage": 33799571.82086138,
+      "selected_R_levels": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 0,
+        "Water": 0
+      },
+      "worst_case_shortage": 210792912.850457
+    },
+    {
+      "C_F": 1552657.6464411365,
+      "C_Q": 0.0,
+      "C_R": 1940822.0580514208,
+      "F_active": true,
+      "Q_F_mix_commodities": [],
+      "active_worst_scenario": {
+        "category": 5,
+        "delta": {
+          "Crackers": 1.0,
+          "Seasonal Influenza Vaccine": 1.0,
+          "Water": 1.0
+        },
+        "hurricanes": [
+          "h10",
+          "h09"
+        ],
+        "rhoQ": {
+          "Crackers": 0.7,
+          "Seasonal Influenza Vaccine": 0.7,
+          "Water": 0.7
+        },
+        "scenario_id": "omega_21"
+      },
+      "allocation": {
+        "Crackers": {
+          "F_ir": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 1,
+            "1": 0,
+            "2": 0
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "selected_R_level": 0
+        },
+        "Seasonal Influenza Vaccine": {
+          "F_ir": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 557867.794783392
+          },
+          "F_quantity_share": 1.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 0,
+            "1": 0,
+            "2": 1
+          },
+          "aggregate_F_i": 557867.794783392,
+          "budget_components": {
+            "C_F": 1552657.6464411365,
+            "C_Q": 0.0,
+            "C_R": 1940822.0580514208
+          },
+          "budget_shares": {
+            "F": 0.17699115044247787,
+            "Q": 0.0,
+            "R": 0.22123893805309736
+          },
+          "reservation_allocation": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 557867.794783392
+          },
+          "selected_R_level": 2
+        },
+        "Water": {
+          "F_ir": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "F_quantity_share": 0.0,
+          "Q_i": 0.0,
+          "Q_quantity_share": 0.0,
+          "R_decision": {
+            "0": 0,
+            "1": 1,
+            "2": 0
+          },
+          "aggregate_F_i": 0.0,
+          "budget_components": {
+            "C_F": 0.0,
+            "C_Q": 0.0,
+            "C_R": 0.0
+          },
+          "budget_shares": {
+            "F": 0.0,
+            "Q": 0.0,
+            "R": 0.0
+          },
+          "reservation_allocation": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0
+          },
+          "selected_R_level": 1
+        }
+      },
+      "budget": 8772515.702392422,
+      "budget_ratio": 1.1,
+      "case_id": "B1.10_M2",
+      "certificate_status": "PASS",
+      "experiment_identity": "bc1584cedbfc7e13087622e25c2aa30f493984fd6ff0a584090ded7865bb50b6",
+      "final_gap": 0.0,
+      "formal_UB": 194408823.84474716,
+      "model_kind": "M2",
+      "objective": 194408823.8447472,
+      "paid_R_active": true,
+      "probability_weighted_total_shortage": 33798073.8095077,
+      "selected_R_levels": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 2,
+        "Water": 1
+      },
+      "worst_case_shortage": 210772587.05189964
+    }
+  ],
+  "same_budget_model_contrasts": [
+    {
+      "budget_ratio": 0.9,
+      "contrast": "M1-M0",
+      "mechanism": "F",
+      "objective_change": 2.9802322387695312e-08,
+      "objective_improvement": -2.9802322387695312e-08,
+      "shortage_change": 0.0
+    },
+    {
+      "budget_ratio": 0.9,
+      "contrast": "M2-M1",
+      "mechanism": "R",
+      "objective_change": -2314258.467746079,
+      "objective_improvement": 2314258.467746079,
+      "shortage_change": -1184.3253505006433
+    },
+    {
+      "budget_ratio": 1.0,
+      "contrast": "M1-M0",
+      "mechanism": "F",
+      "objective_change": 2.9802322387695312e-08,
+      "objective_improvement": -2.9802322387695312e-08,
+      "shortage_change": 0.0
+    },
+    {
+      "budget_ratio": 1.0,
+      "contrast": "M2-M1",
+      "mechanism": "R",
+      "objective_change": -2571398.297495663,
+      "objective_improvement": 2571398.297495663,
+      "shortage_change": -1361.8285033479333
+    },
+    {
+      "budget_ratio": 1.1,
+      "contrast": "M1-M0",
+      "mechanism": "F",
+      "objective_change": 0.0,
+      "objective_improvement": 0.0,
+      "shortage_change": 0.0
+    },
+    {
+      "budget_ratio": 1.1,
+      "contrast": "M2-M1",
+      "mechanism": "R",
+      "objective_change": -2828538.127245158,
+      "objective_improvement": 2828538.127245158,
+      "shortage_change": -1498.0113536790013
+    }
+  ],
+  "same_model_budget_paths": [
+    {
+      "cases": [
+        {
+          "C_F": 0.0,
+          "C_Q": 7177512.847411981,
+          "C_R": 0.0,
+          "F_active": false,
+          "Q_F_mix_commodities": [],
+          "active_worst_scenario": {
+            "category": 5,
+            "delta": {
+              "Crackers": 1.0,
+              "Seasonal Influenza Vaccine": 1.0,
+              "Water": 1.0
+            },
+            "hurricanes": [
+              "h10",
+              "h09"
+            ],
+            "rhoQ": {
+              "Crackers": 0.7,
+              "Seasonal Influenza Vaccine": 0.7,
+              "Water": 0.7
+            },
+            "scenario_id": "omega_21"
+          },
+          "allocation": {
+            "Crackers": {
+              "F_ir": {},
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {},
+              "aggregate_F_i": 0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {},
+              "selected_R_level": null
+            },
+            "Seasonal Influenza Vaccine": {
+              "F_ir": {},
+              "F_quantity_share": 0.0,
+              "Q_i": 497885.1864187001,
+              "Q_quantity_share": 1.0,
+              "R_decision": {},
+              "aggregate_F_i": 0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 7177512.847411981,
+                "C_R": 0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 1.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {},
+              "selected_R_level": null
+            },
+            "Water": {
+              "F_ir": {},
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {},
+              "aggregate_F_i": 0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {},
+              "selected_R_level": null
+            }
+          },
+          "budget": 7177512.847411981,
+          "budget_ratio": 0.9,
+          "case_id": "B0.90_M0",
+          "certificate_status": "PASS",
+          "experiment_identity": "967ba42ec0b7b44067c3275eb1cef8f4a1469741efa99ad8ab9de4f06844ed9b",
+          "final_gap": 0.0,
+          "formal_UB": 206420135.06799376,
+          "model_kind": "M0",
+          "objective": 206420135.06799376,
+          "paid_R_active": false,
+          "probability_weighted_total_shortage": 33805352.26569506,
+          "selected_R_levels": {
+            "Crackers": null,
+            "Seasonal Influenza Vaccine": null,
+            "Water": null
+          },
+          "worst_case_shortage": 210870361.65723327
+        },
+        {
+          "C_F": 0.0,
+          "C_Q": 7975014.274902201,
+          "C_R": 0.0,
+          "F_active": false,
+          "Q_F_mix_commodities": [],
+          "active_worst_scenario": {
+            "category": 5,
+            "delta": {
+              "Crackers": 1.0,
+              "Seasonal Influenza Vaccine": 1.0,
+              "Water": 1.0
+            },
+            "hurricanes": [
+              "h10",
+              "h09"
+            ],
+            "rhoQ": {
+              "Crackers": 0.7,
+              "Seasonal Influenza Vaccine": 0.7,
+              "Water": 0.7
+            },
+            "scenario_id": "omega_21"
+          },
+          "allocation": {
+            "Crackers": {
+              "F_ir": {},
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {},
+              "aggregate_F_i": 0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {},
+              "selected_R_level": null
+            },
+            "Seasonal Influenza Vaccine": {
+              "F_ir": {},
+              "F_quantity_share": 0.0,
+              "Q_i": 553205.7626874446,
+              "Q_quantity_share": 1.0,
+              "R_decision": {},
+              "aggregate_F_i": 0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 7975014.274902201,
+                "C_R": 0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 1.0000000000000002,
+                "R": 0.0
+              },
+              "reservation_allocation": {},
+              "selected_R_level": null
+            },
+            "Water": {
+              "F_ir": {},
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {},
+              "aggregate_F_i": 0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {},
+              "selected_R_level": null
+            }
+          },
+          "budget": 7975014.2749022,
+          "budget_ratio": 1.0,
+          "case_id": "B1.00_M0",
+          "certificate_status": "PASS",
+          "experiment_identity": "231581a3e80736d4444ff2ca443488986ef0fd47ac7c427ecc3c5c6ba507a02a",
+          "final_gap": 0.0,
+          "formal_UB": 201828748.51999304,
+          "model_kind": "M0",
+          "objective": 201828748.51999304,
+          "paid_R_active": false,
+          "probability_weighted_total_shortage": 33802425.80939109,
+          "selected_R_levels": {
+            "Crackers": null,
+            "Seasonal Influenza Vaccine": null,
+            "Water": null
+          },
+          "worst_case_shortage": 210831637.25384516
+        },
+        {
+          "C_F": 0.0,
+          "C_Q": 8772515.702392422,
+          "C_R": 0.0,
+          "F_active": false,
+          "Q_F_mix_commodities": [],
+          "active_worst_scenario": {
+            "category": 5,
+            "delta": {
+              "Crackers": 1.0,
+              "Seasonal Influenza Vaccine": 1.0,
+              "Water": 1.0
+            },
+            "hurricanes": [
+              "h10",
+              "h09"
+            ],
+            "rhoQ": {
+              "Crackers": 0.7,
+              "Seasonal Influenza Vaccine": 0.7,
+              "Water": 0.7
+            },
+            "scenario_id": "omega_21"
+          },
+          "allocation": {
+            "Crackers": {
+              "F_ir": {},
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {},
+              "aggregate_F_i": 0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {},
+              "selected_R_level": null
+            },
+            "Seasonal Influenza Vaccine": {
+              "F_ir": {},
+              "F_quantity_share": 0.0,
+              "Q_i": 608526.3389561891,
+              "Q_quantity_share": 1.0,
+              "R_decision": {},
+              "aggregate_F_i": 0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 8772515.702392422,
+                "C_R": 0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 1.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {},
+              "selected_R_level": null
+            },
+            "Water": {
+              "F_ir": {},
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {},
+              "aggregate_F_i": 0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {},
+              "selected_R_level": null
+            }
+          },
+          "budget": 8772515.702392422,
+          "budget_ratio": 1.1,
+          "case_id": "B1.10_M0",
+          "certificate_status": "PASS",
+          "experiment_identity": "994b07c0ea6d99dca1d2bdee8d8105202e7fabfcf584741d1fdecc57e080247d",
+          "final_gap": 0.0,
+          "formal_UB": 197237361.97199234,
+          "model_kind": "M0",
+          "objective": 197237361.97199234,
+          "paid_R_active": false,
+          "probability_weighted_total_shortage": 33799571.82086138,
+          "selected_R_levels": {
+            "Crackers": null,
+            "Seasonal Influenza Vaccine": null,
+            "Water": null
+          },
+          "worst_case_shortage": 210792912.850457
+        }
+      ],
+      "model_kind": "M0"
+    },
+    {
+      "cases": [
+        {
+          "C_F": 0.0,
+          "C_Q": 7177512.847411981,
+          "C_R": 0.0,
+          "F_active": false,
+          "Q_F_mix_commodities": [],
+          "active_worst_scenario": {
+            "category": 5,
+            "delta": {
+              "Crackers": 1.0,
+              "Seasonal Influenza Vaccine": 1.0,
+              "Water": 1.0
+            },
+            "hurricanes": [
+              "h10",
+              "h09"
+            ],
+            "rhoQ": {
+              "Crackers": 0.7,
+              "Seasonal Influenza Vaccine": 0.7,
+              "Water": 0.7
+            },
+            "scenario_id": "omega_21"
+          },
+          "allocation": {
+            "Crackers": {
+              "F_ir": {
+                "0": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 1
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0
+              },
+              "selected_R_level": 0
+            },
+            "Seasonal Influenza Vaccine": {
+              "F_ir": {
+                "0": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 497885.1864187001,
+              "Q_quantity_share": 1.0,
+              "R_decision": {
+                "0": 1
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 7177512.847411981,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 1.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0
+              },
+              "selected_R_level": 0
+            },
+            "Water": {
+              "F_ir": {
+                "0": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 1
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0
+              },
+              "selected_R_level": 0
+            }
+          },
+          "budget": 7177512.847411981,
+          "budget_ratio": 0.9,
+          "case_id": "B0.90_M1",
+          "certificate_status": "PASS",
+          "experiment_identity": "24a0f200c779d8b323eaf7cbefe992e471e17e9964a242dd0d2781c9b6996d85",
+          "final_gap": 0.0,
+          "formal_UB": 206420135.06799376,
+          "model_kind": "M1",
+          "objective": 206420135.0679938,
+          "paid_R_active": false,
+          "probability_weighted_total_shortage": 33805352.26569506,
+          "selected_R_levels": {
+            "Crackers": 0,
+            "Seasonal Influenza Vaccine": 0,
+            "Water": 0
+          },
+          "worst_case_shortage": 210870361.65723327
+        },
+        {
+          "C_F": 0.0,
+          "C_Q": 7975014.274902201,
+          "C_R": 0.0,
+          "F_active": false,
+          "Q_F_mix_commodities": [],
+          "active_worst_scenario": {
+            "category": 5,
+            "delta": {
+              "Crackers": 1.0,
+              "Seasonal Influenza Vaccine": 1.0,
+              "Water": 1.0
+            },
+            "hurricanes": [
+              "h10",
+              "h09"
+            ],
+            "rhoQ": {
+              "Crackers": 0.7,
+              "Seasonal Influenza Vaccine": 0.7,
+              "Water": 0.7
+            },
+            "scenario_id": "omega_21"
+          },
+          "allocation": {
+            "Crackers": {
+              "F_ir": {
+                "0": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 1
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0
+              },
+              "selected_R_level": 0
+            },
+            "Seasonal Influenza Vaccine": {
+              "F_ir": {
+                "0": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 553205.7626874446,
+              "Q_quantity_share": 1.0,
+              "R_decision": {
+                "0": 1
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 7975014.274902201,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 1.0000000000000002,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0
+              },
+              "selected_R_level": 0
+            },
+            "Water": {
+              "F_ir": {
+                "0": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 1
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0
+              },
+              "selected_R_level": 0
+            }
+          },
+          "budget": 7975014.2749022,
+          "budget_ratio": 1.0,
+          "case_id": "B1.00_M1",
+          "certificate_status": "PASS",
+          "experiment_identity": "1964c0751e660442f0c280d7e9012ba9b97b5cc9fff0ab2f26579a705e7a2559",
+          "final_gap": 0.0,
+          "formal_UB": 201828748.51999304,
+          "model_kind": "M1",
+          "objective": 201828748.51999307,
+          "paid_R_active": false,
+          "probability_weighted_total_shortage": 33802425.80939109,
+          "selected_R_levels": {
+            "Crackers": 0,
+            "Seasonal Influenza Vaccine": 0,
+            "Water": 0
+          },
+          "worst_case_shortage": 210831637.25384516
+        },
+        {
+          "C_F": 0.0,
+          "C_Q": 8772515.702392422,
+          "C_R": 0.0,
+          "F_active": false,
+          "Q_F_mix_commodities": [],
+          "active_worst_scenario": {
+            "category": 5,
+            "delta": {
+              "Crackers": 1.0,
+              "Seasonal Influenza Vaccine": 1.0,
+              "Water": 1.0
+            },
+            "hurricanes": [
+              "h10",
+              "h09"
+            ],
+            "rhoQ": {
+              "Crackers": 0.7,
+              "Seasonal Influenza Vaccine": 0.7,
+              "Water": 0.7
+            },
+            "scenario_id": "omega_21"
+          },
+          "allocation": {
+            "Crackers": {
+              "F_ir": {
+                "0": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 1
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0
+              },
+              "selected_R_level": 0
+            },
+            "Seasonal Influenza Vaccine": {
+              "F_ir": {
+                "0": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 608526.3389561891,
+              "Q_quantity_share": 1.0,
+              "R_decision": {
+                "0": 1
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 8772515.702392422,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 1.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0
+              },
+              "selected_R_level": 0
+            },
+            "Water": {
+              "F_ir": {
+                "0": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 1
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0
+              },
+              "selected_R_level": 0
+            }
+          },
+          "budget": 8772515.702392422,
+          "budget_ratio": 1.1,
+          "case_id": "B1.10_M1",
+          "certificate_status": "PASS",
+          "experiment_identity": "6c4d56c46e67725bf4fbc15d7f77eee649fd1fe8119eb880527a86e211ebe368",
+          "final_gap": 0.0,
+          "formal_UB": 197237361.97199234,
+          "model_kind": "M1",
+          "objective": 197237361.97199234,
+          "paid_R_active": false,
+          "probability_weighted_total_shortage": 33799571.82086138,
+          "selected_R_levels": {
+            "Crackers": 0,
+            "Seasonal Influenza Vaccine": 0,
+            "Water": 0
+          },
+          "worst_case_shortage": 210792912.850457
+        }
+      ],
+      "model_kind": "M1"
+    },
+    {
+      "cases": [
+        {
+          "C_F": 1270356.2561791115,
+          "C_Q": 0.0,
+          "C_R": 1587945.3202238895,
+          "F_active": true,
+          "Q_F_mix_commodities": [],
+          "active_worst_scenario": {
+            "category": 5,
+            "delta": {
+              "Crackers": 1.0,
+              "Seasonal Influenza Vaccine": 1.0,
+              "Water": 1.0
+            },
+            "hurricanes": [
+              "h10",
+              "h09"
+            ],
+            "rhoQ": {
+              "Crackers": 0.7,
+              "Seasonal Influenza Vaccine": 0.7,
+              "Water": 0.7
+            },
+            "scenario_id": "omega_21"
+          },
+          "allocation": {
+            "Crackers": {
+              "F_ir": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 1,
+                "1": 0,
+                "2": 0
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "selected_R_level": 0
+            },
+            "Seasonal Influenza Vaccine": {
+              "F_ir": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 456437.286640957
+              },
+              "F_quantity_share": 1.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 0,
+                "1": 0,
+                "2": 1
+              },
+              "aggregate_F_i": 456437.286640957,
+              "budget_components": {
+                "C_F": 1270356.2561791115,
+                "C_Q": 0.0,
+                "C_R": 1587945.3202238895
+              },
+              "budget_shares": {
+                "F": 0.17699115044247787,
+                "Q": 0.0,
+                "R": 0.22123893805309733
+              },
+              "reservation_allocation": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 456437.286640957
+              },
+              "selected_R_level": 2
+            },
+            "Water": {
+              "F_ir": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 1,
+                "1": 0,
+                "2": 0
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "selected_R_level": 0
+            }
+          },
+          "budget": 7177512.847411981,
+          "budget_ratio": 0.9,
+          "case_id": "B0.90_M2",
+          "certificate_status": "PASS",
+          "experiment_identity": "c952ffe67d115820e0669449560ddb534e1208cdc7b3d24ad174198e366bfe51",
+          "final_gap": 0.0,
+          "formal_UB": 204105876.60024768,
+          "model_kind": "M2",
+          "objective": 204105876.6002477,
+          "paid_R_active": true,
+          "probability_weighted_total_shortage": 33804167.94034456,
+          "selected_R_levels": {
+            "Crackers": 0,
+            "Seasonal Influenza Vaccine": 2,
+            "Water": 0
+          },
+          "worst_case_shortage": 210853731.4584136
+        },
+        {
+          "C_F": 1411506.9513101238,
+          "C_Q": 0.0,
+          "C_R": 1764383.6891376548,
+          "F_active": true,
+          "Q_F_mix_commodities": [],
+          "active_worst_scenario": {
+            "category": 5,
+            "delta": {
+              "Crackers": 1.0,
+              "Seasonal Influenza Vaccine": 1.0,
+              "Water": 1.0
+            },
+            "hurricanes": [
+              "h10",
+              "h09"
+            ],
+            "rhoQ": {
+              "Crackers": 0.7,
+              "Seasonal Influenza Vaccine": 0.7,
+              "Water": 0.7
+            },
+            "scenario_id": "omega_21"
+          },
+          "allocation": {
+            "Crackers": {
+              "F_ir": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 1,
+                "1": 0,
+                "2": 0
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "selected_R_level": 0
+            },
+            "Seasonal Influenza Vaccine": {
+              "F_ir": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 507152.54071217444
+              },
+              "F_quantity_share": 1.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 0,
+                "1": 0,
+                "2": 1
+              },
+              "aggregate_F_i": 507152.54071217444,
+              "budget_components": {
+                "C_F": 1411506.9513101238,
+                "C_Q": 0.0,
+                "C_R": 1764383.6891376548
+              },
+              "budget_shares": {
+                "F": 0.17699115044247785,
+                "Q": 0.0,
+                "R": 0.22123893805309733
+              },
+              "reservation_allocation": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 507152.54071217444
+              },
+              "selected_R_level": 2
+            },
+            "Water": {
+              "F_ir": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 0,
+                "1": 1,
+                "2": 0
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "selected_R_level": 1
+            }
+          },
+          "budget": 7975014.2749022,
+          "budget_ratio": 1.0,
+          "case_id": "B1.00_M2",
+          "certificate_status": "PASS",
+          "experiment_identity": "01816a394dbf86e3f1d1b026475ecbfdd69dde514c32241dc1f0f5405f2ae59a",
+          "final_gap": 2.9802322387695312e-08,
+          "formal_UB": 199257350.22249743,
+          "model_kind": "M2",
+          "objective": 199257350.2224974,
+          "paid_R_active": true,
+          "probability_weighted_total_shortage": 33801063.98088774,
+          "selected_R_levels": {
+            "Crackers": 0,
+            "Seasonal Influenza Vaccine": 2,
+            "Water": 1
+          },
+          "worst_case_shortage": 210813159.2551566
+        },
+        {
+          "C_F": 1552657.6464411365,
+          "C_Q": 0.0,
+          "C_R": 1940822.0580514208,
+          "F_active": true,
+          "Q_F_mix_commodities": [],
+          "active_worst_scenario": {
+            "category": 5,
+            "delta": {
+              "Crackers": 1.0,
+              "Seasonal Influenza Vaccine": 1.0,
+              "Water": 1.0
+            },
+            "hurricanes": [
+              "h10",
+              "h09"
+            ],
+            "rhoQ": {
+              "Crackers": 0.7,
+              "Seasonal Influenza Vaccine": 0.7,
+              "Water": 0.7
+            },
+            "scenario_id": "omega_21"
+          },
+          "allocation": {
+            "Crackers": {
+              "F_ir": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 1,
+                "1": 0,
+                "2": 0
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "selected_R_level": 0
+            },
+            "Seasonal Influenza Vaccine": {
+              "F_ir": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 557867.794783392
+              },
+              "F_quantity_share": 1.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 0,
+                "1": 0,
+                "2": 1
+              },
+              "aggregate_F_i": 557867.794783392,
+              "budget_components": {
+                "C_F": 1552657.6464411365,
+                "C_Q": 0.0,
+                "C_R": 1940822.0580514208
+              },
+              "budget_shares": {
+                "F": 0.17699115044247787,
+                "Q": 0.0,
+                "R": 0.22123893805309736
+              },
+              "reservation_allocation": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 557867.794783392
+              },
+              "selected_R_level": 2
+            },
+            "Water": {
+              "F_ir": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "F_quantity_share": 0.0,
+              "Q_i": 0.0,
+              "Q_quantity_share": 0.0,
+              "R_decision": {
+                "0": 0,
+                "1": 1,
+                "2": 0
+              },
+              "aggregate_F_i": 0.0,
+              "budget_components": {
+                "C_F": 0.0,
+                "C_Q": 0.0,
+                "C_R": 0.0
+              },
+              "budget_shares": {
+                "F": 0.0,
+                "Q": 0.0,
+                "R": 0.0
+              },
+              "reservation_allocation": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0
+              },
+              "selected_R_level": 1
+            }
+          },
+          "budget": 8772515.702392422,
+          "budget_ratio": 1.1,
+          "case_id": "B1.10_M2",
+          "certificate_status": "PASS",
+          "experiment_identity": "bc1584cedbfc7e13087622e25c2aa30f493984fd6ff0a584090ded7865bb50b6",
+          "final_gap": 0.0,
+          "formal_UB": 194408823.84474716,
+          "model_kind": "M2",
+          "objective": 194408823.8447472,
+          "paid_R_active": true,
+          "probability_weighted_total_shortage": 33798073.8095077,
+          "selected_R_levels": {
+            "Crackers": 0,
+            "Seasonal Influenza Vaccine": 2,
+            "Water": 1
+          },
+          "worst_case_shortage": 210772587.05189964
+        }
+      ],
+      "model_kind": "M2"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "R7_E1_SUMMARY_ONLY",
+  "status": "PASS",
+  "summary_sha256": "0f57260985ed97d677860f99fc71fae8c9c39838d13db2ddefa5a62dc259bfd6"
+}
