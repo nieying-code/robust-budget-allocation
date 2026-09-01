@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "scope": "R6_C_OLD_R7_E1_EVIDENCE_PROTECTION",
+  "baseline_commit": "9d051d51d7bd223df11ab99e2b607e5f169c5e67",
+  "baseline_tree": "b88941bbf04552eacbc43ae2f84f75fa2776b97c",
+  "classification": "PRE_REVISION_HISTORICAL_DIAGNOSTIC_EVIDENCE",
+  "tracked_file_count": 14,
+  "comparison_basis": "WORKTREE_SHA256_AND_GIT_DIFF_AGAINST_BASELINE_COMMIT",
+  "tracked_files": [
+    {"path": "experiments/r7_e1/HASHES.sha256", "sha256": "1f1059d55baceb2ad219ea434f04ee689a2bfad27164613ace454fb01ff62f5f"},
+    {"path": "experiments/r7_e1/REPORT.md", "sha256": "26a33b46107a30138de9c0d408a62fecbf5f0619900645b3a3610be03506bb8e"},
+    {"path": "experiments/r7_e1/RUN_STATE.json", "sha256": "bf11caaf0e996efa33abd8208975bfbc70b2314259eac3dff43cda8705a18a30"},
+    {"path": "experiments/r7_e1/manifest.json", "sha256": "f0c3f32eecbeb14d8f34dfff917de017335d1b8e9e7b724079b29cba70b73ebb"},
+    {"path": "experiments/r7_e1/raw/B0.90_M0_967ba42ec0b7b44067c3275eb1cef8f4a1469741efa99ad8ab9de4f06844ed9b.json", "sha256": "2954d0f289eb87557065776f2dbb7a13dfddd71013e2d7ae8be2b4c2def372f3"},
+    {"path": "experiments/r7_e1/raw/B0.90_M1_24a0f200c779d8b323eaf7cbefe992e471e17e9964a242dd0d2781c9b6996d85.json", "sha256": "40d56914b1e74f9d75ad92bf5b81ab8a959eff108ad982c91e896e9fb0b62d6a"},
+    {"path": "experiments/r7_e1/raw/B0.90_M2_c952ffe67d115820e0669449560ddb534e1208cdc7b3d24ad174198e366bfe51.json", "sha256": "0345fc88bfa00ebe1a25032dae0f2d8863737fa6da14ec93b5a735f6074c220e"},
+    {"path": "experiments/r7_e1/raw/B1.00_M0_231581a3e80736d4444ff2ca443488986ef0fd47ac7c427ecc3c5c6ba507a02a.json", "sha256": "773611b642a92f3ea229924d57e05c8841e0bf4b294ee2aaca6ad6a79c6473c5"},
+    {"path": "experiments/r7_e1/raw/B1.00_M1_1964c0751e660442f0c280d7e9012ba9b97b5cc9fff0ab2f26579a705e7a2559.json", "sha256": "ac6af1e95b29957dcad9184a63db733b73808c8b650f0ab568300000b777dfa0"},
+    {"path": "experiments/r7_e1/raw/B1.00_M2_01816a394dbf86e3f1d1b026475ecbfdd69dde514c32241dc1f0f5405f2ae59a.json", "sha256": "d488aa78fe702c6d0ce8cd753125c247c3760380f8b3da3047d726290dbf0903"},
+    {"path": "experiments/r7_e1/raw/B1.10_M0_994b07c0ea6d99dca1d2bdee8d8105202e7fabfcf584741d1fdecc57e080247d.json", "sha256": "b70f588e7239a60ff2680a341b3197482fcffb2e259eac0cdaed06b5f41e4eff"},
+    {"path": "experiments/r7_e1/raw/B1.10_M1_6c4d56c46e67725bf4fbc15d7f77eee649fd1fe8119eb880527a86e211ebe368.json", "sha256": "e40529f2c94ef14ac12912f03597e3d2f2f1ab13db7c9df600dabe687d9310b7"},
+    {"path": "experiments/r7_e1/raw/B1.10_M2_bc1584cedbfc7e13087622e25c2aa30f493984fd6ff0a584090ded7865bb50b6.json", "sha256": "230c08a09ef8af957e2a2c0b7cc1aadddd2a2c4b2ec536600434d621f9d286a7"},
+    {"path": "experiments/r7_e1/summary.json", "sha256": "63f1d760c5494f81840f995a9877131c907a150fab1734893b9628a469ce69de"}
+  ],
+  "directory_diff_against_baseline": [],
+  "pre_post_hash_comparison": "PASS",
+  "old_r7_e1_evidence_unchanged": "PASS"
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "scope": "R6_C_REVISED_FORMAL_EXPERIMENT_MATRIX_FREEZE_NO_SCIENTIFIC_SOLVES",
+  "stage": "R6-C",
+  "scientific_runs": 0,
+  "r7_started": false,
+  "formal_ready_data_path": "configs/r6c_formal_ready_data_v2.json",
+  "formal_ready_data_sha256": "59f4b89d8706f9af06aef46455292335b8b8b095f4a2a0ce0f700e5d219ed16f",
+  "baseline": {
+    "items": ["Water", "Seasonal Influenza Vaccine", "Crackers"],
+    "models": ["M0", "M1", "M2"],
+    "budget_ratios": [0.9, 1.0, 1.1],
+    "q_survivability_cat1_to_cat5": [0.9, 0.85, 0.8, 0.75, 0.7],
+    "f_disruption_cat1_to_cat5": [0.1, 0.3, 0.6, 0.8, 1.0],
+    "eta": [0.2, 0.5, 0.8],
+    "reliability_premium_ratios": [0.0, 0.1, 0.25],
+    "phi": 0.2,
+    "psi": 0.85,
+    "shortage_beta": 4.0,
+    "shortage_priority": {"Water": 1.0, "Seasonal Influenza Vaccine": 1.0, "Crackers": 1.0},
+    "vaccine_six_month_cold_chain_cost": 0.5,
+    "crackers_retention": 0.9,
+    "no_hurricane": {"demand": 0.0, "q_availability": 1.0, "disruption": 0.0}
+  },
+  "model_mechanism": {
+    "M0": {"first_stage": ["Q"], "second_stage": ["u"]},
+    "M1": {"first_stage": ["Q", "F", "R0_BASIC_FIXED"], "second_stage": ["x", "u"], "selectable_reliability_levels": [0]},
+    "M2": {"first_stage": ["Q", "F", "R"], "second_stage": ["x", "u"], "selectable_reliability_levels": [0, 1, 2]},
+    "availability_rule": "1-(1-eta_r)*delta_omega",
+    "unified_budget": true,
+    "objective": "T_COST"
+  },
+  "E1": {
+    "models": ["M0", "M1", "M2"],
+    "budget_ratios": [0.9, 1.0, 1.1],
+    "outputs": ["T_COST", "objective", "Q", "F", "R_level", "second_stage_x", "shortage_u", "budget_usage", "robust_cost_worst_scenario", "F_available_capacity", "F_actually_exercised"],
+    "scientific_activation_is_not_a_hard_gate": true
+  },
+  "E2": {
+    "model": "M2",
+    "budget_ratio": 1.0,
+    "design": "OFAT",
+    "baseline_reuse": "ALL_LOGICAL_BASELINE_MEMBERSHIPS_REFERENCE_ONE_PHYSICAL_CONFIGURATION",
+    "families": {
+      "E2_1_vaccine_cold_chain": {"field": "vaccine_six_month_cold_chain_cost", "levels": [0.25, 0.5, 1.0], "baseline_index": 1},
+      "E2_2_crackers_retention": {"field": "crackers_retention", "levels": [0.8, 0.9, 1.0], "baseline_index": 1},
+      "E2_3_f_price_split": {"field": "phi_psi", "levels": [[0.1, 0.95], [0.2, 0.85], [0.3, 0.75]], "baseline_index": 1, "sum": 1.05},
+      "E2_4_r_premium": {"field": "gamma_R", "levels": [0.5, 1.0, 1.5], "baseline_index": 1, "R0_always_zero": true},
+      "E2_5_reliability_eta": {"field": "eta", "levels": [[0.1, 0.4, 0.7], [0.2, 0.5, 0.8], [0.3, 0.6, 0.9]], "labels": ["Low", "Base", "High"], "baseline_index": 1},
+      "E2_6_f_disruption_delta": {"field": "gamma_delta", "levels": [0.8, 1.0, 1.2], "baseline_index": 1, "rule": "min(1,gamma_delta*baseline_delta)", "mapped_levels": [[0.08, 0.24, 0.48, 0.64, 0.8], [0.1, 0.3, 0.6, 0.8, 1.0], [0.12, 0.36, 0.72, 0.96, 1.0]], "no_hurricane_disruption": 0.0},
+      "E2_7_shortage_beta": {"field": "beta", "levels": [2.0, 4.0, 6.0], "baseline_index": 1},
+      "E2_8_commodity_priority_lambda": {"field": "lambda", "levels": [[1.0, 1.0, 1.0], [1.25, 1.0, 1.0], [1.5, 1.0, 1.0], [1.0, 1.25, 1.0], [1.0, 1.5, 1.0], [1.0, 1.0, 1.25], [1.0, 1.0, 1.5]], "item_order": ["Water", "Seasonal Influenza Vaccine", "Crackers"], "baseline_index": 0}
+    }
+  },
+  "E3": {
+    "model": "M2",
+    "budget_ratio": 1.0,
+    "baseline_reuse": "CENTER_POINTS_AND_MATCHING_E2_OFAT_POINTS_REUSE_PHYSICAL_CONFIGURATION_IDENTITIES",
+    "interactions": {
+      "I1_cold_chain_x_f_split": {"vaccine_six_month_cold_chain_cost": [0.25, 0.5, 1.0], "phi_psi": [[0.1, 0.95], [0.2, 0.85], [0.3, 0.75]]},
+      "I2_f_disruption_x_r_premium": {"gamma_delta": [0.8, 1.0, 1.2], "gamma_R": [0.5, 1.0, 1.5], "delta_rule": "min(1,gamma_delta*baseline_delta)", "no_hurricane_disruption": 0.0}
+    }
+  },
+  "E4": {
+    "policy_models": ["M0", "M1", "M2"],
+    "first_stage_fixed_during_evaluation": ["Q", "F", "R"],
+    "test_stage_reoptimized": ["x", "u"],
+    "historical": {"design": "15_FOLD_LEAVE_ONE_HURRICANE_OUT", "hurricanes": ["h01", "h02", "h03", "h04", "h05", "h06", "h07", "h08", "h09", "h10", "h11", "h12", "h13", "h14", "h15"], "no_hurricane_retained_in_training": true},
+    "synthetic": {"rng": "numpy.Generator(PCG64)", "seeds": [61001, 61002, 61003, 61004, 61005, 61006, 61007, 61008, 61009, 61010], "realizations_per_seed": 2000, "base_sampling": "WITH_REPLACEMENT_CATEGORICAL_OVER_ALL_51_REVISED_SCENARIOS", "demand_perturbation": {"distribution": "NORMAL", "mean": 0.0, "standard_deviation": 0.1, "lower": -0.95, "upper": 3.0, "method": "REJECTION_SAMPLING", "shared_across_commodities": true}, "supply_state": "INHERIT_REVISED_BASE_SCENARIO_RHOQ_AND_DELTA", "no_hurricane": {"demand_forced_zero": true, "q_availability": 1.0, "disruption": 0.0}},
+    "statistics": {"bootstrap_resamples": 10000, "bootstrap_seed": 62001, "historical_replication_unit": "15_LOHO_FOLDS", "synthetic_replication_unit": "10_INDEPENDENT_SEEDS"}
+  },
+  "E5": {"case_source": "E1_9_MAIN_CASES", "algorithms": ["A0", "A1_no_memory", "A1_full"], "timing_repetitions": 3, "planned_timing_runs": 81, "actual_timing_runs": 0}
+}

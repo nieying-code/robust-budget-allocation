@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "scope": "R6_C_SCIENTIFIC_REVISION_REFREEZE_NO_SCIENTIFIC_SOLVES",
+  "stage": "R6",
+  "revision": "R6-C",
+  "scientific_runs": 0,
+  "old_formal_source": {
+    "config_path": "configs/r6_formal_data_v1.json",
+    "config_file_sha256": "6f18dfee23d489ad7a7e51ff1ca712cc507f405e7b450e16c3936e5b394e6f07",
+    "formal_ready_path": "configs/r6_formal_ready_data_v1.json",
+    "formal_ready_file_sha256": "18ae99941f1bd0d29d2a888defddfafc2391a6ab4928237bd21f998c52f950af",
+    "data_sha256": "3eaf0357d9d586198a8887c59b8e67ebeeb2ab8d7224923db854dca717f236f5",
+    "matrix_config_identity": "ccf90d26d8947e2b0607d38c9812f69c485b5f1532fc5b9e9e8cd0b2abb7e0a2",
+    "expanded_matrix_identity": "cbedbec9643400af69b0d4369cfd0f1e0a0ccf4e9b61d26c5fc48717948f6b49",
+    "human_spec_sha256": "f1146f5ba6b25723a5e5f55b8106c4954c7804bfde03a49dfe8f8e88abe5fcc4"
+  },
+  "commodities": {
+    "Water": {
+      "service_unit": "1 gallon",
+      "q_purchase_cost": 0.6477,
+      "six_month_storage_cost": 0.0,
+      "retention": 1.0,
+      "demand_rule": "1000 * Rawls Water demand"
+    },
+    "Seasonal Influenza Vaccine": {
+      "service_unit": "1 dose",
+      "q_purchase_cost": 13.916,
+      "six_month_storage_cost": 0.5,
+      "effective_q_economic_cost": 14.416,
+      "retention": 1.0,
+      "demand_rule": "(140 / 13.916) * Rawls Medical demand",
+      "normalization_class": "ECONOMIC_SCALE_NORMALIZATION_PROXY_NOT_MEDICAL_PHYSICAL_OR_CLINICAL_EQUIVALENCE"
+    },
+    "Crackers": {
+      "service_unit": "22 g",
+      "q_purchase_cost": 0.09372,
+      "price_reconstruction": "4.26 USD/kg * 22/1000",
+      "six_month_storage_cost": 0.0,
+      "retention": 0.9,
+      "retention_class": "STORAGE_ADJUSTED_EFFECTIVE_SERVICE_RETENTION_NOT_OBSERVED_PHYSICAL_MASS_LOSS",
+      "demand_rule": "14 * 1000 * Rawls MRE demand",
+      "normalization_class": "RAWLS_UNIT_CONVERSION_AND_ENERGY_SERVICE_NORMALIZATION_NOT_PHYSICAL_EQUIVALENCE"
+    }
+  },
+  "scenario_rules": {
+    "counts": {"single": 15, "combined": 35, "no_hurricane": 1, "total": 51},
+    "probabilities": "PRESERVE_RAWLS_ORIGINAL",
+    "combined_category": "MAX_CONSTITUENT_CATEGORY",
+    "q_survivability_cat1_to_cat5": [0.9, 0.85, 0.8, 0.75, 0.7],
+    "f_disruption_cat1_to_cat5": [0.1, 0.3, 0.6, 0.8, 1.0],
+    "no_hurricane": {"demand": 0.0, "q_survivability": 1.0, "f_disruption": 0.0}
+  },
+  "reliability": {
+    "eta": [0.2, 0.5, 0.8],
+    "premium_ratios": [0.0, 0.1, 0.25],
+    "R0": "BASIC_BUILT_IN_MITIGATION_NO_PAID_ENHANCEMENT",
+    "R1_R2": "PAID_RELIABILITY_ENHANCEMENT",
+    "classification": "PILOT_ANCHORED_CALIBRATED_TIERS_NOT_EMPIRICAL_RELIABILITY_ESTIMATES"
+  },
+  "pricing": {
+    "phi": 0.2,
+    "psi": 0.85,
+    "shortage_beta": 4.0,
+    "shortage_priority_lambda": {"Water": 1.0, "Seasonal Influenza Vaccine": 1.0, "Crackers": 1.0}
+  },
+  "flexible_capacity_rule": "MAXIMUM_TRANSFORMED_DEMAND_OVER_REVISED_51_SCENARIOS",
+  "reference_budget_rule": "sum_i((cQ_i+h_i*tau)*Dref_i/a_i)",
+  "formal_budget_ratios": [0.9, 1.0, 1.1],
+  "provenance_classes": {
+    "rawls_scenarios_probabilities_water": "SOURCE_BASED_PUBLIC_CASE_DATA",
+    "vaccine_price": "CDC_OFFICIAL_PRICE",
+    "vaccine_storage_temperature": "FDA_CDC_OFFICIAL_REQUIREMENT",
+    "vaccine_cold_chain_cost": "LITERATURE_INFORMED_LITERATURE_BOUNDED_RESEARCH_DESIGN_CALIBRATION_NOT_EXACT_OBSERVED_COST",
+    "crackers_serving": "USDA_OFFICIAL_SERVING_DEFINITION",
+    "crackers_price": "SOURCE_BASED_RECONSTRUCTED_PRICE",
+    "crackers_retention": "LITERATURE_SUPPORTED_MECHANISM_PLUS_CALIBRATED_EFFECTIVE_SERVICE_RETENTION",
+    "rhoQ": "PILOT_ANCHORED_RESEARCH_DESIGN_MAPPING_NOT_EMPIRICAL_SAFFIR_SIMPSON_LOSS_ESTIMATE",
+    "delta": "LITERATURE_BOUNDED_SEVERITY_CALIBRATION_NOT_EMPIRICAL_SAFFIR_SIMPSON_DAMAGE_ESTIMATE",
+    "eta": "PILOT_ANCHORED_CALIBRATED_TIERS_NOT_EMPIRICAL_ESTIMATES",
+    "phi_psi_premium_beta": "PILOT_ANCHORED_RESEARCH_DESIGN_CALIBRATION_WITH_MECHANISM_SUPPORT_NOT_EMPIRICAL_POINT_ESTIMATES",
+    "lambda": "NEUTRAL_FORMAL_BASELINE"
+  }
+}
