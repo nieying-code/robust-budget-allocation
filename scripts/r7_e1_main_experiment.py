@@ -17,7 +17,7 @@ def main() -> None:
     if args.mode == "solver-free-preflight":
         result = solver_free_preflight(root)
     elif args.mode == "preflight":
-        result = licensed_preflight(root)
+        result = licensed_preflight(root, execution_gate=True)
     elif args.mode == "run":
         result = run_e1(root)
     else:
