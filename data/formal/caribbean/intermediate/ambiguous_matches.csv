@@ -1,0 +1,30 @@
+evidence_id,source_dataset,source_locator,country_code,event_name,event_date,candidate_hurdat_ids,status,reason
+CHN-MYAB-19651017-066,CARIBBEAN_HURRICANE_NETWORK,MYAB_all_isl.htm:storm_row:66,BHS,UNNAMED,1965-10-17,AL061965|AL091965,AMBIGUOUS,CHN row did not resolve to exactly one HURDAT storm by name/date
+CHN-MYBS-19531005-056,CARIBBEAN_HURRICANE_NETWORK,MYBS_all_isl.htm:storm_row:56,BHS,UNNAMED,1953-10-05,AL101953|AL111953,AMBIGUOUS,CHN row did not resolve to exactly one HURDAT storm by name/date
+CHN-MYGF-19531005-060,CARIBBEAN_HURRICANE_NETWORK,MYGF_all_isl.htm:storm_row:60,BHS,UNNAMED,1953-10-05,AL101953|AL111953,AMBIGUOUS,CHN row did not resolve to exactly one HURDAT storm by name/date
+CHN-TABA-19550102-036,CARIBBEAN_HURRICANE_NETWORK,TABA_all_isl.htm:storm_row:36,ATG,ALICE,1955-01-02,,UNMATCHED,CHN row did not resolve to exactly one HURDAT storm by name/date
+CHN-TKNV-19550102-040,CARIBBEAN_HURRICANE_NETWORK,TKNV_all_isl.htm:storm_row:40,KNA,ALICE,1955-01-02,,UNMATCHED,CHN row did not resolve to exactly one HURDAT storm by name/date
+CHN-TKPK-19550102-038,CARIBBEAN_HURRICANE_NETWORK,TKPK_all_isl.htm:storm_row:38,KNA,ALICE,1955-01-02,,UNMATCHED,CHN row did not resolve to exactly one HURDAT storm by name/date
+CHN-TQPF-19550102-040,CARIBBEAN_HURRICANE_NETWORK,TQPF_all_isl.htm:storm_row:40,AIA,ALICE,1955-01-02,,UNMATCHED,CHN row did not resolve to exactly one HURDAT storm by name/date
+CHN-TXKF-19650930-039,CARIBBEAN_HURRICANE_NETWORK,TXKF_all_isl.htm:storm_row:39,BMU,UNNAMED,1965-09-30,AL041965|AL051965|AL081965,AMBIGUOUS,CHN row did not resolve to exactly one HURDAT storm by name/date
+CHN-TXKF-19701016-040,CARIBBEAN_HURRICANE_NETWORK,TXKF_all_isl.htm:storm_row:40,BMU,UNNAMED,1970-10-16,AL151970|AL181970,AMBIGUOUS,CHN row did not resolve to exactly one HURDAT storm by name/date
+EMDAT-1955-0004-KNA,EM_DAT,row:1046,KNA,Alice,1955-01-02,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1955-0025-AIA,EM_DAT,row:697,AIA,Alice,1955-01-02,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1966-0132-BHS,EM_DAT,row:1090,BHS,Inez,,AL091966,AMBIGUOUS,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1970-0120-DMA,EM_DAT,row:1100,DMA,,1970-08-20,AL081970|AL091970,TRACK_DERIVED_CANDIDATE,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1974-0046-BLZ,EM_DAT,row:768,BLZ,Carmen & Fifi,1974-09-02,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1974-0047-BLZ,EM_DAT,row:1570,BLZ,Hurricane 'Fifi-Orlene',1974-04-17,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1974-0047-JAM,EM_DAT,row:769,JAM,Hurricane 'Fifi-Orlene',1974-04-17,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1979-0069-DMA,EM_DAT,row:1595,DMA,Hurricane 'David & Federick',1979-08-29,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1984-0092-DMA,EM_DAT,row:1446,DMA,Klaus,1984-10-09,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1984-0242-KNA,EM_DAT,row:1180,KNA,Klaus,,AL181984,AMBIGUOUS,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1985-0389-TCA,EM_DAT,row:1644,TCA,Kate,,AL131985,AMBIGUOUS,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1987-0535-BRB,EM_DAT,row:1200,BRB,Emily,,AL121987,AMBIGUOUS,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1987-0536-LCA,EM_DAT,row:1201,LCA,Emily,,AL121987,AMBIGUOUS,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1995-0213-BRB,EM_DAT,row:976,BRB,Marylin,1995-09-18,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1996-0325-VGB,EM_DAT,row:1707,VGB,Luis,1996-07-08,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-1996-0502-HTI,EM_DAT,row:465,HTI,Marcos,1996-11-09,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-2001-0671-BHS,EM_DAT,row:278,BHS,Hurricane 'Michelle',2001-11-09,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-2005-0567-HTI,EM_DAT,row:1779,HTI,Stan,,AL202005,AMBIGUOUS,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-2011-0432-DMA,EM_DAT,row:2081,DMA,Tropical storm Orphelia,2011-09-25,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates
+EMDAT-2015-0375-HTI,EM_DAT,row:1403,HTI,Hurricane Erika,2015-08-29,,UNMATCHED,EM-DAT row lacks a unique named HURDAT match with complete overlapping dates

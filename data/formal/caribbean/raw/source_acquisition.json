@@ -1,0 +1,548 @@
+{
+  "document_type": "R6_I_CARIBBEAN_SOURCE_ACQUISITION",
+  "retrieved_at_utc": "2026-09-01T15:50:12+00:00",
+  "rules": {
+    "chn_country_pages": {
+      "AIA": [
+        "TQPF_all_isl.htm"
+      ],
+      "ATG": [
+        "TAPA_all_isl.htm",
+        "TABA_all_isl.htm"
+      ],
+      "BHS": [
+        "MYAB_all_isl.htm",
+        "MYGF_all_isl.htm",
+        "MYBS_all_isl.htm",
+        "MYSM_all_isl.htm",
+        "MYNN_all_isl.htm",
+        "MYEG_all_isl.htm",
+        "MYIG_all_isl.htm"
+      ],
+      "BLZ": [
+        "MZAC_all_isl.htm"
+      ],
+      "BMU": [
+        "TXKF_all_isl.htm"
+      ],
+      "BRB": [
+        "TBPB_all_isl.htm"
+      ],
+      "BVI": [
+        "TUPJ_all_isl.htm",
+        "TUVG_all_isl.htm",
+        "TUAN_all_isl.htm"
+      ],
+      "CYM": [
+        "MWCR_all_isl.htm",
+        "MWLC_all_isl.htm",
+        "MWCB_all_isl.htm"
+      ],
+      "DMA": [
+        "TDPD_all_isl.htm"
+      ],
+      "GRD": [
+        "TGPY_all_isl.htm"
+      ],
+      "GUY": [],
+      "HTI": [
+        "MTPP_all_isl.htm"
+      ],
+      "JAM": [
+        "MKJP_all_isl.htm",
+        "MKJS_all_isl.htm"
+      ],
+      "KNA": [
+        "TKNV_all_isl.htm",
+        "TKPK_all_isl.htm"
+      ],
+      "LCA": [
+        "TLPC_all_isl.htm"
+      ],
+      "MST": [
+        "TKMN_all_isl.htm"
+      ],
+      "SUR": [],
+      "TCA": [
+        "MBPV_all_isl.htm",
+        "MBSC_all_isl.htm",
+        "MBGT_all_isl.htm"
+      ],
+      "TTO": [
+        "TTPT_all_isl.htm",
+        "TTPP_all_isl.htm"
+      ],
+      "VCT": [
+        "TVSV_all_isl.htm"
+      ]
+    },
+    "chn_role": "explicit island evidence under page-stated 60 nautical mile convention",
+    "emdat_role": "explicit country-impact evidence when unambiguously matched",
+    "hurdat_role": "primary storm identity, track, and intensity",
+    "wpp_role": "R6-I reconstruction population denominator; not Balcik original source"
+  },
+  "schema_version": 1,
+  "source_library": {
+    "emdat_xlsx_bytes": 837415,
+    "emdat_xlsx_committed": false,
+    "emdat_xlsx_filename": "public_emdat_custom_request_2026-09-01_8bfed378-7c0f-4f2a-be59-0e952d8a9ec7.xlsx",
+    "emdat_xlsx_sha256": "2464d63fe3d6bdb2695ea37e95ba9a6328b3f3e39e41695ebcb3da92da6e8f67",
+    "identity": "USER_PROVIDED_READ_ONLY_SOURCE_LIBRARY",
+    "path": "D:\\新建文件夹\\项目：robust-budget-allocation"
+  },
+  "sources": [
+    {
+      "bytes": 3262898,
+      "committed": true,
+      "filename": "public_emdat_custom_request_2026-09-01_8bfed378-7c0f-4f2a-be59-0e952d8a9ec7.csv",
+      "identity": "EMDAT_PUBLIC_CUSTOM_REQUEST_2026_08_28",
+      "license_note": "EM-DAT public data; cite CRED/UCLouvain and preserve extraction metadata.",
+      "local_path": "data/formal/caribbean/raw/emdat/public_emdat_custom_request_2026-09-01_8bfed378-7c0f-4f2a-be59-0e952d8a9ec7.csv",
+      "sha256": "277c873483ad065aaa3536a56690de17af451165b55c6c7c5a09197f5e44e25e",
+      "source_role": "explicit_country_impact_evidence",
+      "source_url": "https://public.emdat.be/"
+    },
+    {
+      "bytes": 7082381,
+      "committed": true,
+      "filename": "hurdat2-1851-2025-02272026.txt",
+      "identity": "NHC_HURDAT2_ATLANTIC_1851_2025_2026_02_27",
+      "license_note": "Official NOAA/NHC public data.",
+      "local_path": "data/formal/caribbean/raw/hurdat2/hurdat2-1851-2025-02272026.txt",
+      "sha256": "1b9b0c7beed5b4505838658b1d30e159fc84330c60891a58cfcf43ae55c37202",
+      "source_role": "primary_storm_identity_track_and_intensity",
+      "source_url": "https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2025-02272026.txt"
+    },
+    {
+      "bytes": 16557272,
+      "committed": true,
+      "filename": "WPP2024_Demographic_Indicators_Medium.csv.gz",
+      "identity": "UN_WPP_2024_MEDIUM_DEMOGRAPHIC_INDICATORS",
+      "license_note": "United Nations WPP 2024; CC BY 3.0 IGO attribution applies.",
+      "local_path": "data/formal/caribbean/raw/population/WPP2024_Demographic_Indicators_Medium.csv.gz",
+      "sha256": "286ac36bb1415e2e1ade03acfef0a29f0e4c087e2f78e38c48f50c5df89082bc",
+      "source_role": "event_year_population_denominator",
+      "source_url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+    },
+    {
+      "bytes": 18126,
+      "committed": false,
+      "filename": "freq.htm",
+      "identity": "CHN_CURRENT_FREQ",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/freq.htm",
+      "paper_country_code": "frequency",
+      "sha256": "a334f78b3862be6e30ddbda9e443832ae3aa7d315dcc9140596beab78aac2a5a",
+      "source_role": "proximity_convention_and_page_index",
+      "source_url": "https://www.stormcarib.com/climatology/freq.htm"
+    },
+    {
+      "bytes": 10698,
+      "committed": false,
+      "filename": "TQPF_all_isl.htm",
+      "identity": "CHN_CURRENT_TQPF_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TQPF_all_isl.htm",
+      "paper_country_code": "AIA",
+      "sha256": "8b72799f77c1e46ed19dd2b20946e41d4f21afac91768b4db2ec42bf5c71153c",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TQPF_all_isl.htm"
+    },
+    {
+      "bytes": 10749,
+      "committed": false,
+      "filename": "TAPA_all_isl.htm",
+      "identity": "CHN_CURRENT_TAPA_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TAPA_all_isl.htm",
+      "paper_country_code": "ATG",
+      "sha256": "2fac749dab5eb060ba02eae7f2b88cb001a06646846281acad90535e3bf73cf2",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TAPA_all_isl.htm"
+    },
+    {
+      "bytes": 10493,
+      "committed": false,
+      "filename": "TABA_all_isl.htm",
+      "identity": "CHN_CURRENT_TABA_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TABA_all_isl.htm",
+      "paper_country_code": "ATG",
+      "sha256": "ce591fc2d9ca1807849d033f76ed14d962f0e3822c7e22b9cdf625c94e3834bb",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TABA_all_isl.htm"
+    },
+    {
+      "bytes": 12711,
+      "committed": false,
+      "filename": "MYAB_all_isl.htm",
+      "identity": "CHN_CURRENT_MYAB_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MYAB_all_isl.htm",
+      "paper_country_code": "BHS",
+      "sha256": "b1447f023fa4002a375dc789bd475cae45c3fbf662b80b2e28c8c8acdfa48663",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MYAB_all_isl.htm"
+    },
+    {
+      "bytes": 12222,
+      "committed": false,
+      "filename": "MYGF_all_isl.htm",
+      "identity": "CHN_CURRENT_MYGF_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MYGF_all_isl.htm",
+      "paper_country_code": "BHS",
+      "sha256": "bed943601f7b8b4abf8928ddff5a230c17a686f62686be63c5a65313eb38b868",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MYGF_all_isl.htm"
+    },
+    {
+      "bytes": 11415,
+      "committed": false,
+      "filename": "MYBS_all_isl.htm",
+      "identity": "CHN_CURRENT_MYBS_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MYBS_all_isl.htm",
+      "paper_country_code": "BHS",
+      "sha256": "6cd8edd35ab08867a848f4886f41dd7b88a182c0369bce6d0cdbb31d1a742621",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MYBS_all_isl.htm"
+    },
+    {
+      "bytes": 10874,
+      "committed": false,
+      "filename": "MYSM_all_isl.htm",
+      "identity": "CHN_CURRENT_MYSM_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MYSM_all_isl.htm",
+      "paper_country_code": "BHS",
+      "sha256": "b58ec83c2f3b74e745c26137e3ac9e837c50dde3ea2428bf17484b7742df4fa3",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MYSM_all_isl.htm"
+    },
+    {
+      "bytes": 10269,
+      "committed": false,
+      "filename": "MYNN_all_isl.htm",
+      "identity": "CHN_CURRENT_MYNN_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MYNN_all_isl.htm",
+      "paper_country_code": "BHS",
+      "sha256": "a2317eda514184203876dd7aea866bda7fb5b38146c61e0dddc35526283cc711",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MYNN_all_isl.htm"
+    },
+    {
+      "bytes": 10230,
+      "committed": false,
+      "filename": "MYEG_all_isl.htm",
+      "identity": "CHN_CURRENT_MYEG_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MYEG_all_isl.htm",
+      "paper_country_code": "BHS",
+      "sha256": "811608e19a4386b04f9209c09813884bc924a62df540f6af92e429a1d6ca65de",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MYEG_all_isl.htm"
+    },
+    {
+      "bytes": 9139,
+      "committed": false,
+      "filename": "MYIG_all_isl.htm",
+      "identity": "CHN_CURRENT_MYIG_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MYIG_all_isl.htm",
+      "paper_country_code": "BHS",
+      "sha256": "f727cb41ec16606331c86810772a804e244feec6196dbcc18e1f09d975d0052c",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MYIG_all_isl.htm"
+    },
+    {
+      "bytes": 9600,
+      "committed": false,
+      "filename": "MZAC_all_isl.htm",
+      "identity": "CHN_CURRENT_MZAC_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MZAC_all_isl.htm",
+      "paper_country_code": "BLZ",
+      "sha256": "aba2a18007ac201581cdb2b052fa58ed32d07e1850d6148aade635d484386a4e",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MZAC_all_isl.htm"
+    },
+    {
+      "bytes": 11170,
+      "committed": false,
+      "filename": "TXKF_all_isl.htm",
+      "identity": "CHN_CURRENT_TXKF_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TXKF_all_isl.htm",
+      "paper_country_code": "BMU",
+      "sha256": "91791e184286599d510ad15058cbb39d631d96114fbe9c95fb3df6a31d401409",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TXKF_all_isl.htm"
+    },
+    {
+      "bytes": 10439,
+      "committed": false,
+      "filename": "TBPB_all_isl.htm",
+      "identity": "CHN_CURRENT_TBPB_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TBPB_all_isl.htm",
+      "paper_country_code": "BRB",
+      "sha256": "7b8aea2c01c4dbbeb57c14e9828defb9d21402e8cc467916f9dd2fcbb18741b0",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TBPB_all_isl.htm"
+    },
+    {
+      "bytes": 11019,
+      "committed": false,
+      "filename": "TUPJ_all_isl.htm",
+      "identity": "CHN_CURRENT_TUPJ_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TUPJ_all_isl.htm",
+      "paper_country_code": "BVI",
+      "sha256": "dc9d5e90bdfdcb3a95a2b9b1dc456e24bd9727382bd154f458c6ea7b901c304b",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TUPJ_all_isl.htm"
+    },
+    {
+      "bytes": 10915,
+      "committed": false,
+      "filename": "TUVG_all_isl.htm",
+      "identity": "CHN_CURRENT_TUVG_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TUVG_all_isl.htm",
+      "paper_country_code": "BVI",
+      "sha256": "20438e2d0b2a920a825fd8ef348c1f24e59ae796c8a82516955a68fe75877061",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TUVG_all_isl.htm"
+    },
+    {
+      "bytes": 11018,
+      "committed": false,
+      "filename": "TUAN_all_isl.htm",
+      "identity": "CHN_CURRENT_TUAN_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TUAN_all_isl.htm",
+      "paper_country_code": "BVI",
+      "sha256": "7fddec6914fafcfce17fbb167af27dc6813ae4b968b3b5a9846dc33bf15ffee1",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TUAN_all_isl.htm"
+    },
+    {
+      "bytes": 10018,
+      "committed": false,
+      "filename": "MWCR_all_isl.htm",
+      "identity": "CHN_CURRENT_MWCR_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MWCR_all_isl.htm",
+      "paper_country_code": "CYM",
+      "sha256": "80fc72a3173b9b03e8e469f5c6e9bfd1e751e193d0ab1d3b122db50da3a25fbb",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MWCR_all_isl.htm"
+    },
+    {
+      "bytes": 9358,
+      "committed": false,
+      "filename": "MWLC_all_isl.htm",
+      "identity": "CHN_CURRENT_MWLC_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MWLC_all_isl.htm",
+      "paper_country_code": "CYM",
+      "sha256": "b991cf8ec93214d99deb8f85752c76f93c19370fb605f07af0ef6379053d7151",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MWLC_all_isl.htm"
+    },
+    {
+      "bytes": 9250,
+      "committed": false,
+      "filename": "MWCB_all_isl.htm",
+      "identity": "CHN_CURRENT_MWCB_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MWCB_all_isl.htm",
+      "paper_country_code": "CYM",
+      "sha256": "eb3848017c983f4a36aefd15837c4e6ffbcd9eb21883987ae56494e3eeca61df",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MWCB_all_isl.htm"
+    },
+    {
+      "bytes": 11012,
+      "committed": false,
+      "filename": "TDPD_all_isl.htm",
+      "identity": "CHN_CURRENT_TDPD_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TDPD_all_isl.htm",
+      "paper_country_code": "DMA",
+      "sha256": "a6fb1a0ca126b24880adf971b630fefeb3016f98e59c5d5d9847448afb4d908c",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TDPD_all_isl.htm"
+    },
+    {
+      "bytes": 8408,
+      "committed": false,
+      "filename": "TGPY_all_isl.htm",
+      "identity": "CHN_CURRENT_TGPY_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TGPY_all_isl.htm",
+      "paper_country_code": "GRD",
+      "sha256": "885c3c3510882a5453063b0648cd00890d4baee866aab8eccff7e4b83fc3884b",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TGPY_all_isl.htm"
+    },
+    {
+      "bytes": 8864,
+      "committed": false,
+      "filename": "MTPP_all_isl.htm",
+      "identity": "CHN_CURRENT_MTPP_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MTPP_all_isl.htm",
+      "paper_country_code": "HTI",
+      "sha256": "2c7671aeda2134ad8f46b148bbaeb4fe8f1101c82ec15ec425ada446c8b1b026",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MTPP_all_isl.htm"
+    },
+    {
+      "bytes": 9502,
+      "committed": false,
+      "filename": "MKJP_all_isl.htm",
+      "identity": "CHN_CURRENT_MKJP_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MKJP_all_isl.htm",
+      "paper_country_code": "JAM",
+      "sha256": "653cc301c237e830b6eafa297dd7c57b832fb47dd569bbb518302b1319e6f71b",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MKJP_all_isl.htm"
+    },
+    {
+      "bytes": 9120,
+      "committed": false,
+      "filename": "MKJS_all_isl.htm",
+      "identity": "CHN_CURRENT_MKJS_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MKJS_all_isl.htm",
+      "paper_country_code": "JAM",
+      "sha256": "ddbdbaa5f29a428dad64296511f3300acb91f43d29a51706cfe47f9d612fe5ff",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MKJS_all_isl.htm"
+    },
+    {
+      "bytes": 10896,
+      "committed": false,
+      "filename": "TKNV_all_isl.htm",
+      "identity": "CHN_CURRENT_TKNV_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TKNV_all_isl.htm",
+      "paper_country_code": "KNA",
+      "sha256": "a5420f2221c57ff5634c2617c31fa9445d2c95bb5cf0dbe713d84fd710420296",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TKNV_all_isl.htm"
+    },
+    {
+      "bytes": 10755,
+      "committed": false,
+      "filename": "TKPK_all_isl.htm",
+      "identity": "CHN_CURRENT_TKPK_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TKPK_all_isl.htm",
+      "paper_country_code": "KNA",
+      "sha256": "ac8f6b936b28857d05f4d67c55f5e2a6c7791a976293c3af9eea568db32e6f25",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TKPK_all_isl.htm"
+    },
+    {
+      "bytes": 10689,
+      "committed": false,
+      "filename": "TLPC_all_isl.htm",
+      "identity": "CHN_CURRENT_TLPC_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TLPC_all_isl.htm",
+      "paper_country_code": "LCA",
+      "sha256": "602aff6103617dbe373883ccafc8f198751ad705e12151eaab2db1963ca8fd6f",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TLPC_all_isl.htm"
+    },
+    {
+      "bytes": 10945,
+      "committed": false,
+      "filename": "TKMN_all_isl.htm",
+      "identity": "CHN_CURRENT_TKMN_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TKMN_all_isl.htm",
+      "paper_country_code": "MST",
+      "sha256": "37613234fa28aa9751b6cc1877010d59b2309f0fb6a7529be61104358b9cd73e",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TKMN_all_isl.htm"
+    },
+    {
+      "bytes": 10891,
+      "committed": false,
+      "filename": "MBPV_all_isl.htm",
+      "identity": "CHN_CURRENT_MBPV_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MBPV_all_isl.htm",
+      "paper_country_code": "TCA",
+      "sha256": "ad285f3025bccdf97336f40f0d10698c51441c1f4bbf0a555470156112b86887",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MBPV_all_isl.htm"
+    },
+    {
+      "bytes": 10376,
+      "committed": false,
+      "filename": "MBSC_all_isl.htm",
+      "identity": "CHN_CURRENT_MBSC_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MBSC_all_isl.htm",
+      "paper_country_code": "TCA",
+      "sha256": "52f4473c950570c8370c377fe49dc1894e7798fbeffbb06404386364eb55a2e2",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MBSC_all_isl.htm"
+    },
+    {
+      "bytes": 10353,
+      "committed": false,
+      "filename": "MBGT_all_isl.htm",
+      "identity": "CHN_CURRENT_MBGT_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/MBGT_all_isl.htm",
+      "paper_country_code": "TCA",
+      "sha256": "bf805ccb96094bfa2f36c30bef51867ae68af896315cb74238583984d66f7014",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/MBGT_all_isl.htm"
+    },
+    {
+      "bytes": 7226,
+      "committed": false,
+      "filename": "TTPT_all_isl.htm",
+      "identity": "CHN_CURRENT_TTPT_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TTPT_all_isl.htm",
+      "paper_country_code": "TTO",
+      "sha256": "fd731bf597dbce78758706e0c2bfb1fe16985863f2c3a80e9726f2a561f0c391",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TTPT_all_isl.htm"
+    },
+    {
+      "bytes": 6339,
+      "committed": false,
+      "filename": "TTPP_all_isl.htm",
+      "identity": "CHN_CURRENT_TTPP_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TTPP_all_isl.htm",
+      "paper_country_code": "TTO",
+      "sha256": "7a4737da84babf606f25a47051b642b73cbe0e0140f75c2ae4084d4d9a601245",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TTPP_all_isl.htm"
+    },
+    {
+      "bytes": 10380,
+      "committed": false,
+      "filename": "TVSV_all_isl.htm",
+      "identity": "CHN_CURRENT_TVSV_ALL_ISL",
+      "license_note": "Page states All Rights Reserved; raw HTML is local-only. Git stores retrieval instructions, hash, and normalized factual evidence.",
+      "local_path": "data/formal/caribbean/raw/chn/TVSV_all_isl.htm",
+      "paper_country_code": "VCT",
+      "sha256": "39a00eb3e8f9c94f1cbff5185caee2b1c6678ebb46c2777b8770e1dc3eecb27e",
+      "source_role": "explicit_affected_island_evidence",
+      "source_url": "https://www.stormcarib.com/climatology/TVSV_all_isl.htm"
+    }
+  ]
+}
