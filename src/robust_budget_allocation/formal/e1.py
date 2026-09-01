@@ -31,6 +31,7 @@ EXPECTED_DATA_SHA256 = "3eaf0357d9d586198a8887c59b8e67ebeeb2ab8d7224923db854dca7
 EXPECTED_CONFIG_IDENTITY = "ccf90d26d8947e2b0607d38c9812f69c485b5f1532fc5b9e9e8cd0b2abb7e0a2"
 EXPECTED_MATRIX_IDENTITY = "cbedbec9643400af69b0d4369cfd0f1e0a0ccf4e9b61d26c5fc48717948f6b49"
 EXPECTED_HUMAN_SPEC_SHA256 = "f1146f5ba6b25723a5e5f55b8106c4954c7804bfde03a49dfe8f8e88abe5fcc4"
+EXPECTED_DELIVERY_MANIFEST_SHA256 = "177485800b5bbc50fe15e0e1d13a6188a5c6d617ba889207815ba7d5c79a6780"
 EXPECTED_ITEMS = ("Water", "Seasonal Influenza Vaccine", "Crackers")
 EXPECTED_MODELS = ("M0", "M1", "M2")
 EXPECTED_BUDGETS = (0.9, 1.0, 1.1)
@@ -600,7 +601,7 @@ def replay_delivery(repo_root: Path) -> dict[str, Any]:
     manifest = _load_json(output / "manifest.json")
     bare = dict(manifest)
     seal = bare.pop("manifest_sha256", None)
-    if seal != canonical_json_sha256(bare):
+    if seal != EXPECTED_DELIVERY_MANIFEST_SHA256 or seal != canonical_json_sha256(bare):
         raise ValueError("R7-E1 manifest seal mismatch")
     if manifest["case_count"] != 9 or manifest["certificate_pass_count"] != 9 or manifest["formal_scientific_runs"] != 9:
         raise ValueError("R7-E1 manifest completeness mismatch")
@@ -609,19 +610,30 @@ def replay_delivery(repo_root: Path) -> dict[str, Any]:
     source = manifest["source"]
     git = source["git"]
     commit = str(git["commit_sha"])
-    if _git(root, "show", "-s", "--format=%T", commit) != git["tree_sha"]:
-        raise ValueError("R7-E1 anchored execution tree mismatch")
     if tuple(git["tracked_input_paths"]) != SOURCE_PATHS or git["tracked_dirty"] is not False or git["untracked_paths"]:
         raise ValueError("R7-E1 anchored execution source-state mismatch")
     if [row["path"] for row in source["files"]] != list(SOURCE_PATHS):
         raise ValueError("R7-E1 anchored source-file inventory mismatch")
-    for row in source["files"]:
-        anchored = subprocess.run(
-            ["git", "-C", str(root), "show", f"{commit}:{row['path']}"],
-            check=True, capture_output=True,
-        ).stdout
-        if sha256_bytes(anchored) != row["sha256"]:
-            raise ValueError(f"R7-E1 anchored source hash mismatch: {row['path']}")
+    commit_available = subprocess.run(
+        ["git", "-C", str(root), "cat-file", "-e", f"{commit}^{{commit}}"],
+        capture_output=True,
+    ).returncode == 0
+    if commit_available:
+        if _git(root, "show", "-s", "--format=%T", commit) != git["tree_sha"]:
+            raise ValueError("R7-E1 anchored execution tree mismatch")
+        for row in source["files"]:
+            anchored = subprocess.run(
+                ["git", "-C", str(root), "show", f"{commit}:{row['path']}"],
+                check=True, capture_output=True,
+            ).stdout
+            if sha256_bytes(anchored) != row["sha256"]:
+                raise ValueError(f"R7-E1 anchored source hash mismatch: {row['path']}")
+    else:
+        if _git(root, "rev-parse", "--is-shallow-repository") != "true":
+            raise ValueError("R7-E1 anchored execution commit is unavailable in a non-shallow repository")
+        # A depth-one delivery checkout cannot contain the historical execution
+        # commit.  The fixed delivery-manifest seal above pins its tree SHA and
+        # complete per-file source hash inventory without a network fetch.
     inventory_lines = (output / "HASHES.sha256").read_text(encoding="utf-8").splitlines()
     expected_inventory = sorted([
         *(f"raw/{name}" for name in expected_names),
