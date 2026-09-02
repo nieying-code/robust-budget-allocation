@@ -97,8 +97,12 @@ def _validate_config(config: dict[str, Any]) -> None:
     assert by_name["Rita"]["evidence_status"] == "FROZEN-BOUND"
     assert "up to" in by_name["Rita"]["evacuees_evidence_identity"]
     assert "at least" in by_name["Rita"]["sheltered_evidence_identity"]
-    assert by_name["Elena"]["evidence_status"] == "READY"
+    assert by_name["Elena"]["evidence_status"] == "FROZEN-BOUND"
     assert "lower bound" in by_name["Elena"]["evacuees_evidence_identity"]
+    correction = config["provenance_corrections"]["elena_evidence_status"]
+    assert correction["authoritative_workbook_value"] == "READY"
+    assert correction["corrected_value"] == "FROZEN-BOUND"
+    assert correction["category_e_s_or_demand_changed"] is False
 
 
 def build_rawls24_layers(config_path: Path) -> dict[str, Any]:
@@ -219,12 +223,14 @@ def build_rawls24_layers(config_path: Path) -> dict[str, Any]:
         "stage": config["stage"],
         "source_identities": config["source_identities"],
         "demand_rule": config["demand_rule"],
+        "provenance_corrections": config["provenance_corrections"],
         "validation": validation,
         "source_audit": {
-            "authoritative_workbook_crosscheck": "PASS_24_OF_24",
+            "authoritative_workbook_crosscheck": "PASS_24_OF_24_IDENTITY_CATEGORY_E_S_AND_DEMAND_WITH_DOCUMENTED_ELENA_STATUS_CORRECTION",
             "rawls15_identity_category_e_s_crosscheck": "PASS_15_OF_15",
             "rawls_rule_crosscheck": "PASS_DISSERTATION_SECTION_5_3",
             "rawls_table_5_3_historical_lineage_capture": "PASS_15_OF_15",
+            "bounded_evidence_status_consistency": "PASS_RITA_AND_ELENA_FROZEN_BOUND",
             "provided_pdf_identity": "2010_JOURNAL_ARTICLE_NOT_2008_DISSERTATION",
             "resolution": "OFFICIAL_CORNELL_DISSERTATION_USED_FOR_REQUIRED_RULE_AND_TABLE_AUDIT",
         },

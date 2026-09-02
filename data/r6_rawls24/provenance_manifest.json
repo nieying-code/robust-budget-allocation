@@ -1,5 +1,5 @@
 {
-  "canonical_data_sha256": "c59c3c9d9b33abcbb73943e8f1353137b2fc4501ae1244b91c7ef480db83a4ac",
+  "canonical_data_sha256": "51d2b286997556a338acf5dd28df4409d67e46bec52a02f737af4ab0ac0c5afb",
   "dataset_identity": "rawls_24_real_single_hurricane_data_recalibration_v1",
   "demand_rule": {
     "food_major": "35 * sheltered",
@@ -54,10 +54,18 @@
   "output_hashes": {
     "rawls15_historical_comparison.csv": "6aab07bb32245de3eb9190d878e2039f7fcb166726d1889a7973befbd771dd44",
     "rawls15_historical_source.csv": "c9f7c4827e76466752d114944c0da880e125ef0f9c7c5dc6c20701e732eb55eb",
-    "unified_hurricane_input.csv": "72662190768ab3059601a4465dd75b6e2dff964a1ae43b71b3631f4a7b16c492",
+    "unified_hurricane_input.csv": "7487c8cb66dc6abd0dc2c3623c7ccf10e2bf46373d0265c442870db04bc82d5d",
     "unified_rawls_demand.csv": "d281e719d16cb3b0902c2b29550e7ad659ea8ba6b52e83e69c7a7e38031dc152"
   },
   "parameter_recalibration": "NOT_STARTED",
+  "provenance_corrections": {
+    "elena_evidence_status": {
+      "authoritative_workbook_value": "READY",
+      "category_e_s_or_demand_changed": false,
+      "corrected_value": "FROZEN-BOUND",
+      "reason": "User-authorized consistency correction: E/S are conservative lower-bound representations, not exact observations."
+    }
+  },
   "scenario_order": [
     "h01",
     "h02",
@@ -85,14 +93,15 @@
     "h24"
   ],
   "source_audit": {
-    "authoritative_workbook_crosscheck": "PASS_24_OF_24",
+    "authoritative_workbook_crosscheck": "PASS_24_OF_24_IDENTITY_CATEGORY_E_S_AND_DEMAND_WITH_DOCUMENTED_ELENA_STATUS_CORRECTION",
+    "bounded_evidence_status_consistency": "PASS_RITA_AND_ELENA_FROZEN_BOUND",
     "provided_pdf_identity": "2010_JOURNAL_ARTICLE_NOT_2008_DISSERTATION",
     "rawls15_identity_category_e_s_crosscheck": "PASS_15_OF_15",
     "rawls_rule_crosscheck": "PASS_DISSERTATION_SECTION_5_3",
     "rawls_table_5_3_historical_lineage_capture": "PASS_15_OF_15",
     "resolution": "OFFICIAL_CORNELL_DISSERTATION_USED_FOR_REQUIRED_RULE_AND_TABLE_AUDIT"
   },
-  "source_config_sha256": "2fe3c7ce56a64247aed50ae8d1a3a59ad0665f59c3e39022e15f3b7a97aad3e4",
+  "source_config_sha256": "9331018b89fc721d01879ae799b0013e07a8565f83a12071c92b10fa8bc8a197",
   "source_identities": {
     "authoritative_workbook": {
       "path": "D:/新建文件夹/QFR_24真实单飓风_Formal主数据_口径冲突解决与冻结版_2026-09-02.xlsx",

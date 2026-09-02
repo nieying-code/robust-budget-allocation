@@ -77,7 +77,7 @@ def test_frozen_2004_pairs_and_bounded_evidence_are_exact():
     assert rows["Rita"]["evidence_status"] == "FROZEN-BOUND"
     assert "up to" in rows["Rita"]["E_evidence_identity"]
     assert "at least" in rows["Rita"]["S_evidence_identity"]
-    assert rows["Elena"]["evidence_status"] == "READY"
+    assert rows["Elena"]["evidence_status"] == "FROZEN-BOUND"
     assert "not exact" in rows["Elena"]["notes"]
 
 
@@ -110,5 +110,14 @@ def test_stage_boundary_explicitly_records_zero_scientific_runs():
     assert manifest["e1"] == "NOT_STARTED"
     assert set(manifest["validation"]["scientific_runs"].values()) == {0}
     assert manifest["excluded_outputs"] == ["F_bar", "B_ref", "Formal commodity mapping", "model results"]
-    assert manifest["source_audit"]["authoritative_workbook_crosscheck"] == "PASS_24_OF_24"
+    assert manifest["source_audit"]["authoritative_workbook_crosscheck"] == (
+        "PASS_24_OF_24_IDENTITY_CATEGORY_E_S_AND_DEMAND_WITH_DOCUMENTED_ELENA_STATUS_CORRECTION"
+    )
     assert manifest["source_audit"]["rawls15_identity_category_e_s_crosscheck"] == "PASS_15_OF_15"
+    assert manifest["source_audit"]["bounded_evidence_status_consistency"] == "PASS_RITA_AND_ELENA_FROZEN_BOUND"
+    assert manifest["provenance_corrections"]["elena_evidence_status"] == {
+        "authoritative_workbook_value": "READY",
+        "corrected_value": "FROZEN-BOUND",
+        "reason": "User-authorized consistency correction: E/S are conservative lower-bound representations, not exact observations.",
+        "category_e_s_or_demand_changed": False,
+    }

@@ -33,6 +33,14 @@
     "food_major": "35 * sheltered",
     "medical_all": "sheltered / 4"
   },
+  "provenance_corrections": {
+    "elena_evidence_status": {
+      "authoritative_workbook_value": "READY",
+      "corrected_value": "FROZEN-BOUND",
+      "reason": "User-authorized consistency correction: E/S are conservative lower-bound representations, not exact observations.",
+      "category_e_s_or_demand_changed": false
+    }
+  },
   "events": [
     {
       "scenario_id": "h01", "hurricane_name": "Alicia", "year": 1983, "category": 3, "group": "Rawls15", "evacuees": 35000, "sheltered": 25000,
@@ -143,7 +151,7 @@
     },
     {
       "scenario_id": "h24", "hurricane_name": "Elena", "year": 1985, "category": 3, "group": "Added9", "evacuees": 300000, "sheltered": 150000,
-      "geographic_scope": "Pinellas County", "evidence_status": "READY", "evacuees_evidence_identity": "official lower bound: more than 300,000", "sheltered_evidence_identity": "derived from official 'half' statement: more than 150,000", "source_reference": "Authoritative workbook; U.S. Congressional Record https://www.govinfo.gov/content/pkg/GPO-CRECB-1985-pt17/pdf/GPO-CRECB-1985-pt17-2.pdf", "notes": "Same-scope conservative lower-bound representation, not exact population counts."
+      "geographic_scope": "Pinellas County", "evidence_status": "FROZEN-BOUND", "evacuees_evidence_identity": "official lower bound: more than 300,000", "sheltered_evidence_identity": "derived from official 'half' statement: more than 150,000", "source_reference": "Authoritative workbook; U.S. Congressional Record https://www.govinfo.gov/content/pkg/GPO-CRECB-1985-pt17/pdf/GPO-CRECB-1985-pt17-2.pdf", "notes": "Same-scope conservative lower-bound representation, not exact population counts."
     }
   ]
 }
