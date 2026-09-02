@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "scope": "E1_HISTORICAL_FORMAL_EXECUTION_ONLY",
+  "dataset_kind": "rawls_15_single_hurricane_historical",
+  "base_main_sha": "66598957664c4229a35e832764856e568ff79e00",
+  "required_branch": "r6/e1-historical-rawls15",
+  "formal_ready_data_path": "configs/e1_historical_rawls15_data_v1.json",
+  "formal_ready_data_sha256": "d1b48e13757f0ca6ff4919e26b8ed3f225b3f2b7764e9026d16fc2f985ff487c",
+  "models": ["M0", "M1", "M2"],
+  "budget_ratios": [0.9, 1.0, 1.1],
+  "case_count": 9,
+  "certification_chain": ["EF", "A0", "A1_full"],
+  "a1_memory_phase_enabled": true,
+  "timing_protocol": "NO_TIMING_REPETITIONS_E1_HISTORICAL",
+  "solver_interface": "gurobi_direct",
+  "solver_fallback": false,
+  "solver_threads": 1,
+  "output_root": "experiments/e1_historical_rawls15"
+}

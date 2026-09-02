@@ -1,0 +1,994 @@
+{
+  "data_sha256": "d1b48e13757f0ca6ff4919e26b8ed3f225b3f2b7764e9026d16fc2f985ff487c",
+  "dataset_kind": "rawls_15_single_hurricane_historical",
+  "demand_normalization": {
+    "crackers": 14000.0,
+    "vaccine": 10.0603621730382,
+    "water": 1000.0
+  },
+  "economic_scale_audit": {
+    "effective_q_exposure": {
+      "absolute": {
+        "Crackers": {
+          "max": 19389626.6666667,
+          "mean": 2886867.57333333,
+          "median": 1640100.0,
+          "min": 116629.333333333,
+          "probability_weighted_mean": 2584844.73768889
+        },
+        "Seasonal Influenza Vaccine": {
+          "max": 13777867.2032193,
+          "mean": 1739801.38967136,
+          "median": 253947.847082494,
+          "min": 52210.8651911468,
+          "probability_weighted_mean": 1856227.58527485
+        },
+        "Water": {
+          "max": 11658600.0,
+          "mean": 2466355.24,
+          "median": 1450200.3,
+          "min": 226695.0,
+          "probability_weighted_mean": 2280916.467368
+        }
+      },
+      "commodity_heavy_scenarios": {
+        "Crackers": "omega_15",
+        "Seasonal Influenza Vaccine": "omega_03",
+        "Water": "omega_07"
+      },
+      "probability_weighted_aggregate_share": {
+        "Crackers": 0.384535710831098,
+        "Seasonal Influenza Vaccine": 0.276142618378756,
+        "Water": 0.339321670790146
+      },
+      "scenario_share": {
+        "Crackers": {
+          "max": 0.748227929196035,
+          "mean": 0.398802335336805,
+          "median": 0.335994509825079,
+          "min": 0.0576043996170896
+        },
+        "Seasonal Influenza Vaccine": {
+          "max": 0.467498199470378,
+          "mean": 0.15606494091037,
+          "median": 0.0695150006463085,
+          "min": 0.0318397233460929
+        },
+        "Water": {
+          "max": 0.901493806214658,
+          "mean": 0.445132723752825,
+          "median": 0.402552115200578,
+          "min": 0.0199050256280047
+        }
+      },
+      "zero_total_scenarios_excluded_from_shares": 0
+    },
+    "shortage_exposure": {
+      "absolute": {
+        "Crackers": {
+          "max": 69802656.0,
+          "mean": 10392723.264,
+          "median": 5904360.0,
+          "min": 419865.6,
+          "probability_weighted_mean": 9305441.05568
+        },
+        "Seasonal Influenza Vaccine": {
+          "max": 53200000.0,
+          "mean": 6717834.66666667,
+          "median": 980559.999999998,
+          "min": 201600.0,
+          "probability_weighted_mean": 7167387.0912
+        },
+        "Water": {
+          "max": 46634400.0,
+          "mean": 9865420.96,
+          "median": 5800801.2,
+          "min": 906780.0,
+          "probability_weighted_mean": 9123665.869472
+        }
+      },
+      "commodity_heavy_scenarios": {
+        "Crackers": "omega_15",
+        "Seasonal Influenza Vaccine": "omega_03",
+        "Water": "omega_07"
+      },
+      "probability_weighted_aggregate_share": {
+        "Crackers": 0.363543579434564,
+        "Seasonal Influenza Vaccine": 0.280014406919213,
+        "Water": 0.356442013646223
+      },
+      "scenario_share": {
+        "Crackers": {
+          "max": 0.729806206615684,
+          "mean": 0.380841561299152,
+          "median": 0.315202947571877,
+          "min": 0.052218842111809
+        },
+        "Seasonal Influenza Vaccine": {
+          "max": 0.472256929358459,
+          "mean": 0.158959485706986,
+          "median": 0.0726053155313542,
+          "min": 0.0318403858417363
+        },
+        "Water": {
+          "max": 0.908012486785648,
+          "mean": 0.460198952993862,
+          "median": 0.424937765020241,
+          "min": 0.0214359142512514
+        }
+      },
+      "zero_total_scenarios_excluded_from_shares": 0
+    }
+  },
+  "flexible_capacity": {
+    "Crackers": 186200000.0,
+    "Seasonal Influenza Vaccine": 955734.406438632,
+    "Water": 18000000.0
+  },
+  "flexible_capacity_difference_from_old_51": {
+    "Crackers": -20678000.0,
+    "Seasonal Influenza Vaccine": -188631.790744468,
+    "Water": -9000000.0
+  },
+  "flexible_capacity_rule": "max_transformed_demand_over_15_Rawls_single_hurricane_scenarios",
+  "identity_boundary": "FORMAL_E1_HISTORICAL_ONLY_NOT_OLD_51_NOT_CARIBBEAN_NOT_E1_EXTENDED",
+  "model_mechanism_validation": {
+    "M1_levels": [
+      0
+    ],
+    "M2_levels": [
+      0,
+      1,
+      2
+    ],
+    "R0_premium_ratio": 0.0,
+    "availability_rule": "1-(1-eta_r)*delta_omega"
+  },
+  "old_51_flexible_capacity": {
+    "Crackers": 206878000.0,
+    "Seasonal Influenza Vaccine": 1144366.1971831,
+    "Water": 27000000.0
+  },
+  "old_51_reference_budget": 7975014.2749022,
+  "old_formal_identity": {
+    "config_file_sha256": "6f18dfee23d489ad7a7e51ff1ca712cc507f405e7b450e16c3936e5b394e6f07",
+    "config_path": "configs/r6_formal_data_v1.json",
+    "data_sha256": "3eaf0357d9d586198a8887c59b8e67ebeeb2ab8d7224923db854dca717f236f5",
+    "expanded_matrix_identity": "cbedbec9643400af69b0d4369cfd0f1e0a0ccf4e9b61d26c5fc48717948f6b49",
+    "formal_ready_file_sha256": "18ae99941f1bd0d29d2a888defddfafc2391a6ab4928237bd21f998c52f950af",
+    "formal_ready_path": "configs/r6_formal_ready_data_v1.json",
+    "human_spec_sha256": "f1146f5ba6b25723a5e5f55b8106c4954c7804bfde03a49dfe8f8e88abe5fcc4",
+    "matrix_config_identity": "ccf90d26d8947e2b0607d38c9812f69c485b5f1532fc5b9e9e8cd0b2abb7e0a2"
+  },
+  "parameter_sha256": "00a23c63dc849239e52e5715dde96787cc20bf8d221349dee2adbc2f89f71039",
+  "parameters": {
+    "exercise_cost": {
+      "Crackers": 0.079662,
+      "Seasonal Influenza Vaccine": 11.8286,
+      "Water": 0.550545
+    },
+    "f_disruption_cat1_to_cat5": [
+      0.1,
+      0.3,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "f_split_sensitivity": [
+      [
+        0.1,
+        0.95
+      ],
+      [
+        0.2,
+        0.85
+      ],
+      [
+        0.3,
+        0.75
+      ]
+    ],
+    "q_survivability_cat1_to_cat5": [
+      0.9,
+      0.85,
+      0.8,
+      0.75,
+      0.7
+    ],
+    "q_unit_cost": {
+      "Crackers": 0.09372,
+      "Seasonal Influenza Vaccine": 13.916,
+      "Water": 0.6477
+    },
+    "reliability_cost_ratios": [
+      0.0,
+      0.1,
+      0.25
+    ],
+    "reliability_mitigation": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "reservation_cost": {
+      "Crackers": 0.018744,
+      "Seasonal Influenza Vaccine": 2.7832,
+      "Water": 0.12954
+    },
+    "retention": {
+      "Crackers": 0.9,
+      "Seasonal Influenza Vaccine": 1.0,
+      "Water": 1.0
+    },
+    "shortage_beta": 4.0,
+    "shortage_cost": {
+      "Crackers": 0.37488,
+      "Seasonal Influenza Vaccine": 55.664,
+      "Water": 2.5908
+    },
+    "shortage_priority_lambda": {
+      "Crackers": 1.0,
+      "Seasonal Influenza Vaccine": 1.0,
+      "Water": 1.0
+    },
+    "storage_cost_per_month": {
+      "Crackers": 0.0,
+      "Seasonal Influenza Vaccine": 0.0833333333333333,
+      "Water": 0.0
+    },
+    "storage_horizon_cost": {
+      "Crackers": 0.0,
+      "Seasonal Influenza Vaccine": 0.5,
+      "Water": 0.0
+    },
+    "tau": 6.0
+  },
+  "probability_rule": "condition_frozen_Rawls_probabilities_on_single_hurricane_subset",
+  "probability_sum": 1.0,
+  "provenance_classes": {
+    "crackers_price": "SOURCE_BASED_RECONSTRUCTED_PRICE",
+    "crackers_retention": "LITERATURE_SUPPORTED_MECHANISM_PLUS_CALIBRATED_EFFECTIVE_SERVICE_RETENTION",
+    "crackers_serving": "USDA_OFFICIAL_SERVING_DEFINITION",
+    "delta": "LITERATURE_BOUNDED_SEVERITY_CALIBRATION_NOT_EMPIRICAL_SAFFIR_SIMPSON_DAMAGE_ESTIMATE",
+    "eta": "PILOT_ANCHORED_CALIBRATED_TIERS_NOT_EMPIRICAL_ESTIMATES",
+    "lambda": "NEUTRAL_FORMAL_BASELINE",
+    "phi_psi_premium_beta": "PILOT_ANCHORED_RESEARCH_DESIGN_CALIBRATION_WITH_MECHANISM_SUPPORT_NOT_EMPIRICAL_POINT_ESTIMATES",
+    "rawls_scenarios_probabilities_water": "SOURCE_BASED_PUBLIC_CASE_DATA",
+    "rhoQ": "PILOT_ANCHORED_RESEARCH_DESIGN_MAPPING_NOT_EMPIRICAL_SAFFIR_SIMPSON_LOSS_ESTIMATE",
+    "vaccine_cold_chain_cost": "LITERATURE_INFORMED_LITERATURE_BOUNDED_RESEARCH_DESIGN_CALIBRATION_NOT_EXACT_OBSERVED_COST",
+    "vaccine_price": "CDC_OFFICIAL_PRICE",
+    "vaccine_storage_temperature": "FDA_CDC_OFFICIAL_REQUIREMENT"
+  },
+  "qfr_data": {
+    "budget": 6721988.79033174,
+    "demand": {
+      "omega_01": {
+        "Crackers": 7350000.0,
+        "Seasonal Influenza Vaccine": 5030.18108651911,
+        "Water": 350000.0
+      },
+      "omega_02": {
+        "Crackers": 24794000.0,
+        "Seasonal Influenza Vaccine": 16971.8309859155,
+        "Water": 7500000.0
+      },
+      "omega_03": {
+        "Crackers": 15750000.0,
+        "Seasonal Influenza Vaccine": 188631.790744467,
+        "Water": 2250000.0
+      },
+      "omega_04": {
+        "Crackers": 2534000.0,
+        "Seasonal Influenza Vaccine": 4044.26559356137,
+        "Water": 861000.0
+      },
+      "omega_05": {
+        "Crackers": 12978000.0,
+        "Seasonal Influenza Vaccine": 8883.29979879276,
+        "Water": 560000.0
+      },
+      "omega_06": {
+        "Crackers": 8820000.0,
+        "Seasonal Influenza Vaccine": 45271.629778672,
+        "Water": 18000000.0
+      },
+      "omega_07": {
+        "Crackers": 1120000.0,
+        "Seasonal Influenza Vaccine": 5744.46680080483,
+        "Water": 2818000.0
+      },
+      "omega_08": {
+        "Crackers": 23688000.0,
+        "Seasonal Influenza Vaccine": 37826.9617706237,
+        "Water": 9000000.0
+      },
+      "omega_09": {
+        "Crackers": 24500000.0,
+        "Seasonal Influenza Vaccine": 125754.527162978,
+        "Water": 5000000.0
+      },
+      "omega_10": {
+        "Crackers": 20678000.0,
+        "Seasonal Influenza Vaccine": 106146.881287726,
+        "Water": 2239000.0
+      },
+      "omega_11": {
+        "Crackers": 54894000.0,
+        "Seasonal Influenza Vaccine": 281760.563380282,
+        "Water": 4400000.0
+      },
+      "omega_12": {
+        "Crackers": 4536000.0,
+        "Seasonal Influenza Vaccine": 7243.46076458752,
+        "Water": 600000.0
+      },
+      "omega_13": {
+        "Crackers": 186200000.0,
+        "Seasonal Influenza Vaccine": 955734.406438632,
+        "Water": 1040000.0
+      },
+      "omega_14": {
+        "Crackers": 2268000.0,
+        "Seasonal Influenza Vaccine": 3621.73038229376,
+        "Water": 1500000.0
+      },
+      "omega_15": {
+        "Crackers": 25732000.0,
+        "Seasonal Influenza Vaccine": 17615.6941649899,
+        "Water": 1000000.0
+      }
+    },
+    "disruption": {
+      "omega_01": {
+        "Crackers": 0.6,
+        "Seasonal Influenza Vaccine": 0.6,
+        "Water": 0.6
+      },
+      "omega_02": {
+        "Crackers": 0.8,
+        "Seasonal Influenza Vaccine": 0.8,
+        "Water": 0.8
+      },
+      "omega_03": {
+        "Crackers": 0.3,
+        "Seasonal Influenza Vaccine": 0.3,
+        "Water": 0.3
+      },
+      "omega_04": {
+        "Crackers": 0.3,
+        "Seasonal Influenza Vaccine": 0.3,
+        "Water": 0.3
+      },
+      "omega_05": {
+        "Crackers": 1.0,
+        "Seasonal Influenza Vaccine": 1.0,
+        "Water": 1.0
+      },
+      "omega_06": {
+        "Crackers": 0.6,
+        "Seasonal Influenza Vaccine": 0.6,
+        "Water": 0.6
+      },
+      "omega_07": {
+        "Crackers": 0.6,
+        "Seasonal Influenza Vaccine": 0.6,
+        "Water": 0.6
+      },
+      "omega_08": {
+        "Crackers": 0.3,
+        "Seasonal Influenza Vaccine": 0.3,
+        "Water": 0.3
+      },
+      "omega_09": {
+        "Crackers": 0.6,
+        "Seasonal Influenza Vaccine": 0.6,
+        "Water": 0.6
+      },
+      "omega_10": {
+        "Crackers": 0.8,
+        "Seasonal Influenza Vaccine": 0.8,
+        "Water": 0.8
+      },
+      "omega_11": {
+        "Crackers": 0.8,
+        "Seasonal Influenza Vaccine": 0.8,
+        "Water": 0.8
+      },
+      "omega_12": {
+        "Crackers": 0.3,
+        "Seasonal Influenza Vaccine": 0.3,
+        "Water": 0.3
+      },
+      "omega_13": {
+        "Crackers": 1.0,
+        "Seasonal Influenza Vaccine": 1.0,
+        "Water": 1.0
+      },
+      "omega_14": {
+        "Crackers": 0.1,
+        "Seasonal Influenza Vaccine": 0.1,
+        "Water": 0.1
+      },
+      "omega_15": {
+        "Crackers": 0.6,
+        "Seasonal Influenza Vaccine": 0.6,
+        "Water": 0.6
+      }
+    },
+    "exercise_cost": {
+      "Crackers": 0.079662,
+      "Seasonal Influenza Vaccine": 11.8286,
+      "Water": 0.550545
+    },
+    "flexible_capacity": {
+      "Crackers": 186200000.0,
+      "Seasonal Influenza Vaccine": 955734.406438632,
+      "Water": 18000000.0
+    },
+    "items": [
+      "Water",
+      "Seasonal Influenza Vaccine",
+      "Crackers"
+    ],
+    "model_family": "heterogeneous_material_qfr",
+    "q_availability": {
+      "omega_01": {
+        "Crackers": 0.8,
+        "Seasonal Influenza Vaccine": 0.8,
+        "Water": 0.8
+      },
+      "omega_02": {
+        "Crackers": 0.75,
+        "Seasonal Influenza Vaccine": 0.75,
+        "Water": 0.75
+      },
+      "omega_03": {
+        "Crackers": 0.85,
+        "Seasonal Influenza Vaccine": 0.85,
+        "Water": 0.85
+      },
+      "omega_04": {
+        "Crackers": 0.85,
+        "Seasonal Influenza Vaccine": 0.85,
+        "Water": 0.85
+      },
+      "omega_05": {
+        "Crackers": 0.7,
+        "Seasonal Influenza Vaccine": 0.7,
+        "Water": 0.7
+      },
+      "omega_06": {
+        "Crackers": 0.8,
+        "Seasonal Influenza Vaccine": 0.8,
+        "Water": 0.8
+      },
+      "omega_07": {
+        "Crackers": 0.8,
+        "Seasonal Influenza Vaccine": 0.8,
+        "Water": 0.8
+      },
+      "omega_08": {
+        "Crackers": 0.85,
+        "Seasonal Influenza Vaccine": 0.85,
+        "Water": 0.85
+      },
+      "omega_09": {
+        "Crackers": 0.8,
+        "Seasonal Influenza Vaccine": 0.8,
+        "Water": 0.8
+      },
+      "omega_10": {
+        "Crackers": 0.75,
+        "Seasonal Influenza Vaccine": 0.75,
+        "Water": 0.75
+      },
+      "omega_11": {
+        "Crackers": 0.75,
+        "Seasonal Influenza Vaccine": 0.75,
+        "Water": 0.75
+      },
+      "omega_12": {
+        "Crackers": 0.85,
+        "Seasonal Influenza Vaccine": 0.85,
+        "Water": 0.85
+      },
+      "omega_13": {
+        "Crackers": 0.7,
+        "Seasonal Influenza Vaccine": 0.7,
+        "Water": 0.7
+      },
+      "omega_14": {
+        "Crackers": 0.9,
+        "Seasonal Influenza Vaccine": 0.9,
+        "Water": 0.9
+      },
+      "omega_15": {
+        "Crackers": 0.8,
+        "Seasonal Influenza Vaccine": 0.8,
+        "Water": 0.8
+      }
+    },
+    "q_unit_cost": {
+      "Crackers": 0.09372,
+      "Seasonal Influenza Vaccine": 13.916,
+      "Water": 0.6477
+    },
+    "reliability_cost": {
+      "Crackers": {
+        "0": 0.0,
+        "1": 0.009372,
+        "2": 0.02343
+      },
+      "Seasonal Influenza Vaccine": {
+        "0": 0.0,
+        "1": 1.3916,
+        "2": 3.479
+      },
+      "Water": {
+        "0": 0.0,
+        "1": 0.06477,
+        "2": 0.161925
+      }
+    },
+    "reliability_levels": [
+      0,
+      1,
+      2
+    ],
+    "reliability_mitigation": {
+      "Crackers": {
+        "0": 0.2,
+        "1": 0.5,
+        "2": 0.8
+      },
+      "Seasonal Influenza Vaccine": {
+        "0": 0.2,
+        "1": 0.5,
+        "2": 0.8
+      },
+      "Water": {
+        "0": 0.2,
+        "1": 0.5,
+        "2": 0.8
+      }
+    },
+    "reservation_cost": {
+      "Crackers": 0.018744,
+      "Seasonal Influenza Vaccine": 2.7832,
+      "Water": 0.12954
+    },
+    "retention": {
+      "Crackers": 0.9,
+      "Seasonal Influenza Vaccine": 1.0,
+      "Water": 1.0
+    },
+    "scenarios": [
+      "omega_01",
+      "omega_02",
+      "omega_03",
+      "omega_04",
+      "omega_05",
+      "omega_06",
+      "omega_07",
+      "omega_08",
+      "omega_09",
+      "omega_10",
+      "omega_11",
+      "omega_12",
+      "omega_13",
+      "omega_14",
+      "omega_15"
+    ],
+    "schema_version": 3,
+    "shortage_cost": {
+      "Crackers": 0.37488,
+      "Seasonal Influenza Vaccine": 55.664,
+      "Water": 2.5908
+    },
+    "storage_cost": {
+      "Crackers": 0.0,
+      "Seasonal Influenza Vaccine": 0.0833333333333333,
+      "Water": 0.0
+    },
+    "tau": 6.0
+  },
+  "reference_budget": 6721988.79033174,
+  "reference_budget_components": {
+    "Crackers": 2584844.73768889,
+    "Seasonal Influenza Vaccine": 1856227.58527485,
+    "Water": 2280916.467368
+  },
+  "reference_budget_difference_from_old_51": -1253025.48457046,
+  "reference_budget_regeneration": "SAME_FROZEN_FORMULA_MECHANICALLY_RECOMPUTED_ON_CONDITIONAL_RAWLS_15_DATASET",
+  "reference_budget_rule": "sum_i((cQ_i+h_i*tau)*Dref_i/a_i)",
+  "reference_demand": {
+    "Crackers": 24822452.6666667,
+    "Seasonal Influenza Vaccine": 128761.624949698,
+    "Water": 3521563.17333333
+  },
+  "reference_demand_rule": "conditional_probability_weighted_mean_over_15_Rawls_single_hurricane_scenarios",
+  "revision_config_sha256": "eb1545320e9e8306294d2d106ff22d696d91b1f153a657f2b323109515c4de6f",
+  "scenario_counts": {
+    "combined": 0,
+    "no_hurricane": 0,
+    "single": 15,
+    "total": 15
+  },
+  "scenario_ordering": [
+    "omega_01",
+    "omega_02",
+    "omega_03",
+    "omega_04",
+    "omega_05",
+    "omega_06",
+    "omega_07",
+    "omega_08",
+    "omega_09",
+    "omega_10",
+    "omega_11",
+    "omega_12",
+    "omega_13",
+    "omega_14",
+    "omega_15"
+  ],
+  "scenario_set_sha256": "7105246cea6da75ccdf9389ae1324be9b06ce4aa37b3ddd03c89da4bf88f1a55",
+  "scenario_sha256": "bfd8e1920325741cddee9397ed1b12223d7a3bfa2ab9178615383d07635463d8",
+  "scenarios": [
+    {
+      "category": 3,
+      "disruption": 0.6,
+      "formal_demand": {
+        "Crackers": 7350000.0,
+        "Seasonal Influenza Vaccine": 5030.18108651911,
+        "Water": 350000.0
+      },
+      "hurricanes": [
+        "h01"
+      ],
+      "probability": 0.0307733333333333,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.8,
+      "raw_demand": {
+        "medical": 500.0,
+        "mre": 525.0,
+        "water": 350.0
+      },
+      "scenario_id": "omega_01",
+      "scenario_type": "single",
+      "source_probability": 0.02308
+    },
+    {
+      "category": 4,
+      "disruption": 0.8,
+      "formal_demand": {
+        "Crackers": 24794000.0,
+        "Seasonal Influenza Vaccine": 16971.8309859155,
+        "Water": 7500000.0
+      },
+      "hurricanes": [
+        "h05"
+      ],
+      "probability": 0.0666666666666667,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.75,
+      "raw_demand": {
+        "medical": 1687.0,
+        "mre": 1771.0,
+        "water": 7500.0
+      },
+      "scenario_id": "omega_02",
+      "scenario_type": "single",
+      "source_probability": 0.05
+    },
+    {
+      "category": 2,
+      "disruption": 0.3,
+      "formal_demand": {
+        "Crackers": 15750000.0,
+        "Seasonal Influenza Vaccine": 188631.790744467,
+        "Water": 2250000.0
+      },
+      "hurricanes": [
+        "h10"
+      ],
+      "probability": 0.21556,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.85,
+      "raw_demand": {
+        "medical": 18750.0,
+        "mre": 1125.0,
+        "water": 2250.0
+      },
+      "scenario_id": "omega_03",
+      "scenario_type": "single",
+      "source_probability": 0.16167
+    },
+    {
+      "category": 2,
+      "disruption": 0.3,
+      "formal_demand": {
+        "Crackers": 2534000.0,
+        "Seasonal Influenza Vaccine": 4044.26559356137,
+        "Water": 861000.0
+      },
+      "hurricanes": [
+        "h03"
+      ],
+      "probability": 0.0715066666666667,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.85,
+      "raw_demand": {
+        "medical": 402.0,
+        "mre": 181.0,
+        "water": 861.0
+      },
+      "scenario_id": "omega_04",
+      "scenario_type": "single",
+      "source_probability": 0.05363
+    },
+    {
+      "category": 5,
+      "disruption": 1.0,
+      "formal_demand": {
+        "Crackers": 12978000.0,
+        "Seasonal Influenza Vaccine": 8883.29979879276,
+        "Water": 560000.0
+      },
+      "hurricanes": [
+        "h02"
+      ],
+      "probability": 0.0123333333333333,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.7,
+      "raw_demand": {
+        "medical": 883.0,
+        "mre": 927.0,
+        "water": 560.0
+      },
+      "scenario_id": "omega_05",
+      "scenario_type": "single",
+      "source_probability": 0.00925
+    },
+    {
+      "category": 3,
+      "disruption": 0.6,
+      "formal_demand": {
+        "Crackers": 8820000.0,
+        "Seasonal Influenza Vaccine": 45271.629778672,
+        "Water": 18000000.0
+      },
+      "hurricanes": [
+        "h12"
+      ],
+      "probability": 0.0411066666666667,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.8,
+      "raw_demand": {
+        "medical": 4500.0,
+        "mre": 630.0,
+        "water": 18000.0
+      },
+      "scenario_id": "omega_06",
+      "scenario_type": "single",
+      "source_probability": 0.03083
+    },
+    {
+      "category": 3,
+      "disruption": 0.6,
+      "formal_demand": {
+        "Crackers": 1120000.0,
+        "Seasonal Influenza Vaccine": 5744.46680080483,
+        "Water": 2818000.0
+      },
+      "hurricanes": [
+        "h13"
+      ],
+      "probability": 0.1784,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.8,
+      "raw_demand": {
+        "medical": 571.0,
+        "mre": 80.0,
+        "water": 2818.0
+      },
+      "scenario_id": "omega_07",
+      "scenario_type": "single",
+      "source_probability": 0.1338
+    },
+    {
+      "category": 2,
+      "disruption": 0.3,
+      "formal_demand": {
+        "Crackers": 23688000.0,
+        "Seasonal Influenza Vaccine": 37826.9617706237,
+        "Water": 9000000.0
+      },
+      "hurricanes": [
+        "h04"
+      ],
+      "probability": 0.0715066666666667,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.85,
+      "raw_demand": {
+        "medical": 3760.0,
+        "mre": 1692.0,
+        "water": 9000.0
+      },
+      "scenario_id": "omega_08",
+      "scenario_type": "single",
+      "source_probability": 0.05363
+    },
+    {
+      "category": 3,
+      "disruption": 0.6,
+      "formal_demand": {
+        "Crackers": 24500000.0,
+        "Seasonal Influenza Vaccine": 125754.527162978,
+        "Water": 5000000.0
+      },
+      "hurricanes": [
+        "h11"
+      ],
+      "probability": 0.0306,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.8,
+      "raw_demand": {
+        "medical": 12500.0,
+        "mre": 1750.0,
+        "water": 5000.0
+      },
+      "scenario_id": "omega_09",
+      "scenario_type": "single",
+      "source_probability": 0.02295
+    },
+    {
+      "category": 4,
+      "disruption": 0.8,
+      "formal_demand": {
+        "Crackers": 20678000.0,
+        "Seasonal Influenza Vaccine": 106146.881287726,
+        "Water": 2239000.0
+      },
+      "hurricanes": [
+        "h14"
+      ],
+      "probability": 0.0306,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.75,
+      "raw_demand": {
+        "medical": 10551.0,
+        "mre": 1477.0,
+        "water": 2239.0
+      },
+      "scenario_id": "omega_10",
+      "scenario_type": "single",
+      "source_probability": 0.02295
+    },
+    {
+      "category": 4,
+      "disruption": 0.8,
+      "formal_demand": {
+        "Crackers": 54894000.0,
+        "Seasonal Influenza Vaccine": 281760.563380282,
+        "Water": 4400000.0
+      },
+      "hurricanes": [
+        "h15"
+      ],
+      "probability": 0.0306,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.75,
+      "raw_demand": {
+        "medical": 28007.0,
+        "mre": 3921.0,
+        "water": 4400.0
+      },
+      "scenario_id": "omega_11",
+      "scenario_type": "single",
+      "source_probability": 0.02295
+    },
+    {
+      "category": 2,
+      "disruption": 0.3,
+      "formal_demand": {
+        "Crackers": 4536000.0,
+        "Seasonal Influenza Vaccine": 7243.46076458752,
+        "Water": 600000.0
+      },
+      "hurricanes": [
+        "h07"
+      ],
+      "probability": 0.0715066666666667,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.85,
+      "raw_demand": {
+        "medical": 720.0,
+        "mre": 324.0,
+        "water": 600.0
+      },
+      "scenario_id": "omega_12",
+      "scenario_type": "single",
+      "source_probability": 0.05363
+    },
+    {
+      "category": 5,
+      "disruption": 1.0,
+      "formal_demand": {
+        "Crackers": 186200000.0,
+        "Seasonal Influenza Vaccine": 955734.406438632,
+        "Water": 1040000.0
+      },
+      "hurricanes": [
+        "h09"
+      ],
+      "probability": 0.0666666666666667,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.7,
+      "raw_demand": {
+        "medical": 95000.0,
+        "mre": 13300.0,
+        "water": 1040.0
+      },
+      "scenario_id": "omega_13",
+      "scenario_type": "single",
+      "source_probability": 0.05
+    },
+    {
+      "category": 1,
+      "disruption": 0.1,
+      "formal_demand": {
+        "Crackers": 2268000.0,
+        "Seasonal Influenza Vaccine": 3621.73038229376,
+        "Water": 1500000.0
+      },
+      "hurricanes": [
+        "h08"
+      ],
+      "probability": 0.0410666666666667,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.9,
+      "raw_demand": {
+        "medical": 360.0,
+        "mre": 162.0,
+        "water": 1500.0
+      },
+      "scenario_id": "omega_14",
+      "scenario_type": "single",
+      "source_probability": 0.0308
+    },
+    {
+      "category": 3,
+      "disruption": 0.6,
+      "formal_demand": {
+        "Crackers": 25732000.0,
+        "Seasonal Influenza Vaccine": 17615.6941649899,
+        "Water": 1000000.0
+      },
+      "hurricanes": [
+        "h06"
+      ],
+      "probability": 0.0411066666666667,
+      "probability_derivation": "rawls_original_probability_divided_by_single_scenario_mass_0.75",
+      "q_availability": 0.8,
+      "raw_demand": {
+        "medical": 1751.0,
+        "mre": 1838.0,
+        "water": 1000.0
+      },
+      "scenario_id": "omega_15",
+      "scenario_type": "single",
+      "source_probability": 0.03083
+    }
+  ],
+  "schema_version": 1,
+  "scientific_runs": 0,
+  "scope": "E1_HISTORICAL_FORMAL_READY_DATA_NO_SOLVES",
+  "source_file_identity": {
+    "data_sha256": "59f4b89d8706f9af06aef46455292335b8b8b095f4a2a0ce0f700e5d219ed16f",
+    "file_sha256": "eae86e57da22765cb097d168fcc76b1798f8c1417f00a5f40280cc3e47bd1e02",
+    "path": "configs/r6c_formal_ready_data_v2.json"
+  },
+  "source_scenario_sha256": "cff2558a61cd61ef7d0a17b1ea3cf8e2f220cc6efc6af45085a95cc765617cbd",
+  "source_single_probability_sum": 0.75,
+  "stage": "R6-C"
+}
