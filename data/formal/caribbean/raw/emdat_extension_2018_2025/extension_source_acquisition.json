@@ -1,0 +1,40 @@
+{
+  "chn_source_identity": "same 35 frozen current CHN index/pages; coverage ends 2019",
+  "document_type": "R6_I_2018_2025_EXTENSION_SOURCE_ACQUISITION",
+  "frozen_old_manifest_sha256": "648f644da811fe7c6492b554667c5462a4939776f65201ed1461bb71bfdae280",
+  "new_emdat_source": {
+    "bytes": 197338,
+    "columns": 47,
+    "disaster_subtype": "Tropical cyclone",
+    "disaster_type": "Storm",
+    "end_year": 2025,
+    "file_creation_utc": "2026-09-02T03:13:19Z",
+    "filename": "public_emdat_custom_request_2026-09-02_29fd291d-8941-49e3-8719-e8911b23e14e.xlsx",
+    "identity": "EMDAT_PUBLIC_CUSTOM_REQUEST_2018_2025_2026_08_28",
+    "records": 492,
+    "repository_raw_path": "data/formal/caribbean/raw/emdat_extension_2018_2025/public_emdat_custom_request_2026-09-02_29fd291d-8941-49e3-8719-e8911b23e14e.xlsx",
+    "sha256": "1fb5bcb8228cf45a6baa0c39bcd3492e741f488d1ff385c81dc73e219156a600",
+    "source": "EM-DAT, CRED / UCLouvain, Brussels, Belgium",
+    "source_library_path": "D:\\\u65b0\u5efa\u6587\u4ef6\u5939\\\u9879\u76ee\uff1arobust-budget-allocation\\public_emdat_custom_request_2026-09-02_29fd291d-8941-49e3-8719-e8911b23e14e.xlsx",
+    "start_year": 2018,
+    "table_type": "public_emdat_custom_request",
+    "version": "2026-08-28"
+  },
+  "reused_frozen_sources": [
+    {
+      "identity": "NHC_HURDAT2_ATLANTIC_1851_2025_2026_02_27",
+      "local_path": "data/formal/caribbean/raw/hurdat2/hurdat2-1851-2025-02272026.txt",
+      "sha256": "1b9b0c7beed5b4505838658b1d30e159fc84330c60891a58cfcf43ae55c37202",
+      "source_role": "primary_storm_identity_track_and_intensity",
+      "source_url": "https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2025-02272026.txt"
+    },
+    {
+      "identity": "UN_WPP_2024_MEDIUM_DEMOGRAPHIC_INDICATORS",
+      "local_path": "data/formal/caribbean/raw/population/WPP2024_Demographic_Indicators_Medium.csv.gz",
+      "sha256": "286ac36bb1415e2e1ade03acfef0a29f0e4c087e2f78e38c48f50c5df89082bc",
+      "source_role": "event_year_population_denominator",
+      "source_url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+    }
+  ],
+  "schema_version": 1
+}
