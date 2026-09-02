@@ -1,0 +1,25 @@
+scenario_id,hurricane_name,category,evacuees,sheltered,water_unified,food_unified,medical_unified,water_formula,food_formula,medical_formula
+h01,Alicia,3,35000,25000,350000,875000,6250,10 * evacuees,35 * sheltered,sheltered / 4
+h02,Camille,5,56000,44152,560000,1545320,11038,10 * evacuees,35 * sheltered,sheltered / 4
+h03,Bonnie,2,287000,20087,861000,301305,5021.75,3 * evacuees,15 * sheltered,sheltered / 4
+h04,Floyd,2,3000000,188000,9000000,2820000,47000,3 * evacuees,15 * sheltered,sheltered / 4
+h05,Andrew,4,750000,84340,7500000,2951900,21085,10 * evacuees,35 * sheltered,sheltered / 4
+h06,Opal,3,100000,87534,1000000,3063690,21883.5,10 * evacuees,35 * sheltered,sheltered / 4
+h07,Isabel,2,200000,36000,600000,540000,9000,3 * evacuees,15 * sheltered,sheltered / 4
+h08,Lili,1,500000,18000,1500000,270000,4500,3 * evacuees,15 * sheltered,sheltered / 4
+h09,Katrina,5,1040000,3800000,10400000,133000000,950000,10 * evacuees,35 * sheltered,sheltered / 4
+h10,Bertha,2,750000,75000,2250000,1125000,18750,3 * evacuees,15 * sheltered,sheltered / 4
+h11,Fran,3,500000,50000,5000000,1750000,12500,10 * evacuees,35 * sheltered,sheltered / 4
+h12,Dennis,3,1800000,18000,18000000,630000,4500,10 * evacuees,35 * sheltered,sheltered / 4
+h13,Emily,3,281750,2282,2817500,79870,570.5,10 * evacuees,35 * sheltered,sheltered / 4
+h14,Georges,4,223900,42204,2239000,1477140,10551,10 * evacuees,35 * sheltered,sheltered / 4
+h15,Hugo,4,440000,112027,4400000,3920945,28006.75,10 * evacuees,35 * sheltered,sheltered / 4
+h16,Ike,2,1200000,40000,3600000,600000,10000,3 * evacuees,15 * sheltered,sheltered / 4
+h17,Rita,3,2000000,150000,20000000,5250000,37500,10 * evacuees,35 * sheltered,sheltered / 4
+h18,Wilma,3,300000,37000,3000000,1295000,9250,10 * evacuees,35 * sheltered,sheltered / 4
+h19,Irma,4,7000000,191764,70000000,6711740,47941,10 * evacuees,35 * sheltered,sheltered / 4
+h20,Charley,4,2700000,102094,27000000,3573290,25523.5,10 * evacuees,35 * sheltered,sheltered / 4
+h21,Frances,2,1800000,186620,5400000,2799300,46655,3 * evacuees,15 * sheltered,sheltered / 4
+h22,Ivan,3,544900,33472,5449000,1171520,8368,10 * evacuees,35 * sheltered,sheltered / 4
+h23,Jeanne,3,4400000,46252,44000000,1618820,11563,10 * evacuees,35 * sheltered,sheltered / 4
+h24,Elena,3,300000,150000,3000000,5250000,37500,10 * evacuees,35 * sheltered,sheltered / 4

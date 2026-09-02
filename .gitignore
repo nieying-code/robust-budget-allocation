@@ -9,5 +9,6 @@ build/
 *.egg-info/
 outputs/
 artifacts/
+tmp/
 .idea/
 .vscode/
