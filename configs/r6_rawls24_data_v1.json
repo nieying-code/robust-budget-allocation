@@ -1,0 +1,149 @@
+{
+  "dataset_identity": "rawls_24_real_single_hurricane_data_recalibration_v1",
+  "stage": "DATA_RECALIBRATION_ONLY",
+  "source_identities": {
+    "authoritative_workbook": {
+      "path": "D:/新建文件夹/QFR_24真实单飓风_Formal主数据_口径冲突解决与冻结版_2026-09-02.xlsx",
+      "sha256": "4148d6a0e16d8bb366ccaf1993f070ffcc097b3f5584c12c0c36d28bc0ede391",
+      "ranges": ["24场景审计!A1:Q25", "新增9来源与冲突!A1:N16", "冻结结论!A1:B14"]
+    },
+    "provided_attachment": {
+      "path": "D:/新建文件夹/项目：robust-budget-allocation/旧文献/Pre-positioning of emergency supplies for disaster response.pdf",
+      "sha256": "77cc3f65561458d05912ea8cce7e7eab2ca8d225dd07fb6a3a462df814d0fef9",
+      "identity": "Rawls and Turnquist, Transportation Research Part B 44 (2010), 14 pages",
+      "role": "JOURNAL_CROSS_CHECK_NOT_DISSERTATION"
+    },
+    "rawls_dissertation": {
+      "title": "Prepositioning of Emergency Supplies for Disaster Response",
+      "author": "Carmen Gloria Rawls",
+      "institution": "Cornell University",
+      "date": "August 2008",
+      "official_url": "https://ecommons.cornell.edu/server/api/core/bitstreams/a1e3d7bd-e892-400c-b669-a46f4387b862/content",
+      "sha256": "76b44c8e46054d836c3e39d94f7cd2a7b5835e9422eb4ddd6193dda678272c65",
+      "rule_reference": "Chapter 5 section 5.3, PDF page 59 / printed page 48",
+      "table_reference": "Table 5-3, PDF page 60 / printed page 49"
+    }
+  },
+  "demand_rule": {
+    "minor_categories": [1, 2],
+    "major_categories": [3, 4, 5],
+    "water_minor": "3 * evacuees",
+    "water_major": "10 * evacuees",
+    "food_minor": "15 * sheltered",
+    "food_major": "35 * sheltered",
+    "medical_all": "sheltered / 4"
+  },
+  "events": [
+    {
+      "scenario_id": "h01", "hurricane_name": "Alicia", "year": 1983, "category": 3, "group": "Rawls15", "evacuees": 35000, "sheltered": 25000,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Preserve original Category/E/S; reconstruct demand with the final dissertation rule.",
+      "historical_rawls": {"water_1000_gallons": 350, "food_1000_units": 525, "medical_units": 500, "evacuees_qualifier": "reported", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h02", "hurricane_name": "Camille", "year": 1969, "category": 5, "group": "Rawls15", "evacuees": 56000, "sheltered": 44152,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Preserve original Category/E/S; reconstruct demand with the final dissertation rule.",
+      "historical_rawls": {"water_1000_gallons": 560, "food_1000_units": 927, "medical_units": 883, "evacuees_qualifier": "reported", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h03", "hurricane_name": "Bonnie", "year": 1998, "category": 2, "group": "Rawls15", "evacuees": 287000, "sheltered": 20087,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Preserve original Category/E/S; reconstruct demand with the final dissertation rule.",
+      "historical_rawls": {"water_1000_gallons": 861, "food_1000_units": 181, "medical_units": 402, "evacuees_qualifier": "reported", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h04", "hurricane_name": "Floyd", "year": 1999, "category": 2, "group": "Rawls15", "evacuees": 3000000, "sheltered": 188000,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Preserve original Category/E/S; reconstruct demand with the final dissertation rule.",
+      "historical_rawls": {"water_1000_gallons": 9000, "food_1000_units": 1692, "medical_units": 3760, "evacuees_qualifier": "reported", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h05", "hurricane_name": "Andrew", "year": 1992, "category": 4, "group": "Rawls15", "evacuees": 750000, "sheltered": 84340,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Preserve original Category/E/S; reconstruct demand with the final dissertation rule.",
+      "historical_rawls": {"water_1000_gallons": 7500, "food_1000_units": 1771, "medical_units": 1687, "evacuees_qualifier": "reported", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h06", "hurricane_name": "Opal", "year": 1995, "category": 3, "group": "Rawls15", "evacuees": 100000, "sheltered": 87534,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Preserve original Category/E/S; reconstruct demand with the final dissertation rule.",
+      "historical_rawls": {"water_1000_gallons": 1000, "food_1000_units": 1838, "medical_units": 1751, "evacuees_qualifier": "reported", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h07", "hurricane_name": "Isabel", "year": 2003, "category": 2, "group": "Rawls15", "evacuees": 200000, "sheltered": 36000,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees (estimated)", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Table 5-3 marks evacuees as estimated; preserve Category/E/S and reconstruct demand.",
+      "historical_rawls": {"water_1000_gallons": 600, "food_1000_units": 324, "medical_units": 720, "evacuees_qualifier": "estimated: sheltered close to 10% of evacuees", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h08", "hurricane_name": "Lili", "year": 2002, "category": 1, "group": "Rawls15", "evacuees": 500000, "sheltered": 18000,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Preserve original Category/E/S; reconstruct demand with the final dissertation rule.",
+      "historical_rawls": {"water_1000_gallons": 1500, "food_1000_units": 162, "medical_units": 360, "evacuees_qualifier": "reported", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h09", "hurricane_name": "Katrina", "year": 2005, "category": 5, "group": "Rawls15", "evacuees": 1040000, "sheltered": 3800000,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Preserve original Category/E/S; reconstruct demand with the final dissertation rule.",
+      "historical_rawls": {"water_1000_gallons": 10400, "food_1000_units": 133000, "medical_units": 950000, "evacuees_qualifier": "reported", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h10", "hurricane_name": "Bertha", "year": 1996, "category": 2, "group": "Rawls15", "evacuees": 750000, "sheltered": 75000,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees (estimated)", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Table 5-3 marks evacuees as estimated; preserve Category/E/S and reconstruct demand.",
+      "historical_rawls": {"water_1000_gallons": 2250, "food_1000_units": 1125, "medical_units": 18750, "evacuees_qualifier": "estimated: sheltered close to 10% of evacuees", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h11", "hurricane_name": "Fran", "year": 1996, "category": 3, "group": "Rawls15", "evacuees": 500000, "sheltered": 50000,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees (estimated)", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Table 5-3 marks evacuees as estimated; preserve Category/E/S and reconstruct demand.",
+      "historical_rawls": {"water_1000_gallons": 5000, "food_1000_units": 1750, "medical_units": 12500, "evacuees_qualifier": "estimated: sheltered close to 10% of evacuees", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h12", "hurricane_name": "Dennis", "year": 2005, "category": 3, "group": "Rawls15", "evacuees": 1800000, "sheltered": 18000,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees (estimated tourist-area relation)", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Table 5-3 marks evacuees as estimated; preserve Category/E/S and reconstruct demand.",
+      "historical_rawls": {"water_1000_gallons": 18000, "food_1000_units": 630, "medical_units": 4500, "evacuees_qualifier": "estimated: sheltered close to 1% of evacuees in tourist area", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h13", "hurricane_name": "Emily", "year": 1993, "category": 3, "group": "Rawls15", "evacuees": 281750, "sheltered": 2282,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Preserve original Category/E/S; reconstruct demand with the final dissertation rule.",
+      "historical_rawls": {"water_1000_gallons": 2818, "food_1000_units": 80, "medical_units": 571, "evacuees_qualifier": "reported", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h14", "hurricane_name": "Georges", "year": 1998, "category": 4, "group": "Rawls15", "evacuees": 223900, "sheltered": 42204,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Preserve original Category/E/S; reconstruct demand with the final dissertation rule.",
+      "historical_rawls": {"water_1000_gallons": 2239, "food_1000_units": 1477, "medical_units": 10551, "evacuees_qualifier": "reported", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h15", "hurricane_name": "Hugo", "year": 1989, "category": 4, "group": "Rawls15", "evacuees": 440000, "sheltered": 112027,
+      "geographic_scope": "Rawls historical event aggregate", "evidence_status": "FROZEN", "evacuees_evidence_identity": "Rawls Table 5-3 evacuees", "sheltered_evidence_identity": "Rawls Table 5-3 sheltered", "source_reference": "Rawls dissertation Table 5-3", "notes": "Preserve original Category/E/S; reconstruct demand with the final dissertation rule.",
+      "historical_rawls": {"water_1000_gallons": 4400, "food_1000_units": 3921, "medical_units": 28007, "evacuees_qualifier": "reported", "sheltered_qualifier": "reported"}
+    },
+    {
+      "scenario_id": "h16", "hurricane_name": "Ike", "year": 2008, "category": 2, "group": "Added9", "evacuees": 1200000, "sheltered": 40000,
+      "geographic_scope": "Texas statewide", "evidence_status": "READY", "evacuees_evidence_identity": "observed/official estimate", "sheltered_evidence_identity": "peak shelter population", "source_reference": "Authoritative workbook; U.S. Senate hearing https://www.govinfo.gov/content/pkg/CHRG-110shrg45578/pdf/CHRG-110shrg45578.pdf", "notes": "Same-event government evidence gives 1.2 million evacuated and peak 40,000 in shelters."
+    },
+    {
+      "scenario_id": "h17", "hurricane_name": "Rita", "year": 2005, "category": 3, "group": "Added9", "evacuees": 2000000, "sheltered": 150000,
+      "geographic_scope": "event/regional estimate", "evidence_status": "FROZEN-BOUND", "evacuees_evidence_identity": "up to/approximately 2,000,000", "sheltered_evidence_identity": "lower bound: at least 150,000", "source_reference": "Authoritative workbook; NWS Houston/Galveston https://www.weather.gov/hgx/projects_rita05", "notes": "Bounded evidence. Values must not be described as exact observations; derived Food and Medical retain lower-bound character."
+    },
+    {
+      "scenario_id": "h18", "hurricane_name": "Wilma", "year": 2005, "category": 3, "group": "Added9", "evacuees": 300000, "sheltered": 37000,
+      "geographic_scope": "Florida", "evidence_status": "READY", "evacuees_evidence_identity": "government estimate: as many as 300,000", "sheltered_evidence_identity": "government shelter estimate: approximately 37,000", "source_reference": "Authoritative workbook; federal case study https://www.govinfo.gov/content/pkg/GOVPUB-Y3_N88-PURL-LPS108561/pdf/GOVPUB-Y3_N88-PURL-LPS108561.pdf", "notes": "Same-event government case study."
+    },
+    {
+      "scenario_id": "h19", "hurricane_name": "Irma", "year": 2017, "category": 4, "group": "Added9", "evacuees": 7000000, "sheltered": 191764,
+      "geographic_scope": "Florida statewide", "evidence_status": "READY", "evacuees_evidence_identity": "official approximate evacuated", "sheltered_evidence_identity": "official statewide peak shelter population", "source_reference": "Authoritative workbook; CDC https://www.cdc.gov/mmwr/volumes/67/wr/mm6730a5.htm; Florida official material https://static-s3.lobbytools.com/bills/2018/event_docs/1/CP_House_SCHRP18_2018116_9.pdf", "notes": "CDC plus Florida/FEMA official evidence."
+    },
+    {
+      "scenario_id": "h20", "hurricane_name": "Charley", "year": 2004, "category": 4, "group": "Added9", "evacuees": 2700000, "sheltered": 102094,
+      "geographic_scope": "Florida statewide", "evidence_status": "FROZEN", "evacuees_evidence_identity": "official statewide evacuated", "sheltered_evidence_identity": "official statewide sheltered", "source_reference": "Authoritative workbook; Florida House staff analysis 2004-12-14 https://flsenate.gov/Session/Bill/2004A/17A/Analyses/2004a0017HFC_h0017Ac.FC.pdf", "notes": "Frozen same-source paired E/S; do not mix with southwest/west-central or FEMA scopes."
+    },
+    {
+      "scenario_id": "h21", "hurricane_name": "Frances", "year": 2004, "category": 2, "group": "Added9", "evacuees": 1800000, "sheltered": 186620,
+      "geographic_scope": "Florida statewide", "evidence_status": "FROZEN", "evacuees_evidence_identity": "official statewide evacuated", "sheltered_evidence_identity": "official statewide sheltered", "source_reference": "Authoritative workbook; Florida House staff analysis 2004-12-14 https://flsenate.gov/Session/Bill/2004A/17A/Analyses/2004a0017HFC_h0017Ac.FC.pdf", "notes": "Frozen same-source paired E/S; do not substitute broader FEMA event totals."
+    },
+    {
+      "scenario_id": "h22", "hurricane_name": "Ivan", "year": 2004, "category": 3, "group": "Added9", "evacuees": 544900, "sheltered": 33472,
+      "geographic_scope": "Florida statewide", "evidence_status": "FROZEN", "evacuees_evidence_identity": "official statewide evacuated", "sheltered_evidence_identity": "official statewide sheltered", "source_reference": "Authoritative workbook; Florida House staff analysis 2004-12-14 https://flsenate.gov/Session/Bill/2004A/17A/Analyses/2004a0017HFC_h0017Ac.FC.pdf", "notes": "Frozen same-source paired E/S; FEMA 2.0 million/52,000 is multi-state and excluded."
+    },
+    {
+      "scenario_id": "h23", "hurricane_name": "Jeanne", "year": 2004, "category": 3, "group": "Added9", "evacuees": 4400000, "sheltered": 46252,
+      "geographic_scope": "Florida statewide", "evidence_status": "FROZEN", "evacuees_evidence_identity": "official statewide evacuated", "sheltered_evidence_identity": "official statewide sheltered", "source_reference": "Authoritative workbook; Florida House staff analysis 2004-12-14 https://flsenate.gov/Session/Bill/2004A/17A/Analyses/2004a0017HFC_h0017Ac.FC.pdf", "notes": "Frozen same-source paired E/S; broader FEMA shelter total is excluded."
+    },
+    {
+      "scenario_id": "h24", "hurricane_name": "Elena", "year": 1985, "category": 3, "group": "Added9", "evacuees": 300000, "sheltered": 150000,
+      "geographic_scope": "Pinellas County", "evidence_status": "READY", "evacuees_evidence_identity": "official lower bound: more than 300,000", "sheltered_evidence_identity": "derived from official 'half' statement: more than 150,000", "source_reference": "Authoritative workbook; U.S. Congressional Record https://www.govinfo.gov/content/pkg/GPO-CRECB-1985-pt17/pdf/GPO-CRECB-1985-pt17-2.pdf", "notes": "Same-scope conservative lower-bound representation, not exact population counts."
+    }
+  ]
+}

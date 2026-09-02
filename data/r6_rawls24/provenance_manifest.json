@@ -1,0 +1,169 @@
+{
+  "canonical_data_sha256": "c59c3c9d9b33abcbb73943e8f1353137b2fc4501ae1244b91c7ef480db83a4ac",
+  "dataset_identity": "rawls_24_real_single_hurricane_data_recalibration_v1",
+  "demand_rule": {
+    "food_major": "35 * sheltered",
+    "food_minor": "15 * sheltered",
+    "major_categories": [
+      3,
+      4,
+      5
+    ],
+    "medical_all": "sheltered / 4",
+    "minor_categories": [
+      1,
+      2
+    ],
+    "water_major": "10 * evacuees",
+    "water_minor": "3 * evacuees"
+  },
+  "e1": "NOT_STARTED",
+  "excluded_outputs": [
+    "F_bar",
+    "B_ref",
+    "Formal commodity mapping",
+    "model results"
+  ],
+  "formal_refreeze": "NOT_STARTED",
+  "hurricane_order": [
+    "Alicia",
+    "Camille",
+    "Bonnie",
+    "Floyd",
+    "Andrew",
+    "Opal",
+    "Isabel",
+    "Lili",
+    "Katrina",
+    "Bertha",
+    "Fran",
+    "Dennis",
+    "Emily",
+    "Georges",
+    "Hugo",
+    "Ike",
+    "Rita",
+    "Wilma",
+    "Irma",
+    "Charley",
+    "Frances",
+    "Ivan",
+    "Jeanne",
+    "Elena"
+  ],
+  "output_hashes": {
+    "rawls15_historical_comparison.csv": "6aab07bb32245de3eb9190d878e2039f7fcb166726d1889a7973befbd771dd44",
+    "rawls15_historical_source.csv": "c9f7c4827e76466752d114944c0da880e125ef0f9c7c5dc6c20701e732eb55eb",
+    "unified_hurricane_input.csv": "72662190768ab3059601a4465dd75b6e2dff964a1ae43b71b3631f4a7b16c492",
+    "unified_rawls_demand.csv": "d281e719d16cb3b0902c2b29550e7ad659ea8ba6b52e83e69c7a7e38031dc152"
+  },
+  "parameter_recalibration": "NOT_STARTED",
+  "scenario_order": [
+    "h01",
+    "h02",
+    "h03",
+    "h04",
+    "h05",
+    "h06",
+    "h07",
+    "h08",
+    "h09",
+    "h10",
+    "h11",
+    "h12",
+    "h13",
+    "h14",
+    "h15",
+    "h16",
+    "h17",
+    "h18",
+    "h19",
+    "h20",
+    "h21",
+    "h22",
+    "h23",
+    "h24"
+  ],
+  "source_audit": {
+    "authoritative_workbook_crosscheck": "PASS_24_OF_24",
+    "provided_pdf_identity": "2010_JOURNAL_ARTICLE_NOT_2008_DISSERTATION",
+    "rawls15_identity_category_e_s_crosscheck": "PASS_15_OF_15",
+    "rawls_rule_crosscheck": "PASS_DISSERTATION_SECTION_5_3",
+    "rawls_table_5_3_historical_lineage_capture": "PASS_15_OF_15",
+    "resolution": "OFFICIAL_CORNELL_DISSERTATION_USED_FOR_REQUIRED_RULE_AND_TABLE_AUDIT"
+  },
+  "source_config_sha256": "2fe3c7ce56a64247aed50ae8d1a3a59ad0665f59c3e39022e15f3b7a97aad3e4",
+  "source_identities": {
+    "authoritative_workbook": {
+      "path": "D:/新建文件夹/QFR_24真实单飓风_Formal主数据_口径冲突解决与冻结版_2026-09-02.xlsx",
+      "ranges": [
+        "24场景审计!A1:Q25",
+        "新增9来源与冲突!A1:N16",
+        "冻结结论!A1:B14"
+      ],
+      "sha256": "4148d6a0e16d8bb366ccaf1993f070ffcc097b3f5584c12c0c36d28bc0ede391"
+    },
+    "provided_attachment": {
+      "identity": "Rawls and Turnquist, Transportation Research Part B 44 (2010), 14 pages",
+      "path": "D:/新建文件夹/项目：robust-budget-allocation/旧文献/Pre-positioning of emergency supplies for disaster response.pdf",
+      "role": "JOURNAL_CROSS_CHECK_NOT_DISSERTATION",
+      "sha256": "77cc3f65561458d05912ea8cce7e7eab2ca8d225dd07fb6a3a462df814d0fef9"
+    },
+    "rawls_dissertation": {
+      "author": "Carmen Gloria Rawls",
+      "date": "August 2008",
+      "institution": "Cornell University",
+      "official_url": "https://ecommons.cornell.edu/server/api/core/bitstreams/a1e3d7bd-e892-400c-b669-a46f4387b862/content",
+      "rule_reference": "Chapter 5 section 5.3, PDF page 59 / printed page 48",
+      "sha256": "76b44c8e46054d836c3e39d94f7cd2a7b5835e9422eb4ddd6193dda678272c65",
+      "table_reference": "Table 5-3, PDF page 60 / printed page 49",
+      "title": "Prepositioning of Emergency Supplies for Disaster Response"
+    }
+  },
+  "stage": "DATA_RECALIBRATION_ONLY",
+  "timestamp_policy": "No wall-clock timestamp is embedded, preserving byte-identical deterministic rebuilds.",
+  "validation": {
+    "added9_count": 9,
+    "bounded_evidence_events": [
+      "Rita",
+      "Elena"
+    ],
+    "combined_scenario_count": 0,
+    "comparison_status_counts": {
+      "food": {
+        "changed": 8,
+        "rounding-only": 3,
+        "same": 4
+      },
+      "medical": {
+        "changed": 8,
+        "rounding-only": 2,
+        "same": 5
+      },
+      "water": {
+        "changed": 0,
+        "rounding-only": 1,
+        "same": 14
+      }
+    },
+    "formula_recomputation_rows_passed": 24,
+    "frozen_2004_pairs_passed": 4,
+    "historical_source_rows_preserved": 15,
+    "materially_changed_original_events": 8,
+    "no_hurricane_count": 0,
+    "rawls15_count": 15,
+    "scenario_count": 24,
+    "scientific_runs": {
+      "A0": 0,
+      "A1": 0,
+      "E1": 0,
+      "E2_E5": 0,
+      "M0": 0,
+      "M1": 0,
+      "M2": 0
+    },
+    "single_hurricane_count": 24,
+    "status": "PASS",
+    "synthetic_scenario_count": 0
+  }
+}

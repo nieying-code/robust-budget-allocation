@@ -1,0 +1,16 @@
+scenario_id,hurricane_name,historical_rawls_water,historical_rawls_food,historical_rawls_medical,unified_water,unified_food,unified_medical,water_status,food_status,medical_status,comparison_basis
+h01,Alicia,350000,525000,500,350000,875000,6250,same,changed,changed,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h02,Camille,560000,927000,883,560000,1545320,11038,same,changed,changed,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h03,Bonnie,861000,181000,402,861000,301305,5021.75,same,changed,changed,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h04,Floyd,9000000,1692000,3760,9000000,2820000,47000,same,changed,changed,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h05,Andrew,7500000,1771000,1687,7500000,2951900,21085,same,changed,changed,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h06,Opal,1000000,1838000,1751,1000000,3063690,21883.5,same,changed,changed,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h07,Isabel,600000,324000,720,600000,540000,9000,same,changed,changed,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h08,Lili,1500000,162000,360,1500000,270000,4500,same,changed,changed,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h09,Katrina,10400000,133000000,950000,10400000,133000000,950000,same,same,same,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h10,Bertha,2250000,1125000,18750,2250000,1125000,18750,same,same,same,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h11,Fran,5000000,1750000,12500,5000000,1750000,12500,same,same,same,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h12,Dennis,18000000,630000,4500,18000000,630000,4500,same,same,same,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h13,Emily,2818000,80000,571,2817500,79870,570.5,rounding-only,rounding-only,rounding-only,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h14,Georges,2239000,1477000,10551,2239000,1477140,10551,same,rounding-only,same,physical units; rounding-only tolerances reflect Table 5-3 display precision
+h15,Hugo,4400000,3921000,28007,4400000,3920945,28006.75,same,rounding-only,rounding-only,physical units; rounding-only tolerances reflect Table 5-3 display precision
