@@ -1,0 +1,13 @@
+number,statistical_unit,source,meaning,relationship,verification_status,notes
+67,historical seasons,author-reported literature,reported full historical horizon,literature anchor; conflicts with inclusive calendar arithmetic,UNRESOLVED_LITERATURE_COUNT_CONFLICT,1950-2017 inclusive contains 68 calendar years.
+62,active historical seasons,Balcik et al. (2019),reported seasons containing relevant hurricanes,subset of author historical horizon,AUTHOR_REPORTED,Not imposed on reconstruction.
+5,severity variants per active season,Balcik et al. (2019),model-generated variants,multiplier for synthetic scenarios,AUTHOR_REPORTED,Not generated in R6-I.
+188,historical hurricane events,Balcik et al. (2019),reported historical event observations,literature validation anchor only,AUTHOR_REPORTED_UNPUBLISHED_IDENTITIES,Not a construction target or test constraint.
+310,generated hurricane-season scenarios,Balcik et al. (2019),62 x 5 severity variants,synthetic/derived,AUTHOR_REPORTED,Not 310 real hurricanes and not canonical R6-I data.
+268,later processed scenarios/seasons,later author-chain literature,later filtered dataset,separate lineage,UNRESOLVED_TRANSFORMATION_DETAILS,Not mixed into R6-I.
+494,disaster periods/events,later author-chain literature,later processed event-period observations,separate lineage,UNRESOLVED_TRANSFORMATION_DETAILS,Not mixed into R6-I.
+852,disaster-country combinations,later author-chain literature,later country-event rows,separate lineage,UNRESOLVED_TRANSFORMATION_DETAILS,Not mixed into R6-I.
+211,reconstructed unique HURDAT storms,R6-I current-source reconstruction,storms with at least one source-supported country row,our reconstruction result,RECONSTRUCTED,Difference from 188: +23; no rule adjusted to reach 188.
+64,reconstructed active seasons,R6-I current-source reconstruction,calendar years with at least one canonical storm,our reconstruction result,RECONSTRUCTED,Computed over 1950-2017 inclusive.
+4,reconstructed zero-event seasons,R6-I current-source reconstruction,calendar years without a canonical storm,68 minus reconstructed active seasons,DERIVED,Uses inclusive 68-year source horizon.
+533,reconstructed event-country rows,R6-I current-source reconstruction,unique HURDAT storm x source-supported country,our canonical long table,RECONSTRUCTED,CHN and/or unambiguous named EM-DAT evidence required.

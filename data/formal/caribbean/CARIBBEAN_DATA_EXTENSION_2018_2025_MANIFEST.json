@@ -1,0 +1,429 @@
+{
+  "affected_population_missingness": [
+    {
+      "conflict": 0,
+      "field": "no_affected",
+      "missing": 435,
+      "notes": "Existing EM-DAT values retained; no imputation or supplementation performed.",
+      "observed": 98,
+      "partially_observed": 0,
+      "rows": 533,
+      "segment": "1950-2017_FROZEN",
+      "supplemented": 0,
+      "unresolved": 0
+    },
+    {
+      "conflict": 0,
+      "field": "total_affected",
+      "missing": 416,
+      "notes": "Existing EM-DAT values retained; no imputation or supplementation performed.",
+      "observed": 117,
+      "partially_observed": 0,
+      "rows": 533,
+      "segment": "1950-2017_FROZEN",
+      "supplemented": 0,
+      "unresolved": 0
+    },
+    {
+      "conflict": 0,
+      "field": "row_summary",
+      "missing": 416,
+      "notes": "any_observed=117; both_observed=98; neither_observed=416",
+      "observed": 117,
+      "partially_observed": 19,
+      "rows": 533,
+      "segment": "1950-2017_FROZEN",
+      "supplemented": 0,
+      "unresolved": 0
+    },
+    {
+      "conflict": 0,
+      "field": "no_affected",
+      "missing": 25,
+      "notes": "Existing EM-DAT values retained; no imputation or supplementation performed.",
+      "observed": 17,
+      "partially_observed": 0,
+      "rows": 42,
+      "segment": "2018-2025_EXTENSION",
+      "supplemented": 0,
+      "unresolved": 0
+    },
+    {
+      "conflict": 0,
+      "field": "total_affected",
+      "missing": 24,
+      "notes": "Existing EM-DAT values retained; no imputation or supplementation performed.",
+      "observed": 18,
+      "partially_observed": 0,
+      "rows": 42,
+      "segment": "2018-2025_EXTENSION",
+      "supplemented": 0,
+      "unresolved": 0
+    },
+    {
+      "conflict": 0,
+      "field": "row_summary",
+      "missing": 24,
+      "notes": "any_observed=18; both_observed=17; neither_observed=24",
+      "observed": 18,
+      "partially_observed": 1,
+      "rows": 42,
+      "segment": "2018-2025_EXTENSION",
+      "supplemented": 0,
+      "unresolved": 0
+    },
+    {
+      "conflict": 0,
+      "field": "no_affected",
+      "missing": 460,
+      "notes": "Existing EM-DAT values retained; no imputation or supplementation performed.",
+      "observed": 115,
+      "partially_observed": 0,
+      "rows": 575,
+      "segment": "1950-2025_COMBINED",
+      "supplemented": 0,
+      "unresolved": 0
+    },
+    {
+      "conflict": 0,
+      "field": "total_affected",
+      "missing": 440,
+      "notes": "Existing EM-DAT values retained; no imputation or supplementation performed.",
+      "observed": 135,
+      "partially_observed": 0,
+      "rows": 575,
+      "segment": "1950-2025_COMBINED",
+      "supplemented": 0,
+      "unresolved": 0
+    },
+    {
+      "conflict": 0,
+      "field": "row_summary",
+      "missing": 440,
+      "notes": "any_observed=135; both_observed=115; neither_observed=440",
+      "observed": 135,
+      "partially_observed": 20,
+      "rows": 575,
+      "segment": "1950-2025_COMBINED",
+      "supplemented": 0,
+      "unresolved": 0
+    }
+  ],
+  "combined_counts": {
+    "canonical_event_country_rows": 575,
+    "canonical_events": 228
+  },
+  "combined_identity": "R6_I_CARIBBEAN_HISTORICAL_RECONSTRUCTION_1950_2025",
+  "country_impact_category_status_counts": {
+    "CONFLICT": 0,
+    "RESOLVED": 42,
+    "UNRESOLVED": 0
+  },
+  "country_impact_date_status_counts": {
+    "CONFLICT": 1,
+    "INTERVAL_ONLY": 16,
+    "RESOLVED": 25,
+    "UNRESOLVED": 0
+  },
+  "country_impact_severity_counts": {
+    "Mild": 31,
+    "Strong": 3,
+    "Very Strong": 8
+  },
+  "dataset_identity": "R6_I_CARIBBEAN_HISTORICAL_RECONSTRUCTION_EXTENSION_2018_2025",
+  "extension_counts": {
+    "ambiguous_or_unmatched_records": 0,
+    "canonical_event_country_rows": 42,
+    "canonical_events": 17,
+    "conflicts": 22,
+    "country_coverage_count": 14,
+    "events_by_year": {
+      "2018": 3,
+      "2019": 3,
+      "2020": 2,
+      "2021": 2,
+      "2022": 1,
+      "2023": 1,
+      "2024": 3,
+      "2025": 2
+    },
+    "unresolved_ledger_records": 2
+  },
+  "frozen_base": {
+    "affected_population_note": "Observed/missing values remain unchanged in this extension; later supplementation is a separately authorized future stage.",
+    "combined_projection_old_event_count": 211,
+    "combined_projection_old_event_country_count": 533,
+    "event_content_identical": true,
+    "event_country_content_identical": true,
+    "event_country_fields_compared": [
+      "event_id",
+      "source_storm_id",
+      "storm_name",
+      "season_year",
+      "storm_start_date",
+      "storm_end_date",
+      "event_date",
+      "two_week_period",
+      "storm_lifetime_category",
+      "storm_lifetime_severity",
+      "historical_category",
+      "severity_class",
+      "country_impact_start_date",
+      "country_impact_end_date",
+      "country_impact_date",
+      "country_impact_date_status",
+      "country_impact_date_basis",
+      "country_impact_category",
+      "country_impact_category_status",
+      "country_impact_category_basis",
+      "country_impact_severity",
+      "affected_country",
+      "affected_country_code",
+      "evidence_basis",
+      "evidence_ids",
+      "no_affected",
+      "no_affected_status",
+      "total_affected",
+      "total_affected_status",
+      "event_year_population",
+      "population_unit",
+      "no_affected_pct_population",
+      "total_affected_pct_population",
+      "native_demand_basis",
+      "native_demand_value",
+      "native_demand_unit",
+      "demand_cap",
+      "source_dataset",
+      "source_reference",
+      "source_locator",
+      "provenance_class",
+      "reconstruction_status",
+      "transformation_rule",
+      "notes"
+    ],
+    "event_fields_compared": [
+      "event_id",
+      "source_storm_id",
+      "storm_name",
+      "season_year",
+      "storm_start_date",
+      "storm_end_date",
+      "event_date",
+      "event_end_date",
+      "two_week_period",
+      "storm_lifetime_category",
+      "storm_lifetime_severity",
+      "historical_category",
+      "severity_class",
+      "max_wind",
+      "max_wind_unit",
+      "source_dataset",
+      "source_reference",
+      "source_locator",
+      "provenance_class",
+      "reconstruction_status",
+      "transformation_rule",
+      "notes"
+    ],
+    "frozen_base_manifest_sha256": "648f644da811fe7c6492b554667c5462a4939776f65201ed1461bb71bfdae280",
+    "frozen_outputs_verified": 13,
+    "old_event_count": 211,
+    "old_event_country_count": 533,
+    "status": "PASS"
+  },
+  "new_emdat_source": {
+    "bytes": 197338,
+    "columns": 47,
+    "disaster_subtype": "Tropical cyclone",
+    "disaster_type": "Storm",
+    "end_year": 2025,
+    "file_creation_utc": "2026-09-02T03:13:19Z",
+    "filename": "public_emdat_custom_request_2026-09-02_29fd291d-8941-49e3-8719-e8911b23e14e.xlsx",
+    "identity": "EMDAT_PUBLIC_CUSTOM_REQUEST_2018_2025_2026_08_28",
+    "records": 492,
+    "repository_raw_path": "data/formal/caribbean/raw/emdat_extension_2018_2025/public_emdat_custom_request_2026-09-02_29fd291d-8941-49e3-8719-e8911b23e14e.xlsx",
+    "sha256": "1fb5bcb8228cf45a6baa0c39bcd3492e741f488d1ff385c81dc73e219156a600",
+    "source": "EM-DAT, CRED / UCLouvain, Brussels, Belgium",
+    "source_library_path": "D:\\\u65b0\u5efa\u6587\u4ef6\u5939\\\u9879\u76ee\uff1arobust-budget-allocation\\public_emdat_custom_request_2026-09-02_29fd291d-8941-49e3-8719-e8911b23e14e.xlsx",
+    "start_year": 2018,
+    "table_type": "public_emdat_custom_request",
+    "version": "2026-08-28"
+  },
+  "outputs": [
+    {
+      "bytes": 1183,
+      "path": "data/formal/caribbean/combined_1950_2025/audit/affected_population_missingness_1950_2025.csv",
+      "rows": 9,
+      "sha256": "54d1bab27b6008e1f65208297427b44f8ae3f767e846ae1ba5ee44cb7fa32290"
+    },
+    {
+      "bytes": 331,
+      "path": "data/formal/caribbean/combined_1950_2025/audit/caribbean_reconstruction_summary_1950_2025.csv",
+      "rows": 3,
+      "sha256": "b88327ec2e8aa57683231635b1092d4ba802e4fafb2b5cae9480a1a533fa7483"
+    },
+    {
+      "bytes": 2261,
+      "path": "data/formal/caribbean/combined_1950_2025/audit/frozen_1950_2017_regression.json",
+      "rows": null,
+      "sha256": "1707d1735733ea659ba352765b93377a8ba7178b2f4a1832ff39e60eab39dbee"
+    },
+    {
+      "bytes": 118698,
+      "path": "data/formal/caribbean/combined_1950_2025/audit/source_conflicts_1950_2025.csv",
+      "rows": 419,
+      "sha256": "37219944a2e0799626e0de7c21992fa013fcc9dc7cca30529c2a74bcc9887425"
+    },
+    {
+      "bytes": 9912,
+      "path": "data/formal/caribbean/combined_1950_2025/audit/unresolved_records_1950_2025.csv",
+      "rows": 35,
+      "sha256": "db7f881a3297fbdc60d5f94b4482be0cf8760b3db297cac4e40ae75d39ef617f"
+    },
+    {
+      "bytes": 539892,
+      "path": "data/formal/caribbean/combined_1950_2025/processed/caribbean_event_country_1950_2025.csv",
+      "rows": 575,
+      "sha256": "0c5b1489ea00d32a492ccd120be1d7acdc4f6668390b65aac00e78ef2c7d9cc2"
+    },
+    {
+      "bytes": 124909,
+      "path": "data/formal/caribbean/combined_1950_2025/processed/caribbean_historical_events_1950_2025.csv",
+      "rows": 228,
+      "sha256": "4730856d7abff7be1fef37787d87c837a42bd78443767f55d14b1482b4fa800a"
+    },
+    {
+      "bytes": 112,
+      "path": "data/formal/caribbean/extension_2018_2025/intermediate/ambiguous_matches_2018_2025.csv",
+      "rows": 0,
+      "sha256": "97ec53d54d88bbe95644b4ee1fa6ea21b5b23a23af8d3ff5267392f673e2a064"
+    },
+    {
+      "bytes": 13025,
+      "path": "data/formal/caribbean/extension_2018_2025/intermediate/normalized_chn_2018_2025.csv",
+      "rows": 23,
+      "sha256": "5860cbffe01506f8b9d24b48a7829dc58e0fc6f362a314d463f3b811cce45cba"
+    },
+    {
+      "bytes": 746200,
+      "path": "data/formal/caribbean/extension_2018_2025/intermediate/normalized_emdat_2018_2025.csv",
+      "rows": 492,
+      "sha256": "57a77d1cfe506aaf890554cda7d6dab0d4d5f76af241c9c2340c476cb2aa82f3"
+    },
+    {
+      "bytes": 764986,
+      "path": "data/formal/caribbean/extension_2018_2025/intermediate/normalized_hurdat2_2018_2025.csv",
+      "rows": 4688,
+      "sha256": "25cf7d9a357d746197f51370f2a4a16c4b6d00020e718fd49d4dd7792a515457"
+    },
+    {
+      "bytes": 34976,
+      "path": "data/formal/caribbean/extension_2018_2025/intermediate/normalized_population_2018_2025.csv",
+      "rows": 160,
+      "sha256": "6e703958591dc637e5113c774cf7260fbe6dfd627e19279839d16917e745a312"
+    },
+    {
+      "bytes": 5276,
+      "path": "data/formal/caribbean/extension_2018_2025/intermediate/source_conflicts_2018_2025.csv",
+      "rows": 22,
+      "sha256": "f51e9bf7e8a47c2a4ebb80caf9965cc5e8ac26ad4849b30b8fe9a4b22c79046f"
+    },
+    {
+      "bytes": 15788,
+      "path": "data/formal/caribbean/extension_2018_2025/intermediate/storm_country_evidence_2018_2025.csv",
+      "rows": 48,
+      "sha256": "57ccc785ea0bb689952dc80a4ad12e41b56a53901412c6eeea8d7e49552cae21"
+    },
+    {
+      "bytes": 942,
+      "path": "data/formal/caribbean/extension_2018_2025/intermediate/unresolved_records_2018_2025.csv",
+      "rows": 2,
+      "sha256": "43f2d145c5cdc0b54d49259e15fb582e328b39713dd7c99a433c719f7e43cb3c"
+    },
+    {
+      "bytes": 1983,
+      "path": "data/formal/caribbean/extension_2018_2025/processed/caribbean_country_coverage_2018_2025.csv",
+      "rows": 20,
+      "sha256": "226d8cb593281540197afac6e3c93aa95d85d487416ffae3a0bef62067485854"
+    },
+    {
+      "bytes": 39160,
+      "path": "data/formal/caribbean/extension_2018_2025/processed/caribbean_event_country_2018_2025.csv",
+      "rows": 42,
+      "sha256": "0ffecea667fbf64affbf66c8075d63429a2a0278a01c6d82d4fdd99ab09b6b20"
+    },
+    {
+      "bytes": 85,
+      "path": "data/formal/caribbean/extension_2018_2025/processed/caribbean_event_counts_by_year_2018_2025.csv",
+      "rows": 8,
+      "sha256": "a5f68ee473fed84041576d1f77fcfe252ac3c0b9e473dd28e4ec20c62498519e"
+    },
+    {
+      "bytes": 9627,
+      "path": "data/formal/caribbean/extension_2018_2025/processed/caribbean_historical_events_2018_2025.csv",
+      "rows": 17,
+      "sha256": "099b916870ff0e01f7ffbec87d2e778ab17dc24958246e4f42c14d63a3b5c8b1"
+    },
+    {
+      "bytes": 13627,
+      "path": "data/formal/caribbean/extension_2018_2025/provenance/caribbean_field_provenance_2018_2025.csv",
+      "rows": 47,
+      "sha256": "208b488ca8258e973db866c42e18c906f812833d0ce96b606ebfe46d424469c0"
+    },
+    {
+      "bytes": 2193,
+      "path": "data/formal/caribbean/raw/emdat_extension_2018_2025/extension_source_acquisition.json",
+      "rows": null,
+      "sha256": "cfcb083c7bd22c35e006eabe9fe6aa5d5e1ff8f5b9d7ec212bdbdfd949f3a61b"
+    },
+    {
+      "bytes": 6454,
+      "path": "docs/CARIBBEAN_DATA_EXTENSION_2018_2025.md",
+      "rows": null,
+      "sha256": "a2aa78f11df32588d1ed003df0ca5ce9b93b0c799545ff05f543d342d575efed"
+    },
+    {
+      "bytes": 3494,
+      "path": "docs/CARIBBEAN_DATA_EXTENSION_2018_2025_PROVENANCE.md",
+      "rows": null,
+      "sha256": "e660c2e3ffb82132a6db3007e369ac4d3a0384cfdb7fef031226c329928f1a83"
+    }
+  ],
+  "remaining_conflict_type_counts": {
+    "EMDAT_IMPACT_INTERVAL_ONLY": 16,
+    "HURDAT_CHN_COUNTRY_IMPACT_CATEGORY": 5,
+    "MULTIPLE_CHN_COUNTRY_IMPACT_DATES": 1
+  },
+  "remaining_unresolved_records": 35,
+  "rules": {
+    "affected_population_supplementation_performed": false,
+    "chn_match_tolerance_days": 1,
+    "new_scientific_rule_added": false,
+    "rule_set": "same frozen R6-I reconstruction rules used by 1950-2017",
+    "two_week_period_rule_changed": false
+  },
+  "schema_version": 1,
+  "scientific_scope": {
+    "affected_population_supplementation_performed": false,
+    "b_ref_calculated": false,
+    "formal_e1_e5_scientific_runs": 0,
+    "gurobi_invoked": false,
+    "m0_m1_m2_scientific_runs": 0,
+    "r6_ii_started": false
+  },
+  "scripts": [
+    {
+      "path": "src/robust_budget_allocation/data/caribbean_extension.py",
+      "sha256": "6b99787e5976b0fafc1bdd392cd4639f45252622c33109d9f729f9b096081041"
+    },
+    {
+      "path": "scripts/r6i_extend_caribbean_2018_2025.py",
+      "sha256": "ad2c196699964815d7a090d02caef4b949c9b0741008e379a16237951c5aebb8"
+    }
+  ],
+  "storm_lifetime_severity_counts": {
+    "Mild": 10,
+    "Strong": 2,
+    "Very Strong": 5
+  }
+}

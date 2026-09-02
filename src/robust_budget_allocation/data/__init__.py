@@ -1,1 +1,1 @@
-"""New-project data schemas; no legacy scientific fields."""
+"""New-project data schemas and solver-free reconstruction utilities."""

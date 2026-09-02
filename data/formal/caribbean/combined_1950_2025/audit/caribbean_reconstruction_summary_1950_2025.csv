@@ -1,0 +1,4 @@
+segment,start_year,end_year,canonical_events,event_country_rows,identity,status
+1950-2017_FROZEN,1950,2017,211,533,audited frozen R6-I reconstruction,UNCHANGED
+2018-2025_EXTENSION,2018,2025,17,42,source-based extension under frozen R6-I rules,RECONSTRUCTED
+1950-2025_COMBINED,1950,2025,228,575,frozen base union extension,COMBINED

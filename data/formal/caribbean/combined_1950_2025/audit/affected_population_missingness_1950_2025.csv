@@ -1,0 +1,10 @@
+segment,field,rows,observed,missing,partially_observed,conflict,unresolved,supplemented,notes
+1950-2017_FROZEN,no_affected,533,98,435,0,0,0,0,Existing EM-DAT values retained; no imputation or supplementation performed.
+1950-2017_FROZEN,total_affected,533,117,416,0,0,0,0,Existing EM-DAT values retained; no imputation or supplementation performed.
+1950-2017_FROZEN,row_summary,533,117,416,19,0,0,0,any_observed=117; both_observed=98; neither_observed=416
+2018-2025_EXTENSION,no_affected,42,17,25,0,0,0,0,Existing EM-DAT values retained; no imputation or supplementation performed.
+2018-2025_EXTENSION,total_affected,42,18,24,0,0,0,0,Existing EM-DAT values retained; no imputation or supplementation performed.
+2018-2025_EXTENSION,row_summary,42,18,24,1,0,0,0,any_observed=18; both_observed=17; neither_observed=24
+1950-2025_COMBINED,no_affected,575,115,460,0,0,0,0,Existing EM-DAT values retained; no imputation or supplementation performed.
+1950-2025_COMBINED,total_affected,575,135,440,0,0,0,0,Existing EM-DAT values retained; no imputation or supplementation performed.
+1950-2025_COMBINED,row_summary,575,135,440,20,0,0,0,any_observed=135; both_observed=115; neither_observed=440

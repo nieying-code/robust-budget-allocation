@@ -1,0 +1,21 @@
+affected_country,affected_country_code,event_country_rows,coverage_status,notes
+Anguilla,AIA,0,NO_CANONICAL_EXTENSION_ROW,Absence is not interpreted as evidence of no physical impact.
+Antigua and Barbuda,ATG,0,NO_CANONICAL_EXTENSION_ROW,Absence is not interpreted as evidence of no physical impact.
+Bahamas,BHS,4,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Belize,BLZ,3,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Bermuda,BMU,2,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Barbados,BRB,5,PRESENT,Absence is not interpreted as evidence of no physical impact.
+British Virgin Islands,VGB,2,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Cayman Islands,CYM,1,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Dominica,DMA,3,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Grenada,GRD,2,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Guyana,GUY,0,NO_CANONICAL_EXTENSION_ROW,Absence is not interpreted as evidence of no physical impact.
+Haiti,HTI,5,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Jamaica,JAM,3,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Saint Kitts and Nevis,KNA,0,NO_CANONICAL_EXTENSION_ROW,Absence is not interpreted as evidence of no physical impact.
+Saint Lucia,LCA,4,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Montserrat,MSR,1,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Suriname,SUR,0,NO_CANONICAL_EXTENSION_ROW,Absence is not interpreted as evidence of no physical impact.
+Turks and Caicos Islands,TCA,0,NO_CANONICAL_EXTENSION_ROW,Absence is not interpreted as evidence of no physical impact.
+Trinidad and Tobago,TTO,1,PRESENT,Absence is not interpreted as evidence of no physical impact.
+Saint Vincent and the Grenadines,VCT,6,PRESENT,Absence is not interpreted as evidence of no physical impact.
