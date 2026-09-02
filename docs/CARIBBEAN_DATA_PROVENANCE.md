@@ -20,11 +20,16 @@ Raw HURDAT2, EM-DAT CSV, and WPP gzip files are committed byte-for-byte with has
 | Final field | Source evidence | Rule | Class | Missing/conflict policy |
 | --- | --- | --- | --- | --- |
 | event/source storm ID | HURDAT header | copy unique Atlantic ID | DIRECT | never substituted with EM-DAT DisNo. |
-| event date/end date | HURDAT observations | min/max observation date | DERIVED | invalid rows fail reconstruction |
-| maximum wind/category | HURDAT observations | maximum nonmissing knots; fixed Saffir-Simpson thresholds | DERIVED | no inferred wind |
-| severity class | adopted historical category + literature rule | ≤H2 Mild; H3 Strong; H4/H5 Very Strong | DERIVED | unresolved category stays null |
+| storm start/end date | HURDAT observations | min/max observation date | DERIVED | storm lifecycle boundaries; never country-impact timing |
+| event date/end date | HURDAT observations | compatibility aliases for storm start/end | DERIVED | explicitly not impact dates |
+| storm lifetime category | HURDAT observations | full-lifecycle maximum nonmissing knots; fixed Saffir-Simpson thresholds | DERIVED | descriptive storm identity only |
+| storm lifetime severity | storm lifetime category + literature rule | ≤H2 Mild; H3 Strong; H4/H5 Very Strong | DERIVED | must not be consumed as country-impact severity |
 | affected country | confirmed CHN and/or confirmed EM-DAT row | Rule A OR Rule B | RECONSTRUCTED | HURDAT-only proximity cannot confirm impact |
-| HURDAT/CHN category | both raw values | retain both; adopt HURDAT on disagreement | RECONSTRUCTED | conflict flag retained |
+| country-impact point date | CHN date and/or EM-DAT interval | CHN exact date if consistent; EM-DAT-only only when single day | RECONSTRUCTED | multi-day interval leaves point blank; conflicts remain blank |
+| country-impact start/end | EM-DAT interval or CHN point evidence | retain unique source-supported boundaries | RECONSTRUCTED | no earliest/latest aggregation across conflicting windows |
+| CHN-supported country-impact category | CHN date + HURDAT track | HURDAT category within frozen ±1 day; retain CHN original and adopt HURDAT on disagreement | RECONSTRUCTED | multiple site results remain blank with CONFLICT |
+| EM-DAT-only country-impact category | EM-DAT impact window + HURDAT track | maximum HURDAT category inside the window | RECONSTRUCTED | no lifecycle-max fallback when the window has no observation |
+| country-impact severity | resolved country-impact category + literature rule | ≤H2 Mild; H3 Strong; H4/H5 Very Strong | DERIVED | blank when category is unresolved/conflicting |
 | affected values | EM-DAT | copy a unique observed value | DIRECT | missing stays blank; conflicting values stay blank and are logged |
 | event-year population | WPP 1 July population | thousands × 1,000 | DERIVED | no neighbor-country substitution |
 | affected percentage | EM-DAT numerator + WPP denominator | numerator / denominator × 100 | DERIVED | generated only when both are supported |
@@ -33,7 +38,9 @@ Raw HURDAT2, EM-DAT CSV, and WPP gzip files are committed byte-for-byte with has
 
 ## Conflict and ambiguity retention
 
-`ambiguous_matches.csv` retains every selected CHN/EM-DAT row that does not satisfy the frozen unique-match rule, including candidate HURDAT IDs. `source_conflicts.csv` retains every HURDAT/CHN category disagreement and any canonical aggregation conflict. `unresolved_records.csv` combines row-level failures with the 67/68 count conflict, periodization conflict, unpublished 188 identities, and excluded 310 realization layer.
+`ambiguous_matches.csv` retains every selected CHN/EM-DAT row that does not satisfy the frozen unique-match rule, including candidate HURDAT IDs. `source_conflicts.csv` retains country-timed HURDAT/CHN category disagreements, multiple-site category/date conflicts, CHN/EM-DAT timing conflicts, and EM-DAT interval-only records. `unresolved_records.csv` combines row-level failures with the 67/68 count conflict, periodization conflict, unpublished 188 identities, and excluded 310 realization layer.
+
+The semantic separation is strict: `storm_lifetime_category != country_impact_category` in meaning even when values happen to match, and `storm_start_date != country_impact_date` in meaning even when dates happen to coincide. No downstream stage may substitute one level for the other.
 
 No row is manually promoted, deleted, or altered to approach 188. The actual canonical event count is a reconstruction output.
 

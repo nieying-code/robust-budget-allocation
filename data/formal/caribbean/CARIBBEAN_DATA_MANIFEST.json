@@ -1,4 +1,27 @@
 {
+  "conflict_type_counts": {
+    "CHN_EMDAT_IMPACT_DATE_CONFLICT": 26,
+    "EMDAT_IMPACT_INTERVAL_ONLY": 35,
+    "HURDAT_CHN_COUNTRY_IMPACT_CATEGORY": 284,
+    "MULTIPLE_CHN_COUNTRY_IMPACT_CATEGORIES": 16,
+    "MULTIPLE_CHN_COUNTRY_IMPACT_DATES": 36
+  },
+  "country_impact_category_status_counts": {
+    "CONFLICT": 16,
+    "RESOLVED": 517,
+    "UNRESOLVED": 0
+  },
+  "country_impact_date_status_counts": {
+    "CONFLICT": 62,
+    "INTERVAL_ONLY": 35,
+    "RESOLVED": 436,
+    "UNRESOLVED": 0
+  },
+  "country_impact_severity_counts": {
+    "Mild": 323,
+    "Strong": 50,
+    "Very Strong": 144
+  },
   "counts": {
     "active_seasons": 64,
     "ambiguous_or_unmatched_records": 29,
@@ -9,7 +32,7 @@
     "normalized_hurdat_observations": 29040,
     "normalized_hurdat_storms": 1042,
     "normalized_population_rows": 1360,
-    "source_conflicts": 434,
+    "source_conflicts": 397,
     "study_region_emdat_rows": 216,
     "unresolved_ledger_records": 33,
     "zero_event_seasons": 4
@@ -40,10 +63,10 @@
       "sha256": "36b92e5791d475b9a56c5b414e07fcddd87b6b0aa4b503b259809e39d6dbda71"
     },
     {
-      "bytes": 336282,
+      "bytes": 378704,
       "path": "data/formal/caribbean/intermediate/normalized_chn.csv",
       "rows": 699,
-      "sha256": "3285452519a5a837bf01cfcae1e963f1cf8152cec3990918f1d6fb47a614c919"
+      "sha256": "7f02bc25089032494dabc3ee762f5cfd44b123a34fd3fb7731783d54006ea2dc"
     },
     {
       "bytes": 3486144,
@@ -64,16 +87,16 @@
       "sha256": "11b716aa1d2b5f4dc2509ea489ea3abb5474e8002ea65dacafe96ce126436cf9"
     },
     {
-      "bytes": 99499,
+      "bytes": 113535,
       "path": "data/formal/caribbean/intermediate/source_conflicts.csv",
-      "rows": 434,
-      "sha256": "080d78f0b99ce2f42ec58ba8ed54891701286dce4e7ad7b720d44e6d90d0be32"
+      "rows": 397,
+      "sha256": "5eca3bee51730f52ab7aee6329ecfae4ae46d7149702c0d3d06f3cbd4503d15a"
     },
     {
-      "bytes": 281473,
+      "bytes": 283096,
       "path": "data/formal/caribbean/intermediate/storm_country_evidence.csv",
       "rows": 915,
-      "sha256": "fd0ef91c71afbfd2efae121b5e696bd6ed8c7d40263218ec5a9b96377f758b41"
+      "sha256": "78a21af1ea7f20a75be73ee8626f077f0ffcec69cb956b5a60a81424207ebabc"
     },
     {
       "bytes": 9105,
@@ -82,16 +105,16 @@
       "sha256": "e9e500f305cf82105339076a6a7d24db643ea9d66c265e140891386de7b5ee9a"
     },
     {
-      "bytes": 262334,
+      "bytes": 501566,
       "path": "data/formal/caribbean/processed/caribbean_event_country.csv",
       "rows": 533,
-      "sha256": "0281e5cb5433cf9930d29d12f07844b63131c54c6f88cfb21404ca91de878405"
+      "sha256": "9425829d753b6ed49a49aa965e9a1651a5c53e9fbe5fefb7658a4d963d9e59ee"
     },
     {
-      "bytes": 97229,
+      "bytes": 115622,
       "path": "data/formal/caribbean/processed/caribbean_historical_events.csv",
       "rows": 211,
-      "sha256": "e48bb06f79ef2c69e3404cdd983aa0dc60e36afde2c87a5032991f78b150261d"
+      "sha256": "8e52a29df3040e0413989a3fbb869e2c7da67a06c2d9b1fe25707440fd107da7"
     },
     {
       "bytes": 2354,
@@ -100,27 +123,31 @@
       "sha256": "9ec22ccc7baf7da1dae98ebfcf2147c6a4a6fbf9450898d02bb7693209c9ab55"
     },
     {
-      "bytes": 9508,
+      "bytes": 13627,
       "path": "data/formal/caribbean/provenance/caribbean_field_provenance.csv",
-      "rows": 35,
-      "sha256": "60179ec0180a6812dc83db2cf52c651c326417111fcb510e2c4565207b66e941"
+      "rows": 47,
+      "sha256": "208b488ca8258e973db866c42e18c906f812833d0ce96b606ebfe46d424469c0"
     }
   ],
   "parameters": {
     "author_event_count_constraint": null,
     "canonical_country_rule": "confirmed CHN explicit evidence OR confirmed EM-DAT explicit matched impact evidence",
+    "chn_country_impact_category_rule": "maximum HURDAT category within +/-1 day of each confirmed CHN impact date; HURDAT precedes CHN on disagreement",
     "chn_match_date_tolerance_days": 1,
     "chn_proximity_nm": 60,
+    "emdat_only_country_impact_category_rule": "maximum HURDAT category within the confirmed EM-DAT country-impact window",
     "emdat_requires_complete_date_window": true,
     "emdat_requires_date_overlap": true,
     "emdat_requires_nonempty_name": true,
     "end_year": 2017,
-    "start_year": 1950
+    "multiple_chn_site_aggregation_rule": null,
+    "start_year": 1950,
+    "storm_lifetime_category_used_as_country_impact_category": false
   },
   "provenance_counts": {
-    "DERIVED": 16,
+    "DERIVED": 25,
     "DIRECT": 12,
-    "RECONSTRUCTED": 3,
+    "RECONSTRUCTED": 6,
     "UNRESOLVED": 4
   },
   "reconstruction_scripts": [
@@ -134,20 +161,26 @@
     },
     {
       "path": "src/robust_budget_allocation/data/caribbean.py",
-      "sha256": "387578f6f781d99c9c8666a66ad6fe5b5347d33349dca04a295a01369e4041ec"
+      "sha256": "262a23385f8c663cbc7c9e83bf682704d8caf017a9d91a342a57bb3b298a85fb"
     }
   ],
-  "schema_version": 1,
+  "review_baseline_counts": {
+    "canonical_event_country_rows_before_b1_b2_fix": 533,
+    "canonical_events_before_b1_b2_fix": 211
+  },
+  "schema_version": 2,
   "scientific_scope": {
     "b_ref_calculated": false,
     "family_kit_demand_generated": false,
     "formal_e1_e5_scientific_runs": 0,
     "formal_experiment_matrix_frozen": false,
+    "gurobi_invoked": false,
     "m0_m1_m2_scientific_runs": 0,
     "qfr_parameter_calibration_performed": false,
     "r6_ii_started": false,
     "water_vaccine_crackers_mapping_performed": false
   },
+  "semantic_revision": "B1 country-timed impact category and B2 country-impact timing separation",
   "severity_counts": {
     "Mild": 124,
     "Strong": 24,

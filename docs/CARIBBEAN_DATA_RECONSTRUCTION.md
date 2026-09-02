@@ -37,9 +37,9 @@ CHN has no selected explicit location page for Guyana or Suriname. This absence 
 
 ### 4.1 Storm identity and event definition
 
-HURDAT2 is authoritative for storm identity. A historical event is one unique Atlantic HURDAT storm ID, irrespective of how many countries it affects. The event date is the first HURDAT observation date; the end date is the last observation date; maximum wind is the maximum nonmissing HURDAT wind over the lifecycle.
+HURDAT2 is authoritative for storm identity. A historical event is one unique Atlantic HURDAT storm ID, irrespective of how many countries it affects. `storm_start_date` is the first HURDAT observation date and `storm_end_date` is the last. The compatibility fields `event_date` and `event_end_date` carry those same storm-lifecycle boundaries; **storm start date is not treated as a country-impact date**.
 
-Saffir-Simpson categories are mechanically derived from knots: H1 64–82, H2 83–95, H3 96–112, H4 113–136, and H5 at least 137. Lower intensity is retained as `TS_OR_LOWER`. The literature severity rule is applied as H2 or lower = Mild, H3 = Strong, and H4/H5 = Very Strong.
+`storm_lifetime_category` is derived from the maximum nonmissing HURDAT wind over the full lifecycle. Saffir-Simpson categories are H1 64–82 knots, H2 83–95, H3 96–112, H4 113–136, and H5 at least 137; lower intensity is `TS_OR_LOWER`. `storm_lifetime_severity` applies H2 or lower = Mild, H3 = Strong, and H4/H5 = Very Strong. Compatibility fields `historical_category` and `severity_class` have exactly these storm-level meanings. **HURDAT lifetime maximum is retained only as storm-level identity/descriptive intensity and is never used as country-impact intensity.**
 
 ### 4.2 CHN evidence and matching
 
@@ -47,7 +47,7 @@ Each selected CHN page explicitly reports systems passing within 60 nautical mil
 
 A CHN row is confirmed only when its normalized name and date (with a one-day lifecycle tolerance) resolve to exactly one HURDAT storm in the same year. `UNNAMED` rows use date uniqueness but are not forced when multiple candidates exist. Ambiguous and unmatched rows remain in the evidence and ambiguity tables and do not create canonical country rows.
 
-HURDAT's storm-lifetime category and CHN's local 60-nautical-mile category have different meanings. Both are retained. Where they differ, the implemented author-reported precedence rule adopts HURDAT while recording a conflict; no original CHN value is overwritten.
+For every confirmed CHN evidence row, HURDAT intensity is reconstructed from track observations within the frozen ±1-day window around that CHN country-impact date. `chn_country_impact_category` and `hurdat_country_impact_category` are both retained. Where they differ, the disclosed precedence rule adopts the country-timed HURDAT value while recording `HURDAT_CHN_COUNTRY_IMPACT_CATEGORY`; no original CHN value is overwritten. The storm-lifetime maximum is not part of this comparison.
 
 ### 4.3 EM-DAT evidence and matching
 
@@ -60,6 +60,17 @@ HURDAT-only spatial proximity never establishes country impact. Such rows may re
 An event-country key is included if and only if at least one confirmed CHN explicit record or one confirmed EM-DAT country-impact record supports it. Both sources are preserved as `BOTH`; conflicts are not deleted. Multiple source rows collapse only at the unique HURDAT storm × ISO3 key, and every contributing evidence ID and locator is retained.
 
 EM-DAT No. Affected and Total Affected remain `OBSERVED`, `MISSING`, or `CONFLICT`. Missing never becomes zero. Conflicting nonmissing values remain blank in canonical output and are recorded in `source_conflicts.csv`. WPP `TPopulation1July` is in thousands and is mechanically converted to persons. Affected percentages exist only when both numerator and denominator are source-supported.
+
+### 4.5 Country-impact timing and intensity
+
+Country-impact timing is reconstructed independently of storm lifecycle timing:
+
+- A unique CHN point date becomes `country_impact_date`. For BOTH evidence, it resolves only when the CHN date is inside every confirmed EM-DAT interval; its basis is `CHN_DATE_WITHIN_EMDAT_WINDOW`.
+- Multiple distinct CHN site dates are not reduced to earliest/latest. The point date is blank with `CONFLICT`, and every date remains in the evidence layer.
+- An EM-DAT-only single-day interval supplies a resolved point date. A multi-day interval retains `country_impact_start_date` and `country_impact_end_date`, leaves the point date blank, and records `INTERVAL_ONLY`.
+- A CHN/EM-DAT date disagreement leaves the point date blank with `CONFLICT`.
+
+Country-impact intensity also uses country timing. CHN-supported rows use HURDAT observations within ±1 day of each CHN site date. EM-DAT-only rows use the maximum HURDAT category observed inside the confirmed country-impact interval. Multiple CHN sites that yield different country-impact categories are not aggregated by maximum, minimum, average, earliest, or latest: canonical category is blank with `CONFLICT`, and all local values remain in evidence. `country_impact_severity` is derived only from a resolved country-impact category.
 
 ## 5. Author facts, current evidence, and reconstruction results
 
@@ -84,7 +95,9 @@ These layers must not be conflated.
 - 533 unique event-country rows: 337 CHN-only, 76 EM-DAT-only, and 120 supported by both.
 - 64 active calendar years and four zero-event calendar years within the inclusive 68-year horizon.
 - Severity: 124 Mild, 24 Strong, and 63 Very Strong.
-- 29 ambiguous or unmatched source records, 434 preserved HURDAT/CHN category conflicts, and 33 unresolved-ledger rows including record-level ambiguities and four literature/scope conflicts.
+- 29 ambiguous or unmatched source records, 397 preserved timing/category conflicts or interval-only records, and 33 unresolved-ledger rows including record-level ambiguities and four literature/scope conflicts.
+- Country-impact category: 517 resolved and 16 conflict; severity among resolved rows is 323 Mild, 50 Strong, and 144 Very Strong.
+- Country-impact date: 436 resolved, 35 interval-only, and 62 conflict.
 - The event result is 23 above the literature anchor 188. No threshold, source page, match, or inclusion rule was adjusted to reduce this difference.
 
 ## 6. Reconciliation and unresolved evidence
