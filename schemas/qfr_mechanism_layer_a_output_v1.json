@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QFR Layer A output identities",
+  "type": "object",
+  "required": ["simulation_id", "sample_index", "status", "model_kind", "algorithm_kind", "input_sha256", "execution_git_commit", "execution_git_tree"],
+  "description": "Successful rows additionally contain complete Q/F/R, cost, worst-recourse and production A1 certificate identities; failures retain the original input and failure fields. Full production A1 payloads are stored in raw_a1 gzip JSONL shards."
+}

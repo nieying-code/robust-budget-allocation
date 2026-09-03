@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "scope": "QFR_MECHANISM_SIMULATION_LAYER_A_N1000",
+  "scientific_status": "EXPLORATORY_PARAMETER_SPACE_SIMULATION_NOT_CALIBRATION_NOT_FORMAL_E1_E5",
+  "sample_size": 1000,
+  "seed": 20260903,
+  "sampling_method": "DETERMINISTIC_CONSTRAINED_LATIN_HYPERCUBE_V1",
+  "model_kind": "M2",
+  "algorithm_kind": "A1_full",
+  "policy_tolerance": 1e-7,
+  "raw_result_shard_size": 25,
+  "source": {
+    "formal_ready_path": "configs/r6c_formal_ready_data_v2.json",
+    "formal_ready_file_sha256": "eae86e57da22765cb097d168fcc76b1798f8c1417f00a5f40280cc3e47bd1e02",
+    "formal_data_sha256": "59f4b89d8706f9af06aef46455292335b8b8b095f4a2a0ce0f700e5d219ed16f",
+    "scenario_sha256": "3bfea4bad74d39422eb4e004f4c5ffe883cffc7d65244ab14b2d87864531fede"
+  },
+  "fixed_environment": {
+    "budget": 7975014.2749022,
+    "budget_ratio_to_B_ref": 1.0,
+    "shortage_beta": 4.0,
+    "demand_scale_gamma_D": 1.0,
+    "storage_cost_h": 0.0,
+    "retention_a": 1.0,
+    "demand_scale": "UNCHANGED_R6C_FORMAL_READY_51_SCENARIO_DEMAND",
+    "budget_source": "R6C_REFERENCE_BUDGET_AT_RATIO_1.00",
+    "B_ref_formula": "sum_i((cQ_i+h_i*tau)*Dref_i/a_i)_AS_FROZEN_IN_R6C_SOURCE"
+  },
+  "bounds": {
+    "rho_Q1": [0.80, 0.98],
+    "rho_Q2": [0.70, 0.94],
+    "rho_Q3": [0.60, 0.88],
+    "rho_Q4": [0.50, 0.82],
+    "rho_Q5": [0.40, 0.75],
+    "rho_F1": [0.70, 0.98],
+    "rho_F2": [0.60, 0.95],
+    "rho_F3": [0.50, 0.92],
+    "rho_F4": [0.40, 0.88],
+    "rho_F5": [0.30, 0.85],
+    "eta_1": [0.05, 0.50],
+    "eta_2": [0.40, 0.90],
+    "phi": [0.00, 0.50],
+    "psi": [0.50, 1.50],
+    "c_R1_ratio": [0.02, 0.30],
+    "c_R2_ratio": [0.15, 0.60]
+  },
+  "constraints": {
+    "rho_Q": "rho_Q1>=rho_Q2>=rho_Q3>=rho_Q4>=rho_Q5",
+    "rho_F": "rho_F1>=rho_F2>=rho_F3>=rho_F4>=rho_F5",
+    "eta": "eta_2>eta_1 and eta_2-eta_1>=0.05",
+    "reliability_premium": "c_R2_ratio>c_R1_ratio and c_R2_ratio-c_R1_ratio>=0.05"
+  },
+  "reference_anchor_only": {
+    "rho_Q": [0.92, 0.84, 0.76, 0.68, 0.60]
+  }
+}

@@ -1,0 +1,432 @@
+{
+  "config_file": "configs/qfr_mechanism_layer_a_v1.json",
+  "config_file_sha256": "165fe164a046005d7185c7c082ccd159eb08fd7db7f5895c964c8e13552fcd49",
+  "config_identity_sha256": "921e6b27c4e6f839252255fd6ee480d649e3400cc9a9001a3ecb3548c80a7217",
+  "fixture": {
+    "a": {
+      "Crackers": 1.0,
+      "Seasonal Influenza Vaccine": 1.0,
+      "Water": 1.0
+    },
+    "budget": 7975014.2749022,
+    "demand_scale": {
+      "crackers": 14000.0,
+      "vaccine": 10.0603621730382,
+      "water": 1000.0
+    },
+    "formal_data_sha256": "59f4b89d8706f9af06aef46455292335b8b8b095f4a2a0ce0f700e5d219ed16f",
+    "formal_ready_file_sha256": "eae86e57da22765cb097d168fcc76b1798f8c1417f00a5f40280cc3e47bd1e02",
+    "h": {
+      "Crackers": 0.0,
+      "Seasonal Influenza Vaccine": 0.0,
+      "Water": 0.0
+    },
+    "metadata": {
+      "omega_01": {
+        "category": 3,
+        "hurricanes": [
+          "h01"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_02": {
+        "category": 4,
+        "hurricanes": [
+          "h05"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_03": {
+        "category": 2,
+        "hurricanes": [
+          "h10"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_04": {
+        "category": 2,
+        "hurricanes": [
+          "h03"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_05": {
+        "category": 5,
+        "hurricanes": [
+          "h02"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_06": {
+        "category": 3,
+        "hurricanes": [
+          "h12"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_07": {
+        "category": 3,
+        "hurricanes": [
+          "h13"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_08": {
+        "category": 2,
+        "hurricanes": [
+          "h04"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_09": {
+        "category": 3,
+        "hurricanes": [
+          "h11"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_10": {
+        "category": 4,
+        "hurricanes": [
+          "h14"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_11": {
+        "category": 4,
+        "hurricanes": [
+          "h15"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_12": {
+        "category": 2,
+        "hurricanes": [
+          "h07"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_13": {
+        "category": 5,
+        "hurricanes": [
+          "h09"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_14": {
+        "category": 1,
+        "hurricanes": [
+          "h08"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_15": {
+        "category": 3,
+        "hurricanes": [
+          "h06"
+        ],
+        "scenario_type": "single"
+      },
+      "omega_16": {
+        "category": 5,
+        "hurricanes": [
+          "h01",
+          "h02"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_17": {
+        "category": 3,
+        "hurricanes": [
+          "h01",
+          "h04"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_18": {
+        "category": 3,
+        "hurricanes": [
+          "h01",
+          "h07"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_19": {
+        "category": 5,
+        "hurricanes": [
+          "h10",
+          "h02"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_20": {
+        "category": 3,
+        "hurricanes": [
+          "h10",
+          "h13"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_21": {
+        "category": 5,
+        "hurricanes": [
+          "h10",
+          "h09"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_22": {
+        "category": 2,
+        "hurricanes": [
+          "h10",
+          "h08"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_23": {
+        "category": 5,
+        "hurricanes": [
+          "h02",
+          "h05"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_24": {
+        "category": 5,
+        "hurricanes": [
+          "h02",
+          "h06"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_25": {
+        "category": 3,
+        "hurricanes": [
+          "h12",
+          "h01"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_26": {
+        "category": 3,
+        "hurricanes": [
+          "h12",
+          "h03"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_27": {
+        "category": 5,
+        "hurricanes": [
+          "h12",
+          "h02"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_28": {
+        "category": 3,
+        "hurricanes": [
+          "h12",
+          "h04"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_29": {
+        "category": 4,
+        "hurricanes": [
+          "h12",
+          "h14"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_30": {
+        "category": 5,
+        "hurricanes": [
+          "h13",
+          "h02"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_31": {
+        "category": 3,
+        "hurricanes": [
+          "h13",
+          "h08"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_32": {
+        "category": 5,
+        "hurricanes": [
+          "h04",
+          "h02"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_33": {
+        "category": 4,
+        "hurricanes": [
+          "h11",
+          "h05"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_34": {
+        "category": 3,
+        "hurricanes": [
+          "h11",
+          "h12"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_35": {
+        "category": 3,
+        "hurricanes": [
+          "h11",
+          "h13"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_36": {
+        "category": 3,
+        "hurricanes": [
+          "h11",
+          "h07"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_37": {
+        "category": 4,
+        "hurricanes": [
+          "h14",
+          "h03"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_38": {
+        "category": 4,
+        "hurricanes": [
+          "h14",
+          "h06"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_39": {
+        "category": 4,
+        "hurricanes": [
+          "h15",
+          "h05"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_40": {
+        "category": 4,
+        "hurricanes": [
+          "h15",
+          "h07"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_41": {
+        "category": 4,
+        "hurricanes": [
+          "h15",
+          "h13"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_42": {
+        "category": 4,
+        "hurricanes": [
+          "h15",
+          "h14"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_43": {
+        "category": 5,
+        "hurricanes": [
+          "h09",
+          "h01"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_44": {
+        "category": 5,
+        "hurricanes": [
+          "h09",
+          "h14"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_45": {
+        "category": 4,
+        "hurricanes": [
+          "h08",
+          "h05"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_46": {
+        "category": 2,
+        "hurricanes": [
+          "h08",
+          "h03"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_47": {
+        "category": 2,
+        "hurricanes": [
+          "h08",
+          "h07"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_48": {
+        "category": 4,
+        "hurricanes": [
+          "h06",
+          "h05"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_49": {
+        "category": 3,
+        "hurricanes": [
+          "h06",
+          "h03"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_50": {
+        "category": 3,
+        "hurricanes": [
+          "h06",
+          "h07"
+        ],
+        "scenario_type": "combined"
+      },
+      "omega_51": {
+        "category": 0,
+        "hurricanes": [],
+        "scenario_type": "no_hurricane"
+      }
+    },
+    "neutral_fixture_sha256": "9ba2dfde800f70e8e62b70910371bfafb4c38669a0f1ca0ca2c789a3010abbcb",
+    "scenario_count": 51,
+    "shortage_cost": {
+      "Crackers": 0.37488,
+      "Seasonal Influenza Vaccine": 55.664,
+      "Water": 2.5908
+    },
+    "source_scenario_sha256": "3bfea4bad74d39422eb4e004f4c5ffe883cffc7d65244ab14b2d87864531fede"
+  },
+  "manifest_sha256": "0e8f29d9efdf3e8f60fe087f1d7d701c5600393032594b33255435939221f2b6",
+  "neutral_qfr_data_sha256": "9ba2dfde800f70e8e62b70910371bfafb4c38669a0f1ca0ca2c789a3010abbcb",
+  "requested_draws": 1000,
+  "sample_table_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+  "sampler_validation_sha256": "9de11f981012d3295aed838a233d9051079547678e3727a4cb58e6832d7a6f65",
+  "scope": "QFR_MECHANISM_SIMULATION_LAYER_A_N1000",
+  "status": "PREPARED_VALIDATED_NOT_YET_EXECUTED"
+}
