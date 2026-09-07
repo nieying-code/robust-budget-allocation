@@ -1,0 +1,137 @@
+{
+  "case_count": 121,
+  "data_identity": "rawls_24_real_single_hurricane_data_recalibration_v1",
+  "failure_categories": {
+    "Full exact certification was incomplete": 18,
+    "Memory exact evaluation failed": 24,
+    "Q-F-R invariant failed: worst-loss epigraph for h05": 1,
+    "Q-F-R invariant failed: worst-loss epigraph for h09": 68,
+    "exact recourse violates Q-F-R constraints": 10
+  },
+  "failure_stage_scenario_counts": {
+    "exact_oracle::full_exact_certification::h09": 13,
+    "exact_oracle::full_exact_certification::h17": 5,
+    "exact_oracle::memory::h19": 24,
+    "exact_recourse_validation::unavailable::h09": 10,
+    "restricted_master_validation::unavailable::unavailable": 69
+  },
+  "input_sample_table_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+  "neutral_fixture_sha256": "9506834e454e79cbcfbb0d27b86f31136875a281d50a33f1136b720a84b3deda",
+  "scientific_changes": false,
+  "scope": "RAWLS24_LAYER_A_121_FAILURE_NUMERICAL_AUDIT_PRE_FIX",
+  "source_results_hashes_sha256": "538cded8c215fb36fdfaac7d2a478778a14c06487b654a5a028dbb406d62983f",
+  "source_results_manifest_sha256": "826918a0585da7f7f2cda1630e36694e5375547f8a71fba73f93b0b3730db5f0",
+  "status": "COMPLETE_DIAGNOSTIC_ONLY_NO_TOLERANCE_CHANGE",
+  "summary_sha256": "c811741dee681d8db286e82020341ae186ef7b8d937b9d7be266b742abb437de",
+  "tolerance_changes": false,
+  "violation_distributions": {
+    "budget": {
+      "absolute_violation": {
+        "P90": 0.0,
+        "P95": 0.0,
+        "P99": 3.725290298461914e-09,
+        "max": 3.725290298461914e-09,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "relative_violation": {
+        "P90": 0.0,
+        "P95": 0.0,
+        "P99": 2.0529081068487494e-16,
+        "max": 2.0529081068487494e-16,
+        "median": 0.0,
+        "min": 0.0
+      }
+    },
+    "demand_flow": {
+      "absolute_violation": {
+        "P90": 1.862645149230957e-09,
+        "P95": 2.384185791015625e-07,
+        "P99": 2.384185791015625e-07,
+        "max": 2.384185791015625e-07,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "relative_violation": {
+        "P90": 1.28044349678605e-16,
+        "P95": 1.948915029826923e-16,
+        "P99": 1.948915029826923e-16,
+        "max": 1.948915029826923e-16,
+        "median": 0.0,
+        "min": 0.0
+      }
+    },
+    "fulfillment_capacity": {
+      "absolute_violation": {
+        "P90": 0.0,
+        "P95": 0.0,
+        "P99": 1.1641532182693481e-10,
+        "max": 1.1641532182693481e-10,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "relative_violation": {
+        "P90": 0.0,
+        "P95": 0.0,
+        "P99": 1.4406182543496596e-16,
+        "max": 1.7623523745257671e-16,
+        "median": 0.0,
+        "min": 0.0
+      }
+    },
+    "objective_epigraph": {
+      "absolute_violation": {
+        "P90": 2.384185791015625e-07,
+        "P95": 2.384185791015625e-07,
+        "P99": 2.384185791015625e-07,
+        "max": 2.384185791015625e-07,
+        "median": 2.384185791015625e-07,
+        "min": 0.0
+      },
+      "relative_violation": {
+        "P90": 1.9885598235136897e-16,
+        "P95": 2.005552274683029e-16,
+        "P99": 2.0229318055523257e-16,
+        "max": 2.0243364415703172e-16,
+        "median": 1.9399974095417597e-16,
+        "min": 0.0
+      }
+    },
+    "other_model_constraint": {
+      "absolute_violation": {
+        "P90": 0.0,
+        "P95": 0.0,
+        "P99": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "relative_violation": {
+        "P90": 0.0,
+        "P95": 0.0,
+        "P99": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "min": 0.0
+      }
+    },
+    "quantity_nonnegative": {
+      "absolute_violation": {
+        "P90": 0.0,
+        "P95": 0.0,
+        "P99": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "relative_violation": {
+        "P90": 0.0,
+        "P95": 0.0,
+        "P99": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "min": 0.0
+      }
+    }
+  }
+}
