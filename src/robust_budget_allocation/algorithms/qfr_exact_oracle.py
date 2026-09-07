@@ -47,6 +47,15 @@ def _available_q(data: QFRData, decision: QFRFirstStage, item: str, scenario: st
     )
 
 
+def _physical_nonnegative(value: float) -> float:
+    """Canonicalize only tolerance-scale negative solver residue to physical zero."""
+
+    numeric = float(value)
+    if numeric < 0 and numeric >= -tolerance(numeric, 0):
+        return 0.0
+    return numeric
+
+
 def build_exact_recourse(
     data: QFRData,
     decision: QFRFirstStage,
@@ -57,12 +66,15 @@ def build_exact_recourse(
     pre = validate_first_stage(data, decision)
     if scenario not in data.scenarios:
         raise ValueError(f"unknown scenario: {scenario!r}")
+    effective_pre = min(pre, data.budget) if pre > data.budget else pre
     model = pyo.ConcreteModel(name=f"Q-F-R v2 exact recourse {decision.model_kind} {scenario}")
     model._qfr_kind = decision.model_kind
     model._qfr_data_sha256 = data.data_sha256
     model._qfr_scenario_sha256 = data.scenario_sha256
     model._qfr_first_stage_sha256 = decision.sha256
     model._qfr_scenario_identity = scenario_identity(data, scenario)
+    model._qfr_raw_first_stage_cost = pre
+    model._qfr_effective_first_stage_cost = effective_pre
     model.I = pyo.Set(initialize=data.items, ordered=True)
     model.u = pyo.Var(model.I, domain=pyo.NonNegativeReals)
     if decision.model_kind == "M0":
@@ -79,13 +91,13 @@ def build_exact_recourse(
         model.exercise_limit = pyo.Constraint(
             model.I,
             rule=lambda m, item: m.x[item]
-            <= _fulfillable(data, decision, item, scenario),
+            <= _physical_nonnegative(_fulfillable(data, decision, item, scenario)),
         )
         model.exercise_cost = pyo.Expression(
             expr=sum(data.exercise_cost[item] * model.x[item] for item in model.I)
         )
         model.fixed_total_budget = pyo.Constraint(
-            expr=pre + model.exercise_cost <= data.budget
+            expr=effective_pre + model.exercise_cost <= data.budget
         )
         model.demand_balance = pyo.Constraint(
             model.I,

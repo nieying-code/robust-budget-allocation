@@ -140,6 +140,29 @@ def test_exact_recourse_has_only_second_stage_variables_and_fixed_budget_account
         assert all(f"x[{item}]" in budget_coefficients for item in data.items)
 
 
+def test_exact_recourse_canonicalizes_only_accepted_negative_solver_residue(data):
+    decision = zero_decision(data, "M2")
+    payload = decision.to_dict()
+    payload["f"]["ordinary"]["0"] = -5e-8
+    residue = QFRFirstStage.from_dict(payload)
+    validate_first_stage(data, residue)
+    model = build_exact_recourse(data, residue, "c_peak")
+    assert pyo.value(model.exercise_limit["ordinary"].upper) == pytest.approx(0.0)
+
+
+def test_exact_recourse_canonicalizes_accepted_tight_budget_residue(data):
+    decision = zero_decision(data, "M2")
+    payload = decision.to_dict()
+    item = data.items[0]
+    unit_cost = data.q_unit_cost[item] + data.storage_cost[item] * data.tau
+    payload["q"][item] = (data.budget + 5e-8) / unit_cost
+    residue = QFRFirstStage.from_dict(payload)
+    validate_first_stage(data, residue)
+    model = build_exact_recourse(data, residue, "c_peak")
+    assert model._qfr_raw_first_stage_cost > data.budget
+    assert model._qfr_effective_first_stage_cost == data.budget
+
+
 def test_first_stage_rejects_wrong_hash_capacity_or_reliability(data):
     decision = zero_decision(data, "M2")
     assert first_stage_cost(data, decision) == pytest.approx(0)
