@@ -86,6 +86,10 @@ def build_exact_recourse(
         )
         for item in data.items
     }
+    fulfillment_scale = {
+        item: max(1.0, abs(_fulfillable(data, decision, item, scenario)))
+        for item in data.items
+    }
     model.u = pyo.Var(model.I, domain=pyo.NonNegativeReals)
     if decision.model_kind == "M0":
         model.exercise_cost = pyo.Expression(expr=0.0)
@@ -101,9 +105,9 @@ def build_exact_recourse(
         model.x = pyo.Var(model.I, domain=pyo.NonNegativeReals)
         model.exercise_limit = pyo.Constraint(
             model.I,
-            rule=lambda m, item: m.x[item] / quantity_scale[item]
+            rule=lambda m, item: m.x[item] / fulfillment_scale[item]
             <= _physical_nonnegative(_fulfillable(data, decision, item, scenario))
-            / quantity_scale[item],
+            / fulfillment_scale[item],
         )
         model.exercise_cost = pyo.Expression(
             expr=sum(data.exercise_cost[item] * model.x[item] for item in model.I)

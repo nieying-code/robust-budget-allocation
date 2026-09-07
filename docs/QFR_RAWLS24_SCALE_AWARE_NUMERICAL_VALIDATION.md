@@ -37,8 +37,8 @@ A1 stopping, gap, violation, candidate ranking, memory, or certification logic.
 
 ## Exact-recourse row scaling
 
-The exact-recourse LP divides each demand and fulfillment row by its own
-quantity-family scale and divides the cash row by B. These are algebraically
+The exact-recourse LP divides each demand row by its demand-flow scale, each
+fulfillment row by its own fulfillable-F scale, and the cash row by B. These are algebraically
 equivalent positive row scalings. Objective coefficients, variables, feasible set,
 scientific accounting, and serialized quantities remain unchanged. Candidate,
 Memory, and Full Exact Certification all call this same exact-recourse implementation.
