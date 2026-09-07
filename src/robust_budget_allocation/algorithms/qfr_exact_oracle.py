@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 import math
 from time import perf_counter
 from typing import Any, Mapping
@@ -135,13 +136,83 @@ def build_exact_recourse(
     return model
 
 
+def _solve_scaled_exact_recourse(
+    model: pyo.ConcreteModel,
+    data: QFRData,
+    decision: QFRFirstStage,
+    scenario: str,
+):
+    """Solve an algebraically equivalent, dimensionless exact-recourse clone.
+
+    The production solver policy and the returned scientific model remain
+    unchanged.  Scaling is local to a cloned LP; its solution is propagated
+    back to ``model`` before the unscaled objective and feasibility checks are
+    evaluated.
+    """
+
+    model.scaling_factor = pyo.Suffix(direction=pyo.Suffix.EXPORT)
+    quantity_reference = {
+        item: max(
+            1.0,
+            abs(data.demand[scenario][item]),
+            abs(_available_q(data, decision, item, scenario)),
+            abs(_fulfillable(data, decision, item, scenario)),
+        )
+        for item in data.items
+    }
+    for item in data.items:
+        quantity = quantity_reference[item]
+        model.scaling_factor[model.u[item]] = 1.0 / quantity
+        # build_exact_recourse already divides this row by sqrt(quantity).
+        model.scaling_factor[model.demand_balance[item]] = 1.0 / math.sqrt(quantity)
+        if decision.model_kind != "M0":
+            model.scaling_factor[model.x[item]] = 1.0 / quantity
+            fulfillment = max(
+                1.0, abs(_fulfillable(data, decision, item, scenario))
+            )
+            # Complete the existing sqrt(fulfillment) row normalization while
+            # retaining the demand-scale variable representation.
+            model.scaling_factor[model.exercise_limit[item]] = (
+                math.sqrt(fulfillment) / quantity
+            )
+    if decision.model_kind != "M0":
+        # Complete the existing sqrt(budget) row normalization.
+        model.scaling_factor[model.fixed_total_budget] = 1.0 / math.sqrt(
+            max(1.0, abs(data.budget))
+        )
+    objective_reference = max(
+        1.0,
+        sum(
+            max(data.exercise_cost[item], data.shortage_cost[item])
+            * data.demand[scenario][item]
+            for item in data.items
+        ),
+    )
+    objective_factor = 1.0 / objective_reference
+    model.scaling_factor[model.total_cost] = objective_factor
+    scaled_model = pyo.TransformationFactory("core.scale_model").create_using(
+        model, rename=False
+    )
+    outcome = solve_exact(scaled_model)
+    if outcome.status != "optimal":
+        return outcome
+    pyo.TransformationFactory("core.scale_model").propagate_solution(
+        scaled_model, model
+    )
+    return replace(
+        outcome,
+        objective=float(outcome.objective) / objective_factor,
+        lower_bound=float(outcome.lower_bound) / objective_factor,
+    )
+
+
 def solve_exact_recourse(
     data: QFRData,
     decision: QFRFirstStage,
     scenario: str,
 ) -> dict[str, Any]:
     model = build_exact_recourse(data, decision, scenario)
-    outcome = solve_exact(model)
+    outcome = _solve_scaled_exact_recourse(model, data, decision, scenario)
     result: dict[str, Any] = {
         "scenario_id": scenario,
         "scenario_identity": scenario_identity(data, scenario),

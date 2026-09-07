@@ -8,7 +8,10 @@ import pytest
 
 from robust_budget_allocation.algorithms.qfr_builders import build_qfr_extensive_form
 from robust_budget_allocation.algorithms.qfr_correctness_suite import load_fixture
-from robust_budget_allocation.algorithms.qfr_exact_oracle import build_exact_recourse
+from robust_budget_allocation.algorithms.qfr_exact_oracle import (
+    build_exact_recourse,
+    solve_exact_recourse,
+)
 from robust_budget_allocation.algorithms.qfr_numerical_validation import (
     VALIDATION_ABSOLUTE_TOLERANCE,
     VALIDATION_RELATIVE_TOLERANCE,
@@ -88,6 +91,19 @@ def test_scale_aware_feasibility_rejects_nonfinite_values(bad):
     assert not violation_is_acceptable(bad, 1.0)
     with pytest.raises(ValueError):
         feasibility_threshold(bad)
+
+
+def test_exact_recourse_scaled_clone_returns_unscaled_scientific_result(data):
+    decision = zero_decision(data, "M2")
+    result = solve_exact_recourse(data, decision, "c_peak")
+    expected_shortage = sum(
+        data.shortage_cost[item] * data.demand["c_peak"][item]
+        for item in data.items
+    )
+    assert result["solver"]["status"] == "optimal"
+    assert result["loss"] == pytest.approx(expected_shortage)
+    assert result["solver"]["objective"] == pytest.approx(expected_shortage)
+    assert result["maximum_feasibility_violation"] <= 1e-7
 
 
 def test_preregistered_fixture_is_v2_multi_item_and_not_scientific_parameters(data):
