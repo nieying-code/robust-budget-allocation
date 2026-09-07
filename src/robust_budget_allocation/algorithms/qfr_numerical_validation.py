@@ -36,6 +36,12 @@ def feasibility_threshold(
     )
 
 
+def row_scaling_divisor(*values: float) -> float:
+    """Return a balanced positive divisor without creating near-zero coefficients."""
+
+    return math.sqrt(reference_scale(*values))
+
+
 def violation_is_acceptable(
     violation: float,
     *scale_values: float,

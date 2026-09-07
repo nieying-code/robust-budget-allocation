@@ -19,7 +19,7 @@ from .qfr_protocol import (
     solve_exact,
     tolerance,
 )
-from .qfr_numerical_validation import violation_is_acceptable
+from .qfr_numerical_validation import row_scaling_divisor, violation_is_acceptable
 from .qfr_state import QFRFirstStage, first_stage_cost, validate_first_stage
 
 
@@ -78,18 +78,20 @@ def build_exact_recourse(
     model._qfr_effective_first_stage_cost = effective_pre
     model.I = pyo.Set(initialize=data.items, ordered=True)
     quantity_scale = {
-        item: max(
-            1.0,
-            abs(data.demand[scenario][item]),
-            abs(_available_q(data, decision, item, scenario)),
-            abs(_fulfillable(data, decision, item, scenario)),
+        item: row_scaling_divisor(
+            data.demand[scenario][item],
+            _available_q(data, decision, item, scenario),
+            _fulfillable(data, decision, item, scenario),
         )
         for item in data.items
     }
     fulfillment_scale = {
-        item: max(1.0, abs(_fulfillable(data, decision, item, scenario)))
+        item: row_scaling_divisor(
+            _fulfillable(data, decision, item, scenario)
+        )
         for item in data.items
     }
+    budget_scale = row_scaling_divisor(data.budget)
     model.u = pyo.Var(model.I, domain=pyo.NonNegativeReals)
     if decision.model_kind == "M0":
         model.exercise_cost = pyo.Expression(expr=0.0)
@@ -113,8 +115,8 @@ def build_exact_recourse(
             expr=sum(data.exercise_cost[item] * model.x[item] for item in model.I)
         )
         model.fixed_total_budget = pyo.Constraint(
-            expr=(effective_pre + model.exercise_cost) / max(1.0, abs(data.budget))
-            <= data.budget / max(1.0, abs(data.budget))
+            expr=(effective_pre + model.exercise_cost) / budget_scale
+            <= data.budget / budget_scale
         )
         model.demand_balance = pyo.Constraint(
             model.I,

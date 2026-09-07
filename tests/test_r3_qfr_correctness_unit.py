@@ -13,6 +13,7 @@ from robust_budget_allocation.algorithms.qfr_numerical_validation import (
     VALIDATION_ABSOLUTE_TOLERANCE,
     VALIDATION_RELATIVE_TOLERANCE,
     feasibility_threshold,
+    row_scaling_divisor,
     violation_is_acceptable,
 )
 from robust_budget_allocation.algorithms.qfr_protocol import (
@@ -78,6 +79,8 @@ def test_scale_aware_feasibility_is_strict_and_family_scaled():
     assert violation_is_acceptable(2.384185791015625e-7, 1.0e9)
     assert not violation_is_acceptable(0.002, 1.0e9)
     assert not violation_is_acceptable(2.0e-7, 1.0)
+    assert row_scaling_divisor(1.0e8) == pytest.approx(1.0e4)
+    assert row_scaling_divisor(0.0) == 1.0
 
 
 @pytest.mark.parametrize("bad", [float("nan"), float("inf")])
