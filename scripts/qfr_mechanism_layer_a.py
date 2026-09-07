@@ -56,30 +56,34 @@ def _read_samples(path: Path) -> list[dict[str, Any]]:
     return rows
 
 
-def prepare() -> int:
-    config = load_config(CONFIG_PATH)
+def prepare(
+    config_path: Path = CONFIG_PATH,
+    output: Path = OUTPUT,
+    fixture_loader=load_neutral_fixture,
+) -> int:
+    config = load_config(config_path)
     rows = generate_samples(config)
     validation = validate_samples(rows, config)
     if rows != generate_samples(config):
         raise RuntimeError("same-seed sample reproduction failed")
-    OUTPUT.mkdir(parents=True, exist_ok=False)
-    (OUTPUT / "samples.csv").write_bytes(samples_csv_bytes(rows))
-    _write_json(OUTPUT / "sampler_validation.json", validation)
-    neutral, fixture = load_neutral_fixture(ROOT, config)
+    output.mkdir(parents=True, exist_ok=False)
+    (output / "samples.csv").write_bytes(samples_csv_bytes(rows))
+    _write_json(output / "sampler_validation.json", validation)
+    neutral, fixture = fixture_loader(ROOT, config)
     pre_manifest = {
         "scope": config["scope"],
         "status": "PREPARED_VALIDATED_NOT_YET_EXECUTED",
-        "config_file": CONFIG_PATH.relative_to(ROOT).as_posix(),
-        "config_file_sha256": sha256_file(CONFIG_PATH),
+        "config_file": config_path.relative_to(ROOT).as_posix(),
+        "config_file_sha256": sha256_file(config_path),
         "config_identity_sha256": canonical_json_sha256(config),
-        "sample_table_sha256": sha256_file(OUTPUT / "samples.csv"),
+        "sample_table_sha256": sha256_file(output / "samples.csv"),
         "sampler_validation_sha256": validation["validation_sha256"],
         "fixture": fixture,
         "neutral_qfr_data_sha256": canonical_json_sha256(neutral),
         "requested_draws": len(rows),
     }
     pre_manifest["manifest_sha256"] = canonical_json_sha256(pre_manifest)
-    _write_json(OUTPUT / "pre_run_manifest.json", pre_manifest)
+    _write_json(output / "pre_run_manifest.json", pre_manifest)
     print(json.dumps({"status": "PASS", "samples": len(rows), "sample_table_sha256": pre_manifest["sample_table_sha256"]}, indent=2))
     return 0
 
@@ -138,6 +142,7 @@ def _success_rows(
         **{f"R_{item}": r_level[item] for item in ITEMS},
         "C_Q": c_q, "C_F": c_f, "C_R": c_r, "first_stage_cost": c_q + c_f + c_r,
         "worst_scenario": worst_id, "worst_category": scenario_metadata[worst_id]["category"],
+        "worst_hurricane": scenario_metadata[worst_id].get("hurricane_name", "unavailable"),
         "worst_exercise_cost": float(worst["exercise_cost"]),
         "worst_shortage_penalty": float(worst["shortage_loss"]),
         "worst_total_shortage": sum(worst_shortage.values()),
@@ -215,18 +220,23 @@ def _distribution(values: Sequence[float], *, p99: bool = False) -> dict[str, fl
     return result
 
 
-def run() -> int:
-    config = load_config(CONFIG_PATH)
-    sample_path = OUTPUT / "samples.csv"
-    if not sample_path.exists() or (OUTPUT / "simulation_manifest.json").exists():
+def run(
+    config_path: Path = CONFIG_PATH,
+    output: Path = OUTPUT,
+    fixture_loader=load_neutral_fixture,
+    finalizer=None,
+) -> int:
+    config = load_config(config_path)
+    sample_path = output / "samples.csv"
+    if not sample_path.exists() or (output / "simulation_manifest.json").exists():
         raise RuntimeError("prepared sample table missing or simulation already finalized")
-    raw_dir = OUTPUT / "raw_a1"
+    raw_dir = output / "raw_a1"
     raw_dir.mkdir(exist_ok=False)
     samples = _read_samples(sample_path)
     generated = generate_samples(config)
     if samples != generated or validate_samples(samples, config)["status"] != "PASS":
         raise RuntimeError("stored sample table does not reproduce exactly")
-    neutral_payload, fixture = load_neutral_fixture(ROOT, config)
+    neutral_payload, fixture = fixture_loader(ROOT, config)
     environment = ensure_preflight_once().to_dict()
     execution_commit, execution_tree = _git("rev-parse", "HEAD"), _git("rev-parse", "HEAD^{tree}")
     if _git("status", "--porcelain=v1"):
@@ -288,6 +298,10 @@ def run() -> int:
             "budget_usage": _distribution([row["budget_usage"] for row in successes]),
             "worst_total_F_exercise": _distribution([row["worst_total_F_exercise"] for row in successes]),
             "R_level_item_counts": {level: sum(row[f"R_{item}"] == level for row in successes for item in ITEMS) for level in ("NONE", "R0", "R1", "R2")},
+            "worst_scenario_counts": {
+                scenario: sum(row["worst_scenario"] == scenario for row in successes)
+                for scenario in sorted({row["worst_scenario"] for row in successes})
+            },
         } if successes else "unavailable"),
         "computational": ({
             "runtime_seconds": _distribution([row["total_runtime_seconds"] for row in diagnostics_ok], p99=True),
@@ -307,9 +321,9 @@ def run() -> int:
     }
     summary["summary_sha256"] = canonical_json_sha256(summary)
     scientific_bytes, computational_bytes = _csv_bytes(scientific_rows), _csv_bytes(computational_rows)
-    (OUTPUT / "scientific_results.csv").write_bytes(scientific_bytes)
-    (OUTPUT / "a1_computational_diagnostics.csv").write_bytes(computational_bytes)
-    _write_json(OUTPUT / "summary.json", summary)
+    (output / "scientific_results.csv").write_bytes(scientific_bytes)
+    (output / "a1_computational_diagnostics.csv").write_bytes(computational_bytes)
+    _write_json(output / "summary.json", summary)
     manifest = {
         "schema_version": 1, "scope": config["scope"], "status": "COMPLETE",
         "execution_git_commit": execution_commit, "execution_git_tree": execution_tree,
@@ -327,10 +341,12 @@ def run() -> int:
         },
     }
     manifest["manifest_sha256"] = canonical_json_sha256(manifest)
-    _write_json(OUTPUT / "simulation_manifest.json", manifest)
-    output_paths = sorted(path for path in OUTPUT.rglob("*") if path.is_file() and path.name != "HASHES.sha256")
-    (OUTPUT / "HASHES.sha256").write_text(
-        "\n".join(f"{sha256_file(path)}  {path.relative_to(OUTPUT).as_posix()}" for path in output_paths) + "\n",
+    _write_json(output / "simulation_manifest.json", manifest)
+    if finalizer is not None:
+        finalizer(output, summary, manifest)
+    output_paths = sorted(path for path in output.rglob("*") if path.is_file() and path.name != "HASHES.sha256")
+    (output / "HASHES.sha256").write_text(
+        "\n".join(f"{sha256_file(path)}  {path.relative_to(output).as_posix()}" for path in output_paths) + "\n",
         encoding="utf-8", newline="\n",
     )
     print(json.dumps(summary, indent=2))

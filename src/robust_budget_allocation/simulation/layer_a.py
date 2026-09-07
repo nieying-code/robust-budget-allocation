@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 import csv
+from decimal import Decimal, localcontext
 import io
 import json
 import math
@@ -32,7 +33,10 @@ def load_config(path: Path) -> dict[str, Any]:
 
 
 def validate_config(config: Mapping[str, Any]) -> None:
-    if config.get("scope") != "QFR_MECHANISM_SIMULATION_LAYER_A_N1000":
+    if config.get("scope") not in {
+        "QFR_MECHANISM_SIMULATION_LAYER_A_N1000",
+        "QFR_MECHANISM_SIMULATION_LAYER_A_RAWLS24_N1000",
+    }:
         raise ValueError("wrong Layer A scope")
     if config.get("sample_size") != 1000 or type(config.get("seed")) is not int:
         raise ValueError("Layer A requires N=1000 and an integer seed")
@@ -230,6 +234,133 @@ def load_neutral_fixture(repo_root: Path, config: Mapping[str, Any]) -> tuple[di
         "demand_scale": ready.get("demand_normalization"),
         "h": dict(neutral.storage_cost), "a": dict(neutral.retention),
         "metadata": metadata,
+    }
+
+
+def load_rawls24_neutral_fixture(
+    repo_root: Path, config: Mapping[str, Any]
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Build the 24-event neutral fixture from audited data and frozen reference weights."""
+
+    root = repo_root.resolve()
+    source = config["source"]
+    for key in ("input", "demand", "manifest", "economic_template"):
+        identity = source[key]
+        if sha256_file(root / identity["path"]) != identity["sha256"]:
+            raise ValueError(f"Rawls24 {key} source hash mismatch")
+    rawls_manifest = json.loads((root / source["manifest"]["path"]).read_text(encoding="utf-8"))
+    if rawls_manifest["canonical_data_sha256"] != source["canonical_data_sha256"]:
+        raise ValueError("Rawls24 canonical data identity mismatch")
+    with (root / source["input"]["path"]).open("r", encoding="utf-8", newline="") as handle:
+        inputs = list(csv.DictReader(handle))
+    with (root / source["demand"]["path"]).open("r", encoding="utf-8", newline="") as handle:
+        demands = list(csv.DictReader(handle))
+    ids = [row["scenario_id"] for row in inputs]
+    if len(ids) != 24 or ids != [f"h{index:02d}" for index in range(1, 25)]:
+        raise ValueError("Rawls24 scenario identity/order is not exactly h01..h24")
+    if [row["scenario_id"] for row in demands] != ids:
+        raise ValueError("Rawls24 input/demand scenario ordering mismatch")
+    if any(row["scenario_type"] != "single_hurricane" for row in inputs):
+        raise ValueError("Rawls24 fixture contains a non-single-hurricane scenario")
+
+    reference = config["reference_weight"]
+    group_by_id = {
+        scenario: group
+        for group, scenarios in reference["groups"].items()
+        for scenario in scenarios
+    }
+    if set(group_by_id) != set(ids):
+        raise ValueError("Rawls24 reference-weight groups do not partition all scenarios")
+    florida = set(reference["groups"]["florida_major"]) | set(reference["groups"]["florida_minor"])
+    major = set(reference["groups"]["florida_major"]) | set(reference["groups"]["nonflorida_major"])
+    with localcontext() as decimal_context:
+        decimal_context.prec = 80
+        weights_decimal = {
+            scenario: Decimal(reference["per_event_weight"][group_by_id[scenario]])
+            for scenario in ids
+        }
+        total_weight = sum(weights_decimal.values())
+        florida_weight = sum(weights_decimal[s] for s in florida)
+        major_weight = sum(weights_decimal[s] for s in major)
+        weight_tolerance = Decimal("1e-48")
+        if abs(total_weight - Decimal("1")) > weight_tolerance:
+            raise ValueError("Rawls24 reference weights do not sum to one")
+        if abs(florida_weight - Decimal(reference["florida_mass"])) > weight_tolerance:
+            raise ValueError("Rawls24 Florida reference-weight mass mismatch")
+        if abs(major_weight - Decimal(reference["major_mass"])) > weight_tolerance:
+            raise ValueError("Rawls24 major reference-weight mass mismatch")
+
+    template_ready = json.loads((root / source["economic_template"]["path"]).read_text(encoding="utf-8"))
+    payload = deepcopy(template_ready["qfr_data"])
+    normalization = template_ready["demand_normalization"]
+    by_id = {row["scenario_id"]: row for row in demands}
+    mapped_demand = {
+        scenario: {
+            "Water": float(by_id[scenario]["water_unified"]),
+            "Seasonal Influenza Vaccine": float(by_id[scenario]["medical_unified"]) * float(normalization["vaccine"]),
+            "Crackers": float(by_id[scenario]["food_unified"]) * 14.0,
+        }
+        for scenario in ids
+    }
+    dref = {
+        item: sum(float(weights_decimal[scenario]) * mapped_demand[scenario][item] for scenario in ids)
+        for item in ITEMS
+    }
+    payload.update(
+        scenarios=ids,
+        demand=mapped_demand,
+        q_availability={scenario: dict.fromkeys(ITEMS, 1.0) for scenario in ids},
+        disruption={scenario: dict.fromkeys(ITEMS, 0.0) for scenario in ids},
+        flexible_capacity={item: max(mapped_demand[s][item] for s in ids) for item in ITEMS},
+        storage_cost=dict.fromkeys(ITEMS, 0.0),
+        retention=dict.fromkeys(ITEMS, 1.0),
+    )
+    b_ref = sum(float(payload["q_unit_cost"][item]) * dref[item] for item in ITEMS)
+    payload["budget"] = b_ref
+    neutral = QFRData.from_dict(payload)
+    metadata = {
+        row["scenario_id"]: {
+            "category": int(row["category"]),
+            "hurricanes": [row["hurricane_name"]],
+            "scenario_type": row["scenario_type"],
+            "hurricane_name": row["hurricane_name"],
+            "year": int(row["year"]),
+            "evidence_status": row["evidence_status"],
+        }
+        for row in inputs
+    }
+    return neutral.to_dict(), {
+        "dataset_identity": rawls_manifest["dataset_identity"],
+        "canonical_data_sha256": rawls_manifest["canonical_data_sha256"],
+        "neutral_fixture_sha256": neutral.data_sha256,
+        "scenario_count": 24,
+        "scenario_order": ids,
+        "metadata": metadata,
+        "reference_weight_method": reference["method"],
+        "reference_weights": {scenario: float(weights_decimal[scenario]) for scenario in ids},
+        "reference_weight_decimal_strings": {scenario: str(weights_decimal[scenario]) for scenario in ids},
+        "reference_weight_sum": float(total_weight),
+        "florida_mass": float(florida_weight),
+        "major_mass": float(major_weight),
+        "reference_demand": dref,
+        "B_ref_formula": "sum_i((cQ_i+h_i*tau)*Dref_i/a_i), with Layer A h=0 and a=1",
+        "budget": b_ref,
+        "flexible_capacity": dict(neutral.flexible_capacity),
+        "demand_mapping": {
+            "Water": "water_unified",
+            "Seasonal Influenza Vaccine": f"medical_unified * {normalization['vaccine']}",
+            "Crackers": "food_unified * 14",
+        },
+        "demand_scale": {
+            "gamma_D": 1.0,
+            "water": 1.0,
+            "vaccine_from_rawls_medical": float(normalization["vaccine"]),
+            "crackers_from_unified_food": 14.0,
+        },
+        "shortage_cost": dict(neutral.shortage_cost),
+        "h": dict(neutral.storage_cost),
+        "a": dict(neutral.retention),
+        "source_hashes": {key: source[key]["sha256"] for key in ("input", "demand", "manifest", "economic_template")},
     }
 
 
