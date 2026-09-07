@@ -1,0 +1,100 @@
+{
+  "computational": {
+    "candidate_hits_total": 1750,
+    "candidate_scenarios_planned_total": 3750,
+    "certification_success_rate": 1.0,
+    "complete_full_exact_certification_calls_total": 2000,
+    "failure_types": {},
+    "full_exact_certification_calls_total": 2000,
+    "iterations": {
+      "P90": 6.0,
+      "P95": 7.0,
+      "P99": 7.0,
+      "max": 7.0,
+      "mean": 3.75,
+      "median": 3.0,
+      "min": 3.0
+    },
+    "memory_hits_total": 0,
+    "memory_opportunities_total": 1000,
+    "runtime_seconds": {
+      "P90": 0.6319738500053063,
+      "P95": 0.6445175450178795,
+      "P99": 0.6715112809790298,
+      "max": 0.6981249999953434,
+      "mean": 0.5511686275009997,
+      "median": 0.5328203500248492,
+      "min": 0.48632020002696663
+    },
+    "scenario_evaluations_total": 53750,
+    "solver_runtime_seconds": {
+      "P90": 0.29452463013585656,
+      "P95": 0.30226359954103826,
+      "P99": 0.3185592409688979,
+      "max": 0.3428462994052097,
+      "mean": 0.25995687178021765,
+      "median": 0.25338134996127337,
+      "min": 0.2223670003004372
+    }
+  },
+  "interpretation_boundary": "DESCRIPTIVE_A1_BEHAVIOR_ONLY_NO_A0_COMPARATOR_NO_CAUSAL_SPEEDUP_CLAIM",
+  "policy_counts": {
+    "P1": 241,
+    "P2": 0,
+    "P3a": 0,
+    "P3b": 0,
+    "P4": 759,
+    "P5": 0
+  },
+  "scientific": {
+    "R_level_item_counts": {
+      "NONE": 1920,
+      "R0": 948,
+      "R1": 84,
+      "R2": 48
+    },
+    "budget_usage": {
+      "P90": 1.0,
+      "P95": 1.0,
+      "max": 1.0000000000000002,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 0.9999999999999954
+    },
+    "objective": {
+      "P90": 1234432145.6809926,
+      "P95": 1237160704.4597526,
+      "max": 1244166582.4812105,
+      "mean": 1218508854.0806003,
+      "median": 1222916253.6722498,
+      "min": 1136111060.572754
+    },
+    "worst_scenario_counts": {
+      "h09": 1000
+    },
+    "worst_total_F_exercise": {
+      "P90": 173479112.82319406,
+      "P95": 199610843.50927538,
+      "max": 340712780.40068734,
+      "mean": 72431114.63207112,
+      "median": 53557363.312026404,
+      "min": 0.0
+    },
+    "worst_total_shortage": {
+      "P90": 1881052398.8986263,
+      "P95": 1881161083.6119013,
+      "max": 1881366578.6361694,
+      "mean": 1804900574.82769,
+      "median": 1827469533.943061,
+      "min": 1541244563.6636992
+    }
+  },
+  "simulation": {
+    "attempted": 1000,
+    "certified": 1000,
+    "failed": 0,
+    "requested": 1000,
+    "successful": 1000
+  },
+  "summary_sha256": "e6930c08b6e9ca8d66529fa57955d4360a1a394904dada5559b41d2e604275e1"
+}
