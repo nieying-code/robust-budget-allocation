@@ -35,26 +35,22 @@ Reference magnitudes are never shared indiscriminately across constraint familie
 The rule validates floating-point representations only. It does not participate in
 A1 stopping, gap, violation, candidate ranking, memory, or certification logic.
 
-## Exact-recourse algebraic scaling
+## Exact-recourse algebraic scaling fallback
 
-The exact-recourse LP divides each demand row, fulfillment row, and cash row by
-the square root of its own family-specific reference magnitude. The geometric divisor
-reduces large right-hand sides without creating the near-zero matrix coefficients that
-full-magnitude division produced in the three residual replay failures. These are algebraically
-equivalent positive row scalings.
-
-The common exact oracle then solves a deterministic, dimensionless Pyomo ScaleModel
-clone. Each exercise and shortage variable is represented relative to its own item's
-demand/availability/fulfillment reference; each constraint family completes its own
+The common exact oracle first solves the unchanged production LP. This preserves the
+historical numerical path and avoids changing the selected representative of a
+degenerate optimum. Only when that solve does not return an accepted optimum does the
+oracle retry a deterministic, dimensionless Pyomo ScaleModel clone. Each exercise and
+shortage variable is represented relative to its own item's
+demand/availability/fulfillment reference; each constraint family uses its own
 normalization; and the objective is represented relative to a scenario-specific upper
-reference based on demand and unit loss costs. The solver solution is propagated back
+reference based on demand and unit loss costs. The retry solution is propagated back
 to the original, unscaled model before the objective, constraint validation, and result
-serialization are performed. This resolves the two remaining h19 presolve failures,
-whose unscaled models had explicit feasible shortage-only witnesses but were reported
-infeasible.
+serialization are performed. This resolves the exact LP presolve failures for which
+the unscaled models had explicit feasible shortage-only witnesses.
 
 The transformation changes neither the LP feasible set nor its optimum. Solver policy,
 scientific variables, objective accounting, returned units, A1 stopping/certification
 logic, and the 1e-7 + 1e-12*scale loaded-solution validation rule remain unchanged.
 Candidate, Memory, and Full Exact Certification all call this same exact-recourse
-implementation.
+implementation. The scaled retry is not used for an already successful exact solve.

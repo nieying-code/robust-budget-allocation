@@ -20,7 +20,7 @@ from .qfr_protocol import (
     solve_exact,
     tolerance,
 )
-from .qfr_numerical_validation import row_scaling_divisor, violation_is_acceptable
+from .qfr_numerical_validation import violation_is_acceptable
 from .qfr_state import QFRFirstStage, first_stage_cost, validate_first_stage
 
 
@@ -78,53 +78,34 @@ def build_exact_recourse(
     model._qfr_raw_first_stage_cost = pre
     model._qfr_effective_first_stage_cost = effective_pre
     model.I = pyo.Set(initialize=data.items, ordered=True)
-    quantity_scale = {
-        item: row_scaling_divisor(
-            data.demand[scenario][item],
-            _available_q(data, decision, item, scenario),
-            _fulfillable(data, decision, item, scenario),
-        )
-        for item in data.items
-    }
-    fulfillment_scale = {
-        item: row_scaling_divisor(
-            _fulfillable(data, decision, item, scenario)
-        )
-        for item in data.items
-    }
-    budget_scale = row_scaling_divisor(data.budget)
     model.u = pyo.Var(model.I, domain=pyo.NonNegativeReals)
     if decision.model_kind == "M0":
         model.exercise_cost = pyo.Expression(expr=0.0)
         model.demand_balance = pyo.Constraint(
             model.I,
             rule=lambda m, item: (
-                (_available_q(data, decision, item, scenario) + m.u[item])
-                / quantity_scale[item]
-                >= data.demand[scenario][item] / quantity_scale[item]
+                _available_q(data, decision, item, scenario) + m.u[item]
+                >= data.demand[scenario][item]
             ),
         )
     else:
         model.x = pyo.Var(model.I, domain=pyo.NonNegativeReals)
         model.exercise_limit = pyo.Constraint(
             model.I,
-            rule=lambda m, item: m.x[item] / fulfillment_scale[item]
-            <= _physical_nonnegative(_fulfillable(data, decision, item, scenario))
-            / fulfillment_scale[item],
+            rule=lambda m, item: m.x[item]
+            <= _physical_nonnegative(_fulfillable(data, decision, item, scenario)),
         )
         model.exercise_cost = pyo.Expression(
             expr=sum(data.exercise_cost[item] * model.x[item] for item in model.I)
         )
         model.fixed_total_budget = pyo.Constraint(
-            expr=(effective_pre + model.exercise_cost) / budget_scale
-            <= data.budget / budget_scale
+            expr=effective_pre + model.exercise_cost <= data.budget
         )
         model.demand_balance = pyo.Constraint(
             model.I,
             rule=lambda m, item: (
-                (_available_q(data, decision, item, scenario) + m.x[item] + m.u[item])
-                / quantity_scale[item]
-                >= data.demand[scenario][item] / quantity_scale[item]
+                _available_q(data, decision, item, scenario) + m.x[item] + m.u[item]
+                >= data.demand[scenario][item]
             ),
         )
     model.shortage_loss = pyo.Expression(
@@ -163,22 +144,13 @@ def _solve_scaled_exact_recourse(
     for item in data.items:
         quantity = quantity_reference[item]
         model.scaling_factor[model.u[item]] = 1.0 / quantity
-        # build_exact_recourse already divides this row by sqrt(quantity).
-        model.scaling_factor[model.demand_balance[item]] = 1.0 / math.sqrt(quantity)
+        model.scaling_factor[model.demand_balance[item]] = 1.0 / quantity
         if decision.model_kind != "M0":
             model.scaling_factor[model.x[item]] = 1.0 / quantity
-            fulfillment = max(
-                1.0, abs(_fulfillable(data, decision, item, scenario))
-            )
-            # Complete the existing sqrt(fulfillment) row normalization while
-            # retaining the demand-scale variable representation.
-            model.scaling_factor[model.exercise_limit[item]] = (
-                math.sqrt(fulfillment) / quantity
-            )
+            model.scaling_factor[model.exercise_limit[item]] = 1.0 / quantity
     if decision.model_kind != "M0":
-        # Complete the existing sqrt(budget) row normalization.
-        model.scaling_factor[model.fixed_total_budget] = 1.0 / math.sqrt(
-            max(1.0, abs(data.budget))
+        model.scaling_factor[model.fixed_total_budget] = 1.0 / max(
+            1.0, abs(data.budget)
         )
     objective_reference = max(
         1.0,
@@ -212,7 +184,9 @@ def solve_exact_recourse(
     scenario: str,
 ) -> dict[str, Any]:
     model = build_exact_recourse(data, decision, scenario)
-    outcome = _solve_scaled_exact_recourse(model, data, decision, scenario)
+    outcome = solve_exact(model)
+    if outcome.status != "optimal":
+        outcome = _solve_scaled_exact_recourse(model, data, decision, scenario)
     result: dict[str, Any] = {
         "scenario_id": scenario,
         "scenario_identity": scenario_identity(data, scenario),
