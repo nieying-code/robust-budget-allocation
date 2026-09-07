@@ -1,4 +1,5 @@
 from copy import deepcopy
+import csv
 import json
 from pathlib import Path
 import sys
@@ -21,6 +22,7 @@ from robust_budget_allocation.simulation.layer_a import (  # noqa: E402
 
 CONFIG_PATH = ROOT / "configs/qfr_mechanism_layer_b_rawls24_v1.json"
 LAYER_A = ROOT / "simulation_results/qfr_mechanism_layer_a_rawls24_n1000_post_numerical_fix"
+LAYER_B = ROOT / "simulation_results/qfr_mechanism_layer_b_rawls24_n1000"
 EXPECTED_SAMPLE_SHA256 = "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0"
 
 
@@ -97,3 +99,25 @@ def test_fixed_item_serialization_remains_scalar_when_homogeneous_and_explicit_w
     assert _compact_fixed_item_value({"Water": 0.0, "Seasonal Influenza Vaccine": 0.0, "Crackers": 0.0}) == 0.0
     value = _compact_fixed_item_value({"Water": 1.0, "Seasonal Influenza Vaccine": 1.0, "Crackers": 0.9})
     assert json.loads(value) == {"Water": 1.0, "Seasonal Influenza Vaccine": 1.0, "Crackers": 0.9}
+
+
+def test_completed_layer_b_outputs_are_complete_paired_and_hashed():
+    with (LAYER_B / "scientific_results.csv").open(encoding="utf-8", newline="") as handle:
+        scientific = list(csv.DictReader(handle))
+    with (LAYER_B / "paired_layer_a_layer_b.csv").open(encoding="utf-8", newline="") as handle:
+        paired = list(csv.DictReader(handle))
+    with (LAYER_B / "h09_scenario_dominance.csv").open(encoding="utf-8", newline="") as handle:
+        dominance = list(csv.DictReader(handle))
+    summary = json.loads((LAYER_B / "summary.json").read_text(encoding="utf-8"))
+    analysis = json.loads((LAYER_B / "layer_b_analysis.json").read_text(encoding="utf-8"))
+    assert len(scientific) == len(paired) == 1000
+    assert [row["simulation_id"] for row in scientific] == [row["simulation_id"] for row in paired]
+    assert all(row["status"] == "SUCCESS" and row["certificate_status"] == "PASS" for row in scientific)
+    assert summary["simulation"] == {"requested": 1000, "attempted": 1000, "successful": 1000, "failed": 0, "certified": 1000}
+    assert analysis["mixed_Q_F"]["aggregate_policy_count"] == 33
+    assert analysis["mixed_Q_F"]["within_same_commodity_count"] == 0
+    assert analysis["h09_dominance"]["h09_worst_count"] == 1000
+    assert len(dominance) == 24
+    for line in (LAYER_B / "HASHES.sha256").read_text(encoding="utf-8").splitlines():
+        digest, name = line.split("  ", 1)
+        assert sha256_file(LAYER_B / name) == digest

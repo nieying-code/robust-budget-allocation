@@ -249,6 +249,10 @@ def _write_layer_b_analysis(
             "layer_a_F_active": sum(float(row[f"layer_a_F_{item}"]) > tol for row in paired_rows),
             "layer_b_F_active": sum(float(row[f"layer_b_F_{item}"]) > tol for row in paired_rows),
             "layer_b_Q_and_F_active": len(mixed_ids),
+            "layer_a_Q_quantity": _distribution([float(row[f"layer_a_Q_{item}"]) for row in paired_rows]),
+            "layer_b_Q_quantity": _distribution([float(row[f"layer_b_Q_{item}"]) for row in paired_rows]),
+            "layer_a_F_quantity": _distribution([float(row[f"layer_a_F_{item}"]) for row in paired_rows]),
+            "layer_b_F_quantity": _distribution([float(row[f"layer_b_F_{item}"]) for row in paired_rows]),
             "layer_b_reliability_counts": {
                 level: sum(row[f"layer_b_R_{item}"] == level for row in paired_rows)
                 for level in LEVEL_INDEX
@@ -265,6 +269,16 @@ def _write_layer_b_analysis(
         row["simulation_id"] for row in paired_rows
         if row["layer_b_policy"] in {"P2", "P3a", "P3b"}
     ]
+    policy_structures: dict[str, int] = {}
+    for row in paired_rows:
+        q_items = "+".join(item for item in ITEMS if float(row[f"layer_b_Q_{item}"]) > tol) or "NONE"
+        f_items = "+".join(item for item in ITEMS if float(row[f"layer_b_F_{item}"]) > tol) or "NONE"
+        r_items = "+".join(
+            f"{item}:{row[f'layer_b_R_{item}']}"
+            for item in ITEMS if row[f"layer_b_R_{item}"] != "NONE"
+        ) or "NONE"
+        identity = f"Q[{q_items}]|F[{f_items}]|R[{r_items}]"
+        policy_structures[identity] = policy_structures.get(identity, 0) + 1
     analysis = {
         "scope": "RAWLS24_LAYER_B_PAIRED_HETEROGENEITY_AND_H09_DOMINANCE_AUDIT",
         "sample_table_sha256": sha256_file(output / "samples.csv"),
@@ -290,8 +304,19 @@ def _write_layer_b_analysis(
         },
         "mixed_Q_F": {
             "aggregate_policy_count": len(mixed_policy_ids),
+            "within_same_commodity_count": sum(
+                any(
+                    float(row[f"layer_b_Q_{item}"]) > tol
+                    and float(row[f"layer_b_F_{item}"]) > tol
+                    for item in ITEMS
+                )
+                for row in paired_rows
+            ),
             "parameter_region": _parameter_region([sample_by_id[key] for key in mixed_policy_ids]),
         },
+        "layer_b_policy_structure_counts": dict(
+            sorted(policy_structures.items(), key=lambda pair: (-pair[1], pair[0]))
+        ),
         "h09_dominance": {
             "componentwise_demand_dominates_all_others": all(
                 row["h09_componentwise_demand_dominates"] for row in scenario_rows
