@@ -56,3 +56,17 @@ new economic parameter is introduced.
 .\.venv\Scripts\python.exe scripts\qfr_mechanism_layer_a_rawls24.py prepare
 .\.venv\Scripts\python.exe scripts\qfr_mechanism_layer_a_rawls24.py run
 ```
+
+## Completed-run status
+
+The fixed 1,000-row sample table was attempted once in full. All rows remain accounted
+for: 879 completed with a production certificate and 121 retained a failure record.
+The successful solutions comprise P1=229 and P4=650; P2/P3a/P3b/P5 are zero. Every
+certified solution has h09 (Katrina) as its worst scenario.
+
+The retained failures expose a new scale-sensitive numerical robustness issue in the
+Rawls24 fixture: 79 validation exceptions (68 h09 worst-loss epigraph, 10 exact-recourse
+constraint, one h05 worst-loss epigraph) and 42 oracle failures (24 memory exact
+evaluation, 18 incomplete full exact certification). No failed draw was replaced, and
+no second repair, resampling, parameter change, or rerun was performed. These failures
+remain an explicit engineering/scientific limitation for independent review.

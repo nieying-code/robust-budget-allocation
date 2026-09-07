@@ -1,0 +1,103 @@
+{
+  "computational": {
+    "candidate_hits_total": 1589,
+    "candidate_scenarios_planned_total": 3347,
+    "certification_success_rate": 0.879,
+    "complete_full_exact_certification_calls_total": 1758,
+    "failure_types": {
+      "ValueError": 79,
+      "oracle_failure": 42
+    },
+    "full_exact_certification_calls_total": 1758,
+    "iterations": {
+      "P90": 6.0,
+      "P95": 7.0,
+      "P99": 7.0,
+      "max": 7.0,
+      "mean": 3.80773606370876,
+      "median": 3.0,
+      "min": 3.0
+    },
+    "memory_hits_total": 0,
+    "memory_opportunities_total": 879,
+    "runtime_seconds": {
+      "P90": 0.6220975800184533,
+      "P95": 0.6420994599466212,
+      "P99": 0.6741439859941603,
+      "max": 0.75463540002238,
+      "mean": 0.5459327053473902,
+      "median": 0.5258667999878526,
+      "min": 0.4645654000341892
+    },
+    "scenario_evaluations_total": 47297,
+    "solver_runtime_seconds": {
+      "P90": 0.2955763804493472,
+      "P95": 0.305934129783418,
+      "P99": 0.34941481995629153,
+      "max": 0.43656820023898035,
+      "mean": 0.25903443925414316,
+      "median": 0.24997140001505613,
+      "min": 0.20887340023182333
+    }
+  },
+  "interpretation_boundary": "DESCRIPTIVE_A1_BEHAVIOR_ONLY_NO_A0_COMPARATOR_NO_CAUSAL_SPEEDUP_CLAIM",
+  "policy_counts": {
+    "P1": 229,
+    "P2": 0,
+    "P3a": 0,
+    "P3b": 0,
+    "P4": 650,
+    "P5": 0
+  },
+  "scientific": {
+    "R_level_item_counts": {
+      "NONE": 1734,
+      "R0": 785,
+      "R1": 75,
+      "R2": 43
+    },
+    "budget_usage": {
+      "P90": 1.0,
+      "P95": 1.0,
+      "max": 1.0000000000000002,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 0.9999999999999963
+    },
+    "objective": {
+      "P90": 1234133676.987164,
+      "P95": 1237038437.9430268,
+      "max": 1244166582.4812105,
+      "mean": 1218352188.1903944,
+      "median": 1222678946.4724257,
+      "min": 1136111060.572754
+    },
+    "worst_scenario_counts": {
+      "h09": 879
+    },
+    "worst_total_F_exercise": {
+      "P90": 172670025.02162698,
+      "P95": 200467931.02637982,
+      "max": 340712780.40068734,
+      "mean": 71626390.16409142,
+      "median": 44931589.1319179,
+      "min": 0.0
+    },
+    "worst_total_shortage": {
+      "P90": 1881052573.326047,
+      "P95": 1881165367.368489,
+      "max": 1881366578.6361694,
+      "mean": 1805188512.891996,
+      "median": 1834639030.6179042,
+      "min": 1541244563.6636992
+    }
+  },
+  "simulation": {
+    "attempted": 1000,
+    "certified": 879,
+    "failed": 121,
+    "requested": 1000,
+    "successful": 879
+  },
+  "summary_sha256": "5f47f8dd0f9b546f314c73a14613f12457a984fa130e7670be1f20d932cd594a"
+}

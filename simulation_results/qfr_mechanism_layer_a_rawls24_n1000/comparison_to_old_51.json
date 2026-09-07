@@ -1,0 +1,217 @@
+{
+  "comparison_sha256": "0c6ebc80aa5f21f51b61250da8721885df7d0be5e176622612b62b33b3d586e3",
+  "interpretation": "DESCRIPTIVE_ONLY_NO_PARAMETER_TUNING_NO_CAUSAL_ALGORITHM_CLAIM",
+  "new_rawls24": {
+    "B_ref": 18146405.511449322,
+    "computational": {
+      "candidate_hits_total": 1589,
+      "candidate_scenarios_planned_total": 3347,
+      "certification_success_rate": 0.879,
+      "complete_full_exact_certification_calls_total": 1758,
+      "failure_types": {
+        "ValueError": 79,
+        "oracle_failure": 42
+      },
+      "full_exact_certification_calls_total": 1758,
+      "iterations": {
+        "P90": 6.0,
+        "P95": 7.0,
+        "P99": 7.0,
+        "max": 7.0,
+        "mean": 3.80773606370876,
+        "median": 3.0,
+        "min": 3.0
+      },
+      "memory_hits_total": 0,
+      "memory_opportunities_total": 879,
+      "runtime_seconds": {
+        "P90": 0.6220975800184533,
+        "P95": 0.6420994599466212,
+        "P99": 0.6741439859941603,
+        "max": 0.75463540002238,
+        "mean": 0.5459327053473902,
+        "median": 0.5258667999878526,
+        "min": 0.4645654000341892
+      },
+      "scenario_evaluations_total": 47297,
+      "solver_runtime_seconds": {
+        "P90": 0.2955763804493472,
+        "P95": 0.305934129783418,
+        "P99": 0.34941481995629153,
+        "max": 0.43656820023898035,
+        "mean": 0.25903443925414316,
+        "median": 0.24997140001505613,
+        "min": 0.20887340023182333
+      }
+    },
+    "policy_counts": {
+      "P1": 229,
+      "P2": 0,
+      "P3a": 0,
+      "P3b": 0,
+      "P4": 650,
+      "P5": 0
+    },
+    "scenario_count": 24,
+    "scientific": {
+      "R_level_item_counts": {
+        "NONE": 1734,
+        "R0": 785,
+        "R1": 75,
+        "R2": 43
+      },
+      "budget_usage": {
+        "P90": 1.0,
+        "P95": 1.0,
+        "max": 1.0000000000000002,
+        "mean": 1.0,
+        "median": 1.0,
+        "min": 0.9999999999999963
+      },
+      "objective": {
+        "P90": 1234133676.987164,
+        "P95": 1237038437.9430268,
+        "max": 1244166582.4812105,
+        "mean": 1218352188.1903944,
+        "median": 1222678946.4724257,
+        "min": 1136111060.572754
+      },
+      "worst_scenario_counts": {
+        "h09": 879
+      },
+      "worst_total_F_exercise": {
+        "P90": 172670025.02162698,
+        "P95": 200467931.02637982,
+        "max": 340712780.40068734,
+        "mean": 71626390.16409142,
+        "median": 44931589.1319179,
+        "min": 0.0
+      },
+      "worst_total_shortage": {
+        "P90": 1881052573.326047,
+        "P95": 1881165367.368489,
+        "max": 1881366578.6361694,
+        "mean": 1805188512.891996,
+        "median": 1834639030.6179042,
+        "min": 1541244563.6636992
+      }
+    },
+    "simulation": {
+      "attempted": 1000,
+      "certified": 879,
+      "failed": 121,
+      "requested": 1000,
+      "successful": 879
+    }
+  },
+  "old_51": {
+    "B_ref": 7975014.2749022,
+    "computational": {
+      "candidate_hits_total": 1870,
+      "candidate_scenarios_planned_total": 3854,
+      "certification_success_rate": 0.992,
+      "complete_full_exact_certification_calls_total": 1984,
+      "failure_types": {
+        "oracle_failure": 8
+      },
+      "full_exact_certification_calls_total": 1984,
+      "iterations": {
+        "P90": 4.0,
+        "P95": 4.0,
+        "P99": 4.0,
+        "max": 4.0,
+        "mean": 3.8850806451612905,
+        "median": 4.0,
+        "min": 3.0
+      },
+      "memory_hits_total": 0,
+      "memory_opportunities_total": 992,
+      "runtime_seconds": {
+        "P90": 1.4181440600135828,
+        "P95": 1.427131775021553,
+        "P99": 1.444633910995908,
+        "max": 2.246250100026373,
+        "mean": 1.3875404453636644,
+        "median": 1.387654950027354,
+        "min": 1.2473376999842003
+      },
+      "scenario_evaluations_total": 107022,
+      "solver_runtime_seconds": {
+        "P90": 0.5329093700624071,
+        "P95": 0.5376715046964818,
+        "P99": 0.5565975218906534,
+        "max": 1.3622559003997594,
+        "mean": 0.5169769152198569,
+        "median": 0.5150836002430879,
+        "min": 0.44119650014908984
+      }
+    },
+    "policy_counts": {
+      "P1": 235,
+      "P2": 0,
+      "P3a": 0,
+      "P3b": 0,
+      "P4": 757,
+      "P5": 0
+    },
+    "scenario_count": 51,
+    "scientific": {
+      "R_level_item_counts": {
+        "NONE": 1968,
+        "R0": 863,
+        "R1": 94,
+        "R2": 51
+      },
+      "budget_usage": {
+        "P90": 1.0,
+        "P95": 1.0000000000000002,
+        "max": 1.0000000000000002,
+        "mean": 1.0,
+        "median": 1.0,
+        "min": 0.9999999999999996
+      },
+      "objective": {
+        "P90": 137988627.31411132,
+        "P95": 139184930.7534214,
+        "max": 141453682.80077076,
+        "mean": 130980456.63821335,
+        "median": 132914718.91381648,
+        "min": 94815061.55806322
+      },
+      "worst_total_F_exercise": {
+        "P90": 68440782.71683729,
+        "P95": 81043765.47024351,
+        "max": 149188751.79771996,
+        "mean": 17937597.015608516,
+        "median": 515451.4440923382,
+        "min": -3.9050650897837764e-11
+      },
+      "worst_total_shortage": {
+        "P90": 206025286.16407418,
+        "P95": 206050763.87575084,
+        "max": 206118745.666356,
+        "mean": 184854319.71008068,
+        "median": 202911174.82839042,
+        "min": 57195614.39946315
+      }
+    },
+    "simulation": {
+      "attempted": 1000,
+      "certified": 992,
+      "failed": 8,
+      "requested": 1000,
+      "successful": 992
+    },
+    "source_identity": {
+      "manifest": {
+        "path": "simulation_results/qfr_mechanism_layer_a_n1000/simulation_manifest.json",
+        "sha256": "9c2d2de9f0724c20148afe2cc7b69b583284228123a13a28d7d69909279cb229"
+      },
+      "summary": {
+        "path": "simulation_results/qfr_mechanism_layer_a_n1000/summary.json",
+        "sha256": "ddfa1a66f4df04b872b8038794a3178d18d80a3c103c24b3d08f9cae4337d475"
+      }
+    }
+  },
+  "scope": "RAWLS24_VS_RETAINED_51_SCENARIO_LAYER_A_DESCRIPTIVE_COMPARISON"
+}
