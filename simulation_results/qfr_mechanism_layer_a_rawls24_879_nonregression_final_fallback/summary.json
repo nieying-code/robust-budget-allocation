@@ -1,0 +1,13 @@
+{
+  "attempted": 879,
+  "certified": 879,
+  "failed": 0,
+  "failure_ids": [],
+  "max_first_stage_absolute_difference": 0.0,
+  "max_objective_absolute_difference": 0.0,
+  "non_regression_pass": 879,
+  "requested": 879,
+  "scope": "RAWLS24_LAYER_A_879_SUCCESS_NON_REGRESSION_POST_FIX",
+  "status": "PASS",
+  "summary_sha256": "75bdcb928269a3e2a2badded78ecc735ec2bc8acf724395e3cbeced3af974aee"
+}
