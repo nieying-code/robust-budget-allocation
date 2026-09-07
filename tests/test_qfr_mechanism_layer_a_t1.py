@@ -51,7 +51,8 @@ def test_extract_candidate_failure_identity():
                     "first_stage_sha256": "first-stage-hash",
                     "solver": {
                         "status": "solver_error",
-                        "termination_condition": "error",
+                        "solver_status": "warning",
+                        "termination": "infeasible",
                         "message": "message",
                         "runtime_seconds": 0.1,
                     },
@@ -64,5 +65,6 @@ def test_extract_candidate_failure_identity():
     assert observed["failing_scenario"] == "omega_03"
     assert observed["failing_scenario_identity"] == "scenario-hash"
     assert observed["failing_first_stage_sha256"] == "first-stage-hash"
-    assert observed["solver_status"] == "solver_error"
-    assert observed["solver_termination"] == "error"
+    assert observed["solver_outcome_status"] == "solver_error"
+    assert observed["solver_status"] == "warning"
+    assert observed["solver_termination"] == "infeasible"

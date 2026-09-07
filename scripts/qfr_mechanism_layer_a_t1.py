@@ -27,6 +27,7 @@ from robust_budget_allocation.algorithms.qfr_standard_ccg import (  # noqa: E402
     solve_qfr_standard_ccg,
     validate_standard_ccg_result,
 )
+from robust_budget_allocation.algorithms.qfr_state import QFRFirstStage, first_stage_cost  # noqa: E402
 from robust_budget_allocation.algorithms.qfr_verification import verify_ef_a0_pair  # noqa: E402
 from robust_budget_allocation.io.hashing import canonical_json_sha256, sha256_file  # noqa: E402
 from robust_budget_allocation.runtime.environment import ensure_preflight_once  # noqa: E402
@@ -87,8 +88,9 @@ def extract_a1_failure(result: Mapping[str, Any]) -> dict[str, Any]:
         "failing_scenario": None if failing is None else failing.get("scenario_id"),
         "failing_scenario_identity": None if failing is None else failing.get("scenario_identity"),
         "failing_first_stage_sha256": None if failing is None else failing.get("first_stage_sha256"),
-        "solver_status": solver.get("status"),
-        "solver_termination": solver.get("termination_condition"),
+        "solver_outcome_status": solver.get("status"),
+        "solver_status": solver.get("solver_status"),
+        "solver_termination": solver.get("termination"),
         "solver_message": solver.get("message"),
         "solver_runtime_seconds": solver.get("runtime_seconds"),
         "result_sha256": result.get("result_sha256"),
@@ -217,8 +219,13 @@ def run() -> int:
         original_diag = extract_a1_failure(original_a1)
         replay_reproduced = all(
             a1_diag[key] == original_diag[key]
-            for key in ("status", "diagnostic", "iteration", "phase", "failing_scenario", "solver_status", "solver_termination")
+            for key in (
+                "status", "diagnostic", "iteration", "phase", "failing_scenario",
+                "solver_outcome_status", "solver_status", "solver_termination",
+            )
         )
+        failed_decision = QFRFirstStage.from_dict(a1["trace"][-1]["first_stage"])
+        failed_first_stage_cost = first_stage_cost(data, failed_decision)
         classification = classify_outcomes(str(a1["status"]), str(a0["status"]), str(ef["status"]))
         record = {
             "schema_version": 1,
@@ -262,8 +269,14 @@ def run() -> int:
             "a1_failing_scenario": a1_diag["failing_scenario"],
             "a1_failing_scenario_identity": a1_diag["failing_scenario_identity"],
             "a1_failing_first_stage_sha256": a1_diag["failing_first_stage_sha256"],
+            "a1_planned_scenarios": json.dumps(a1_diag["planned_scenarios"]),
+            "a1_solver_outcome_status": a1_diag["solver_outcome_status"],
             "a1_solver_status": a1_diag["solver_status"],
             "a1_solver_termination": a1_diag["solver_termination"],
+            "a1_solver_message": a1_diag["solver_message"],
+            "a1_failing_first_stage_cost": failed_first_stage_cost,
+            "budget": data.budget,
+            "a1_failing_budget_slack": data.budget - failed_first_stage_cost,
             "a1_objective": a1.get("objective"),
             "a1_certificate": a1_validation,
             "a1_result_sha256": a1.get("result_sha256"),
