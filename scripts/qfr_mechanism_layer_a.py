@@ -97,6 +97,12 @@ def _active_level(first: Mapping[str, Any], item: str, tolerance: float) -> str:
     return "NONE" if not active else f"R{max(active)}"
 
 
+def _compact_fixed_item_value(values: Mapping[str, float]) -> float | str:
+    numeric = {item: float(values[item]) for item in ITEMS}
+    unique = set(numeric.values())
+    return next(iter(unique)) if len(unique) == 1 else json.dumps(numeric, sort_keys=True)
+
+
 def _sum_solver_runtime(result: Mapping[str, Any]) -> float:
     total = 0.0
     for row in result.get("trace", []):
@@ -246,7 +252,8 @@ def run(
         "shortage_beta": config["fixed_environment"]["shortage_beta"],
         "demand_scale_gamma_D": config["fixed_environment"]["demand_scale_gamma_D"],
         "demand_scale": json.dumps(fixture["demand_scale"], sort_keys=True),
-        "h": 0.0, "a": 1.0,
+        "h": _compact_fixed_item_value(fixture["h"]),
+        "a": _compact_fixed_item_value(fixture["a"]),
         "simulation_config_sha256": canonical_json_sha256(config),
         "sample_table_sha256": sha256_file(sample_path),
         "execution_git_commit": execution_commit, "execution_git_tree": execution_tree,
@@ -336,7 +343,8 @@ def run(
         "guardrails": {
             "model_changed": False, "algorithm_changed": False, "solver_policy_changed": False,
             "environment_changed": False, "formal_data_changed": False, "parameter_tuning": False,
-            "layer_b_executed": False, "layer_c_executed": False, "formal_e1_e5_executed": False,
+            "layer_b_executed": config["scope"] == "QFR_COMMODITY_HETEROGENEITY_LAYER_B_RAWLS24_N1000",
+            "layer_c_executed": False, "formal_e1_e5_executed": False,
             "figures_generated": False,
         },
     }

@@ -36,6 +36,7 @@ def validate_config(config: Mapping[str, Any]) -> None:
     if config.get("scope") not in {
         "QFR_MECHANISM_SIMULATION_LAYER_A_N1000",
         "QFR_MECHANISM_SIMULATION_LAYER_A_RAWLS24_N1000",
+        "QFR_COMMODITY_HETEROGENEITY_LAYER_B_RAWLS24_N1000",
     }:
         raise ValueError("wrong Layer A scope")
     if config.get("sample_size") != 1000 or type(config.get("seed")) is not int:
@@ -362,6 +363,75 @@ def load_rawls24_neutral_fixture(
         "a": dict(neutral.retention),
         "source_hashes": {key: source[key]["sha256"] for key in ("input", "demand", "manifest", "economic_template")},
     }
+
+
+def load_rawls24_heterogeneous_fixture(
+    repo_root: Path, config: Mapping[str, Any]
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Restore the frozen commodity h/a baseline on the audited Rawls24 fixture."""
+
+    neutral_payload, neutral_fixture = load_rawls24_neutral_fixture(repo_root, config)
+    root = repo_root.resolve()
+    source = config["source"]
+    template_path = root / source["economic_template"]["path"]
+    template = json.loads(template_path.read_text(encoding="utf-8"))
+    formal = template["qfr_data"]
+    storage_cost = {item: float(formal["storage_cost"][item]) for item in ITEMS}
+    retention = {item: float(formal["retention"][item]) for item in ITEMS}
+    expected_storage = {
+        "Water": 0.0,
+        "Seasonal Influenza Vaccine": 0.0833333333333333,
+        "Crackers": 0.0,
+    }
+    expected_retention = {
+        "Water": 1.0,
+        "Seasonal Influenza Vaccine": 1.0,
+        "Crackers": 0.9,
+    }
+    if storage_cost != expected_storage or retention != expected_retention:
+        raise ValueError("formal commodity heterogeneity conflicts with the frozen Layer B baseline")
+    payload = deepcopy(neutral_payload)
+    payload["storage_cost"] = storage_cost
+    payload["retention"] = retention
+    tau = float(payload["tau"])
+    dref = neutral_fixture["reference_demand"]
+    b_ref = sum(
+        (float(payload["q_unit_cost"][item]) + storage_cost[item] * tau)
+        * float(dref[item])
+        / retention[item]
+        for item in ITEMS
+    )
+    payload["budget"] = b_ref
+    heterogeneous = QFRData.from_dict(payload)
+    fixture = deepcopy(neutral_fixture)
+    fixture.update(
+        neutral_fixture_sha256=neutral_fixture["neutral_fixture_sha256"],
+        heterogeneous_fixture_sha256=heterogeneous.data_sha256,
+        B_ref_formula="sum_i((cQ_i+h_i*tau)*Dref_i/a_i)",
+        budget=b_ref,
+        h=storage_cost,
+        a=retention,
+        tau=tau,
+        heterogeneity_source={
+            "formal_ready_path": source["economic_template"]["path"],
+            "formal_ready_sha256": source["economic_template"]["sha256"],
+            "formal_matrix_path": config["heterogeneity"]["formal_matrix"]["path"],
+            "formal_matrix_sha256": config["heterogeneity"]["formal_matrix"]["sha256"],
+            "vaccine_six_month_cold_chain_cost": storage_cost["Seasonal Influenza Vaccine"] * tau,
+            "crackers_retention": retention["Crackers"],
+        },
+    )
+    matrix_identity = config["heterogeneity"]["formal_matrix"]
+    matrix_path = root / matrix_identity["path"]
+    if sha256_file(matrix_path) != matrix_identity["sha256"]:
+        raise ValueError("formal experiment-matrix heterogeneity source hash mismatch")
+    matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+    if (
+        float(matrix["baseline"]["vaccine_six_month_cold_chain_cost"]) != 0.5
+        or float(matrix["baseline"]["crackers_retention"]) != 0.9
+    ):
+        raise ValueError("formal experiment matrix conflicts with the frozen Layer B baseline")
+    return heterogeneous.to_dict(), fixture
 
 
 def data_for_sample(

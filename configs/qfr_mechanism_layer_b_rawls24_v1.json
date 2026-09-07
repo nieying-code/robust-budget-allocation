@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "scope": "QFR_COMMODITY_HETEROGENEITY_LAYER_B_RAWLS24_N1000",
+  "scientific_status": "EXPLORATORY_LAYER_B_NOT_FORMAL_E1_E5",
+  "sample_size": 1000,
+  "seed": 20260903,
+  "sampling_method": "DETERMINISTIC_CONSTRAINED_LATIN_HYPERCUBE_V1",
+  "model_kind": "M2",
+  "algorithm_kind": "A1_full",
+  "policy_tolerance": 1e-7,
+  "raw_result_shard_size": 25,
+  "source": {
+    "input": {"path": "data/r6_rawls24/unified_hurricane_input.csv", "sha256": "7487c8cb66dc6abd0dc2c3623c7ccf10e2bf46373d0265c442870db04bc82d5d"},
+    "demand": {"path": "data/r6_rawls24/unified_rawls_demand.csv", "sha256": "d281e719d16cb3b0902c2b29550e7ad659ea8ba6b52e83e69c7a7e38031dc152"},
+    "manifest": {"path": "data/r6_rawls24/provenance_manifest.json", "sha256": "8d97ae657ce20ddaf1ff7f789dbe073da0b58a9c2e4858a8824921279a07efc8"},
+    "economic_template": {"path": "configs/r6c_formal_ready_data_v2.json", "sha256": "eae86e57da22765cb097d168fcc76b1798f8c1417f00a5f40280cc3e47bd1e02"},
+    "canonical_data_sha256": "51d2b286997556a338acf5dd28df4409d67e46bec52a02f737af4ab0ac0c5afb"
+  },
+  "heterogeneity": {
+    "formal_matrix": {"path": "configs/r6c_formal_experiment_matrix_v2.json", "sha256": "685c44829780b5fa348ace682a9cc8de6315438d017ffde11db06434aff5e2c6"},
+    "Water": {"storage_cost_per_month": 0.0, "retention": 1.0},
+    "Seasonal Influenza Vaccine": {"storage_cost_per_month": 0.0833333333333333, "storage_horizon_months": 6.0, "storage_horizon_cost": 0.5, "retention": 1.0},
+    "Crackers": {"storage_cost_per_month": 0.0, "retention": 0.9}
+  },
+  "layer_a_pairing": {
+    "directory": "simulation_results/qfr_mechanism_layer_a_rawls24_n1000_post_numerical_fix",
+    "samples_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+    "scientific_results_sha256": "1eaf7a98b7f0da9b1e8a42b1db47c409fc21bcff502ec0c9b66ecc2bf15843fe",
+    "a1_diagnostics_sha256": "b8fcd10f6713901b660ed380020a972b2fa5b73edfec897126c161671acee9b4",
+    "summary_sha256": "4e881303c57ee0aef8d152566f36e84759f5213f55d932967cf4c416ec2e036f",
+    "manifest_sha256": "75975cdc0e96d89065a906f143fdab5619f46aa0926deaa887a17406c265933d"
+  },
+  "reference_weight": {
+    "method": "USER_AUTHORIZED_RAWLS_STYLE_NONNEGATIVE_MAXIMUM_ENTROPY_UNIFORM_PRIOR",
+    "prior": "1/24",
+    "florida_mass": "0.40",
+    "major_mass": "0.4444444444",
+    "minor_mass": "0.5555555556",
+    "groups": {
+      "florida_major": ["h05", "h06", "h09", "h12", "h14", "h17", "h18", "h19", "h20", "h22", "h23", "h24"],
+      "florida_minor": ["h21"],
+      "nonflorida_major": ["h01", "h02", "h11", "h13", "h15"],
+      "nonflorida_minor": ["h03", "h04", "h07", "h08", "h10", "h16"]
+    },
+    "per_event_weight": {
+      "florida_major": "0.026471801569292395395202192475865685065490428308244",
+      "florida_minor": "0.08233838116849125525757369028961177921411486030107",
+      "nonflorida_major": "0.025356565113698251051514738057922355842822972060214",
+      "nonflorida_minor": "0.078869529071918124123737718285064703464314189949822"
+    }
+  },
+  "fixed_environment": {
+    "budget_ratio_to_B_ref": 1.0,
+    "shortage_beta": 4.0,
+    "demand_scale_gamma_D": 1.0
+  },
+  "bounds": {
+    "rho_Q1": [0.80, 0.98], "rho_Q2": [0.70, 0.94], "rho_Q3": [0.60, 0.88], "rho_Q4": [0.50, 0.82], "rho_Q5": [0.40, 0.75],
+    "rho_F1": [0.70, 0.98], "rho_F2": [0.60, 0.95], "rho_F3": [0.50, 0.92], "rho_F4": [0.40, 0.88], "rho_F5": [0.30, 0.85],
+    "eta_1": [0.05, 0.50], "eta_2": [0.40, 0.90], "phi": [0.00, 0.50], "psi": [0.50, 1.50],
+    "c_R1_ratio": [0.02, 0.30], "c_R2_ratio": [0.15, 0.60]
+  },
+  "constraints": {
+    "rho_Q": "rho_Q1>=rho_Q2>=rho_Q3>=rho_Q4>=rho_Q5",
+    "rho_F": "rho_F1>=rho_F2>=rho_F3>=rho_F4>=rho_F5",
+    "eta": "eta_2>eta_1 and eta_2-eta_1>=0.05",
+    "reliability_premium": "c_R2_ratio>c_R1_ratio and c_R2_ratio-c_R1_ratio>=0.05"
+  },
+  "reference_anchor_only": {"rho_Q": [0.92, 0.84, 0.76, 0.68, 0.60]}
+}
