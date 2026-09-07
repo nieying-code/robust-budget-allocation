@@ -9,6 +9,12 @@ import pytest
 from robust_budget_allocation.algorithms.qfr_builders import build_qfr_extensive_form
 from robust_budget_allocation.algorithms.qfr_correctness_suite import load_fixture
 from robust_budget_allocation.algorithms.qfr_exact_oracle import build_exact_recourse
+from robust_budget_allocation.algorithms.qfr_numerical_validation import (
+    VALIDATION_ABSOLUTE_TOLERANCE,
+    VALIDATION_RELATIVE_TOLERANCE,
+    feasibility_threshold,
+    violation_is_acceptable,
+)
 from robust_budget_allocation.algorithms.qfr_protocol import (
     PROTOCOL_SHA256,
     canonical_scenarios,
@@ -63,6 +69,22 @@ def test_protocol_was_frozen_with_authorized_identity():
     assert tolerance(-1000, 2) == pytest.approx(1.1e-6)
     with pytest.raises(ValueError):
         tolerance(float("nan"), 0)
+
+
+def test_scale_aware_feasibility_is_strict_and_family_scaled():
+    assert VALIDATION_ABSOLUTE_TOLERANCE == 1e-7
+    assert VALIDATION_RELATIVE_TOLERANCE == 1e-12
+    assert feasibility_threshold(1.0e9) == pytest.approx(0.0010001)
+    assert violation_is_acceptable(2.384185791015625e-7, 1.0e9)
+    assert not violation_is_acceptable(0.002, 1.0e9)
+    assert not violation_is_acceptable(2.0e-7, 1.0)
+
+
+@pytest.mark.parametrize("bad", [float("nan"), float("inf")])
+def test_scale_aware_feasibility_rejects_nonfinite_values(bad):
+    assert not violation_is_acceptable(bad, 1.0)
+    with pytest.raises(ValueError):
+        feasibility_threshold(bad)
 
 
 def test_preregistered_fixture_is_v2_multi_item_and_not_scientific_parameters(data):

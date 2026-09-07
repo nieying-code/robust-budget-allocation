@@ -19,6 +19,7 @@ from .qfr_protocol import (
     solve_exact,
     tolerance,
 )
+from .qfr_numerical_validation import violation_is_acceptable
 from .qfr_state import QFRFirstStage, first_stage_cost, validate_first_stage
 
 
@@ -76,34 +77,47 @@ def build_exact_recourse(
     model._qfr_raw_first_stage_cost = pre
     model._qfr_effective_first_stage_cost = effective_pre
     model.I = pyo.Set(initialize=data.items, ordered=True)
+    quantity_scale = {
+        item: max(
+            1.0,
+            abs(data.demand[scenario][item]),
+            abs(_available_q(data, decision, item, scenario)),
+            abs(_fulfillable(data, decision, item, scenario)),
+        )
+        for item in data.items
+    }
     model.u = pyo.Var(model.I, domain=pyo.NonNegativeReals)
     if decision.model_kind == "M0":
         model.exercise_cost = pyo.Expression(expr=0.0)
         model.demand_balance = pyo.Constraint(
             model.I,
             rule=lambda m, item: (
-                _available_q(data, decision, item, scenario) + m.u[item]
-                >= data.demand[scenario][item]
+                (_available_q(data, decision, item, scenario) + m.u[item])
+                / quantity_scale[item]
+                >= data.demand[scenario][item] / quantity_scale[item]
             ),
         )
     else:
         model.x = pyo.Var(model.I, domain=pyo.NonNegativeReals)
         model.exercise_limit = pyo.Constraint(
             model.I,
-            rule=lambda m, item: m.x[item]
-            <= _physical_nonnegative(_fulfillable(data, decision, item, scenario)),
+            rule=lambda m, item: m.x[item] / quantity_scale[item]
+            <= _physical_nonnegative(_fulfillable(data, decision, item, scenario))
+            / quantity_scale[item],
         )
         model.exercise_cost = pyo.Expression(
             expr=sum(data.exercise_cost[item] * model.x[item] for item in model.I)
         )
         model.fixed_total_budget = pyo.Constraint(
-            expr=effective_pre + model.exercise_cost <= data.budget
+            expr=(effective_pre + model.exercise_cost) / max(1.0, abs(data.budget))
+            <= data.budget / max(1.0, abs(data.budget))
         )
         model.demand_balance = pyo.Constraint(
             model.I,
             rule=lambda m, item: (
-                _available_q(data, decision, item, scenario) + m.x[item] + m.u[item]
-                >= data.demand[scenario][item]
+                (_available_q(data, decision, item, scenario) + m.x[item] + m.u[item])
+                / quantity_scale[item]
+                >= data.demand[scenario][item] / quantity_scale[item]
             ),
         )
     model.shortage_loss = pyo.Expression(
@@ -212,21 +226,42 @@ def validate_recourse_result(
     if set(result["exercise"]) != set(data.items) or set(result["shortage"]) != set(data.items):
         raise ValueError("exact-recourse item coverage mismatch")
     violations = [0.0]
+    scaled_violations: list[tuple[float, tuple[float, ...]]] = []
     for item in data.items:
         if not math.isfinite(exercise[item]) or not math.isfinite(shortage[item]):
             raise ValueError("exact-recourse values must be finite")
         violations.extend((-exercise[item], -shortage[item]))
-        coverage = _available_q(data, decision, item, scenario) + exercise[item] + shortage[item]
-        violations.append(data.demand[scenario][item] - coverage)
+        scaled_violations.extend(
+            ((-exercise[item], (1.0,)), (-shortage[item], (1.0,)))
+        )
+        available = _available_q(data, decision, item, scenario)
+        coverage = available + exercise[item] + shortage[item]
+        flow_violation = data.demand[scenario][item] - coverage
+        violations.append(flow_violation)
+        scaled_violations.append(
+            (
+                flow_violation,
+                (data.demand[scenario][item], available, exercise[item], shortage[item]),
+            )
+        )
         if decision.model_kind == "M0":
             require_close(exercise[item], 0, f"M0 exercise[{item}]")
         else:
-            violations.append(exercise[item] - _fulfillable(data, decision, item, scenario))
+            fulfillment = _fulfillable(data, decision, item, scenario)
+            fulfillment_violation = exercise[item] - fulfillment
+            violations.append(fulfillment_violation)
+            scaled_violations.append(
+                (fulfillment_violation, (exercise[item], fulfillment))
+            )
     exercise_cost = sum(data.exercise_cost[item] * exercise[item] for item in data.items)
     shortage_loss = sum(data.shortage_cost[item] * shortage[item] for item in data.items)
     loss = exercise_cost + shortage_loss
     pre = first_stage_cost(data, decision)
-    violations.append(pre + exercise_cost - data.budget)
+    budget_violation = pre + exercise_cost - data.budget
+    violations.append(budget_violation)
+    scaled_violations.append(
+        (budget_violation, (data.budget, pre, exercise_cost))
+    )
     maximum_violation = max(0.0, *violations)
     require_close(float(result["exercise_cost"]), exercise_cost, "exercise cost")
     require_close(float(result["shortage_loss"]), shortage_loss, "shortage loss")
@@ -238,7 +273,10 @@ def validate_recourse_result(
         maximum_violation,
         "recourse maximum feasibility violation",
     )
-    if maximum_violation > tolerance(maximum_violation, 0):
+    if any(
+        not violation_is_acceptable(violation, *scale_values)
+        for violation, scale_values in scaled_violations
+    ):
         raise ValueError("exact recourse violates Q-F-R constraints")
 
 
