@@ -20,7 +20,7 @@
 
 Layer B contains 33 aggregate mixed Q+F policies. All 33 transition from homogeneous
 Layer A P1: 26 to P2, four to P3a, and three to P3b. The mixing is cross-commodity,
-not within one commodity. In 28 draws Q is Water and F is Crackers; in five draws Q
+not within one commodity. In 24 draws Q is Water and F is Crackers; in nine draws Q
 is Water and F is Vaccine. No draw has Q and F simultaneously positive for the same
 commodity. The 759 Layer A F-dominant draws remain P4.
 
