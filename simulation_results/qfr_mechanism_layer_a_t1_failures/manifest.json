@@ -1,0 +1,54 @@
+{
+  "case_ids": [
+    "LA-0034",
+    "LA-0098",
+    "LA-0161",
+    "LA-0511",
+    "LA-0565",
+    "LA-0591",
+    "LA-0695",
+    "LA-0783"
+  ],
+  "config_identity_sha256": "921e6b27c4e6f839252255fd6ee480d649e3400cc9a9001a3ecb3548c80a7217",
+  "environment": {
+    "gurobi_optimizer": "13.0.2",
+    "gurobipy": "13.0.2",
+    "license_available": true,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "pyomo": "6.10.1",
+    "python": "3.12.10",
+    "python_implementation": "CPython",
+    "solver_available": true,
+    "solver_interface": "gurobi_direct",
+    "status": "PASS",
+    "threads": 1
+  },
+  "execution_git_commit": "db48b3d59dfa669f21afdccf6f9e1d0b70c31dec",
+  "execution_git_tree": "765f70f5cec2768cc7055169da54570ee2c59e37",
+  "execution_order": [
+    "A1_full",
+    "A0",
+    "EF"
+  ],
+  "guardrails": {
+    "algorithms_changed": false,
+    "environment_changed": false,
+    "figures_generated": false,
+    "model_changed": false,
+    "n1000_rerun": false,
+    "parameters_changed": false,
+    "resampled": false,
+    "solver_policy_changed": false,
+    "t2_t3_executed": false,
+    "tolerance_changed": false
+  },
+  "manifest_sha256": "5dd0552a636439dea13a0813ccc5f746f3feb24c739ca2f280cab29e5ec54aaa",
+  "model_kind": "M2",
+  "neutral_fixture_sha256": "9ba2dfde800f70e8e62b70910371bfafb4c38669a0f1ca0ca2c789a3010abbcb",
+  "schema_version": 1,
+  "scope": "LAYER_A_T1_FAILURE_REPLAY",
+  "source_layer_a_manifest_sha256": "9c2d2de9f0724c20148afe2cc7b69b583284228123a13a28d7d69909279cb229",
+  "source_sample_table": "simulation_results/qfr_mechanism_layer_a_n1000/samples.csv",
+  "source_sample_table_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+  "status": "COMPLETE"
+}
