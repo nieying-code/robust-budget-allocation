@@ -11,6 +11,7 @@ import pyomo.environ as pyo
 from robust_budget_allocation.data.qfr_data import QFRData
 from robust_budget_allocation.io.hashing import canonical_json_sha256
 from robust_budget_allocation.models.qfr_common import MODEL_KINDS
+from .qfr_numerical_validation import family_feasibility_threshold
 from .qfr_protocol import require_close, static_data_sha256, tolerance
 
 
@@ -166,15 +167,18 @@ def validate_first_stage(data: QFRData, decision: QFRFirstStage) -> float:
             z = decision.z[item][level]
             if not math.isfinite(f) or f < -tolerance(f, 0) or type(z) is not int or z not in (0, 1):
                 raise ValueError(f"invalid F/z for {item},{level}")
-            if f > data.flexible_capacity[item] * z + tolerance(
-                f, data.flexible_capacity[item] * z
+            capacity = data.flexible_capacity[item] * z
+            if f > capacity + family_feasibility_threshold(
+                "fulfillment_capacity", f, capacity
             ):
                 raise ValueError(f"Fbar capacity link violated for {item},{level}")
             selected += z
         if selected > 1:
             raise ValueError(f"multiple reliability levels selected for {item}")
     pre = first_stage_cost(data, decision)
-    if pre > data.budget + tolerance(pre, data.budget):
+    if pre > data.budget + family_feasibility_threshold(
+        "budget", pre, data.budget
+    ):
         raise ValueError("first-stage cash exceeds fixed total budget")
     return pre
 

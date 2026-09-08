@@ -9,6 +9,9 @@ from typing import Any
 import pyomo.environ as pyo
 
 from robust_budget_allocation.data.qfr_data import QFRData
+from robust_budget_allocation.algorithms.qfr_numerical_validation import (
+    family_feasibility_threshold,
+)
 from .qfr_common import MODEL_KINDS
 
 
@@ -114,12 +117,38 @@ def validate_qfr_solution(
     if tuple(model.I) != data.items or tuple(model.Omega) != data.scenarios:
         raise ValueError("model item/scenario indices do not match QFRData")
 
-    def lower(value: float, bound: float, label: str) -> None:
-        if value < bound - tolerance:
+    def lower(
+        value: float,
+        bound: float,
+        label: str,
+        *scale_values: float,
+        family: str | None = None,
+    ) -> None:
+        threshold = (
+            tolerance
+            if family is None
+            else family_feasibility_threshold(
+                family, *scale_values, absolute_tolerance=tolerance
+            )
+        )
+        if value < bound - threshold:
             raise ValueError(f"Q-F-R invariant failed: {label}")
 
-    def upper(value: float, bound: float, label: str) -> None:
-        if value > bound + tolerance:
+    def upper(
+        value: float,
+        bound: float,
+        label: str,
+        *scale_values: float,
+        family: str | None = None,
+    ) -> None:
+        threshold = (
+            tolerance
+            if family is None
+            else family_feasibility_threshold(
+                family, *scale_values, absolute_tolerance=tolerance
+            )
+        )
+        if value > bound + threshold:
             raise ValueError(f"Q-F-R invariant failed: {label}")
 
     def equal(value: float, expected: float, label: str) -> None:
@@ -167,6 +196,9 @@ def validate_qfr_solution(
                     f_value,
                     data.flexible_capacity[item] * z_integer,
                     f"Fbar capacity link for {item},{level}",
+                    f_value,
+                    data.flexible_capacity[item] * z_integer,
+                    family="fulfillment_capacity",
                 )
                 if getattr(model, "_qfr_f_disabled", False):
                     equal(f_value, 0, f"disabled F[{item},{level}]")
@@ -187,7 +219,14 @@ def validate_qfr_solution(
                     * f[item][level]
                     for level in levels
                 )
-                upper(x_value, fulfillment, f"flexible fulfillment for {item},{scenario}")
+                upper(
+                    x_value,
+                    fulfillment,
+                    f"flexible fulfillment for {item},{scenario}",
+                    x_value,
+                    fulfillment,
+                    family="fulfillment_capacity",
+                )
                 x[item][scenario] = x_value
                 fulfillable_f[item][scenario] = fulfillment
 
@@ -221,6 +260,11 @@ def validate_qfr_solution(
                 available_q[item][scenario] + x[item][scenario] + u[item][scenario],
                 data.demand[scenario][item],
                 f"demand coverage for {item},{scenario}",
+                available_q[item][scenario],
+                x[item][scenario],
+                u[item][scenario],
+                data.demand[scenario][item],
+                family="quantity_flow",
             )
 
     C_Q = sum(
@@ -257,8 +301,23 @@ def validate_qfr_solution(
         for scenario in data.scenarios
     }
     for scenario in data.scenarios:
-        lower(unused_cash[scenario], 0, f"fixed total budget for {scenario}")
-        lower(theta, scenario_loss[scenario], f"worst-loss epigraph for {scenario}")
+        lower(
+            unused_cash[scenario],
+            0,
+            f"fixed total budget for {scenario}",
+            data.budget,
+            C_pre,
+            exercise_cost[scenario],
+            family="budget",
+        )
+        lower(
+            theta,
+            scenario_loss[scenario],
+            f"worst-loss epigraph for {scenario}",
+            theta,
+            scenario_loss[scenario],
+            family="objective_epigraph",
+        )
 
     objective = C_pre + theta
     equal(_value(model.C_Q, "model.C_Q"), C_Q, "C_Q accounting")
