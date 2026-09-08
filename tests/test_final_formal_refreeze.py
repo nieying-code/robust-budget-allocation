@@ -16,6 +16,7 @@ def test_final_authority_has_zero_runs_and_rawls24_identity():
     assert CONFIG["common"]["B_ref_E1"] == 19137905.85543848
     assert CONFIG["common"]["beta"] == 4.0
     assert CONFIG["common"]["lambda"] == [1.0, 1.0, 1.0]
+    assert CONFIG["common"]["data_sources"]["canonical_data_sha256"] == "51d2b286997556a338acf5dd28df4409d67e46bec52a02f737af4ab0ac0c5afb"
 
 
 def test_final_a1_is_no_memory_and_preserves_exactness_rules():
@@ -32,6 +33,7 @@ def test_e1_frozen_table_and_parameter_space():
     e1 = CONFIG["E1"]
     assert e1["sample_size"] == 1000 and e1["seed"] == 20260903
     assert e1["sample_table_sha256"] == "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0"
+    assert e1["sample_source"]["git_commit"] == AUDIT["pr_head"]
     assert e1["constraints"]["rho_F_vs_rho_Q"] == "NO_CONSTRAINT"
     assert e1["constraints"]["phi_plus_psi"] == "NO_CONSTANT_SUM_CONSTRAINT"
     assert e1["policy_tolerance"] == 1e-7

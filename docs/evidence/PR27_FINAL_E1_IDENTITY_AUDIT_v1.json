@@ -361,7 +361,7 @@
     "Memory metrics",
     "formal algorithm-label identity"
   ],
-  "final_config_sha256": "0d000023c5035ecd44a6fbd949c95e35a69a263edfe69623e33a7c8385c4e665",
+  "final_config_sha256": "c3f1cd8eb766cb1eb70e023b57c4c43b481bbd1ce26a051f59878a4f0a2456b3",
   "final_protocol_sha256": "4ce10353efd59b1d164596fed71e6bbee84631e1cf391fd7d1c996844bc79b0f",
   "memory_effect_audit": {
     "candidate_plan_changes_vs_memory_disabled": 0,
