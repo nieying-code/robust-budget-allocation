@@ -226,6 +226,15 @@ def build_audit() -> dict[str, Any]:
         _check("25", "scientific output interpretation", pr_config["scientific_status"] == "EXPLORATORY_LAYER_B_NOT_FORMAL_E1_E5" and "parameter_tuning" in manifest["guardrails"] and not manifest["guardrails"]["parameter_tuning"], {"status": pr_config["scientific_status"], "parameter_tuning": manifest["guardrails"]["parameter_tuning"]}),
     ]
     reuse = all(row["status"] == "PASS" for row in checks)
+    policy_tolerance = float(final["E1"]["policy_tolerance"])
+    f_active_row_ids = [
+        int(row["sample_index"])
+        for row in scientific
+        if any(
+            float(row[f"F_{item}"]) > policy_tolerance
+            for item in ("Water", "Seasonal Influenza Vaccine", "Crackers")
+        )
+    ]
     return {
         "schema_version": 1,
         "scope": "PR27_LAYER_B_TO_FINAL_E1_STATIC_IDENTITY_AUDIT",
@@ -236,6 +245,12 @@ def build_audit() -> dict[str, Any]:
         "final_protocol_sha256": _sha(FINAL_PROTOCOL.read_bytes()),
         "final_config_sha256": _sha(FINAL_CONFIG.read_bytes()),
         "sample_table_sha256": _sha(samples_blob),
+        "f_active_filter_evidence": {
+            "definition": "any commodity F_i > Final E1 policy_tolerance",
+            "policy_tolerance": policy_tolerance,
+            "row_count": len(f_active_row_ids),
+            "row_ids": f_active_row_ids,
+        },
         "sampler_reconstruction": {
             "method": "INDEPENDENT_STATIC_REIMPLEMENTATION_OF_COMMITTED_PR27_SAMPLER",
             "same_seed_byte_identical_twice": reconstructed_samples == reproduced_again,

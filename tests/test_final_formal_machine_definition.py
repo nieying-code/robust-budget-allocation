@@ -3,7 +3,6 @@ import hashlib
 import io
 import json
 from pathlib import Path
-import subprocess
 
 import pytest
 
@@ -12,30 +11,29 @@ from robust_budget_allocation.formal.final_design import (
     canonical_sha256, generate_e4b, generate_e5b, generate_e5c_items,
     select_f_supply_risk, select_reliability_economics, select_space_filling,
 )
+from scripts.audit_pr27_final_e1_identity import _reconstruct_samples
 
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = json.loads((ROOT / "configs/final_formal_scientific_design_v1.json").read_text(encoding="utf-8"))
 EVIDENCE = json.loads((ROOT / "docs/evidence/FINAL_FORMAL_MACHINE_IDENTITIES_v1.json").read_text(encoding="utf-8"))
-
-
-def _git_blob(commit, path):
-    return subprocess.run(["git", "show", f"{commit}:{path}"], cwd=ROOT, check=True, capture_output=True).stdout
+PR27_AUDIT = json.loads((ROOT / "docs/evidence/PR27_FINAL_E1_IDENTITY_AUDIT_v1.json").read_text(encoding="utf-8"))
 
 
 @pytest.fixture(scope="module")
 def parameter_rows():
-    source = CONFIG["E1"]["sample_source"]
-    data = _git_blob(source["git_commit"], source["path"])
+    data = _reconstruct_samples(CONFIG["E1"])
     assert hashlib.sha256(data).hexdigest() == CONFIG["E1"]["sample_table_sha256"]
     return list(csv.DictReader(io.StringIO(data.decode("utf-8"))))
 
 
 @pytest.fixture(scope="module")
 def result_rows():
-    source = CONFIG["E1"]["sample_source"]
-    path = source["path"].rsplit("/", 1)[0] + "/scientific_results.csv"
-    return list(csv.DictReader(io.StringIO(_git_blob(source["git_commit"], path).decode("utf-8"))))
+    active = set(PR27_AUDIT["f_active_filter_evidence"]["row_ids"])
+    return [{"sample_index": index,
+             "F_Water": 1.0 if index in active else 0.0,
+             "F_Seasonal Influenza Vaccine": 0.0,
+             "F_Crackers": 0.0} for index in range(1, 1001)]
 
 
 @pytest.fixture(scope="module")

@@ -7,11 +7,11 @@ import csv
 import io
 import json
 from pathlib import Path
-import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "scripts"))
 
 from robust_budget_allocation.formal.final_design import (  # noqa: E402
     E4_GENERATOR_IDENTITY, E5B_GENERATOR_IDENTITY, E5C_GENERATOR_IDENTITY,
@@ -19,19 +19,11 @@ from robust_budget_allocation.formal.final_design import (  # noqa: E402
     generate_e4b, generate_e5b, generate_e5c_items, select_f_supply_risk,
     select_reliability_economics, select_space_filling, selection_identity,
 )
+from audit_pr27_final_e1_identity import _reconstruct_samples  # noqa: E402
 
 CONFIG_PATH = ROOT / "configs/final_formal_scientific_design_v1.json"
 OUTPUT_PATH = ROOT / "docs/evidence/FINAL_FORMAL_MACHINE_IDENTITIES_v1.json"
-
-
-def git_blob(commit: str, path: str) -> bytes:
-    return subprocess.run(
-        ["git", "show", f"{commit}:{path}"], cwd=ROOT, check=True, capture_output=True
-    ).stdout
-
-
-def csv_blob(commit: str, path: str) -> list[dict[str, str]]:
-    return list(csv.DictReader(io.StringIO(git_blob(commit, path).decode("utf-8"))))
+PR27_AUDIT_PATH = ROOT / "docs/evidence/PR27_FINAL_E1_IDENTITY_AUDIT_v1.json"
 
 
 def rawls24_templates() -> list[dict[str, object]]:
@@ -49,14 +41,18 @@ def rawls24_templates() -> list[dict[str, object]]:
 
 def build() -> dict[str, object]:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
-    sample = config["E1"]["sample_source"]
-    sample_path = sample["path"]
-    result_path = sample_path.rsplit("/", 1)[0] + "/scientific_results.csv"
-    sample_bytes = git_blob(sample["git_commit"], sample_path)
+    pr27_audit = json.loads(PR27_AUDIT_PATH.read_text(encoding="utf-8"))
+    sample_bytes = _reconstruct_samples(config["E1"])
     if __import__("hashlib").sha256(sample_bytes).hexdigest() != config["E1"]["sample_table_sha256"]:
         raise RuntimeError("frozen E1 sample hash mismatch")
     parameter_rows = list(csv.DictReader(io.StringIO(sample_bytes.decode("utf-8"))))
-    scientific_rows = csv_blob(sample["git_commit"], result_path)
+    active_ids = set(pr27_audit["f_active_filter_evidence"]["row_ids"])
+    scientific_rows = [{
+        "sample_index": row["sample_index"],
+        "F_Water": 1.0 if int(row["sample_index"]) in active_ids else 0.0,
+        "F_Seasonal Influenza Vaccine": 0.0,
+        "F_Crackers": 0.0,
+    } for row in parameter_rows]
     bounds = config["E1"]["bounds"]
     s200 = select_space_filling(parameter_rows, bounds, 200)
     by_id = {int(row["sample_index"]): row for row in parameter_rows}
