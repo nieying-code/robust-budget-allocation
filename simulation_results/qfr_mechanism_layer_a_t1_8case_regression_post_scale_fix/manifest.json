@@ -1,0 +1,44 @@
+{
+  "algorithm_kind": "A1_full",
+  "case_ids": [
+    "LA-0034",
+    "LA-0098",
+    "LA-0161",
+    "LA-0511",
+    "LA-0565",
+    "LA-0591",
+    "LA-0695",
+    "LA-0783"
+  ],
+  "environment": {
+    "gurobi_optimizer": "13.0.2",
+    "gurobipy": "13.0.2",
+    "license_available": true,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "pyomo": "6.10.1",
+    "python": "3.12.10",
+    "python_implementation": "CPython",
+    "solver_available": true,
+    "solver_interface": "gurobi_direct",
+    "status": "PASS",
+    "threads": 1
+  },
+  "execution_git_commit": "ebda1dccc1ed7f46ffbd8ee1209ffd0120f29e95",
+  "execution_git_tree": "0571c96d42a72be64679036d7fadaf7f637b238b",
+  "guardrails": {
+    "a1_search_changed": false,
+    "global_tolerance_changed": false,
+    "input_changed": false,
+    "model_formula_changed": false,
+    "scientific_parameters_changed": false,
+    "solver_policy_changed": false,
+    "stopping_or_certification_changed": false
+  },
+  "manifest_sha256": "f7611f6b208004f4bd8830e9f5ce29b08694150ac5074d92ad732dde549348ae",
+  "model_kind": "M2",
+  "schema_version": 1,
+  "scope": "LAYER_A_T2_A1_NUMERICAL_REGRESSION",
+  "source_sample_table_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+  "source_t1_case_results_sha256": "067c1375d20408bb8191e4b0af01062438491f4f6e8c5c65f56f8095f1b8360a",
+  "status": "PASS"
+}

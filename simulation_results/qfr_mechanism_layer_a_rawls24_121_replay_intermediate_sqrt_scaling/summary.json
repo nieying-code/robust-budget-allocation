@@ -1,0 +1,14 @@
+{
+  "attempted": 121,
+  "certified": 119,
+  "failed": 2,
+  "input_hashes_unchanged": true,
+  "remaining_failure_ids": [
+    "LA-0068",
+    "LA-0636"
+  ],
+  "requested": 121,
+  "scope": "RAWLS24_LAYER_A_121_FAILURE_REPLAY_POST_FIX",
+  "status": "FAIL_REMAINING_CASES_REQUIRE_A0_EF_REVIEW",
+  "summary_sha256": "5919f32e5bc16efd198f8925088c82383285891748f3679ff1b183babd5b9f6e"
+}

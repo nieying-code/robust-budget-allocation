@@ -8,7 +8,17 @@ import pytest
 
 from robust_budget_allocation.algorithms.qfr_builders import build_qfr_extensive_form
 from robust_budget_allocation.algorithms.qfr_correctness_suite import load_fixture
-from robust_budget_allocation.algorithms.qfr_exact_oracle import build_exact_recourse
+from robust_budget_allocation.algorithms.qfr_exact_oracle import (
+    build_exact_recourse,
+    solve_exact_recourse,
+)
+from robust_budget_allocation.algorithms.qfr_numerical_validation import (
+    VALIDATION_ABSOLUTE_TOLERANCE,
+    VALIDATION_RELATIVE_TOLERANCE,
+    feasibility_threshold,
+    row_scaling_divisor,
+    violation_is_acceptable,
+)
 from robust_budget_allocation.algorithms.qfr_protocol import (
     PROTOCOL_SHA256,
     canonical_scenarios,
@@ -63,6 +73,37 @@ def test_protocol_was_frozen_with_authorized_identity():
     assert tolerance(-1000, 2) == pytest.approx(1.1e-6)
     with pytest.raises(ValueError):
         tolerance(float("nan"), 0)
+
+
+def test_scale_aware_feasibility_is_strict_and_family_scaled():
+    assert VALIDATION_ABSOLUTE_TOLERANCE == 1e-7
+    assert VALIDATION_RELATIVE_TOLERANCE == 1e-12
+    assert feasibility_threshold(1.0e9) == pytest.approx(0.0010001)
+    assert violation_is_acceptable(2.384185791015625e-7, 1.0e9)
+    assert not violation_is_acceptable(0.002, 1.0e9)
+    assert not violation_is_acceptable(2.0e-7, 1.0)
+    assert row_scaling_divisor(1.0e8) == pytest.approx(1.0e4)
+    assert row_scaling_divisor(0.0) == 1.0
+
+
+@pytest.mark.parametrize("bad", [float("nan"), float("inf")])
+def test_scale_aware_feasibility_rejects_nonfinite_values(bad):
+    assert not violation_is_acceptable(bad, 1.0)
+    with pytest.raises(ValueError):
+        feasibility_threshold(bad)
+
+
+def test_exact_recourse_scaled_clone_returns_unscaled_scientific_result(data):
+    decision = zero_decision(data, "M2")
+    result = solve_exact_recourse(data, decision, "c_peak")
+    expected_shortage = sum(
+        data.shortage_cost[item] * data.demand["c_peak"][item]
+        for item in data.items
+    )
+    assert result["solver"]["status"] == "optimal"
+    assert result["loss"] == pytest.approx(expected_shortage)
+    assert result["solver"]["objective"] == pytest.approx(expected_shortage)
+    assert result["maximum_feasibility_violation"] <= 1e-7
 
 
 def test_preregistered_fixture_is_v2_multi_item_and_not_scientific_parameters(data):
@@ -138,6 +179,29 @@ def test_exact_recourse_has_only_second_stage_variables_and_fixed_budget_account
         }
         assert not any(name.startswith("u[") for name in budget_coefficients)
         assert all(f"x[{item}]" in budget_coefficients for item in data.items)
+
+
+def test_exact_recourse_canonicalizes_only_accepted_negative_solver_residue(data):
+    decision = zero_decision(data, "M2")
+    payload = decision.to_dict()
+    payload["f"]["ordinary"]["0"] = -5e-8
+    residue = QFRFirstStage.from_dict(payload)
+    validate_first_stage(data, residue)
+    model = build_exact_recourse(data, residue, "c_peak")
+    assert pyo.value(model.exercise_limit["ordinary"].upper) == pytest.approx(0.0)
+
+
+def test_exact_recourse_canonicalizes_accepted_tight_budget_residue(data):
+    decision = zero_decision(data, "M2")
+    payload = decision.to_dict()
+    item = data.items[0]
+    unit_cost = data.q_unit_cost[item] + data.storage_cost[item] * data.tau
+    payload["q"][item] = (data.budget + 5e-8) / unit_cost
+    residue = QFRFirstStage.from_dict(payload)
+    validate_first_stage(data, residue)
+    model = build_exact_recourse(data, residue, "c_peak")
+    assert model._qfr_raw_first_stage_cost > data.budget
+    assert model._qfr_effective_first_stage_cost == data.budget
 
 
 def test_first_stage_rejects_wrong_hash_capacity_or_reliability(data):

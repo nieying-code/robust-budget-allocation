@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QFR Layer A sample row",
+  "type": "object",
+  "required": ["simulation_id", "sample_index", "simulation_seed", "rho_Q1", "rho_Q2", "rho_Q3", "rho_Q4", "rho_Q5", "rho_F1", "rho_F2", "rho_F3", "rho_F4", "rho_F5", "eta_1", "eta_2", "phi", "psi", "c_R1_ratio", "c_R2_ratio", "input_sha256"],
+  "additionalProperties": false
+}

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 import math
 from time import perf_counter
 from typing import Any, Mapping
@@ -19,6 +20,7 @@ from .qfr_protocol import (
     solve_exact,
     tolerance,
 )
+from .qfr_numerical_validation import violation_is_acceptable
 from .qfr_state import QFRFirstStage, first_stage_cost, validate_first_stage
 
 
@@ -47,6 +49,15 @@ def _available_q(data: QFRData, decision: QFRFirstStage, item: str, scenario: st
     )
 
 
+def _physical_nonnegative(value: float) -> float:
+    """Canonicalize only tolerance-scale negative solver residue to physical zero."""
+
+    numeric = float(value)
+    if numeric < 0 and numeric >= -tolerance(numeric, 0):
+        return 0.0
+    return numeric
+
+
 def build_exact_recourse(
     data: QFRData,
     decision: QFRFirstStage,
@@ -57,12 +68,15 @@ def build_exact_recourse(
     pre = validate_first_stage(data, decision)
     if scenario not in data.scenarios:
         raise ValueError(f"unknown scenario: {scenario!r}")
+    effective_pre = min(pre, data.budget) if pre > data.budget else pre
     model = pyo.ConcreteModel(name=f"Q-F-R v2 exact recourse {decision.model_kind} {scenario}")
     model._qfr_kind = decision.model_kind
     model._qfr_data_sha256 = data.data_sha256
     model._qfr_scenario_sha256 = data.scenario_sha256
     model._qfr_first_stage_sha256 = decision.sha256
     model._qfr_scenario_identity = scenario_identity(data, scenario)
+    model._qfr_raw_first_stage_cost = pre
+    model._qfr_effective_first_stage_cost = effective_pre
     model.I = pyo.Set(initialize=data.items, ordered=True)
     model.u = pyo.Var(model.I, domain=pyo.NonNegativeReals)
     if decision.model_kind == "M0":
@@ -79,13 +93,13 @@ def build_exact_recourse(
         model.exercise_limit = pyo.Constraint(
             model.I,
             rule=lambda m, item: m.x[item]
-            <= _fulfillable(data, decision, item, scenario),
+            <= _physical_nonnegative(_fulfillable(data, decision, item, scenario)),
         )
         model.exercise_cost = pyo.Expression(
             expr=sum(data.exercise_cost[item] * model.x[item] for item in model.I)
         )
         model.fixed_total_budget = pyo.Constraint(
-            expr=pre + model.exercise_cost <= data.budget
+            expr=effective_pre + model.exercise_cost <= data.budget
         )
         model.demand_balance = pyo.Constraint(
             model.I,
@@ -103,6 +117,67 @@ def build_exact_recourse(
     return model
 
 
+def _solve_scaled_exact_recourse(
+    model: pyo.ConcreteModel,
+    data: QFRData,
+    decision: QFRFirstStage,
+    scenario: str,
+):
+    """Solve an algebraically equivalent, dimensionless exact-recourse clone.
+
+    The production solver policy and the returned scientific model remain
+    unchanged.  Scaling is local to a cloned LP; its solution is propagated
+    back to ``model`` before the unscaled objective and feasibility checks are
+    evaluated.
+    """
+
+    model.scaling_factor = pyo.Suffix(direction=pyo.Suffix.EXPORT)
+    quantity_reference = {
+        item: max(
+            1.0,
+            abs(data.demand[scenario][item]),
+            abs(_available_q(data, decision, item, scenario)),
+            abs(_fulfillable(data, decision, item, scenario)),
+        )
+        for item in data.items
+    }
+    for item in data.items:
+        quantity = quantity_reference[item]
+        model.scaling_factor[model.u[item]] = 1.0 / quantity
+        model.scaling_factor[model.demand_balance[item]] = 1.0 / quantity
+        if decision.model_kind != "M0":
+            model.scaling_factor[model.x[item]] = 1.0 / quantity
+            model.scaling_factor[model.exercise_limit[item]] = 1.0 / quantity
+    if decision.model_kind != "M0":
+        model.scaling_factor[model.fixed_total_budget] = 1.0 / max(
+            1.0, abs(data.budget)
+        )
+    objective_reference = max(
+        1.0,
+        sum(
+            max(data.exercise_cost[item], data.shortage_cost[item])
+            * data.demand[scenario][item]
+            for item in data.items
+        ),
+    )
+    objective_factor = 1.0 / objective_reference
+    model.scaling_factor[model.total_cost] = objective_factor
+    scaled_model = pyo.TransformationFactory("core.scale_model").create_using(
+        model, rename=False
+    )
+    outcome = solve_exact(scaled_model)
+    if outcome.status != "optimal":
+        return outcome
+    pyo.TransformationFactory("core.scale_model").propagate_solution(
+        scaled_model, model
+    )
+    return replace(
+        outcome,
+        objective=float(outcome.objective) / objective_factor,
+        lower_bound=float(outcome.lower_bound) / objective_factor,
+    )
+
+
 def solve_exact_recourse(
     data: QFRData,
     decision: QFRFirstStage,
@@ -110,6 +185,8 @@ def solve_exact_recourse(
 ) -> dict[str, Any]:
     model = build_exact_recourse(data, decision, scenario)
     outcome = solve_exact(model)
+    if outcome.status != "optimal":
+        outcome = _solve_scaled_exact_recourse(model, data, decision, scenario)
     result: dict[str, Any] = {
         "scenario_id": scenario,
         "scenario_identity": scenario_identity(data, scenario),
@@ -200,21 +277,42 @@ def validate_recourse_result(
     if set(result["exercise"]) != set(data.items) or set(result["shortage"]) != set(data.items):
         raise ValueError("exact-recourse item coverage mismatch")
     violations = [0.0]
+    scaled_violations: list[tuple[float, tuple[float, ...]]] = []
     for item in data.items:
         if not math.isfinite(exercise[item]) or not math.isfinite(shortage[item]):
             raise ValueError("exact-recourse values must be finite")
         violations.extend((-exercise[item], -shortage[item]))
-        coverage = _available_q(data, decision, item, scenario) + exercise[item] + shortage[item]
-        violations.append(data.demand[scenario][item] - coverage)
+        scaled_violations.extend(
+            ((-exercise[item], (1.0,)), (-shortage[item], (1.0,)))
+        )
+        available = _available_q(data, decision, item, scenario)
+        coverage = available + exercise[item] + shortage[item]
+        flow_violation = data.demand[scenario][item] - coverage
+        violations.append(flow_violation)
+        scaled_violations.append(
+            (
+                flow_violation,
+                (data.demand[scenario][item], available, exercise[item], shortage[item]),
+            )
+        )
         if decision.model_kind == "M0":
             require_close(exercise[item], 0, f"M0 exercise[{item}]")
         else:
-            violations.append(exercise[item] - _fulfillable(data, decision, item, scenario))
+            fulfillment = _fulfillable(data, decision, item, scenario)
+            fulfillment_violation = exercise[item] - fulfillment
+            violations.append(fulfillment_violation)
+            scaled_violations.append(
+                (fulfillment_violation, (exercise[item], fulfillment))
+            )
     exercise_cost = sum(data.exercise_cost[item] * exercise[item] for item in data.items)
     shortage_loss = sum(data.shortage_cost[item] * shortage[item] for item in data.items)
     loss = exercise_cost + shortage_loss
     pre = first_stage_cost(data, decision)
-    violations.append(pre + exercise_cost - data.budget)
+    budget_violation = pre + exercise_cost - data.budget
+    violations.append(budget_violation)
+    scaled_violations.append(
+        (budget_violation, (data.budget, pre, exercise_cost))
+    )
     maximum_violation = max(0.0, *violations)
     require_close(float(result["exercise_cost"]), exercise_cost, "exercise cost")
     require_close(float(result["shortage_loss"]), shortage_loss, "shortage loss")
@@ -226,7 +324,10 @@ def validate_recourse_result(
         maximum_violation,
         "recourse maximum feasibility violation",
     )
-    if maximum_violation > tolerance(maximum_violation, 0):
+    if any(
+        not violation_is_acceptable(violation, *scale_values)
+        for violation, scale_values in scaled_violations
+    ):
         raise ValueError("exact recourse violates Q-F-R constraints")
 
 

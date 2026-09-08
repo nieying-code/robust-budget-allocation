@@ -1,0 +1,529 @@
+{
+  "a": {
+    "Crackers": 0.9,
+    "Seasonal Influenza Vaccine": 1.0,
+    "Water": 1.0
+  },
+  "analysis_sha256": "07ca635bdd6e6ae9068b860e6f26ec9978334f03219216f41c2ca94dd9ee5ca7",
+  "certification": {
+    "attempted": 1000,
+    "certified": 1000,
+    "failed": 0,
+    "requested": 1000,
+    "successful": 1000
+  },
+  "commodity_activation": {
+    "Crackers": {
+      "delta_F": {
+        "P10": -163179052.80903766,
+        "P90": 167251604.4863151,
+        "max": 868192363.9856374,
+        "mean": 4335076.495473427,
+        "median": 0.0,
+        "min": -790651841.4315706
+      },
+      "delta_Q": {
+        "P10": -26287754.691156514,
+        "P90": 0.0,
+        "max": 0.0,
+        "mean": -5036055.11373795,
+        "median": 0.0,
+        "min": -193623618.34666374
+      },
+      "delta_R_level": {
+        "P10": -1.0,
+        "P90": 1.0,
+        "max": 3.0,
+        "mean": 0.056,
+        "median": 0.0,
+        "min": -3.0
+      },
+      "layer_a_F_active": 544,
+      "layer_a_F_quantity": {
+        "P10": 0.0,
+        "P90": 308023633.9017673,
+        "max": 790651841.4315706,
+        "mean": 120243950.06730238,
+        "median": 69040436.31654108,
+        "min": 0.0
+      },
+      "layer_a_Q_active": 136,
+      "layer_a_Q_quantity": {
+        "P10": 0.0,
+        "P90": 26287754.691156548,
+        "max": 193623618.34666374,
+        "mean": 5036055.11373795,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "layer_b_F_active": 579,
+      "layer_b_F_quantity": {
+        "P10": 0.0,
+        "P90": 313527719.6415152,
+        "max": 893509032.8667613,
+        "mean": 124579026.56277582,
+        "median": 90070132.39494194,
+        "min": 0.0
+      },
+      "layer_b_Q_active": 0,
+      "layer_b_Q_and_F_active": 0,
+      "layer_b_Q_quantity": {
+        "P10": 0.0,
+        "P90": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "layer_b_reliability_counts": {
+        "NONE": 421,
+        "R0": 522,
+        "R1": 32,
+        "R2": 25
+      },
+      "mixed_parameter_region": "NO_MATCHING_DRAWS",
+      "reliability_transitions": {
+        "NONE->NONE": 307,
+        "NONE->R0": 121,
+        "NONE->R1": 14,
+        "NONE->R2": 14,
+        "R0->NONE": 96,
+        "R0->R0": 401,
+        "R0->R1": 0,
+        "R0->R2": 0,
+        "R1->NONE": 15,
+        "R1->R0": 0,
+        "R1->R1": 18,
+        "R1->R2": 0,
+        "R2->NONE": 3,
+        "R2->R0": 0,
+        "R2->R1": 0,
+        "R2->R2": 11
+      }
+    },
+    "Seasonal Influenza Vaccine": {
+      "delta_F": {
+        "P10": -985670.3624909667,
+        "P90": 1147984.715611311,
+        "max": 4879179.8225497,
+        "mean": 48726.03593963671,
+        "median": 0.0,
+        "min": -4084722.814998573
+      },
+      "delta_Q": {
+        "P10": -175483.98674965827,
+        "P90": 20374.57835554804,
+        "max": 695727.3708012467,
+        "mean": -64922.28771088683,
+        "median": 0.0,
+        "min": -1303995.7970285513
+      },
+      "delta_R_level": {
+        "P10": -1.0,
+        "P90": 1.0,
+        "max": 3.0,
+        "mean": -0.001,
+        "median": 0.0,
+        "min": -3.0
+      },
+      "layer_a_F_active": 215,
+      "layer_a_F_quantity": {
+        "P10": 0.0,
+        "P90": 1401169.4648261562,
+        "max": 4084722.814998573,
+        "mean": 314635.7245022221,
+        "median": 0.0,
+        "min": -5.769191588035453e-11
+      },
+      "layer_a_Q_active": 237,
+      "layer_a_Q_quantity": {
+        "P10": 0.0,
+        "P90": 630883.7675956038,
+        "max": 1303995.7970285513,
+        "mean": 190341.3032210003,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "layer_b_F_active": 225,
+      "layer_b_F_quantity": {
+        "P10": 0.0,
+        "P90": 1604063.744005204,
+        "max": 5737308.851740733,
+        "mean": 363361.7604418588,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "layer_b_Q_active": 208,
+      "layer_b_Q_and_F_active": 0,
+      "layer_b_Q_quantity": {
+        "P10": 0.0,
+        "P90": 629555.9672289457,
+        "max": 704251.0849926262,
+        "mean": 125419.01551011347,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "layer_b_reliability_counts": {
+        "NONE": 775,
+        "R0": 158,
+        "R1": 49,
+        "R2": 18
+      },
+      "mixed_parameter_region": "NO_MATCHING_DRAWS",
+      "reliability_transitions": {
+        "NONE->NONE": 653,
+        "NONE->R0": 109,
+        "NONE->R1": 17,
+        "NONE->R2": 6,
+        "R0->NONE": 96,
+        "R0->R0": 49,
+        "R0->R1": 0,
+        "R0->R2": 0,
+        "R1->NONE": 12,
+        "R1->R0": 0,
+        "R1->R1": 32,
+        "R1->R2": 0,
+        "R2->NONE": 14,
+        "R2->R0": 0,
+        "R2->R1": 0,
+        "R2->R2": 12
+      }
+    },
+    "Water": {
+      "delta_F": {
+        "P10": -13869266.9902853,
+        "P90": 15109787.527147565,
+        "max": 34617641.201799534,
+        "mean": 399345.45508459903,
+        "median": 0.0,
+        "min": -34486238.34184112
+      },
+      "delta_Q": {
+        "P10": 0.0,
+        "P90": 6371434.325697078,
+        "max": 22701445.0518465,
+        "mean": 1967740.5253663545,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "delta_R_level": {
+        "P10": -1.0,
+        "P90": 1.0,
+        "max": 3.0,
+        "mean": 0.033,
+        "median": 0.0,
+        "min": -3.0
+      },
+      "layer_a_F_active": 321,
+      "layer_a_F_quantity": {
+        "P10": 0.0,
+        "P90": 18670463.334793977,
+        "max": 34486238.34184112,
+        "mean": 5281909.6394218905,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "layer_a_Q_active": 162,
+      "layer_a_Q_quantity": {
+        "P10": 0.0,
+        "P90": 10701567.666441686,
+        "max": 24390091.18916618,
+        "mean": 1933788.895130963,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "layer_b_F_active": 356,
+      "layer_b_F_quantity": {
+        "P10": 0.0,
+        "P90": 19492485.273066323,
+        "max": 34617641.201799534,
+        "mean": 5681255.094506489,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "layer_b_Q_active": 241,
+      "layer_b_Q_and_F_active": 0,
+      "layer_b_Q_quantity": {
+        "P10": 0.0,
+        "P90": 16166782.540746316,
+        "max": 24390091.18916618,
+        "mean": 3901529.4204973173,
+        "median": 0.0,
+        "min": 0.0
+      },
+      "layer_b_reliability_counts": {
+        "NONE": 644,
+        "R0": 343,
+        "R1": 5,
+        "R2": 8
+      },
+      "mixed_parameter_region": "NO_MATCHING_DRAWS",
+      "reliability_transitions": {
+        "NONE->NONE": 511,
+        "NONE->R0": 158,
+        "NONE->R1": 3,
+        "NONE->R2": 7,
+        "R0->NONE": 121,
+        "R0->R0": 185,
+        "R0->R1": 0,
+        "R0->R2": 0,
+        "R1->NONE": 5,
+        "R1->R0": 0,
+        "R1->R1": 2,
+        "R1->R2": 0,
+        "R2->NONE": 7,
+        "R2->R0": 0,
+        "R2->R1": 0,
+        "R2->R2": 1
+      }
+    }
+  },
+  "guardrails": {
+    "algorithm_changed": false,
+    "figures_generated": false,
+    "formal_e1_e5_executed": false,
+    "model_changed": false,
+    "qfr_parameters_retuned": false,
+    "same_draws": true
+  },
+  "h": {
+    "Crackers": 0.0,
+    "Seasonal Influenza Vaccine": 0.0833333333333333,
+    "Water": 0.0
+  },
+  "h09_dominance": {
+    "absolute_loss_advantage": {
+      "P10": 979994352.0064846,
+      "P90": 1016414312.0689526,
+      "max": 1032229685.4263539,
+      "mean": 1001740310.7367606,
+      "median": 1006343571.5439231,
+      "min": 928405468.7641572
+    },
+    "componentwise_demand_dominates_all_others": false,
+    "h09_worst_count": 1000,
+    "nearest_non_h09_scenario_counts": {
+      "h19": 1000
+    },
+    "relative_loss_advantage": {
+      "P10": 0.816352947798277,
+      "P90": 0.8432286842845391,
+      "max": 0.851011531538137,
+      "mean": 0.8291857362994822,
+      "median": 0.8272612541867789,
+      "min": 0.8095662589803331
+    },
+    "sampled_robust_loss_dominance": true,
+    "scenarios_with_any_demand_dimension_above_h09": [
+      "h12",
+      "h17",
+      "h19",
+      "h20",
+      "h23"
+    ],
+    "strict_positive_loss_advantage_count": 1000
+  },
+  "heterogeneity": {
+    "crackers_retention": 0.9,
+    "formal_matrix_path": "configs/r6c_formal_experiment_matrix_v2.json",
+    "formal_matrix_sha256": "685c44829780b5fa348ace682a9cc8de6315438d017ffde11db06434aff5e2c6",
+    "formal_ready_path": "configs/r6c_formal_ready_data_v2.json",
+    "formal_ready_sha256": "eae86e57da22765cb097d168fcc76b1798f8c1417f00a5f40280cc3e47bd1e02",
+    "vaccine_six_month_cold_chain_cost": 0.4999999999999998
+  },
+  "key_policy_transitions": {
+    "F_dominant_to_mixed_Q_plus_F": 0,
+    "Q_only_to_Q_plus_F_R0": 26,
+    "Q_only_to_Q_plus_F_paid_R": 7
+  },
+  "layer_a_B_ref": 18146405.511449322,
+  "layer_b_B_ref": 19137905.85543848,
+  "layer_b_policy_structure_counts": {
+    "Q[NONE]|F[Crackers]|R[Crackers:R0]": 239,
+    "Q[NONE]|F[Crackers]|R[Crackers:R1]": 26,
+    "Q[NONE]|F[Crackers]|R[Crackers:R2]": 21,
+    "Q[NONE]|F[Seasonal Influenza Vaccine+Crackers]|R[Seasonal Influenza Vaccine:R0+Crackers:R0]": 2,
+    "Q[NONE]|F[Seasonal Influenza Vaccine]|R[Seasonal Influenza Vaccine:R0]": 58,
+    "Q[NONE]|F[Seasonal Influenza Vaccine]|R[Seasonal Influenza Vaccine:R1]": 46,
+    "Q[NONE]|F[Seasonal Influenza Vaccine]|R[Seasonal Influenza Vaccine:R2]": 11,
+    "Q[NONE]|F[Water+Crackers]|R[Water:R0+Crackers:R0]": 249,
+    "Q[NONE]|F[Water+Crackers]|R[Water:R1+Crackers:R1]": 4,
+    "Q[NONE]|F[Water+Crackers]|R[Water:R2+Crackers:R2]": 4,
+    "Q[NONE]|F[Water+Seasonal Influenza Vaccine+Crackers]|R[Water:R0+Seasonal Influenza Vaccine:R0+Crackers:R0]": 10,
+    "Q[NONE]|F[Water+Seasonal Influenza Vaccine]|R[Water:R0+Seasonal Influenza Vaccine:R0]": 84,
+    "Q[NONE]|F[Water+Seasonal Influenza Vaccine]|R[Water:R1+Seasonal Influenza Vaccine:R1]": 1,
+    "Q[NONE]|F[Water+Seasonal Influenza Vaccine]|R[Water:R2+Seasonal Influenza Vaccine:R2]": 4,
+    "Q[Water+Seasonal Influenza Vaccine]|F[NONE]|R[NONE]": 208,
+    "Q[Water]|F[Crackers]|R[Crackers:R0]": 22,
+    "Q[Water]|F[Crackers]|R[Crackers:R1]": 2,
+    "Q[Water]|F[Seasonal Influenza Vaccine]|R[Seasonal Influenza Vaccine:R0]": 4,
+    "Q[Water]|F[Seasonal Influenza Vaccine]|R[Seasonal Influenza Vaccine:R1]": 2,
+    "Q[Water]|F[Seasonal Influenza Vaccine]|R[Seasonal Influenza Vaccine:R2]": 3
+  },
+  "mixed_Q_F": {
+    "aggregate_policy_count": 33,
+    "parameter_region": {
+      "c_R1_ratio": {
+        "max": 0.2948630747742453,
+        "median": 0.18852868277502038,
+        "min": 0.026221720726157298
+      },
+      "c_R2_ratio": {
+        "max": 0.5754775066598972,
+        "median": 0.3831722371104136,
+        "min": 0.1792510367125088
+      },
+      "eta_1": {
+        "max": 0.47630107502248337,
+        "median": 0.2479168618798706,
+        "min": 0.05194141262410681
+      },
+      "eta_2": {
+        "max": 0.8728738092643673,
+        "median": 0.5549859642415406,
+        "min": 0.4059443891893542
+      },
+      "phi": {
+        "max": 0.48957344288637317,
+        "median": 0.2935724394268916,
+        "min": 0.02326657364972617
+      },
+      "psi": {
+        "max": 1.4643642067851572,
+        "median": 1.1075444025056627,
+        "min": 0.5370199286472164
+      },
+      "rho_F1": {
+        "max": 0.9773716535143877,
+        "median": 0.8539630159893121,
+        "min": 0.727419599164002
+      },
+      "rho_F2": {
+        "max": 0.9417381945922897,
+        "median": 0.7784737688200254,
+        "min": 0.6036836273542606
+      },
+      "rho_F3": {
+        "max": 0.9117095604878602,
+        "median": 0.7206128263280086,
+        "min": 0.5190325898486111
+      },
+      "rho_F4": {
+        "max": 0.8695027026151643,
+        "median": 0.6264739357857103,
+        "min": 0.4006840697737085
+      },
+      "rho_F5": {
+        "max": 0.834068638218108,
+        "median": 0.553878390640959,
+        "min": 0.3328569287471938
+      },
+      "rho_Q1": {
+        "max": 0.9786144090319551,
+        "median": 0.8807568873187568,
+        "min": 0.8086430211314841
+      },
+      "rho_Q2": {
+        "max": 0.9228799238503231,
+        "median": 0.8290203073170055,
+        "min": 0.700862071917562
+      },
+      "rho_Q3": {
+        "max": 0.8734757834220672,
+        "median": 0.7757920153722556,
+        "min": 0.6037461746197675
+      },
+      "rho_Q4": {
+        "max": 0.8173455704401259,
+        "median": 0.7101485008093944,
+        "min": 0.5364480678190104
+      },
+      "rho_Q5": {
+        "max": 0.7481381364071471,
+        "median": 0.6378910230702189,
+        "min": 0.42640266981123753
+      }
+    },
+    "within_same_commodity_count": 0
+  },
+  "paired_changes": {
+    "delta_T_COST": {
+      "P10": -3372331.6796672344,
+      "P90": -808413.6316421985,
+      "max": -505416.1776969433,
+      "mean": -1923400.9441398915,
+      "median": -1760981.5219099522,
+      "min": -6603652.302433729
+    },
+    "delta_budget_usage": {
+      "P10": -2.220446049250313e-16,
+      "P90": 0.0,
+      "max": 4.551914400963142e-15,
+      "mean": -3.819167204710538e-17,
+      "median": 0.0,
+      "min": -3.885780586188048e-15
+    }
+  },
+  "paired_draws": 1000,
+  "policy_counts": {
+    "P1": 208,
+    "P2": 26,
+    "P3a": 4,
+    "P3b": 3,
+    "P4": 759,
+    "P5": 0
+  },
+  "policy_transition_matrix": {
+    "P1": {
+      "P1": 208,
+      "P2": 26,
+      "P3a": 4,
+      "P3b": 3,
+      "P4": 0,
+      "P5": 0
+    },
+    "P2": {
+      "P1": 0,
+      "P2": 0,
+      "P3a": 0,
+      "P3b": 0,
+      "P4": 0,
+      "P5": 0
+    },
+    "P3a": {
+      "P1": 0,
+      "P2": 0,
+      "P3a": 0,
+      "P3b": 0,
+      "P4": 0,
+      "P5": 0
+    },
+    "P3b": {
+      "P1": 0,
+      "P2": 0,
+      "P3a": 0,
+      "P3b": 0,
+      "P4": 0,
+      "P5": 0
+    },
+    "P4": {
+      "P1": 0,
+      "P2": 0,
+      "P3a": 0,
+      "P3b": 0,
+      "P4": 759,
+      "P5": 0
+    },
+    "P5": {
+      "P1": 0,
+      "P2": 0,
+      "P3a": 0,
+      "P3b": 0,
+      "P4": 0,
+      "P5": 0
+    }
+  },
+  "sample_table_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+  "scope": "RAWLS24_LAYER_B_PAIRED_HETEROGENEITY_AND_H09_DOMINANCE_AUDIT",
+  "tau": 6.0
+}

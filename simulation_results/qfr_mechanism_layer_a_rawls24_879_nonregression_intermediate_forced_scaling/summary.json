@@ -1,0 +1,26 @@
+{
+  "attempted": 879,
+  "certified": 879,
+  "failed": 12,
+  "failure_ids": [
+    "LA-0011",
+    "LA-0044",
+    "LA-0063",
+    "LA-0313",
+    "LA-0331",
+    "LA-0352",
+    "LA-0596",
+    "LA-0813",
+    "LA-0814",
+    "LA-0859",
+    "LA-0959",
+    "LA-0966"
+  ],
+  "max_first_stage_absolute_difference": 47870089.38059927,
+  "max_objective_absolute_difference": 2.384185791015625e-07,
+  "non_regression_pass": 867,
+  "requested": 879,
+  "scope": "RAWLS24_LAYER_A_879_SUCCESS_NON_REGRESSION_POST_FIX",
+  "status": "FAIL_SCIENTIFIC_DRIFT",
+  "summary_sha256": "46fc5fce15c980a393801eedc6173d730e044c1eb979128470f573142339a768"
+}
