@@ -14,6 +14,7 @@ future scientific execution:
 | Any 12/24-item scalability proposal | replaced by final sizes 3/6/9 |
 | Any 51-scenario scientific OOS generator | cannot substitute for Rawls24 E4-B |
 | Any A0/A1_no_memory/A1_full three-way comparison | replaced by A0 versus final A1 no-memory |
+| Any pre-freeze representative selector, E4-B generator, or E5 seed/nesting draft | replaced by the deterministic v1 rules and identities in `FINAL_FORMAL_MACHINE_IDENTITIES_v1.json` |
 
 This registry changes governance status only. It does not delete or rewrite historical
 data, code, reports, generated results, or hashes. Where an old artifact lacks an

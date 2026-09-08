@@ -102,11 +102,14 @@ perturbations, not empirical or intrinsic rankings. Total planned E2 new runs ar
 
 ## 5. E3 — Targeted Interaction Experiment
 
-Select one shared `N_E3=200` subset from the frozen E1 table using deterministic,
-outcome-independent maximin/space-filling. Policy, objective, runtime, R activation,
-and candidate hits are forbidden selection inputs. Exact normalization, initialization,
-distance, and tie-breaking remain an execution-blocking open decision; no row IDs are
-claimed frozen in this version.
+Select one shared `N_E3=200` subset from the frozen E1 table. Normalize each of the
+16 continuous parameters independently by its theoretical Final E1 marginal bounds,
+then use Euclidean distance. The first actual row is nearest the all-0.5 geometric
+center; subsequent rows maximize their minimum distance to the selected set. Ties
+within eight IEEE-754 ULPs are resolved by minimum `sample_index`. Policy, objective,
+shortage, runtime, worst scenario, R activation, and candidate hits are forbidden
+selection inputs. The ordered IDs and identity hash are frozen in
+`docs/evidence/FINAL_FORMAL_MACHINE_IDENTITIES_v1.json`.
 
 ### E3-A Storage burden x F economics
 
@@ -117,16 +120,22 @@ cells may be reused.
 
 ### E3-B F supply risk x reliability economics
 
-For every frozen E1 row, compute `S_F=(1/5)*sum_k(1-rho_F,k)`. Select actual full
-rho_F curves nearest Q25/Q50/Q75 as Low/Medium/High supply risk without using outcomes.
+For every one of the 1,000 frozen E1 rows, compute `S_F=(1/5)*sum_k(1-rho_F,k)`.
+Using NumPy's linear empirical quantile definition, select actual full rho_F curves
+nearest Q25/Q50/Q75 as Low/Medium/High supply risk without using outcomes. Process
+quantiles in that order, remove each selected row, and break numerical ties by the
+same eight-ULP/minimum-ID rule.
 
-Reliability economics is restricted to the E1 F-active subset. Compute A_R1 and A_R2
-as above, z-score each, and set `A_R=.5*(Z(A_R1)+Z(A_R2))`; actual rows nearest
-Q25/Q50/Q75 define Unfavorable/Reference/Favorable. R label, objective, and runtime
-cannot enter selection. The meaning of row-level F-active membership, z-score
-population, and deterministic tie/de-duplication are not uniquely specified, so this
-cell is `OPEN_DECISION_E3B_RELIABILITY_SELECTION` and is not fully machine-defined.
-Maximum after resolution: 1,800 optimizations. E3 theoretical maximum: 3,600.
+Reliability economics is restricted to rows for which at least one nonnegative
+commodity F quantity exceeds the E1 policy tolerance `1e-7`. F quantities are used
+only for this filter. Compute A_R1 and A_R2 as above, standardize each across all
+F-active rows with population SD (`ddof=0`), and set
+`A_R=.5*(Z(A_R1)+Z(A_R2))`. Zero SD stops with
+`E3B_RELIABILITY_SCORE_DEGENERATE`. Linear empirical Q25/Q50/Q75 define
+Unfavorable/Reference/Favorable; process in order, exclude used rows, and apply the
+same tie rule. R label, objective, shortage, and runtime cannot enter selection.
+The frozen rows are recorded in the machine-identity evidence. Maximum: 1,800
+optimizations. E3 theoretical maximum: 3,600.
 
 ## 6. E4 — Out-of-Sample Robustness
 
@@ -140,14 +149,21 @@ regret, policy change, and full24-versus-LOHO policy comparison.
 
 ### E4-B Synthetic OOS
 
-Select 100 policies from the 200 representatives by deterministic outcome-independent
-space filling. Evaluate 2,000 synthetic scenarios per policy under 10 fixed seeds,
-primarily by second-stage evaluation rather than first-stage reoptimization.
+Select `S_100` from within `S_200` using the same normalized-Euclidean center/maximin
+rule; it is not independently selected from all 1,000 rows. The scientific generator
+is `RAWLS24_SCIENTIFIC_OOS_GENERATOR_V1`, separate from every E5 generator. For each
+seed `20260904` through `20260913`, generate 2,000 scenarios shared by all 100 policies.
+Each scenario draws a Rawls24 template uniformly, inherits its category, draws one
+shared `U(.85,1.15)` disaster multiplier, then independent `U(.95,1.05)` multipliers
+in Water/Vaccine/Crackers order. The RNG is NumPy Generator(PCG64), and draw order is
+template, common, Water, Vaccine, Crackers. The bands are pre-specified stress bands,
+not empirical estimates. No no-hurricane or extra availability noise is generated;
+the policy row's rho_Q/rho_F and formal R-to-F mapping apply.
 
-No current active source defines a complete Rawls24 scientific OOS generator covering
-demand, category, Q/F availability, cross-commodity dependence, no-hurricane handling,
-and seed policy. The old 51-scenario generator is historical and cannot substitute.
-Therefore `OPEN_DECISION_E4B_GENERATOR` remains; E4-B is not fully frozen and cannot run.
+Q/F/R remain fixed and only formal second-stage recourse is evaluated. Pre-registered
+metrics are mean/P90/P95 T-COST, mean/P95 shortage, probability of any shortage above
+the policy tolerance, mean service, and P05 service, with
+`SL=1-sum_i(u_i)/sum_i(d_i)`. This protocol freezes metrics but authorizes no OOS run.
 
 ## 7. E5 — Algorithmic Performance and Scalability
 
@@ -167,7 +183,9 @@ not large-scale scalability.
 
 ### E5-B Scenario scalability
 
-Use 30 nested replicates at |Omega|=`50,100,200,500`, |I|=3. For replicate r,
+Use seeds `20261001` through `20261030` for 30 nested replicates at
+|Omega|=`50,100,200,500`, |I|=3. The first PCG64 draw selects a uniform integer E1
+parameter row from 1..1000, shared by all four sizes. For replicate r,
 generate one 500-scenario master pool and take nested prefixes/subsets; use one Q-F-R
 draw for all four sizes. A synthetic scenario selects a Rawls24 template, inherits its
 category, and sets `d_i_syn=d_i_template*m_common*m_i`, with
@@ -175,20 +193,24 @@ category, and sets `d_i_syn=d_i_template*m_common*m_i`, with
 availability use the instance's frozen rho_Q/rho_F/eta/economic parameters. Compute
 one `B_r^bench` from the full 500 pool and use it unchanged at every nested size.
 These distributions are computational benchmark rules, not hurricane probabilities.
+The generator identity is `RAWLS24_E5B_COMPUTATIONAL_BENCHMARK_GENERATOR_V1`.
 
 ### E5-C Commodity scalability
 
-Use |I|=`3,6,9`, |Omega|=100, and 30 nested replicates from a 9-item master pool.
+Use seeds `20261101` through `20261130`, |I|=`3,6,9`, |Omega|=100, and 30 nested
+replicates from a 9-item master pool. The first PCG64 draw uniformly selects one E1
+parameter row shared by all item sizes. Master order is exactly Standard_1,
+Preservation_1, StorageLoss_1, then the same archetype order for suffixes 2 and 3;
+the 3/6/9 instances are generation-order prefixes.
 Archetype counts are `1+1+1`, `2+2+2`, and `3+3+3`. Item cost and reference-demand
 multipliers are `U(.8,1.2)`. Standard has h=0,a=1; Preservation has a=1 and
 `h_j*tau=m_h*(h*tau)_base`, `m_h~U(.5,1.5)`; StorageLoss has h=0 and
 `a_j~U(.80,1.00)`. A benchmark instance shares one Q-F-R mechanism draw across all
-items. Each item-size instance uses `B/B_ref^bench=1` under the same definition.
-
-The exact representative-subset algorithm, E5 replicate seeds, template-selection
-measure, and nested ordering/tie policy remain `OPEN_DECISION_E5_GENERATOR_IDENTITY`.
-The stated sizes and distributions are frozen, but execution is blocked until those
-identities are supplied; the scientific E4-B generator must never be substituted.
+items. For every item the fixed draw order is m_c, m_d, then the archetype-conditional
+m_h or a draw; Standard consumes no third draw. Each item-size instance uses
+`B/B_ref^bench=1` under the same definition. The generator identity is
+`RAWLS24_E5C_COMMODITY_BENCHMARK_GENERATOR_V1`. It is computational and cannot be
+substituted for E4-B.
 
 ## 8. Reuse, failure, and governance rules
 
@@ -202,17 +224,15 @@ identities are supplied; the scientific E4-B generator must never be substituted
 - Exact sample/data/config/source/output hashes and git/tree/solver identities are
   mandatory. Generated evidence never silently becomes protocol authority.
 
-## 9. Open decisions and execution gate
+## 9. Machine identities and execution gate
 
-1. `OPEN_DECISION_REPRESENTATIVE_SPACE_FILLING`: exact deterministic 200/100-row
-   subset construction and tie rules.
-2. `OPEN_DECISION_E3B_RELIABILITY_SELECTION`: row-level F-active membership,
-   z-score population, tie handling, and de-duplication.
-3. `OPEN_DECISION_E4B_GENERATOR`: complete Rawls24 scientific OOS generator and seeds.
-4. `OPEN_DECISION_E5_GENERATOR_IDENTITY`: replicate seeds, template sampling,
-   nested ordering, and exact benchmark generator identity.
-5. `OPEN_DECISION_PR27_ENGINEERING_PROMOTION`: independent approval of generic
-   numerical-validation and no-memory execution adapters before Formal execution.
+All Formal scientific machine-definition decisions are resolved. Exact selections,
+per-seed generated-input hashes, selected parameter-row IDs, nesting hashes, and
+generator hashes are frozen in `docs/evidence/FINAL_FORMAL_MACHINE_IDENTITIES_v1.json`.
+The deterministic implementation is `robust_budget_allocation.formal.final_design`.
+`OPEN_DECISION_PR27_ENGINEERING_PROMOTION` remains a non-scientific governance gate:
+generic numerical-validation and no-memory execution adapters still require independent
+approval before promotion. It does not reopen any scientific design rule.
 
 No E1–E5 execution is authorized by this document. PR #27 is not merged by this
 re-freeze. The companion PR27 audit determines result reuse candidacy only.

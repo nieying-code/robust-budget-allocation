@@ -44,14 +44,17 @@ def test_e1_frozen_table_and_parameter_space():
 def test_e2_e3_e4_e5_matrix_and_open_decisions():
     assert CONFIG["E2"]["planned_new_optimizations"] == 11000
     assert CONFIG["E3"]["representative_subset"]["size"] == 200
-    assert CONFIG["E3"]["B"]["status"] == "OPEN_DECISION_E3B_RELIABILITY_SELECTION"
+    assert CONFIG["E3"]["representative_subset"]["status"] == "RESOLVED"
+    assert CONFIG["E3"]["B"]["status"] == "RESOLVED"
     assert CONFIG["E4"]["A"]["training_optimizations"] == 4800
-    assert CONFIG["E4"]["B"]["status"] == "OPEN_DECISION_E4B_GENERATOR"
+    assert CONFIG["E4"]["B"]["status"] == "RESOLVED"
     assert CONFIG["E5"]["algorithms"] == ["A0", "A1_FINAL_NO_MEMORY_V1"]
     assert CONFIG["E5"]["timing_repetitions"] == 3
     assert CONFIG["E5"]["B"]["scenario_sizes"] == [50, 100, 200, 500]
     assert CONFIG["E5"]["C"]["item_sizes"] == [3, 6, 9]
-    assert set(CONFIG["open_decisions"]) >= {"OPEN_DECISION_E3B_RELIABILITY_SELECTION", "OPEN_DECISION_E4B_GENERATOR"}
+    assert CONFIG["E5"]["generator_status"] == "RESOLVED"
+    assert CONFIG["remaining_formal_scientific_open_decisions"] == 0
+    assert CONFIG["open_decisions"] == ["OPEN_DECISION_PR27_ENGINEERING_PROMOTION"]
 
 
 def test_pr27_static_audit_is_complete_and_scoped():

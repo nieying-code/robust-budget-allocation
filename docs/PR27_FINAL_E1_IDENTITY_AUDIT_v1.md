@@ -46,6 +46,12 @@ PR #27's runtime, scenario-evaluation counts, Memory fields, and historical
 
 Machine evidence: `docs/evidence/PR27_FINAL_E1_IDENTITY_AUDIT_v1.json`.
 
+The subsequent machine-definition freeze used the saved PR #27 commodity-level F
+quantities solely to apply the pre-registered `F_ACTIVE_ROW` filter for E3-B. It did
+not use policy labels, R labels, objective, shortage, runtime, or any computational
+or Memory metric to select representative rows. This static read does not change the
+25/25 audit or the scientific-only reuse boundary.
+
 ## Memory identity finding
 
 PR #27 is historically labeled `A1_full` and explicitly called the production solver

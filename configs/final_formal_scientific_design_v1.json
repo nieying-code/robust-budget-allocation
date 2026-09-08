@@ -75,14 +75,62 @@
     "planned_new_optimizations": 11000
   },
   "E3": {
-    "representative_subset": {"size": 200, "source": "E1_SAMPLE_TABLE", "method": "DETERMINISTIC_OUTCOME_INDEPENDENT_MAXIMIN_SPACE_FILLING", "forbidden_inputs": ["policy_label", "objective", "runtime", "R_activation", "candidate_hits"], "status": "OPEN_DECISION_REPRESENTATIVE_SPACE_FILLING"},
+    "representative_subset": {
+      "size": 200,
+      "source": "E1_SAMPLE_TABLE",
+      "method": "CENTER_INITIALIZED_NORMALIZED_EUCLIDEAN_GREEDY_MAXIMIN_V1",
+      "normalization": "THEORETICAL_FINAL_E1_MARGINAL_BOUNDS_V1",
+      "initial_point": "NEAREST_ACTUAL_ROW_TO_ALL_0_5_CENTER",
+      "tie_policy": "IEEE754_8ULP_THEN_MIN_SAMPLE_INDEX_V1",
+      "forbidden_inputs": ["policy_label", "objective", "shortage", "runtime", "worst_scenario", "R_activation", "candidate_hits"],
+      "identity_source": "docs/evidence/FINAL_FORMAL_MACHINE_IDENTITIES_v1.json",
+      "status": "RESOLVED"
+    },
     "A": {"h_V_tau": [0.0, 0.5, 1.0], "reference_phi_psi": [0.2, 0.85], "m_F": [0.8, 1.0, 1.2], "phi_psi": [[0.16, 0.68], [0.2, 0.85], [0.24, 1.02]], "maximum_optimizations": 1800},
-    "B": {"S_F": "mean_k(1-rho_Fk)", "supply_risk_quantiles": [0.25, 0.5, 0.75], "A_R1": "eta_1/(c_R1/cQ)", "A_R2": "(eta_2-eta_1)/((c_R2-c_R1)/cQ)", "A_R": "0.5*(Z(A_R1)+Z(A_R2))", "reliability_quantiles": [0.25, 0.5, 0.75], "maximum_optimizations": 1800, "status": "OPEN_DECISION_E3B_RELIABILITY_SELECTION"},
+    "B": {
+      "S_F": "mean_k(1-rho_Fk)",
+      "supply_risk_population": "ALL_1000_E1_PARAMETER_ROWS",
+      "supply_risk_quantiles": [0.25, 0.5, 0.75],
+      "F_active_row": "any_commodity_F_i_gt_E1_policy_tolerance",
+      "activation_tolerance": 1e-7,
+      "A_R1": "eta_1/(c_R1/cQ)",
+      "A_R2": "(eta_2-eta_1)/((c_R2-c_R1)/cQ)",
+      "A_R": "0.5*(Z(A_R1)+Z(A_R2))",
+      "standardization_population": "ALL_F_ACTIVE_E1_ROWS",
+      "standard_deviation_ddof": 0,
+      "quantile_method": "NUMPY_LINEAR_EMPIRICAL_QUANTILE_V1",
+      "distinct_rule": "Q25_THEN_Q50_THEN_Q75_EXCLUDE_PREVIOUSLY_SELECTED",
+      "tie_policy": "IEEE754_8ULP_THEN_MIN_SAMPLE_INDEX_V1",
+      "reliability_quantiles": [0.25, 0.5, 0.75],
+      "degenerate_status": "E3B_RELIABILITY_SCORE_DEGENERATE",
+      "maximum_optimizations": 1800,
+      "status": "RESOLVED"
+    },
     "maximum_optimizations": 3600
   },
   "E4": {
     "A": {"name": "Historical LOHO", "parameter_subset_size": 200, "folds": 24, "training_scenarios_per_fold": 23, "training_optimizations": 4800, "budget": 19137905.85543848, "recompute_budget": false},
-    "B": {"name": "Synthetic OOS", "policy_count": 100, "scenarios_per_policy_seed": 2000, "fixed_seed_count": 10, "first_stage_reoptimization_per_scenario": false, "status": "OPEN_DECISION_E4B_GENERATOR", "must_not_use": "E5_COMPUTATIONAL_GENERATOR"}
+    "B": {
+      "name": "Synthetic OOS",
+      "generator_identity": "RAWLS24_SCIENTIFIC_OOS_GENERATOR_V1",
+      "policy_count": 100,
+      "policy_subset": "S_100_NESTED_WITHIN_S_200",
+      "scenarios_per_policy_seed": 2000,
+      "seeds": [20260904, 20260905, 20260906, 20260907, 20260908, 20260909, 20260910, 20260911, 20260912, 20260913],
+      "template_measure": "DISCRETE_UNIFORM_H01_H24",
+      "category": "INHERIT_TEMPLATE",
+      "common_demand_multiplier": [0.85, 1.15],
+      "item_demand_multiplier": [0.95, 1.05],
+      "item_order": ["Water", "Seasonal Influenza Vaccine", "Crackers"],
+      "availability_noise": false,
+      "no_hurricane": false,
+      "shared_scenarios_across_policies": true,
+      "first_stage_reoptimization_per_scenario": false,
+      "metrics": ["mean_T_COST", "P90_T_COST", "P95_T_COST", "mean_shortage", "P95_shortage", "Pr_any_shortage_gt_policy_tolerance", "mean_service_level", "P05_service_level"],
+      "service_level": "1-sum_i(u_i)/sum_i(d_i)",
+      "status": "RESOLVED",
+      "must_not_use": "E5_COMPUTATIONAL_GENERATOR"
+    }
   },
   "E5": {
     "algorithms": ["A0", "A1_FINAL_NO_MEMORY_V1"],
@@ -93,16 +141,44 @@
     "memory_metrics_formal": false,
     "redraw_after_failure_or_timeout": false,
     "A": {"dataset": "Rawls24", "parameter_subset_size": 200},
-    "B": {"items": 3, "scenario_sizes": [50, 100, 200, 500], "replicates_per_size": 30, "nested_master_size": 500, "common_multiplier": [0.85, 1.15], "item_multiplier": [0.95, 1.05], "budget_basis": "ONE_BENCHMARK_B_REF_FROM_FULL_500_POOL_PER_REPLICATE"},
-    "C": {"item_sizes": [3, 6, 9], "scenarios": 100, "replicates_per_size": 30, "nested_master_items": 9, "archetype_ratio": "1:1:1", "cost_multiplier": [0.8, 1.2], "demand_multiplier": [0.8, 1.2], "preservation_multiplier": [0.5, 1.5], "storage_loss_retention": [0.8, 1.0], "budget_ratio_to_B_ref_bench": 1.0},
-    "generator_status": "OPEN_DECISION_E5_GENERATOR_IDENTITY"
+    "B": {
+      "generator_identity": "RAWLS24_E5B_COMPUTATIONAL_BENCHMARK_GENERATOR_V1",
+      "seeds": [20261001, 20261002, 20261003, 20261004, 20261005, 20261006, 20261007, 20261008, 20261009, 20261010, 20261011, 20261012, 20261013, 20261014, 20261015, 20261016, 20261017, 20261018, 20261019, 20261020, 20261021, 20261022, 20261023, 20261024, 20261025, 20261026, 20261027, 20261028, 20261029, 20261030],
+      "items": 3,
+      "scenario_sizes": [50, 100, 200, 500],
+      "replicates_per_size": 30,
+      "nested_master_size": 500,
+      "parameter_row": "FIRST_PCG64_DRAW_UNIFORM_INTEGER_1_1000_SHARED_ACROSS_SIZES",
+      "template_measure": "DISCRETE_UNIFORM_H01_H24",
+      "nesting": "GENERATION_ORDER_PREFIXES_NO_SORTING",
+      "common_multiplier": [0.85, 1.15],
+      "item_multiplier": [0.95, 1.05],
+      "budget_basis": "ONE_BENCHMARK_B_REF_FROM_FULL_500_POOL_PER_REPLICATE",
+      "budget_formula": "sum_i((cQ_i+h_i*tau)*mean_Omega500(d_i)/a_i)"
+    },
+    "C": {
+      "generator_identity": "RAWLS24_E5C_COMMODITY_BENCHMARK_GENERATOR_V1",
+      "seeds": [20261101, 20261102, 20261103, 20261104, 20261105, 20261106, 20261107, 20261108, 20261109, 20261110, 20261111, 20261112, 20261113, 20261114, 20261115, 20261116, 20261117, 20261118, 20261119, 20261120, 20261121, 20261122, 20261123, 20261124, 20261125, 20261126, 20261127, 20261128, 20261129, 20261130],
+      "item_sizes": [3, 6, 9],
+      "scenarios": 100,
+      "replicates_per_size": 30,
+      "nested_master_items": 9,
+      "item_order": ["Standard_1", "Preservation_1", "StorageLoss_1", "Standard_2", "Preservation_2", "StorageLoss_2", "Standard_3", "Preservation_3", "StorageLoss_3"],
+      "archetype_ratio": "1:1:1",
+      "parameter_row": "FIRST_PCG64_DRAW_UNIFORM_INTEGER_1_1000_SHARED_ACROSS_ITEM_SIZES",
+      "cost_multiplier": [0.8, 1.2],
+      "demand_multiplier": [0.8, 1.2],
+      "preservation_multiplier": [0.5, 1.5],
+      "storage_loss_retention": [0.8, 1.0],
+      "rng_draw_order": ["m_c", "m_d", "conditional_m_h_or_a"],
+      "budget_ratio_to_B_ref_bench": 1.0
+    },
+    "generator_status": "RESOLVED",
+    "machine_identity_source": "docs/evidence/FINAL_FORMAL_MACHINE_IDENTITIES_v1.json"
   },
   "open_decisions": [
-    "OPEN_DECISION_REPRESENTATIVE_SPACE_FILLING",
-    "OPEN_DECISION_E3B_RELIABILITY_SELECTION",
-    "OPEN_DECISION_E4B_GENERATOR",
-    "OPEN_DECISION_E5_GENERATOR_IDENTITY",
     "OPEN_DECISION_PR27_ENGINEERING_PROMOTION"
   ],
+  "remaining_formal_scientific_open_decisions": 0,
   "governance": {"result_driven_calibration": false, "replace_failure_or_timeout": false, "scientific_and_computational_generators_separate": true, "formal_execution_authorized": false}
 }
