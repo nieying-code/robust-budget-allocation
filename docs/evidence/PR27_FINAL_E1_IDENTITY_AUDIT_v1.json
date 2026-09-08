@@ -1,0 +1,393 @@
+{
+  "FINAL_E1_REUSE_CANDIDATE": "YES",
+  "audit_kind": "SOLVER_FREE_STATIC_COMMITTED_ARTIFACT_AUDIT",
+  "checks": [
+    {
+      "evidence": "rawls_24_real_single_hurricane_data_recalibration_v1",
+      "field": "dataset identity",
+      "id": "01",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "h01",
+        "h02",
+        "h03",
+        "h04",
+        "h05",
+        "h06",
+        "h07",
+        "h08",
+        "h09",
+        "h10",
+        "h11",
+        "h12",
+        "h13",
+        "h14",
+        "h15",
+        "h16",
+        "h17",
+        "h18",
+        "h19",
+        "h20",
+        "h21",
+        "h22",
+        "h23",
+        "h24"
+      ],
+      "field": "Rawls24 scenario identity",
+      "id": "02",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "h01",
+        "h02",
+        "h03",
+        "h04",
+        "h05",
+        "h06",
+        "h07",
+        "h08",
+        "h09",
+        "h10",
+        "h11",
+        "h12",
+        "h13",
+        "h14",
+        "h15",
+        "h16",
+        "h17",
+        "h18",
+        "h19",
+        "h20",
+        "h21",
+        "h22",
+        "h23",
+        "h24"
+      ],
+      "field": "scenario order",
+      "id": "03",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "Water",
+        "Seasonal Influenza Vaccine",
+        "Crackers"
+      ],
+      "field": "commodity identity",
+      "id": "04",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "path": "configs/r6c_formal_ready_data_v2.json",
+        "sha256": "eae86e57da22765cb097d168fcc76b1798f8c1417f00a5f40280cc3e47bd1e02"
+      },
+      "field": "commodity static parameters",
+      "id": "05",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "Crackers": "food_unified * 14",
+        "Seasonal Influenza Vaccine": "medical_unified * 10.0603621730382",
+        "Water": "water_unified"
+      },
+      "field": "demand mapping",
+      "id": "06",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "a": {
+          "Crackers": 0.9,
+          "Seasonal Influenza Vaccine": 1.0,
+          "Water": 1.0
+        },
+        "h": {
+          "Crackers": 0.0,
+          "Seasonal Influenza Vaccine": 0.0833333333333333,
+          "Water": 0.0
+        }
+      },
+      "field": "h/a values",
+      "id": "07",
+      "status": "PASS"
+    },
+    {
+      "evidence": 4.0,
+      "field": "beta",
+      "id": "08",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "field": "lambda",
+      "id": "09",
+      "status": "PASS"
+    },
+    {
+      "evidence": 19137905.85543848,
+      "field": "absolute B",
+      "id": "10",
+      "status": "PASS"
+    },
+    {
+      "evidence": "sum_i((cQ_i+h_i*tau)*Dref_i/a_i)",
+      "field": "B_ref definition",
+      "id": "11",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "first": "LA-0001",
+        "last": "LA-1000",
+        "rows": 1000
+      },
+      "field": "parameter-table identity",
+      "id": "12",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "byte_identical": true,
+        "committed": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+        "reconstructed": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0"
+      },
+      "field": "parameter-table SHA-256 and deterministic reconstruction",
+      "id": "13",
+      "status": "PASS"
+    },
+    {
+      "evidence": 20260903,
+      "field": "seed",
+      "id": "14",
+      "status": "PASS"
+    },
+    {
+      "evidence": "DETERMINISTIC_CONSTRAINED_LATIN_HYPERCUBE_V1",
+      "field": "sampling method",
+      "id": "15",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "c_R1_ratio": [
+          0.02,
+          0.3
+        ],
+        "c_R2_ratio": [
+          0.15,
+          0.6
+        ],
+        "eta_1": [
+          0.05,
+          0.5
+        ],
+        "eta_2": [
+          0.4,
+          0.9
+        ],
+        "phi": [
+          0.0,
+          0.5
+        ],
+        "psi": [
+          0.5,
+          1.5
+        ],
+        "rho_F1": [
+          0.7,
+          0.98
+        ],
+        "rho_F2": [
+          0.6,
+          0.95
+        ],
+        "rho_F3": [
+          0.5,
+          0.92
+        ],
+        "rho_F4": [
+          0.4,
+          0.88
+        ],
+        "rho_F5": [
+          0.3,
+          0.85
+        ],
+        "rho_Q1": [
+          0.8,
+          0.98
+        ],
+        "rho_Q2": [
+          0.7,
+          0.94
+        ],
+        "rho_Q3": [
+          0.6,
+          0.88
+        ],
+        "rho_Q4": [
+          0.5,
+          0.82
+        ],
+        "rho_Q5": [
+          0.4,
+          0.75
+        ]
+      },
+      "field": "parameter ranges",
+      "id": "16",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "eta": "eta_2>eta_1 and eta_2-eta_1>=0.05",
+        "reliability_premium": "c_R2_ratio>c_R1_ratio and c_R2_ratio-c_R1_ratio>=0.05",
+        "rho_F": "rho_F1>=rho_F2>=rho_F3>=rho_F4>=rho_F5",
+        "rho_Q": "rho_Q1>=rho_Q2>=rho_Q3>=rho_Q4>=rho_Q5"
+      },
+      "field": "monotonic/order constraints",
+      "id": "17",
+      "status": "PASS"
+    },
+    {
+      "evidence": "M2",
+      "field": "M2 model identity",
+      "id": "18",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "candidate_hits": 1468,
+        "full_exact_calls": 2000,
+        "method_counts": {
+          "R4_V2_A1_IMPROVED_CCG": 1000
+        }
+      },
+      "field": "A1 mathematical identity",
+      "id": "19",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "candidate_plan_changes_vs_memory_disabled": 0,
+        "full_exact_after_memory_miss": 1000,
+        "iterations_with_memory_evaluation": 1000,
+        "memory_exact_evaluations": 2000,
+        "memory_hits": 0,
+        "memory_opportunities": 1000,
+        "memory_phase_enabled_count": 1000,
+        "memory_planned_evaluations": 2000,
+        "solve_count": 1000
+      },
+      "field": "A1 Memory status for scientific reuse",
+      "id": "20",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "certified": 1000,
+        "validation_rule": "1e-7 + 1e-12*family_scale"
+      },
+      "field": "numerically robust exact oracle/validation",
+      "id": "21",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "convergence": "1e-7+1e-9*scale",
+        "policy": 1e-07,
+        "validation": "1e-7+1e-12*family_scale"
+      },
+      "field": "tolerances",
+      "id": "22",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "gurobi_optimizer": "13.0.2",
+        "gurobipy": "13.0.2",
+        "license_available": true,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "pyomo": "6.10.1",
+        "python": "3.12.10",
+        "python_implementation": "CPython",
+        "solver_available": true,
+        "solver_interface": "gurobi_direct",
+        "status": "PASS",
+        "threads": 1
+      },
+      "field": "solver policy",
+      "id": "23",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "artifact_hash_entries_verified": 53,
+        "artifact_hash_failures": [],
+        "diagnostic_rows": 1000,
+        "scientific_rows": 1000
+      },
+      "field": "result schema",
+      "id": "24",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "parameter_tuning": false,
+        "status": "EXPLORATORY_LAYER_B_NOT_FORMAL_E1_E5"
+      },
+      "field": "scientific output interpretation",
+      "id": "25",
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "FAIL": 0,
+    "PASS": 25,
+    "UNKNOWN": 0
+  },
+  "excluded_reuse": [
+    "E5 runtime",
+    "E5 scenario-evaluation counts",
+    "Memory metrics",
+    "formal algorithm-label identity"
+  ],
+  "final_config_sha256": "0d000023c5035ecd44a6fbd949c95e35a69a263edfe69623e33a7c8385c4e665",
+  "final_protocol_sha256": "4ce10353efd59b1d164596fed71e6bbee84631e1cf391fd7d1c996844bc79b0f",
+  "memory_effect_audit": {
+    "candidate_plan_changes_vs_memory_disabled": 0,
+    "full_exact_after_memory_miss": 1000,
+    "iterations_with_memory_evaluation": 1000,
+    "memory_exact_evaluations": 2000,
+    "memory_hits": 0,
+    "memory_opportunities": 1000,
+    "memory_phase_enabled_count": 1000,
+    "memory_planned_evaluations": 2000,
+    "solve_count": 1000
+  },
+  "pr_artifact_hash_entries_verified": 53,
+  "pr_artifact_hash_failures": [],
+  "pr_head": "675759cf955788d0200e8c1f24e7e1aff13af44b",
+  "pr_number": 27,
+  "pr_output_root": "simulation_results/qfr_mechanism_layer_b_rawls24_n1000",
+  "reuse_scope": "E1_SCIENTIFIC_OUTPUTS_ONLY_PENDING_INDEPENDENT_APPROVAL",
+  "sample_table_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+  "sampler_reconstruction": {
+    "matches_committed_sample_bytes": true,
+    "method": "INDEPENDENT_STATIC_REIMPLEMENTATION_OF_COMMITTED_PR27_SAMPLER",
+    "reconstructed_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+    "same_seed_byte_identical_twice": true
+  },
+  "schema_version": 1,
+  "scientific_optimization_runs": 0,
+  "scope": "PR27_LAYER_B_TO_FINAL_E1_STATIC_IDENTITY_AUDIT"
+}

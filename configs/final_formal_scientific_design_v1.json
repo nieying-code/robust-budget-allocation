@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "scope": "FINAL_FORMAL_SCIENTIFIC_DESIGN_E1_E5_V1",
+  "status": "FROZEN_DESIGN_EXECUTION_NOT_AUTHORIZED",
+  "authority": "docs/FINAL_FORMAL_SCIENTIFIC_DESIGN_v1.md",
+  "scientific_optimization_runs": 0,
+  "common": {
+    "dataset": "rawls_24_real_single_hurricane_data_recalibration_v1",
+    "scenario_order": ["h01", "h02", "h03", "h04", "h05", "h06", "h07", "h08", "h09", "h10", "h11", "h12", "h13", "h14", "h15", "h16", "h17", "h18", "h19", "h20", "h21", "h22", "h23", "h24"],
+    "scenario_type": "single_hurricane",
+    "commodities": ["Water", "Seasonal Influenza Vaccine", "Crackers"],
+    "archetypes": {"Water": "standard-storable", "Seasonal Influenza Vaccine": "preservation-sensitive", "Crackers": "storage-loss-sensitive"},
+    "model": "M2",
+    "beta": 4.0,
+    "lambda_order": ["Water", "Seasonal Influenza Vaccine", "Crackers"],
+    "lambda": [1.0, 1.0, 1.0],
+    "gamma_D": 1.0,
+    "commodity_baseline": {
+      "Water": {"h_per_month": 0.0, "a": 1.0},
+      "Seasonal Influenza Vaccine": {"h_per_month": 0.0833333333333333, "tau_months": 6.0, "h_times_tau": 0.5, "a": 1.0},
+      "Crackers": {"h_per_month": 0.0, "a": 0.9}
+    },
+    "B_ref_E1": 19137905.85543848,
+    "budget_rule": "FIXED_ABSOLUTE_B_REF_E1_UNLESS_E2B_OR_EXPLICIT_E5_COMPUTATIONAL_NORMALIZATION"
+  },
+  "algorithm": {
+    "name": "A1",
+    "identity": "A1_FINAL_NO_MEMORY_V1",
+    "components": ["Candidate Search", "Full Exact Certification", "numerically robust exact oracle"],
+    "memory_enabled": false,
+    "memory_metrics_formal": false,
+    "historical_memory_fields": "HISTORICAL_ONLY",
+    "convergence_tolerance": {"absolute": 1e-7, "relative": 1e-9},
+    "validation_tolerance": {"rule": "abs_violation <= abs_tol + rel_tol * constraint_family_scale", "absolute": 1e-7, "relative": 1e-12},
+    "solver_policy": {"interface": "gurobi_direct", "threads": 1, "fallback": false, "MIPGap": 0, "MIPGapAbs": 0, "FeasibilityTol": 1e-9, "OptimalityTol": 1e-9, "IntFeasTol": 1e-9}
+  },
+  "E1": {
+    "name": "Parameter-Space Main Experiment",
+    "sample_size": 1000,
+    "sampling": "DETERMINISTIC_CONSTRAINED_LATIN_HYPERCUBE_V1",
+    "seed": 20260903,
+    "sample_table_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+    "bounds": {
+      "rho_Q1": [0.80, 0.98], "rho_Q2": [0.70, 0.94], "rho_Q3": [0.60, 0.88], "rho_Q4": [0.50, 0.82], "rho_Q5": [0.40, 0.75],
+      "rho_F1": [0.70, 0.98], "rho_F2": [0.60, 0.95], "rho_F3": [0.50, 0.92], "rho_F4": [0.40, 0.88], "rho_F5": [0.30, 0.85],
+      "eta_1": [0.05, 0.50], "eta_2": [0.40, 0.90], "phi": [0.00, 0.50], "psi": [0.50, 1.50], "c_R1_ratio": [0.02, 0.30], "c_R2_ratio": [0.15, 0.60]
+    },
+    "constraints": {
+      "rho_Q": "rho_Q1>=rho_Q2>=rho_Q3>=rho_Q4>=rho_Q5",
+      "rho_F": "rho_F1>=rho_F2>=rho_F3>=rho_F4>=rho_F5",
+      "rho_F_vs_rho_Q": "NO_CONSTRAINT",
+      "eta": "eta_2>eta_1 and eta_2-eta_1>=0.05",
+      "phi_plus_psi": "NO_CONSTANT_SUM_CONSTRAINT",
+      "reliability_premium": "c_R2_ratio>c_R1_ratio and c_R2_ratio-c_R1_ratio>=0.05"
+    },
+    "policy_tolerance": 1e-7,
+    "policy_labels": {"P1": "Q-only", "P2": "Q+F+R0", "P3a": "Q+F+R1", "P3b": "Q+F+R2", "P4": "F-dominant/Q approximately zero", "P5": "other/corner"},
+    "interpretation": "PARAMETER_SPACE_SHARE_NOT_REAL_WORLD_PROBABILITY"
+  },
+  "E2": {
+    "paired_draws": 1000,
+    "A": {"design": "OFAT", "baseline": {"h_V_tau": 0.5, "a_C": 0.9}, "new_cells": [{"h_V_tau": 0.0, "a_C": 0.9}, {"h_V_tau": 1.0, "a_C": 0.9}, {"h_V_tau": 0.5, "a_C": 1.0}, {"h_V_tau": 0.5, "a_C": 0.8}], "new_optimizations": 4000, "budget": 19137905.85543848},
+    "B": {"budget_ratios": [0.75, 1.0, 1.25], "baseline_reused": true, "new_optimizations": 2000},
+    "C": {"new_optimizations": 0, "condition": "F_i>policy_tolerance", "A_R1": "eta_1/(c_R1/cQ)", "A_R2": "(eta_2-eta_1)/((c_R2-c_R1)/cQ)", "claim_boundary": "DESCRIPTIVE_NOT_CAUSAL"},
+    "D1": {"beta": [2.0, 4.0, 6.0], "baseline_reused": true, "new_optimizations": 2000},
+    "D2": {"lambda_order": ["Water", "Seasonal Influenza Vaccine", "Crackers"], "cases": [[1.5, 1.0, 1.0], [1.0, 1.5, 1.0], [1.0, 1.0, 1.5]], "interpretation": "SYMMETRIC_MANAGERIAL_PREFERENCE_PERTURBATION", "new_optimizations": 3000},
+    "planned_new_optimizations": 11000
+  },
+  "E3": {
+    "representative_subset": {"size": 200, "source": "E1_SAMPLE_TABLE", "method": "DETERMINISTIC_OUTCOME_INDEPENDENT_MAXIMIN_SPACE_FILLING", "forbidden_inputs": ["policy_label", "objective", "runtime", "R_activation", "candidate_hits"], "status": "OPEN_DECISION_REPRESENTATIVE_SPACE_FILLING"},
+    "A": {"h_V_tau": [0.0, 0.5, 1.0], "reference_phi_psi": [0.2, 0.85], "m_F": [0.8, 1.0, 1.2], "phi_psi": [[0.16, 0.68], [0.2, 0.85], [0.24, 1.02]], "maximum_optimizations": 1800},
+    "B": {"S_F": "mean_k(1-rho_Fk)", "supply_risk_quantiles": [0.25, 0.5, 0.75], "A_R1": "eta_1/(c_R1/cQ)", "A_R2": "(eta_2-eta_1)/((c_R2-c_R1)/cQ)", "A_R": "0.5*(Z(A_R1)+Z(A_R2))", "reliability_quantiles": [0.25, 0.5, 0.75], "maximum_optimizations": 1800, "status": "OPEN_DECISION_E3B_RELIABILITY_SELECTION"},
+    "maximum_optimizations": 3600
+  },
+  "E4": {
+    "A": {"name": "Historical LOHO", "parameter_subset_size": 200, "folds": 24, "training_scenarios_per_fold": 23, "training_optimizations": 4800, "budget": 19137905.85543848, "recompute_budget": false},
+    "B": {"name": "Synthetic OOS", "policy_count": 100, "scenarios_per_policy_seed": 2000, "fixed_seed_count": 10, "first_stage_reoptimization_per_scenario": false, "status": "OPEN_DECISION_E4B_GENERATOR", "must_not_use": "E5_COMPUTATIONAL_GENERATOR"}
+  },
+  "E5": {
+    "algorithms": ["A0", "A1_FINAL_NO_MEMORY_V1"],
+    "timing_repetitions": 3,
+    "per_instance_runtime": "MEDIAN_OF_3",
+    "speedup": "median_runtime_A0/median_runtime_A1",
+    "speedup_summary": ["median", "IQR", "P90", "geometric_mean"],
+    "memory_metrics_formal": false,
+    "redraw_after_failure_or_timeout": false,
+    "A": {"dataset": "Rawls24", "parameter_subset_size": 200},
+    "B": {"items": 3, "scenario_sizes": [50, 100, 200, 500], "replicates_per_size": 30, "nested_master_size": 500, "common_multiplier": [0.85, 1.15], "item_multiplier": [0.95, 1.05], "budget_basis": "ONE_BENCHMARK_B_REF_FROM_FULL_500_POOL_PER_REPLICATE"},
+    "C": {"item_sizes": [3, 6, 9], "scenarios": 100, "replicates_per_size": 30, "nested_master_items": 9, "archetype_ratio": "1:1:1", "cost_multiplier": [0.8, 1.2], "demand_multiplier": [0.8, 1.2], "preservation_multiplier": [0.5, 1.5], "storage_loss_retention": [0.8, 1.0], "budget_ratio_to_B_ref_bench": 1.0},
+    "generator_status": "OPEN_DECISION_E5_GENERATOR_IDENTITY"
+  },
+  "open_decisions": [
+    "OPEN_DECISION_REPRESENTATIVE_SPACE_FILLING",
+    "OPEN_DECISION_E3B_RELIABILITY_SELECTION",
+    "OPEN_DECISION_E4B_GENERATOR",
+    "OPEN_DECISION_E5_GENERATOR_IDENTITY",
+    "OPEN_DECISION_PR27_ENGINEERING_PROMOTION"
+  ],
+  "governance": {"result_driven_calibration": false, "replace_failure_or_timeout": false, "scientific_and_computational_generators_separate": true, "formal_execution_authorized": false}
+}
