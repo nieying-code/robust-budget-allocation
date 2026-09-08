@@ -258,7 +258,10 @@ def benchmark_budget(
     ))
 
 
-def generate_e5c_items(seed: int, row_count: int = 1000) -> dict[str, Any]:
+def generate_e5c_items(
+    seed: int, templates: Sequence[Mapping[str, Any]], row_count: int = 1000
+) -> dict[str, Any]:
+    """Generate one nested E5-C item pool and its shared 100-scenario demand table."""
     rng = np.random.Generator(np.random.PCG64(seed))
     parameter_row_id = int(rng.integers(1, row_count + 1))
     items = []
@@ -276,4 +279,43 @@ def generate_e5c_items(seed: int, row_count: int = 1000) -> dict[str, Any]:
             else:
                 item.update({"h_times_tau": 0.0, "a": float(rng.uniform(0.8, 1.0))})
             items.append(item)
-    return {"seed": seed, "parameter_row_id": parameter_row_id, "master_9": items}
+    archetype_source = {
+        "Standard": "Water",
+        "Preservation": "Seasonal Influenza Vaccine",
+        "StorageLoss": "Crackers",
+    }
+    scenarios = []
+    for index in range(1, 101):
+        template = templates[int(rng.integers(0, len(templates)))]
+        common = float(rng.uniform(0.85, 1.15))
+        scenarios.append({
+            "scenario_id": f"E5C-{seed}-{index:03d}",
+            "template_id": template["scenario_id"],
+            "category": int(template["category"]),
+            "m_common": common,
+            "demand": {
+                item["item_id"]: float(template["demand"][archetype_source[item["archetype"]]])
+                * float(item["m_d"]) * common
+                for item in items
+            },
+        })
+    return {
+        "seed": seed,
+        "parameter_row_id": parameter_row_id,
+        "master_9": items,
+        "master_100": scenarios,
+    }
+
+
+def e5c_budget(
+    items: Sequence[Mapping[str, Any]], scenarios: Sequence[Mapping[str, Any]], size: int
+) -> float:
+    """E5-C B_ref benchmark for one item-prefix instance."""
+    base_cost = {"Standard": 0.6477, "Preservation": 13.916, "StorageLoss": 0.09372}
+    selected = list(items[:size])
+    return float(sum(
+        (base_cost[item["archetype"]] * float(item["m_c"]) + float(item["h_times_tau"]))
+        * float(np.mean([scenario["demand"][item["item_id"]] for scenario in scenarios]))
+        / float(item["a"])
+        for item in selected
+    ))

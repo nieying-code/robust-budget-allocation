@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from robust_budget_allocation.formal.final_design import (  # noqa: E402
     E4_GENERATOR_IDENTITY, E5B_GENERATOR_IDENTITY, E5C_GENERATOR_IDENTITY,
     QUANTILE_POLICY, RNG_IDENTITY, TIE_POLICY, benchmark_budget, canonical_sha256,
-    generate_e4b, generate_e5b, generate_e5c_items, select_f_supply_risk,
+    e5c_budget, generate_e4b, generate_e5b, generate_e5c_items, select_f_supply_risk,
     select_reliability_economics, select_space_filling, selection_identity,
 )
 from audit_pr27_final_e1_identity import _reconstruct_samples  # noqa: E402
@@ -112,19 +112,36 @@ def build() -> dict[str, object]:
 
     e5c_replicates = []
     for seed in range(20261101, 20261131):
-        generated = generate_e5c_items(seed)
+        generated = generate_e5c_items(seed, templates)
         master = generated["master_9"]
+        scenarios = generated["master_100"]
         e5c_replicates.append({
             "seed": seed, "parameter_row_id": generated["parameter_row_id"],
             "master_9_sha256": canonical_sha256(master),
+            "master_100_scenario_sha256": canonical_sha256(scenarios),
             "prefix_sha256": {str(size): canonical_sha256(master[:size]) for size in (3, 6, 9)},
+            "demand_matrix_sha256": {
+                str(size): canonical_sha256([
+                    {"scenario_id": row["scenario_id"], "demand": {
+                        item["item_id"]: row["demand"][item["item_id"]] for item in master[:size]
+                    }} for row in scenarios
+                ]) for size in (3, 6, 9)
+            },
+            "B_ref_bench": {str(size): e5c_budget(master, scenarios, size) for size in (3, 6, 9)},
         })
     e5c_body = {
         "identity": E5C_GENERATOR_IDENTITY, "rng": RNG_IDENTITY,
         "seeds": list(range(20261101, 20261131)),
-        "draw_order": ["parameter_row_id", "per_item:m_c", "per_item:m_d", "conditional:m_h_or_a"],
+        "draw_order": ["parameter_row_id", "per_item:m_c", "per_item:m_d", "conditional:m_h_or_a", "per_scenario:template_id", "per_scenario:m_common"],
         "item_order": [f"{kind}_{index}" for index in range(1, 4) for kind in ("Standard", "Preservation", "StorageLoss")],
         "nested_prefix_sizes": [3, 6, 9], "scenario_count": 100,
+        "template_measure": "DISCRETE_UNIFORM_H01_H24",
+        "template_category": "INHERITED",
+        "no_hurricane": "DISABLED",
+        "archetype_base_demand": {"Standard": "Water", "Preservation": "Seasonal Influenza Vaccine", "StorageLoss": "Crackers"},
+        "demand_formula": "template_archetype_demand*m_d_item*m_common_scenario",
+        "extra_item_by_scenario_noise": False,
+        "scenario_sharing": "SAME_MASTER_100_ACROSS_I3_I6_I9",
         "replicates": e5c_replicates,
     }
     s200_identity = selection_identity(s200, config["E1"]["sample_table_sha256"], "E3_E4A_SHARED_S200")

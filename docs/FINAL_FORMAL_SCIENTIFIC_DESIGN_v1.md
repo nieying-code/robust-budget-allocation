@@ -207,8 +207,18 @@ multipliers are `U(.8,1.2)`. Standard has h=0,a=1; Preservation has a=1 and
 `h_j*tau=m_h*(h*tau)_base`, `m_h~U(.5,1.5)`; StorageLoss has h=0 and
 `a_j~U(.80,1.00)`. A benchmark instance shares one Q-F-R mechanism draw across all
 items. For every item the fixed draw order is m_c, m_d, then the archetype-conditional
-m_h or a draw; Standard consumes no third draw. Each item-size instance uses
-`B/B_ref^bench=1` under the same definition. The generator identity is
+m_h or a draw; Standard consumes no third draw. After the complete item pool, generate
+one shared 100-scenario master table. Each scenario uniformly selects one of h01–h24,
+inherits its category, excludes no-hurricane, and draws one common
+`m_common~U(.85,1.15)` shared by every item. Standard maps to the template's Water
+baseline, Preservation to Vaccine, and StorageLoss to Crackers. Its demand is
+`d_j,omega=d_template,archetype(j)*m_d,j*m_common,omega`; m_d,j is fixed over all
+100 scenarios and there is no item-by-scenario multiplier. The full RNG order is
+parameter row, all nine item draws, then template ID and common shock for scenarios
+1..100. I=3/6/9 use item prefixes against the identical scenario table.
+
+Each item-size instance separately computes its benchmark B_ref from its item prefix
+and this shared demand table, then uses `B/B_ref^bench=1`. The generator identity is
 `RAWLS24_E5C_COMMODITY_BENCHMARK_GENERATOR_V1`. It is computational and cannot be
 substituted for E4-B.
 

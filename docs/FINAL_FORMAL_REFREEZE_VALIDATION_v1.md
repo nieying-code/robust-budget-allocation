@@ -52,3 +52,25 @@ Final result after the hash manifest was sealed:
 - PR #27 engineering promotion: pending independent approval (non-scientific gate).
 - Final A1: `A1_FINAL_NO_MEMORY_V1`; no Memory metric is admissible in E5.
 - PR #27 reuse candidate: YES, scientific outputs only; runtime/Memory evidence excluded.
+
+## E5-C 100-scenario demand-generator gap closure
+
+The existing E5-C helper was extended, without solver imports, to generate the shared
+100-scenario master structure after the nine item draws. It records uniform Rawls24
+template IDs, inherited categories, one scenario-common shock, complete nine-item
+demand vectors, I3/I6/I9 demand-matrix hashes, and size-specific benchmark budgets.
+
+```powershell
+.\.venv\Scripts\python.exe scripts/freeze_final_formal_machine_identities.py
+.\.venv\Scripts\python.exe -m pytest tests/test_final_formal_machine_definition.py tests/test_final_formal_refreeze.py -q -k "not final_design_hash_manifest"
+.\.venv\Scripts\python.exe -m pytest -m "not gurobi" -q -k "not final_design_hash_manifest"
+```
+
+Pre-seal results: deterministic rebuild PASS; targeted `19 passed, 1 deselected`;
+full solver-free `953 passed, 1 skipped, 107 deselected, 0 failed in 405.09s`.
+The sole extra deselection is the hash guard, which is executed after the updated
+manifest is sealed. Scientific optimization runs remained zero.
+
+After sealing the manifest, the targeted suite passed `20/20`, and the complete
+unfiltered solver-free command passed:
+`954 passed, 1 skipped, 106 deselected, 0 failed in 385.58s`.

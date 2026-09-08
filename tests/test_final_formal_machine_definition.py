@@ -106,9 +106,9 @@ def test_e5b_prefix_nesting_common_parameter_row_and_budget_identity(templates):
     assert len(set(frozen["B_r_bench_sha256"] for _ in (50, 100, 200, 500))) == 1
 
 
-def test_e5c_item_nesting_ratio_common_parameter_row_and_rng_reproducibility():
-    first = generate_e5c_items(20261101)
-    again = generate_e5c_items(20261101)
+def test_e5c_item_nesting_ratio_common_parameter_row_and_rng_reproducibility(templates):
+    first = generate_e5c_items(20261101, templates)
+    again = generate_e5c_items(20261101, templates)
     assert first == again
     master = first["master_9"]
     assert [row["item_id"] for row in master] == CONFIG["E5"]["C"]["item_order"]
@@ -116,6 +116,55 @@ def test_e5c_item_nesting_ratio_common_parameter_row_and_rng_reproducibility():
         prefix = master[:size]
         assert {kind: sum(row["archetype"] == kind for row in prefix) for kind in ("Standard", "Preservation", "StorageLoss")} == {kind: expected for kind in ("Standard", "Preservation", "StorageLoss")}
     assert first["parameter_row_id"] == EVIDENCE["E5C"]["replicates"][0]["parameter_row_id"]
+
+
+def test_e5c_master_100_is_deterministic_distinct_across_seeds_and_hurricane_only(templates):
+    first = generate_e5c_items(20261101, templates)
+    again = generate_e5c_items(20261101, templates)
+    other = generate_e5c_items(20261102, templates)
+    scenarios = first["master_100"]
+    assert scenarios == again["master_100"]
+    assert canonical_sha256(scenarios) != canonical_sha256(other["master_100"])
+    assert len(scenarios) == 100
+    assert {row["template_id"] for row in scenarios} <= {f"h{i:02d}" for i in range(1, 25)}
+    assert all(row["category"] in range(1, 6) for row in scenarios)
+    assert all("no_hurricane" not in row and "m_item" not in row for row in scenarios)
+
+
+def test_e5c_demand_uses_archetype_baseline_fixed_item_md_and_shared_common(templates):
+    generated = generate_e5c_items(20261101, templates)
+    template_by_id = {row["scenario_id"]: row for row in templates}
+    source = {"Standard": "Water", "Preservation": "Seasonal Influenza Vaccine", "StorageLoss": "Crackers"}
+    items = generated["master_9"]
+    for scenario in generated["master_100"]:
+        template = template_by_id[scenario["template_id"]]
+        assert set(scenario) == {"scenario_id", "template_id", "category", "m_common", "demand"}
+        assert len(scenario["demand"]) == 9
+        for item in items:
+            expected = template["demand"][source[item["archetype"]]] * item["m_d"] * scenario["m_common"]
+            assert scenario["demand"][item["item_id"]] == expected
+
+
+def test_e5c_i3_i6_i9_share_scenarios_and_are_nested_only_in_item_dimension(templates):
+    generated = generate_e5c_items(20261101, templates)
+    items, scenarios = generated["master_9"], generated["master_100"]
+    scenario_identity = [(row["scenario_id"], row["template_id"], row["category"], row["m_common"]) for row in scenarios]
+    matrices = {}
+    for size in (3, 6, 9):
+        matrices[size] = [{"scenario": identity, "demand": [row["demand"][item["item_id"]] for item in items[:size]]}
+                          for identity, row in zip(scenario_identity, scenarios, strict=True)]
+    assert all([row["scenario"] for row in matrices[size]] == scenario_identity for size in (3, 6, 9))
+    assert all(row6["demand"][:3] == row3["demand"] for row3, row6 in zip(matrices[3], matrices[6], strict=True))
+    assert all(row9["demand"][:6] == row6["demand"] for row6, row9 in zip(matrices[6], matrices[9], strict=True))
+
+
+def test_e5c_generator_hash_and_evidence_are_reproducible(templates):
+    generated = generate_e5c_items(20261101, templates)
+    frozen = EVIDENCE["E5C"]["replicates"][0]
+    assert canonical_sha256(generated["master_9"]) == frozen["master_9_sha256"]
+    assert canonical_sha256(generated["master_100"]) == frozen["master_100_scenario_sha256"]
+    assert EVIDENCE["E5C"]["extra_item_by_scenario_noise"] is False
+    assert EVIDENCE["scientific_optimization_runs"] == 0
 
 
 def test_final_protocol_has_no_formal_memory_metric_and_sample_sha_is_unchanged():

@@ -1160,8 +1160,8 @@
       1000
     ]
   },
-  "final_config_sha256": "5c2507108ef7ed475456f193c25e4a377764bb2ece4c546df43f5ebe68b2c846",
-  "final_protocol_sha256": "00179688dadac556dda3685ec09d82bae85951da599a36f6bb3c6fd63b58c62d",
+  "final_config_sha256": "106c84d1abe38cb5a96b3e7dd8de417928c15bd993b4254534aefa26c7801621",
+  "final_protocol_sha256": "a12f7ac697f534fa1b1119fe26f79501fa9b41e40412bcb5be34511bd2115b87",
   "memory_effect_audit": {
     "candidate_plan_changes_vs_memory_disabled": 0,
     "full_exact_after_memory_miss": 1000,
