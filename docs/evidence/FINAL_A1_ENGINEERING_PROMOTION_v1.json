@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "scope": "FINAL_A1_ENGINEERING_PROMOTION",
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "scientific_optimization_runs": 0,
+  "source_base": {
+    "branch": "main",
+    "commit": "24dbdd249c4ce6f82dfbdc6565fcb157a3b18dc3"
+  },
+  "engineering_reference": {
+    "pull_request": 27,
+    "head": "675759cf955788d0200e8c1f24e7e1aff13af44b",
+    "role": "REFERENCE_ONLY_NO_MERGE_NO_CHERRY_PICK",
+    "observed_state": "OPEN_DRAFT_UNMERGED"
+  },
+  "final_algorithm": {
+    "identity": "A1_FINAL_NO_MEMORY_V1",
+    "sequence": [
+      "CANDIDATE_SEARCH",
+      "FULL_EXACT_CERTIFICATION"
+    ],
+    "formal_ub_source": "FULL_EXACT_FINITE_SCENARIO_CERTIFICATION_ONLY",
+    "memory_in_execution_path": false,
+    "result_requires_memory_hits": false
+  },
+  "numerical_policy": {
+    "identity": "QFR_FAMILY_SCALE_FEASIBILITY_V1",
+    "absolute_tolerance": 1e-7,
+    "relative_tolerance": 1e-12,
+    "rule": "abs_violation <= absolute_tolerance + relative_tolerance * family_reference_scale",
+    "families": [
+      "objective_epigraph",
+      "budget",
+      "quantity_flow",
+      "fulfillment_capacity"
+    ],
+    "nonnegativity_relative_scaling": false,
+    "binary_relative_scaling": false
+  },
+  "exact_oracle_fallback": {
+    "production_formulation_first": true,
+    "trigger": "NUMERICAL_SOLVE_FAILURE_ONLY",
+    "form": "ALGEBRAICALLY_EQUIVALENT_SCALEMODEL_CLONE",
+    "map_back": true,
+    "original_semantic_validation_after_map_back": true,
+    "candidate_and_certification_share_path": true,
+    "solver_policy_changed": false
+  },
+  "promotion": [
+    {
+      "component": "family-specific feasibility validation",
+      "action": "PROMOTE_REIMPLEMENT"
+    },
+    {
+      "component": "scaled exact-oracle numerical retry",
+      "action": "PROMOTE_REIMPLEMENT"
+    },
+    {
+      "component": "mapped-back original-semantic validation",
+      "action": "PROMOTE_REIMPLEMENT"
+    },
+    {
+      "component": "tight-budget residue canonicalization",
+      "action": "PROMOTE_REIMPLEMENT"
+    },
+    {
+      "component": "Memory Inspection and all cache/ranking/hit logic",
+      "action": "REJECT"
+    },
+    {
+      "component": "Layer A/B code, outputs, manifests, and diagnostics",
+      "action": "REJECT"
+    },
+    {
+      "component": "runtime and scenario-evaluation evidence",
+      "action": "REJECT"
+    }
+  ],
+  "frozen_scientific_design": {
+    "modified": false,
+    "e1_sample_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0"
+  },
+  "environment": {
+    "changed": false,
+    "python": "3.12.10",
+    "pyomo": "6.10.1",
+    "solver": "Gurobi",
+    "solver_version": "13.0.2"
+  },
+  "implementation_sha256": {
+    "src/robust_budget_allocation/algorithms/qfr_final_a1.py": "3c89ac2db4e1530130e4e32928390b0cc0c5792976a1959342ceee8c4794c249",
+    "src/robust_budget_allocation/algorithms/qfr_numerical_validation.py": "bb48357a944f63b4db0f9e206ec7275d72cd3ce7b3b91d466ae91969258f5ee0",
+    "src/robust_budget_allocation/algorithms/qfr_exact_oracle.py": "33326b4ffff6bbf5511e28fd1e5de673ce6840f92b9c6d7fd357dd390fa21640",
+    "src/robust_budget_allocation/algorithms/qfr_state.py": "8de558eb1bd9e968b32aacc4e73408562eac6af3c0681bfec0e8046ede849944",
+    "src/robust_budget_allocation/models/qfr_support.py": "99866154bd795dd8c519f7ed5094359bb4dd2c64f642e2317a67de701cdbc455",
+    "tests/test_final_a1_engineering.py": "24c890588474fddb5ecc863373ded600547b16c3417c97f0121d29126e30ac72",
+    "docs/FINAL_A1_ENGINEERING_PROMOTION_v1.md": "cc0627896a4d800a5f1f4ac9f358020249ea6d6f6ab085d788167d5f25b6e21b"
+  },
+  "test_results": {
+    "targeted_final_a1": {
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0
+    },
+    "relevant_correctness_regression": {
+      "passed": 61,
+      "failed": 0,
+      "skipped": 0
+    },
+    "frozen_design": {
+      "passed": 20,
+      "failed": 0,
+      "skipped": 0
+    },
+    "full_solver_free": {
+      "passed": 967,
+      "failed": 0,
+      "skipped": 1
+    },
+    "full_licensed": {
+      "passed": 111,
+      "failed": 0,
+      "skipped": 0
+    }
+  }
+}
