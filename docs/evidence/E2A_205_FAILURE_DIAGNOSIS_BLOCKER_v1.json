@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "scope": "FORMAL_E2A_205_FAILURE_DIAGNOSIS_BLOCKER_V1",
+  "status": "E2A_REMAINS_BLOCKED",
+  "branch": "r10/formal-e2-managerial-sensitivity",
+  "pull_request": 31,
+  "source_failure_artifact": {
+    "path": "formal_results/e2_final/e2a/e2a_retained_failures.csv",
+    "sha256": "4672e9faa1e3aa4e6f0983d2f501ff2a8f20bfe5253ce203eda93e1273d253f5",
+    "row_count": 205
+  },
+  "fail_closed_reasons": [
+    {
+      "id": "ORIGINAL_FIRST_STAGE_NOT_RETAINED",
+      "finding": "The initial failed row schema retained status, data identity, result SHA, iteration counts, and failure message, but left first_stage_sha256 and all first-stage decision quantities empty.",
+      "impact": "The original failed first-stage decision cannot be recovered from committed E2-A artifacts, so a witness cannot be proven against that exact historical decision. A new solve may reconstruct a candidate but cannot establish historical identity."
+    },
+    {
+      "id": "FAILURE_NOT_UNIFORMLY_H09",
+      "finding": "An unchanged-input replay of E2A_VACCINE_H0/LA-0208 ended oracle_failure at iteration 3; its incomplete Full Exact Certification reported infeasible for h17, h19, and h20, not h09.",
+      "replay": {
+        "case_id": "E2A_VACCINE_H0",
+        "simulation_id": "LA-0208",
+        "input_sha256": "86f8dee9613183fc59f97a4e65221bcd624a99be001735564d47f13ecd95937f",
+        "status": "oracle_failure",
+        "iterations": 3,
+        "complete_full_exact_certification_calls": 1,
+        "reconstructed_first_stage_sha256": "fabf9dee908c90a1504541b32d9c249019a5697003ba1ea8d0cb447e7b5126b2",
+        "infeasible_scenarios": ["h17", "h19", "h20"]
+      },
+      "impact": "The proposed unified h09 taxonomy is contradicted before all 205 cases can be classified."
+    }
+  ],
+  "diagnostic_scope_completed": {
+    "ordered_failure_replays_attempted_before_fail_closed": [
+      "E2A_VACCINE_H0/LA-0002",
+      "E2A_VACCINE_H0/LA-0061",
+      "E2A_VACCINE_H0/LA-0062",
+      "E2A_VACCINE_H0/LA-0065",
+      "E2A_VACCINE_H0/LA-0080",
+      "E2A_VACCINE_H0/LA-0116",
+      "E2A_VACCINE_H0/LA-0186",
+      "E2A_VACCINE_H0/LA-0208"
+    ],
+    "complete_205_case_taxonomy": false,
+    "engineering_fix_applied": false,
+    "recertification_started": false
+  },
+  "guardrails": {
+    "Final_A1_modified": false,
+    "tolerance_modified": false,
+    "model_modified": false,
+    "budget_modified": false,
+    "scientific_parameters_modified": false,
+    "E2_B_runs": 0,
+    "E2_C_runs": 0,
+    "E2_D_runs": 0
+  },
+  "required_next_decision": "Authorize a new diagnostic evidence capture that preserves complete failed A1 traces/first-stage decisions for all 205 cases, then define taxonomy over every failed recourse scenario rather than assuming h09 only."
+}
