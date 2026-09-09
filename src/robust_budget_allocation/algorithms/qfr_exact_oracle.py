@@ -142,11 +142,98 @@ def _is_numerical_solve_failure(outcome: ExactSolveOutcome) -> bool:
     return any(marker in text for marker in numerical_markers)
 
 
+def _is_solver_infeasible(outcome: ExactSolveOutcome) -> bool:
+    """Identify an explicit solver infeasibility result, not a generic failure."""
+
+    return outcome.status == "failed" and outcome.termination.strip().lower() == "infeasible"
+
+
+def _original_semantic_feasibility_witness(
+    data: QFRData,
+    decision: QFRFirstStage,
+    scenario: str,
+) -> dict[str, Any]:
+    """Validate a conservative recourse witness solely as an infeasible-retry gate.
+
+    The witness fixes exercise to zero and assigns shortage to cover any demand not
+    met by available pre-positioned supply.  It proves only that a feasible recourse
+    point exists under the original model semantics.  It has no objective and can
+    never serve as an exact solution or certificate.
+    """
+
+    pre = validate_first_stage(data, decision)
+    if scenario not in data.scenarios:
+        raise ValueError(f"unknown scenario: {scenario!r}")
+    exercise = {item: 0.0 for item in data.items}
+    shortage = {
+        item: max(
+            0.0,
+            data.demand[scenario][item]
+            - _available_q(data, decision, item, scenario),
+        )
+        for item in data.items
+    }
+    checks: list[dict[str, Any]] = []
+
+    def record(
+        family: str,
+        violation: float,
+        *scale_values: float,
+        absolute_only: bool = False,
+    ) -> None:
+        acceptable = (
+            float(violation) <= VALIDATION_ABSOLUTE_TOLERANCE
+            if absolute_only
+            else family_violation_is_acceptable(family, violation, *scale_values)
+        )
+        checks.append(
+            {
+                "family": family,
+                "violation": max(0.0, float(violation)),
+                "acceptable": acceptable,
+            }
+        )
+
+    for item in data.items:
+        record("nonnegativity", -exercise[item], absolute_only=True)
+        record("nonnegativity", -shortage[item], absolute_only=True)
+        available = _available_q(data, decision, item, scenario)
+        coverage = available + exercise[item] + shortage[item]
+        record(
+            "quantity_flow",
+            data.demand[scenario][item] - coverage,
+            data.demand[scenario][item],
+            available,
+            exercise[item],
+            shortage[item],
+        )
+        if decision.model_kind != "M0":
+            fulfillment = _fulfillable(data, decision, item, scenario)
+            record(
+                "fulfillment_capacity",
+                exercise[item] - fulfillment,
+                exercise[item],
+                fulfillment,
+            )
+    exercise_cost = sum(
+        data.exercise_cost[item] * exercise[item] for item in data.items
+    )
+    record("budget", pre + exercise_cost - data.budget, data.budget, pre, exercise_cost)
+    return {
+        "role": "INFEASIBLE_RETRY_GATE_ONLY_NOT_OPTIMUM_OR_CERTIFICATE",
+        "feasible": all(check["acceptable"] for check in checks),
+        "exercise": exercise,
+        "shortage": shortage,
+        "checks": checks,
+    }
+
+
 def _solve_scaled_exact_recourse(
     model: pyo.ConcreteModel,
     data: QFRData,
     decision: QFRFirstStage,
     scenario: str,
+    retry_reason: str = "RECOGNIZED_NUMERICAL_FAILURE",
 ) -> ExactSolveOutcome:
     """Retry an algebraically equivalent clone and map its solution back."""
 
@@ -191,7 +278,12 @@ def _solve_scaled_exact_recourse(
         outcome,
         objective=float(outcome.objective) / objective_factor,
         lower_bound=float(outcome.lower_bound) / objective_factor,
-        message="SCALED_RETRY_MAPPED_BACK_FOR_ORIGINAL_SEMANTIC_VALIDATION",
+        message=(
+            "SCALED_RETRY_MAPPED_BACK_FOR_ORIGINAL_SEMANTIC_VALIDATION"
+            if retry_reason == "RECOGNIZED_NUMERICAL_FAILURE"
+            else "WITNESS_GATED_INFEASIBLE_SCALED_RETRY_MAPPED_BACK_FOR_"
+            "ORIGINAL_SEMANTIC_VALIDATION"
+        ),
     )
 
 
@@ -204,6 +296,18 @@ def solve_exact_recourse(
     outcome = solve_exact(model)
     if _is_numerical_solve_failure(outcome):
         outcome = _solve_scaled_exact_recourse(model, data, decision, scenario)
+    elif _is_solver_infeasible(outcome):
+        witness = _original_semantic_feasibility_witness(
+            data, decision, scenario
+        )
+        if witness["feasible"]:
+            outcome = _solve_scaled_exact_recourse(
+                model,
+                data,
+                decision,
+                scenario,
+                "WITNESS_GATED_SOLVER_INFEASIBLE",
+            )
     result: dict[str, Any] = {
         "scenario_id": scenario,
         "scenario_identity": scenario_identity(data, scenario),
