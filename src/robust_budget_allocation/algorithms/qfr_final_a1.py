@@ -17,18 +17,25 @@ from .qfr_state import QFRFirstStage, first_stage_cost
 
 
 FINAL_A1_IDENTITY = "A1_FINAL_NO_MEMORY_V1"
+FINAL_A1_IMPLEMENTATION_REVISION = (
+    "A1_FINAL_NO_MEMORY_V1_R1_WITNESS_GATED_INFEASIBLE_RETRY"
+)
 
 
 def final_a1_settings() -> dict[str, Any]:
     return {
         "algorithm_identity": FINAL_A1_IDENTITY,
+        "implementation_revision": FINAL_A1_IMPLEMENTATION_REVISION,
         "structure": "CANDIDATE_SEARCH_THEN_FULL_EXACT_CERTIFICATION",
         "candidate_evaluation_limit": EVALUATION_LIMIT,
         "candidate_ranking": "CANONICAL_SCENARIO_ID_ONLY",
         "cross_solve_state_reuse": False,
         "formal_ub_source": "FULL_EXACT_FINITE_SCENARIO_CERTIFICATION_ONLY",
         "numerical_validation_rule": VALIDATION_RULE_ID,
-        "exact_oracle_fallback": "NUMERICAL_FAILURE_ONLY_SCALED_CLONE_MAP_BACK",
+        "exact_oracle_fallback": (
+            "NUMERICAL_FAILURE_OR_WITNESS_GATED_INFEASIBLE_"
+            "SCALED_CLONE_MAP_BACK"
+        ),
     }
 
 

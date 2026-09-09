@@ -1,0 +1,64 @@
+{
+  "algorithm_identity": "A1_FINAL_NO_MEMORY_V1",
+  "failure_population": {
+    "certified": 205,
+    "first_stage_identity_invariant": 205,
+    "status_counts": {
+      "certified": 205
+    },
+    "tested": 205
+  },
+  "guardrails": {
+    "E2_B_runs": 0,
+    "E2_C_runs": 0,
+    "E2_D_runs": 0,
+    "engineering_regression_only": true,
+    "formal_E2A_recertification": false,
+    "memory_reintroduced": false,
+    "model_changed": false,
+    "scientific_design_changed": false,
+    "scientific_optimization_runs": 0,
+    "scientific_parameters_changed": false,
+    "scientific_results_promoted_or_modified": false,
+    "tolerance_changed": false
+  },
+  "implementation_revision": "A1_FINAL_NO_MEMORY_V1_R1_WITNESS_GATED_INFEASIBLE_RETRY",
+  "implementation_sha256": {
+    "qfr_exact_oracle.py": "73047503c707eaa00f57072a823fda745fa2c0137e1091c9c84fc35c97810393",
+    "qfr_final_a1.py": "bd8987e7ef117218db2c828547303aa324d020a8e362b26dba7daf3f1b416ea5"
+  },
+  "numerical_fallback": {
+    "authorized_diagnostic_production_infeasible": 284,
+    "full_exact_certification_pass": 205,
+    "mapped_back_original_validation_pass": 284,
+    "scaled_retry_optimal": 284,
+    "scenario_counts_all_retry_stages": {
+      "h09": 79,
+      "h17": 67,
+      "h19": 119,
+      "h20": 19
+    },
+    "witness_triggered_candidate_retries": 0,
+    "witness_triggered_full_certificate_retries": 284
+  },
+  "previously_certified_controls": {
+    "certified": 8,
+    "objective_invariant": 8,
+    "q_f_r_invariant": 8,
+    "tested": 8,
+    "worst_scenario_invariant": 8
+  },
+  "reference": {
+    "head": "db9626f6bd7bc3a2f23cd0bcbe19f66900bbf5d4",
+    "pull_request": 31,
+    "role": "READ_ONLY_ENGINEERING_REGRESSION_SOURCE",
+    "source_artifacts": {
+      "formal_results/e2_final/e2a/diagnostics/e2a_205_failure_taxonomy.json": "1b8733e2a8863e0f5e8f411a29063c9d4f575d52",
+      "formal_results/e2_final/e2a/diagnostics/e2a_205_first_stage_evidence.csv": "e11a179c5026337806ccffdb3162ecffb9151bfc",
+      "formal_results/e2_final/e2a/e2a_retained_failures.csv": "cfe0ac0fdaee58fd68fb6f2fc74ecdce96d60920",
+      "formal_results/e2_final/e2a/e2a_scientific_results.csv": "381cd899d2980813038725a0644aad83ba6012e1"
+    }
+  },
+  "schema_version": 1,
+  "scope": "FINAL_A1_SPURIOUS_INFEASIBILITY_HOTFIX_ENGINEERING_REPLAY"
+}
