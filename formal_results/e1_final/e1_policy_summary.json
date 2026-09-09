@@ -1,0 +1,22 @@
+{
+  "counts": {
+    "P1": 208,
+    "P2": 26,
+    "P3a": 4,
+    "P3b": 3,
+    "P4": 759,
+    "P5": 0
+  },
+  "interpretation": "PARAMETER_SPACE_SHARE_NOT_REAL_WORLD_PROBABILITY",
+  "policy_tolerance": 1e-07,
+  "row_count": 1000,
+  "schema_version": 1,
+  "shares": {
+    "P1": 0.208,
+    "P2": 0.026,
+    "P3a": 0.004,
+    "P3b": 0.003,
+    "P4": 0.759,
+    "P5": 0.0
+  }
+}

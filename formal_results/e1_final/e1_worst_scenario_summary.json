@@ -1,0 +1,10 @@
+{
+  "hurricane_counts": {
+    "Katrina": 1000
+  },
+  "row_count": 1000,
+  "scenario_counts": {
+    "h09": 1000
+  },
+  "schema_version": 1
+}

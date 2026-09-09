@@ -1,0 +1,63 @@
+{
+  "aggregate_reliability": {
+    "NONE": 1840,
+    "R0": 1023,
+    "R1": 86,
+    "R2": 51
+  },
+  "all_portfolio_patterns": {
+    "Q[NONE]|F[Crackers]": 286,
+    "Q[NONE]|F[Vaccine+Crackers]": 2,
+    "Q[NONE]|F[Vaccine]": 115,
+    "Q[NONE]|F[Water+Crackers]": 257,
+    "Q[NONE]|F[Water+Vaccine+Crackers]": 10,
+    "Q[NONE]|F[Water+Vaccine]": 89,
+    "Q[Water+Vaccine]|F[NONE]": 208,
+    "Q[Water]|F[Crackers]": 24,
+    "Q[Water]|F[Vaccine]": 9
+  },
+  "commodities": {
+    "Crackers": {
+      "F_active": 579,
+      "Q_active": 0,
+      "reliability": {
+        "NONE": 421,
+        "R0": 522,
+        "R1": 32,
+        "R2": 25
+      },
+      "same_item_QF_coexistence": 0
+    },
+    "Vaccine": {
+      "F_active": 225,
+      "Q_active": 208,
+      "reliability": {
+        "NONE": 775,
+        "R0": 158,
+        "R1": 49,
+        "R2": 18
+      },
+      "same_item_QF_coexistence": 0
+    },
+    "Water": {
+      "F_active": 356,
+      "Q_active": 241,
+      "reliability": {
+        "NONE": 644,
+        "R0": 343,
+        "R1": 5,
+        "R2": 8
+      },
+      "same_item_QF_coexistence": 0
+    }
+  },
+  "mixed_aggregate_Q_plus_F": 33,
+  "mixed_cross_item_specialization": {
+    "Q[Water]|F[Crackers]": 24,
+    "Q[Water]|F[Vaccine]": 9
+  },
+  "policy_tolerance": 1e-07,
+  "row_count": 1000,
+  "same_item_QF_coexistence": 0,
+  "schema_version": 1
+}
