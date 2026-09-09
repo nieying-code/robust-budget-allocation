@@ -1,0 +1,41 @@
+{
+  "attempted": 4000,
+  "by_case": {
+    "E2A_CRACKERS_A080": {
+      "certified": 947,
+      "failed": 53,
+      "failure_types": {
+        "oracle_failure": 53
+      },
+      "requested": 1000
+    },
+    "E2A_CRACKERS_A100": {
+      "certified": 955,
+      "failed": 45,
+      "failure_types": {
+        "oracle_failure": 45
+      },
+      "requested": 1000
+    },
+    "E2A_VACCINE_H0": {
+      "certified": 948,
+      "failed": 52,
+      "failure_types": {
+        "oracle_failure": 52
+      },
+      "requested": 1000
+    },
+    "E2A_VACCINE_H1": {
+      "certified": 945,
+      "failed": 55,
+      "failure_types": {
+        "oracle_failure": 55
+      },
+      "requested": 1000
+    }
+  },
+  "certified": 3795,
+  "failed": 205,
+  "failures_retained": true,
+  "resampled_or_replaced": false
+}

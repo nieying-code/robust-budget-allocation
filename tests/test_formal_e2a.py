@@ -1,4 +1,6 @@
 from pathlib import Path
+import csv
+import json
 
 import pytest
 
@@ -16,6 +18,12 @@ from robust_budget_allocation.io.hashing import sha256_file
 
 
 ROOT = Path(__file__).resolve().parents[1]
+OUTPUT = ROOT / "formal_results/e2_final/e2a"
+
+
+def _rows(name):
+    with (OUTPUT / name).open("r", encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle))
 
 
 def test_e2a_preflight_rebuilds_all_1000_baseline_identities():
@@ -53,3 +61,43 @@ def test_e2a_ofat_data_changes_only_target_static_field(case_id):
     candidate["storage_cost"] = baseline["storage_cost"]
     candidate["retention"] = baseline["retention"]
     assert candidate == baseline
+
+
+def test_e2a_all_frozen_draws_are_accounted_for_without_resampling():
+    rows = _rows("e2a_scientific_results.csv")
+    assert len(rows) == 4000
+    for offset, case_id in enumerate(CASES):
+        block = rows[offset * 1000:(offset + 1) * 1000]
+        assert {row["case_id"] for row in block} == {case_id}
+        assert [row["simulation_id"] for row in block] == [f"LA-{index:04d}" for index in range(1, 1001)]
+        assert all(row["algorithm_identity"] == FINAL_A1_IDENTITY for row in block)
+        assert all(float(row["budget"]) == BUDGET for row in block if row["certificate_status"] == "PASS")
+
+
+def test_e2a_summary_and_failure_population_are_row_derived():
+    rows = _rows("e2a_scientific_results.csv")
+    summary = json.loads((OUTPUT / "e2a_summary.json").read_text(encoding="utf-8"))
+    certified = sum(row["certificate_status"] == "PASS" for row in rows)
+    assert summary["attempted_new_scientific_optimizations"] == 4000
+    assert summary["certified"] == certified
+    assert summary["failed"] == 4000 - certified
+    assert len(_rows("e2a_retained_failures.csv")) == summary["failed"]
+    assert summary["baseline_reused"] == 1000
+    assert summary["baseline_rerun"] is False
+    assert summary["E2_B_runs"] == summary["E2_C_runs"] == summary["E2_D_runs"] == 0
+
+
+def test_e2a_paired_table_preserves_all_ids_and_marks_failures():
+    paired = _rows("e2a_paired_baseline_comparison.csv")
+    assert len(paired) == 4000
+    assert sum(row["certificate_status"] == "FAIL" for row in paired) == len(_rows("e2a_retained_failures.csv"))
+    assert all(row["policy_transition"] == "FAILED" for row in paired if row["certificate_status"] == "FAIL")
+
+
+def test_e2a_hash_inventory_is_complete_and_valid():
+    entries = {}
+    for line in (OUTPUT / "HASHES.sha256").read_text(encoding="utf-8").splitlines():
+        digest, name = line.split("  ", 1)
+        entries[name] = digest
+    assert set(entries) == {path.name for path in OUTPUT.iterdir() if path.is_file()} - {"HASHES.sha256"}
+    assert all(sha256_file(OUTPUT / name) == digest for name, digest in entries.items())
