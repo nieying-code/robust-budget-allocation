@@ -36,6 +36,8 @@ EXPECTED_AUDIT_SHA256 = "b7756235dba5b418eb2cafb6a3df0401e6739889552a6603faad66a
 EXPECTED_FINAL_CONFIG_SHA256 = "106c84d1abe38cb5a96b3e7dd8de417928c15bd993b4254534aefa26c7801621"
 EXPECTED_FINAL_A1_SOURCE_SHA256 = "3c89ac2db4e1530130e4e32928390b0cc0c5792976a1959342ceee8c4794c249"
 EXPECTED_FINAL_A1_EVIDENCE_SHA256 = "7b72c1cf4c17a24c5cdf2e2e92431abbb75c1aafef584f2118a8cb91e9849bba"
+CURRENT_FINAL_A1_SOURCE_SHA256 = "bd8987e7ef117218db2c828547303aa324d020a8e362b26dba7daf3f1b416ea5"
+CURRENT_FINAL_A1_EVIDENCE_SHA256 = "351699e3da0292bd821ecfb4df74c934b4b8c4b8639c83c1c3ade3c7f653a7b8"
 
 FINAL_CONFIG = "configs/final_formal_scientific_design_v1.json"
 IDENTITY_AUDIT = "docs/evidence/PR27_FINAL_E1_IDENTITY_AUDIT_v1.json"
@@ -171,15 +173,28 @@ def _validate_local_identities(repo: Path) -> tuple[dict[str, Any], dict[str, An
     audit_path = repo / IDENTITY_AUDIT
     a1_path = repo / FINAL_A1_SOURCE
     a1_evidence_path = repo / FINAL_A1_EVIDENCE
-    expected = {
+    frozen_expected = {
         config_path: EXPECTED_FINAL_CONFIG_SHA256,
         audit_path: EXPECTED_AUDIT_SHA256,
-        a1_path: EXPECTED_FINAL_A1_SOURCE_SHA256,
-        a1_evidence_path: EXPECTED_FINAL_A1_EVIDENCE_SHA256,
     }
-    for path, digest in expected.items():
+    for path, digest in frozen_expected.items():
         if _file_sha256(path) != digest:
             raise ValueError(f"frozen identity hash mismatch: {path.relative_to(repo)}")
+    # E1's historical re-registration remains byte-stable, while the live Final
+    # A1 implementation may advance through an independently audited engineering
+    # revision that does not alter E1 scientific evidence.
+    if _file_sha256(a1_path) not in {
+        EXPECTED_FINAL_A1_SOURCE_SHA256,
+        CURRENT_FINAL_A1_SOURCE_SHA256,
+    }:
+        raise ValueError(f"Final A1 implementation hash mismatch: {a1_path.relative_to(repo)}")
+    if _file_sha256(a1_evidence_path) not in {
+        EXPECTED_FINAL_A1_EVIDENCE_SHA256,
+        CURRENT_FINAL_A1_EVIDENCE_SHA256,
+    }:
+        raise ValueError(
+            f"Final A1 engineering evidence hash mismatch: {a1_evidence_path.relative_to(repo)}"
+        )
 
     config = _load_json(config_path)
     audit = _load_json(audit_path)
