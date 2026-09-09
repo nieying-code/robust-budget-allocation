@@ -1,0 +1,50 @@
+{
+  "git": {
+    "branch": "r10/formal-e2-managerial-sensitivity",
+    "commit": "54e8a64098f5ec2c4cdd53aed7000dd8660da5b3",
+    "tree": "09f766dce1d8a97f8afa03c6f160ab0c7481bdd0"
+  },
+  "guardrails": {
+    "E2_B_runs": 0,
+    "E2_C_runs": 0,
+    "E2_D_runs": 0,
+    "Final_A1_modified": false,
+    "diagnostic_only": true,
+    "formal_results_overwritten": false,
+    "scientific_design_modified": false
+  },
+  "diagnostic_implementation": {
+    "module": {
+      "path": "src/robust_budget_allocation/formal/e2a_diagnostics.py",
+      "sha256": "a5bc9f300b53a49667b729137d597b03f36b0dfcf6ff6763604a2ac1196f60b7"
+    },
+    "runner": {
+      "path": "scripts/replay_e2a_205_failures.py",
+      "sha256": "b1ea5a09b3364e69dae99d066ef174cc10c8f58561d7387f58c1f2bcc2a67006"
+    },
+    "tests": {
+      "path": "tests/test_e2a_failure_diagnostics.py",
+      "sha256": "836703b4c85ad87aa87996953684d127e56228a198dd619a995443450b058591"
+    }
+  },
+  "identity": {
+    "algorithm": "A1_FINAL_NO_MEMORY_V1",
+    "budget": 19137905.85543848,
+    "sample_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0"
+  },
+  "population": {
+    "count": 205,
+    "sha256": "4672e9faa1e3aa4e6f0983d2f501ff2a8f20bfe5253ce203eda93e1273d253f5",
+    "source": "formal_results/e2_final/e2a/e2a_retained_failures.csv"
+  },
+  "protected_hashes": {
+    "exact_oracle": "33326b4ffff6bbf5511e28fd1e5de673ce6840f92b9c6d7fd357dd390fa21640",
+    "final_a1": "3c89ac2db4e1530130e4e32928390b0cc0c5792976a1959342ceee8c4794c249",
+    "formal_scientific_results": "94b1e661656c9249267c442ecc353f401f8b2a2c67a1e332e13c50a7156f4af7",
+    "scientific_design": "106c84d1abe38cb5a96b3e7dd8de417928c15bd993b4254534aefa26c7801621"
+  },
+  "schema_version": 1,
+  "scope": "E2A_205_DIAGNOSTIC_MANIFEST_V1",
+  "status": "COMPLETE",
+  "taxonomy_sha256": "48ded03d1999ca67398b5cc77feb0bbf386bb7294f7a813cbb8cea53e70449db"
+}
