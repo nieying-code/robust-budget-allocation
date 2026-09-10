@@ -389,6 +389,25 @@ def summarize_case(rows: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
             "Q_quantity": distribution([float(row[f"Q_{label}"]) for row in successful]),
             "F_quantity": distribution([float(row[f"F_{label}"]) for row in successful]),
         }
+    mixed_q_f = sum(
+        any(_boolean(row[f"Q_active_{label}"]) for label in OUTPUT_ITEMS.values())
+        and any(_boolean(row[f"F_active_{label}"]) for label in OUTPUT_ITEMS.values())
+        for row in successful
+    )
+    same_item_q_f_cases = sum(
+        any(
+            _boolean(row[f"Q_active_{label}"])
+            and _boolean(row[f"F_active_{label}"])
+            for label in OUTPUT_ITEMS.values()
+        )
+        for row in successful
+    )
+    same_item_q_f_item_draws = sum(
+        _boolean(row[f"Q_active_{label}"])
+        and _boolean(row[f"F_active_{label}"])
+        for row in successful
+        for label in OUTPUT_ITEMS.values()
+    )
     return {
         "requested": len(rows),
         "certified": len(successful),
@@ -396,6 +415,9 @@ def summarize_case(rows: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
         "failure_types": dict(Counter(str(row["failure_type"]) for row in rows if row["failure_type"])),
         "policy_counts": {policy: sum(row.get("policy_label") == policy for row in successful) for policy in POLICIES},
         "commodity": commodity,
+        "mixed_QF_cases": mixed_q_f,
+        "same_item_QF_coexistence_cases": same_item_q_f_cases,
+        "same_item_QF_coexistence_item_draws": same_item_q_f_item_draws,
         "T_COST": distribution([float(row["T_COST"]) for row in successful]),
         "shortage": distribution([float(row["worst_total_shortage"]) for row in successful]),
         "budget_usage": distribution([float(row["budget_usage"]) for row in successful]),

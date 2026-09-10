@@ -1,0 +1,17 @@
+{
+  "algorithm_identity": "A1_FINAL_NO_MEMORY_V1",
+  "certified": 205,
+  "completed": 205,
+  "failed": 0,
+  "first_stage_identity_captured": 205,
+  "full_certification_witness_gated_retries": 284,
+  "implementation_revision": "A1_FINAL_NO_MEMORY_V1_R1_WITNESS_GATED_INFEASIBLE_RETRY",
+  "mapped_back_original_validation_pass": 284,
+  "requested": 205,
+  "sample_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+  "scaled_retry_optimal": 284,
+  "schema_version": 1,
+  "scope": "FORMAL_E2A_205_RECERTIFICATION_V1",
+  "source_head": "c376477a3f4f5e5865b4cb93344080f4bede8ed0",
+  "witness_gated_retries": 284
+}

@@ -33,8 +33,8 @@
   "design_path": "configs/final_formal_scientific_design_v1.json",
   "design_sha256": "106c84d1abe38cb5a96b3e7dd8de417928c15bd993b4254534aefa26c7801621",
   "gamma_D": 1.0,
-  "git_commit": "51a20735d4e3beea3d153ec54228662c0f793f8c",
-  "git_tree": "e7491d40f95e46e29d0695c3bd85d229243f437d",
+  "git_commit": "c376477a3f4f5e5865b4cb93344080f4bede8ed0",
+  "git_tree": "d8dd1dd679c96bf985abc83622ff8f4562f67e39",
   "lambda": [
     1.0,
     1.0,

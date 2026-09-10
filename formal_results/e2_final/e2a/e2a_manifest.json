@@ -1,4 +1,5 @@
 {
+  "algorithm_identity": "A1_FINAL_NO_MEMORY_V1",
   "baseline_reuse": {
     "path": "formal_results/e1_final/e1_scientific_results.csv",
     "rerun": false,
@@ -24,15 +25,16 @@
     }
   },
   "execution": {
-    "attempted": 4000,
-    "certified": 3795,
-    "failed": 205,
-    "planned": 4000
+    "final_certified": 4000,
+    "final_failed": 0,
+    "formally_recertified": 205,
+    "initial_attempted": 4000,
+    "initial_certified": 3795,
+    "initial_failed": 205
   },
   "git": {
     "branch": "r10/formal-e2-managerial-sensitivity",
-    "commit": "af755120b53c3b8ca7120c1187ffc6bfe274a456",
-    "tree": "7a575d6d44965feaaee805a356354f16780538be"
+    "source_pre_recertification_head": "c376477a3f4f5e5865b4cb93344080f4bede8ed0"
   },
   "guardrails": {
     "E2_B_runs": 0,
@@ -41,15 +43,19 @@
     "OFAT": true,
     "dropped": false,
     "fixed_absolute_budget": true,
+    "model_changed": false,
     "parameter_tuning": false,
-    "resampled": false
+    "resampled": false,
+    "scientific_design_changed": false,
+    "tolerance_changed": false
   },
+  "implementation_revision": "A1_FINAL_NO_MEMORY_V1_R1_WITNESS_GATED_INFEASIBLE_RETRY",
   "sample_table": {
     "path": "formal_results/e1_final/e1_samples.csv",
     "rows": 1000,
     "sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0"
   },
-  "schema_version": 1,
+  "schema_version": 2,
   "scientific_identity": {
     "E2_B_runs": 0,
     "E2_C_runs": 0,
@@ -93,5 +99,5 @@
     "status": "PASS"
   },
   "scope": "FORMAL_E2A_EXECUTION_MANIFEST_V1",
-  "status": "COMPLETE_WITH_RETAINED_FAILURES"
+  "status": "COMPLETE_4000_OF_4000_CERTIFIED"
 }

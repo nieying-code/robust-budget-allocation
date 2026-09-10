@@ -1,0 +1,46 @@
+{
+  "diagnosis": {
+    "cases": 205,
+    "original_semantic_witness_feasible": 284,
+    "scenario_level_spurious_infeasible": 284
+  },
+  "engineering_hotfix": "WITNESS_GATED_INFEASIBLE_SCALED_RETRY",
+  "final_population": {
+    "certified": 4000,
+    "failed": 0,
+    "rows": 4000
+  },
+  "formal_recertification": {
+    "certified": 205,
+    "failed": 0,
+    "requested": 205
+  },
+  "initial_execution": {
+    "certified": 3795,
+    "oracle_failures": 205
+  },
+  "interpretation": "NUMERICAL_ROBUSTNESS_CORRECTION_NOT_PARAMETER_TUNING",
+  "previously_certified_regression": {
+    "algorithm_identity": "A1_FINAL_NO_MEMORY_V1",
+    "by_field": {
+      "Q_F_R_invariant": 3795,
+      "all_categorical_scientific_fields_invariant": 3795,
+      "all_numeric_scientific_fields_invariant": 3795,
+      "certificate_valid": 3795,
+      "certified_status_invariant": 3795,
+      "first_stage_identity_invariant": 3795,
+      "objective_invariant": 3795,
+      "policy_label_invariant": 3795,
+      "worst_scenario_invariant": 3795
+    },
+    "changed": 0,
+    "implementation_revision": "A1_FINAL_NO_MEMORY_V1_R1_WITNESS_GATED_INFEASIBLE_RETRY",
+    "invariant": 3795,
+    "population_checked": 3795,
+    "schema_version": 1,
+    "scope": "FORMAL_E2A_3795_PREVIOUSLY_CERTIFIED_REGRESSION_V1",
+    "source_head": "c376477a3f4f5e5865b4cb93344080f4bede8ed0",
+    "validation_rule": "EXISTING_QFR_PROTOCOL_CLOSE_AND_EXACT_IDENTITY"
+  },
+  "schema_version": 1
+}

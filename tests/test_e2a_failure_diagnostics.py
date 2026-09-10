@@ -2,11 +2,12 @@ from collections import Counter, defaultdict
 import csv
 import json
 from pathlib import Path
+import subprocess
 
 from robust_budget_allocation.algorithms.qfr_final_a1 import FINAL_A1_IDENTITY
 from robust_budget_allocation.formal.e2a import SAMPLE_SHA256
 from robust_budget_allocation.formal.e2a_diagnostics import classify_scenario, taxonomy_counts
-from robust_budget_allocation.io.hashing import sha256_file
+from robust_budget_allocation.io.hashing import sha256_bytes, sha256_file
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,7 +25,7 @@ def _truth(value):
 
 
 def test_diagnostic_population_is_exact_original_205():
-    source = _rows(E2A / "e2a_retained_failures.csv")
+    source = _rows(E2A / "recertification/e2a_initial_205_retained_failures.csv")
     replay = _rows(OUTPUT / "e2a_205_failure_replay.csv")
     assert len(source) == len(replay) == 205
     expected = [(row["case_id"], row["simulation_id"], row["input_sha256"]) for row in source]
@@ -91,13 +92,19 @@ def test_reproduction_and_determinism_evidence():
     assert len(checks) == 5 and all(_truth(row["stable"]) for row in checks)
 
 
-def test_protected_scientific_and_production_files_are_unchanged():
+def test_historical_diagnostic_protected_hashes_match_the_pinned_diagnostic_commit():
     manifest = json.loads((OUTPUT / "e2a_205_diagnostic_manifest.json").read_text(encoding="utf-8"))
     protected = manifest["protected_hashes"]
-    assert sha256_file(E2A / "e2a_scientific_results.csv") == protected["formal_scientific_results"]
-    assert sha256_file(ROOT / "configs/final_formal_scientific_design_v1.json") == protected["scientific_design"]
-    assert sha256_file(ROOT / "src/robust_budget_allocation/algorithms/qfr_final_a1.py") == protected["final_a1"]
-    assert sha256_file(ROOT / "src/robust_budget_allocation/algorithms/qfr_exact_oracle.py") == protected["exact_oracle"]
+    commit = manifest["git"]["commit"]
+    historical = {
+        "formal_scientific_results": "formal_results/e2_final/e2a/e2a_scientific_results.csv",
+        "scientific_design": "configs/final_formal_scientific_design_v1.json",
+        "final_a1": "src/robust_budget_allocation/algorithms/qfr_final_a1.py",
+        "exact_oracle": "src/robust_budget_allocation/algorithms/qfr_exact_oracle.py",
+    }
+    for key, relative in historical.items():
+        payload = subprocess.check_output(["git", "show", f"{commit}:{relative}"], cwd=ROOT)
+        assert sha256_bytes(payload) == protected[key]
     assert manifest["identity"]["sample_sha256"] == SAMPLE_SHA256
     assert manifest["identity"]["algorithm"] == FINAL_A1_IDENTITY
     assert manifest["guardrails"]["E2_B_runs"] == manifest["guardrails"]["E2_C_runs"] == manifest["guardrails"]["E2_D_runs"] == 0

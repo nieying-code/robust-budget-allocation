@@ -19,6 +19,32 @@ The run is paired by `LA-xxxx`; no draw may be dropped, replaced, or resampled.
 Every failed solve is retained. Summaries are rebuilt from row-level outputs.
 E2-B, E2-C, and E2-D are outside this execution and remain at zero runs.
 
+## Final A1 numerical recertification
+
+The initial execution certified 3,795 rows and retained 205 oracle failures. A
+subsequent diagnostic identified 284 solver-infeasible scenario evaluations for
+which conservative original-semantic recourse witnesses were feasible. After the
+generic Final A1 witness-gated scaled-retry hotfix, the 205 original identities
+were formally re-optimized through Candidate Search and Full Exact Certification.
+All 205 certified. The complete 3,795 previously-certified population was also
+replayed: Q/F/R, first-stage identities, policy labels, T-COST, worst scenarios,
+certificates, and all serialized scientific quantities were invariant for
+3,795/3,795 rows.
+
+The final E2-A population is therefore 4,000/4,000 certified. The original
+failure population and the complete replay evidence remain under
+`formal_results/e2_final/e2a/recertification/`. This correction changed neither
+the scientific design nor its samples and is not parameter tuning.
+
+Final recertification commands:
+
+```text
+python scripts/recertify_formal_e2a.py recertify-failures
+python scripts/recertify_formal_e2a.py regress-certified
+python scripts/recertify_formal_e2a.py finalize
+python scripts/recertify_formal_e2a.py verify
+```
+
 Reproduction commands:
 
 ```text
