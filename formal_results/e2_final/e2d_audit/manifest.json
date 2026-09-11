@@ -1,0 +1,39 @@
+{
+  "E3_runs": 0,
+  "baseline_consistency": {
+    "failed": 0,
+    "max_abs_difference": 2.384185791015625e-07,
+    "passed": 1000,
+    "tested": 1000
+  },
+  "evaluation_method": "READ_ONLY_COMMON_REFERENCE_POST_PROCESSING",
+  "frozen_hashes": {
+    "e1_HASHES": "1b93b735e5e80759ed5494dc4a291c3c006ce2de04a22a02dffa8482fc1f2579",
+    "e2a_HASHES": "ea567ce9bf8e0f0089a2bbf739ae20b2c2b4e20d5f6c716a1e0406b946aaa75c",
+    "e2a_diagnostics_HASHES": "3fb2ce43b4d00da20f74b0c4cb0e5ecb62ee3a5d94088058fc9115d9c9be3504",
+    "e2a_recertification_HASHES": "f29b832f9b106ccb402bf85633b6fafcbc7408f1f269b750988d38f335a88292",
+    "e2b_HASHES": "41cfa4e4e41be0fc4c144820c33866754bb26e8b36e7f972a18ddc0811635a5d",
+    "e2c_HASHES": "113a84484fb3e7222bf6a97e7b65dcee0d7ca823fe8a44b93dcc018bcbdae3d0",
+    "e2d_HASHES": "5adeb11b7da7858f2efa1d428e6e98087df65d6fd456dba8d9d2f30ccfed20ce"
+  },
+  "git_commit": "5607feca58f76995e143ece3ca62cda38472f3f7",
+  "git_tree": "4be588be5b6f6c9ca3a2242d12440544edf64ee4",
+  "new_worst_scenario_search": false,
+  "row_counts": {
+    "beta_pairs": 1000,
+    "common": 6000,
+    "priority_pairs": 3000
+  },
+  "schema_version": 1,
+  "scientific_optimization_runs": 0,
+  "scope": "FORMAL_E2D_COMMON_REFERENCE_INTERPRETATION_AUDIT_V1",
+  "source_artifacts": {
+    "e1_results": "formal_results/e1_final/e1_scientific_results.csv",
+    "e2d_results": "formal_results/e2_final/e2d/scientific_results.csv"
+  },
+  "source_sha256": {
+    "e1_results": "05de91ac329b94a8a879fb85d0b6fe7feabb0ef779e1ffc7a6e91eae24b2b0e8",
+    "e2d_results": "b9fda0958c5bd67dc3a081de5d3cc7df0b018aceff519d7f8bcfd005bf6c6708"
+  },
+  "stored_certified_worst_scenario_held_fixed": true
+}
