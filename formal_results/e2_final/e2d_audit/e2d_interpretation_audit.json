@@ -1,0 +1,1373 @@
+{
+  "E2D_AUDIT_NEW_OPTIMIZATION_RUNS": 0,
+  "E2D_SCIENTIFIC_FREEZE": "YES",
+  "E3_RUNS": 0,
+  "RAW_AGGREGATE_SHORTAGE_IS_CROSS_UNIT_DESCRIPTIVE_ONLY": true,
+  "baseline_consistency": {
+    "failed": 0,
+    "max_abs_difference": 2.384185791015625e-07,
+    "passed": 1000,
+    "tested": 1000
+  },
+  "claims": [
+    {
+      "claim": "Cross-beta raw T-COST rises mechanically because beta changes the objective coefficient.",
+      "claim_id": "C1",
+      "reason": "Production formula and common-reference evaluation confirm the scale change.",
+      "status": "SAFE_AS_WRITTEN"
+    },
+    {
+      "claim": "Raw aggregate physical shortage does not fall monotonically.",
+      "claim_id": "C2",
+      "reason": "Numerically true, but the sum combines gallons, doses, and 22-g service units and is descriptive only.",
+      "status": "NEEDS_QUALIFICATION"
+    },
+    {
+      "claim": "Beta 2 to 4 improves coefficient-normalized shortage value and beta 4 to 6 is unchanged.",
+      "claim_id": "C3",
+      "reason": "The common-reference shortage calculation reproduces this result.",
+      "status": "SAFE_AS_WRITTEN"
+    },
+    {
+      "claim": "Beta 4 to 6 exhibits a strong plateau.",
+      "claim_id": "C4",
+      "reason": "Reference-valued outcome and aggregate expenditures plateau, but commodity F/R and shortage composition still reallocate.",
+      "status": "NEEDS_QUALIFICATION"
+    },
+    {
+      "claim": "Each priority treatment reduces target shortage and transfers shortage to non-target commodities.",
+      "claim_id": "C5",
+      "reason": "Within-commodity physical and reference-valued paired comparisons agree.",
+      "status": "SAFE_AS_WRITTEN"
+    },
+    {
+      "claim": "Commodity responses differ by archetype.",
+      "claim_id": "C6",
+      "reason": "Paired Q/F/R and expenditure decompositions show distinct Water, Vaccine, and Crackers responses.",
+      "status": "SAFE_AS_WRITTEN"
+    },
+    {
+      "claim": "Same-item Q/F coexistence remains zero and h09 remains worst.",
+      "claim_id": "C7",
+      "reason": "Directly supported by frozen row-level evidence.",
+      "status": "SAFE_AS_WRITTEN"
+    },
+    {
+      "claim": "Commodity prioritization reallocates scarcity rather than eliminating it.",
+      "claim_id": "C8",
+      "reason": "All treatments show target benefit and non-target crowding-out under the common reference scale.",
+      "status": "SAFE_AS_WRITTEN"
+    }
+  ],
+  "common_reference": {
+    "beta": 4.0,
+    "lambda": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "schema_version": 1,
+  "scope": "FORMAL_E2D_COMMON_REFERENCE_INTERPRETATION_AUDIT_V1",
+  "summaries": {
+    "beta_mechanism": {
+      "BETA2_BETA4": {
+        "Crackers": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 596065255.50164,
+            "mean": -17496650.108356543,
+            "median": 0.0,
+            "min": -918193599.9815342
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "R_transitions": {
+            "NONE->NONE": 332,
+            "NONE->R0": 42,
+            "NONE->R1": 10,
+            "NONE->R2": 11,
+            "R0->NONE": 78,
+            "R0->R0": 480,
+            "R1->NONE": 8,
+            "R1->R1": 22,
+            "R2->NONE": 3,
+            "R2->R2": 14
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 127717663.55071306,
+            "mean": 3654598.9785798974,
+            "median": 0.0,
+            "min": -116292706.09166753
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 340689456.7613983,
+            "mean": 9748716.865610054,
+            "median": 0.0,
+            "min": -310213151.11947155
+          }
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 4879179.8225497,
+            "mean": 92308.85826158004,
+            "median": 0.0,
+            "min": -3768931.7174847214
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 424758.95327136986,
+            "mean": 4460.573598119924,
+            "median": 0.0,
+            "min": -5.3551048040390015e-09
+          },
+          "R_transitions": {
+            "NONE->NONE": 731,
+            "NONE->R0": 75,
+            "NONE->R1": 9,
+            "NONE->R2": 6,
+            "R0->NONE": 27,
+            "R0->R0": 83,
+            "R1->NONE": 10,
+            "R1->R1": 40,
+            "R2->NONE": 7,
+            "R2->R2": 12
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 116292706.09166753,
+            "mean": -2921922.9074183768,
+            "median": 0.0,
+            "min": -100773343.55071306
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 2089190.6095801145,
+            "mean": -52492.14766129592,
+            "median": 0.0,
+            "min": -1810386.3098360347
+          }
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 34617641.201799534,
+            "mean": 1108344.0718471187,
+            "median": 0.0,
+            "min": -33627963.25740634
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 24390091.18916618,
+            "mean": 219794.080299247,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "R_transitions": {
+            "NONE->NONE": 533,
+            "NONE->R0": 179,
+            "NONE->R1": 5,
+            "NONE->R2": 6,
+            "R0->NONE": 104,
+            "R0->R0": 164,
+            "R1->NONE": 4,
+            "R2->NONE": 3,
+            "R2->R2": 2
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 26944320.000000004,
+            "mean": -1948068.3833212121,
+            "median": 0.0,
+            "min": -26944320.000000004
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 10400000.0,
+            "mean": -751917.7023781118,
+            "median": 0.0,
+            "min": -10400000.0
+          }
+        }
+      },
+      "BETA4_BETA6": {
+        "Crackers": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 918193599.9815342,
+            "mean": -1414765.880596383,
+            "median": 0.0,
+            "min": -349019595.1761549
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "R_transitions": {
+            "NONE->NONE": 357,
+            "NONE->R0": 55,
+            "NONE->R1": 8,
+            "NONE->R2": 1,
+            "R0->NONE": 45,
+            "R0->R0": 477,
+            "R1->NONE": 27,
+            "R1->R1": 5,
+            "R2->NONE": 22,
+            "R2->R2": 3
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 96427289.1556046,
+            "mean": 1464450.700676546,
+            "median": 0.0,
+            "min": -127717663.55071306
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 257221748.70786548,
+            "mean": 3906451.933089373,
+            "median": 0.0,
+            "min": -340689456.7613983
+          }
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 2770343.356270573,
+            "mean": 15844.110459752525,
+            "median": 0.0,
+            "min": -5737308.851740733
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 5.3551048040390015e-09,
+            "mean": -7.043126970529556e-12,
+            "median": 0.0,
+            "min": -3.6670826375484467e-09
+          },
+          "R_transitions": {
+            "NONE->NONE": 677,
+            "NONE->R0": 49,
+            "NONE->R1": 27,
+            "NONE->R2": 22,
+            "R0->NONE": 50,
+            "R0->R0": 108,
+            "R1->NONE": 7,
+            "R1->R1": 42,
+            "R2->NONE": 1,
+            "R2->R2": 17
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 106418597.65843832,
+            "mean": -1593114.2384376877,
+            "median": 0.0,
+            "min": -95624441.8637405
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 1911802.9185548704,
+            "mean": -28620.189681619846,
+            "median": 0.0,
+            "min": -1717886.6388283363
+          }
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 34486238.34184112,
+            "mean": -135702.92238447283,
+            "median": 0.0,
+            "min": -34617641.201799534
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "R_transitions": {
+            "NONE->NONE": 516,
+            "NONE->R0": 126,
+            "NONE->R1": 2,
+            "R0->NONE": 115,
+            "R0->R0": 228,
+            "R1->NONE": 4,
+            "R1->R1": 1,
+            "R2->NONE": 6,
+            "R2->R2": 2
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 26944320.000000004,
+            "mean": 128663.53776114364,
+            "median": 0.0,
+            "min": -26944320.000000004
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 10400000.0,
+            "mean": 49661.70208473971,
+            "median": 0.0,
+            "min": -10400000.0
+          }
+        }
+      }
+    },
+    "commodity_reference_tradeoff": [
+      {
+        "improved": 444,
+        "mean_delta_physical_shortage": -4605031.757612175,
+        "mean_delta_reference_shortage_loss": -11930716.277621625,
+        "median_delta_physical_shortage": 0.0,
+        "median_delta_reference_shortage_loss": 0.0,
+        "outcome_commodity": "Water",
+        "priority_cell": "E2D_LAMBDA_WATER",
+        "unchanged": 556,
+        "worsened": 0
+      },
+      {
+        "improved": 90,
+        "mean_delta_physical_shortage": 55880.31494730883,
+        "mean_delta_reference_shortage_loss": 3110521.8512269976,
+        "median_delta_physical_shortage": 0.0,
+        "median_delta_reference_shortage_loss": 0.0,
+        "outcome_commodity": "Vaccine",
+        "priority_cell": "E2D_LAMBDA_WATER",
+        "unchanged": 741,
+        "worsened": 169
+      },
+      {
+        "improved": 35,
+        "mean_delta_physical_shortage": 23528047.44556825,
+        "mean_delta_reference_shortage_loss": 8820194.426394626,
+        "median_delta_physical_shortage": 0.0,
+        "median_delta_reference_shortage_loss": 0.0,
+        "outcome_commodity": "Crackers",
+        "priority_cell": "E2D_LAMBDA_WATER",
+        "unchanged": 655,
+        "worsened": 310
+      },
+      {
+        "improved": 0,
+        "mean_delta_physical_shortage": 5794968.242387825,
+        "mean_delta_reference_shortage_loss": 15013603.722378379,
+        "median_delta_physical_shortage": 10400000.0,
+        "median_delta_reference_shortage_loss": 26944320.000000004,
+        "outcome_commodity": "Water",
+        "priority_cell": "E2D_LAMBDA_VACCINE",
+        "unchanged": 403,
+        "worsened": 597
+      },
+      {
+        "improved": 885,
+        "mean_delta_physical_shortage": -758373.3104990481,
+        "mean_delta_reference_shortage_loss": -42214091.95561902,
+        "median_delta_physical_shortage": -784334.5576599641,
+        "median_delta_reference_shortage_loss": -43659198.817584276,
+        "outcome_commodity": "Vaccine",
+        "priority_cell": "E2D_LAMBDA_VACCINE",
+        "unchanged": 115,
+        "worsened": 0
+      },
+      {
+        "improved": 0,
+        "mean_delta_physical_shortage": 73115295.20898409,
+        "mean_delta_reference_shortage_loss": 27409461.867943965,
+        "median_delta_physical_shortage": 54193268.30601692,
+        "median_delta_reference_shortage_loss": 20315972.42255962,
+        "outcome_commodity": "Crackers",
+        "priority_cell": "E2D_LAMBDA_VACCINE",
+        "unchanged": 421,
+        "worsened": 579
+      },
+      {
+        "improved": 0,
+        "mean_delta_physical_shortage": 5794968.242387825,
+        "mean_delta_reference_shortage_loss": 15013603.722378379,
+        "median_delta_physical_shortage": 10400000.0,
+        "median_delta_reference_shortage_loss": 26944320.000000004,
+        "outcome_commodity": "Water",
+        "priority_cell": "E2D_LAMBDA_CRACKERS",
+        "unchanged": 403,
+        "worsened": 597
+      },
+      {
+        "improved": 0,
+        "mean_delta_physical_shortage": 307205.14387493,
+        "mean_delta_reference_shortage_loss": 17100267.128654107,
+        "median_delta_physical_shortage": 0.0,
+        "median_delta_reference_shortage_loss": 0.0,
+        "outcome_commodity": "Vaccine",
+        "priority_cell": "E2D_LAMBDA_CRACKERS",
+        "unchanged": 567,
+        "worsened": 433
+      },
+      {
+        "improved": 714,
+        "mean_delta_physical_shortage": -83575252.57122909,
+        "mean_delta_reference_shortage_loss": -31330690.68390236,
+        "median_delta_physical_shortage": -71874519.84635091,
+        "median_delta_reference_shortage_loss": -26944320.0,
+        "outcome_commodity": "Crackers",
+        "priority_cell": "E2D_LAMBDA_CRACKERS",
+        "unchanged": 286,
+        "worsened": 0
+      }
+    ],
+    "diminishing_response_verdict": "PARTIALLY_SUPPORTED",
+    "expenditure_decomposition": [
+      {
+        "C_F": 3735401.0245602597,
+        "C_Q": 4128396.87844959,
+        "C_R": 224825.4939692435,
+        "T_COST_REF": 1217164494.8877633,
+        "cell": "E2D_BETA2",
+        "emergency_expenditure": 10412931.897602307,
+        "first_stage_cost": 8088623.396979093,
+        "reference_shortage_loss": 1198662939.5931816
+      },
+      {
+        "C_F": 3869043.470906119,
+        "C_Q": 4335061.133249909,
+        "C_R": 247564.90312853685,
+        "T_COST_REF": 1216585453.1364605,
+        "cell": "E2D_BASELINE",
+        "emergency_expenditure": 10686236.348153912,
+        "first_stage_cost": 8451669.507284565,
+        "reference_shortage_loss": 1197447547.281022
+      },
+      {
+        "C_F": 3869043.470906119,
+        "C_Q": 4335061.133249909,
+        "C_R": 247564.90312853685,
+        "T_COST_REF": 1216585453.1364605,
+        "cell": "E2D_BETA6",
+        "emergency_expenditure": 10686236.348153912,
+        "first_stage_cost": 8451669.507284565,
+        "reference_shortage_loss": 1197447547.281022
+      },
+      {
+        "C_F": 3869043.470906119,
+        "C_Q": 4335061.133249909,
+        "C_R": 247564.90312853685,
+        "T_COST_REF": 1216585453.1364605,
+        "cell": "E2D_LAMBDA_WATER",
+        "emergency_expenditure": 10686236.348153912,
+        "first_stage_cost": 8451669.507284565,
+        "reference_shortage_loss": 1197447547.281022
+      },
+      {
+        "C_F": 3971893.525288285,
+        "C_Q": 3980684.4179312023,
+        "C_R": 259371.51214323094,
+        "T_COST_REF": 1216794426.7711637,
+        "cell": "E2D_LAMBDA_VACCINE",
+        "emergency_expenditure": 10925956.400075758,
+        "first_stage_cost": 8211949.455362719,
+        "reference_shortage_loss": 1197656520.9157252
+      },
+      {
+        "C_F": 4308047.163342135,
+        "C_Q": 2794134.2548940177,
+        "C_R": 291293.80356986437,
+        "T_COST_REF": 1217368633.3035905,
+        "cell": "E2D_LAMBDA_CRACKERS",
+        "emergency_expenditure": 11744430.633632459,
+        "first_stage_cost": 7393475.221806018,
+        "reference_shortage_loss": 1198230727.448152
+      }
+    ],
+    "levels": {
+      "E2D_BASELINE": {
+        "T_COST_REF": {
+          "Q25": 1210234293.4941888,
+          "Q75": 1228098287.9657083,
+          "max": 1243661166.3035135,
+          "mean": 1216585453.1364605,
+          "median": 1221497114.0713663,
+          "min": 1129507408.2703202
+        },
+        "reference_shortage_loss": {
+          "Q25": 1191096387.6387503,
+          "Q75": 1208960382.11027,
+          "max": 1224523260.448075,
+          "mean": 1197447547.281022,
+          "median": 1202359208.215928,
+          "min": 1110369502.4148817
+        }
+      },
+      "E2D_BETA2": {
+        "T_COST_REF": {
+          "Q25": 1210234293.4941888,
+          "Q75": 1228098287.9657083,
+          "max": 1256970879.9999986,
+          "mean": 1217164494.8877633,
+          "median": 1221497114.0713663,
+          "min": 1129507408.2703202
+        },
+        "reference_shortage_loss": {
+          "Q25": 1191096387.6387503,
+          "Q75": 1208960382.11027,
+          "max": 1256970879.9999986,
+          "mean": 1198662939.5931816,
+          "median": 1202359208.215928,
+          "min": 1110369502.4148817
+        }
+      },
+      "E2D_BETA6": {
+        "T_COST_REF": {
+          "Q25": 1210234293.4941888,
+          "Q75": 1228098287.9657083,
+          "max": 1243661166.3035135,
+          "mean": 1216585453.1364605,
+          "median": 1221497114.0713663,
+          "min": 1129507408.2703202
+        },
+        "reference_shortage_loss": {
+          "Q25": 1191096387.6387503,
+          "Q75": 1208960382.11027,
+          "max": 1224523260.448075,
+          "mean": 1197447547.281022,
+          "median": 1202359208.215928,
+          "min": 1110369502.4148817
+        }
+      },
+      "E2D_LAMBDA_CRACKERS": {
+        "T_COST_REF": {
+          "Q25": 1210234293.4941888,
+          "Q75": 1229405229.3187814,
+          "max": 1244579553.4329598,
+          "mean": 1217368633.3035905,
+          "median": 1222784351.0269403,
+          "min": 1129507408.2703202
+        },
+        "reference_shortage_loss": {
+          "Q25": 1191096387.6387503,
+          "Q75": 1210267323.463343,
+          "max": 1225441647.5775213,
+          "mean": 1198230727.448152,
+          "median": 1203646445.171502,
+          "min": 1110369502.4148817
+        }
+      },
+      "E2D_LAMBDA_VACCINE": {
+        "T_COST_REF": {
+          "Q25": 1210234293.4941888,
+          "Q75": 1228420891.3222675,
+          "max": 1244579553.4329598,
+          "mean": 1216794426.7711637,
+          "median": 1221974094.442293,
+          "min": 1129507408.2703202
+        },
+        "reference_shortage_loss": {
+          "Q25": 1191096387.6387503,
+          "Q75": 1209282985.466829,
+          "max": 1225441647.5775213,
+          "mean": 1197656520.9157252,
+          "median": 1202836188.5868545,
+          "min": 1110369502.4148817
+        }
+      },
+      "E2D_LAMBDA_WATER": {
+        "T_COST_REF": {
+          "Q25": 1210234293.4941888,
+          "Q75": 1228098287.9657083,
+          "max": 1243661166.3035135,
+          "mean": 1216585453.1364605,
+          "median": 1221497114.0713663,
+          "min": 1129507408.2703202
+        },
+        "reference_shortage_loss": {
+          "Q25": 1191096387.6387503,
+          "Q75": 1208960382.11027,
+          "max": 1224523260.448075,
+          "mean": 1197447547.281022,
+          "median": 1202359208.215928,
+          "min": 1110369502.4148817
+        }
+      }
+    },
+    "paired_beta": {
+      "BETA2_BETA4": {
+        "C_F": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 8667647.60161476,
+          "mean": 133642.44634585886,
+          "median": 0.0,
+          "min": -2.7939677238464355e-09
+        },
+        "C_Q": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 19137905.85543848,
+          "mean": 206664.25480031912,
+          "median": 0.0,
+          "min": -7.450580596923828e-08
+        },
+        "C_R": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 4572100.007424298,
+          "mean": 22739.40915929335,
+          "median": 0.0,
+          "min": -1.862645149230957e-09
+        },
+        "T_COST_REF": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 2.384185791015625e-07,
+          "mean": -579041.7513026238,
+          "median": 0.0,
+          "min": -19077557.55282259
+        },
+        "T_COST_REF_direction": {
+          "improved": 36,
+          "unchanged": 964
+        },
+        "emergency_expenditure": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 14130082.799580859,
+          "mean": 273304.45055160567,
+          "median": 0.0,
+          "min": -3.725290298461914e-09
+        },
+        "first_stage_cost": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 19137905.85543848,
+          "mean": 363046.1103054713,
+          "median": 0.0,
+          "min": -7.450580596923828e-08
+        },
+        "policy_transitions": {
+          "P1->P1": 200,
+          "P2->P2": 26,
+          "P3a->P3a": 4,
+          "P3b->P3b": 1,
+          "P4->P4": 737,
+          "P5->P1": 8,
+          "P5->P3b": 2,
+          "P5->P4": 22
+        },
+        "reference_shortage_direction": {
+          "improved": 36,
+          "unchanged": 964
+        },
+        "reference_shortage_loss": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 2.384185791015625e-07,
+          "mean": -1215392.3121597006,
+          "median": 0.0,
+          "min": -38215463.40826106
+        }
+      },
+      "BETA4_BETA6": {
+        "C_F": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 2.7939677238464355e-09,
+          "mean": -5.3914845921099185e-12,
+          "median": 0.0,
+          "min": -3.725290298461914e-09
+        },
+        "C_Q": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 7.450580596923828e-08,
+          "mean": -8.568167686462402e-11,
+          "median": 0.0,
+          "min": -5.21540641784668e-08
+        },
+        "C_R": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 9.313225746154785e-10,
+          "mean": -2.735760062932968e-12,
+          "median": 0.0,
+          "min": -1.3969838619232178e-09
+        },
+        "T_COST_REF": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 2.384185791015625e-07,
+          "mean": 7.152557373046875e-10,
+          "median": 0.0,
+          "min": -4.76837158203125e-07
+        },
+        "T_COST_REF_direction": {
+          "unchanged": 1000
+        },
+        "emergency_expenditure": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 3.725290298461914e-09,
+          "mean": 1.909211277961731e-11,
+          "median": 0.0,
+          "min": -3.725290298461914e-09
+        },
+        "first_stage_cost": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 7.450580596923828e-08,
+          "mean": -9.305222192779183e-11,
+          "median": 0.0,
+          "min": -5.21540641784668e-08
+        },
+        "policy_transitions": {
+          "P1->P1": 208,
+          "P2->P2": 26,
+          "P3a->P3a": 4,
+          "P3b->P3b": 3,
+          "P4->P4": 759
+        },
+        "reference_shortage_direction": {
+          "unchanged": 1000
+        },
+        "reference_shortage_loss": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 2.384185791015625e-07,
+          "mean": 7.152557373046875e-10,
+          "median": 0.0,
+          "min": -4.76837158203125e-07
+        }
+      }
+    },
+    "paired_priority": {
+      "E2D_LAMBDA_CRACKERS": {
+        "C_F": {
+          "Q25": 0.0,
+          "Q75": 2.3283064365386963e-10,
+          "max": 11954044.772568164,
+          "mean": 439003.6924360169,
+          "median": 0.0,
+          "min": -3.725290298461914e-09
+        },
+        "C_Q": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 7.450580596923828e-08,
+          "mean": -1540926.878355891,
+          "median": 0.0,
+          "min": -19137905.85543848
+        },
+        "C_R": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 5016689.171807512,
+          "mean": 43728.900441327554,
+          "median": 0.0,
+          "min": -9.313225746154785e-10
+        },
+        "T_COST_REF": {
+          "Q25": 0.0,
+          "Q75": 2.384185791015625e-07,
+          "max": 4682918.804445267,
+          "mean": 783180.1671301563,
+          "median": 0.0,
+          "min": -2.384185791015625e-07
+        },
+        "T_COST_REF_direction": {
+          "unchanged": 759,
+          "worsened": 241
+        },
+        "emergency_expenditure": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 18499189.78436683,
+          "mean": 1058194.2854785477,
+          "median": 0.0,
+          "min": -7.450580596923828e-09
+        },
+        "first_stage_cost": {
+          "Q25": -2.3283064365386963e-10,
+          "Q75": 0.0,
+          "max": 7.450580596923828e-08,
+          "mean": -1058194.2854785465,
+          "median": 0.0,
+          "min": -18499189.78436683
+        },
+        "reference_shortage_loss": {
+          "Q25": 0.0,
+          "Q75": 2.384185791015625e-07,
+          "max": 4682918.804445267,
+          "mean": 783180.1671301563,
+          "median": 0.0,
+          "min": -2.384185791015625e-07
+        }
+      },
+      "E2D_LAMBDA_VACCINE": {
+        "C_F": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 5919928.399741156,
+          "mean": 102850.05438216655,
+          "median": 0.0,
+          "min": -3.725290298461914e-09
+        },
+        "C_Q": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 7.450580596923828e-08,
+          "mean": -354376.7153187063,
+          "median": 0.0,
+          "min": -15797462.063222937
+        },
+        "C_R": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 3405505.354963214,
+          "mean": 11806.609014694088,
+          "median": 0.0,
+          "min": -1.3969838619232178e-09
+        },
+        "T_COST_REF": {
+          "Q25": 0.0,
+          "Q75": 2.384185791015625e-07,
+          "max": 934528.3018870354,
+          "mean": 208973.6347033274,
+          "median": 0.0,
+          "min": -2.384185791015625e-07
+        },
+        "T_COST_REF_direction": {
+          "unchanged": 759,
+          "worsened": 241
+        },
+        "emergency_expenditure": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 9797189.062345713,
+          "mean": 239720.05192184573,
+          "median": 0.0,
+          "min": -5.587935447692871e-09
+        },
+        "first_stage_cost": {
+          "Q25": -4.656612873077393e-10,
+          "Q75": 0.0,
+          "max": 7.450580596923828e-08,
+          "mean": -239720.05192184565,
+          "median": 0.0,
+          "min": -9797189.062345712
+        },
+        "reference_shortage_loss": {
+          "Q25": 0.0,
+          "Q75": 2.384185791015625e-07,
+          "max": 934528.3018870354,
+          "mean": 208973.6347033274,
+          "median": 0.0,
+          "min": -2.384185791015625e-07
+        }
+      },
+      "E2D_LAMBDA_WATER": {
+        "C_F": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 1.862645149230957e-09,
+          "mean": 3.804871084867046e-12,
+          "median": 0.0,
+          "min": -3.725290298461914e-09
+        },
+        "C_Q": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 0.0,
+          "mean": -1.266598701477051e-10,
+          "median": 0.0,
+          "min": -4.0978193283081055e-08
+        },
+        "C_R": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 1.862645149230957e-09,
+          "mean": 5.355104804039001e-12,
+          "median": 0.0,
+          "min": -9.313225746154785e-10
+        },
+        "T_COST_REF": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 2.384185791015625e-07,
+          "mean": -2.1696090698242187e-08,
+          "median": 0.0,
+          "min": -2.384185791015625e-07
+        },
+        "T_COST_REF_direction": {
+          "unchanged": 1000
+        },
+        "emergency_expenditure": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 3.725290298461914e-09,
+          "mean": 1.126900315284729e-10,
+          "median": 0.0,
+          "min": -3.725290298461914e-09
+        },
+        "first_stage_cost": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 3.725290298461914e-09,
+          "mean": -1.184312168334145e-10,
+          "median": 0.0,
+          "min": -4.0978193283081055e-08
+        },
+        "reference_shortage_loss": {
+          "Q25": 0.0,
+          "Q75": 0.0,
+          "max": 2.384185791015625e-07,
+          "mean": -2.1696090698242187e-08,
+          "median": 0.0,
+          "min": -2.384185791015625e-07
+        }
+      }
+    },
+    "priority_crowding_out": {
+      "E2D_LAMBDA_CRACKERS": {
+        "NON_TARGET_CROWDING_OUT": true,
+        "PORTFOLIO_REFERENCE_COST_INCREASE": true,
+        "TARGET_BENEFIT": true,
+        "target": "Crackers"
+      },
+      "E2D_LAMBDA_VACCINE": {
+        "NON_TARGET_CROWDING_OUT": true,
+        "PORTFOLIO_REFERENCE_COST_INCREASE": true,
+        "TARGET_BENEFIT": true,
+        "target": "Vaccine"
+      },
+      "E2D_LAMBDA_WATER": {
+        "NON_TARGET_CROWDING_OUT": true,
+        "PORTFOLIO_REFERENCE_COST_INCREASE": false,
+        "TARGET_BENEFIT": true,
+        "target": "Water"
+      }
+    },
+    "priority_mechanism": {
+      "E2D_LAMBDA_CRACKERS": {
+        "Crackers": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 178119399.38423854,
+            "max": 918193599.9815341,
+            "mean": 109877457.58845448,
+            "median": 95843472.578341,
+            "min": -1.1920928955078125e-07
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 204203007.42038497,
+            "mean": 29813639.083376206,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "R_transitions": {
+            "NONE->NONE": 146,
+            "NONE->R0": 192,
+            "NONE->R1": 56,
+            "NONE->R2": 27,
+            "R0->R0": 522,
+            "R1->R1": 32,
+            "R2->R2": 25
+          },
+          "reference_shortage_loss": {
+            "Q25": -48477663.41353679,
+            "Q75": 0.0,
+            "max": 1.1920928955078125e-07,
+            "mean": -31330690.68390236,
+            "median": -26944320.0,
+            "min": -127717663.55071306
+          },
+          "shortage": {
+            "Q25": -129315149.95074904,
+            "Q75": 0.0,
+            "max": 2.384185791015625e-07,
+            "mean": -83575252.57122909,
+            "median": -71874519.84635091,
+            "min": -340689456.7613983
+          }
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": -363361.7604418588,
+            "median": 0.0,
+            "min": -5737308.851740733
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": -125419.01551011347,
+            "median": 0.0,
+            "min": -704251.0849926262
+          },
+          "R_transitions": {
+            "NONE->NONE": 775,
+            "R0->NONE": 158,
+            "R1->NONE": 49,
+            "R2->NONE": 18
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 26946856.09761016,
+            "max": 119487876.40830433,
+            "mean": 17100267.128654107,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 484098.4495833954,
+            "max": 2146591.628490664,
+            "mean": 307205.14387493,
+            "median": 0.0,
+            "min": 0.0
+          }
+        },
+        "Water": {
+          "F": {
+            "Q25": -13430758.958416594,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": -5681255.09450649,
+            "median": 0.0,
+            "min": -34617641.201799534
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": -3901529.4204973173,
+            "median": 0.0,
+            "min": -24390091.18916618
+          },
+          "R_transitions": {
+            "NONE->NONE": 644,
+            "R0->NONE": 343,
+            "R1->NONE": 5,
+            "R2->NONE": 8
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 26944320.000000004,
+            "max": 26944320.000000004,
+            "mean": 15013603.722378379,
+            "median": 26944320.000000004,
+            "min": 0.0
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 10400000.0,
+            "max": 10400000.0,
+            "mean": 5794968.242387825,
+            "median": 10400000.0,
+            "min": 0.0
+          }
+        }
+      },
+      "E2D_LAMBDA_VACCINE": {
+        "Crackers": {
+          "F": {
+            "Q25": -212154463.05750307,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": -124579026.56277582,
+            "median": -90070132.39494194,
+            "min": -893509032.8667613
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "R_transitions": {
+            "NONE->NONE": 421,
+            "R0->NONE": 522,
+            "R1->NONE": 32,
+            "R2->NONE": 25
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 51934285.56317067,
+            "max": 134211983.99697065,
+            "mean": 27409461.867943965,
+            "median": 20315972.42255962,
+            "min": 0.0
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 138535759.61153084,
+            "max": 358013188.2121496,
+            "mean": 73115295.20898409,
+            "median": 54193268.30601692,
+            "min": 0.0
+          }
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 1834684.9641633006,
+            "max": 6017509.813184312,
+            "mean": 1129909.2591166773,
+            "median": 1187451.6650684401,
+            "min": -4.656612873077393e-10
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 1019958.7930133864,
+            "mean": 150710.5917270676,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "R_transitions": {
+            "NONE->NONE": 208,
+            "NONE->R0": 510,
+            "NONE->R1": 32,
+            "NONE->R2": 25,
+            "R0->R0": 158,
+            "R1->R1": 49,
+            "R2->R2": 18
+          },
+          "reference_shortage_loss": {
+            "Q25": -59564182.426892355,
+            "Q75": -26009791.698113203,
+            "max": 0.0,
+            "mean": -42214091.95561902,
+            "median": -43659198.817584276,
+            "min": -146601377.5851168
+          },
+          "shortage": {
+            "Q25": -1070066.5138490284,
+            "Q75": -467264.1509433966,
+            "max": 0.0,
+            "mean": -758373.3104990481,
+            "median": -784334.5576599641,
+            "min": -2633683.8456653636
+          }
+        },
+        "Water": {
+          "F": {
+            "Q25": -13430758.958416594,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": -5681255.09450649,
+            "median": 0.0,
+            "min": -34617641.201799534
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": -3901529.4204973173,
+            "median": 0.0,
+            "min": -24390091.18916618
+          },
+          "R_transitions": {
+            "NONE->NONE": 644,
+            "R0->NONE": 343,
+            "R1->NONE": 5,
+            "R2->NONE": 8
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 26944320.000000004,
+            "max": 26944320.000000004,
+            "mean": 15013603.722378379,
+            "median": 26944320.000000004,
+            "min": 0.0
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 10400000.0,
+            "max": 10400000.0,
+            "mean": 5794968.242387825,
+            "median": 10400000.0,
+            "min": 0.0
+          }
+        }
+      },
+      "E2D_LAMBDA_WATER": {
+        "Crackers": {
+          "F": {
+            "Q25": -91807933.21474394,
+            "Q75": 0.0,
+            "max": 629980080.1420128,
+            "mean": -39155745.534739494,
+            "median": 0.0,
+            "min": -559629255.0204587
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "R_transitions": {
+            "NONE->NONE": 389,
+            "NONE->R0": 23,
+            "NONE->R1": 8,
+            "NONE->R2": 1,
+            "R0->NONE": 67,
+            "R0->R0": 455,
+            "R1->NONE": 13,
+            "R1->R1": 19,
+            "R2->NONE": 12,
+            "R2->R2": 13
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 26944320.0,
+            "max": 132817552.51257622,
+            "mean": 8820194.426394626,
+            "median": 0.0,
+            "min": -88819146.72592187
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 71874519.84635067,
+            "max": 354293513.95800304,
+            "mean": 23528047.44556825,
+            "median": 0.0,
+            "min": -236926874.5356431
+          }
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 2895692.9248986216,
+            "mean": -94070.61624137379,
+            "median": 0.0,
+            "min": -5737308.851740733
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 2.3283064365386963e-10,
+            "mean": -7.974449545145035e-12,
+            "median": 0.0,
+            "min": -3.026798367500305e-09
+          },
+          "R_transitions": {
+            "NONE->NONE": 692,
+            "NONE->R0": 58,
+            "NONE->R1": 13,
+            "NONE->R2": 12,
+            "R0->NONE": 26,
+            "R0->R0": 132,
+            "R1->NONE": 7,
+            "R1->R1": 42,
+            "R2->NONE": 1,
+            "R2->R2": 17
+          },
+          "reference_shortage_loss": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 101365896.0955689,
+            "mean": 3110521.8512269976,
+            "median": 0.0,
+            "min": -105873232.5125761
+          },
+          "shortage": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 1821031.4762785444,
+            "mean": 55880.31494730883,
+            "median": 0.0,
+            "min": -1902005.4705478605
+          }
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 15061982.673827713,
+            "max": 34486238.34184112,
+            "mean": 7686835.212491497,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "R_transitions": {
+            "NONE->NONE": 241,
+            "NONE->R0": 299,
+            "NONE->R1": 72,
+            "NONE->R2": 32,
+            "R0->R0": 343,
+            "R1->R1": 5,
+            "R2->R2": 8
+          },
+          "reference_shortage_loss": {
+            "Q25": -26944320.000000004,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": -11930716.277621625,
+            "median": 0.0,
+            "min": -26944320.000000004
+          },
+          "shortage": {
+            "Q25": -10400000.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": -4605031.757612175,
+            "median": 0.0,
+            "min": -10400000.0
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+claim_id,claim,status,reason
+C1,Cross-beta raw T-COST rises mechanically because beta changes the objective coefficient.,SAFE_AS_WRITTEN,Production formula and common-reference evaluation confirm the scale change.
+C2,Raw aggregate physical shortage does not fall monotonically.,NEEDS_QUALIFICATION,"Numerically true, but the sum combines gallons, doses, and 22-g service units and is descriptive only."
+C3,Beta 2 to 4 improves coefficient-normalized shortage value and beta 4 to 6 is unchanged.,SAFE_AS_WRITTEN,The common-reference shortage calculation reproduces this result.
+C4,Beta 4 to 6 exhibits a strong plateau.,NEEDS_QUALIFICATION,"Reference-valued outcome and aggregate expenditures plateau, but commodity F/R and shortage composition still reallocate."
+C5,Each priority treatment reduces target shortage and transfers shortage to non-target commodities.,SAFE_AS_WRITTEN,Within-commodity physical and reference-valued paired comparisons agree.
+C6,Commodity responses differ by archetype.,SAFE_AS_WRITTEN,"Paired Q/F/R and expenditure decompositions show distinct Water, Vaccine, and Crackers responses."
+C7,Same-item Q/F coexistence remains zero and h09 remains worst.,SAFE_AS_WRITTEN,Directly supported by frozen row-level evidence.
+C8,Commodity prioritization reallocates scarcity rather than eliminating it.,SAFE_AS_WRITTEN,All treatments show target benefit and non-target crowding-out under the common reference scale.

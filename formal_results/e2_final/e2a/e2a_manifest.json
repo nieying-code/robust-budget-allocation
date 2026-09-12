@@ -1,0 +1,103 @@
+{
+  "algorithm_identity": "A1_FINAL_NO_MEMORY_V1",
+  "baseline_reuse": {
+    "path": "formal_results/e1_final/e1_scientific_results.csv",
+    "rerun": false,
+    "rows": 1000,
+    "sha256": "05de91ac329b94a8a879fb85d0b6fe7feabb0ef779e1ffc7a6e91eae24b2b0e8"
+  },
+  "cases": {
+    "E2A_CRACKERS_A080": {
+      "a_C": 0.8,
+      "h_V_tau": 0.5
+    },
+    "E2A_CRACKERS_A100": {
+      "a_C": 1.0,
+      "h_V_tau": 0.5
+    },
+    "E2A_VACCINE_H0": {
+      "a_C": 0.9,
+      "h_V_tau": 0.0
+    },
+    "E2A_VACCINE_H1": {
+      "a_C": 0.9,
+      "h_V_tau": 1.0
+    }
+  },
+  "execution": {
+    "final_certified": 4000,
+    "final_failed": 0,
+    "formally_recertified": 205,
+    "initial_attempted": 4000,
+    "initial_certified": 3795,
+    "initial_failed": 205
+  },
+  "git": {
+    "branch": "r10/formal-e2-managerial-sensitivity",
+    "source_pre_recertification_head": "c376477a3f4f5e5865b4cb93344080f4bede8ed0"
+  },
+  "guardrails": {
+    "E2_B_runs": 0,
+    "E2_C_runs": 0,
+    "E2_D_runs": 0,
+    "OFAT": true,
+    "dropped": false,
+    "fixed_absolute_budget": true,
+    "model_changed": false,
+    "parameter_tuning": false,
+    "resampled": false,
+    "scientific_design_changed": false,
+    "tolerance_changed": false
+  },
+  "implementation_revision": "A1_FINAL_NO_MEMORY_V1_R1_WITNESS_GATED_INFEASIBLE_RETRY",
+  "sample_table": {
+    "path": "formal_results/e1_final/e1_samples.csv",
+    "rows": 1000,
+    "sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0"
+  },
+  "schema_version": 2,
+  "scientific_identity": {
+    "E2_B_runs": 0,
+    "E2_C_runs": 0,
+    "E2_D_runs": 0,
+    "algorithm_identity": "A1_FINAL_NO_MEMORY_V1",
+    "baseline_a_C": 0.9,
+    "baseline_h_V_tau": 0.5,
+    "baseline_rerun": false,
+    "baseline_reused_count": 1000,
+    "beta": 4.0,
+    "budget": 19137905.85543848,
+    "cases": {
+      "E2A_CRACKERS_A080": {
+        "a_C": 0.8,
+        "h_V_tau": 0.5
+      },
+      "E2A_CRACKERS_A100": {
+        "a_C": 1.0,
+        "h_V_tau": 0.5
+      },
+      "E2A_VACCINE_H0": {
+        "a_C": 0.9,
+        "h_V_tau": 0.0
+      },
+      "E2A_VACCINE_H1": {
+        "a_C": 0.9,
+        "h_V_tau": 1.0
+      }
+    },
+    "dataset": "rawls_24_real_single_hurricane_data_recalibration_v1",
+    "gamma_D": 1.0,
+    "lambda": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "planned_new_runs": 4000,
+    "sample_count": 1000,
+    "sample_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+    "scenario_count": 24,
+    "status": "PASS"
+  },
+  "scope": "FORMAL_E2A_EXECUTION_MANIFEST_V1",
+  "status": "COMPLETE_4000_OF_4000_CERTIFIED"
+}

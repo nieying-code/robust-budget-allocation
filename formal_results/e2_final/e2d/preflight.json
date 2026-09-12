@@ -1,0 +1,87 @@
+{
+  "E2_B_runs": 0,
+  "E2_C_runs": 0,
+  "E2_D_runs": 0,
+  "E3_runs": 0,
+  "algorithm_identity": "A1_FINAL_NO_MEMORY_V1",
+  "baseline_a_C": 0.9,
+  "baseline_h_V_tau": 0.5,
+  "baseline_rerun": false,
+  "baseline_reused_count": 1000,
+  "baseline_reused_rows": 1000,
+  "beta": 4.0,
+  "budget": 19137905.85543848,
+  "cases": {
+    "E2D_BETA2": {
+      "beta": 2.0,
+      "lambda": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "part": "D1"
+    },
+    "E2D_BETA6": {
+      "beta": 6.0,
+      "lambda": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "part": "D1"
+    },
+    "E2D_LAMBDA_CRACKERS": {
+      "beta": 4.0,
+      "lambda": [
+        1.0,
+        1.0,
+        1.5
+      ],
+      "part": "D2"
+    },
+    "E2D_LAMBDA_VACCINE": {
+      "beta": 4.0,
+      "lambda": [
+        1.0,
+        1.5,
+        1.0
+      ],
+      "part": "D2"
+    },
+    "E2D_LAMBDA_WATER": {
+      "beta": 4.0,
+      "lambda": [
+        1.5,
+        1.0,
+        1.0
+      ],
+      "part": "D2"
+    }
+  },
+  "dataset": "rawls_24_real_single_hurricane_data_recalibration_v1",
+  "frozen_hashes": {
+    "e1_HASHES": "1b93b735e5e80759ed5494dc4a291c3c006ce2de04a22a02dffa8482fc1f2579",
+    "e2a_HASHES": "ea567ce9bf8e0f0089a2bbf739ae20b2c2b4e20d5f6c716a1e0406b946aaa75c",
+    "e2a_diagnostics_HASHES": "3fb2ce43b4d00da20f74b0c4cb0e5ecb62ee3a5d94088058fc9115d9c9be3504",
+    "e2a_recertification_HASHES": "f29b832f9b106ccb402bf85633b6fafcbc7408f1f269b750988d38f335a88292",
+    "e2b_HASHES": "41cfa4e4e41be0fc4c144820c33866754bb26e8b36e7f972a18ddc0811635a5d",
+    "e2c_HASHES": "113a84484fb3e7222bf6a97e7b65dcee0d7ca823fe8a44b93dcc018bcbdae3d0"
+  },
+  "gamma_D": 1.0,
+  "git_commit": "3e1277299efc1ba17f1a834352706f038e1ebc7c",
+  "git_tree": "b99b79fa801e45dfa4dd1cf671f964dd03e020b9",
+  "implementation_revision": "A1_FINAL_NO_MEMORY_V1_R1_WITNESS_GATED_INFEASIBLE_RETRY",
+  "lambda": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "planned_new_runs": 5000,
+  "sample_count": 1000,
+  "sample_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+  "scenario_count": 24,
+  "schema_version": 1,
+  "scientific_optimizations_completed": 0,
+  "scope": "FORMAL_E2D_PREFLIGHT_V1",
+  "status": "PASS"
+}

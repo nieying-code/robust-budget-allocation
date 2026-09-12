@@ -1,0 +1,36 @@
+{
+  "case_taxonomy_counts_overlapping": {
+    "A": 205,
+    "B": 0,
+    "C": 0,
+    "D": 0,
+    "E": 0,
+    "F": 0
+  },
+  "cases_with_multiple_failure_mechanisms": 0,
+  "completed": 205,
+  "determinism_subset": {
+    "size": 5,
+    "stable": 5
+  },
+  "first_stage_budget_or_feasibility_issue_cases": 0,
+  "non_reproduced": 0,
+  "production_infeasible": 284,
+  "production_optimal": 4636,
+  "production_other_failure": 0,
+  "reproduced": 205,
+  "requested": 205,
+  "scaled_attempted": 284,
+  "scaled_optimal": 284,
+  "scenario_taxonomy": {
+    "A_SOLVER_INFEASIBLE_BUT_ORIGINAL_WITNESS_FEASIBLE": 284,
+    "OPTIMAL": 4636
+  },
+  "schema_version": 1,
+  "scope": "E2A_205_FAILURE_TAXONOMY_V1",
+  "taxonomy_sha256": "48ded03d1999ca67398b5cc77feb0bbf386bb7294f7a813cbb8cea53e70449db",
+  "total_scenario_checks": 4920,
+  "witness_feasible_scenarios": 284,
+  "witness_infeasible_scenarios": 0,
+  "witness_scenarios": 284
+}

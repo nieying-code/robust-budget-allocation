@@ -1,0 +1,65 @@
+{
+  "E2_A_frozen": true,
+  "E2_A_rerun": false,
+  "E2_B_runs": 0,
+  "E2_C_runs": 0,
+  "E2_D_runs": 0,
+  "algorithm_identity": "A1_FINAL_NO_MEMORY_V1",
+  "baseline_a_C": 0.9,
+  "baseline_budget": 19137905.85543848,
+  "baseline_case": "E2B_B100",
+  "baseline_h_V_tau": 0.5,
+  "baseline_path": "formal_results/e1_final/e1_scientific_results.csv",
+  "baseline_rerun": false,
+  "baseline_reused_count": 1000,
+  "baseline_sha256": "05de91ac329b94a8a879fb85d0b6fe7feabb0ef779e1ffc7a6e91eae24b2b0e8",
+  "beta": 4.0,
+  "budget": 19137905.85543848,
+  "budget_reference": 19137905.85543848,
+  "budgets": {
+    "E2B_B075": 14353429.391578859,
+    "E2B_B125": 23922382.319298096
+  },
+  "cases": {
+    "E2A_CRACKERS_A080": {
+      "a_C": 0.8,
+      "h_V_tau": 0.5
+    },
+    "E2A_CRACKERS_A100": {
+      "a_C": 1.0,
+      "h_V_tau": 0.5
+    },
+    "E2A_VACCINE_H0": {
+      "a_C": 0.9,
+      "h_V_tau": 0.0
+    },
+    "E2A_VACCINE_H1": {
+      "a_C": 0.9,
+      "h_V_tau": 1.0
+    }
+  },
+  "dataset": "rawls_24_real_single_hurricane_data_recalibration_v1",
+  "frozen_hashes": {
+    "e1_HASHES": "1b93b735e5e80759ed5494dc4a291c3c006ce2de04a22a02dffa8482fc1f2579",
+    "e2a_HASHES": "ea567ce9bf8e0f0089a2bbf739ae20b2c2b4e20d5f6c716a1e0406b946aaa75c",
+    "e2a_diagnostics_HASHES": "3fb2ce43b4d00da20f74b0c4cb0e5ecb62ee3a5d94088058fc9115d9c9be3504",
+    "e2a_recertification_HASHES": "f29b832f9b106ccb402bf85633b6fafcbc7408f1f269b750988d38f335a88292"
+  },
+  "gamma_D": 1.0,
+  "git_commit": "5a838fb23ea3bf65ebd7cb8a6c7fd5426aa1e6b8",
+  "git_tree": "88c331cf7aebb11accf61244a11def529387e03e",
+  "implementation_revision": "A1_FINAL_NO_MEMORY_V1_R1_WITNESS_GATED_INFEASIBLE_RETRY",
+  "lambda": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "planned_new_runs": 2000,
+  "sample_count": 1000,
+  "sample_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+  "scenario_count": 24,
+  "schema_version": 1,
+  "scientific_optimizations_completed": 0,
+  "scope": "FORMAL_E2B_PREFLIGHT_V1",
+  "status": "PASS"
+}

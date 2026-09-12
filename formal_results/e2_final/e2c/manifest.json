@@ -1,0 +1,61 @@
+{
+  "analysis": {
+    "active_item_observations": 1160,
+    "observations": 3000,
+    "optimization_runs": 0
+  },
+  "frozen_artifact_hashes": {
+    "e1_HASHES": "1b93b735e5e80759ed5494dc4a291c3c006ce2de04a22a02dffa8482fc1f2579",
+    "e2a_HASHES": "ea567ce9bf8e0f0089a2bbf739ae20b2c2b4e20d5f6c716a1e0406b946aaa75c",
+    "e2a_diagnostics_HASHES": "3fb2ce43b4d00da20f74b0c4cb0e5ecb62ee3a5d94088058fc9115d9c9be3504",
+    "e2a_recertification_HASHES": "f29b832f9b106ccb402bf85633b6fafcbc7408f1f269b750988d38f335a88292",
+    "e2b_HASHES": "41cfa4e4e41be0fc4c144820c33866754bb26e8b36e7f972a18ddc0811635a5d"
+  },
+  "git": {
+    "branch": "r10/formal-e2-managerial-sensitivity",
+    "commit": "46d31b87a65f1c309079d58b85978cd0cdd0c457",
+    "tree": "58d647b0a00574153c179e2635b06b4fa7905c95"
+  },
+  "guardrails": {
+    "E1_frozen": true,
+    "E2A_frozen": true,
+    "E2B_frozen": true,
+    "E2_C_new_scientific_optimization_runs": 0,
+    "E2_D_runs": 0,
+    "model_changed": false,
+    "resampled": false,
+    "scientific_parameters_changed": false,
+    "tolerance_changed": false
+  },
+  "inputs": {
+    "e1_results_sha256": "05de91ac329b94a8a879fb85d0b6fe7feabb0ef779e1ffc7a6e91eae24b2b0e8",
+    "sample_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0"
+  },
+  "schema_version": 1,
+  "scientific_identity": {
+    "E2_C_new_scientific_optimization_runs": 0,
+    "E2_D_runs": 0,
+    "F_active_rule": "sum_i(F_i)>policy_tolerance",
+    "F_exposure": "F_quantity*rho_F_severity_score",
+    "algorithm_identity": "A1_FINAL_NO_MEMORY_V1",
+    "budget": 19137905.85543848,
+    "e1_results_sha256": "05de91ac329b94a8a879fb85d0b6fe7feabb0ef779e1ffc7a6e91eae24b2b0e8",
+    "frozen_hashes": {
+      "e1_HASHES": "1b93b735e5e80759ed5494dc4a291c3c006ce2de04a22a02dffa8482fc1f2579",
+      "e2a_HASHES": "ea567ce9bf8e0f0089a2bbf739ae20b2c2b4e20d5f6c716a1e0406b946aaa75c",
+      "e2a_diagnostics_HASHES": "3fb2ce43b4d00da20f74b0c4cb0e5ecb62ee3a5d94088058fc9115d9c9be3504",
+      "e2a_recertification_HASHES": "f29b832f9b106ccb402bf85633b6fafcbc7408f1f269b750988d38f335a88292",
+      "e2b_HASHES": "41cfa4e4e41be0fc4c144820c33866754bb26e8b36e7f972a18ddc0811635a5d"
+    },
+    "implementation_revision": "A1_FINAL_NO_MEMORY_V1_R1_WITNESS_GATED_INFEASIBLE_RETRY",
+    "policy_tolerance": 1e-07,
+    "result_rows": 1000,
+    "rho_F_severity_score": "mean_k(1-rho_Fk)",
+    "sample_rows": 1000,
+    "sample_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+    "scope": "FORMAL_E2C_PREFLIGHT_V1",
+    "status": "PASS"
+  },
+  "scope": "FORMAL_E2C_EXECUTION_MANIFEST_V1",
+  "status": "COMPLETE"
+}

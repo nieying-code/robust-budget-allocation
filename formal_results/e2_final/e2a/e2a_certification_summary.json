@@ -1,0 +1,35 @@
+{
+  "attempted": 4000,
+  "by_case": {
+    "E2A_CRACKERS_A080": {
+      "certified": 1000,
+      "failed": 0,
+      "requested": 1000
+    },
+    "E2A_CRACKERS_A100": {
+      "certified": 1000,
+      "failed": 0,
+      "requested": 1000
+    },
+    "E2A_VACCINE_H0": {
+      "certified": 1000,
+      "failed": 0,
+      "requested": 1000
+    },
+    "E2A_VACCINE_H1": {
+      "certified": 1000,
+      "failed": 0,
+      "requested": 1000
+    }
+  },
+  "certified": 4000,
+  "current_retained_failures": 0,
+  "failed": 0,
+  "formally_recertified": 205,
+  "historical_failure_archive": "formal_results/e2_final/e2a/recertification/e2a_initial_205_retained_failures.csv",
+  "historical_failure_archive_sha256": "4672e9faa1e3aa4e6f0983d2f501ff2a8f20bfe5253ce203eda93e1273d253f5",
+  "historical_failures_preserved_in_recertification_evidence": true,
+  "initial_certified": 3795,
+  "initial_retained_failures": 205,
+  "resampled_or_replaced": false
+}
