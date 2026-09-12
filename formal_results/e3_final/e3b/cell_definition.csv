@@ -1,0 +1,10 @@
+case_id,F_risk,reliability_economics,F_risk_donor_id,reliability_donor_id,background_subset,N
+E3B_LOW_UNFAVORABLE,Low,Unfavorable,975,374,S200,200
+E3B_LOW_REFERENCE,Low,Reference,975,427,S200,200
+E3B_LOW_FAVORABLE,Low,Favorable,975,755,S200,200
+E3B_MEDIUM_UNFAVORABLE,Medium,Unfavorable,169,374,S200,200
+E3B_MEDIUM_REFERENCE,Medium,Reference,169,427,S200,200
+E3B_MEDIUM_FAVORABLE,Medium,Favorable,169,755,S200,200
+E3B_HIGH_UNFAVORABLE,High,Unfavorable,794,374,S200,200
+E3B_HIGH_REFERENCE,High,Reference,794,427,S200,200
+E3B_HIGH_FAVORABLE,High,Favorable,794,755,S200,200
