@@ -1,0 +1,65 @@
+{
+  "E4_runs": 0,
+  "S100_sha256": "1ad7dcbf17a2339a41723bea60ad0e7e8fce70017d54c5c1f80ba7412accd0ee",
+  "S200_sha256": "2b7d7a92c9a0301203a6b73a349a32903b83434038dc88a52fe1cc734ffad32d",
+  "algorithm_identity": "A1_FINAL_NO_MEMORY_V1",
+  "attempted": 1800,
+  "cases": {
+    "E3B_HIGH_FAVORABLE": {
+      "F_risk": "High",
+      "reliability_economics": "Favorable"
+    },
+    "E3B_HIGH_REFERENCE": {
+      "F_risk": "High",
+      "reliability_economics": "Reference"
+    },
+    "E3B_HIGH_UNFAVORABLE": {
+      "F_risk": "High",
+      "reliability_economics": "Unfavorable"
+    },
+    "E3B_LOW_FAVORABLE": {
+      "F_risk": "Low",
+      "reliability_economics": "Favorable"
+    },
+    "E3B_LOW_REFERENCE": {
+      "F_risk": "Low",
+      "reliability_economics": "Reference"
+    },
+    "E3B_LOW_UNFAVORABLE": {
+      "F_risk": "Low",
+      "reliability_economics": "Unfavorable"
+    },
+    "E3B_MEDIUM_FAVORABLE": {
+      "F_risk": "Medium",
+      "reliability_economics": "Favorable"
+    },
+    "E3B_MEDIUM_REFERENCE": {
+      "F_risk": "Medium",
+      "reliability_economics": "Reference"
+    },
+    "E3B_MEDIUM_UNFAVORABLE": {
+      "F_risk": "Medium",
+      "reliability_economics": "Unfavorable"
+    }
+  },
+  "certified": 1800,
+  "failed": 0,
+  "frozen_hashes": {
+    "formal_results/e1_final": "1b93b735e5e80759ed5494dc4a291c3c006ce2de04a22a02dffa8482fc1f2579",
+    "formal_results/e2_final/e2a": "ea567ce9bf8e0f0089a2bbf739ae20b2c2b4e20d5f6c716a1e0406b946aaa75c",
+    "formal_results/e2_final/e2b": "41cfa4e4e41be0fc4c144820c33866754bb26e8b36e7f972a18ddc0811635a5d",
+    "formal_results/e2_final/e2c": "113a84484fb3e7222bf6a97e7b65dcee0d7ca823fe8a44b93dcc018bcbdae3d0",
+    "formal_results/e2_final/e2d": "5adeb11b7da7858f2efa1d428e6e98087df65d6fd456dba8d9d2f30ccfed20ce",
+    "formal_results/e2_final/e2d_audit": "9db3c92df87f23b916f5f2d575a5ff7b17f920594bcd7d4756c65453cb7e9509"
+  },
+  "git_commit": "590594cf9b04e3b14ba2e1591e8bb02a387941e8",
+  "implementation_revision": "A1_FINAL_NO_MEMORY_V1_R1_WITNESS_GATED_INFEASIBLE_RETRY",
+  "model_changed": false,
+  "part": "E3B",
+  "representatives_reselected": false,
+  "resampled": false,
+  "result_driven_tuning": false,
+  "sample_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+  "schema_version": 1,
+  "tolerance_changed": false
+}

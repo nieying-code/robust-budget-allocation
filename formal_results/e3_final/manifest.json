@@ -1,0 +1,26 @@
+{
+  "E3A_HASHES": "bc2cb37d9c87a5f4ee1f00985b93df9032689be285ee389900c008c1a045c6af",
+  "E3B_HASHES": "7cdcc50ecc91622f56080b1a4ecf23640197f3d2c788514703371c5dba2099d6",
+  "E3B_design_recovery_status": "PASS",
+  "E4_runs": 0,
+  "attempted": 3600,
+  "certified": 3600,
+  "failed": 0,
+  "frozen_hashes": {
+    "formal_results/e1_final": "1b93b735e5e80759ed5494dc4a291c3c006ce2de04a22a02dffa8482fc1f2579",
+    "formal_results/e2_final/e2a": "ea567ce9bf8e0f0089a2bbf739ae20b2c2b4e20d5f6c716a1e0406b946aaa75c",
+    "formal_results/e2_final/e2b": "41cfa4e4e41be0fc4c144820c33866754bb26e8b36e7f972a18ddc0811635a5d",
+    "formal_results/e2_final/e2c": "113a84484fb3e7222bf6a97e7b65dcee0d7ca823fe8a44b93dcc018bcbdae3d0",
+    "formal_results/e2_final/e2d": "5adeb11b7da7858f2efa1d428e6e98087df65d6fd456dba8d9d2f30ccfed20ce",
+    "formal_results/e2_final/e2d_audit": "9db3c92df87f23b916f5f2d575a5ff7b17f920594bcd7d4756c65453cb7e9509"
+  },
+  "git_commit": "590594cf9b04e3b14ba2e1591e8bb02a387941e8",
+  "model_changed": false,
+  "preflight_sha256": "1e378de38919bf34f145be7ff8111956781c7515bdfad7edf697a7fb85a8a73f",
+  "representatives_reselected": false,
+  "resampled": false,
+  "result_driven_tuning": false,
+  "schema_version": 1,
+  "scope": "FORMAL_E3_TARGETED_INTERACTIONS_V1",
+  "tolerance_changed": false
+}
