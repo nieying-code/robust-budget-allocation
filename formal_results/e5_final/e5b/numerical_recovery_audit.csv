@@ -1,0 +1,13 @@
+benchmark_instance_id,algorithm,repetition,scaled_retry_count,witness_gated_retry_count
+E5B-R04-O50,A0,1,1,1
+E5B-R04-O50,A0,2,1,1
+E5B-R04-O50,A0,3,1,1
+E5B-R17-O50,A0,1,1,1
+E5B-R17-O50,A1,1,1,1
+E5B-R17-O50,A1,2,1,1
+E5B-R17-O50,A0,2,1,1
+E5B-R17-O50,A0,3,1,1
+E5B-R17-O50,A1,3,1,1
+E5B-R25-O50,A0,1,1,1
+E5B-R25-O50,A0,2,1,1
+E5B-R25-O50,A0,3,1,1

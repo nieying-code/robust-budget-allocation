@@ -1,0 +1,6 @@
+metric,min,Q25,median,mean,Q75,P90,P95,max
+iterations,3.0,3.0,3.0,3.535,3.0,6.0,7.0,7.0
+scenario_evaluations,51.0,51.0,51.0,51.535,51.0,54.0,55.0,55.0
+candidate_hits,1.0,1.0,1.0,1.535,1.0,4.0,5.0,5.0
+full_exact_certification_calls,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0
+complete_full_exact_certification_calls,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0

@@ -1,0 +1,165 @@
+{
+  "E5B_runs": 0,
+  "E5C_runs": 0,
+  "correctness": {
+    "A1_full_exact_certified": 200,
+    "instances": 200,
+    "objective_agreement": 200,
+    "objective_difference": {
+      "P90": 2.3841857910154895e-08,
+      "P95": 2.384185791015625e-07,
+      "Q25": 0.0,
+      "Q75": 0.0,
+      "max": 2.384185791015625e-07,
+      "mean": 2.384185791015625e-08,
+      "median": 0.0,
+      "min": 0.0
+    },
+    "objective_equivalent_decision_different": 80,
+    "same_decision": 120
+  },
+  "diagnostics": {
+    "A0": {
+      "complete_oracle_calls": {
+        "P90": 2.0,
+        "P95": 2.0,
+        "Q25": 2.0,
+        "Q75": 2.0,
+        "max": 2.0,
+        "mean": 2.0,
+        "median": 2.0,
+        "min": 2.0
+      },
+      "exact_oracle_calls": {
+        "P90": 2.0,
+        "P95": 2.0,
+        "Q25": 2.0,
+        "Q75": 2.0,
+        "max": 2.0,
+        "mean": 2.0,
+        "median": 2.0,
+        "min": 2.0
+      },
+      "iterations": {
+        "P90": 2.0,
+        "P95": 2.0,
+        "Q25": 2.0,
+        "Q75": 2.0,
+        "max": 2.0,
+        "mean": 2.0,
+        "median": 2.0,
+        "min": 2.0
+      },
+      "scenario_evaluations": {
+        "P90": 48.0,
+        "P95": 48.0,
+        "Q25": 48.0,
+        "Q75": 48.0,
+        "max": 48.0,
+        "mean": 48.0,
+        "median": 48.0,
+        "min": 48.0
+      },
+      "timed_runs": 600
+    },
+    "A1": {
+      "candidate_hits": {
+        "P90": 4.0,
+        "P95": 5.0,
+        "Q25": 1.0,
+        "Q75": 1.0,
+        "max": 5.0,
+        "mean": 1.535,
+        "median": 1.0,
+        "min": 1.0
+      },
+      "complete_full_exact_certification_calls": {
+        "P90": 2.0,
+        "P95": 2.0,
+        "Q25": 2.0,
+        "Q75": 2.0,
+        "max": 2.0,
+        "mean": 2.0,
+        "median": 2.0,
+        "min": 2.0
+      },
+      "full_exact_certification_calls": {
+        "P90": 2.0,
+        "P95": 2.0,
+        "Q25": 2.0,
+        "Q75": 2.0,
+        "max": 2.0,
+        "mean": 2.0,
+        "median": 2.0,
+        "min": 2.0
+      },
+      "iterations": {
+        "P90": 6.0,
+        "P95": 7.0,
+        "Q25": 3.0,
+        "Q75": 3.0,
+        "max": 7.0,
+        "mean": 3.535,
+        "median": 3.0,
+        "min": 3.0
+      },
+      "scenario_evaluations": {
+        "P90": 54.0,
+        "P95": 55.0,
+        "Q25": 51.0,
+        "Q75": 51.0,
+        "max": 55.0,
+        "mean": 51.535,
+        "median": 51.0,
+        "min": 51.0
+      },
+      "timed_runs": 600
+    }
+  },
+  "execution": {
+    "A0_timed_runs": 600,
+    "A1_timed_runs": 600,
+    "failed": 0,
+    "instances": 200,
+    "timing_repetitions": 3
+  },
+  "interpretation_boundary": "RAWLS24_I3_S200_ONLY_NO_SCALABILITY_CLAIM",
+  "runtime": {
+    "A0": {
+      "P90": 1.4421517900249454,
+      "P95": 1.4852015450160252,
+      "Q25": 0.5300025000033202,
+      "Q75": 0.558151374978479,
+      "max": 1.5628360999980941,
+      "mean": 0.7412887145022978,
+      "median": 0.5374406500195619,
+      "min": 0.5145872999564745
+    },
+    "A0_faster": 58,
+    "A1": {
+      "P90": 1.409985560021596,
+      "P95": 1.4678422449884239,
+      "Q25": 0.521516500011785,
+      "Q75": 0.6548647499876097,
+      "max": 1.668012899986934,
+      "mean": 0.7391170534977572,
+      "median": 0.530386800004635,
+      "min": 0.501357100030873
+    },
+    "A1_faster": 142,
+    "exact_wall_clock_ties": 0,
+    "geometric_mean_speedup": 0.9984696191885087,
+    "speedup_A0_over_A1": {
+      "P90": 1.057176282035236,
+      "P95": 1.077620608503749,
+      "Q25": 0.9950375983731358,
+      "Q75": 1.0377020965435895,
+      "max": 1.2785828867393503,
+      "mean": 1.0016562616749807,
+      "median": 1.0206905485583775,
+      "min": 0.7522698627947465
+    },
+    "tie_rule": "STRICT_WALL_CLOCK_ORDER_NO_POST_HOC_TIE_BAND"
+  },
+  "status": "PASS"
+}
