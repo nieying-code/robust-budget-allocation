@@ -1,0 +1,77 @@
+{
+  "sample_index": 48,
+  "seed_rows": [
+    {
+      "sample_index": 48,
+      "seed": 20260904,
+      "simulation_id": "LA-0048",
+      "solver": "{\"lower_bound\": null, \"message\": null, \"objective\": null, \"runtime_seconds\": 0.28494049998698756, \"solver_interface\": \"gurobi_direct\", \"solver_status\": \"warning\", \"status\": \"failed\", \"termination\": \"infeasible\"}",
+      "status": "FAIL"
+    },
+    {
+      "sample_index": 48,
+      "seed": 20260905,
+      "simulation_id": "LA-0048",
+      "solver": "{\"lower_bound\": null, \"message\": null, \"objective\": null, \"runtime_seconds\": 0.24016619997564703, \"solver_interface\": \"gurobi_direct\", \"solver_status\": \"warning\", \"status\": \"failed\", \"termination\": \"infeasible\"}",
+      "status": "FAIL"
+    },
+    {
+      "sample_index": 48,
+      "seed": 20260906,
+      "simulation_id": "LA-0048",
+      "solver": "{\"lower_bound\": null, \"message\": null, \"objective\": null, \"runtime_seconds\": 0.2783603999996558, \"solver_interface\": \"gurobi_direct\", \"solver_status\": \"warning\", \"status\": \"failed\", \"termination\": \"infeasible\"}",
+      "status": "FAIL"
+    },
+    {
+      "sample_index": 48,
+      "seed": 20260907,
+      "simulation_id": "LA-0048",
+      "solver": "{\"lower_bound\": null, \"message\": null, \"objective\": null, \"runtime_seconds\": 0.23944610002217814, \"solver_interface\": \"gurobi_direct\", \"solver_status\": \"warning\", \"status\": \"failed\", \"termination\": \"infeasible\"}",
+      "status": "FAIL"
+    },
+    {
+      "sample_index": 48,
+      "seed": 20260908,
+      "simulation_id": "LA-0048",
+      "solver": "{\"lower_bound\": null, \"message\": null, \"objective\": null, \"runtime_seconds\": 0.23359229997731745, \"solver_interface\": \"gurobi_direct\", \"solver_status\": \"warning\", \"status\": \"failed\", \"termination\": \"infeasible\"}",
+      "status": "FAIL"
+    },
+    {
+      "sample_index": 48,
+      "seed": 20260909,
+      "simulation_id": "LA-0048",
+      "solver": "{\"lower_bound\": null, \"message\": null, \"objective\": null, \"runtime_seconds\": 0.23724529996979982, \"solver_interface\": \"gurobi_direct\", \"solver_status\": \"warning\", \"status\": \"failed\", \"termination\": \"infeasible\"}",
+      "status": "FAIL"
+    },
+    {
+      "sample_index": 48,
+      "seed": 20260910,
+      "simulation_id": "LA-0048",
+      "solver": "{\"lower_bound\": null, \"message\": null, \"objective\": null, \"runtime_seconds\": 0.23601110000163317, \"solver_interface\": \"gurobi_direct\", \"solver_status\": \"warning\", \"status\": \"failed\", \"termination\": \"infeasible\"}",
+      "status": "FAIL"
+    },
+    {
+      "sample_index": 48,
+      "seed": 20260911,
+      "simulation_id": "LA-0048",
+      "solver": "{\"lower_bound\": null, \"message\": null, \"objective\": null, \"runtime_seconds\": 0.24005660001421347, \"solver_interface\": \"gurobi_direct\", \"solver_status\": \"warning\", \"status\": \"failed\", \"termination\": \"infeasible\"}",
+      "status": "FAIL"
+    },
+    {
+      "sample_index": 48,
+      "seed": 20260912,
+      "simulation_id": "LA-0048",
+      "solver": "{\"lower_bound\": null, \"message\": null, \"objective\": null, \"runtime_seconds\": 0.23427919996902347, \"solver_interface\": \"gurobi_direct\", \"solver_status\": \"warning\", \"status\": \"failed\", \"termination\": \"infeasible\"}",
+      "status": "FAIL"
+    },
+    {
+      "sample_index": 48,
+      "seed": 20260913,
+      "simulation_id": "LA-0048",
+      "solver": "{\"lower_bound\": null, \"message\": null, \"objective\": null, \"runtime_seconds\": 0.23661199997877702, \"solver_interface\": \"gurobi_direct\", \"solver_status\": \"warning\", \"status\": \"failed\", \"termination\": \"infeasible\"}",
+      "status": "FAIL"
+    }
+  ],
+  "simulation_id": "LA-0048",
+  "status": "FAIL"
+}
