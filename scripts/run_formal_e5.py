@@ -223,8 +223,106 @@ def command_verify_e5b() -> int:
     print(json.dumps({"status":"PASS","instances":120,"timed_runs":720,"certified":720,"failed":0,"objective_agreement":120,"E5A_unchanged":True,"E5C_runs":0},indent=2)); return 0
 
 
+def command_preflight_e5c() -> int:
+    from robust_budget_allocation.formal.e5c import E5C, preflight as e5c_preflight
+    report=e5c_preflight(ROOT); E5C.mkdir(parents=True,exist_ok=True)
+    report.update(git_commit=_git("rev-parse","HEAD"),git_tree=_git("show","-s","--format=%T","HEAD"),E5C_completed=0)
+    atomic_write_json(E5C/"design_identity.json",report)
+    _write(E5C/"replicate_selection.csv",[{"replicate_id":f"E5C-R{i:02d}","seed":row["seed"],"selected_E1_row_id":row["parameter_row_id"],"selection_rule":"FIRST_PCG64_DRAW_UNIFORM_INTEGER_1_1000"} for i,row in enumerate(report["replicates"],1)])
+    _write(E5C/"commodity_master_manifest.csv",[{"replicate_id":f"E5C-R{i:02d}","seed":row["seed"],"master_9_sha256":row["master_9_sha256"],**{f"I{size}_sha256":row["prefix_sha256"][str(size)] for size in (3,6,9)},"nesting":"GENERATION_ORDER_PREFIXES_NO_SORTING"} for i,row in enumerate(report["replicates"],1)])
+    _write(E5C/"scenario_manifest.csv",[{"replicate_id":f"E5C-R{i:02d}","seed":row["seed"],"master_100_scenario_sha256":row["master_100_scenario_sha256"],**{f"I{size}_demand_matrix_sha256":row["demand_matrix_sha256"][str(size)] for size in (3,6,9)},"sharing":"SAME_MASTER_100_ACROSS_I3_I6_I9"} for i,row in enumerate(report["replicates"],1)])
+    _write(E5C/"budget_manifest.csv",[{"replicate_id":f"E5C-R{i:02d}","seed":row["seed"],"item_size":size,"B_ref":row["B_ref_bench"][str(size)],"B_used":row["B_ref_bench"][str(size)],"B_over_B_ref":1.0} for i,row in enumerate(report["replicates"],1) for size in (3,6,9)])
+    print(json.dumps({k:report[k] for k in ("status","generator_identity","generator_sha256","seeds","parameter_row_ids","nested_items_verified","shared_scenarios_verified","unique_instances","A0_timed_runs","A1_timed_runs")},indent=2)); return 0
+
+
+def _e5c_timing_row(sample, position, repetition, algorithm, order_in_pair, wall, result):
+    from robust_budget_allocation.formal.e5a import A0_IDENTITY
+    from robust_budget_allocation.algorithms.qfr_final_a1 import FINAL_A1_IDENTITY, FINAL_A1_IMPLEMENTATION_REVISION
+    from robust_budget_allocation.formal.e5c import scientific_decision
+    from robust_budget_allocation.io.hashing import canonical_json_sha256
+    scientific=scientific_decision(result)
+    row={"simulation_id":sample["simulation_id"],"sample_index":sample["sample_index"],"input_sha256":sample["input_sha256"],"instance_position":position,"repetition":repetition,"algorithm":algorithm,"algorithm_identity":A0_IDENTITY if algorithm=="A0" else FINAL_A1_IDENTITY,"implementation_revision":"A0_PRODUCTION" if algorithm=="A0" else FINAL_A1_IMPLEMENTATION_REVISION,"order_in_pair":order_in_pair,"wall_clock_seconds":wall,"algorithm_runtime_seconds":float(result["runtime_seconds"]),"status":result["status"],"certificate_status":"PASS" if result["status"]=="certified" else "FAIL","failure_message":result.get("diagnostic") or "","result_sha256":result["result_sha256"],"iterations":result["iterations"],"scenario_evaluations":result.get("scenario_evaluations","unavailable"),"exact_oracle_calls":result.get("exact_oracle_calls","unavailable"),"complete_oracle_calls":result.get("complete_oracle_calls","unavailable"),"candidate_hits":result.get("candidate_hits","unavailable"),"full_exact_certification_calls":result.get("full_exact_certification_calls","unavailable"),"complete_full_exact_certification_calls":result.get("complete_full_exact_certification_calls","unavailable")}
+    if scientific is None:
+        row.update(first_stage_sha256="",objective="",worst_loss="",worst_scenario="",full_exact_certificate="",decisions_json="",scientific_decision_sha256="")
+    else: row.update(scientific)
+    row["row_sha256"]=canonical_json_sha256(row); return row
+
+
+def command_run_e5c() -> int:
+    from robust_budget_allocation.formal.e5a import execution_order
+    from robust_budget_allocation.formal.e5b import recovery_counts
+    from robust_budget_allocation.formal.e5c import E5C, data_for_instance, generated_replicate, preflight as e5c_preflight, sample_by_id
+    report=e5c_preflight(ROOT); path=ROOT/E5C/"raw_timing.csv"; rows=_read(path)
+    if len(rows)%6: raise RuntimeError("E5-C checkpoint is not at an instance boundary")
+    completed=len(rows)//6; instances=[(i+1,row,size) for i,row in enumerate(report["replicates"]) for size in (3,6,9)]
+    for position,(replicate_number,identity,size) in enumerate(instances[completed:],completed+1):
+        seed=int(identity["seed"]); generated=generated_replicate(ROOT,seed); sample=sample_by_id(ROOT,int(identity["parameter_row_id"])); data=data_for_instance(ROOT,generated,sample,size); batch=[]
+        for repetition in range(1,4):
+            for order_in_pair,algorithm in enumerate(execution_order(position,repetition),1):
+                started=perf_counter(); result=solve_qfr_standard_ccg(data,"M2") if algorithm=="A0" else solve_qfr_final_a1(data,"M2"); wall=perf_counter()-started
+                row=_e5c_timing_row(sample,position,repetition,algorithm,order_in_pair,wall,result); row.update(replicate_id=f"E5C-R{replicate_number:02d}",seed=seed,item_size=size,benchmark_instance_id=f"E5C-R{replicate_number:02d}-I{size}",B_ref=identity["B_ref_bench"][str(size)],B_used=identity["B_ref_bench"][str(size)],B_over_B_ref=1.0,item_prefix_sha256=identity["prefix_sha256"][str(size)],scenario_sha256=identity["master_100_scenario_sha256"],**recovery_counts(result)); row["execution_sequence"]=len(rows)+len(batch)+1; batch.append(row)
+        rows.extend(batch); _write(path,rows); print(f"E5-C: {position}/90 instances, {len(rows)}/540 timed runs",flush=True)
+    return 0
+
+
+def command_finalize_e5c() -> int:
+    from robust_budget_allocation.formal.e5a import diagnostic_summary, distribution, summarize_runtime
+    from robust_budget_allocation.formal.e5b import growth_distribution
+    from robust_budget_allocation.formal.e5c import E5C, SIZES, compare_instance, preflight as e5c_preflight, verify_timing_population
+    report=e5c_preflight(ROOT); before=report["frozen_hashes"]; e5a_hash=report["E5A_hash_inventory_sha256"]; e5b_hash=report["E5B_hash_inventory_sha256"]; directory=ROOT/E5C; rows=_read(directory/"raw_timing.csv"); verify_timing_population(rows)
+    by={}
+    for row in rows: by.setdefault((row["benchmark_instance_id"],row["algorithm"]),[]).append(row)
+    instances=[]; comparisons=[]
+    for replicate in range(1,31):
+        for size in SIZES:
+            key=f"E5C-R{replicate:02d}-I{size}"; a0=sorted(by[(key,"A0")],key=lambda r:int(r["repetition"])); a1=sorted(by[(key,"A1")],key=lambda r:int(r["repetition"])); med0=statistics.median(float(r["wall_clock_seconds"]) for r in a0); med1=statistics.median(float(r["wall_clock_seconds"]) for r in a1)
+            instances.append({"benchmark_instance_id":key,"replicate_id":f"E5C-R{replicate:02d}","seed":a0[0]["seed"],"selected_E1_row_id":a0[0]["sample_index"],"item_size":size,"scenario_count":100,"B_ref":a0[0]["B_ref"],"B_used":a0[0]["B_used"],"B_over_B_ref":a0[0]["B_over_B_ref"],"A0_median_runtime_seconds":med0,"A1_median_runtime_seconds":med1,"speedup_A0_over_A1":med0/med1,"A0_iterations":a0[0]["iterations"],"A1_iterations":a1[0]["iterations"]})
+            compared=compare_instance(a0[0],a1[0]); compared.update(benchmark_instance_id=key,replicate_id=f"E5C-R{replicate:02d}",item_size=size); comparisons.append(compared)
+    if any(not row["objective_agreement"] for row in comparisons): raise RuntimeError("E5-C A0/A1 objective disagreement")
+    _write(directory/"instance_summary.csv",instances); _write(directory/"correctness_comparison.csv",comparisons)
+    runtime_rows=[]; speed_rows=[]; size_analysis={}; diagnostic_rows=[]; work_rows=[]
+    for size in SIZES:
+        subset=[r for r in instances if r["item_size"]==size]; runtime=summarize_runtime(subset); size_analysis[str(size)]=runtime
+        for algorithm in ("A0","A1"): runtime_rows.append({"item_size":size,"algorithm":algorithm,**runtime[algorithm]})
+        speed_rows.append({"item_size":size,**runtime["speedup_A0_over_A1"],"geometric_mean":runtime["geometric_mean_speedup"],"A1_faster":runtime["A1_faster"],"A0_faster":runtime["A0_faster"],"ties":runtime["exact_wall_clock_ties"]})
+        for algorithm in ("A0","A1"):
+            diag=diagnostic_summary([r for r in rows if int(r["item_size"])==size],algorithm)
+            for metric,value in diag.items():
+                if isinstance(value,dict):
+                    record={"item_size":size,"algorithm":algorithm,"metric":metric,**value}; diagnostic_rows.append(record); work_rows.append({**record,"comparison_scope":"ALGORITHM_SPECIFIC_DIAGNOSTIC_ONLY"})
+    _write(directory/"runtime_by_size.csv",runtime_rows); _write(directory/"speedup_by_size.csv",speed_rows); _write(directory/"a1_diagnostics.csv",[r for r in diagnostic_rows if r["algorithm"]=="A1"]); _write(directory/"work_metric_analysis.csv",work_rows)
+    growth=[]; growth_summary={}; indexed={(r["replicate_id"],r["item_size"]):r for r in instances}
+    for start,end in ((3,6),(6,9),(3,9)):
+        block=[]
+        for replicate in range(1,31):
+            rid=f"E5C-R{replicate:02d}"; left,right=indexed[(rid,start)],indexed[(rid,end)]; g0=float(right["A0_median_runtime_seconds"])/float(left["A0_median_runtime_seconds"]); g1=float(right["A1_median_runtime_seconds"])/float(left["A1_median_runtime_seconds"]); row={"replicate_id":rid,"transition":f"{start}_to_{end}","A0_growth":g0,"A1_growth":g1,"A0_over_A1_growth_ratio":g0/g1}; growth.append(row); block.append(row)
+        growth_summary[f"{start}_to_{end}"]={"A0":growth_distribution([r["A0_growth"] for r in block]),"A1":growth_distribution([r["A1_growth"] for r in block]),"A0_over_A1":growth_distribution([r["A0_over_A1_growth_ratio"] for r in block])}
+    _write(directory/"scaling_growth.csv",growth)
+    recoveries=[{"benchmark_instance_id":r["benchmark_instance_id"],"algorithm":r["algorithm"],"repetition":r["repetition"],"scaled_retry_count":r["scaled_retry_count"],"witness_gated_retry_count":r["witness_gated_retry_count"]} for r in rows if int(r["scaled_retry_count"]) or int(r["witness_gated_retry_count"])]
+    _write(directory/"numerical_recovery_audit.csv",recoveries or [{"benchmark_instance_id":"NONE","algorithm":"NONE","repetition":"","scaled_retry_count":0,"witness_gated_retry_count":0}])
+    medians=[float(size_analysis[str(size)]["speedup_A0_over_A1"]["median"]) for size in SIZES]; majorities=[int(size_analysis[str(size)]["A1_faster"])>15 for size in SIZES]; crossover="NO_CLEAR_CROSSOVER_OBSERVED"
+    for at in range(1,len(SIZES)):
+        if medians[at-1]<=1 and all(medians[j]>1 and majorities[j] for j in range(at,len(SIZES))): crossover=f"OBSERVED_CROSSOVER_AT_OR_BEFORE_I_{SIZES[at]}"; break
+    diffs=[float(r["absolute_objective_difference"]) for r in comparisons]; correctness={"agreement":90,"objective_difference":distribution(diffs),"decision_different_objective_equivalent":sum(not r["decision_equivalent"] for r in comparisons),"worst_loss_agreement":sum(r["worst_loss_agreement"] for r in comparisons),"worst_scenario_agreement":sum(r["worst_scenario_equal"] for r in comparisons)}
+    analysis={"status":"PASS","execution":{"instances":90,"timed_runs":540,"A0":270,"A1":270,"certified":540,"failed":0},"correctness":correctness,"runtime_by_size":size_analysis,"growth":growth_summary,"crossover":crossover,"symmetric_internal_work_metric":"NO_SEMANTICALLY_SYMMETRIC_INTERNAL_WORK_METRIC_AVAILABLE","numerical_recovery":{"scaled_retry_evaluations":sum(int(r["scaled_retry_count"]) for r in rows),"witness_gated_retry_evaluations":sum(int(r["witness_gated_retry_count"]) for r in rows),"runs_with_recovery":len(recoveries)},"interpretation_boundary":"COMMODITY_DIMENSION_SCALABILITY_AT_OMEGA_100_COMPUTATIONAL_BENCHMARK_NOT_EMPIRICAL_ITEMS"}
+    atomic_write_json(directory/"analysis.json",analysis)
+    atomic_write_text(directory/"RESULT_SUMMARY.md",f"# Formal E5-C result summary\n\nAll 90 nested commodity-dimension instances completed 540/540 certified timed runs with 90/90 A0/A1 objective agreement.\n\nObserved crossover verdict: **{crossover}**. This evidence concerns commodity dimension at Omega=100. Synthetic commodities are computational benchmarks, not empirical configurations. No semantically symmetric internal A0/A1 work metric is available; internal counts remain algorithm-specific diagnostics.\n")
+    manifest={"schema_version":1,"scope":"FORMAL_E5C_COMMODITY_SCALABILITY_V1","source_commit":json.loads((directory/"design_identity.json").read_text())["git_commit"],"generator_identity":report["generator_identity"],"generator_sha256":report["generator_sha256"],"seeds":report["seeds"],"parameter_row_ids":report["parameter_row_ids"],"item_sizes":list(SIZES),"scenario_count":100,"instances":90,"timing_repetitions":3,"timed_runs":540,"certified":540,"failed":0,"budget_rule":report["budget_rule"],"timing_boundary":report["timing_boundary"],"execution_order":report["execution_order"],"A0_identity":report["A0_identity"],"A1_identity":report["A1_identity"],"implementation_revision":report["implementation_revision"],"E5A_hash_inventory_sha256":e5a_hash,"E5B_hash_inventory_sha256":e5b_hash,"frozen_hashes":before,"model_changed":False,"tolerance_changed":False,"parameter_recalibration":False,"result_driven_selection":False,"resampled":False,"algorithm_tuned":False,"memory":False,"E5A_rerun":False,"E5B_rerun":False}
+    atomic_write_json(directory/"manifest.json",manifest); _hash_inventory(directory)
+    if e5a_hash!=sha256_file(ROOT/"formal_results/e5_final/e5a/HASHES.sha256") or e5b_hash!=sha256_file(ROOT/"formal_results/e5_final/e5b/HASHES.sha256") or before!=frozen_hashes(ROOT): raise RuntimeError("frozen evidence changed")
+    root_manifest=json.loads((OUTPUT/"manifest.json").read_text()); root_manifest.update(scope="FORMAL_E5_V1_COMPLETE",E5C_manifest_sha256=sha256_file(directory/"manifest.json"),E5C_hash_inventory_sha256=sha256_file(directory/"HASHES.sha256"),E5C_runs=540,E5C_timed_runs=540); atomic_write_json(OUTPUT/"manifest.json",root_manifest); _hash_inventory(OUTPUT); return command_verify_e5c()
+
+
+def command_verify_e5c() -> int:
+    from robust_budget_allocation.formal.e2d_audit import verify_hash_inventory
+    from robust_budget_allocation.formal.e5c import E5C, preflight as e5c_preflight, verify_timing_population
+    report=e5c_preflight(ROOT); directory=ROOT/E5C; verify_hash_inventory(directory); verify_hash_inventory(OUTPUT); rows=_read(directory/"raw_timing.csv"); verify_timing_population(rows); analysis=json.loads((directory/"analysis.json").read_text())
+    if analysis["correctness"]["agreement"]!=90 or analysis["execution"]["failed"]: raise RuntimeError("E5-C verification failed")
+    print(json.dumps({"status":"PASS","instances":90,"timed_runs":540,"certified":540,"failed":0,"objective_agreement":90,"E5A_unchanged":True,"E5B_unchanged":True},indent=2)); return 0
+
+
 def main() -> int:
-    p=argparse.ArgumentParser(); p.add_argument("command",choices=("preflight","run-e5a","finalize","verify","preflight-e5b","run-e5b","finalize-e5b","verify-e5b")); c=p.parse_args().command
+    p=argparse.ArgumentParser(); p.add_argument("command",choices=("preflight","run-e5a","finalize","verify","preflight-e5b","run-e5b","finalize-e5b","verify-e5b","preflight-e5c","run-e5c","finalize-e5c","verify-e5c")); c=p.parse_args().command
     if c=="preflight": return command_preflight()
     if c=="run-e5a": return command_run()
     if c=="finalize": return command_finalize()
@@ -232,6 +330,10 @@ def main() -> int:
     if c=="preflight-e5b": return command_preflight_e5b()
     if c=="run-e5b": return command_run_e5b()
     if c=="finalize-e5b": return command_finalize_e5b()
-    return command_verify_e5b()
+    if c=="verify-e5b": return command_verify_e5b()
+    if c=="preflight-e5c": return command_preflight_e5c()
+    if c=="run-e5c": return command_run_e5c()
+    if c=="finalize-e5c": return command_finalize_e5c()
+    return command_verify_e5c()
 
 if __name__=="__main__": raise SystemExit(main())
