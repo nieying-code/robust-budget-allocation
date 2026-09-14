@@ -267,8 +267,7 @@ def command_run_e5c() -> int:
 
 def command_finalize_e5c() -> int:
     from robust_budget_allocation.formal.e5a import diagnostic_summary, distribution, summarize_runtime
-    from robust_budget_allocation.formal.e5b import growth_distribution
-    from robust_budget_allocation.formal.e5c import E5C, SIZES, compare_instance, preflight as e5c_preflight, verify_timing_population
+    from robust_budget_allocation.formal.e5c import E5C, SIZES, compare_instance, growth_distribution, preflight as e5c_preflight, verify_timing_population
     report=e5c_preflight(ROOT); before=report["frozen_hashes"]; e5a_hash=report["E5A_hash_inventory_sha256"]; e5b_hash=report["E5B_hash_inventory_sha256"]; directory=ROOT/E5C; rows=_read(directory/"raw_timing.csv"); verify_timing_population(rows)
     by={}
     for row in rows: by.setdefault((row["benchmark_instance_id"],row["algorithm"]),[]).append(row)

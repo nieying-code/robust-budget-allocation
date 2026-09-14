@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 import json
+import math
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
@@ -216,3 +217,20 @@ def verify_timing_population(rows: Sequence[Mapping[str, Any]]) -> None:
                 raise ValueError("E5-C repeated objective mismatch")
             if abs(float(anchor["worst_loss"]) - float(row["worst_loss"])) > tolerance(float(anchor["worst_loss"]), float(row["worst_loss"])):
                 raise ValueError("E5-C repeated worst-loss mismatch")
+
+
+def growth_distribution(values: Sequence[float]) -> dict[str, float]:
+    """Frozen descriptive distribution for positive scaling ratios."""
+    ordered = sorted(map(float, values))
+    if not ordered or any(value <= 0 for value in ordered):
+        raise ValueError("growth ratios must be positive and nonempty")
+    def q(p: float) -> float:
+        at = (len(ordered) - 1) * p
+        lo, hi = math.floor(at), math.ceil(at)
+        return ordered[lo] if lo == hi else ordered[lo] + (at - lo) * (ordered[hi] - ordered[lo])
+    return {
+        "min": ordered[0], "Q25": q(.25), "median": q(.5),
+        "mean": sum(ordered) / len(ordered),
+        "geometric_mean": math.exp(sum(math.log(value) for value in ordered) / len(ordered)),
+        "Q75": q(.75), "P90": q(.9), "P95": q(.95), "max": ordered[-1],
+    }
