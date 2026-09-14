@@ -8,4 +8,6 @@
 - Runtime unit: seconds. Per-instance comparison uses the median of three repetitions.
 - No post-hoc tie band: strict measured ordering is reported.
 - Correctness precedes runtime interpretation. E5-A cannot support a scalability claim.
-- E5-B runs: 0. E5-C runs: 0.
+- E5-A completed and is frozen at 1,200/1,200 certified timed runs.
+- E5-B completed under the frozen scenario-scalability design at 720/720 certified timed runs.
+- E5-C runs: 0.

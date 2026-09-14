@@ -2,7 +2,10 @@
   "E5A_hash_inventory_sha256": "9a6a457645a1e8932090a86459d248784dfec46e7a53941a450111da9698224b",
   "E5A_manifest_sha256": "e92024b7868202c0ffde752ff686463a3833c4ad4a256cda84e461d2ea2112d6",
   "E5A_timed_runs": 1200,
-  "E5B_runs": 0,
+  "E5B_hash_inventory_sha256": "8f544c3b9e8d5fce441f23db74fc806bdf6b4dad401e3931f8334849f40e45f4",
+  "E5B_manifest_sha256": "cba185e3c2b500a40b677a5e664e1e714fb9d584806cb1abc84d06867eab0c93",
+  "E5B_runs": 720,
+  "E5B_timed_runs": 720,
   "E5C_runs": 0,
   "frozen_hashes": {
     "formal_results/e1_final": "1b93b735e5e80759ed5494dc4a291c3c006ce2de04a22a02dffa8482fc1f2579",
