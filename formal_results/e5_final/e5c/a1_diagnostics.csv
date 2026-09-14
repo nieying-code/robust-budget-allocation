@@ -1,0 +1,16 @@
+item_size,algorithm,metric,min,Q25,median,mean,Q75,P90,P95,max
+3,A1,iterations,1.0,2.0,3.0,2.966666666666667,4.0,4.0,5.0,5.0
+3,A1,scenario_evaluations,101.0,202.0,203.0,199.63333333333333,204.0,204.0,205.0,205.0
+3,A1,candidate_hits,0.0,0.0,1.0,1.0,2.0,2.0,3.0,3.0
+3,A1,full_exact_certification_calls,1.0,2.0,2.0,1.9666666666666666,2.0,2.0,2.0,2.0
+3,A1,complete_full_exact_certification_calls,1.0,2.0,2.0,1.9666666666666666,2.0,2.0,2.0,2.0
+6,A1,iterations,1.0,2.0,3.0,2.966666666666667,4.0,4.0,5.0,5.0
+6,A1,scenario_evaluations,101.0,202.0,203.0,199.63333333333333,204.0,204.0,205.0,205.0
+6,A1,candidate_hits,0.0,0.0,1.0,1.0,2.0,2.0,3.0,3.0
+6,A1,full_exact_certification_calls,1.0,2.0,2.0,1.9666666666666666,2.0,2.0,2.0,2.0
+6,A1,complete_full_exact_certification_calls,1.0,2.0,2.0,1.9666666666666666,2.0,2.0,2.0,2.0
+9,A1,iterations,1.0,2.0,3.0,2.966666666666667,4.0,4.0,5.0,5.0
+9,A1,scenario_evaluations,101.0,202.0,203.0,199.63333333333333,204.0,204.0,205.0,205.0
+9,A1,candidate_hits,0.0,0.0,1.0,1.0,2.0,2.0,3.0,3.0
+9,A1,full_exact_certification_calls,1.0,2.0,2.0,1.9666666666666666,2.0,2.0,2.0,2.0
+9,A1,complete_full_exact_certification_calls,1.0,2.0,2.0,1.9666666666666666,2.0,2.0,2.0,2.0

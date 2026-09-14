@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "targeted": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_formal_e5a.py tests/test_formal_e5b.py tests/test_formal_e5c.py tests/test_final_a1_engineering.py tests/test_final_a1_spurious_infeasibility_hotfix.py tests/test_final_formal_machine_definition.py -q",
+    "passed": 49,
+    "failed": 0,
+    "skipped": 0
+  },
+  "licensed": {
+    "command": ".venv/Scripts/python.exe -m pytest -m gurobi -q",
+    "passed": 113,
+    "failed": 0,
+    "deselected": 1067
+  },
+  "solver_free": {
+    "command": ".venv/Scripts/python.exe -m pytest -m \"not gurobi\" -q",
+    "passed": 1066,
+    "failed": 0,
+    "skipped": 1,
+    "deselected": 113
+  },
+  "artifact_verification": {
+    "command": ".venv/Scripts/python.exe scripts/run_formal_e5.py verify-e5c",
+    "status": "PASS",
+    "instances": 90,
+    "timed_runs": 540,
+    "objective_agreement": 90,
+    "E5A_unchanged": true,
+    "E5B_unchanged": true
+  },
+  "E5A_rerun": false,
+  "E5B_rerun": false
+}

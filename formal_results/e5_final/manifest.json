@@ -6,7 +6,10 @@
   "E5B_manifest_sha256": "cba185e3c2b500a40b677a5e664e1e714fb9d584806cb1abc84d06867eab0c93",
   "E5B_runs": 720,
   "E5B_timed_runs": 720,
-  "E5C_runs": 0,
+  "E5C_hash_inventory_sha256": "eb138f7b12b682612ece28c67f10890b1a5d5cfc83887e9bf23f46d6d5af9c02",
+  "E5C_manifest_sha256": "0150bdeca2afb0f154966e8ff1ed742f27e2de17f386ffc40484204f318c28da",
+  "E5C_runs": 540,
+  "E5C_timed_runs": 540,
   "frozen_hashes": {
     "formal_results/e1_final": "1b93b735e5e80759ed5494dc4a291c3c006ce2de04a22a02dffa8482fc1f2579",
     "formal_results/e2_final/e2a": "ea567ce9bf8e0f0089a2bbf739ae20b2c2b4e20d5f6c716a1e0406b946aaa75c",
@@ -22,5 +25,5 @@
     "formal_results/e4_final/e4b": "09d16ce5433f3a2f343deacdf538e9c30ff74af3fc06b1692b0514c0aebe1375"
   },
   "schema_version": 1,
-  "scope": "FORMAL_E5_V1_E5A_ONLY"
+  "scope": "FORMAL_E5_V1_COMPLETE"
 }
