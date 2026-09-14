@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "targeted": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_formal_e5a.py tests/test_final_a1_engineering.py tests/test_final_a1_spurious_infeasibility_hotfix.py -q",
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0
+  },
+  "licensed": {
+    "command": ".venv/Scripts/python.exe -m pytest -m gurobi -q",
+    "passed": 113,
+    "failed": 0,
+    "deselected": 1061
+  },
+  "solver_free": {
+    "command": ".venv/Scripts/python.exe -m pytest -m \"not gurobi\" -q",
+    "passed": 1060,
+    "failed": 0,
+    "skipped": 1,
+    "deselected": 113
+  },
+  "artifact_verification": {
+    "command": ".venv/Scripts/python.exe scripts/run_formal_e5.py verify",
+    "status": "PASS",
+    "instances": 200,
+    "timed_runs": 1200,
+    "objective_agreement": 200
+  },
+  "environment": {
+    "python": "3.12.10",
+    "pyomo": "6.10.1",
+    "gurobi": "13.0.2"
+  },
+  "scientific_population_rerun_during_postrun_validation": false,
+  "E5B_runs": 0,
+  "E5C_runs": 0
+}
