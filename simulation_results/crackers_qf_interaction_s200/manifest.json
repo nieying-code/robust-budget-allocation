@@ -1,0 +1,93 @@
+{
+  "S200_sha256": "2b7d7a92c9a0301203a6b73a349a32903b83434038dc88a52fe1cc734ffad32d",
+  "algorithm_changed": false,
+  "algorithm_identity": "A1_FINAL_NO_MEMORY_V1",
+  "artifacts": {
+    "RESULT_SUMMARY.md": "57e4da345c46067eed5dd10056a9c2b0220e7befae0b5de2748acce34ef7e95f",
+    "analysis.json": "bab1810c405386eaa4bad45401c350d24cb95b15d2a527469eadbd58ba213615",
+    "cell_summary.csv": "9ad978e3b7b79c41a4439b78279791ac239220f07e2d5e1f05c017b3546c2283",
+    "commodity_summary.csv": "fb927c7ce61fb13908c0b9e1b553fe9f1e12e1aabb5c3b4fda9e03e5e0827478",
+    "cross_commodity_summary.csv": "fb927c7ce61fb13908c0b9e1b553fe9f1e12e1aabb5c3b4fda9e03e5e0827478",
+    "performance_summary.csv": "dbe323f4e75db6e457fcc736aad1fed0464b5d2a7c8ee7b7ff4907478b524546",
+    "preflight.json": "d94c779175864a7c9b22449957439b57852e8378d3e2ec83577f7802705527ae",
+    "reliability_summary.csv": "06e6ba151155d0a1573fd64f786174423798a3629d087f77c71f95a3fa44e07b",
+    "scientific_results.csv": "1a689bad3cb4fcdb0b7453cb0cb12ba9608c19cc7c24f883234e8258c4643d52",
+    "validation.json": "8ad6d5bb7dbeeea879c0f525d73112649530282be12ce5015dfdd20b2b1e2b34"
+  },
+  "attempted": 1800,
+  "base_main_head": "6bf13b9dfc95abe9d1728df53f86c4bf3279cdd0",
+  "base_main_tree": "0a27adc7e43ec24bf44f969a403eccde99d070d4",
+  "cases": {
+    "CQF_A080_MF080": {
+      "a_C": 0.8,
+      "m_F": 0.8,
+      "phi": 0.16,
+      "psi": 0.68
+    },
+    "CQF_A080_MF100": {
+      "a_C": 0.8,
+      "m_F": 1.0,
+      "phi": 0.2,
+      "psi": 0.85
+    },
+    "CQF_A080_MF120": {
+      "a_C": 0.8,
+      "m_F": 1.2,
+      "phi": 0.24,
+      "psi": 1.02
+    },
+    "CQF_A090_MF080": {
+      "a_C": 0.9,
+      "m_F": 0.8,
+      "phi": 0.16,
+      "psi": 0.68
+    },
+    "CQF_A090_MF100": {
+      "a_C": 0.9,
+      "m_F": 1.0,
+      "phi": 0.2,
+      "psi": 0.85
+    },
+    "CQF_A090_MF120": {
+      "a_C": 0.9,
+      "m_F": 1.2,
+      "phi": 0.24,
+      "psi": 1.02
+    },
+    "CQF_A100_MF080": {
+      "a_C": 1.0,
+      "m_F": 0.8,
+      "phi": 0.16,
+      "psi": 0.68
+    },
+    "CQF_A100_MF100": {
+      "a_C": 1.0,
+      "m_F": 1.0,
+      "phi": 0.2,
+      "psi": 0.85
+    },
+    "CQF_A100_MF120": {
+      "a_C": 1.0,
+      "m_F": 1.2,
+      "phi": 0.24,
+      "psi": 1.02
+    }
+  },
+  "certified": 1800,
+  "execution_branch": "codex/crackers-qf-interaction-s200",
+  "execution_head_before_result_commit": "076d80439fd39cdca213fd74e7d5a43e412e61af",
+  "failed": 0,
+  "formal_results_tree": "c8e3728bc926281fef7b851fc5fac8dcc2ef2638",
+  "implementation_revision": "A1_FINAL_NO_MEMORY_V1_R1_WITNESS_GATED_INFEASIBLE_RETRY",
+  "model_changed": false,
+  "numerical_recovery_count": 58,
+  "resampled": false,
+  "result_driven_tuning": false,
+  "sample_sha256": "ac617befc8fbb7510e1b64b617c7e0339ea948ca519d0d18131f3b8048c131e0",
+  "schema_version": 1,
+  "scientific_result_identity": "724fe524552c008ee87c863e52e2b2190b286ceb9fbba39c107bb12846d27b1d",
+  "scope": "CRACKERS_QF_INTERACTION_S200_SUPPLEMENT_V1",
+  "solved": 1800,
+  "tolerance_changed": false,
+  "witness_gated_retry_count": 58
+}

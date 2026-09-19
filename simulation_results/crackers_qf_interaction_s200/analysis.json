@@ -1,0 +1,1473 @@
+{
+  "cell_summaries": {
+    "CQF_A080_MF080": {
+      "N": 200,
+      "a_C": 0.8,
+      "case_id": "CQF_A080_MF080",
+      "commodities": {
+        "Crackers": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 362093889.8502821,
+            "max": 559357148.4369941,
+            "mean": 246848767.9715409,
+            "median": 272357729.3404618,
+            "min": 0.0
+          },
+          "F_activation_count": 148,
+          "F_activation_rate": 74.0,
+          "F_conditional_mean": 333579416.177758,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 850328.2329872352,
+            "max": 3633868.105230306,
+            "mean": 515144.3802773619,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 52,
+          "F_activation_rate": 26.0,
+          "F_conditional_mean": 1981324.539528315,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 14695964.538657313,
+            "max": 33698848.38411988,
+            "mean": 7249297.372034929,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 82,
+          "F_activation_rate": 41.0,
+          "F_conditional_mean": 17681213.102524217,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        }
+      },
+      "cross_item_QF_count": 0,
+      "cross_item_QF_rate": 0.0,
+      "m_F": 0.8,
+      "mixed_QF_count": 0,
+      "mixed_QF_rate": 0.0,
+      "numerical_recovery": {
+        "runs_with_recovery": 2,
+        "scaled_retry_evaluations": 2,
+        "witness_gated_retry_evaluations": 2
+      },
+      "performance": {
+        "T_COST": {
+          "Q25": 1191973890.0192819,
+          "Q75": 1204072843.2779622,
+          "max": 1212872117.9542837,
+          "mean": 1198235146.1653216,
+          "median": 1197493021.0773706,
+          "min": 1188010729.5474637
+        },
+        "budget_usage": {
+          "Q25": 1.0,
+          "Q75": 1.0,
+          "max": 1.0,
+          "mean": 1.0,
+          "median": 1.0,
+          "min": 0.9999999999999996
+        },
+        "first_stage_cost": {
+          "Q25": 4834973.563292124,
+          "Q75": 6891795.61726776,
+          "max": 8387672.312242414,
+          "mean": 5899387.108118878,
+          "median": 5773225.84316718,
+          "min": 4161236.283083032
+        },
+        "worst_exercise_cost": {
+          "Q25": 12246110.238170717,
+          "Q75": 14302932.292146353,
+          "max": 14976669.572355445,
+          "mean": 13238518.747319601,
+          "median": 13364680.012271298,
+          "min": 10750233.543196063
+        },
+        "worst_shortage_penalty": {
+          "Q25": 1172835984.1638436,
+          "Q75": 1184934937.4225237,
+          "max": 1193734212.0988452,
+          "mean": 1179097240.309883,
+          "median": 1178355115.221932,
+          "min": 1168872823.6920252
+        }
+      },
+      "phi": 0.16,
+      "policy_counts": {
+        "P1": 0,
+        "P2": 0,
+        "P3a": 0,
+        "P3b": 0,
+        "P4": 200,
+        "P5": 0
+      },
+      "psi": 0.68,
+      "reliability": {
+        "R1_case_count": 22,
+        "R1_case_rate": 11.0,
+        "R1_item_selections": 23,
+        "R2_case_count": 7,
+        "R2_case_rate": 3.5,
+        "R2_item_selections": 12,
+        "paid_R_count": 29,
+        "paid_R_rate": 14.5
+      },
+      "same_item_QF_count": 0,
+      "same_item_QF_rate": 0.0
+    },
+    "CQF_A080_MF100": {
+      "N": 200,
+      "a_C": 0.8,
+      "case_id": "CQF_A080_MF100",
+      "commodities": {
+        "Crackers": {
+          "F": {
+            "Q25": 138583156.18994755,
+            "Q75": 230009241.75951222,
+            "max": 422610456.08393764,
+            "mean": 166881695.45226258,
+            "median": 176610228.5324076,
+            "min": 0.0
+          },
+          "F_activation_count": 153,
+          "F_activation_rate": 76.5,
+          "F_conditional_mean": 218146007.12714064,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 2692540.4293537717,
+            "mean": 359789.0159444617,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 45,
+          "F_activation_rate": 22.5,
+          "F_conditional_mean": 1599062.2930864964,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 696508.1881789276,
+            "mean": 6916.817806939888,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 2,
+          "Q_activation_rate": 1.0,
+          "Q_conditional_mean": 691681.7806939888
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 16951208.901865695,
+            "max": 32716368.084122114,
+            "mean": 8582863.934158923,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 99,
+          "F_activation_rate": 49.5,
+          "F_conditional_mean": 17339119.058906917,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 14886199.94916811,
+            "mean": 361843.81980445934,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 5,
+          "Q_activation_rate": 2.5,
+          "Q_conditional_mean": 14473752.792178374
+        }
+      },
+      "cross_item_QF_count": 3,
+      "cross_item_QF_rate": 1.5,
+      "m_F": 1.0,
+      "mixed_QF_count": 3,
+      "mixed_QF_rate": 1.5,
+      "numerical_recovery": {
+        "runs_with_recovery": 2,
+        "scaled_retry_evaluations": 2,
+        "witness_gated_retry_evaluations": 2
+      },
+      "performance": {
+        "T_COST": {
+          "Q25": 1208770960.4696827,
+          "Q75": 1218135729.540574,
+          "max": 1224481838.7456315,
+          "mean": 1213514755.6803293,
+          "median": 1212970993.6462436,
+          "min": 1205630340.8090584
+        },
+        "budget_usage": {
+          "Q25": 1.0,
+          "Q75": 1.0,
+          "max": 1.0000000000000002,
+          "mean": 1.0,
+          "median": 1.0,
+          "min": 0.9999999999999998
+        },
+        "first_stage_cost": {
+          "Q25": 4828617.960965656,
+          "Q75": 6818631.388530137,
+          "max": 19137905.85543848,
+          "mean": 6039945.374448937,
+          "median": 5721125.010984893,
+          "min": 4161236.283083032
+        },
+        "worst_exercise_cost": {
+          "Q25": 12319274.466908338,
+          "Q75": 14309287.894472823,
+          "max": 14976669.572355445,
+          "mean": 13097960.48098954,
+          "median": 13416780.844453584,
+          "min": 0.0
+        },
+        "worst_shortage_penalty": {
+          "Q25": 1189633054.614244,
+          "Q75": 1198997823.6851356,
+          "max": 1205343932.890193,
+          "mean": 1194376849.8248909,
+          "median": 1193833087.790805,
+          "min": 1186492434.95362
+        }
+      },
+      "phi": 0.2,
+      "policy_counts": {
+        "P1": 2,
+        "P2": 3,
+        "P3a": 0,
+        "P3b": 0,
+        "P4": 195,
+        "P5": 0
+      },
+      "psi": 0.85,
+      "reliability": {
+        "R1_case_count": 26,
+        "R1_case_rate": 13.0,
+        "R1_item_selections": 26,
+        "R2_case_count": 15,
+        "R2_case_rate": 7.5,
+        "R2_item_selections": 16,
+        "paid_R_count": 41,
+        "paid_R_rate": 20.5
+      },
+      "same_item_QF_count": 0,
+      "same_item_QF_rate": 0.0
+    },
+    "CQF_A080_MF120": {
+      "N": 200,
+      "a_C": 0.8,
+      "case_id": "CQF_A080_MF120",
+      "commodities": {
+        "Crackers": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 192709713.1915506,
+            "max": 359716236.6793636,
+            "mean": 105192105.33717558,
+            "median": 109596085.75346613,
+            "min": 0.0
+          },
+          "F_activation_count": 121,
+          "F_activation_rate": 60.5,
+          "F_conditional_mean": 173871248.4911993,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 504182.1548813409,
+            "max": 2211725.189560057,
+            "mean": 337244.9105863547,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 57,
+          "F_activation_rate": 28.5,
+          "F_conditional_mean": 1183315.4757415953,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 702360.1706518629,
+            "mean": 78966.49635356483,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 24,
+          "Q_activation_rate": 12.0,
+          "Q_conditional_mean": 658054.136279707
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 12972695.297546387,
+            "max": 32716368.084122114,
+            "mean": 5636000.177527049,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 73,
+          "F_activation_rate": 36.5,
+          "F_conditional_mean": 15441096.376786435,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 16942785.003200587,
+            "mean": 2391190.828638196,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 32,
+          "Q_activation_rate": 16.0,
+          "Q_conditional_mean": 14944942.678988725
+        }
+      },
+      "cross_item_QF_count": 8,
+      "cross_item_QF_rate": 4.0,
+      "m_F": 1.2,
+      "mixed_QF_count": 8,
+      "mixed_QF_rate": 4.0,
+      "numerical_recovery": {
+        "runs_with_recovery": 15,
+        "scaled_retry_evaluations": 15,
+        "witness_gated_retry_evaluations": 15
+      },
+      "performance": {
+        "T_COST": {
+          "Q25": 1219895032.3799126,
+          "Q75": 1226209831.7916117,
+          "max": 1232980943.2704275,
+          "mean": 1223125094.0945625,
+          "median": 1222330232.878644,
+          "min": 1217376748.3167882
+        },
+        "budget_usage": {
+          "Q25": 1.0,
+          "Q75": 1.0,
+          "max": 1.0,
+          "mean": 0.9999999999999999,
+          "median": 1.0,
+          "min": 0.9999999999999961
+        },
+        "first_stage_cost": {
+          "Q25": 4822569.0510827545,
+          "Q75": 7096593.51405388,
+          "max": 19137905.85543848,
+          "mean": 7513697.4882042715,
+          "median": 5790881.0315379,
+          "min": 4161236.2830830314
+        },
+        "worst_exercise_cost": {
+          "Q25": 12041312.341384595,
+          "Q75": 14315336.804355724,
+          "max": 14976669.572355445,
+          "mean": 11624208.367234204,
+          "median": 13347024.823900577,
+          "min": 0.0
+        },
+        "worst_shortage_penalty": {
+          "Q25": 1200757126.5244741,
+          "Q75": 1207071925.9361732,
+          "max": 1213843037.414989,
+          "mean": 1203987188.239124,
+          "median": 1203192327.0232053,
+          "min": 1198238842.4613497
+        }
+      },
+      "phi": 0.24,
+      "policy_counts": {
+        "P1": 24,
+        "P2": 7,
+        "P3a": 1,
+        "P3b": 0,
+        "P4": 168,
+        "P5": 0
+      },
+      "psi": 1.02,
+      "reliability": {
+        "R1_case_count": 30,
+        "R1_case_rate": 15.0,
+        "R1_item_selections": 31,
+        "R2_case_count": 18,
+        "R2_case_rate": 9.0,
+        "R2_item_selections": 26,
+        "paid_R_count": 48,
+        "paid_R_rate": 24.0
+      },
+      "same_item_QF_count": 0,
+      "same_item_QF_rate": 0.0
+    },
+    "CQF_A090_MF080": {
+      "N": 200,
+      "a_C": 0.9,
+      "case_id": "CQF_A090_MF080",
+      "commodities": {
+        "Crackers": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 353806445.68880475,
+            "max": 559357148.4369941,
+            "mean": 241366918.57599315,
+            "median": 266763020.62692195,
+            "min": 0.0
+          },
+          "F_activation_count": 146,
+          "F_activation_rate": 73.0,
+          "F_conditional_mean": 330639614.48766184,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 966361.3878892325,
+            "max": 3633868.105230306,
+            "mean": 540011.2763419733,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 54,
+          "F_activation_rate": 27.0,
+          "F_conditional_mean": 2000041.7642295312,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 14933690.19694236,
+            "max": 33698848.38411988,
+            "mean": 7508230.828443145,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 88,
+          "F_activation_rate": 44.0,
+          "F_conditional_mean": 17064160.973734424,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        }
+      },
+      "cross_item_QF_count": 0,
+      "cross_item_QF_rate": 0.0,
+      "m_F": 0.8,
+      "mixed_QF_count": 0,
+      "mixed_QF_rate": 0.0,
+      "numerical_recovery": {
+        "runs_with_recovery": 2,
+        "scaled_retry_evaluations": 2,
+        "witness_gated_retry_evaluations": 2
+      },
+      "performance": {
+        "T_COST": {
+          "Q25": 1191973890.0192819,
+          "Q75": 1204072843.2779622,
+          "max": 1212872117.9542837,
+          "mean": 1198235146.1653216,
+          "median": 1197493021.0773706,
+          "min": 1188010729.5474637
+        },
+        "budget_usage": {
+          "Q25": 1.0,
+          "Q75": 1.0,
+          "max": 1.0,
+          "mean": 1.0,
+          "median": 1.0,
+          "min": 0.9999999999999996
+        },
+        "first_stage_cost": {
+          "Q25": 4834973.563292124,
+          "Q75": 6891795.61726776,
+          "max": 8387672.312242414,
+          "mean": 5899387.108118878,
+          "median": 5773225.84316718,
+          "min": 4161236.283083032
+        },
+        "worst_exercise_cost": {
+          "Q25": 12246110.238170717,
+          "Q75": 14302932.292146353,
+          "max": 14976669.572355445,
+          "mean": 13238518.747319601,
+          "median": 13364680.012271298,
+          "min": 10750233.543196063
+        },
+        "worst_shortage_penalty": {
+          "Q25": 1172835984.1638436,
+          "Q75": 1184934937.4225237,
+          "max": 1193734212.0988452,
+          "mean": 1179097240.309883,
+          "median": 1178355115.221932,
+          "min": 1168872823.6920252
+        }
+      },
+      "phi": 0.16,
+      "policy_counts": {
+        "P1": 0,
+        "P2": 0,
+        "P3a": 0,
+        "P3b": 0,
+        "P4": 200,
+        "P5": 0
+      },
+      "psi": 0.68,
+      "reliability": {
+        "R1_case_count": 22,
+        "R1_case_rate": 11.0,
+        "R1_item_selections": 23,
+        "R2_case_count": 7,
+        "R2_case_rate": 3.5,
+        "R2_item_selections": 12,
+        "paid_R_count": 29,
+        "paid_R_rate": 14.5
+      },
+      "same_item_QF_count": 0,
+      "same_item_QF_rate": 0.0
+    },
+    "CQF_A090_MF100": {
+      "N": 200,
+      "a_C": 0.9,
+      "case_id": "CQF_A090_MF100",
+      "commodities": {
+        "Crackers": {
+          "F": {
+            "Q25": 139333375.97246403,
+            "Q75": 231131830.61759803,
+            "max": 422610456.08393764,
+            "mean": 168619288.70611432,
+            "median": 177167101.25319582,
+            "min": 0.0
+          },
+          "F_activation_count": 154,
+          "F_activation_rate": 77.0,
+          "F_conditional_mean": 218986089.2287199,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 2692540.4293537717,
+            "mean": 348278.3128836016,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 44,
+          "F_activation_rate": 22.0,
+          "F_conditional_mean": 1583083.240380007,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 696508.1881789276,
+            "mean": 6916.817806939888,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 2,
+          "Q_activation_rate": 1.0,
+          "Q_conditional_mean": 691681.7806939888
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 16951208.901865695,
+            "max": 32716368.084122114,
+            "mean": 8578750.461940221,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 97,
+          "F_activation_rate": 48.5,
+          "F_conditional_mean": 17688145.28235097,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 14886199.94916811,
+            "mean": 361843.81980445934,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 5,
+          "Q_activation_rate": 2.5,
+          "Q_conditional_mean": 14473752.792178374
+        }
+      },
+      "cross_item_QF_count": 3,
+      "cross_item_QF_rate": 1.5,
+      "m_F": 1.0,
+      "mixed_QF_count": 3,
+      "mixed_QF_rate": 1.5,
+      "numerical_recovery": {
+        "runs_with_recovery": 2,
+        "scaled_retry_evaluations": 2,
+        "witness_gated_retry_evaluations": 2
+      },
+      "performance": {
+        "T_COST": {
+          "Q25": 1208770960.4696827,
+          "Q75": 1218135729.540574,
+          "max": 1224481838.7456315,
+          "mean": 1213514755.6803293,
+          "median": 1212970993.6462436,
+          "min": 1205630340.8090584
+        },
+        "budget_usage": {
+          "Q25": 1.0,
+          "Q75": 1.0,
+          "max": 1.0000000000000002,
+          "mean": 1.0,
+          "median": 1.0,
+          "min": 0.9999999999999998
+        },
+        "first_stage_cost": {
+          "Q25": 4828617.960965656,
+          "Q75": 6818631.388530137,
+          "max": 19137905.85543848,
+          "mean": 6039945.374448937,
+          "median": 5721125.010984893,
+          "min": 4161236.283083032
+        },
+        "worst_exercise_cost": {
+          "Q25": 12319274.466908338,
+          "Q75": 14309287.894472823,
+          "max": 14976669.572355445,
+          "mean": 13097960.48098954,
+          "median": 13416780.844453584,
+          "min": 0.0
+        },
+        "worst_shortage_penalty": {
+          "Q25": 1189633054.614244,
+          "Q75": 1198997823.6851356,
+          "max": 1205343932.890193,
+          "mean": 1194376849.8248909,
+          "median": 1193833087.790805,
+          "min": 1186492434.95362
+        }
+      },
+      "phi": 0.2,
+      "policy_counts": {
+        "P1": 2,
+        "P2": 3,
+        "P3a": 0,
+        "P3b": 0,
+        "P4": 195,
+        "P5": 0
+      },
+      "psi": 0.85,
+      "reliability": {
+        "R1_case_count": 26,
+        "R1_case_rate": 13.0,
+        "R1_item_selections": 26,
+        "R2_case_count": 15,
+        "R2_case_rate": 7.5,
+        "R2_item_selections": 16,
+        "paid_R_count": 41,
+        "paid_R_rate": 20.5
+      },
+      "same_item_QF_count": 0,
+      "same_item_QF_rate": 0.0
+    },
+    "CQF_A090_MF120": {
+      "N": 200,
+      "a_C": 0.9,
+      "case_id": "CQF_A090_MF120",
+      "commodities": {
+        "Crackers": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 196772881.56858522,
+            "max": 359716236.6793636,
+            "mean": 107682473.48244566,
+            "median": 110143642.47015041,
+            "min": 0.0
+          },
+          "F_activation_count": 121,
+          "F_activation_rate": 60.5,
+          "F_conditional_mean": 177987559.4751168,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 474679.5980566933,
+            "max": 2211725.189560057,
+            "mean": 317853.65932565095,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 55,
+          "F_activation_rate": 27.5,
+          "F_conditional_mean": 1155831.4884569126,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 702360.1706518629,
+            "mean": 78966.49635356483,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 24,
+          "Q_activation_rate": 12.0,
+          "Q_conditional_mean": 658054.136279707
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 13166283.57624422,
+            "max": 32716368.084122114,
+            "mean": 5692278.31550642,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 70,
+          "F_activation_rate": 35.0,
+          "F_conditional_mean": 16263652.330018343,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 16942785.003200587,
+            "mean": 2391190.828638196,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 32,
+          "Q_activation_rate": 16.0,
+          "Q_conditional_mean": 14944942.678988725
+        }
+      },
+      "cross_item_QF_count": 8,
+      "cross_item_QF_rate": 4.0,
+      "m_F": 1.2,
+      "mixed_QF_count": 8,
+      "mixed_QF_rate": 4.0,
+      "numerical_recovery": {
+        "runs_with_recovery": 15,
+        "scaled_retry_evaluations": 15,
+        "witness_gated_retry_evaluations": 15
+      },
+      "performance": {
+        "T_COST": {
+          "Q25": 1219895032.3799126,
+          "Q75": 1226209831.7916117,
+          "max": 1232980943.2704275,
+          "mean": 1223125094.0945628,
+          "median": 1222330232.878644,
+          "min": 1217376748.3167882
+        },
+        "budget_usage": {
+          "Q25": 1.0,
+          "Q75": 1.0,
+          "max": 1.0,
+          "mean": 0.9999999999999999,
+          "median": 1.0,
+          "min": 0.9999999999999961
+        },
+        "first_stage_cost": {
+          "Q25": 4822569.0510827545,
+          "Q75": 7096593.51405388,
+          "max": 19137905.85543848,
+          "mean": 7513697.4882042715,
+          "median": 5790881.0315379,
+          "min": 4161236.2830830314
+        },
+        "worst_exercise_cost": {
+          "Q25": 12041312.341384595,
+          "Q75": 14315336.804355724,
+          "max": 14976669.572355445,
+          "mean": 11624208.367234204,
+          "median": 13347024.823900577,
+          "min": 0.0
+        },
+        "worst_shortage_penalty": {
+          "Q25": 1200757126.5244741,
+          "Q75": 1207071925.9361734,
+          "max": 1213843037.414989,
+          "mean": 1203987188.239124,
+          "median": 1203192327.0232053,
+          "min": 1198238842.4613497
+        }
+      },
+      "phi": 0.24,
+      "policy_counts": {
+        "P1": 24,
+        "P2": 7,
+        "P3a": 1,
+        "P3b": 0,
+        "P4": 168,
+        "P5": 0
+      },
+      "psi": 1.02,
+      "reliability": {
+        "R1_case_count": 30,
+        "R1_case_rate": 15.0,
+        "R1_item_selections": 31,
+        "R2_case_count": 18,
+        "R2_case_rate": 9.0,
+        "R2_item_selections": 26,
+        "paid_R_count": 48,
+        "paid_R_rate": 24.0
+      },
+      "same_item_QF_count": 0,
+      "same_item_QF_rate": 0.0
+    },
+    "CQF_A100_MF080": {
+      "N": 200,
+      "a_C": 1.0,
+      "case_id": "CQF_A100_MF080",
+      "commodities": {
+        "Crackers": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 392549335.1919169,
+            "max": 559357148.4369941,
+            "mean": 252469063.99685276,
+            "median": 263890351.3647348,
+            "min": 0.0
+          },
+          "F_activation_count": 148,
+          "F_activation_rate": 74.0,
+          "F_conditional_mean": 341174410.8065578,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 850328.2329872352,
+            "max": 3134017.6277707797,
+            "mean": 512461.96979280777,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 52,
+          "F_activation_rate": 26.0,
+          "F_conditional_mean": 1971007.5761261838,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 14390909.061061218,
+            "max": 33226879.997210916,
+            "mean": 6493691.815158021,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 80,
+          "F_activation_rate": 40.0,
+          "F_conditional_mean": 16234229.53789505,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        }
+      },
+      "cross_item_QF_count": 0,
+      "cross_item_QF_rate": 0.0,
+      "m_F": 0.8,
+      "mixed_QF_count": 0,
+      "mixed_QF_rate": 0.0,
+      "numerical_recovery": {
+        "runs_with_recovery": 1,
+        "scaled_retry_evaluations": 1,
+        "witness_gated_retry_evaluations": 1
+      },
+      "performance": {
+        "T_COST": {
+          "Q25": 1191973890.0192819,
+          "Q75": 1204072843.2779622,
+          "max": 1212872117.9542837,
+          "mean": 1198235146.1653216,
+          "median": 1197493021.0773706,
+          "min": 1188010729.5474637
+        },
+        "budget_usage": {
+          "Q25": 1.0,
+          "Q75": 1.0,
+          "max": 1.0,
+          "mean": 1.0,
+          "median": 1.0,
+          "min": 0.9999999999999996
+        },
+        "first_stage_cost": {
+          "Q25": 4834973.563292124,
+          "Q75": 6891795.61726776,
+          "max": 8387672.312242414,
+          "mean": 5899387.108118878,
+          "median": 5773225.84316718,
+          "min": 4161236.283083032
+        },
+        "worst_exercise_cost": {
+          "Q25": 12246110.238170717,
+          "Q75": 14302932.292146353,
+          "max": 14976669.572355445,
+          "mean": 13238518.747319601,
+          "median": 13364680.012271298,
+          "min": 10750233.543196063
+        },
+        "worst_shortage_penalty": {
+          "Q25": 1172835984.1638436,
+          "Q75": 1184934937.4225237,
+          "max": 1193734212.0988452,
+          "mean": 1179097240.309883,
+          "median": 1178355115.221932,
+          "min": 1168872823.6920252
+        }
+      },
+      "phi": 0.16,
+      "policy_counts": {
+        "P1": 0,
+        "P2": 0,
+        "P3a": 0,
+        "P3b": 0,
+        "P4": 200,
+        "P5": 0
+      },
+      "psi": 0.68,
+      "reliability": {
+        "R1_case_count": 22,
+        "R1_case_rate": 11.0,
+        "R1_item_selections": 23,
+        "R2_case_count": 7,
+        "R2_case_rate": 3.5,
+        "R2_item_selections": 12,
+        "paid_R_count": 29,
+        "paid_R_rate": 14.5
+      },
+      "same_item_QF_count": 0,
+      "same_item_QF_rate": 0.0
+    },
+    "CQF_A100_MF100": {
+      "N": 200,
+      "a_C": 1.0,
+      "case_id": "CQF_A100_MF100",
+      "commodities": {
+        "Crackers": {
+          "F": {
+            "Q25": 138583156.18994755,
+            "Q75": 250019542.35652038,
+            "max": 434288625.49408066,
+            "mean": 176458618.88564128,
+            "median": 176610228.5324076,
+            "min": 0.0
+          },
+          "F_activation_count": 152,
+          "F_activation_rate": 76.0,
+          "F_conditional_mean": 232182393.27058065,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 204203007.42038497,
+            "mean": 3591647.499301749,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 5,
+          "Q_activation_rate": 2.5,
+          "Q_conditional_mean": 143665899.97206995
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 2340431.729677825,
+            "mean": 331251.9574023264,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 43,
+          "F_activation_rate": 21.5,
+          "F_conditional_mean": 1540706.7786154717,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 15225008.440546965,
+            "max": 32373240.72632783,
+            "mean": 7346723.391368318,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 86,
+          "F_activation_rate": 43.0,
+          "F_conditional_mean": 17085403.235740278,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 14886199.94916811,
+            "mean": 218987.86900015757,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 3,
+          "Q_activation_rate": 1.5,
+          "Q_conditional_mean": 14599191.266677171
+        }
+      },
+      "cross_item_QF_count": 0,
+      "cross_item_QF_rate": 0.0,
+      "m_F": 1.0,
+      "mixed_QF_count": 0,
+      "mixed_QF_rate": 0.0,
+      "numerical_recovery": {
+        "runs_with_recovery": 3,
+        "scaled_retry_evaluations": 3,
+        "witness_gated_retry_evaluations": 3
+      },
+      "performance": {
+        "T_COST": {
+          "Q25": 1208770960.4696827,
+          "Q75": 1218135729.540574,
+          "max": 1224481838.7456315,
+          "mean": 1213492435.5225918,
+          "median": 1212970993.6462436,
+          "min": 1205630340.8090584
+        },
+        "budget_usage": {
+          "Q25": 1.0,
+          "Q75": 1.0,
+          "max": 1.0000000000000002,
+          "mean": 1.0,
+          "median": 1.0,
+          "min": 0.9999999999999998
+        },
+        "first_stage_cost": {
+          "Q25": 4828617.960965656,
+          "Q75": 6818631.388530139,
+          "max": 19137905.85543848,
+          "mean": 6124269.79883039,
+          "median": 5721125.010984892,
+          "min": 4161236.283083032
+        },
+        "worst_exercise_cost": {
+          "Q25": 12319274.466908341,
+          "Q75": 14309287.894472823,
+          "max": 14976669.572355445,
+          "mean": 13013636.056608088,
+          "median": 13416780.844453584,
+          "min": 0.0
+        },
+        "worst_shortage_penalty": {
+          "Q25": 1189633054.614244,
+          "Q75": 1198997823.6851356,
+          "max": 1205343932.890193,
+          "mean": 1194354529.6671534,
+          "median": 1193833087.790805,
+          "min": 1186492434.95362
+        }
+      },
+      "phi": 0.2,
+      "policy_counts": {
+        "P1": 5,
+        "P2": 0,
+        "P3a": 0,
+        "P3b": 0,
+        "P4": 195,
+        "P5": 0
+      },
+      "psi": 0.85,
+      "reliability": {
+        "R1_case_count": 26,
+        "R1_case_rate": 13.0,
+        "R1_item_selections": 26,
+        "R2_case_count": 15,
+        "R2_case_rate": 7.5,
+        "R2_item_selections": 17,
+        "paid_R_count": 41,
+        "paid_R_rate": 20.5
+      },
+      "same_item_QF_count": 0,
+      "same_item_QF_rate": 0.0
+    },
+    "CQF_A100_MF120": {
+      "N": 200,
+      "a_C": 1.0,
+      "case_id": "CQF_A100_MF120",
+      "commodities": {
+        "Crackers": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 196772881.56858522,
+            "max": 359716236.6793636,
+            "mean": 105206366.58956799,
+            "median": 107579317.85203712,
+            "min": 0.0
+          },
+          "F_activation_count": 116,
+          "F_activation_rate": 58.0,
+          "F_conditional_mean": 181390287.22339308,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 204203007.42038497,
+            "mean": 18782688.939226598,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 32,
+          "Q_activation_rate": 16.0,
+          "Q_conditional_mean": 117391805.87016623
+        },
+        "Vaccine": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 416346.1714384572,
+            "max": 2211725.189560057,
+            "mean": 319587.0775124024,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 52,
+          "F_activation_rate": 26.0,
+          "F_conditional_mean": 1229181.067355394,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 0,
+          "Q_activation_rate": 0.0,
+          "Q_conditional_mean": null
+        },
+        "Water": {
+          "F": {
+            "Q25": 0.0,
+            "Q75": 12841177.623796454,
+            "max": 32716368.084122114,
+            "mean": 5301166.0861043325,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "F_activation_count": 66,
+          "F_activation_rate": 33.0,
+          "F_conditional_mean": 16064139.654861612,
+          "Q": {
+            "Q25": 0.0,
+            "Q75": 0.0,
+            "max": 16522628.612714507,
+            "mean": 2009805.974194596,
+            "median": 0.0,
+            "min": 0.0
+          },
+          "Q_activation_count": 27,
+          "Q_activation_rate": 13.5,
+          "Q_conditional_mean": 14887451.660700712
+        }
+      },
+      "cross_item_QF_count": 0,
+      "cross_item_QF_rate": 0.0,
+      "m_F": 1.2,
+      "mixed_QF_count": 0,
+      "mixed_QF_rate": 0.0,
+      "numerical_recovery": {
+        "runs_with_recovery": 16,
+        "scaled_retry_evaluations": 16,
+        "witness_gated_retry_evaluations": 16
+      },
+      "performance": {
+        "T_COST": {
+          "Q25": 1219737442.3887503,
+          "Q75": 1226159497.7149398,
+          "max": 1232980943.2704275,
+          "mean": 1222993554.572285,
+          "median": 1222205152.859264,
+          "min": 1217376748.3167882
+        },
+        "budget_usage": {
+          "Q25": 1.0,
+          "Q75": 1.0,
+          "max": 1.0,
+          "mean": 1.0,
+          "median": 1.0,
+          "min": 0.9999999999999998
+        },
+        "first_stage_cost": {
+          "Q25": 4822569.0510827545,
+          "Q75": 7096593.514053881,
+          "max": 19137905.85543848,
+          "mean": 7774586.103458017,
+          "median": 5790881.0315379,
+          "min": 4161236.2830830314
+        },
+        "worst_exercise_cost": {
+          "Q25": 12041312.341384597,
+          "Q75": 14315336.804355724,
+          "max": 14976669.572355445,
+          "mean": 11363319.75198046,
+          "median": 13347024.823900577,
+          "min": 0.0
+        },
+        "worst_shortage_penalty": {
+          "Q25": 1200599536.5333118,
+          "Q75": 1207021591.8595014,
+          "max": 1213843037.414989,
+          "mean": 1203855648.7168462,
+          "median": 1203067247.0038254,
+          "min": 1198238842.4613497
+        }
+      },
+      "phi": 0.24,
+      "policy_counts": {
+        "P1": 32,
+        "P2": 0,
+        "P3a": 0,
+        "P3b": 0,
+        "P4": 168,
+        "P5": 0
+      },
+      "psi": 1.02,
+      "reliability": {
+        "R1_case_count": 29,
+        "R1_case_rate": 14.5,
+        "R1_item_selections": 29,
+        "R2_case_count": 18,
+        "R2_case_rate": 9.0,
+        "R2_item_selections": 25,
+        "paid_R_count": 47,
+        "paid_R_rate": 23.5
+      },
+      "same_item_QF_count": 0,
+      "same_item_QF_rate": 0.0
+    }
+  },
+  "interpretation_rule": "DESCRIPTIVE_ONLY_NO_RESULT_DRIVEN_TUNING",
+  "matrices": {
+    "Crackers_F_activation_rate": {
+      "0.8": {
+        "0.8": 74.0,
+        "1.0": 76.5,
+        "1.2": 60.5
+      },
+      "0.9": {
+        "0.8": 73.0,
+        "1.0": 77.0,
+        "1.2": 60.5
+      },
+      "1.0": {
+        "0.8": 74.0,
+        "1.0": 76.0,
+        "1.2": 58.0
+      }
+    },
+    "Crackers_Q_activation_rate": {
+      "0.8": {
+        "0.8": 0.0,
+        "1.0": 0.0,
+        "1.2": 0.0
+      },
+      "0.9": {
+        "0.8": 0.0,
+        "1.0": 0.0,
+        "1.2": 0.0
+      },
+      "1.0": {
+        "0.8": 0.0,
+        "1.0": 2.5,
+        "1.2": 16.0
+      }
+    },
+    "mean_T_COST": {
+      "0.8": {
+        "0.8": 1198235146.1653216,
+        "1.0": 1213514755.6803293,
+        "1.2": 1223125094.0945625
+      },
+      "0.9": {
+        "0.8": 1198235146.1653216,
+        "1.0": 1213514755.6803293,
+        "1.2": 1223125094.0945628
+      },
+      "1.0": {
+        "0.8": 1198235146.1653216,
+        "1.0": 1213492435.5225918,
+        "1.2": 1222993554.572285
+      }
+    },
+    "mixed_QF_rate": {
+      "0.8": {
+        "0.8": 0.0,
+        "1.0": 1.5,
+        "1.2": 4.0
+      },
+      "0.9": {
+        "0.8": 0.0,
+        "1.0": 1.5,
+        "1.2": 4.0
+      },
+      "1.0": {
+        "0.8": 0.0,
+        "1.0": 0.0,
+        "1.2": 0.0
+      }
+    }
+  },
+  "retention_effects_by_F_economics": {
+    "0.8": {
+      "Crackers_F_activation_rate_change_a1.0_to_a0.8": 0.0,
+      "Crackers_Q_activation_rate_change_a1.0_to_a0.8": 0.0,
+      "Mixed_QF_rate_change_a1.0_to_a0.8": 0.0,
+      "mean_T_COST_change_a1.0_to_a0.8": 0.0
+    },
+    "1.0": {
+      "Crackers_F_activation_rate_change_a1.0_to_a0.8": 0.5,
+      "Crackers_Q_activation_rate_change_a1.0_to_a0.8": -2.5,
+      "Mixed_QF_rate_change_a1.0_to_a0.8": 1.5,
+      "mean_T_COST_change_a1.0_to_a0.8": 22320.157737493515
+    },
+    "1.2": {
+      "Crackers_F_activation_rate_change_a1.0_to_a0.8": 2.5,
+      "Crackers_Q_activation_rate_change_a1.0_to_a0.8": -16.0,
+      "Mixed_QF_rate_change_a1.0_to_a0.8": 4.0,
+      "mean_T_COST_change_a1.0_to_a0.8": 131539.5222775936
+    }
+  },
+  "scope": "CRACKERS_QF_INTERACTION_S200_SUPPLEMENT_V1"
+}
