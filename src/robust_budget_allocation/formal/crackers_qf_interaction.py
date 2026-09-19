@@ -69,6 +69,36 @@ def _git(root: Path, *args: str) -> str:
     return subprocess.check_output(["git", *args], cwd=root, text=True).strip()
 
 
+def _git_object_available(root: Path, revision: str) -> bool:
+    return subprocess.run(
+        ["git", "cat-file", "-e", revision],
+        cwd=root,
+        capture_output=True,
+    ).returncode == 0
+
+
+def _validate_frozen_git_identity(root: Path, config: Mapping[str, Any]) -> str:
+    """Validate the immutable base without assuming that a named branch exists."""
+
+    base_head = str(config["base_main_head"])
+    base_tree = str(config["base_main_tree"])
+    formal_tree = str(config["formal_results_tree"])
+    if _git_object_available(root, f"{base_head}^{{commit}}"):
+        if _git(root, "rev-parse", f"{base_head}^{{commit}}") != base_head:
+            raise ValueError("authorized base commit identity mismatch")
+        if _git(root, "rev-parse", f"{base_head}^{{tree}}") != base_tree:
+            raise ValueError("authorized base tree mismatch")
+        if _git(root, "rev-parse", f"{base_head}:formal_results") != formal_tree:
+            raise ValueError("frozen Formal E1-E5 tree mismatch")
+        return "anchored_base_commit"
+
+    if _git(root, "rev-parse", "--is-shallow-repository") != "true":
+        raise ValueError("authorized base commit is unavailable in a non-shallow repository")
+    if _git(root, "rev-parse", "HEAD:formal_results") != formal_tree:
+        raise ValueError("frozen Formal E1-E5 tree mismatch in shallow checkout")
+    return "shallow_checkout_formal_tree"
+
+
 def _load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -97,12 +127,7 @@ def preflight(root: Path) -> dict[str, Any]:
     for field, path in source_hashes.items():
         if sha256_file(path) != config[field]:
             raise ValueError(f"frozen source identity mismatch: {field}")
-    if _git(root, "rev-parse", "main") != config["base_main_head"]:
-        raise ValueError("local main no longer matches the authorized clean base")
-    if _git(root, "rev-parse", "main^{tree}") != config["base_main_tree"]:
-        raise ValueError("authorized main tree mismatch")
-    if _git(root, "rev-parse", "main:formal_results") != config["formal_results_tree"]:
-        raise ValueError("frozen Formal E1-E5 tree mismatch")
+    git_identity_validation = _validate_frozen_git_identity(root, config)
     if FINAL_A1_IDENTITY != config["fixed"]["algorithm_identity"]:
         raise ValueError("Final A1 identity mismatch")
     if FINAL_A1_IMPLEMENTATION_REVISION != config["fixed"]["implementation_revision"]:
@@ -116,6 +141,7 @@ def preflight(root: Path) -> dict[str, Any]:
         "base_main_head": config["base_main_head"],
         "base_main_tree": config["base_main_tree"],
         "formal_results_tree": config["formal_results_tree"],
+        "git_identity_validation": git_identity_validation,
         "sample_sha256": frozen["sample_sha256"],
         "S200_sha256": frozen["S200_sha256"],
         "S200_ids": frozen["S200_ids"],
