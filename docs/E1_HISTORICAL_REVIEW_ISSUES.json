@@ -1,0 +1,37 @@
+{
+  "scope": "E1_HISTORICAL_INDEPENDENT_REVIEW_ISSUES",
+  "formal_execution_status": "PASS",
+  "mechanism_assessment": "MIXED_WITH_UNRESOLVED_SCIENTIFIC_ISSUES",
+  "issues": [
+    {
+      "id": "M1_F_INACTIVE",
+      "status": "UNRESOLVED",
+      "evidence": "F=0 and M1 objective equals M0 at all three frozen budgets"
+    },
+    {
+      "id": "M2_JOINT_BUNDLE_NOT_MARGINAL_R",
+      "status": "UNRESOLVED",
+      "evidence": "M2 uses positive F with paid R2 in all cases, but M1 has no prior F exposure"
+    },
+    {
+      "id": "REAL_SINGLE_WORST_LOCK",
+      "status": "UNRESOLVED",
+      "evidence": "omega_13/h09/Cat5 is worst in 9/9 cases and the only scenario within 1% of worst loss"
+    },
+    {
+      "id": "MULTIPLE_OPTIMAL_PORTFOLIOS",
+      "status": "UNRESOLVED",
+      "evidence": "EF uses Crackers F in M2 at 0.90/1.00 while A0/A1 use Vaccine F at the same certified objective"
+    },
+    {
+      "id": "OLD_51_CAUSAL_COMPARABILITY",
+      "status": "UNRESOLVED",
+      "evidence": "repository old-51 output is pre-revision; a revised 51-scenario control was outside authorized scope"
+    }
+  ],
+  "prohibited_response_observed": false,
+  "parameters_changed_after_results": false,
+  "extra_cases_run": 0,
+  "e1_extended_runs": 0,
+  "e2_e5_runs": 0
+}

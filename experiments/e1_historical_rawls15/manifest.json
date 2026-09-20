@@ -1,0 +1,376 @@
+{
+  "case_count": 9,
+  "case_files": [
+    {
+      "case_id": "B0.90_M0",
+      "case_result_sha256": "119847cb9d43b71756fc9391596b1c14c72c10d51e7bafc13eeae7da65e99aa9",
+      "experiment_identity": "a290b5fc0c49bf2dedd223a1f3a1f975904dccc67902683b640bac03415d1c7e",
+      "path": "raw/B0.90_M0_a290b5fc0c49bf2dedd223a1f3a1f975904dccc67902683b640bac03415d1c7e.json"
+    },
+    {
+      "case_id": "B0.90_M1",
+      "case_result_sha256": "f1497edf0d1a0dd917b7ad915759b982a136c7eba539c1da6aab95a58e0614a7",
+      "experiment_identity": "fa0ee6323f4713d89682c9b70f03186eb0583d286780da7261dac9956950354d",
+      "path": "raw/B0.90_M1_fa0ee6323f4713d89682c9b70f03186eb0583d286780da7261dac9956950354d.json"
+    },
+    {
+      "case_id": "B0.90_M2",
+      "case_result_sha256": "b18392f5dc607ba9e272ce528e1f4f7c35df5034eea5a382940629e2efcdf600",
+      "experiment_identity": "ad19c01f8b71570e384bb541ce49dd17ab3d7883c4a1ff9dd629a07c5b444989",
+      "path": "raw/B0.90_M2_ad19c01f8b71570e384bb541ce49dd17ab3d7883c4a1ff9dd629a07c5b444989.json"
+    },
+    {
+      "case_id": "B1.00_M0",
+      "case_result_sha256": "37ec65611106517b6be029e985800c1ed6a5453070d18d302e94635d6e9232ec",
+      "experiment_identity": "01eb5ced004b7b2eab019f81e9838841c6ec0068819c9493dd7d99c393b8745d",
+      "path": "raw/B1.00_M0_01eb5ced004b7b2eab019f81e9838841c6ec0068819c9493dd7d99c393b8745d.json"
+    },
+    {
+      "case_id": "B1.00_M1",
+      "case_result_sha256": "7d5e5ad1f27299569fc9a29c59b85c70a2bd04cc15c7efb1152ab26858e660cb",
+      "experiment_identity": "afa38180abb902c0bbc5c3b528139ecbd433fd4cd0c40cf44c0ddece1c90438c",
+      "path": "raw/B1.00_M1_afa38180abb902c0bbc5c3b528139ecbd433fd4cd0c40cf44c0ddece1c90438c.json"
+    },
+    {
+      "case_id": "B1.00_M2",
+      "case_result_sha256": "2e9488b5ec92f3efd612d7c178840343fc6d15b1bb29994ebd4a79fe5e4100c7",
+      "experiment_identity": "67264ec29f6789a64a4799d9c9d3ea019f45f6a517a7c83d64920b5457c4e4da",
+      "path": "raw/B1.00_M2_67264ec29f6789a64a4799d9c9d3ea019f45f6a517a7c83d64920b5457c4e4da.json"
+    },
+    {
+      "case_id": "B1.10_M0",
+      "case_result_sha256": "5693ea1244796fe93b0dfc8d54286afde949838298740b333e8d255f79529611",
+      "experiment_identity": "0267444cd6776a8e8742c72ec74c7ec003ae0f9a9cbd39c8f0e12b9148e59bdc",
+      "path": "raw/B1.10_M0_0267444cd6776a8e8742c72ec74c7ec003ae0f9a9cbd39c8f0e12b9148e59bdc.json"
+    },
+    {
+      "case_id": "B1.10_M1",
+      "case_result_sha256": "e238c467cc1067468f92c886eae85ec21659f039b2eece90b1a19599517a0086",
+      "experiment_identity": "3ab9cd6f4c9ed37a7af37677ae0f2b98c33b393184d07febb62b6c336f209e08",
+      "path": "raw/B1.10_M1_3ab9cd6f4c9ed37a7af37677ae0f2b98c33b393184d07febb62b6c336f209e08.json"
+    },
+    {
+      "case_id": "B1.10_M2",
+      "case_result_sha256": "a9b16df6f12044310a1ce10f9c2dcce9909029b3865e8b4601382027a364d62b",
+      "experiment_identity": "d08f3f20e4c0db0be8dd1ebf46b7d0973c504a1f35d6d592d667926d9d5a341f",
+      "path": "raw/B1.10_M2_d08f3f20e4c0db0be8dd1ebf46b7d0973c504a1f35d6d592d667926d9d5a341f.json"
+    }
+  ],
+  "certificate_pass_count": 9,
+  "comparison_path": "old_51_comparison.json",
+  "comparison_sha256": "e532b7569540f4a09ae66d9a4212d4fa2403e34d9c492c88215d1d81132574c2",
+  "e1_extended_runs": 0,
+  "e2_e5_runs": 0,
+  "execution_config_identity": "c9b4ac050b5f49826ffa8e16bae42caa9326ed9e39d5e070a621c66ffcbac007",
+  "execution_config_path": "configs/e1_historical_execution_v1.json",
+  "formal_ready_data_sha256": "d1b48e13757f0ca6ff4919e26b8ed3f225b3f2b7764e9026d16fc2f985ff487c",
+  "formal_scientific_runs": 9,
+  "invalid_or_incomplete_runs": 0,
+  "manifest_sha256": "1a9c4f48bf29599afa4e5b8cdc210861f4252cb88bcda0f1caf0ff1f96b83375",
+  "preflight": {
+    "B_ref": 6721988.79033174,
+    "B_ref_formula": "sum_i((cQ_i+h_i*tau)*Dref_i/a_i)",
+    "F_bar": {
+      "Crackers": 186200000.0,
+      "Seasonal Influenza Vaccine": 955734.406438632,
+      "Water": 18000000.0
+    },
+    "case_count": 9,
+    "case_identities": [
+      "a290b5fc0c49bf2dedd223a1f3a1f975904dccc67902683b640bac03415d1c7e",
+      "fa0ee6323f4713d89682c9b70f03186eb0583d286780da7261dac9956950354d",
+      "ad19c01f8b71570e384bb541ce49dd17ab3d7883c4a1ff9dd629a07c5b444989",
+      "01eb5ced004b7b2eab019f81e9838841c6ec0068819c9493dd7d99c393b8745d",
+      "afa38180abb902c0bbc5c3b528139ecbd433fd4cd0c40cf44c0ddece1c90438c",
+      "67264ec29f6789a64a4799d9c9d3ea019f45f6a517a7c83d64920b5457c4e4da",
+      "0267444cd6776a8e8742c72ec74c7ec003ae0f9a9cbd39c8f0e12b9148e59bdc",
+      "3ab9cd6f4c9ed37a7af37677ae0f2b98c33b393184d07febb62b6c336f209e08",
+      "d08f3f20e4c0db0be8dd1ebf46b7d0973c504a1f35d6d592d667926d9d5a341f"
+    ],
+    "dataset_kind": "rawls_15_single_hurricane_historical",
+    "environment": {
+      "gurobi_optimizer": "13.0.2",
+      "gurobipy": "13.0.2",
+      "license_available": true,
+      "platform": "Windows-11-10.0.26200-SP0",
+      "pyomo": "6.10.1",
+      "python": "3.12.10",
+      "python_implementation": "CPython",
+      "solver_available": true,
+      "solver_interface": "gurobi_direct",
+      "status": "PASS",
+      "threads": 1
+    },
+    "formal_ready_data_path": "configs/e1_historical_rawls15_data_v1.json",
+    "formal_ready_data_sha256": "d1b48e13757f0ca6ff4919e26b8ed3f225b3f2b7764e9026d16fc2f985ff487c",
+    "old_51_B_ref": 7975014.2749022,
+    "old_51_F_bar": {
+      "Crackers": 206878000.0,
+      "Seasonal Influenza Vaccine": 1144366.1971831,
+      "Water": 27000000.0
+    },
+    "parameter_sha256": "00a23c63dc849239e52e5715dde96787cc20bf8d221349dee2adbc2f89f71039",
+    "scenario_count": 15,
+    "scenario_ids": [
+      "omega_01",
+      "omega_02",
+      "omega_03",
+      "omega_04",
+      "omega_05",
+      "omega_06",
+      "omega_07",
+      "omega_08",
+      "omega_09",
+      "omega_10",
+      "omega_11",
+      "omega_12",
+      "omega_13",
+      "omega_14",
+      "omega_15"
+    ],
+    "scenario_set_sha256": "7105246cea6da75ccdf9389ae1324be9b06ce4aa37b3ddd03c89da4bf88f1a55",
+    "solver_configuration": {
+      "accepted_solver_status": [
+        "ok"
+      ],
+      "accepted_terminations": [
+        "globallyOptimal",
+        "optimal"
+      ],
+      "configuration_sha256": "f3273df41cb4c27d87e53b6669a1d252dc99222c00d8f208636492fe6b442c5f",
+      "no_fallback": true,
+      "options": {
+        "FeasibilityTol": 1e-09,
+        "IntFeasTol": 1e-09,
+        "MIPGap": 0,
+        "MIPGapAbs": 0,
+        "OptimalityTol": 1e-09,
+        "Threads": 1
+      },
+      "solver_interface": "gurobi_direct",
+      "threads": 1
+    },
+    "source": {
+      "commit_sha": "e4fc74225df2aa7d230b82a898831c626c67b3fc",
+      "tracked_dirty": false,
+      "tracked_input_paths": [
+        "configs/e1_historical_execution_v1.json",
+        "configs/e1_historical_rawls15_data_v1.json",
+        "docs/E1_HISTORICAL_PROTOCOL_v1.md",
+        "configs/r6c_formal_ready_data_v2.json",
+        "configs/r6c_scientific_revision_v2.json",
+        "experiments/r7_e1/summary.json",
+        "docs/R6_C_SCIENTIFIC_REVISION_REFREEZE_v2.md",
+        "docs/R3_CORRECTNESS_PROTOCOL_v2.md",
+        "docs/R4_A1_PROTOCOL_v2.md",
+        "src/robust_budget_allocation/data/qfr_e1_historical.py",
+        "src/robust_budget_allocation/formal/e1_historical.py",
+        "src/robust_budget_allocation/formal/e1.py",
+        "src/robust_budget_allocation/data/qfr_data.py",
+        "src/robust_budget_allocation/models/qfr_common.py",
+        "src/robust_budget_allocation/models/qfr_m0.py",
+        "src/robust_budget_allocation/models/qfr_m1.py",
+        "src/robust_budget_allocation/models/qfr_m2.py",
+        "src/robust_budget_allocation/models/qfr_support.py",
+        "src/robust_budget_allocation/algorithms/qfr_protocol.py",
+        "src/robust_budget_allocation/algorithms/qfr_state.py",
+        "src/robust_budget_allocation/algorithms/qfr_builders.py",
+        "src/robust_budget_allocation/algorithms/qfr_accounting.py",
+        "src/robust_budget_allocation/algorithms/qfr_exact_oracle.py",
+        "src/robust_budget_allocation/algorithms/qfr_extensive_form.py",
+        "src/robust_budget_allocation/algorithms/qfr_standard_ccg.py",
+        "src/robust_budget_allocation/algorithms/qfr_a1_memory.py",
+        "src/robust_budget_allocation/algorithms/qfr_a1_candidates.py",
+        "src/robust_budget_allocation/algorithms/qfr_improved_ccg.py",
+        "src/robust_budget_allocation/algorithms/qfr_a1_verification.py",
+        "scripts/prepare_e1_historical_data.py",
+        "scripts/e1_historical_experiment.py",
+        "tests/test_e1_historical.py"
+      ],
+      "tree_sha": "46c3226b1b0e69bc4a72c7e3c54a9ac667d04072",
+      "untracked_paths": [],
+      "untracked_scientific_paths": []
+    },
+    "status": "PASS"
+  },
+  "report_path": "REPORT.md",
+  "schema_version": 1,
+  "scope": "E1_HISTORICAL_FORMAL_EXPERIMENT",
+  "source": {
+    "files": [
+      {
+        "path": "configs/e1_historical_execution_v1.json",
+        "sha256": "a19a7a0effd15f6a8a9aafd9d31a9421d39c051e788594f36fa7676c6cd25afa"
+      },
+      {
+        "path": "configs/e1_historical_rawls15_data_v1.json",
+        "sha256": "e163cab4b9f60b47da3a6eba9c2e89cbe1e1bcd39126904971ab6ca85d8837a8"
+      },
+      {
+        "path": "docs/E1_HISTORICAL_PROTOCOL_v1.md",
+        "sha256": "d22a61797b28a8ec3c8ced6cf5de7c3fd0215f04b465a0e65eeed3cea26b2a20"
+      },
+      {
+        "path": "configs/r6c_formal_ready_data_v2.json",
+        "sha256": "eae86e57da22765cb097d168fcc76b1798f8c1417f00a5f40280cc3e47bd1e02"
+      },
+      {
+        "path": "configs/r6c_scientific_revision_v2.json",
+        "sha256": "cb00a63346964e0bcd9eb089c4a6641f4c3a4dc2af64da6b9b763b5f481a4328"
+      },
+      {
+        "path": "experiments/r7_e1/summary.json",
+        "sha256": "63f1d760c5494f81840f995a9877131c907a150fab1734893b9628a469ce69de"
+      },
+      {
+        "path": "docs/R6_C_SCIENTIFIC_REVISION_REFREEZE_v2.md",
+        "sha256": "f5bae7080884f9bf0f341916537dadbbb0c5d2aa30daa27e3b3f05e3907c7b11"
+      },
+      {
+        "path": "docs/R3_CORRECTNESS_PROTOCOL_v2.md",
+        "sha256": "cd0e02603cd307876b3270e2c694127541394211d7034325dabdee2f28b7bf0b"
+      },
+      {
+        "path": "docs/R4_A1_PROTOCOL_v2.md",
+        "sha256": "5b493b3844210bb63180575ffc2dde5d74a883f75c93a9e8374b58f61b5306a6"
+      },
+      {
+        "path": "src/robust_budget_allocation/data/qfr_e1_historical.py",
+        "sha256": "200d7528d5f9bab6e508109a514cb1879bc6fea8d4751a2878106a5edc3c0bb8"
+      },
+      {
+        "path": "src/robust_budget_allocation/formal/e1_historical.py",
+        "sha256": "b1562f4d42ad0badd827e97e02500036e40354e5962f6abc1213e12124376d97"
+      },
+      {
+        "path": "src/robust_budget_allocation/formal/e1.py",
+        "sha256": "52fee26e611f35c0aeb6bb9ef62f2589a83882e5bfc34ac6e8652bb9f2a9aef2"
+      },
+      {
+        "path": "src/robust_budget_allocation/data/qfr_data.py",
+        "sha256": "fe4aa7c7b7a7c025b61081f9ba5efbce35ab8db0fae61fd4ca01911e28550454"
+      },
+      {
+        "path": "src/robust_budget_allocation/models/qfr_common.py",
+        "sha256": "255df881d632206e8756ecbbbd5d250577d1a2782cd6dc4df93b9ae021bf8540"
+      },
+      {
+        "path": "src/robust_budget_allocation/models/qfr_m0.py",
+        "sha256": "fc71381fafd2f39ade37243d70e87b9db47f6a820fbae6955e76373e11646f28"
+      },
+      {
+        "path": "src/robust_budget_allocation/models/qfr_m1.py",
+        "sha256": "e070cd198eff1288c57bf5d85c16c1568cc453940bfbd52e4050d8786447fd1c"
+      },
+      {
+        "path": "src/robust_budget_allocation/models/qfr_m2.py",
+        "sha256": "d7220e51b8bbf4307f43dcdf8e5fe14ae348a19d9addc8651a2b1f4fffb5a785"
+      },
+      {
+        "path": "src/robust_budget_allocation/models/qfr_support.py",
+        "sha256": "6821a00ba912ee792fd41ab8bac7413d4a2a8258418814c9f3d4d37364f44a9f"
+      },
+      {
+        "path": "src/robust_budget_allocation/algorithms/qfr_protocol.py",
+        "sha256": "3dfca43c0740c5b41ffb12587d620b6601b73552e5b0609aec8158fc4f5e13c8"
+      },
+      {
+        "path": "src/robust_budget_allocation/algorithms/qfr_state.py",
+        "sha256": "bfc7d17c77de1e9e2f89b85d692e824339b8961573bac4ca24c8b681f56d13ff"
+      },
+      {
+        "path": "src/robust_budget_allocation/algorithms/qfr_builders.py",
+        "sha256": "85cca00471be2933751c87d0f163358d0f08c02f2b2f901ab3e9f720d18fbf21"
+      },
+      {
+        "path": "src/robust_budget_allocation/algorithms/qfr_accounting.py",
+        "sha256": "19ef4eec24815ac92f12a9b85999c588197444bcb3dd5d4ca1de1827b3453b0e"
+      },
+      {
+        "path": "src/robust_budget_allocation/algorithms/qfr_exact_oracle.py",
+        "sha256": "8e9d12ec26cae6ef81e8a83ca1f9251ebd648f38f9bea4a0b50cf8b88bebb86c"
+      },
+      {
+        "path": "src/robust_budget_allocation/algorithms/qfr_extensive_form.py",
+        "sha256": "816873bdb7bb0dfdee6c5af624289a5ce9efb51029cdfbaa720ea461025b05a3"
+      },
+      {
+        "path": "src/robust_budget_allocation/algorithms/qfr_standard_ccg.py",
+        "sha256": "32e9f747cbeb7e59286a11f44c1b22f26eeaa358be644c6b0f2b1ab622e92592"
+      },
+      {
+        "path": "src/robust_budget_allocation/algorithms/qfr_a1_memory.py",
+        "sha256": "c0a026036014703b499f1988afb4912fa6d4580fb6358ca2596e434871e3ae70"
+      },
+      {
+        "path": "src/robust_budget_allocation/algorithms/qfr_a1_candidates.py",
+        "sha256": "f8fd95eb1a14d87058100f818b1574f98e0973676e496fe3cf1a53159fcc1cf2"
+      },
+      {
+        "path": "src/robust_budget_allocation/algorithms/qfr_improved_ccg.py",
+        "sha256": "cbddf5d9006e08f0d474e2c5dedf5b7ff20ae512ef0dc68e33f9ca176e11a9da"
+      },
+      {
+        "path": "src/robust_budget_allocation/algorithms/qfr_a1_verification.py",
+        "sha256": "9cbe976a094e5f1095666e4e2297e0924393b633407783d222b37a7b21d082b8"
+      },
+      {
+        "path": "scripts/prepare_e1_historical_data.py",
+        "sha256": "692a2422301985ad1c0635de7259b13fe8aeb894304bab22c5b49b92092e0904"
+      },
+      {
+        "path": "scripts/e1_historical_experiment.py",
+        "sha256": "0e525c884d7c5b3e1253c06c5161295c37081fa8dc75407eac30326b456d7a8f"
+      },
+      {
+        "path": "tests/test_e1_historical.py",
+        "sha256": "150e51c93acc965501e549abe8ca3941675b14930af55eb41d651b08b24d048e"
+      }
+    ],
+    "git": {
+      "commit_sha": "e4fc74225df2aa7d230b82a898831c626c67b3fc",
+      "tracked_dirty": false,
+      "tracked_input_paths": [
+        "configs/e1_historical_execution_v1.json",
+        "configs/e1_historical_rawls15_data_v1.json",
+        "docs/E1_HISTORICAL_PROTOCOL_v1.md",
+        "configs/r6c_formal_ready_data_v2.json",
+        "configs/r6c_scientific_revision_v2.json",
+        "experiments/r7_e1/summary.json",
+        "docs/R6_C_SCIENTIFIC_REVISION_REFREEZE_v2.md",
+        "docs/R3_CORRECTNESS_PROTOCOL_v2.md",
+        "docs/R4_A1_PROTOCOL_v2.md",
+        "src/robust_budget_allocation/data/qfr_e1_historical.py",
+        "src/robust_budget_allocation/formal/e1_historical.py",
+        "src/robust_budget_allocation/formal/e1.py",
+        "src/robust_budget_allocation/data/qfr_data.py",
+        "src/robust_budget_allocation/models/qfr_common.py",
+        "src/robust_budget_allocation/models/qfr_m0.py",
+        "src/robust_budget_allocation/models/qfr_m1.py",
+        "src/robust_budget_allocation/models/qfr_m2.py",
+        "src/robust_budget_allocation/models/qfr_support.py",
+        "src/robust_budget_allocation/algorithms/qfr_protocol.py",
+        "src/robust_budget_allocation/algorithms/qfr_state.py",
+        "src/robust_budget_allocation/algorithms/qfr_builders.py",
+        "src/robust_budget_allocation/algorithms/qfr_accounting.py",
+        "src/robust_budget_allocation/algorithms/qfr_exact_oracle.py",
+        "src/robust_budget_allocation/algorithms/qfr_extensive_form.py",
+        "src/robust_budget_allocation/algorithms/qfr_standard_ccg.py",
+        "src/robust_budget_allocation/algorithms/qfr_a1_memory.py",
+        "src/robust_budget_allocation/algorithms/qfr_a1_candidates.py",
+        "src/robust_budget_allocation/algorithms/qfr_improved_ccg.py",
+        "src/robust_budget_allocation/algorithms/qfr_a1_verification.py",
+        "scripts/prepare_e1_historical_data.py",
+        "scripts/e1_historical_experiment.py",
+        "tests/test_e1_historical.py"
+      ],
+      "tree_sha": "46c3226b1b0e69bc4a72c7e3c54a9ac667d04072",
+      "untracked_paths": [],
+      "untracked_scientific_paths": []
+    }
+  },
+  "status": "PASS",
+  "summary_path": "summary.json",
+  "summary_sha256": "60589dc99f74d144dbc4e588f0f61c7cbac87115cc0f16c083b7b6c0171ad1ef",
+  "timing_repetitions": 0
+}

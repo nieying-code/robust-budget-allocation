@@ -1,0 +1,22 @@
+{
+  "completed_at_utc": "2026-09-02T07:53:47.819821+00:00",
+  "completed_case_identities": [
+    "a290b5fc0c49bf2dedd223a1f3a1f975904dccc67902683b640bac03415d1c7e",
+    "fa0ee6323f4713d89682c9b70f03186eb0583d286780da7261dac9956950354d",
+    "ad19c01f8b71570e384bb541ce49dd17ab3d7883c4a1ff9dd629a07c5b444989",
+    "01eb5ced004b7b2eab019f81e9838841c6ec0068819c9493dd7d99c393b8745d",
+    "afa38180abb902c0bbc5c3b528139ecbd433fd4cd0c40cf44c0ddece1c90438c",
+    "67264ec29f6789a64a4799d9c9d3ea019f45f6a517a7c83d64920b5457c4e4da",
+    "0267444cd6776a8e8742c72ec74c7ec003ae0f9a9cbd39c8f0e12b9148e59bdc",
+    "3ab9cd6f4c9ed37a7af37677ae0f2b98c33b393184d07febb62b6c336f209e08",
+    "d08f3f20e4c0db0be8dd1ebf46b7d0973c504a1f35d6d592d667926d9d5a341f"
+  ],
+  "formal_scientific_runs_completed": 9,
+  "formal_scientific_runs_started": 9,
+  "invalid_or_incomplete_runs": 0,
+  "manifest_sha256": "1a9c4f48bf29599afa4e5b8cdc210861f4252cb88bcda0f1caf0ff1f96b83375",
+  "schema_version": 1,
+  "scope": "E1_HISTORICAL_RUN_STATE",
+  "started_at_utc": "2026-09-02T07:53:36.351589+00:00",
+  "status": "PASS"
+}
