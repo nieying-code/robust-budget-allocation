@@ -1,0 +1,520 @@
+{
+  "budget_ratios": [
+    0.9,
+    1.0,
+    1.1
+  ],
+  "cases": [
+    {
+      "F": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "M1_F_positive": false,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 286717.7335885114,
+        "Water": 4700000.0
+      },
+      "budget": 7177512.847411981,
+      "budget_ratio": 0.9,
+      "classification": "CAT5_DOMINATED_AND_F_INACTIVE",
+      "near_active_category_counts": {
+        "Cat3": 0,
+        "Cat4": 0,
+        "Cat5": 1
+      },
+      "near_active_within_1_percent": [
+        {
+          "category": 5,
+          "gap_to_worst_percent": 0.0,
+          "recourse_cost": 128235116.85427046,
+          "scenario_id": "omega_21"
+        }
+      ],
+      "objective": 135412629.70168245,
+      "reported_worst_scenario": "omega_21",
+      "scenario_recourse_costs": {
+        "omega_01": 2755368.0,
+        "omega_02": 19593204.72,
+        "omega_03": 5904360.0,
+        "omega_04": 949945.9199999999,
+        "omega_05": 4865192.64,
+        "omega_06": 40199433.6,
+        "omega_07": 419865.6,
+        "omega_08": 21847111.44,
+        "omega_09": 12397152.0,
+        "omega_10": 7751768.64,
+        "omega_11": 26559640.77814684,
+        "omega_12": 1700455.68,
+        "omega_13": 111830756.85427038,
+        "omega_14": 850227.84,
+        "omega_15": 9646412.16,
+        "omega_16": 7620560.64,
+        "omega_17": 26118097.44,
+        "omega_18": 4455823.68,
+        "omega_19": 10769552.64,
+        "omega_20": 9712992.0,
+        "omega_21": 128235116.85427046,
+        "omega_22": 6754587.84,
+        "omega_23": 26518083.36,
+        "omega_24": 14511604.799999999,
+        "omega_25": 43861581.6,
+        "omega_26": 43380058.32000001,
+        "omega_27": 47733150.24,
+        "omega_28": 72396791.04,
+        "omega_29": 54360841.440000005,
+        "omega_30": 5513048.640000001,
+        "omega_31": 2715759.84,
+        "omega_32": 29989666.080000002,
+        "omega_33": 41731764.72,
+        "omega_34": 62337993.60000001,
+        "omega_35": 20117892.0,
+        "omega_36": 15652087.68,
+        "omega_37": 8701714.56,
+        "omega_38": 17398180.8,
+        "omega_39": 56230135.49814681,
+        "omega_40": 30217776.45814681,
+        "omega_41": 34600140.77814685,
+        "omega_42": 46020770.61814682,
+        "omega_43": 114866124.85427037,
+        "omega_44": 125491085.49427047,
+        "omega_45": 24329632.560000002,
+        "omega_46": 1800173.76,
+        "omega_47": 2550683.52,
+        "omega_48": 31830416.880000003,
+        "omega_49": 10596358.08,
+        "omega_50": 11346867.84,
+        "omega_51": 0.0
+      },
+      "status": "SUCCESS",
+      "top10": [
+        {
+          "category": 5,
+          "gap_to_worst_percent": 0.0,
+          "recourse_cost": 128235116.85427046,
+          "scenario_id": "omega_21"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 2.139843926775822,
+          "recourse_cost": 125491085.49427047,
+          "scenario_id": "omega_44"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 10.425375145244296,
+          "recourse_cost": 114866124.85427037,
+          "scenario_id": "omega_43"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 12.792408509006462,
+          "recourse_cost": 111830756.85427038,
+          "scenario_id": "omega_13"
+        },
+        {
+          "category": 3,
+          "gap_to_worst_percent": 43.54370876249639,
+          "recourse_cost": 72396791.04,
+          "scenario_id": "omega_28"
+        },
+        {
+          "category": 3,
+          "gap_to_worst_percent": 51.38773595781689,
+          "recourse_cost": 62337993.60000001,
+          "scenario_id": "omega_34"
+        },
+        {
+          "category": 4,
+          "gap_to_worst_percent": 56.15075115340823,
+          "recourse_cost": 56230135.49814681,
+          "scenario_id": "omega_39"
+        },
+        {
+          "category": 4,
+          "gap_to_worst_percent": 57.60845954406,
+          "recourse_cost": 54360841.440000005,
+          "scenario_id": "omega_29"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 62.77684973434762,
+          "recourse_cost": 47733150.24,
+          "scenario_id": "omega_27"
+        },
+        {
+          "category": 4,
+          "gap_to_worst_percent": 64.11219348718187,
+          "recourse_cost": 46020770.61814682,
+          "scenario_id": "omega_42"
+        }
+      ],
+      "top10_category_counts": {
+        "Cat3": 2,
+        "Cat4": 3,
+        "Cat5": 5
+      }
+    },
+    {
+      "F": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "M1_F_positive": false,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 342038.30985725584,
+        "Water": 4700000.0
+      },
+      "budget": 7975014.2749022,
+      "budget_ratio": 1.0,
+      "classification": "CAT5_DOMINATED_AND_F_INACTIVE",
+      "near_active_category_counts": {
+        "Cat3": 0,
+        "Cat4": 0,
+        "Cat5": 1
+      },
+      "near_active_within_1_percent": [
+        {
+          "category": 5,
+          "gap_to_worst_percent": 0.0,
+          "recourse_cost": 126079561.66407408,
+          "scenario_id": "omega_21"
+        }
+      ],
+      "objective": 134054575.93897627,
+      "reported_worst_scenario": "omega_21",
+      "scenario_recourse_costs": {
+        "omega_01": 2755368.0,
+        "omega_02": 19593204.72,
+        "omega_03": 5904360.0,
+        "omega_04": 949945.9199999999,
+        "omega_05": 4865192.64,
+        "omega_06": 40199433.6,
+        "omega_07": 419865.6,
+        "omega_08": 21847111.44,
+        "omega_09": 12397152.0,
+        "omega_10": 7751768.64,
+        "omega_11": 24250117.3600793,
+        "omega_12": 1700455.68,
+        "omega_13": 109675201.66407402,
+        "omega_14": 850227.84,
+        "omega_15": 9646412.16,
+        "omega_16": 7620560.64,
+        "omega_17": 26118097.44,
+        "omega_18": 4455823.68,
+        "omega_19": 10769552.64,
+        "omega_20": 9712992.0,
+        "omega_21": 126079561.66407408,
+        "omega_22": 6754587.84,
+        "omega_23": 26518083.36,
+        "omega_24": 14511604.799999999,
+        "omega_25": 43861581.6,
+        "omega_26": 43380058.32000001,
+        "omega_27": 47733150.24,
+        "omega_28": 72396791.04,
+        "omega_29": 54360841.440000005,
+        "omega_30": 5513048.640000001,
+        "omega_31": 2715759.84,
+        "omega_32": 29989666.080000002,
+        "omega_33": 41731764.72,
+        "omega_34": 62337993.60000001,
+        "omega_35": 20117892.0,
+        "omega_36": 15652087.68,
+        "omega_37": 8701714.56,
+        "omega_38": 17398180.8,
+        "omega_39": 53920612.08007927,
+        "omega_40": 27908253.04007927,
+        "omega_41": 32290617.360079307,
+        "omega_42": 43711247.20007928,
+        "omega_43": 112710569.664074,
+        "omega_44": 123335530.3040741,
+        "omega_45": 24329632.560000002,
+        "omega_46": 1800173.76,
+        "omega_47": 2550683.52,
+        "omega_48": 31830416.880000003,
+        "omega_49": 10596358.08,
+        "omega_50": 11346867.84,
+        "omega_51": 0.0
+      },
+      "status": "SUCCESS",
+      "top10": [
+        {
+          "category": 5,
+          "gap_to_worst_percent": 0.0,
+          "recourse_cost": 126079561.66407408,
+          "scenario_id": "omega_21"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 2.176428378860621,
+          "recourse_cost": 123335530.3040741,
+          "scenario_id": "omega_44"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 10.603615545254168,
+          "recourse_cost": 112710569.664074,
+          "scenario_id": "omega_43"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 13.011117570116381,
+          "recourse_cost": 109675201.66407402,
+          "scenario_id": "omega_13"
+        },
+        {
+          "category": 3,
+          "gap_to_worst_percent": 42.57848767519215,
+          "recourse_cost": 72396791.04,
+          "scenario_id": "omega_28"
+        },
+        {
+          "category": 3,
+          "gap_to_worst_percent": 50.556622518966925,
+          "recourse_cost": 62337993.60000001,
+          "scenario_id": "omega_34"
+        },
+        {
+          "category": 4,
+          "gap_to_worst_percent": 56.883700480464206,
+          "recourse_cost": 54360841.440000005,
+          "scenario_id": "omega_29"
+        },
+        {
+          "category": 4,
+          "gap_to_worst_percent": 57.23286838215289,
+          "recourse_cost": 53920612.08007927,
+          "scenario_id": "omega_39"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 62.14045352792388,
+          "recourse_cost": 47733150.24,
+          "scenario_id": "omega_27"
+        },
+        {
+          "category": 3,
+          "gap_to_worst_percent": 65.21118806165852,
+          "recourse_cost": 43861581.6,
+          "scenario_id": "omega_25"
+        }
+      ],
+      "top10_category_counts": {
+        "Cat3": 3,
+        "Cat4": 2,
+        "Cat5": 5
+      }
+    },
+    {
+      "F": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "M1_F_positive": false,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 397358.8861260004,
+        "Water": 4700000.0
+      },
+      "budget": 8772515.702392422,
+      "budget_ratio": 1.1,
+      "classification": "CAT5_DOMINATED_AND_F_INACTIVE",
+      "near_active_category_counts": {
+        "Cat3": 0,
+        "Cat4": 0,
+        "Cat5": 1
+      },
+      "near_active_within_1_percent": [
+        {
+          "category": 5,
+          "gap_to_worst_percent": 0.0,
+          "recourse_cost": 123924006.4738777,
+          "scenario_id": "omega_21"
+        }
+      ],
+      "objective": 132696522.17627013,
+      "reported_worst_scenario": "omega_21",
+      "scenario_recourse_costs": {
+        "omega_01": 2755368.0,
+        "omega_02": 19593204.72,
+        "omega_03": 5904360.0,
+        "omega_04": 949945.9199999999,
+        "omega_05": 4865192.64,
+        "omega_06": 40199433.6,
+        "omega_07": 419865.6,
+        "omega_08": 21847111.44,
+        "omega_09": 12397152.0,
+        "omega_10": 7751768.64,
+        "omega_11": 22845612.72,
+        "omega_12": 1700455.68,
+        "omega_13": 107519646.47387764,
+        "omega_14": 850227.84,
+        "omega_15": 9646412.16,
+        "omega_16": 7620560.64,
+        "omega_17": 26118097.44,
+        "omega_18": 4455823.68,
+        "omega_19": 10769552.64,
+        "omega_20": 9712992.0,
+        "omega_21": 123924006.4738777,
+        "omega_22": 6754587.84,
+        "omega_23": 26518083.36,
+        "omega_24": 14511604.799999999,
+        "omega_25": 43861581.6,
+        "omega_26": 43380058.32000001,
+        "omega_27": 47733150.24,
+        "omega_28": 72396791.04,
+        "omega_29": 54360841.440000005,
+        "omega_30": 5513048.640000001,
+        "omega_31": 2715759.84,
+        "omega_32": 29989666.080000002,
+        "omega_33": 41731764.72,
+        "omega_34": 62337993.60000001,
+        "omega_35": 20117892.0,
+        "omega_36": 15652087.68,
+        "omega_37": 8701714.56,
+        "omega_38": 17398180.8,
+        "omega_39": 51611088.66201173,
+        "omega_40": 26100548.4,
+        "omega_41": 30566352.72,
+        "omega_42": 41401723.78201173,
+        "omega_43": 110555014.47387762,
+        "omega_44": 121179975.11387771,
+        "omega_45": 24329632.560000002,
+        "omega_46": 1800173.76,
+        "omega_47": 2550683.52,
+        "omega_48": 31830416.880000003,
+        "omega_49": 10596358.08,
+        "omega_50": 11346867.84,
+        "omega_51": 0.0
+      },
+      "status": "SUCCESS",
+      "top10": [
+        {
+          "category": 5,
+          "gap_to_worst_percent": 0.0,
+          "recourse_cost": 123924006.4738777,
+          "scenario_id": "omega_21"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 2.2142855432764006,
+          "recourse_cost": 121179975.11387771,
+          "scenario_id": "omega_44"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 10.788056632770473,
+          "recourse_cost": 110555014.47387762,
+          "scenario_id": "omega_43"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 13.237435156244713,
+          "recourse_cost": 107519646.47387764,
+          "scenario_id": "omega_13"
+        },
+        {
+          "category": 3,
+          "gap_to_worst_percent": 41.57968814923625,
+          "recourse_cost": 72396791.04,
+          "scenario_id": "omega_28"
+        },
+        {
+          "category": 3,
+          "gap_to_worst_percent": 49.69659602383787,
+          "recourse_cost": 62337993.60000001,
+          "scenario_id": "omega_34"
+        },
+        {
+          "category": 4,
+          "gap_to_worst_percent": 56.133728252678075,
+          "recourse_cost": 54360841.440000005,
+          "scenario_id": "omega_29"
+        },
+        {
+          "category": 4,
+          "gap_to_worst_percent": 58.35263067217652,
+          "recourse_cost": 51611088.66201173,
+          "scenario_id": "omega_39"
+        },
+        {
+          "category": 5,
+          "gap_to_worst_percent": 61.48191815436356,
+          "recourse_cost": 47733150.24,
+          "scenario_id": "omega_27"
+        },
+        {
+          "category": 3,
+          "gap_to_worst_percent": 64.60606556547565,
+          "recourse_cost": 43861581.6,
+          "scenario_id": "omega_25"
+        }
+      ],
+      "top10_category_counts": {
+        "Cat3": 3,
+        "Cat4": 2,
+        "Cat5": 5
+      }
+    }
+  ],
+  "classification_rule": {
+    "A": "Cat3/Cat4 and Cat5 both occur in <=1% near-active set",
+    "B": "Cat5 share >=80% in <=1% near-active set and M1 F is inactive",
+    "C": "Cat3/Cat4 occurs in <=1% near-active set and M1 F is inactive, unless A applies"
+  },
+  "environment": {
+    "gurobi_optimizer": "13.0.2",
+    "gurobipy": "13.0.2",
+    "license_available": true,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "pyomo": "6.10.1",
+    "python": "3.12.10",
+    "python_implementation": "CPython",
+    "solver_available": true,
+    "solver_interface": "gurobi_direct",
+    "status": "PASS",
+    "threads": 1
+  },
+  "formal_E1": false,
+  "formal_E1_E5_runs": 0,
+  "input_data_sha256": "59f4b89d8706f9af06aef46455292335b8b8b095f4a2a0ce0f700e5d219ed16f",
+  "input_file_sha256": "eae86e57da22765cb097d168fcc76b1798f8c1417f00a5f40280cc3e47bd1e02",
+  "input_path": "configs/r6c_formal_ready_data_v2.json",
+  "input_scenario_sha256": "3bfea4bad74d39422eb4e004f4c5ffe883cffc7d65244ab14b2d87864531fede",
+  "models_run": [
+    "M1"
+  ],
+  "overall_classification": "CAT5_DOMINATED_AND_F_INACTIVE",
+  "parameter_changes": [],
+  "reference_budget": 7975014.2749022,
+  "result_sha256": "bdd6f3fc9579c5cfec8794e1650565f7f1e7cc33c577fe6201b9f536731accf7",
+  "schema_version": 1,
+  "scientific_purpose": "MECHANISM_DIAGNOSIS_ONLY",
+  "scope": "PRE_E1_M1_BASELINE_DIAGNOSTIC_ONLY",
+  "solver_configuration": {
+    "accepted_solver_status": [
+      "ok"
+    ],
+    "accepted_terminations": [
+      "globallyOptimal",
+      "optimal"
+    ],
+    "configuration_sha256": "f3273df41cb4c27d87e53b6669a1d252dc99222c00d8f208636492fe6b442c5f",
+    "no_fallback": true,
+    "options": {
+      "FeasibilityTol": 1e-09,
+      "IntFeasTol": 1e-09,
+      "MIPGap": 0,
+      "MIPGapAbs": 0,
+      "OptimalityTol": 1e-09,
+      "Threads": 1
+    },
+    "solver_interface": "gurobi_direct",
+    "threads": 1
+  }
+}
