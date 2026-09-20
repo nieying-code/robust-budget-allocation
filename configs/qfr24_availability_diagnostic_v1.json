@@ -1,0 +1,24 @@
+{
+  "scope": "TEMPORARY_QFR_24SCENARIO_AVAILABILITY_DIAGNOSTIC",
+  "base_main_sha": "23832e44b1fb71cc6a19426ea9db9aedbd1fc12f",
+  "dataset_identity": "rawls_24_real_single_hurricane_data_recalibration_v1",
+  "scenario_weight_role": "B_REF_NEUTRAL_NORMALIZATION_ONLY_NOT_EMPIRICAL_PROBABILITY",
+  "scenario_weight": 0.041666666666666664,
+  "budget_ratios": [0.75, 1.0, 1.25],
+  "models": ["M0", "M1", "M2"],
+  "q_availability_cat1_to_cat5": [0.92, 0.84, 0.76, 0.68, 0.60],
+  "severity_L_cat1_to_cat5": [0.2, 0.4, 0.6, 0.8, 1.0],
+  "f_exposure": {"R0": 0.45, "R1": 0.40, "R2": 0.25},
+  "expected_f_availability": {
+    "R0": [0.91, 0.82, 0.73, 0.64, 0.55],
+    "R1": [0.92, 0.84, 0.76, 0.68, 0.60],
+    "R2": [0.95, 0.90, 0.85, 0.80, 0.75]
+  },
+  "economic_parameters": {
+    "phi": 0.20,
+    "psi": 0.85,
+    "reliability_premium_ratios": [0.0, 0.10, 0.25],
+    "shortage_beta": 4.0
+  },
+  "scientific_status": "DIAGNOSTIC_NOT_FORMAL_FREEZE"
+}

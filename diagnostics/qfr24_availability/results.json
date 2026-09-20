@@ -1,0 +1,867 @@
+{
+  "authority": {
+    "B_ref": 26153247.331876762,
+    "F_bar": {
+      "Crackers": 1862000000.0,
+      "Seasonal Influenza Vaccine": 9557344.064386318,
+      "Water": 70000000.0
+    },
+    "authority_sha256": "9839f93d04ef045d26b2510452bbe8fb29c7d0ebf86d4aa8fe1438b6fb9f4530",
+    "budget_ratios": [
+      0.75,
+      1.0,
+      1.25
+    ],
+    "f_availability": {
+      "R0": [
+        0.91,
+        0.82,
+        0.73,
+        0.64,
+        0.55
+      ],
+      "R1": [
+        0.92,
+        0.84,
+        0.76,
+        0.68,
+        0.6
+      ],
+      "R2": [
+        0.95,
+        0.9,
+        0.85,
+        0.8,
+        0.75
+      ]
+    },
+    "f_exposure_R0_R1_R2": [
+      0.45,
+      0.4,
+      0.25
+    ],
+    "metadata": {
+      "h01": {
+        "category": 3,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Alicia",
+        "year": 1983
+      },
+      "h02": {
+        "category": 5,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Camille",
+        "year": 1969
+      },
+      "h03": {
+        "category": 2,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Bonnie",
+        "year": 1998
+      },
+      "h04": {
+        "category": 2,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Floyd",
+        "year": 1999
+      },
+      "h05": {
+        "category": 4,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Andrew",
+        "year": 1992
+      },
+      "h06": {
+        "category": 3,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Opal",
+        "year": 1995
+      },
+      "h07": {
+        "category": 2,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Isabel",
+        "year": 2003
+      },
+      "h08": {
+        "category": 1,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Lili",
+        "year": 2002
+      },
+      "h09": {
+        "category": 5,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Katrina",
+        "year": 2005
+      },
+      "h10": {
+        "category": 2,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Bertha",
+        "year": 1996
+      },
+      "h11": {
+        "category": 3,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Fran",
+        "year": 1996
+      },
+      "h12": {
+        "category": 3,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Dennis",
+        "year": 2005
+      },
+      "h13": {
+        "category": 3,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Emily",
+        "year": 1993
+      },
+      "h14": {
+        "category": 4,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Georges",
+        "year": 1998
+      },
+      "h15": {
+        "category": 4,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Hugo",
+        "year": 1989
+      },
+      "h16": {
+        "category": 2,
+        "evidence_status": "READY",
+        "hurricane_name": "Ike",
+        "year": 2008
+      },
+      "h17": {
+        "category": 3,
+        "evidence_status": "FROZEN-BOUND",
+        "hurricane_name": "Rita",
+        "year": 2005
+      },
+      "h18": {
+        "category": 3,
+        "evidence_status": "READY",
+        "hurricane_name": "Wilma",
+        "year": 2005
+      },
+      "h19": {
+        "category": 4,
+        "evidence_status": "READY",
+        "hurricane_name": "Irma",
+        "year": 2017
+      },
+      "h20": {
+        "category": 4,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Charley",
+        "year": 2004
+      },
+      "h21": {
+        "category": 2,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Frances",
+        "year": 2004
+      },
+      "h22": {
+        "category": 3,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Ivan",
+        "year": 2004
+      },
+      "h23": {
+        "category": 3,
+        "evidence_status": "FROZEN",
+        "hurricane_name": "Jeanne",
+        "year": 2004
+      },
+      "h24": {
+        "category": 3,
+        "evidence_status": "FROZEN-BOUND",
+        "hurricane_name": "Elena",
+        "year": 1985
+      }
+    },
+    "model_equivalent_reliability_mitigation": [
+      0.0,
+      0.11111111111111105,
+      0.4444444444444444
+    ],
+    "models": [
+      "M0",
+      "M1",
+      "M2"
+    ],
+    "q_availability_cat1_to_cat5": [
+      0.92,
+      0.84,
+      0.76,
+      0.68,
+      0.6
+    ],
+    "reference_budget_components": {
+      "Crackers": 11093140.725333333,
+      "Seasonal Influenza Vaccine": 8369190.187793427,
+      "Water": 6690916.418750001
+    },
+    "reference_demand": {
+      "Crackers": 106528240.0,
+      "Seasonal Influenza Vaccine": 580548.7089201878,
+      "Water": 10330270.833333334
+    },
+    "reference_weight": 0.041666666666666664,
+    "reference_weight_role": "B_REF_NEUTRAL_NORMALIZATION_ONLY_NOT_EMPIRICAL_PROBABILITY",
+    "scenario_count": 24,
+    "scenario_ids": [
+      "h01",
+      "h02",
+      "h03",
+      "h04",
+      "h05",
+      "h06",
+      "h07",
+      "h08",
+      "h09",
+      "h10",
+      "h11",
+      "h12",
+      "h13",
+      "h14",
+      "h15",
+      "h16",
+      "h17",
+      "h18",
+      "h19",
+      "h20",
+      "h21",
+      "h22",
+      "h23",
+      "h24"
+    ],
+    "scientific_status": "DIAGNOSTIC_NOT_FORMAL_FREEZE",
+    "scope": "TEMPORARY_QFR_24SCENARIO_AVAILABILITY_DIAGNOSTIC",
+    "severity_L_cat1_to_cat5": [
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "source_files": {
+      "configs/qfr24_availability_diagnostic_v1.json": "a62f166a92f054034730f06715f6e4fb6a12fb34f87860e59ba440d9485e8aac",
+      "configs/r6c_formal_ready_data_v2.json": "eae86e57da22765cb097d168fcc76b1798f8c1417f00a5f40280cc3e47bd1e02",
+      "data/r6_rawls24/provenance_manifest.json": "8d97ae657ce20ddaf1ff7f789dbe073da0b58a9c2e4858a8824921279a07efc8",
+      "data/r6_rawls24/unified_hurricane_input.csv": "7487c8cb66dc6abd0dc2c3623c7ccf10e2bf46373d0265c442870db04bc82d5d",
+      "data/r6_rawls24/unified_rawls_demand.csv": "d281e719d16cb3b0902c2b29550e7ad659ea8ba6b52e83e69c7a7e38031dc152"
+    }
+  },
+  "case_count": 9,
+  "cases": [
+    {
+      "F": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 0,
+        "Water": 0
+      },
+      "F_activated": false,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 581862.8953182278,
+        "Water": 17333333.333333336
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "NONE",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1230208205.7759113,
+      "budget": 19614935.498907574,
+      "budget_ratio": 0.75,
+      "budget_share": {
+        "F": 0.0,
+        "Q": 1.0,
+        "R": 0.0
+      },
+      "case_id": "M0_B0.75",
+      "case_sha256": "48086f7affe3c715fb90d5a394e89ce4054ec65500dc95ea797532b135dea2ed",
+      "data_sha256": "33b2ae6f0b8daa44891327e0c0caade9321023ebf8b886077644a380804a3844",
+      "expenditure": {
+        "F": 0.0,
+        "Q": 19614935.498907574,
+        "R": 0.0,
+        "first_stage": 19614935.498907574
+      },
+      "model_kind": "M0",
+      "result_sha256": "5bd6d0519da4db6a30ff87717d9671df293e05f92436bccb8460defec5df70ce",
+      "solver_status": "optimal",
+      "termination": "optimal",
+      "validation": "FULL_EF_LOADED_SOLUTION_ACCOUNTING_NOT_FORMAL_ORACLE_CERTIFICATION",
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_scenario_ids": [
+          "h09"
+        ],
+        "evidence_status": "FROZEN",
+        "exercise": {
+          "Crackers": 0.0,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_expenditure": 0.0,
+        "hurricane_name": "Katrina",
+        "recourse_loss": 1210593270.2770038,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1862000000.0,
+          "Seasonal Influenza Vaccine": 9208226.32719538,
+          "Water": 0.0
+        },
+        "shortage_penalty": 1210593270.2770038,
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 2062775.6653788516,
+        "Water": 1050000.0
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "NONE",
+        "Seasonal Influenza Vaccine": "R0",
+        "Water": "R0"
+      },
+      "T_COST": 1211937338.948201,
+      "budget": 19614935.498907574,
+      "budget_ratio": 0.75,
+      "budget_share": {
+        "F": 0.299625468164794,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M1_B0.75",
+      "case_sha256": "c19e78b99632434dd8f1f50ad1a7796acbd9ef8a90d97a9a71d30d63cf509949",
+      "data_sha256": "33b2ae6f0b8daa44891327e0c0caade9321023ebf8b886077644a380804a3844",
+      "expenditure": {
+        "F": 5877134.231882419,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 5877134.231882419
+      },
+      "model_kind": "M1",
+      "result_sha256": "327365dcb4de434a87f8423f99588c265f3916bf3cba2c053ee31c26708d66c8",
+      "solver_status": "optimal",
+      "termination": "optimal",
+      "validation": "FULL_EF_LOADED_SOLUTION_ACCOUNTING_NOT_FORMAL_ORACLE_CERTIFICATION",
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_scenario_ids": [
+          "h09"
+        ],
+        "evidence_status": "FROZEN",
+        "exercise": {
+          "Crackers": 0.0,
+          "Seasonal Influenza Vaccine": 1134526.6159583682,
+          "Water": 577500.0
+        },
+        "exercise_expenditure": 13737801.267025154,
+        "hurricane_name": "Katrina",
+        "recourse_loss": 1206060204.7163186,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1862000000.0,
+          "Seasonal Influenza Vaccine": 8422817.44842795,
+          "Water": 9822500.0
+        },
+        "shortage_penalty": 1192322403.4492934,
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 313547494.2318832,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "R0",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1211937338.948201,
+      "budget": 19614935.498907574,
+      "budget_ratio": 0.75,
+      "budget_share": {
+        "F": 0.299625468164794,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M2_B0.75",
+      "case_sha256": "23b495bcf597f33fa960bfa3c1d902397b13e07a06e49bbe4fa71ea7bc02d1c6",
+      "data_sha256": "33b2ae6f0b8daa44891327e0c0caade9321023ebf8b886077644a380804a3844",
+      "expenditure": {
+        "F": 5877134.231882419,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 5877134.231882419
+      },
+      "model_kind": "M2",
+      "result_sha256": "4cabd02129df3fb092fc9c6037bf1da1eb7ec14cb3e6acc0d8a27ee90fc23ff3",
+      "solver_status": "optimal",
+      "termination": "optimal",
+      "validation": "FULL_EF_LOADED_SOLUTION_ACCOUNTING_NOT_FORMAL_ORACLE_CERTIFICATION",
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_scenario_ids": [
+          "h09"
+        ],
+        "evidence_status": "FROZEN",
+        "exercise": {
+          "Crackers": 172451121.82753578,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_expenditure": 13737801.267025154,
+        "hurricane_name": "Katrina",
+        "recourse_loss": 1206060204.7163186,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1689548878.1724641,
+          "Seasonal Influenza Vaccine": 9557344.064386318,
+          "Water": 10400000.0
+        },
+        "shortage_penalty": 1192322403.4492934,
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 0,
+        "Water": 0
+      },
+      "F_activated": false,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 1035408.3887261903,
+        "Water": 17333333.333333336
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "NONE",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1221598823.801844,
+      "budget": 26153247.331876762,
+      "budget_ratio": 1.0,
+      "budget_share": {
+        "F": 0.0,
+        "Q": 1.0,
+        "R": 0.0
+      },
+      "case_id": "M0_B1.00",
+      "case_sha256": "9f6f5f04c87a4dadf8ada3d6b2374fce766876be4b0b2214a9b01f17ae6efcf7",
+      "data_sha256": "a03a691a1efd053a808445dc530933f7b692786eab32a8bbf8cb71ed35f61980",
+      "expenditure": {
+        "F": 0.0,
+        "Q": 26153247.331876762,
+        "R": 0.0,
+        "first_stage": 26153247.331876762
+      },
+      "model_kind": "M0",
+      "result_sha256": "fe324bca2d570a641cf656ef8859149bbc3bc822db364f61ca136a6ac9251b1a",
+      "solver_status": "optimal",
+      "termination": "optimal",
+      "validation": "FULL_EF_LOADED_SOLUTION_ACCOUNTING_NOT_FORMAL_ORACLE_CERTIFICATION",
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_scenario_ids": [
+          "h09"
+        ],
+        "evidence_status": "FROZEN",
+        "exercise": {
+          "Crackers": 0.0,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_expenditure": 0.0,
+        "hurricane_name": "Katrina",
+        "recourse_loss": 1195445576.4699671,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1862000000.0,
+          "Seasonal Influenza Vaccine": 8936099.031150604,
+          "Water": 0.0
+        },
+        "shortage_penalty": 1195445576.4699671,
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 2781472.2657335317,
+        "Water": 731707.3170731708
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "NONE",
+        "Seasonal Influenza Vaccine": "R0",
+        "Water": "R0"
+      },
+      "T_COST": 1196926158.5976012,
+      "budget": 26153247.331876762,
+      "budget_ratio": 1.0,
+      "budget_share": {
+        "F": 0.29962546816479396,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M1_B1.00",
+      "case_sha256": "9d72772bdd2163e297ad85c644bc3b9ffd5f25cf8b824a45bac52f0336ecb18c",
+      "data_sha256": "a03a691a1efd053a808445dc530933f7b692786eab32a8bbf8cb71ed35f61980",
+      "expenditure": {
+        "F": 7836178.975843224,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 7836178.975843224
+      },
+      "model_kind": "M1",
+      "result_sha256": "8c96f29473ff49a543898d43949238930ca717b17240a58caf7342bd2e2bd89a",
+      "solver_status": "optimal",
+      "termination": "optimal",
+      "validation": "FULL_EF_LOADED_SOLUTION_ACCOUNTING_NOT_FORMAL_ORACLE_CERTIFICATION",
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_scenario_ids": [
+          "h09"
+        ],
+        "evidence_status": "FROZEN",
+        "exercise": {
+          "Crackers": 0.0,
+          "Seasonal Influenza Vaccine": 1529809.7461534427,
+          "Water": 402439.024390244
+        },
+        "exercise_expenditure": 18317068.356033538,
+        "hurricane_name": "Katrina",
+        "recourse_loss": 1189089979.621758,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1862000000.0,
+          "Seasonal Influenza Vaccine": 8027534.318232875,
+          "Water": 9997560.975609755
+        },
+        "shortage_penalty": 1170772911.2657244,
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 287382380.4673276,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 18909090.909090906
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "R0",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "R0"
+      },
+      "T_COST": 1196926158.5976012,
+      "budget": 26153247.331876762,
+      "budget_ratio": 1.0,
+      "budget_share": {
+        "F": 0.299625468164794,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M2_B1.00",
+      "case_sha256": "6034d7ee5abf0e48c089c128e389545321753a5b1f3c80b342d40c758295329c",
+      "data_sha256": "a03a691a1efd053a808445dc530933f7b692786eab32a8bbf8cb71ed35f61980",
+      "expenditure": {
+        "F": 7836178.975843225,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 7836178.975843225
+      },
+      "model_kind": "M2",
+      "result_sha256": "d930c10ee33716ab311332991968d46a4cf2499d7b1e11188d42d5a6951e9e86",
+      "solver_status": "optimal",
+      "termination": "optimal",
+      "validation": "FULL_EF_LOADED_SOLUTION_ACCOUNTING_NOT_FORMAL_ORACLE_CERTIFICATION",
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_scenario_ids": [
+          "h09"
+        ],
+        "evidence_status": "FROZEN",
+        "exercise": {
+          "Crackers": 158060309.2570302,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 10400000.0
+        },
+        "exercise_expenditure": 18317068.356033538,
+        "hurricane_name": "Katrina",
+        "recourse_loss": 1189089979.6217582,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1703939690.7429698,
+          "Seasonal Influenza Vaccine": 9557344.064386318,
+          "Water": 0.0
+        },
+        "shortage_penalty": 1170772911.2657247,
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 0,
+        "Water": 0
+      },
+      "F_activated": false,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 1488953.882134153,
+        "Water": 17333333.333333336
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "NONE",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1212989441.8277767,
+      "budget": 32691559.16484595,
+      "budget_ratio": 1.25,
+      "budget_share": {
+        "F": 0.0,
+        "Q": 1.0,
+        "R": 0.0
+      },
+      "case_id": "M0_B1.25",
+      "case_sha256": "a791ddb69cd8c9afb3f566f06e15ac18261fa7431e02712942540c1cf075604d",
+      "data_sha256": "14a70be0776b55cade970314362502115cfffac572f556a7c78568b63cdb0418",
+      "expenditure": {
+        "F": 0.0,
+        "Q": 32691559.16484595,
+        "R": 0.0,
+        "first_stage": 32691559.16484595
+      },
+      "model_kind": "M0",
+      "result_sha256": "86a5a5006c5e295b6b7944a55a7b384b394781288161909804f170085f052f5f",
+      "solver_status": "optimal",
+      "termination": "optimal",
+      "validation": "FULL_EF_LOADED_SOLUTION_ACCOUNTING_NOT_FORMAL_ORACLE_CERTIFICATION",
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_scenario_ids": [
+          "h09"
+        ],
+        "evidence_status": "FROZEN",
+        "exercise": {
+          "Crackers": 0.0,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_expenditure": 0.0,
+        "hurricane_name": "Katrina",
+        "recourse_loss": 1180297882.6629307,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1862000000.0,
+          "Seasonal Influenza Vaccine": 8663971.735105826,
+          "Water": 0.0
+        },
+        "shortage_penalty": 1180297882.6629307,
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 3485354.395641841,
+        "Water": 731707.3170731708
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "NONE",
+        "Seasonal Influenza Vaccine": "R0",
+        "Water": "R0"
+      },
+      "T_COST": 1181914978.2470016,
+      "budget": 32691559.16484595,
+      "budget_ratio": 1.25,
+      "budget_share": {
+        "F": 0.299625468164794,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M1_B1.25",
+      "case_sha256": "e78f45804ee27e49d25020cb8181c9ee123b18a510a69cc078964e764488a374",
+      "data_sha256": "14a70be0776b55cade970314362502115cfffac572f556a7c78568b63cdb0418",
+      "expenditure": {
+        "F": 9795223.71980403,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 9795223.71980403
+      },
+      "model_kind": "M1",
+      "result_sha256": "47bb21472308fda88c507bd238943237a86eb6d7c01e3efa0c88c1b403592f07",
+      "solver_status": "optimal",
+      "termination": "optimal",
+      "validation": "FULL_EF_LOADED_SOLUTION_ACCOUNTING_NOT_FORMAL_ORACLE_CERTIFICATION",
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_scenario_ids": [
+          "h09"
+        ],
+        "evidence_status": "FROZEN",
+        "exercise": {
+          "Crackers": 0.0,
+          "Seasonal Influenza Vaccine": 1916944.9176030126,
+          "Water": 402439.024390244
+        },
+        "exercise_expenditure": 22896335.44504192,
+        "hurricane_name": "Katrina",
+        "recourse_loss": 1172119754.5271976,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1862000000.0,
+          "Seasonal Influenza Vaccine": 7640399.146783305,
+          "Water": 9997560.975609755
+        },
+        "shortage_penalty": 1149223419.0821557,
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 522579157.0531386,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "R0",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1181914978.2470016,
+      "budget": 32691559.16484595,
+      "budget_ratio": 1.25,
+      "budget_share": {
+        "F": 0.299625468164794,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M2_B1.25",
+      "case_sha256": "9ba68a3e2a3786ed63387d4cd7840e356b8227634d0cc29949ea5190c379c980",
+      "data_sha256": "14a70be0776b55cade970314362502115cfffac572f556a7c78568b63cdb0418",
+      "expenditure": {
+        "F": 9795223.71980403,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 9795223.71980403
+      },
+      "model_kind": "M2",
+      "result_sha256": "bb49b22eccc2c6e824d60ae2db0004cdb675c3821adef878b74a0e4f2d6ef633",
+      "solver_status": "optimal",
+      "termination": "optimal",
+      "validation": "FULL_EF_LOADED_SOLUTION_ACCOUNTING_NOT_FORMAL_ORACLE_CERTIFICATION",
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_scenario_ids": [
+          "h09"
+        ],
+        "evidence_status": "FROZEN",
+        "exercise": {
+          "Crackers": 287418536.37922627,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_expenditure": 22896335.44504192,
+        "hurricane_name": "Katrina",
+        "recourse_loss": 1172119754.5271976,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1574581463.6207738,
+          "Seasonal Influenza Vaccine": 9557344.064386318,
+          "Water": 10400000.0
+        },
+        "shortage_penalty": 1149223419.0821557,
+        "year": 2005
+      }
+    }
+  ],
+  "diagnostic_sha256": "a2776d56414ca08ff4a0ae8111c242630246ca1e2eecf871ab0c0bbe341da283",
+  "environment": {
+    "gurobi_optimizer": "13.0.2",
+    "gurobipy": "13.0.2",
+    "license_available": true,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "pyomo": "6.10.1",
+    "python": "3.12.10",
+    "python_implementation": "CPython",
+    "solver_available": true,
+    "solver_interface": "gurobi_direct",
+    "status": "PASS",
+    "threads": 1
+  },
+  "no_second_round_tuning": true,
+  "scientific_status": "DIAGNOSTIC_NOT_FORMAL_FREEZE",
+  "scope": "TEMPORARY_QFR_24SCENARIO_AVAILABILITY_DIAGNOSTIC"
+}
