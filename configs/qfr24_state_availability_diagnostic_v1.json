@@ -1,0 +1,40 @@
+{
+  "scope": "TEMPORARY_QFR24_STATE_AVAILABILITY_DIAGNOSTIC",
+  "base_main_sha": "23832e44b1fb71cc6a19426ea9db9aedbd1fc12f",
+  "dataset_identity": "rawls_24_real_single_hurricane_data_recalibration_v1",
+  "reference_weight_method": "RAWLS_STYLE_NONNEGATIVE_MAXIMUM_ENTROPY_FROM_UNIFORM_PRIOR",
+  "reference_weight_role": "B_REF_ONLY_NOT_ROBUST_SCENARIO_PROBABILITY",
+  "constraints": {
+    "total_mass": "1",
+    "florida_mass": "0.40",
+    "major_mass": "0.4444444444",
+    "minor_mass": "0.5555555556",
+    "uniform_prior": "1/24"
+  },
+  "budget_ratios": [0.75, 1.0, 1.25],
+  "models": ["M0", "M1", "M2"],
+  "q_availability_cat1_to_cat5": [0.92, 0.84, 0.76, 0.68, 0.60],
+  "availability_by_state": {
+    "Low": {"R0": 0.90, "R1": 0.95, "R2": 0.98},
+    "Medium": {"R0": 0.70, "R1": 0.82, "R2": 0.92},
+    "High": {"R0": 0.45, "R1": 0.65, "R2": 0.85}
+  },
+  "state_membership": {
+    "Low": [],
+    "Medium": ["Alicia", "Bonnie", "Lili", "Bertha", "Emily", "Jeanne", "Elena"],
+    "High": ["Camille", "Floyd", "Andrew", "Opal", "Isabel", "Katrina", "Fran", "Dennis", "Georges", "Hugo", "Ike", "Rita", "Wilma", "Irma", "Charley", "Frances", "Ivan"]
+  },
+  "weight_groups": {
+    "Florida_Major": ["Andrew", "Opal", "Katrina", "Dennis", "Georges", "Rita", "Wilma", "Irma", "Charley", "Ivan", "Jeanne", "Elena"],
+    "Florida_Minor": ["Frances"],
+    "NonFlorida_Major": ["Alicia", "Camille", "Fran", "Emily", "Hugo"],
+    "NonFlorida_Minor": ["Bonnie", "Floyd", "Isabel", "Lili", "Bertha", "Ike"]
+  },
+  "economic_parameters": {
+    "phi": 0.20,
+    "psi": 0.85,
+    "reliability_premium_ratios": [0.0, 0.10, 0.25],
+    "shortage_beta": 4.0
+  },
+  "scientific_status": "DIAGNOSTIC_NOT_FORMAL_E1_NOT_PARAMETER_FREEZE"
+}

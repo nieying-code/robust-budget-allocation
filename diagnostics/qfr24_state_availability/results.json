@@ -1,0 +1,1385 @@
+{
+  "authority": {
+    "B_ref": 19137905.8554385,
+    "B_ref_components": {
+      "Crackers": 7694515.684843324,
+      "Seasonal Influenza Vaccine": 6402110.29535507,
+      "Water": 5041279.875240104
+    },
+    "D_ref": {
+      "Crackers": 73890995.69311771,
+      "Seasonal Influenza Vaccine": 444097.5510096469,
+      "Water": 7783356.2995833
+    },
+    "F_bar": {
+      "Crackers": 1862000000.0,
+      "Seasonal Influenza Vaccine": 9557344.064386318,
+      "Water": 70000000.0
+    },
+    "authority_sha256": "9c52151633ce761373cc15690c96ad3ebb825d6f2a509aeace621565e0f48768",
+    "budget_ratios": [
+      0.75,
+      1.0,
+      1.25
+    ],
+    "direct_f_availability": {
+      "h01": {
+        "0": 0.7,
+        "1": 0.82,
+        "2": 0.92
+      },
+      "h02": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h03": {
+        "0": 0.7,
+        "1": 0.82,
+        "2": 0.92
+      },
+      "h04": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h05": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h06": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h07": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h08": {
+        "0": 0.7,
+        "1": 0.82,
+        "2": 0.92
+      },
+      "h09": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h10": {
+        "0": 0.7,
+        "1": 0.82,
+        "2": 0.92
+      },
+      "h11": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h12": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h13": {
+        "0": 0.7,
+        "1": 0.82,
+        "2": 0.92
+      },
+      "h14": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h15": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h16": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h17": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h18": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h19": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h20": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h21": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h22": {
+        "0": 0.45,
+        "1": 0.65,
+        "2": 0.85
+      },
+      "h23": {
+        "0": 0.7,
+        "1": 0.82,
+        "2": 0.92
+      },
+      "h24": {
+        "0": 0.7,
+        "1": 0.82,
+        "2": 0.92
+      }
+    },
+    "group_weights_decimal": {
+      "Florida_Major": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "Florida_Minor": "0.082338381168491255257573690289611779214114860301073683224181",
+      "NonFlorida_Major": "0.0253565651136982510515147380579223558428229720602147366448362",
+      "NonFlorida_Minor": "0.0788695290719181241237377182850647034643141899498210527959698"
+    },
+    "metadata": {
+      "h01": {
+        "category": 3,
+        "hurricane_name": "Alicia",
+        "state": "Medium",
+        "year": 1983
+      },
+      "h02": {
+        "category": 5,
+        "hurricane_name": "Camille",
+        "state": "High",
+        "year": 1969
+      },
+      "h03": {
+        "category": 2,
+        "hurricane_name": "Bonnie",
+        "state": "Medium",
+        "year": 1998
+      },
+      "h04": {
+        "category": 2,
+        "hurricane_name": "Floyd",
+        "state": "High",
+        "year": 1999
+      },
+      "h05": {
+        "category": 4,
+        "hurricane_name": "Andrew",
+        "state": "High",
+        "year": 1992
+      },
+      "h06": {
+        "category": 3,
+        "hurricane_name": "Opal",
+        "state": "High",
+        "year": 1995
+      },
+      "h07": {
+        "category": 2,
+        "hurricane_name": "Isabel",
+        "state": "High",
+        "year": 2003
+      },
+      "h08": {
+        "category": 1,
+        "hurricane_name": "Lili",
+        "state": "Medium",
+        "year": 2002
+      },
+      "h09": {
+        "category": 5,
+        "hurricane_name": "Katrina",
+        "state": "High",
+        "year": 2005
+      },
+      "h10": {
+        "category": 2,
+        "hurricane_name": "Bertha",
+        "state": "Medium",
+        "year": 1996
+      },
+      "h11": {
+        "category": 3,
+        "hurricane_name": "Fran",
+        "state": "High",
+        "year": 1996
+      },
+      "h12": {
+        "category": 3,
+        "hurricane_name": "Dennis",
+        "state": "High",
+        "year": 2005
+      },
+      "h13": {
+        "category": 3,
+        "hurricane_name": "Emily",
+        "state": "Medium",
+        "year": 1993
+      },
+      "h14": {
+        "category": 4,
+        "hurricane_name": "Georges",
+        "state": "High",
+        "year": 1998
+      },
+      "h15": {
+        "category": 4,
+        "hurricane_name": "Hugo",
+        "state": "High",
+        "year": 1989
+      },
+      "h16": {
+        "category": 2,
+        "hurricane_name": "Ike",
+        "state": "High",
+        "year": 2008
+      },
+      "h17": {
+        "category": 3,
+        "hurricane_name": "Rita",
+        "state": "High",
+        "year": 2005
+      },
+      "h18": {
+        "category": 3,
+        "hurricane_name": "Wilma",
+        "state": "High",
+        "year": 2005
+      },
+      "h19": {
+        "category": 4,
+        "hurricane_name": "Irma",
+        "state": "High",
+        "year": 2017
+      },
+      "h20": {
+        "category": 4,
+        "hurricane_name": "Charley",
+        "state": "High",
+        "year": 2004
+      },
+      "h21": {
+        "category": 2,
+        "hurricane_name": "Frances",
+        "state": "High",
+        "year": 2004
+      },
+      "h22": {
+        "category": 3,
+        "hurricane_name": "Ivan",
+        "state": "High",
+        "year": 2004
+      },
+      "h23": {
+        "category": 3,
+        "hurricane_name": "Jeanne",
+        "state": "Medium",
+        "year": 2004
+      },
+      "h24": {
+        "category": 3,
+        "hurricane_name": "Elena",
+        "state": "Medium",
+        "year": 1985
+      }
+    },
+    "models": [
+      "M0",
+      "M1",
+      "M2"
+    ],
+    "reference_weight_role": "B_REF_ONLY_NOT_ROBUST_SCENARIO_PROBABILITY",
+    "scenario_ids": [
+      "h01",
+      "h02",
+      "h03",
+      "h04",
+      "h05",
+      "h06",
+      "h07",
+      "h08",
+      "h09",
+      "h10",
+      "h11",
+      "h12",
+      "h13",
+      "h14",
+      "h15",
+      "h16",
+      "h17",
+      "h18",
+      "h19",
+      "h20",
+      "h21",
+      "h22",
+      "h23",
+      "h24"
+    ],
+    "scenario_weights": {
+      "h01": 0.02535656511369825,
+      "h02": 0.02535656511369825,
+      "h03": 0.07886952907191812,
+      "h04": 0.07886952907191812,
+      "h05": 0.026471801569292394,
+      "h06": 0.026471801569292394,
+      "h07": 0.07886952907191812,
+      "h08": 0.07886952907191812,
+      "h09": 0.026471801569292394,
+      "h10": 0.07886952907191812,
+      "h11": 0.02535656511369825,
+      "h12": 0.026471801569292394,
+      "h13": 0.02535656511369825,
+      "h14": 0.026471801569292394,
+      "h15": 0.02535656511369825,
+      "h16": 0.07886952907191812,
+      "h17": 0.026471801569292394,
+      "h18": 0.026471801569292394,
+      "h19": 0.026471801569292394,
+      "h20": 0.026471801569292394,
+      "h21": 0.08233838116849125,
+      "h22": 0.026471801569292394,
+      "h23": 0.026471801569292394,
+      "h24": 0.026471801569292394
+    },
+    "scenario_weights_decimal": {
+      "h01": "0.0253565651136982510515147380579223558428229720602147366448362",
+      "h02": "0.0253565651136982510515147380579223558428229720602147366448362",
+      "h03": "0.0788695290719181241237377182850647034643141899498210527959698",
+      "h04": "0.0788695290719181241237377182850647034643141899498210527959698",
+      "h05": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "h06": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "h07": "0.0788695290719181241237377182850647034643141899498210527959698",
+      "h08": "0.0788695290719181241237377182850647034643141899498210527959698",
+      "h09": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "h10": "0.0788695290719181241237377182850647034643141899498210527959698",
+      "h11": "0.0253565651136982510515147380579223558428229720602147366448362",
+      "h12": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "h13": "0.0253565651136982510515147380579223558428229720602147366448362",
+      "h14": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "h15": "0.0253565651136982510515147380579223558428229720602147366448362",
+      "h16": "0.0788695290719181241237377182850647034643141899498210527959698",
+      "h17": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "h18": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "h19": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "h20": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "h21": "0.082338381168491255257573690289611779214114860301073683224181",
+      "h22": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "h23": "0.0264718015692923953952021924758656850654904283082438597313182",
+      "h24": "0.0264718015692923953952021924758656850654904283082438597313182"
+    },
+    "scientific_status": "DIAGNOSTIC_NOT_FORMAL_E1_NOT_PARAMETER_FREEZE",
+    "scope": "TEMPORARY_QFR24_STATE_AVAILABILITY_DIAGNOSTIC",
+    "source_files": {
+      "configs/qfr24_state_availability_diagnostic_v1.json": "7bdccd246ade63a029ddb233ce86b9b875ee57771b4df9cd8ea05e49e8f27874",
+      "configs/r6c_formal_ready_data_v2.json": "eae86e57da22765cb097d168fcc76b1798f8c1417f00a5f40280cc3e47bd1e02",
+      "data/r6_rawls24/provenance_manifest.json": "8d97ae657ce20ddaf1ff7f789dbe073da0b58a9c2e4858a8824921279a07efc8",
+      "data/r6_rawls24/unified_hurricane_input.csv": "7487c8cb66dc6abd0dc2c3623c7ccf10e2bf46373d0265c442870db04bc82d5d",
+      "data/r6_rawls24/unified_rawls_demand.csv": "d281e719d16cb3b0902c2b29550e7ad659ea8ba6b52e83e69c7a7e38031dc152"
+    },
+    "weight_checks": {
+      "Florida": 0.39999999999999997,
+      "Major": 0.44444444439999997,
+      "Minor": 0.5555555556,
+      "total": 0.9999999999999999
+    },
+    "weight_checks_decimal": {
+      "Florida": "0.4000000000",
+      "Major": "0.4444444444",
+      "Minor": "0.5555555556",
+      "total": "0.999999999999999999999999999999999999999999999999999999999997"
+    }
+  },
+  "case_count": 9,
+  "cases": [
+    {
+      "F": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 0,
+        "Water": 0
+      },
+      "F_activated": false,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 216886.05657456114,
+        "Water": 17333333.333333336
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "NONE",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1237136342.1196792,
+      "budget": 14353429.391578875,
+      "budget_ratio": 0.75,
+      "budget_share": {
+        "F": 0.0,
+        "Q": 1.0,
+        "R": 0.0
+      },
+      "case_id": "M0_B0.75",
+      "case_sha256": "7b60b59a9d30bde14501d87a4165741c9cece02b009ab397b860f0c16176bada",
+      "expenditure": {
+        "F": 0.0,
+        "Q": 14353429.391578875,
+        "R": 0.0,
+        "first_stage": 14353429.391578875
+      },
+      "model_kind": "M0",
+      "scenario_losses": {
+        "h01": 4592280.0,
+        "h02": 8110333.8624,
+        "h03": 1581345.0576,
+        "h04": 30979156.21934025,
+        "h05": 19090648.899846867,
+        "h06": 19158698.95639356,
+        "h07": 2834092.8,
+        "h08": 1417046.4,
+        "h09": 1222782912.7281003,
+        "h10": 6263253.819340249,
+        "h11": 9184560.0,
+        "h12": 15811369.599999994,
+        "h13": 419183.3184,
+        "h14": 7752503.4048,
+        "h15": 28052687.154246867,
+        "h16": 3148992.0,
+        "h17": 57064921.455593556,
+        "h18": 6796574.399999999,
+        "h19": 204681956.36864686,
+        "h20": 64252166.46464686,
+        "h21": 30677315.99534025,
+        "h22": 6148511.8464,
+        "h23": 88361813.3824,
+        "h24": 39378393.455593556
+      },
+      "solver": {
+        "interface": "gurobi_direct",
+        "options": {
+          "FeasibilityTol": 1e-09,
+          "IntFeasTol": 1e-09,
+          "MIPGap": 0,
+          "MIPGapAbs": 0,
+          "NumericFocus": 3,
+          "OptimalityTol": 1e-09,
+          "Threads": 1
+        },
+        "status": "ok",
+        "termination": "optimal"
+      },
+      "worst_recourse": {
+        "exercise": {
+          "Crackers": 0.0,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_cost": 0.0,
+        "loss": 1222782912.7281003,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1862000000.0,
+          "Seasonal Influenza Vaccine": 9427212.43044158,
+          "Water": 0.0
+        },
+        "shortage_cost": 1222782912.7281003,
+        "unused_cash": 0.0
+      },
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_ids": [
+          "h09"
+        ],
+        "hurricane_name": "Katrina",
+        "scenario_id": "h09",
+        "state": "High",
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 262922327.15071055,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "R0",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1226970364.4905627,
+      "budget": 14353429.391578875,
+      "budget_ratio": 0.75,
+      "budget_share": {
+        "F": 0.34334763948497854,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M1_B0.75",
+      "case_sha256": "d083bf1abd64b1f0bec01917fb1c023ebd2530d10e58f137f32cf8d12eac150c",
+      "expenditure": {
+        "F": 4928216.100112919,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 4928216.100112919
+      },
+      "model_kind": "M1",
+      "scenario_losses": {
+        "h01": 5382639.5,
+        "h02": 9355573.945759999,
+        "h03": 5378894.62474,
+        "h04": 52782255.76,
+        "h05": 34530759.6092,
+        "h06": 18262395.41892,
+        "h07": 7196724.72,
+        "h08": 6707322.36,
+        "h09": 1222042148.3904498,
+        "h10": 17583976.5,
+        "h11": 21905719.0,
+        "h12": 49857018.84000001,
+        "h13": 7708135.455160001,
+        "h14": 13356768.173519999,
+        "h15": 31456204.48826,
+        "h16": 15596040.8,
+        "h17": 78671157.0,
+        "h18": 14396672.06,
+        "h19": 215688348.84632003,
+        "h20": 88229935.99172,
+        "h21": 43239089.7124,
+        "h22": 20109907.967360005,
+        "h23": 122275898.14376001,
+        "h24": 34627557.0
+      },
+      "solver": {
+        "interface": "gurobi_direct",
+        "options": {
+          "FeasibilityTol": 1e-09,
+          "IntFeasTol": 1e-09,
+          "MIPGap": 0,
+          "MIPGapAbs": 0,
+          "NumericFocus": 3,
+          "OptimalityTol": 1e-09,
+          "Threads": 1
+        },
+        "status": "ok",
+        "termination": "optimal"
+      },
+      "worst_recourse": {
+        "exercise": {
+          "Crackers": 118315047.21781975,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_cost": 9425213.291465957,
+        "loss": 1222042148.3904498,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1743684952.7821803,
+          "Seasonal Influenza Vaccine": 9557344.064386318,
+          "Water": 10400000.0
+        },
+        "shortage_cost": 1212616935.0989838,
+        "unused_cash": 0.0
+      },
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_ids": [
+          "h09"
+        ],
+        "hurricane_name": "Katrina",
+        "scenario_id": "h09",
+        "state": "High",
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 262922327.15071055,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "R0",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1226970364.4905627,
+      "budget": 14353429.391578875,
+      "budget_ratio": 0.75,
+      "budget_share": {
+        "F": 0.34334763948497854,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M2_B0.75",
+      "case_sha256": "ce6d2b22f11c2da1d688b299658e6d9720d3276ed21b63dd94091b22eb9b9008",
+      "expenditure": {
+        "F": 4928216.100112919,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 4928216.100112919
+      },
+      "model_kind": "M2",
+      "scenario_losses": {
+        "h01": 5382639.5,
+        "h02": 9355573.945759999,
+        "h03": 5378894.62474,
+        "h04": 52782255.76,
+        "h05": 34530759.6092,
+        "h06": 18262395.41892,
+        "h07": 7196724.72,
+        "h08": 6707322.36,
+        "h09": 1222042148.3904498,
+        "h10": 17583976.5,
+        "h11": 21905719.0,
+        "h12": 49857018.84000001,
+        "h13": 7708135.455160001,
+        "h14": 13356768.173519999,
+        "h15": 31456204.48826,
+        "h16": 15596040.8,
+        "h17": 78671157.0,
+        "h18": 14396672.06,
+        "h19": 215688348.84632003,
+        "h20": 88229935.99172,
+        "h21": 43239089.7124,
+        "h22": 20109907.967360005,
+        "h23": 122275898.14376001,
+        "h24": 34627557.0
+      },
+      "solver": {
+        "interface": "gurobi_direct",
+        "options": {
+          "FeasibilityTol": 1e-09,
+          "IntFeasTol": 1e-09,
+          "MIPGap": 0,
+          "MIPGapAbs": 0,
+          "NumericFocus": 3,
+          "OptimalityTol": 1e-09,
+          "Threads": 1
+        },
+        "status": "ok",
+        "termination": "optimal"
+      },
+      "worst_recourse": {
+        "exercise": {
+          "Crackers": 118315047.21781975,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_cost": 9425213.291465957,
+        "loss": 1222042148.3904498,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1743684952.7821803,
+          "Seasonal Influenza Vaccine": 9557344.064386318,
+          "Water": 10400000.0
+        },
+        "shortage_cost": 1212616935.0989838,
+        "unused_cash": 0.0
+      },
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_ids": [
+          "h09"
+        ],
+        "hurricane_name": "Katrina",
+        "scenario_id": "h09",
+        "state": "High",
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 0,
+        "Water": 0
+      },
+      "F_activated": false,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 548772.603734635,
+        "Water": 17333333.333333336
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "NONE",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1230836338.9268677,
+      "budget": 19137905.8554385,
+      "budget_ratio": 1.0,
+      "budget_share": {
+        "F": 0.0,
+        "Q": 1.0,
+        "R": 0.0
+      },
+      "case_id": "M0_B1.00",
+      "case_sha256": "9291c5e2df79bc86e8ecdcfcf44e3173e05a0518c55561368cb12c027d7b3af5",
+      "expenditure": {
+        "F": 0.0,
+        "Q": 19137905.8554385,
+        "R": 0.0,
+        "first_stage": 19137905.8554385
+      },
+      "model_kind": "M0",
+      "scenario_losses": {
+        "h01": 4592280.0,
+        "h02": 8110333.8624,
+        "h03": 1581345.0576,
+        "h04": 15460884.70000083,
+        "h05": 15492515.808,
+        "h06": 16079225.5008,
+        "h07": 2834092.8,
+        "h08": 1417046.4,
+        "h09": 1211698433.0714293,
+        "h10": 5904360.0,
+        "h11": 9184560.0,
+        "h12": 15811369.599999994,
+        "h13": 419183.3184,
+        "h14": 7752503.4048,
+        "h15": 20578374.0624,
+        "h16": 3148992.0,
+        "h17": 45240208.0,
+        "h18": 6796574.399999999,
+        "h19": 192119546.0910864,
+        "h20": 58168473.37279999,
+        "h21": 15159044.476000829,
+        "h22": 6148511.8464,
+        "h23": 88361813.3824,
+        "h24": 27553680.0
+      },
+      "solver": {
+        "interface": "gurobi_direct",
+        "options": {
+          "FeasibilityTol": 1e-09,
+          "IntFeasTol": 1e-09,
+          "MIPGap": 0,
+          "MIPGapAbs": 0,
+          "NumericFocus": 3,
+          "OptimalityTol": 1e-09,
+          "Threads": 1
+        },
+        "status": "ok",
+        "termination": "optimal"
+      },
+      "worst_recourse": {
+        "exercise": {
+          "Crackers": 0.0,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_cost": 0.0,
+        "loss": 1211698433.0714293,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1862000000.0,
+          "Seasonal Influenza Vaccine": 9228080.502145536,
+          "Water": 0.0
+        },
+        "shortage_cost": 1211698433.0714293,
+        "unused_cash": 0.0
+      },
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_ids": [
+          "h09"
+        ],
+        "hurricane_name": "Katrina",
+        "scenario_id": "h09",
+        "state": "High",
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 350563102.8676141,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "R0",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1216970192.6540835,
+      "budget": 19137905.8554385,
+      "budget_ratio": 1.0,
+      "budget_share": {
+        "F": 0.34334763948497854,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M1_B1.00",
+      "case_sha256": "2ed998081ecbba3deff5de08f30d1a22813b49ba18d8a08b735af41ba07e91db",
+      "expenditure": {
+        "F": 6570954.800150558,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 6570954.800150558
+      },
+      "model_kind": "M1",
+      "scenario_losses": {
+        "h01": 5382639.5,
+        "h02": 9355573.945759999,
+        "h03": 5378894.62474,
+        "h04": 52782255.76,
+        "h05": 34530759.6092,
+        "h06": 18262395.41892,
+        "h07": 7196724.72,
+        "h08": 6707322.36,
+        "h09": 1210399237.8539329,
+        "h10": 17583976.5,
+        "h11": 21905719.0,
+        "h12": 49857018.84000001,
+        "h13": 7708135.455160001,
+        "h14": 13356768.173519999,
+        "h15": 31456204.48826,
+        "h16": 15596040.8,
+        "h17": 78671157.0,
+        "h18": 14396672.06,
+        "h19": 215688348.84632003,
+        "h20": 88229935.99172,
+        "h21": 43239089.7124,
+        "h22": 20109907.967360005,
+        "h23": 122275898.14376001,
+        "h24": 34627557.0
+      },
+      "solver": {
+        "interface": "gurobi_direct",
+        "options": {
+          "FeasibilityTol": 1e-09,
+          "IntFeasTol": 1e-09,
+          "MIPGap": 0,
+          "MIPGapAbs": 0,
+          "NumericFocus": 3,
+          "OptimalityTol": 1e-09,
+          "Threads": 1
+        },
+        "status": "ok",
+        "termination": "optimal"
+      },
+      "worst_recourse": {
+        "exercise": {
+          "Crackers": 157753396.29042634,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_cost": 12566951.055287942,
+        "loss": 1210399237.8539329,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1704246603.7095737,
+          "Seasonal Influenza Vaccine": 9557344.064386318,
+          "Water": 10400000.0
+        },
+        "shortage_cost": 1197832286.798645,
+        "unused_cash": 0.0
+      },
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_ids": [
+          "h09"
+        ],
+        "hurricane_name": "Katrina",
+        "scenario_id": "h09",
+        "state": "High",
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 350563102.8676141,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "R0",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1216970192.6540835,
+      "budget": 19137905.8554385,
+      "budget_ratio": 1.0,
+      "budget_share": {
+        "F": 0.34334763948497854,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M2_B1.00",
+      "case_sha256": "b9662420682f256627da07a656d21a97bda8acd1b2d99af844b3df6c171f6b88",
+      "expenditure": {
+        "F": 6570954.800150558,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 6570954.800150558
+      },
+      "model_kind": "M2",
+      "scenario_losses": {
+        "h01": 5382639.5,
+        "h02": 9355573.945759999,
+        "h03": 5378894.62474,
+        "h04": 52782255.76,
+        "h05": 34530759.6092,
+        "h06": 18262395.41892,
+        "h07": 7196724.72,
+        "h08": 6707322.36,
+        "h09": 1210399237.8539329,
+        "h10": 17583976.5,
+        "h11": 21905719.0,
+        "h12": 49857018.84000001,
+        "h13": 7708135.455160001,
+        "h14": 13356768.173519999,
+        "h15": 31456204.48826,
+        "h16": 15596040.8,
+        "h17": 78671157.0,
+        "h18": 14396672.06,
+        "h19": 215688348.84632003,
+        "h20": 88229935.99172,
+        "h21": 43239089.7124,
+        "h22": 20109907.967360005,
+        "h23": 122275898.14376001,
+        "h24": 34627557.0
+      },
+      "solver": {
+        "interface": "gurobi_direct",
+        "options": {
+          "FeasibilityTol": 1e-09,
+          "IntFeasTol": 1e-09,
+          "MIPGap": 0,
+          "MIPGapAbs": 0,
+          "NumericFocus": 3,
+          "OptimalityTol": 1e-09,
+          "Threads": 1
+        },
+        "status": "ok",
+        "termination": "optimal"
+      },
+      "worst_recourse": {
+        "exercise": {
+          "Crackers": 157753396.29042634,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_cost": 12566951.055287942,
+        "loss": 1210399237.8539329,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1704246603.7095737,
+          "Seasonal Influenza Vaccine": 9557344.064386318,
+          "Water": 10400000.0
+        },
+        "shortage_cost": 1197832286.798645,
+        "unused_cash": 0.0
+      },
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_ids": [
+          "h09"
+        ],
+        "hurricane_name": "Katrina",
+        "scenario_id": "h09",
+        "state": "High",
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 0,
+        "Seasonal Influenza Vaccine": 0,
+        "Water": 0
+      },
+      "F_activated": false,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 880659.1508947089,
+        "Water": 17333333.333333336
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "NONE",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1224536335.7340562,
+      "budget": 23922382.319298126,
+      "budget_ratio": 1.25,
+      "budget_share": {
+        "F": 0.0,
+        "Q": 1.0,
+        "R": 0.0
+      },
+      "case_id": "M0_B1.25",
+      "case_sha256": "0b6e1695e66c58bc0001a1e28e13dd76c59866c2ca4f6fad3a88feefddb48b42",
+      "expenditure": {
+        "F": 0.0,
+        "Q": 23922382.319298126,
+        "R": 0.0,
+        "first_stage": 23922382.319298126
+      },
+      "model_kind": "M0",
+      "scenario_losses": {
+        "h01": 4592280.0,
+        "h02": 8110333.8624,
+        "h03": 1581345.0576,
+        "h04": 14800262.4,
+        "h05": 15492515.808,
+        "h06": 16079225.5008,
+        "h07": 2834092.8,
+        "h08": 1417046.4,
+        "h09": 1200613953.4147582,
+        "h10": 5904360.0,
+        "h11": 9184560.0,
+        "h12": 15811369.599999994,
+        "h13": 419183.3184,
+        "h14": 7752503.4048,
+        "h15": 20578374.0624,
+        "h16": 3148992.0,
+        "h17": 45240208.0,
+        "h18": 6796574.399999999,
+        "h19": 186044463.2768,
+        "h20": 58168473.37279999,
+        "h21": 14691622.175999999,
+        "h22": 6148511.8464,
+        "h23": 88361813.3824,
+        "h24": 27553680.0
+      },
+      "solver": {
+        "interface": "gurobi_direct",
+        "options": {
+          "FeasibilityTol": 1e-09,
+          "IntFeasTol": 1e-09,
+          "MIPGap": 0,
+          "MIPGapAbs": 0,
+          "NumericFocus": 3,
+          "OptimalityTol": 1e-09,
+          "Threads": 1
+        },
+        "status": "ok",
+        "termination": "optimal"
+      },
+      "worst_recourse": {
+        "exercise": {
+          "Crackers": 0.0,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_cost": 0.0,
+        "loss": 1200613953.4147582,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1862000000.0,
+          "Seasonal Influenza Vaccine": 9028948.573849492,
+          "Water": 0.0
+        },
+        "shortage_cost": 1200613953.4147582,
+        "unused_cash": 0.0
+      },
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_ids": [
+          "h09"
+        ],
+        "hurricane_name": "Katrina",
+        "scenario_id": "h09",
+        "state": "High",
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 438203878.58451754,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "R0",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1206970020.8176043,
+      "budget": 23922382.319298126,
+      "budget_ratio": 1.25,
+      "budget_share": {
+        "F": 0.34334763948497854,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M1_B1.25",
+      "case_sha256": "42d7da3f2a1ad6e859fdec57d95027c36184dd32b7c474cdf0d08713168ec399",
+      "expenditure": {
+        "F": 8213693.500188197,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 8213693.500188197
+      },
+      "model_kind": "M1",
+      "scenario_losses": {
+        "h01": 5382639.5,
+        "h02": 9355573.945759999,
+        "h03": 5378894.62474,
+        "h04": 52782255.76,
+        "h05": 34530759.6092,
+        "h06": 18262395.41892,
+        "h07": 7196724.72,
+        "h08": 6707322.36,
+        "h09": 1198756327.3174162,
+        "h10": 17583976.5,
+        "h11": 21905719.0,
+        "h12": 49857018.84000001,
+        "h13": 7708135.455160001,
+        "h14": 13356768.173519999,
+        "h15": 31456204.48826,
+        "h16": 15596040.8,
+        "h17": 78671157.0,
+        "h18": 14396672.06,
+        "h19": 215688348.84632003,
+        "h20": 88229935.99172,
+        "h21": 43239089.7124,
+        "h22": 20109907.967360005,
+        "h23": 122275898.14376001,
+        "h24": 34627557.0
+      },
+      "solver": {
+        "interface": "gurobi_direct",
+        "options": {
+          "FeasibilityTol": 1e-09,
+          "IntFeasTol": 1e-09,
+          "MIPGap": 0,
+          "MIPGapAbs": 0,
+          "NumericFocus": 3,
+          "OptimalityTol": 1e-09,
+          "Threads": 1
+        },
+        "status": "ok",
+        "termination": "optimal"
+      },
+      "worst_recourse": {
+        "exercise": {
+          "Crackers": 197191745.3630329,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_cost": 15708688.819109926,
+        "loss": 1198756327.3174162,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1664808254.6369672,
+          "Seasonal Influenza Vaccine": 9557344.064386318,
+          "Water": 10400000.0
+        },
+        "shortage_cost": 1183047638.4983063,
+        "unused_cash": 1.862645149230957e-09
+      },
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_ids": [
+          "h09"
+        ],
+        "hurricane_name": "Katrina",
+        "scenario_id": "h09",
+        "state": "High",
+        "year": 2005
+      }
+    },
+    {
+      "F": {
+        "Crackers": 438203878.58451754,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "F_activated": true,
+      "Q": {
+        "Crackers": 0.0,
+        "Seasonal Influenza Vaccine": 0.0,
+        "Water": 0.0
+      },
+      "R1_activated": false,
+      "R2_activated": false,
+      "R_level": {
+        "Crackers": "R0",
+        "Seasonal Influenza Vaccine": "NONE",
+        "Water": "NONE"
+      },
+      "T_COST": 1206970020.8176043,
+      "budget": 23922382.319298126,
+      "budget_ratio": 1.25,
+      "budget_share": {
+        "F": 0.34334763948497854,
+        "Q": 0.0,
+        "R": 0.0
+      },
+      "case_id": "M2_B1.25",
+      "case_sha256": "6fb99ddcb54fc98fbe386f9dde074fe8ce303c7dcd68cb760295260300b51823",
+      "expenditure": {
+        "F": 8213693.500188197,
+        "Q": 0.0,
+        "R": 0.0,
+        "first_stage": 8213693.500188197
+      },
+      "model_kind": "M2",
+      "scenario_losses": {
+        "h01": 5382639.5,
+        "h02": 9355573.945759999,
+        "h03": 5378894.62474,
+        "h04": 52782255.76,
+        "h05": 34530759.6092,
+        "h06": 18262395.41892,
+        "h07": 7196724.72,
+        "h08": 6707322.36,
+        "h09": 1198756327.3174162,
+        "h10": 17583976.5,
+        "h11": 21905719.0,
+        "h12": 49857018.84000001,
+        "h13": 7708135.455160001,
+        "h14": 13356768.173519999,
+        "h15": 31456204.48826,
+        "h16": 15596040.8,
+        "h17": 78671157.0,
+        "h18": 14396672.06,
+        "h19": 215688348.84632003,
+        "h20": 88229935.99172,
+        "h21": 43239089.7124,
+        "h22": 20109907.967360005,
+        "h23": 122275898.14376001,
+        "h24": 34627557.0
+      },
+      "solver": {
+        "interface": "gurobi_direct",
+        "options": {
+          "FeasibilityTol": 1e-09,
+          "IntFeasTol": 1e-09,
+          "MIPGap": 0,
+          "MIPGapAbs": 0,
+          "NumericFocus": 3,
+          "OptimalityTol": 1e-09,
+          "Threads": 1
+        },
+        "status": "ok",
+        "termination": "optimal"
+      },
+      "worst_recourse": {
+        "exercise": {
+          "Crackers": 197191745.3630329,
+          "Seasonal Influenza Vaccine": 0.0,
+          "Water": 0.0
+        },
+        "exercise_cost": 15708688.819109926,
+        "loss": 1198756327.3174162,
+        "scenario_id": "h09",
+        "shortage": {
+          "Crackers": 1664808254.6369672,
+          "Seasonal Influenza Vaccine": 9557344.064386318,
+          "Water": 10400000.0
+        },
+        "shortage_cost": 1183047638.4983063,
+        "unused_cash": 1.862645149230957e-09
+      },
+      "worst_scenario": {
+        "category": 5,
+        "co_worst_ids": [
+          "h09"
+        ],
+        "hurricane_name": "Katrina",
+        "scenario_id": "h09",
+        "state": "High",
+        "year": 2005
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "M1_M2_decisions_differ": false,
+      "M1_M2_objective_equal": true,
+      "M1_minus_M0": -10165977.629116535,
+      "M2_minus_M1": 0.0,
+      "budget_ratio": 0.75
+    },
+    {
+      "M1_M2_decisions_differ": false,
+      "M1_M2_objective_equal": true,
+      "M1_minus_M0": -13866146.272784233,
+      "M2_minus_M1": 0.0,
+      "budget_ratio": 1.0
+    },
+    {
+      "M1_M2_decisions_differ": false,
+      "M1_M2_objective_equal": true,
+      "M1_minus_M0": -17566314.91645193,
+      "M2_minus_M1": 0.0,
+      "budget_ratio": 1.25
+    }
+  ],
+  "diagnostic_sha256": "7f1ae6d8564cc943c4f89837f76eeee9e7bee51009dca882950dfc363e686599",
+  "environment": {
+    "gurobi_optimizer": "13.0.2",
+    "gurobipy": "13.0.2",
+    "license_available": true,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "pyomo": "6.10.1",
+    "python": "3.12.10",
+    "python_implementation": "CPython",
+    "solver_available": true,
+    "solver_interface": "gurobi_direct",
+    "status": "PASS",
+    "threads": 1
+  },
+  "formal_E1_runs": 0,
+  "no_automatic_tuning": true,
+  "scientific_status": "DIAGNOSTIC_NOT_FORMAL_E1_NOT_PARAMETER_FREEZE",
+  "scope": "TEMPORARY_QFR24_STATE_AVAILABILITY_DIAGNOSTIC"
+}
